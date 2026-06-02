@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Property Dreamz
 
-## Getting Started
+Luxury real estate landing page for verified Mexican properties. This repo includes a Next.js 14 App Router implementation with Tailwind CSS v4, reusable UI primitives, and a layout scaffold for agency-style marketing pages.
 
-First, run the development server:
+## Tech stack
+
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS v4
+- `next/font` for optimized Google fonts
+- `lucide-react` for iconography
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the app for production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the production server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Code quality
 
-## Deploy on Vercel
+Run lint checks:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Apply automatic ESLint fixes:
+
+```bash
+npm run lint:fix
+```
+
+## Environment variables
+
+Create a `.env.local` file with the following values:
+
+```env
+NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_MAPBOX_TOKEN=
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+SANITY_API_TOKEN=
+HUBSPOT_API_KEY=
+NEXT_PUBLIC_GA_ID=
+NEXT_PUBLIC_META_PIXEL_ID=
+```
+
+## Project structure
+
+- `src/app/` — App Router pages and root layout
+- `src/components/ui/` — reusable UI primitives (`Button`, `Card`, `Heading`, `Section`, etc.)
+- `src/components/layout/` — page layout components (`Navbar`, `Footer`, `WhatsAppButton`)
+- `src/lib/` — shared utilities and font configuration
+
+## Notes
+
+This project is ready for the next step: wiring actual property data, form handling, and marketing copy into the landing page.
