@@ -13,23 +13,22 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          navy: "#0A1628",       // Hero background, navbar, footer, dark sections
-          blue: "#1A3A5C",       // Secondary sections, card hover states, secondary CTAs
-          gold: "#C9933A",       // Primary CTA buttons, prices, logo accent, Elite highlights
-          green: "#1A7A5E",      // Legal verified badge, success states, savings text[cite: 1]
-          white: "#FFFFFF",      // Card backgrounds on light sections, text on dark[cite: 1]
-          lightBlue: "#EEF4FA",  // Light section backgrounds, alternating rows[cite: 1]
-          gray: "#4A6274",       // Secondary text, captions, meta info, subheadings[cite: 1]
+          pine: "#024139",
+          emerald: "#026559",
+          gold: "#B98A3E",
+          ink: "#191919",
+          paper: "#F4F1EA",
+          white: "#FFFFFF",
+          muted: "#6F7669",
+          gray: "#5C665E",
         },
       },
-      backgroundColor: {
-        // Tarjetas translúcidas sobre fondos oscuros (especificación técnica)
-        "glass-white": "rgba(255, 255, 255, 0.06)",
-      },
       fontFamily: {
-        // Mapeo de las dos únicas fuentes permitidas
         serif: ["var(--font-playfair)", "serif"],
         sans: ["var(--font-inter)", "sans-serif"],
+      },
+      borderRadius: {
+        xl2: "1.5rem",
       },
     },
   },

@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       {/* Root layout para toda la aplicación. */}
       {/* El fondo global y los ajustes de tipografía se aplican aquí. */}
-      <body className="min-h-full bg-[#0A1628] text-white">
+      <body className="min-h-full bg-brand-paper text-brand-ink">
         <Navbar />
         <Main>{children}</Main>
         <Footer />

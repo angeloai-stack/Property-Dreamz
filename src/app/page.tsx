@@ -2,88 +2,121 @@ import { Badge, Button, Card, Container, Heading, Section } from "@/components/u
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-brand-navy text-white">
-      <Section className="pt-24 pb-20">
-        <Container className="space-y-12">
-          <div className="max-w-3xl space-y-6">
-            <Badge className="bg-white/10 text-white">Verified Mexican Real Estate</Badge>
-            <Heading level={1} className="max-w-3xl text-5xl">
-              Find Your Dream Home in Mexico
-            </Heading>
-            <p className="max-w-2xl text-base leading-8 text-brand-gray">
-              100% in English · Priced in USD · Legal verified by our team. Browse luxury
-              developments with full support for American buyers and transparent local
-              guidance.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button>Get Started</Button>
-              <Button variant="secondary">Book a Tour</Button>
+    <main className="min-h-screen bg-brand-paper text-brand-ink">
+      <Section className="pt-20 pb-16">
+        <Container className="space-y-16">
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div className="space-y-8">
+              {/* Headline and CTA copy translated to English */}
+              <Badge variant="gold">Verified projects</Badge>
+              <Heading level={1} className="max-w-3xl text-5xl leading-[1.02] tracking-[-0.03em]">
+                Find your home with trust and editorial design.
+              </Heading>
+              <p className="max-w-2xl text-base leading-8 text-brand-muted">
+                Pre-sale homes and apartments with 360° tours, financing, and bilingual support
+                for buyers from Mexico and the United States.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button href="/about">Learn more</Button>
+                <Button href="/contact" variant="premium">
+                  Talk to advisor
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid gap-4 rounded-3xl border border-brand-ink/10 bg-white p-6 text-brand-ink shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+              <div className="flex items-center justify-between rounded-2xl border border-brand-ink/10 bg-brand-paper p-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.28em] text-brand-gray">Verified</p>
+                  <p className="text-xl font-semibold">Residencial Altamar</p>
+                </div>
+                <Badge>Pre-Sale</Badge>
+              </div>
+              <div className="grid gap-3 text-sm text-brand-muted">
+                <p>Zona Río, Tijuana · 3 beds · 2 baths · 180 m²</p>
+                <p>From $4,250,000 MXN · USD $250,000</p>
+              </div>
+              <Button variant="default">View project</Button>
             </div>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            <Card className="space-y-4 bg-white/5">
-              <p className="text-xs uppercase tracking-[0.28em] text-brand-lightBlue">Verified</p>
-              <Heading level={3} className="text-2xl">
-                Legal Review
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                Every listing is reviewed by our local legal team before it reaches the platform.
-              </p>
-            </Card>
-            <Card className="space-y-4 bg-white/5">
-              <p className="text-xs uppercase tracking-[0.28em] text-brand-lightBlue">Secure</p>
-              <Heading level={3} className="text-2xl">
-                USD Pricing
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                All property prices are shown in USD for simplicity and stability.
-              </p>
-            </Card>
-            <Card className="space-y-4 bg-white/5">
-              <p className="text-xs uppercase tracking-[0.28em] text-brand-lightBlue">Assisted</p>
-              <Heading level={3} className="text-2xl">
-                Dedicated Support
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                Get fast, English-speaking support for your property search and purchase process.
-              </p>
-            </Card>
-          </div>
-        </Container>
-      </Section>
+          <Section className="space-y-10 bg-brand-paper/90 p-8 rounded-[2rem] border border-brand-ink/10">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div className="space-y-3">
+                {/* Featured project section translated to English */}
+                <Heading level={2} className="text-3xl">
+                  Featured projects
+                </Heading>
+                <p className="max-w-2xl text-sm leading-7 text-brand-muted">
+                  Browse selected developments with clear details, verified tags, and direct visual language.
+                </p>
+              </div>
+              <Badge>Pre-Sale</Badge>
+            </div>
 
-      <Section className="bg-brand-blue/5">
-        <Container className="space-y-8">
-          <Heading level={2} className="text-3xl text-white">
-            Why trusted service matters
-          </Heading>
-          <div className="grid gap-6 md:grid-cols-3">
-            <Card className="space-y-3 bg-white/5">
-              <Heading level={4} className="text-xl">
-                Dual market expertise
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                Combine U.S. buyer needs with Mexican local market knowledge for stronger deals.
-              </p>
-            </Card>
-            <Card className="space-y-3 bg-white/5">
-              <Heading level={4} className="text-xl">
-                Full transparency
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                Clear prices, verified documents, and a step-by-step real estate process.
-              </p>
-            </Card>
-            <Card className="space-y-3 bg-white/5">
-              <Heading level={4} className="text-xl">
-                Pass-through support
-              </Heading>
-              <p className="text-sm text-brand-gray">
-                Local agents, legal review, and buyer guidance throughout closing.
-              </p>
-            </Card>
-          </div>
+            <div className="grid gap-6 xl:grid-cols-3">
+              <Card className="space-y-4">
+                <Badge variant="success">Verified</Badge>
+                <Heading level={3} className="text-2xl">
+                  Vista Bahía
+                </Heading>
+                <p className="text-sm text-brand-muted">
+                  Beachfront apartments with USD financing and bilingual legal support.
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.25em] text-brand-gray">
+                  <span>3 beds</span>
+                  <span>2 baths</span>
+                  <span>180 m²</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-brand-ink">
+                  <span className="font-semibold">$4,250,000 MXN</span>
+                  <Button variant="default" className="px-5 py-2 text-xs">
+                    View project
+                  </Button>
+                </div>
+              </Card>
+              <Card className="space-y-4">
+                <Badge variant="success">Recommended</Badge>
+                <Heading level={3} className="text-2xl">
+                  Altamar Residencial
+                </Heading>
+                <p className="text-sm text-brand-muted">
+                  Editorial floor plan with virtual tour options and secure closing.
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.25em] text-brand-gray">
+                  <span>2 beds</span>
+                  <span>2 baths</span>
+                  <span>145 m²</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-brand-ink">
+                  <span className="font-semibold">USD $250,000</span>
+                  <Button variant="default" className="px-5 py-2 text-xs">
+                    View project
+                  </Button>
+                </div>
+              </Card>
+              <Card className="space-y-4">
+                <Badge variant="gold">Top</Badge>
+                <Heading level={3} className="text-2xl">
+                  Jardines del Lago
+                </Heading>
+                <p className="text-sm text-brand-muted">
+                  High-value developments with a flat design and a polished buying experience.
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.25em] text-brand-gray">
+                  <span>4 beds</span>
+                  <span>3 baths</span>
+                  <span>220 m²</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-brand-ink">
+                  <span className="font-semibold">$5,350,000 MXN</span>
+                  <Button variant="default" className="px-5 py-2 text-xs">
+                    View project
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </Section>
         </Container>
       </Section>
     </main>

@@ -1,8 +1,27 @@
 @import "tailwindcss";
 
-/* Reseteos globales de caja mínimos y limpios */
-html, body {
-  margin: 0;
-  padding: 0;
+:root {
+  color-scheme: light;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background-color: #F4F1EA;
+  color: #191919;
+}
+
+* {
   box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #F4F1EA;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(2, 101, 89, 0.15);
 }
