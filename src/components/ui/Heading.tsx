@@ -17,9 +17,11 @@ export function Heading({ level = 1, className, ...props }: HeadingProps) {
     <Tag
       className={cn(
         level === 1
-          ? "text-5xl font-serif leading-tight"
+          ? "text-4xl sm:text-5xl font-serif leading-tight"
           : level === 2
-          ? "text-4xl font-serif leading-tight"
+          ? "text-3xl sm:text-4xl font-serif leading-tight"
+          : level === 3
+          ? "text-2xl sm:text-3xl font-serif leading-tight"
           : "font-serif",
         className
       )}

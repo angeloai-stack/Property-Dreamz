@@ -1,10 +1,44 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand colors (tokens) */
+  --color-brand-pine: #024139;
+  --color-brand-emerald: #026559;
+  --color-brand-gold: #B98A3E;
+  --color-brand-ink: #191919;
+  --color-brand-paper: #F4F1EA;
+
+  /* Spacing scale (multiples of 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  /* Radii */
+  --radius-card: 4px; /* tarjetas */
+  --radius-input: 8px; /* inputs */
+  --radius-btn: 999px; /* pill buttons */
+
+  /* Borders & shadows */
+  --border-color-ink: rgba(25,25,25,0.08);
+  --btn-shadow: 0 1px 3px rgba(0,0,0,0.08);
+
+  /* Button tokens */
+  --btn-primary-bg: var(--color-brand-emerald);
+  --btn-primary-hover: #013F37;
+  --btn-primary-active: #012B24;
+
+  /* Typography defaults (fallbacks exist in fonts.ts) */
+  --content-font: var(--font-inter);
+
   color-scheme: light;
   font-family: var(--font-inter), system-ui, sans-serif;
-  background-color: #F4F1EA;
-  color: #191919;
+  background-color: var(--color-brand-paper);
+  color: var(--color-brand-ink);
 }
 
 * {

@@ -8,7 +8,7 @@ export default function AboutPage() {
           <div className="space-y-6">
             {/* About page overview content for the editorial property brand */}
             <Badge variant="gold">About us</Badge>
-            <Heading level={1} className="max-w-3xl text-5xl leading-[1.02] tracking-[-0.03em]">
+            <Heading level={1} className="max-w-3xl text-4xl sm:text-5xl leading-[1.02] tracking-[-0.03em]">
               We help buyers move from inspiration to a confident property purchase.
             </Heading>
             <p className="max-w-2xl text-base leading-8 text-brand-muted">
@@ -20,7 +20,7 @@ export default function AboutPage() {
 
           <Section className="grid gap-8 xl:grid-cols-2">
             <div className="space-y-6 rounded-[2rem] border border-brand-ink/10 bg-white p-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-              <Heading level={2} className="text-3xl">
+              <Heading level={2} className="text-2xl sm:text-3xl">
                 Our approach
               </Heading>
               <p className="text-base leading-8 text-brand-muted">
@@ -35,7 +35,7 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-6 rounded-[2rem] border border-brand-ink/10 bg-brand-paper/90 p-10">
-              <Heading level={2} className="text-3xl">
+              <Heading level={2} className="text-2xl sm:text-3xl">
                 Why clients choose us
               </Heading>
               <ul className="space-y-4 text-base leading-7 text-brand-muted">
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <Section className="rounded-[2rem] border border-brand-ink/10 bg-white p-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="space-y-4">
-                <Heading level={2} className="text-3xl">
+                <Heading level={2} className="text-2xl sm:text-3xl">
                   Ready to explore verified properties?
                 </Heading>
                 <p className="text-base leading-7 text-brand-muted">

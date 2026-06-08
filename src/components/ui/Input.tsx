@@ -8,7 +8,9 @@ export function Input({ className, ...props }: InputProps) {
   return (
     <input
       className={cn(
-        "w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-brand-gray outline-none transition focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20",
+        "w-full px-[var(--space-4)] py-[var(--space-3)] text-sm outline-none transition",
+        "bg-[var(--color-brand-paper)] border border-[var(--border-color-ink)] text-[var(--color-brand-ink)]",
+        "rounded-[var(--radius-input)] focus:border-[var(--btn-primary-bg)] focus:ring-2 focus:ring-[var(--btn-primary-bg)]/20",
         className
       )}
       {...props}

@@ -5,3 +5,5 @@ export { Input } from "./Input";
 export { Section } from "./Section";
 export { Container } from "./Container";
 export { Heading } from "./Heading";
+export { SearchBar as Search } from "./Search";
+export { Icon } from "./Icon";

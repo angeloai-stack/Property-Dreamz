@@ -9,16 +9,18 @@ export default function Home() {
             <div className="space-y-8">
               {/* Headline and CTA copy translated to English */}
               <Badge variant="gold">Verified projects</Badge>
-              <Heading level={1} className="max-w-3xl text-5xl leading-[1.02] tracking-[-0.03em]">
+              <Heading level={1} className="max-w-3xl text-4xl sm:text-5xl leading-[1.02] tracking-[-0.03em]">
                 Find your home with trust and editorial design.
               </Heading>
               <p className="max-w-2xl text-base leading-8 text-brand-muted">
                 Pre-sale homes and apartments with 360° tours, financing, and bilingual support
                 for buyers from Mexico and the United States.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/about">Learn more</Button>
-                <Button href="/contact" variant="premium">
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button href="/about" className="w-full sm:w-auto">
+                  Learn more
+                </Button>
+                <Button href="/contact" variant="premium" className="w-full sm:w-auto">
                   Talk to advisor
                 </Button>
               </div>
@@ -68,9 +70,9 @@ export default function Home() {
                   <span>2 baths</span>
                   <span>180 m²</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-brand-ink">
+                <div className="flex flex-col items-start gap-3 text-sm text-brand-ink sm:flex-row sm:items-center sm:justify-between">
                   <span className="font-semibold">$4,250,000 MXN</span>
-                  <Button variant="default" className="px-5 py-2 text-xs">
+                  <Button variant="default" className="w-full sm:w-auto px-5 py-2 text-xs">
                     View project
                   </Button>
                 </div>
@@ -88,9 +90,9 @@ export default function Home() {
                   <span>2 baths</span>
                   <span>145 m²</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-brand-ink">
+                <div className="flex flex-col items-start gap-3 text-sm text-brand-ink sm:flex-row sm:items-center sm:justify-between">
                   <span className="font-semibold">USD $250,000</span>
-                  <Button variant="default" className="px-5 py-2 text-xs">
+                  <Button variant="default" className="w-full sm:w-auto px-5 py-2 text-xs">
                     View project
                   </Button>
                 </div>
@@ -108,9 +110,9 @@ export default function Home() {
                   <span>3 baths</span>
                   <span>220 m²</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-brand-ink">
+                <div className="flex flex-col items-start gap-3 text-sm text-brand-ink sm:flex-row sm:items-center sm:justify-between">
                   <span className="font-semibold">$5,350,000 MXN</span>
-                  <Button variant="default" className="px-5 py-2 text-xs">
+                  <Button variant="default" className="w-full sm:w-auto px-5 py-2 text-xs">
                     View project
                   </Button>
                 </div>

@@ -13,5 +13,5 @@ export function Section<T extends React.ElementType = "section">({
 }: SectionProps<T>) {
   const Component = as || "section";
 
-  return <Component className={cn("py-16", className)} {...props} />;
+  return <Component className={cn("py-12 md:py-16", className)} {...props} />;
 }

@@ -23,12 +23,28 @@ const config: Config = {
           gray: "#5C665E",
         },
       },
+      spacing: {
+        1: '4px',
+        2: '8px',
+        3: '12px',
+        4: '16px',
+        5: '20px',
+        6: '24px',
+        7: '32px',
+        8: '40px',
+      },
       fontFamily: {
         serif: ["var(--font-playfair)", "serif"],
         sans: ["var(--font-inter)", "sans-serif"],
       },
       borderRadius: {
         xl2: "1.5rem",
+        card: "4px",
+        input: "8px",
+        pill: "999px",
+      },
+      boxShadow: {
+        subtle: '0 1px 3px rgba(0,0,0,0.08)'
       },
     },
   },
