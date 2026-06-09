@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "Property Dreamz | Verified Mexican Real Estate",
   description:
     "Luxury real estate platform connecting American buyers with verified Mexican developments.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/brand/property-dreamz-logo-circle.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/brand/property-dreamz-logo-circle.png",
+  },
 };
 
 export default function RootLayout({

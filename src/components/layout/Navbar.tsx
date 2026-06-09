@@ -11,8 +11,12 @@ export function Navbar() {
   return (
     <header className="relative border-b border-brand-ink/10 bg-brand-paper">
       <Container className="flex items-center justify-start gap-6 py-5">
-        <Link href="/" className="text-base font-semibold uppercase tracking-[0.3em] text-brand-ink">
-          Property Dreamz
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
+          <img
+            src="/brand/property-dreamz-logo-horizontal.png"
+            alt="Property Dreamz"
+            className="h-9 w-auto"
+          />
         </Link>
 
         {/* Desktop nav: placed directly after brand (left-justified) */}

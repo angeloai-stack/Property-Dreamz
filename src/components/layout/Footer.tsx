@@ -7,9 +7,16 @@ export function Footer() {
   return (
     <footer className="border-t border-brand-ink/10 bg-brand-paper text-brand-muted">
       <Container className="flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm">
-          © {new Date().getFullYear()} Property Dreamz. Editorial real estate portal.
-        </p>
+        <div className="flex items-center gap-4">
+          <img
+            src="/brand/property-dreamz-logo-stacked.png"
+            alt="Property Dreamz"
+            className="h-12 w-auto"
+          />
+          <p className="text-sm">
+            © {new Date().getFullYear()} Property Dreamz. Editorial real estate portal.
+          </p>
+        </div>
         <div className="flex flex-wrap gap-4 text-sm">
           <a href="#terms" className="transition hover:text-brand-ink">
             Terms
