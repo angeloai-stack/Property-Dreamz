@@ -34,8 +34,18 @@ const config: Config = {
         8: '40px',
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-inter)", "sans-serif"],
+        ibrand: ["var(--font-ibrand)", "ui-sans-serif", "sans-serif"],
+        ewangi: ["var(--font-ewangi)", "ui-sans-serif", "sans-serif"],
+        body: ["var(--font-playfair)", "ui-serif", "Georgia", "serif"],
+        serif: ["var(--font-playfair)", "ui-serif", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "sans-serif"],
+      },
+      fontSize: {
+        display: ["2.875rem", { lineHeight: "1.05" }],
+        title: ["1.875rem", { lineHeight: "1.15" }],
+        subtitle: ["1.3125rem", { lineHeight: "1.25" }],
+        body: ["1.0625rem", { lineHeight: "1.65" }],
+        label: ["0.8125rem", { lineHeight: "1.4" }],
       },
       borderRadius: {
         xl2: "1.5rem",

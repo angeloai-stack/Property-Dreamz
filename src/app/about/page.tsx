@@ -2,16 +2,16 @@ import { Badge, Button, Container, Heading, Section } from "@/components/ui";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-brand-paper text-brand-ink">
+    <main className="flex-1 bg-brand-paper text-brand-ink">
       <Section className="pt-20 pb-16">
         <Container className="space-y-12">
           <div className="space-y-6">
             {/* About page overview content for the editorial property brand */}
             <Badge variant="gold">About us</Badge>
-            <Heading level={1} className="max-w-3xl text-4xl sm:text-5xl leading-[1.02] tracking-[-0.03em]">
+            <Heading level={1}>
               We help buyers move from inspiration to a confident property purchase.
             </Heading>
-            <p className="max-w-2xl text-base leading-8 text-brand-muted">
+            <p className="max-w-2xl font-body text-body text-brand-muted">
               Property Dreamz is a bilingual real estate partner for pre-sale buyers in Mexico and the United States.
               We combine verified listings, transparent financing guidance, and a polished editorial experience so
               modern buyers can make decisions with clarity.

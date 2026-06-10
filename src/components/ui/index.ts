@@ -7,3 +7,4 @@ export { Container } from "./Container";
 export { Heading } from "./Heading";
 export { SearchBar as Search } from "./Search";
 export { Icon } from "./Icon";
+export { Label } from "./Label";

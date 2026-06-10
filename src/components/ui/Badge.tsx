@@ -10,7 +10,7 @@ export function Badge({ className, variant = "default", ...props }: BadgeProps) 
   return (
     <span
       className={cn(
-        "inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]",
+        "inline-flex rounded-full px-3 py-1 font-ewangi text-label font-semibold uppercase tracking-[0.14em]",
         variant === "success"
           ? "bg-brand-emerald text-brand-paper"
           : variant === "gold"

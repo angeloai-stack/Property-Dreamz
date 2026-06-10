@@ -2,15 +2,15 @@ import { Badge, Button, Container, Heading, Section } from "@/components/ui";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-brand-paper text-brand-ink">
+    <main className="flex-1 bg-brand-paper text-brand-ink">
       <Section className="pt-20 pb-16">
         <Container className="space-y-12">
           <div className="space-y-6">
             <Badge variant="gold">Contacto</Badge>
-            <Heading level={1} className="max-w-3xl text-4xl sm:text-5xl leading-[1.02] tracking-[-0.03em]">
+            <Heading level={1}>
               Encuentra tu siguiente inversión en bienes raíces.
             </Heading>
-            <p className="max-w-2xl text-base leading-8 text-brand-muted">
+            <p className="max-w-2xl font-body text-body text-brand-muted">
               Completa el formulario de campaña para recibir opciones verificadas, asesoría bilingüe y oportunidades de financiamiento en México y EE.UU.
             </p>
           </div>
