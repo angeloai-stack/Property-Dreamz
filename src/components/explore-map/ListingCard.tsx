@@ -62,7 +62,7 @@ export function ListingCard({ listing, active, currency, onClick }: ListingCardP
         }
       }}
       className={cn(
-        "overflow-hidden rounded-[var(--radius-card)] border bg-brand-paper text-brand-ink shadow-subtle transition duration-200",
+        "overflow-hidden rounded-(--radius-card) border bg-brand-paper text-brand-ink shadow-subtle transition duration-200",
         "cursor-pointer hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-emerald",
         active ? "border-brand-emerald ring-2 ring-brand-emerald/30" : "border-brand-ink/10",
         sold && "opacity-70"
@@ -83,7 +83,7 @@ export function ListingCard({ listing, active, currency, onClick }: ListingCardP
           </Badge>
         </div>
         {!sold && (
-          <div className="absolute right-3 top-3 rounded-[var(--radius-btn)] border border-brand-ink/10 bg-brand-paper px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-ink">
+          <div className="absolute right-3 top-3 rounded-(--radius-btn) border border-brand-ink/10 bg-brand-paper px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-ink">
             {listing.sdSavings}% vs SD
           </div>
         )}

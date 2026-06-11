@@ -30,7 +30,7 @@ export function MapPanel({
   return (
     <div
       className={cn(
-        "relative h-full min-h-[220px] w-full overflow-hidden bg-[#D6E8C8] sm:min-h-[280px] lg:min-h-0",
+        "relative h-full min-h-55 w-full overflow-hidden bg-[#D6E8C8] sm:min-h-70 lg:min-h-0",
         className
       )}
     >
@@ -61,7 +61,7 @@ export function MapPanel({
         />
       </svg>
 
-      <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-ink shadow-subtle">
+      <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-ink shadow-subtle">
         <span className="text-brand-emerald">●</span>
         Mexico · {filtered.length} projects
       </div>
@@ -85,7 +85,7 @@ export function MapPanel({
             aria-pressed={isActive}
             onClick={() => onPinClick(pin.id)}
             className={cn(
-              "absolute z-[1] -translate-x-1/2 -translate-y-full transition duration-200",
+              "absolute z-1 -translate-x-1/2 -translate-y-full transition duration-200",
               isVisible ? "opacity-100" : "opacity-25",
               isActive && "z-10"
             )}
@@ -93,7 +93,7 @@ export function MapPanel({
           >
             <span
               className={cn(
-                "block whitespace-nowrap rounded-[var(--radius-btn)] border border-brand-ink px-2 py-1 text-[11px] font-bold transition duration-200",
+                "block whitespace-nowrap rounded-(--radius-btn) border border-brand-ink px-2 py-1 text-[11px] font-bold transition duration-200",
                 isActive
                   ? "scale-110 bg-brand-ink text-brand-paper shadow-subtle"
                   : "bg-brand-paper text-brand-ink"
@@ -118,7 +118,7 @@ export function MapPanel({
             key={i}
             type="button"
             aria-label={i === 0 ? "Zoom in" : "Zoom out"}
-            className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-card)] border border-brand-ink/10 bg-brand-paper text-brand-ink shadow-subtle transition hover:bg-brand-paper/90"
+            className="flex h-8 w-8 items-center justify-center rounded-(--radius-card) border border-brand-ink/10 bg-brand-paper text-brand-ink shadow-subtle transition hover:bg-brand-paper/90"
           >
             <Icon as={icon} size={16} />
           </button>

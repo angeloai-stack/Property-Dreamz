@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, BarChart2, Globe, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -5,10 +6,16 @@ import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container, Icon } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-export const metadata = {
-  title: "For Developers — Property Dreamz",
+export const metadata: Metadata = {
+  title: "For Developers",
   description:
-    "List your development on Property Dreamz and reach thousands of verified international buyers. Learn about our certification process and listing tiers.",
+    "List your Mexico development on Property Dreamz and reach thousands of pre-qualified international buyers. Get CM RE certified and access the developer portal.",
+  openGraph: {
+    title: "List Your Development — Property Dreamz",
+    description:
+      "Reach thousands of pre-qualified international buyers. Get CM RE certified and list your Mexico development.",
+    url: "https://propertydreamz.com/for-developers",
+  },
 };
 
 const benefits = [

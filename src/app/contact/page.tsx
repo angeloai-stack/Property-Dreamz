@@ -1,4 +1,19 @@
+import type { Metadata } from "next";
 import { Badge, Button, Container, Heading, Section } from "@/components/ui";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with the Property Dreamz team. Reach verified buyers, request a callback, or start your property search in Mexico today.",
+  openGraph: {
+    title: "Contact Property Dreamz",
+    description:
+      "Talk to our bilingual team about buying or listing real estate in Mexico.",
+    url: "https://propertydreamz.com/contact",
+  },
+  // Prevent search engines from indexing the thank-you state via search parameters.
+  robots: { index: true, follow: true },
+};
 
 export default function ContactPage() {
   return (

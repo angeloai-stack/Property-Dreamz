@@ -38,7 +38,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
       {/* Lighter mid-section keeps the headline readable without fully obscuring the sky */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/35" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/25 via-black/10 to-black/35" />
 
       <div className="absolute bottom-6 right-4 z-10 hidden sm:block">
         <CmreBadge variant="light" />

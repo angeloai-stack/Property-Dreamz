@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import { Badge, Button, Container, Heading, Section } from "@/components/ui";
+
+export const metadata: Metadata = {
+  title: "The Mission",
+  description:
+    "Property Dreamz is on a mission to make buying real estate in Mexico safe, transparent, and accessible for international buyers. Learn who we are and why we built this.",
+  openGraph: {
+    title: "The Mission — Property Dreamz",
+    description:
+      "Safe, transparent, and accessible Mexican real estate for international buyers.",
+    url: "https://propertydreamz.com/about",
+  },
+};
 
 export default function AboutPage() {
   return (

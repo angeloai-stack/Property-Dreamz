@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { Container, Heading, Section } from "@/components/ui";
+
+// Saved listings are user-specific — tell search engines not to index this page.
+export const metadata: Metadata = {
+  title: "Saved Properties",
+  robots: { index: false, follow: false },
+};
 
 export default function SavedPage() {
   return (

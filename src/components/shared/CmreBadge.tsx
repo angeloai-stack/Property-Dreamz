@@ -11,7 +11,7 @@ export function CmreBadge({ className, variant = "dark" }: CmreBadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex shrink-0 items-center gap-1.5 rounded-[var(--radius-card)] px-2 py-1.5 shadow-subtle",
+        "inline-flex shrink-0 items-center gap-1.5 rounded-(--radius-card) px-2 py-1.5 shadow-subtle",
         isDark ? "bg-brand-pine text-brand-paper" : "bg-white/95 text-brand-ink",
         className
       )}

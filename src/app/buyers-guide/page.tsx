@@ -1,13 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, ArrowRight, HelpCircle } from "lucide-react";
 import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container, Icon } from "@/components/ui";
 
-export const metadata = {
-  title: "Buyer's Guide — Property Dreamz",
+export const metadata: Metadata = {
+  title: "Buyer's Guide",
   description:
-    "Everything you need to know about buying property in Mexico: fideicomiso, legal steps, financing, and certified developers.",
+    "A complete guide to buying property in Mexico: fideicomiso, title search, financing, closing costs, and certified developers. Written for international buyers.",
+  openGraph: {
+    title: "Buyer's Guide — How to Buy Property in Mexico",
+    description:
+      "Step-by-step guide for Americans buying real estate in Mexico. Fideicomiso, title search, closing costs, and certified developers explained.",
+    url: "https://propertydreamz.com/buyers-guide",
+  },
 };
 
 const steps = [
@@ -72,9 +79,25 @@ const faqs = [
   },
 ] as const;
 
+// JSON-LD FAQ schema — surfaces answer snippets directly in Google search results.
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function BuyersGuidePage() {
   return (
-    <main className="flex-1">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <main className="flex-1">
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-ink py-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-10">
@@ -202,6 +225,7 @@ export default function BuyersGuidePage() {
           </Link>
         </Container>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

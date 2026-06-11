@@ -8,8 +8,8 @@ export function Card({ className, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "w-full min-w-0 break-words bg-[var(--color-brand-paper)] border border-[var(--border-color-ink)] p-[var(--space-4)] text-[var(--color-brand-ink)]",
-        "rounded-[var(--radius-card)]",
+        "w-full min-w-0 wrap-break-word bg-brand-paper border border-(--border-color-ink) p-(--space-4) text-brand-ink",
+        "rounded-(--radius-card)",
         "shadow-subtle",
         className
       )}
