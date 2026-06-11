@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Property Dreamz — Reporte Técnico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pine:    #024139;
+    --emerald: #026559;
+    --gold:    #B98A3E;
+    --ink:     #191919;
+    --paper:   #F4F1EA;
+    --muted:   #6F7669;
+    --white:   #FFFFFF;
+    --border:  #D8D4CB;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page { width: 210mm; margin: 0 auto; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--pine);
+    color: var(--white);
+    padding: 60px 50px 50px;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    page-break-after: always;
+  }
+  .cover-top {}
+  .cover-tag {
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42pt;
+    line-height: 1.08;
+    margin-bottom: 20px;
+  }
+  .cover h1 span { color: var(--gold); }
+  .cover-sub {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.72);
+    max-width: 420px;
+    line-height: 1.5;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 10pt;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .cover-bottom { }
+  .cover-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cover-footer-text {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    padding: 44px 50px 56px;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section {
+    margin-bottom: 40px;
+    page-break-inside: avoid;
+  }
+  .section-label {
+    font-size: 7.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20pt;
+    color: var(--pine);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--emerald);
+    margin-bottom: 6px;
+    margin-top: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  p { margin-bottom: 10px; color: var(--ink); }
+  .muted { color: var(--muted); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: var(--paper);
+    border-left: 3px solid var(--emerald);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 9.5pt;
+    color: var(--ink);
+  }
+  .highlight-box.gold-box {
+    border-left-color: var(--gold);
+    background: #fdf8f0;
+  }
+
+  /* ── GRID CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .card-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--pine);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .card-body {
+    font-size: 9pt;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-bottom: 16px;
+  }
+  thead tr {
+    background: var(--pine);
+    color: var(--white);
+  }
+  thead th {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 8pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: var(--paper); }
+  tbody tr:nth-child(odd)  { background: var(--white); }
+  tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  td code, th code {
+    background: rgba(2,101,89,0.08);
+    color: var(--emerald);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+  }
+
+  /* ── CODE / FILE TREE ── */
+  pre {
+    background: #0f1c1a;
+    color: #a8d5b0;
+    border-radius: 6px;
+    padding: 16px 18px;
+    font-size: 8pt;
+    font-family: 'Courier New', monospace;
+    line-height: 1.7;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  pre .dir  { color: #63d3c3; }
+  pre .file { color: #a8d5b0; }
+  pre .note { color: #556b5c; }
+  code {
+    background: rgba(2,101,89,0.1);
+    color: var(--emerald);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 8.5pt;
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    font-size: 7.5pt;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .badge-green  { background: #d4ede9; color: var(--emerald); }
+  .badge-gold   { background: #f5e8d1; color: var(--gold); }
+  .badge-gray   { background: #e8e6e1; color: var(--muted); }
+  .badge-pine   { background: var(--pine); color: var(--white); }
+
+  /* ── LIST ── */
+  ul, ol { padding-left: 18px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; font-size: 9.5pt; color: var(--ink); }
+  li strong { color: var(--pine); }
+  .check-list { list-style: none; padding-left: 0; }
+  .check-list li::before {
+    content: "✓ ";
+    color: var(--emerald);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .cross-list li::before {
+    content: "○ ";
+    color: var(--muted);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    background: var(--pine);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    line-height: 1;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── COLOR SWATCH ── */
+  .swatch-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .swatch-item { text-align: center; }
+  .swatch-name { font-size: 7.5pt; color: var(--muted); margin-top: 4px; display: block; }
+  .swatch-hex  { font-size: 7pt;   color: var(--ink);   display: block; font-family: monospace; }
+
+  /* ── TOC ── */
+  .toc { margin-bottom: 40px; }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 5px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 9.5pt;
+  }
+  .toc-num { color: var(--gold); font-weight: 700; width: 22px; flex-shrink: 0; }
+  .toc-title { flex: 1; color: var(--ink); }
+  .toc-page { color: var(--muted); font-size: 8.5pt; }
+
+  /* ── PAGE BREAK ── */
+  .page-break { page-break-before: always; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    background: var(--paper);
+    border-top: 1px solid var(--border);
+    padding: 16px 50px;
+    font-size: 8pt;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media print {
+    body { background: white; }
+    .cover { min-height: 100vh; }
+    .page-break { page-break-before: always; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ════════════════════════════════════════════════════
+     PORTADA
+════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-tag">Reporte Técnico — Análisis de Arquitectura</div>
+    <h1>Property<br/><span>Dreamz</span></h1>
+    <p class="cover-sub">Análisis técnico completo de la arquitectura, stack tecnológico, estructura de componentes e integraciones de la plataforma de bienes raíces de lujo.</p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Framework</div>
+        <div class="cover-meta-value">Next.js 14 App Router</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Lenguaje</div>
+        <div class="cover-meta-value">TypeScript 5 (Strict)</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Versión</div>
+        <div class="cover-meta-value">0.1.0 — Desarrollo activo</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Estilos</div>
+        <div class="cover-meta-value">Tailwind CSS v4</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Fecha del análisis</div>
+        <div class="cover-meta-value">10 de junio de 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Estado del proyecto</div>
+        <div class="cover-meta-value">MVP — UI completa</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-divider"></div>
+    <p class="cover-footer-text">Plataforma de bienes raíces que conecta compradores americanos con desarrollos mexicanos verificados · avilla@voltlabagency.com</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TABLA DE CONTENIDOS
+════════════════════════════════════════════════════ -->
+<div class="content">
+  <div class="section">
+    <div class="section-label">Índice</div>
+    <h2>Tabla de Contenidos</h2>
+    <div class="toc">
+      <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Descripción General del Proyecto</span><span class="toc-page">3</span></div>
+      <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Stack Tecnológico y Dependencias</span><span class="toc-page">3</span></div>
+      <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">Estructura de Directorios</span><span class="toc-page">4</span></div>
+      <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">Sistema de Diseño — Tokens y Tipografía</span><span class="toc-page">5</span></div>
+      <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Biblioteca de Componentes UI</span><span class="toc-page">6</span></div>
+      <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Componentes de Layout</span><span class="toc-page">7</span></div>
+      <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Páginas y Rutas</span><span class="toc-page">8</span></div>
+      <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Explore Map — Módulo Interactivo</span><span class="toc-page">9</span></div>
+      <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">Patrones Técnicos Clave</span><span class="toc-page">10</span></div>
+      <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Integraciones Declaradas (Pendientes)</span><span class="toc-page">11</span></div>
+      <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">Métricas de Código y Calidad</span><span class="toc-page">11</span></div>
+      <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Recomendaciones y Próximos Pasos</span><span class="toc-page">12</span></div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── SECCIÓN 1 ── -->
+  <div class="section">
+    <div class="section-label">01 — Descripción General</div>
+    <h2>Descripción General del Proyecto</h2>
+    <p><strong>Property Dreamz</strong> es una plataforma de bienes raíces de lujo diseñada para conectar compradores americanos con desarrollos inmobiliarios mexicanos verificados. Se posiciona como el único portal donde cada propiedad está certificada antes de ser publicada, bajo el sello <em>CM/RE – Certified Mexico Real Estate</em>.</p>
+
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
+      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Componentes</span></div>
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Rutas/Páginas</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Listings Mock</span></div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Estado actual:</strong> La UI está completamente construida como MVP funcional. Los datos son estáticos (mock). Las integraciones con Sanity CMS, HubSpot y Mapbox están declaradas como dependencias pero aún no están conectadas.
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 2 ── -->
+  <div class="section page-break">
+    <div class="section-label">02 — Stack Tecnológico</div>
+    <h2>Stack Tecnológico y Dependencias</h2>
+
+    <h3>Dependencias Principales</h3>
+    <table>
+      <thead>
+        <tr><th>Paquete</th><th>Versión</th><th>Propósito</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>next</code></td><td>14.2.14</td><td>Framework principal – App Router, SSR, optimización de imágenes y fuentes</td></tr>
+        <tr><td><code>react</code> / <code>react-dom</code></td><td>18.3.1</td><td>Biblioteca de UI base</td></tr>
+        <tr><td><code>typescript</code></td><td>5.x</td><td>Tipado estático – modo strict activado</td></tr>
+        <tr><td><code>tailwindcss</code></td><td>4.x</td><td>Utilidades CSS con tokens de diseño personalizados</td></tr>
+        <tr><td><code>react-hook-form</code></td><td>7.77.0</td><td>Gestión de formularios</td></tr>
+        <tr><td><code>zod</code></td><td>4.4.3</td><td>Validación de esquemas y runtime types</td></tr>
+        <tr><td><code>framer-motion</code></td><td>12.40.0</td><td>Animaciones declarativas</td></tr>
+        <tr><td><code>@radix-ui/react-dialog</code></td><td>latest</td><td>Modal accesible</td></tr>
+        <tr><td><code>@radix-ui/react-select</code></td><td>latest</td><td>Select accesible</td></tr>
+        <tr><td><code>lucide-react</code></td><td>1.17.0</td><td>Iconografía vectorial</td></tr>
+        <tr><td><code>react-icons</code></td><td>5.6.0</td><td>Iconos de redes sociales y terceros</td></tr>
+        <tr><td><code>clsx</code> + <code>tailwind-merge</code></td><td>latest</td><td>Utilidad <code>cn()</code> para clases condicionales</td></tr>
+        <tr><td><code>@sanity/client</code></td><td>7.22.1</td><td>CMS headless (pendiente de conexión)</td></tr>
+        <tr><td><code>@hubspot/api-client</code></td><td>13.5.0</td><td>Automatización de marketing (pendiente)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Variables de Entorno Requeridas (No configuradas)</h3>
+    <table>
+      <thead>
+        <tr><th>Variable</th><th>Servicio</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code></td><td>Sanity CMS</td></tr>
+        <tr><td><code>HUBSPOT_API_KEY</code></td><td>HubSpot CRM</td></tr>
+        <tr><td><code>MAPBOX_TOKEN</code></td><td>Mapbox GL</td></tr>
+        <tr><td><code>GA_ID</code>, <code>META_PIXEL_ID</code></td><td>Analytics y tracking</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Configuración TypeScript</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Target</div><div class="card-body">ES2017 — compatible con todos los entornos modernos</div></div>
+      <div class="card"><div class="card-title">Module Resolution</div><div class="card-body">bundler — compatible con Node 16+</div></div>
+      <div class="card"><div class="card-title">Path Alias</div><div class="card-body"><code>@/*</code> apunta a <code>./src/*</code></div></div>
+      <div class="card"><div class="card-title">Strict Mode</div><div class="card-body">Activado — null checks, noImplicitAny, etc.</div></div>
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 3 ── -->
+  <div class="section page-break">
+    <div class="section-label">03 — Estructura</div>
+    <h2>Estructura de Directorios</h2>
+    <pre>
+<span class="dir">property-dreamz/</span>
+├── <span class="dir">src/</span>
+│   ├── <span class="dir">app/</span>                          <span class="note"># App Router — rutas y layouts</span>
+│   │   ├── page.tsx                   <span class="note"># Home page</span>
+│   │   ├── layout.tsx                 <span class="note"># Root layout (fuentes, navbar, footer)</span>
+│   │   ├── globals.css                <span class="note"># Tokens CSS (colores, espaciado, radii)</span>
+│   │   ├── <span class="dir">explore-map/</span>
+│   │   │   ├── page.tsx               <span class="note"># Mapa interactivo + filtros</span>
+│   │   │   ├── data.ts                <span class="note"># Mock listings y pins</span>
+│   │   │   └── utils.ts               <span class="note"># Formateadores de precio USD/MXN</span>
+│   │   ├── <span class="dir">properties/</span>page.tsx        <span class="note"># Stub — exploración de propiedades</span>
+│   │   ├── <span class="dir">buyers-guide/</span>page.tsx      <span class="note"># Stub — guía para compradores</span>
+│   │   ├── <span class="dir">for-developers/</span>page.tsx    <span class="note"># Stub — portal para desarrolladores</span>
+│   │   ├── <span class="dir">about/</span>page.tsx             <span class="note"># Página Acerca de</span>
+│   │   ├── <span class="dir">contact/</span>page.tsx           <span class="note"># Formulario de contacto (estático)</span>
+│   │   └── <span class="dir">saved/</span>page.tsx             <span class="note"># Stub — proyectos guardados</span>
+│   ├── <span class="dir">components/</span>
+│   │   ├── <span class="dir">ui/</span>                        <span class="note"># Primitivas reutilizables</span>
+│   │   │   ├── Button.tsx             <span class="note"># 5 variantes + polimórfico</span>
+│   │   │   ├── Input.tsx, Badge.tsx, Card.tsx
+│   │   │   ├── Section.tsx, Container.tsx
+│   │   │   ├── Heading.tsx, Label.tsx, Icon.tsx
+│   │   │   ├── Search.tsx             <span class="note"># SearchBar con submit</span>
+│   │   │   └── index.ts               <span class="note"># Barrel export</span>
+│   │   ├── <span class="dir">layout/</span>
+│   │   │   ├── Navbar.tsx             <span class="note"># Nav + toggle moneda + mobile</span>
+│   │   │   ├── Footer.tsx             <span class="note"># Footer completo (5 secciones)</span>
+│   │   │   ├── WhatsAppButton.tsx     <span class="note"># FAB fijo inferior derecha</span>
+│   │   │   └── Main.tsx               <span class="note"># Wrapper de contenido principal</span>
+│   │   ├── <span class="dir">home/</span>
+│   │   │   ├── HeroSection.tsx        <span class="note"># Hero + búsqueda + acciones rápidas</span>
+│   │   │   ├── VerifySection.tsx      <span class="note"># Propuesta de valor verificación</span>
+│   │   │   └── FeatureCards.tsx       <span class="note"># Grid de 3 características</span>
+│   │   ├── <span class="dir">explore-map/</span>
+│   │   │   ├── ExploreFilters.tsx     <span class="note"># Panel de filtros</span>
+│   │   │   ├── MapPanel.tsx           <span class="note"># SVG decorativo + pins interactivos</span>
+│   │   │   └── ListingCard.tsx        <span class="note"># Tarjeta de propiedad</span>
+│   │   └── <span class="dir">shared/</span>
+│   │       └── CmreBadge.tsx          <span class="note"># Badge de certificación CMRE</span>
+│   ├── <span class="dir">constants/</span>
+│   │   ├── theme.ts                   <span class="note"># Constantes de color</span>
+│   │   └── typography.ts             <span class="note"># Presets de clases tipográficas</span>
+│   ├── <span class="dir">lib/</span>
+│   │   ├── fonts.ts                   <span class="note"># next/font — variables CSS</span>
+│   │   └── utils.ts                   <span class="note"># cn() = clsx + twMerge</span>
+│   └── <span class="dir">styles/</span>
+│       └── globals.css                <span class="note"># Reset base + Tailwind imports</span>
+├── next.config.mjs
+├── tailwind.config.ts
+├── tsconfig.json
+└── package.json</pre>
+  </div>
+
+  <!-- ── SECCIÓN 4 ── -->
+  <div class="section page-break">
+    <div class="section-label">04 — Sistema de Diseño</div>
+    <h2>Sistema de Diseño — Tokens y Tipografía</h2>
+
+    <h3>Paleta de Colores</h3>
+    <div class="swatch-row">
+      <div class="swatch-item"><div class="swatch" style="background:#024139;"></div><span class="swatch-name">Pine</span><span class="swatch-hex">#024139</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#026559;"></div><span class="swatch-name">Emerald</span><span class="swatch-hex">#026559</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#B98A3E;"></div><span class="swatch-name">Gold</span><span class="swatch-hex">#B98A3E</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#191919;"></div><span class="swatch-name">Ink</span><span class="swatch-hex">#191919</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#F4F1EA; border:1px solid #D8D4CB;"></div><span class="swatch-name">Paper</span><span class="swatch-hex">#F4F1EA</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#6F7669;"></div><span class="swatch-name">Muted</span><span class="swatch-hex">#6F7669</span></div>
+      <div class="swatch-item"><div class="swatch" style="background:#5C665E;"></div><span class="swatch-name">Gray</span><span class="swatch-hex">#5C665E</span></div>
+    </div>
+
+    <h3>Escala Tipográfica</h3>
+    <table>
+      <thead><tr><th>Token</th><th>Tamaño / Line-height</th><th>Familia</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><code>display</code></td><td>2.875rem / 1.05</td><td>Ibrand (Oswald)</td><td>Titulares principales hero</td></tr>
+        <tr><td><code>title</code></td><td>1.875rem / 1.15</td><td>Ibrand (Oswald)</td><td>Títulos de sección</td></tr>
+        <tr><td><code>subtitle</code></td><td>1.3125rem / 1.25</td><td>Body (Playfair)</td><td>Subtítulos y destacados</td></tr>
+        <tr><td><code>body</code></td><td>1.0625rem / 1.65</td><td>Body (Playfair)</td><td>Texto de lectura</td></tr>
+        <tr><td><code>label</code></td><td>0.8125rem / 1.4</td><td>Ewangi (Montserrat)</td><td>Etiquetas, microcopia</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Escala de Espaciado (personalizada Tailwind)</h3>
+    <table>
+      <thead><tr><th>Token</th><th>Valor</th><th>Token</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><code>space-1</code></td><td>4px</td><td><code>space-5</code></td><td>20px</td></tr>
+        <tr><td><code>space-2</code></td><td>8px</td><td><code>space-6</code></td><td>24px</td></tr>
+        <tr><td><code>space-3</code></td><td>12px</td><td><code>space-7</code></td><td>32px</td></tr>
+        <tr><td><code>space-4</code></td><td>16px</td><td><code>space-8</code></td><td>40px</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Border Radius</h3>
+    <div class="card-grid cols-3">
+      <div class="card"><div class="card-title">card</div><div class="card-body">4px — tarjetas y superficies</div></div>
+      <div class="card"><div class="card-title">input</div><div class="card-body">8px — campos de formulario</div></div>
+      <div class="card"><div class="card-title">pill</div><div class="card-body">999px — badges y botones</div></div>
+    </div>
+
+    <h3>Fuentes registradas (next/font Google Fonts)</h3>
+    <ul>
+      <li><strong>Inter</strong> — fallback sans-serif, variable <code>--font-sans</code></li>
+      <li><strong>Playfair Display</strong> — serif de texto, variable <code>--font-body</code></li>
+      <li><strong>Oswald</strong> — headlines/botones (temporal Ibrand), variable <code>--font-ibrand</code></li>
+      <li><strong>Montserrat</strong> — labels/microcopia (temporal Ewangi), variable <code>--font-ewangi</code></li>
+    </ul>
+  </div>
+
+  <!-- ── SECCIÓN 5 ── -->
+  <div class="section page-break">
+    <div class="section-label">05 — Componentes UI</div>
+    <h2>Biblioteca de Componentes UI</h2>
+    <p>Todos los componentes se exportan desde <code>src/components/ui/index.ts</code> como barrel export.</p>
+
+    <h3>Button</h3>
+    <div class="highlight-box">
+      Polimórfico: renderiza <code>&lt;button&gt;</code> o <code>&lt;a&gt;</code> según la presencia del prop <code>href</code>.
+    </div>
+    <table>
+      <thead><tr><th>Variante</th><th>Apariencia</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><code>default</code></td><td>Fondo emerald, texto blanco</td><td>CTAs primarias</td></tr>
+        <tr><td><code>premium</code></td><td>Fondo gold, texto pine</td><td>Acciones premium</td></tr>
+        <tr><td><code>accent</code></td><td>Fondo pine, borde gold, texto gold</td><td>Acciones secundarias de marca</td></tr>
+        <tr><td><code>outline</code></td><td>Borde emerald, transparente</td><td>Acciones terciarias</td></tr>
+        <tr><td><code>ghost</code></td><td>Sin borde, hover sutil</td><td>Acciones mínimas</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Badge</h3>
+    <p>Inline pill para metadatos y estados.</p>
+    <span class="badge badge-green">Verified</span>
+    <span class="badge badge-gold">Featured</span>
+    <span class="badge badge-gray">Presale</span>
+    <span class="badge badge-pine">Sold</span>
+
+    <h3>Otros primitivos</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Input</div><div class="card-body">Campo de texto con focus ring emerald al 20% de opacidad.</div></div>
+      <div class="card"><div class="card-title">Card</div><div class="card-body">Superficie con borde, fondo paper y sombra sutil.</div></div>
+      <div class="card"><div class="card-title">Heading (h1–h6)</div><div class="card-body">Mapeado automático a escala tipográfica según nivel semántico.</div></div>
+      <div class="card"><div class="card-title">Section / Container</div><div class="card-body">Wrappers de layout: Section añade padding vertical, Container limita a max-w-7xl.</div></div>
+      <div class="card"><div class="card-title">Icon</div><div class="card-body">Normaliza strokeWidth, tamaño y color de iconos Lucide. Gestiona aria-hidden y title.</div></div>
+      <div class="card"><div class="card-title">SearchBar</div><div class="card-body">Formulario de búsqueda con icono y botón submit. Pill container con sombra.</div></div>
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 6 ── -->
+  <div class="section page-break">
+    <div class="section-label">06 — Componentes de Layout</div>
+    <h2>Componentes de Layout</h2>
+
+    <h3>Navbar</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Tipo</div><div class="card-body">Client Component (<code>"use client"</code>), estado con <code>useState</code></div></div>
+      <div class="card"><div class="card-title">Navegación</div><div class="card-body">6 links principales: Explore, Guide, Developers, Mission, Saved, Contact</div></div>
+      <div class="card"><div class="card-title">Toggle de Moneda</div><div class="card-body">Selector USD/MXN con estado local — botones cambian al hacer clic</div></div>
+      <div class="card"><div class="card-title">Mobile</div><div class="card-body">Hamburger con overlay de <code>backdrop-blur</code>, fondo ink oscuro</div></div>
+    </div>
+
+    <h3>Footer</h3>
+    <p>Footer completo organizado en 5 secciones:</p>
+    <ol>
+      <li><strong>Logo + links principales</strong> de navegación horizontal</li>
+      <li><strong>Descripción de marca</strong> + 6 iconos de redes sociales (Facebook, Instagram, TikTok, LinkedIn, YouTube, X)</li>
+      <li><strong>Datos de contacto:</strong> handle <code>@Property Dreamz</code>, emails: contact@, buyers@, developers@</li>
+      <li><strong>Columnas de links agrupados:</strong> For buyers, Developers, Company</li>
+      <li><strong>Copyright dinámico</strong> + links legales + badge CMRE</li>
+    </ol>
+
+    <h3>WhatsAppButton</h3>
+    <div class="highlight-box gold-box">
+      FAB (Floating Action Button) fijo en <code>bottom-right</code>, z-50. Enlaza a <code>https://wa.me/5210000000000</code>. Fondo pine con hover emerald. Accesible con aria-label.
+    </div>
+
+    <h3>Root Layout</h3>
+    <p>Estructura del árbol en <code>src/app/layout.tsx</code>:</p>
+    <pre>
+&lt;html lang="en" {font variables}&gt;
+  &lt;body class="flex flex-col min-h-screen bg-paper text-ink"&gt;
+    &lt;Navbar /&gt;
+    &lt;Main&gt;{children}&lt;/Main&gt;   <span class="note"># flex-1 para pushdown footer</span>
+    &lt;Footer /&gt;
+    &lt;WhatsAppButton /&gt;          <span class="note"># fixed z-50</span>
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+
+  <!-- ── SECCIÓN 7 ── -->
+  <div class="section page-break">
+    <div class="section-label">07 — Páginas y Rutas</div>
+    <h2>Páginas y Rutas (App Router)</h2>
+
+    <table>
+      <thead><tr><th>Ruta</th><th>Archivo</th><th>Estado</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>HeroSection + VerifySection + FeatureCards</td></tr>
+        <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa + filtros + listado sincronizado (datos mock)</td></tr>
+        <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, enfoque y CTA a contacto</td></tr>
+        <tr><td><code>/contact</code></td><td>app/contact/page.tsx</td><td><span class="badge badge-gold">Parcial</span></td><td>Formulario completo (HTML estático, sin backend)</td></tr>
+        <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — exploración de propiedades pendiente</td></tr>
+        <tr><td><code>/buyers-guide</code></td><td>app/buyers-guide/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — guía de compra pendiente</td></tr>
+        <tr><td><code>/for-developers</code></td><td>app/for-developers/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — portal de desarrolladores pendiente</td></tr>
+        <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — proyectos guardados pendiente</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Metadata SEO (Root Layout)</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Title</div><div class="card-body">Property Dreamz | Verified Mexican Real Estate</div></div>
+      <div class="card"><div class="card-title">Description</div><div class="card-body">Luxury real estate platform connecting American buyers with verified Mexican developments.</div></div>
+      <div class="card"><div class="card-title">Icons</div><div class="card-body">Favicon + logo circular PNG registrados</div></div>
+      <div class="card"><div class="card-title">Lang</div><div class="card-body">HTML lang="en" — contenido bilingüe (nav en inglés, contacto en español)</div></div>
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 8 ── -->
+  <div class="section page-break">
+    <div class="section-label">08 — Explore Map</div>
+    <h2>Módulo Explore Map</h2>
+    <p>Es el módulo más complejo del proyecto. Combina tres componentes coordinados por estado local en el page component.</p>
+
+    <h3>Arquitectura del módulo</h3>
+    <div class="highlight-box">
+      <code>explore-map/page.tsx</code> (Client Component) orquesta el estado. Los subcomponentes reciben props y callbacks — no tienen estado propio.
+    </div>
+
+    <h3>Estado gestionado en page.tsx</h3>
+    <table>
+      <thead><tr><th>Estado</th><th>Tipo</th><th>Propósito</th></tr></thead>
+      <tbody>
+        <tr><td><code>activePin</code></td><td><code>number | null</code></td><td>Sincroniza mapa y lista (card activa = pin resaltado)</td></tr>
+        <tr><td><code>typeFilter</code></td><td><code>"All" | "House" | "Condo" | "Land"</code></td><td>Filtro de tipo de propiedad</td></tr>
+        <tr><td><code>currency</code></td><td><code>"USD" | "MXN"</code></td><td>Moneda de visualización de precios</td></tr>
+        <tr><td><code>sortBy</code></td><td><code>"relevance" | "price_asc" | "price_desc"</code></td><td>Ordenamiento de resultados</td></tr>
+        <tr><td><code>verifiedOnly</code></td><td><code>boolean</code></td><td>Filtrar solo propiedades verificadas</td></tr>
+        <tr><td><code>searchVal</code></td><td><code>string</code></td><td>Búsqueda de texto libre</td></tr>
+        <tr><td><code>mobileView</code></td><td><code>"map" | "list"</code></td><td>Toggle de vista en mobile</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Filtrado y ordenamiento</h3>
+    <p>Procesado con <code>useMemo</code> para evitar recálculos innecesarios. La cadena de transformación es:</p>
+    <pre>
+listings
+  → filter(searchVal)      <span class="note"># match en título, zona</span>
+  → filter(typeFilter)     <span class="note"># tipo de propiedad</span>
+  → filter(verifiedOnly)   <span class="note"># solo verificadas</span>
+  → sort(sortBy)           <span class="note"># precio asc/desc o relevancia</span>
+  → filtered[]             <span class="note"># resultado para ListingCards + conteo en filtros</span></pre>
+
+    <h3>Estructura de datos (data.ts)</h3>
+    <table>
+      <thead><tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>number</td><td>Identificador único</td></tr>
+        <tr><td><code>status</code></td><td>ListingStatus</td><td>verified | preventa | destacado | vendido</td></tr>
+        <tr><td><code>priceMXN</code> / <code>priceUSD</code></td><td>number</td><td>Precios duales para toggle de moneda</td></tr>
+        <tr><td><code>beds, baths, sqft</code></td><td>number</td><td>Características de la propiedad</td></tr>
+        <tr><td><code>rating, reviews</code></td><td>number</td><td>Puntuación y cantidad de reseñas</td></tr>
+        <tr><td><code>type</code></td><td>string</td><td>Condo | House</td></tr>
+        <tr><td><code>borderKm</code></td><td>number</td><td>Distancia a la frontera USA en km</td></tr>
+        <tr><td><code>sdSavings</code></td><td>number</td><td>% de ahorro vs San Diego</td></tr>
+        <tr><td><code>image</code></td><td>string</td><td>URL de imagen (actualmente Unsplash)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Formateadores de precio (utils.ts)</h3>
+    <ul>
+      <li><code>formatMXN(value)</code> → <code>$12M MXN</code> / <code>$850K MXN</code></li>
+      <li><code>formatUSD(value)</code> → <code>USD $1.2M</code> / <code>USD $450K</code></li>
+      <li><code>formatPrice(mxn, usd, currency)</code> → Dual-currency formatter</li>
+    </ul>
+  </div>
+
+  <!-- ── SECCIÓN 9 ── -->
+  <div class="section page-break">
+    <div class="section-label">09 — Patrones Técnicos</div>
+    <h2>Patrones Técnicos Clave</h2>
+
+    <h3>Server vs Client Components</h3>
+    <div class="highlight-box">
+      El proyecto usa correctamente el App Router de Next.js 14: los componentes son Server Components por defecto y solo se marca <code>"use client"</code> donde hay interactividad real (Navbar, HeroSection, explore-map/page.tsx).
+    </div>
+
+    <h3>Gestión de Estado</h3>
+    <ul>
+      <li>Estado local con <code>useState</code> — apropiado para el scope actual</li>
+      <li><code>useMemo</code> para el filtrado/ordenamiento de listings</li>
+      <li>Sin Zustand, Redux ni Context API — la aplicación no lo requiere aún</li>
+    </ul>
+
+    <h3>Accesibilidad</h3>
+    <ul>
+      <li>HTML semántico con niveles de heading correctos (h1 → h6)</li>
+      <li>Botones con <code>aria-label</code> explícitos</li>
+      <li>Iconos con <code>aria-hidden="true"</code> cuando son decorativos</li>
+      <li>Navegación por teclado: Enter/Space activan ListingCards</li>
+      <li>Focus visible con outlines en todos los elementos interactivos</li>
+    </ul>
+
+    <h3>Responsive Design</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Mobile-first</div><div class="card-body">Breakpoints Tailwind: sm(640px), md(768px), lg(1024px), xl(1280px), 2xl(1536px)</div></div>
+      <div class="card"><div class="card-title">Mobile nav</div><div class="card-body">Hamburger con overlay backdrop-blur en &lt; lg</div></div>
+      <div class="card"><div class="card-title">Map/List toggle</div><div class="card-body">Vista móvil de explore-map con toggle sticky Map↔List</div></div>
+      <div class="card"><div class="card-title">Grid adaptativo</div><div class="card-body">Cards: 1 col mobile → 2 col sm → 2-3 col 2xl</div></div>
+    </div>
+
+    <h3>Organización del código</h3>
+    <ul>
+      <li><strong>Barrel exports</strong> (<code>index.ts</code>) para <code>ui/</code> y <code>layout/</code></li>
+      <li><strong>Co-location de datos:</strong> <code>data.ts</code> y <code>utils.ts</code> junto al page que los usa</li>
+      <li><strong>Constantes aisladas:</strong> <code>theme.ts</code> y <code>typography.ts</code> para tokens reutilizables</li>
+      <li><strong>Utilitario <code>cn()</code>:</strong> combina <code>clsx + tailwind-merge</code> para clases condicionales sin colisiones</li>
+    </ul>
+
+    <h3>Optimización</h3>
+    <ul>
+      <li>Fuentes con <code>next/font</code>: preload + inyección de variables CSS en build time</li>
+      <li>Filtrado memoizado con <code>useMemo</code> en explore-map</li>
+      <li>Imágenes con <code>loading="lazy"</code> nativo</li>
+      <li>Nulo uso de <code>useEffect</code> innecesarios</li>
+    </ul>
+  </div>
+
+  <!-- ── SECCIÓN 10 ── -->
+  <div class="section page-break">
+    <div class="section-label">10 — Integraciones</div>
+    <h2>Integraciones Declaradas (Pendientes)</h2>
+    <p>Las dependencias están instaladas pero ninguna integración está conectada aún. La UI usa datos estáticos.</p>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Sanity CMS</div><div class="card-body">Para gestión dinámica de propiedades, imágenes y contenido editorial. Sustituirá el array <code>data.ts</code>. Depende de: <code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code>.</div></div>
+      <div class="card"><div class="card-title">HubSpot API</div><div class="card-body">Para captura de leads del formulario de contacto y automatización de marketing. Depende de: <code>HUBSPOT_API_KEY</code>.</div></div>
+      <div class="card"><div class="card-title">Mapbox GL</div><div class="card-body">El mapa SVG actual es decorativo. Mapbox reemplazará el componente <code>MapPanel.tsx</code> con mapa real. Depende de: <code>MAPBOX_TOKEN</code>.</div></div>
+      <div class="card"><div class="card-title">Analytics</div><div class="card-body">Google Analytics + Meta Pixel están declarados en env vars (<code>GA_ID</code>, <code>META_PIXEL_ID</code>) pero no implementados aún.</div></div>
+    </div>
+
+    <div class="highlight-box gold-box" style="margin-top: 16px;">
+      <strong>Nota:</strong> El formulario de contacto en <code>/contact</code> renderiza un formulario HTML completo pero no tiene handler de submit — los datos no se envían a ningún backend.
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 11 ── -->
+  <div class="section">
+    <div class="section-label">11 — Métricas de Calidad</div>
+    <h2>Métricas de Código y Calidad</h2>
+
+    <h3>Lo que está bien implementado</h3>
+    <ul class="check-list">
+      <li>TypeScript con strict mode — sin tipos <code>any</code> en la capa UI</li>
+      <li>Separación clara Server / Client components</li>
+      <li>Sistema de diseño coherente con tokens reutilizables</li>
+      <li>Componentes accesibles con ARIA labels y navegación por teclado</li>
+      <li>Mobile-first con breakpoints consistentes</li>
+      <li>Barrel exports organizados</li>
+      <li>Co-location de datos por feature</li>
+      <li>Formateadores de precio correctamente encapsulados</li>
+    </ul>
+
+    <h3>Áreas de mejora identificadas</h3>
+    <ul class="cross-list">
+      <li>Formulario de contacto sin validación ni submit handler</li>
+      <li>Datos completamente estáticos (sin Sanity ni API)</li>
+      <li>Mapa SVG decorativo sin funcionalidad real (sin Mapbox)</li>
+      <li>5 páginas son stubs vacíos</li>
+      <li>WhatsApp link con número placeholder (<code>5210000000000</code>)</li>
+      <li>Imágenes de Unsplash como placeholders</li>
+      <li>Sin tests unitarios ni E2E</li>
+      <li>Sin manejo de errores (Error Boundary, <code>error.tsx</code>)</li>
+      <li>Sin loading states (<code>loading.tsx</code> por ruta)</li>
+    </ul>
+  </div>
+
+  <!-- ── SECCIÓN 12 ── -->
+  <div class="section page-break">
+    <div class="section-label">12 — Próximos Pasos</div>
+    <h2>Recomendaciones y Próximos Pasos</h2>
+
+    <h3>Prioridad Alta — Funcionalidad Core</h3>
+    <table>
+      <thead><tr><th>Tarea</th><th>Archivo(s)</th><th>Depende de</th></tr></thead>
+      <tbody>
+        <tr><td>Conectar Sanity CMS para listings reales</td><td>explore-map/data.ts → sanity queries</td><td>SANITY_PROJECT_ID, SANITY_DATASET</td></tr>
+        <tr><td>Implementar submit del formulario de contacto</td><td>app/contact/page.tsx</td><td>HUBSPOT_API_KEY o endpoint propio</td></tr>
+        <tr><td>Integrar Mapbox real en MapPanel</td><td>components/explore-map/MapPanel.tsx</td><td>MAPBOX_TOKEN</td></tr>
+        <tr><td>Reemplazar imágenes Unsplash con assets reales</td><td>Todos los componentes con img src</td><td>Assets de marca</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Prioridad Media — Completar UI</h3>
+    <ul>
+      <li>Desarrollar páginas stub: <code>/properties</code>, <code>/buyers-guide</code>, <code>/for-developers</code>, <code>/saved</code></li>
+      <li>Añadir <code>loading.tsx</code> por ruta para Suspense boundaries</li>
+      <li>Añadir <code>error.tsx</code> por ruta para Error Boundaries</li>
+      <li>Actualizar número de WhatsApp real en <code>WhatsAppButton.tsx</code></li>
+    </ul>
+
+    <h3>Prioridad Baja — Calidad y Observabilidad</h3>
+    <ul>
+      <li>Configurar GA4 + Meta Pixel (variables en <code>.env.local</code> ya declaradas)</li>
+      <li>Añadir tests con Playwright (E2E) o Vitest (unitarios)</li>
+      <li>Optimizar imágenes con <code>next/image</code> en lugar de <code>&lt;img&gt;</code> nativos</li>
+      <li>Añadir <code>sitemap.ts</code> y <code>robots.ts</code> para SEO técnico</li>
+    </ul>
+
+    <h3>Arquitectura a considerar cuando escale</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Auth (Autenticación)</div><div class="card-body">Para la feature de "Saved" se necesitará auth. Considerar NextAuth.js v5 o Clerk.</div></div>
+      <div class="card"><div class="card-title">Estado Global</div><div class="card-body">Si la preferencia de moneda (USD/MXN) debe persistir entre páginas, considerar Zustand o Context.</div></div>
+      <div class="card"><div class="card-title">Internacionalización</div><div class="card-body">El contenido es bilingüe (EN nav, ES contact). Evaluar <code>next-intl</code> para i18n estructurado.</div></div>
+      <div class="card"><div class="card-title">CMS Preview</div><div class="card-body">Sanity tiene Draft Mode compatible con Next.js App Router para preview en tiempo real.</div></div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div style="background:var(--pine);color:var(--white);padding:32px 40px;border-radius:8px;margin-bottom:0;">
+    <div style="font-size:8pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Resumen Ejecutivo</div>
+    <p style="font-size:11pt;line-height:1.6;color:rgba(255,255,255,0.9);margin-bottom:0;">
+      <strong style="color:var(--white);">Property Dreamz</strong> es una base de código bien estructurada y con calidad de producción en su capa de UI. El sistema de diseño es sólido, el código TypeScript es limpio y la arquitectura Next.js 14 está correctamente implementada. Las integraciones backend (CMS, CRM, Mapa) son el siguiente paso crítico para pasar de prototipo funcional a producto en producción.
+    </p>
+  </div>
+
+</div><!-- /content -->
+
+
+  <!-- ═══ CHANGELOG AUTOMÁTICO ═══ -->
+  <div class="section" style="margin-top:32px;">
+    <div class="section-label">Changelog automático</div>
+    <h2>Archivos Modificados Recientemente</h2>
+    <p class="muted">Esta tabla se actualiza automáticamente cada vez que Claude edita un archivo fuente del proyecto.</p>
+    <table>
+      <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
+      <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>next.config.mjs</code></td><td>10 de junio de 2026 09:38 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/FeaturedDevelopments.tsx</code></td><td>10 de junio de 2026 09:36 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/BuyersGuideSteps.tsx</code></td><td>10 de junio de 2026 09:36 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>10 de junio de 2026 09:35 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:35 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:34 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:34 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/home/CertifiedBanner.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/home/BuyersGuideSteps.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/home/FeaturedDevelopments.tsx</code></td><td>10 de junio de 2026 09:32 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/home/DestinationsStrip.tsx</code></td><td>10 de junio de 2026 09:32 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>10 de junio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class="report-footer">
+  <span>Property Dreamz — Reporte Técnico · Junio 2026</span>
+  <span>property-dreamz v0.1.0 · avilla@voltlabagency.com</span>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

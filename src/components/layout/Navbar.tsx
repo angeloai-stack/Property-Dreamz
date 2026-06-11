@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Container } from "@/components/ui";
@@ -26,10 +27,13 @@ export function Navbar() {
     <header className="relative z-50 border-b border-brand-ink/10 bg-white">
       <Container className="flex items-center gap-4 py-4 md:py-5">
         <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
-          <img
+          <Image
             src="/brand/property-dreamz-logo-horizontal.png"
             alt="Property Dreamz"
+            width={180}
+            height={36}
             className="h-8 w-auto md:h-9"
+            priority
           />
         </Link>
 
@@ -43,7 +47,7 @@ export function Navbar() {
 
         <div className="ml-auto flex items-center gap-3 lg:ml-6">
           <div
-            className="hidden items-center rounded-[var(--radius-btn)] border border-brand-ink/10 bg-brand-paper p-1 sm:flex"
+            className="hidden items-center rounded-(--radius-btn) border border-brand-ink/10 bg-brand-paper p-1 sm:flex"
             role="group"
             aria-label="Currency"
           >
@@ -53,7 +57,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => setCurrency(c)}
                 className={cn(
-                  "rounded-[var(--radius-btn)] px-3 py-1.5 font-ewangi text-label font-semibold uppercase transition",
+                  "rounded-(--radius-btn) px-3 py-1.5 font-ewangi text-label font-semibold uppercase transition",
                   currency === c
                     ? "bg-brand-emerald text-brand-paper"
                     : "text-brand-muted hover:text-brand-ink"
@@ -113,7 +117,7 @@ export function Navbar() {
                     type="button"
                     onClick={() => setCurrency(c)}
                     className={cn(
-                      "flex-1 rounded-[var(--radius-btn)] px-3 py-2 font-ewangi text-label font-semibold uppercase",
+                      "flex-1 rounded-(--radius-btn) px-3 py-2 font-ewangi text-label font-semibold uppercase",
                       currency === c ? "bg-brand-emerald text-brand-paper" : "bg-brand-paper/10"
                     )}
                   >

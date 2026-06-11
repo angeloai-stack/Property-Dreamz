@@ -1,5 +1,12 @@
 const nextConfig = {
-  // Next.js configuration can be added here when required.
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

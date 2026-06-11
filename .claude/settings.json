@@ -1,0 +1,20 @@
+{
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:\\Users\\IngAn\\property-dreamz\\scripts\\update-report.mjs",
+            "shell": "powershell",
+            "timeout": 10,
+            "statusMessage": "Actualizando reporte técnico...",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
