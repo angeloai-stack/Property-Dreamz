@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BadgeCheck, ArrowRight, HelpCircle } from "lucide-react";
 import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container, Icon } from "@/components/ui";
+import { GuideDownloadForm } from "@/components/forms";
 
 export const metadata: Metadata = {
   title: "Buyer's Guide",
@@ -168,6 +169,8 @@ export default function BuyersGuidePage() {
           })}
         </Container>
       </section>
+
+      <GuideDownloadForm />
 
       {/* FAQ */}
       <section className="bg-brand-ink py-16 md:py-20">

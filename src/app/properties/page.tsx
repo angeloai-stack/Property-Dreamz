@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container, Heading, Section } from "@/components/ui";
+import { PropertyInquiryForm } from "@/components/forms";
 
 export const metadata: Metadata = {
   title: "Browse Certified Properties",
@@ -18,15 +19,15 @@ export default function PropertiesPage() {
     <main className="flex-1 bg-brand-paper text-brand-ink">
       <Section className="pt-20 pb-16">
         <Container className="space-y-8">
-          <Heading level={1}>
-            Properties
-          </Heading>
+          <Heading level={1}>Properties</Heading>
           <p className="font-body text-body text-brand-muted">
             Browse all properties and developments. Use the filters to refine results by location,
             price and availability.
           </p>
         </Container>
       </Section>
+
+      <PropertyInquiryForm />
     </main>
   );
 }

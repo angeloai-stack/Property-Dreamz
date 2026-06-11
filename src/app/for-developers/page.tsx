@@ -5,6 +5,7 @@ import { BadgeCheck, BarChart2, Globe, ArrowRight, CheckCircle2 } from "lucide-r
 import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container, Icon } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { DeveloperListingForm } from "@/components/forms";
 
 export const metadata: Metadata = {
   title: "For Developers",
@@ -115,7 +116,7 @@ export default function ForDevelopersPage() {
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
-              href="/contact"
+              href="#listing-form"
               className="inline-flex items-center gap-2 rounded-full bg-brand-emerald px-6 py-3 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-paper hover:text-brand-pine"
             >
               Apply to list
@@ -218,7 +219,7 @@ export default function ForDevelopersPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/contact"
+                  href="#listing-form"
                   className={cn(
                     "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-ewangi text-label font-semibold transition",
                     tier.highlight
@@ -235,6 +236,25 @@ export default function ForDevelopersPage() {
         </Container>
       </section>
 
+      {/* Developer listing application form */}
+      <section className="bg-brand-paper py-16 md:py-20" id="listing-form">
+        <Container className="space-y-10">
+          <div className="max-w-2xl space-y-2">
+            <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
+              Submit your development
+            </p>
+            <h2 className="font-ibrand text-title text-brand-ink">
+              Apply to list on Property Dreamz
+            </h2>
+            <p className="font-body text-body text-brand-muted">
+              Fill out the form below. Our team will review your submission and reach out within 3
+              business days to discuss next steps and CM RE certification.
+            </p>
+          </div>
+          <DeveloperListingForm />
+        </Container>
+      </section>
+
       {/* CTA */}
       <section className="bg-brand-pine py-14">
         <Container className="flex flex-col items-center gap-6 text-center">
@@ -246,10 +266,10 @@ export default function ForDevelopersPage() {
             Join 47 certified developments already listed on Property Dreamz.
           </p>
           <Link
-            href="/contact"
+            href="#listing-form"
             className="inline-flex items-center gap-2 rounded-full bg-brand-emerald px-6 py-3 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-paper hover:text-brand-pine"
           >
-            Get in touch
+            Apply now
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </Container>

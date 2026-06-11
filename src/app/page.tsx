@@ -5,6 +5,7 @@ import { FeatureCards } from "@/components/home/FeatureCards";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TopDevelopers } from "@/components/home/TopDevelopers";
 import { VerifySection } from "@/components/home/VerifySection";
+import { CampaignForm } from "@/components/forms";
 
 export const metadata: Metadata = {
   // Home page uses the root layout default title (no template wrapping needed).
@@ -91,6 +92,7 @@ export default function Home() {
         <FeatureCards />
         <TopDevelopers />
         <BuyersGuideSteps />
+        <CampaignForm />
         <CertifiedBanner />
       </main>
     </>
