@@ -3,8 +3,7 @@ import { Navbar, Main, Footer, WhatsAppButton } from "@/components/layout";
 import { inter, playfair, ibrand, ewangi } from "@/lib/fonts";
 import "./globals.css";
 
-// Root layout for the application uses centralized font exports
-// and applies the global dark theme across all pages.
+// Font variables are declared here so every page inherits them via CSS custom properties.
 
 export const metadata: Metadata = {
   title: "Property Dreamz | Verified Mexican Real Estate",
@@ -25,8 +24,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${ibrand.variable} ${ewangi.variable}`}>
-      {/* Root layout para toda la aplicación. */}
-      {/* El fondo global y los ajustes de tipografía se aplican aquí. */}
+      {/* flex-col + min-h-screen ensures the footer is always pushed to the bottom */}
       <body className="flex min-h-screen flex-col bg-brand-paper text-brand-ink">
         <Navbar />
         <Main>{children}</Main>

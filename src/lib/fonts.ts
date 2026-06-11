@@ -1,7 +1,6 @@
 import { Inter, Playfair_Display, Oswald, Montserrat } from "next/font/google";
 
-// Centralized font exports for the Property Dreamz typography system.
-// Ibrand → headlines & buttons | Playfair → body | Ewangi → labels
+// Centralized font exports; CSS variables are applied in the root layout.
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",

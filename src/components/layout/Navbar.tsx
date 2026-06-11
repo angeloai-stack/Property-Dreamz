@@ -21,9 +21,11 @@ type Currency = (typeof currencies)[number];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  // Currency is local UI state only — no global context or persistence yet.
   const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
+    // z-50 keeps the header above the map overlay and any modal backdrops.
     <header className="relative z-50 border-b border-brand-ink/10 bg-white">
       <Container className="flex items-center gap-4 py-4 md:py-5">
         <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
@@ -91,7 +93,9 @@ export function Navbar() {
       </Container>
 
       {open && (
+        // Positioned below the header (top-full) so it doesn't shift page content.
         <div className="absolute inset-x-0 top-full z-40 lg:hidden">
+          {/* Backdrop dismisses the menu on outside tap — intentional UX pattern. */}
           <div
             className="absolute inset-0 bg-brand-ink/70 backdrop-blur-sm"
             aria-hidden="true"

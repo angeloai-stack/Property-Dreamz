@@ -5,6 +5,7 @@ export { Input } from "./Input";
 export { Section } from "./Section";
 export { Container } from "./Container";
 export { Heading } from "./Heading";
+// SearchBar is aliased to Search so callers import { Search } uniformly
 export { SearchBar as Search } from "./Search";
 export { Icon } from "./Icon";
 export { Label } from "./Label";

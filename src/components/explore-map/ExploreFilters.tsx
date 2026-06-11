@@ -23,6 +23,7 @@ type ExploreFiltersProps = {
   resultCount: number;
 };
 
+// Gold variant is reserved for the currency toggle so it stands apart from property-type pills.
 function FilterPill({
   active,
   children,
@@ -39,7 +40,7 @@ function FilterPill({
       type="button"
       onClick={onClick}
       className={cn(
-        "shrink-0 rounded-[var(--radius-btn)] px-4 py-2 font-ewangi text-label font-semibold uppercase transition",
+        "shrink-0 rounded-(--radius-btn) px-4 py-2 font-ewangi text-label font-semibold uppercase transition",
         active
           ? activeVariant === "gold"
             ? "bg-brand-gold text-brand-ink shadow-subtle"
@@ -66,7 +67,7 @@ export function ExploreFilters({
   resultCount,
 }: ExploreFiltersProps) {
   return (
-    <div className="space-y-4 rounded-[var(--radius-card)] border border-brand-ink/10 bg-brand-emerald p-4 sm:p-5">
+    <div className="space-y-4 rounded-(--radius-card) border border-brand-ink/10 bg-brand-emerald p-4 sm:p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative min-w-0 flex-1">
           <Icon
@@ -89,7 +90,7 @@ export function ExploreFilters({
       </div>
 
       <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 scrollbar-thin">
-        <div className="flex shrink-0 gap-1 rounded-[var(--radius-btn)] border border-brand-paper/20 bg-brand-pine/60 p-1">
+        <div className="flex shrink-0 gap-1 rounded-(--radius-btn) border border-brand-paper/20 bg-brand-pine/60 p-1">
           {types.map((type) => (
             <FilterPill
               key={type}
@@ -101,7 +102,7 @@ export function ExploreFilters({
           ))}
         </div>
 
-        <div className="flex shrink-0 gap-1 rounded-[var(--radius-btn)] border border-brand-paper/20 bg-brand-pine/60 p-1">
+        <div className="flex shrink-0 gap-1 rounded-(--radius-btn) border border-brand-paper/20 bg-brand-pine/60 p-1">
           {currencies.map((c) => (
             <FilterPill
               key={c}
@@ -130,7 +131,7 @@ export function ExploreFilters({
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
           aria-label="Sort projects"
-          className="w-full rounded-[var(--radius-input)] border border-brand-paper/20 bg-brand-pine px-3 py-2 text-sm text-brand-paper outline-none transition focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 sm:w-auto"
+          className="w-full rounded-(--radius-input) border border-brand-paper/20 bg-brand-pine px-3 py-2 text-sm text-brand-paper outline-none transition focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 sm:w-auto"
         >
           <option value="rec">Relevance</option>
           <option value="price-asc">Price: low to high</option>

@@ -24,6 +24,7 @@ export function HeroSection() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    // Empty query navigates to the map without a filter rather than blocking submission
     const params = query.trim() ? `?q=${encodeURIComponent(query.trim())}` : "";
     router.push(`/explore-map${params}`);
   };
@@ -36,12 +37,14 @@ export function HeroSection() {
         className="absolute inset-0 h-full w-full object-cover"
         aria-hidden="true"
       />
+      {/* Lighter mid-section keeps the headline readable without fully obscuring the sky */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/35" />
 
       <div className="absolute bottom-6 right-4 z-10 hidden sm:block">
         <CmreBadge variant="light" />
       </div>
 
+      {/* Vertical action rail only appears on md+ where there's room beside the search bar */}
       <aside
         aria-label="Quick actions"
         className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-2 rounded-2xl border border-white/25 bg-white/15 p-2 backdrop-blur-md md:left-5 md:flex lg:left-8"
@@ -87,6 +90,7 @@ export function HeroSection() {
             </button>
           </form>
 
+          {/* Mobile fallback row of action buttons replaces the desktop aside rail */}
           <div className="flex justify-center gap-2 md:hidden">
             {quickActions.map(({ label, href, icon }) => (
               <Link

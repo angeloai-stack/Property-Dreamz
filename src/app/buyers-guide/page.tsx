@@ -111,6 +111,7 @@ export default function BuyersGuidePage() {
       <section className="bg-brand-paper py-16 md:py-20">
         <Container className="space-y-16 md:space-y-20">
           {steps.map((step, i) => {
+            // Odd-indexed steps flip image to the right so content alternates sides.
             const isEven = i % 2 === 1;
             return (
               <div

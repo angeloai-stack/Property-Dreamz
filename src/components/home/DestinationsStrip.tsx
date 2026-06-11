@@ -5,6 +5,7 @@ const destinations = [
   { label: "Tijuana", slug: "Tijuana" },
   { label: "Rosarito", slug: "Rosarito" },
   { label: "Ensenada", slug: "Ensenada" },
+  // Slugs use + instead of %20 to keep URLs readable in the browser bar
   { label: "Boga Telchac", slug: "Boga+Telchac" },
   { label: "Yucatán", slug: "Yucatan" },
   { label: "Isla Mujeres", slug: "Isla+Mujeres" },
@@ -23,7 +24,7 @@ export function DestinationsStrip() {
           +2,369 buyers active right now
         </p>
         <div className="relative">
-          <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
             {destinations.map((d) => (
               <Link
                 key={d.slug}
@@ -34,7 +35,7 @@ export function DestinationsStrip() {
               </Link>
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-brand-ink to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-brand-ink to-transparent" />
         </div>
       </Container>
     </section>

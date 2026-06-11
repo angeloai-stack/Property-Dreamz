@@ -6,6 +6,7 @@ import { Icon } from "@/components/ui/Icon";
 export function WhatsAppButton() {
   return (
     <a
+      // Replace with the real business WhatsApp number before going live.
       href="https://wa.me/5210000000000"
       target="_blank"
       rel="noreferrer"

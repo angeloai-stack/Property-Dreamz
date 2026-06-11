@@ -6,66 +6,66 @@ export default function ContactPage() {
       <Section className="pt-20 pb-16">
         <Container className="space-y-12">
           <div className="space-y-6">
-            <Badge variant="gold">Contacto</Badge>
+            <Badge variant="gold">Contact</Badge>
             <Heading level={1}>
-              Encuentra tu siguiente inversión en bienes raíces.
+              Find your next investment in Mexican real estate.
             </Heading>
             <p className="max-w-2xl font-body text-body text-brand-muted">
-              Completa el formulario de campaña para recibir opciones verificadas, asesoría bilingüe y oportunidades de financiamiento en México y EE.UU.
+              Fill out the form below to receive verified options, bilingual guidance, and financing opportunities in Mexico and the US.
             </p>
           </div>
 
           <Section className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
             <div className="space-y-6 rounded-[2rem] border border-brand-ink/10 bg-white p-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               <Heading level={2} className="text-2xl sm:text-3xl">
-                Información de contacto
+                Contact information
               </Heading>
               <p className="text-base leading-8 text-brand-muted">
-                Si prefieres, también puedes hablar directamente con nuestro equipo de ventas.
+                Prefer to talk directly? Our sales team is ready to help.
               </p>
               <div className="space-y-4 text-sm leading-7 text-brand-ink">
                 <p>
                   <span className="font-semibold">Email:</span> hello@propertydreamz.com
                 </p>
                 <p>
-                  <span className="font-semibold">Teléfono:</span> +1 (123) 456-7890
+                  <span className="font-semibold">Phone:</span> +1 (123) 456-7890
                 </p>
                 <p>
                   <span className="font-semibold">WhatsApp:</span> +52 (123) 456-7890
                 </p>
                 <p>
-                  <span className="font-semibold">Horario:</span> Lun–Vie, 9AM–6PM CST
+                  <span className="font-semibold">Hours:</span> Mon–Fri, 9AM–6PM CST
                 </p>
               </div>
               <div className="space-y-4 text-sm uppercase tracking-[0.22em] text-brand-gray">
-                <p>Proyectos verificados</p>
-                <p>Soporte bilingüe</p>
-                <p>Financiamiento claro</p>
+                <p>Verified projects</p>
+                <p>Bilingual support</p>
+                <p>Transparent financing</p>
               </div>
             </div>
 
             <div className="rounded-[2rem] border border-brand-ink/10 bg-brand-paper/90 p-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               <Heading level={2} className="mb-8 text-2xl sm:text-3xl">
-                Formulario de campaña
+                Get in touch
               </Heading>
               <form className="grid gap-6">
                 <label className="space-y-2 text-sm text-brand-ink">
-                  <span className="font-semibold">Nombre completo *</span>
+                  <span className="font-semibold">Full name *</span>
                   <input
                     type="text"
                     name="fullName"
-                    placeholder="Tu nombre completo"
+                    placeholder="Your full name"
                     required
                     className="w-full rounded-3xl border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                   />
                 </label>
 
                 <label className="space-y-2 text-sm text-brand-ink">
-                  <span className="font-semibold">Teléfono / WhatsApp *</span>
+                  <span className="font-semibold">Phone / WhatsApp *</span>
                   <div className="grid gap-2 sm:grid-cols-[110px_1fr]">
                     <select
                       name="phoneCode"
-                      className="w-full rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-3 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
+                      className="w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                     >
                       <option value="+1">+1</option>
                       <option value="+52">+52</option>
@@ -75,59 +75,59 @@ export default function ContactPage() {
                       name="phone"
                       placeholder="123 456 7890"
                       required
-                      className="w-full rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
+                      className="w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                     />
                   </div>
                 </label>
 
                 <div className="grid gap-6 sm:grid-cols-2">
                   <label className="space-y-2 text-sm text-brand-ink">
-                    <span className="font-semibold">Correo *</span>
+                    <span className="font-semibold">Email *</span>
                     <input
                       type="email"
                       name="email"
-                      placeholder="tu@email.com"
+                      placeholder="you@email.com"
                       required
-                      className="w-full rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
+                      className="w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                     />
                   </label>
 
                   <label className="space-y-2 text-sm text-brand-ink">
-                    <span className="font-semibold">Presupuesto de inversión</span>
+                    <span className="font-semibold">Investment budget</span>
                     <select
                       name="budget"
-                      className="w-full rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
+                      className="w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                     >
-                      <option value="">Selecciona un rango</option>
-                      <option value="under150k">Menos de $150k USD</option>
+                      <option value="">Select a range</option>
+                      <option value="under150k">Under $150k USD</option>
                       <option value="150k-300k">$150k–$300k USD</option>
                       <option value="300k-500k">$300k–$500k USD</option>
                       <option value="over500k">$500k+ USD</option>
-                      <option value="unsure">No estoy seguro</option>
+                      <option value="unsure">Not sure yet</option>
                     </select>
                   </label>
                 </div>
 
                 <label className="space-y-2 text-sm text-brand-ink">
-                  <span className="font-semibold">Zona de interés</span>
+                  <span className="font-semibold">Region of interest</span>
                   <select
                     name="zone"
-                    className="w-full rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
+                    className="w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20"
                   >
-                    <option value="">Selecciona una zona</option>
+                    <option value="">Select a region</option>
                     <option value="baja">Baja California</option>
                     <option value="riviera">Riviera Maya</option>
-                    <option value="cdmx">CDMX</option>
+                    <option value="cdmx">Mexico City</option>
                     <option value="monterrey">Monterrey</option>
                     <option value="playa">Playa del Carmen</option>
-                    <option value="otros">Otros</option>
+                    <option value="otros">Other</option>
                   </select>
                 </label>
 
                 <fieldset className="space-y-3 text-sm text-brand-ink">
-                  <span className="font-semibold">Método de contacto preferido</span>
+                  <span className="font-semibold">Preferred contact method</span>
                   <div className="grid gap-2 sm:grid-cols-3">
-                    <label className="flex items-center gap-3 rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-3 py-2">
+                    <label className="flex items-center gap-3 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-2">
                       <input
                         type="radio"
                         name="contactMethod"
@@ -136,23 +136,23 @@ export default function ContactPage() {
                       />
                       <span>WhatsApp</span>
                     </label>
-                    <label className="flex items-center gap-3 rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-3 py-2">
+                    <label className="flex items-center gap-3 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-2">
                       <input
                         type="radio"
                         name="contactMethod"
                         value="call"
                         className="h-4 w-4 cursor-pointer accent-brand-emerald"
                       />
-                      <span>Llamada</span>
+                      <span>Phone call</span>
                     </label>
-                    <label className="flex items-center gap-3 rounded-[var(--radius-input)] border border-brand-ink/10 bg-brand-paper px-3 py-2">
+                    <label className="flex items-center gap-3 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-2">
                       <input
                         type="radio"
                         name="contactMethod"
                         value="email"
                         className="h-4 w-4 cursor-pointer accent-brand-emerald"
                       />
-                      <span>Correo</span>
+                      <span>Email</span>
                     </label>
                   </div>
                 </fieldset>
@@ -165,9 +165,9 @@ export default function ContactPage() {
                     className="mt-1 h-4 w-4 cursor-pointer accent-brand-emerald"
                   />
                   <span>
-                    Acepto la{" "}
+                    I agree to the{" "}
                     <a href="#privacy" className="font-semibold underline">
-                      política de privacidad
+                      privacy policy
                     </a>
                     *
                   </span>
@@ -175,7 +175,7 @@ export default function ContactPage() {
 
                 <div className="flex justify-end pt-4">
                   <Button type="submit" variant="default" className="w-full sm:w-auto">
-                    Enviar
+                    Send message
                   </Button>
                 </div>
               </form>

@@ -1,3 +1,4 @@
+// Client component required because the map and filters rely on interactive state.
 "use client";
 
 import { useMemo, useState } from "react";
@@ -43,6 +44,7 @@ export default function ExploreMapPage() {
   );
 
   const handlePin = (id: number) => {
+    // Tapping the same pin again deselects it; switching to list so the card is visible on mobile.
     setActivePin((prev) => (prev === id ? null : id));
     setMobileView("list");
   };
@@ -86,7 +88,7 @@ export default function ExploreMapPage() {
               type="button"
               onClick={() => setMobileView(view)}
               className={cn(
-                "flex-1 rounded-[var(--radius-btn)] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.1em] transition",
+                "flex-1 rounded-(--radius-btn) px-4 py-2.5 text-sm font-semibold uppercase tracking-widest transition",
                 mobileView === view
                   ? "bg-brand-emerald text-brand-paper"
                   : "border border-brand-ink/10 bg-white text-brand-muted hover:text-brand-ink"
@@ -152,7 +154,7 @@ export default function ExploreMapPage() {
                 </div>
               </>
             ) : (
-              <div className="rounded-[2rem] border border-brand-ink/10 bg-white px-6 py-16 text-center">
+              <div className="rounded-4xl border border-brand-ink/10 bg-white px-6 py-16 text-center">
                 <p className="text-4xl" aria-hidden="true">
                   🏖️
                 </p>

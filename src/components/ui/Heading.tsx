@@ -11,9 +11,11 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 }
 
 const levelStyles: Record<HeadingLevel, string> = {
+  // max-w-3xl on h1 prevents over-wide hero text on large viewports
   1: cn(typography.display, "max-w-3xl"),
   2: typography.title,
   3: typography.subtitle,
+  // h4-h6 reuse subtitle font but scale down via explicit text-* overrides
   4: cn(typography.subtitle, "text-[1.125rem]"),
   5: cn(typography.subtitle, "text-base"),
   6: cn(typography.subtitle, "text-sm"),
