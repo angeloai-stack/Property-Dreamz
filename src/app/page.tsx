@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { BuyersGuideSteps } from "@/components/home/BuyersGuideSteps";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
-import { DestinationsStrip } from "@/components/home/DestinationsStrip";
 import { FeatureCards } from "@/components/home/FeatureCards";
-import { FeaturedDevelopments } from "@/components/home/FeaturedDevelopments";
 import { HeroSection } from "@/components/home/HeroSection";
+import { TopDevelopers } from "@/components/home/TopDevelopers";
 import { VerifySection } from "@/components/home/VerifySection";
 
 export const metadata: Metadata = {
@@ -61,7 +60,8 @@ const jsonLd = {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: "https://propertydreamz.com/explore-map?q={search_term_string}",
+          urlTemplate:
+            "https://propertydreamz.com/explore-map?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -76,14 +76,22 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/*
+        Section order matches the Figma Hero frame (sorted by Y position):
+        1. HeroSection       — Y 126  (headline + search + hero image)
+        2. VerifySection     — Y 874  (dark bg, "The only portal…", CMRE)
+        3. FeatureCards      — Y 874+ (3 white trust cards, continues dark section)
+        4. TopDevelopers     — Y 1708 (white bg, 4 portrait property cards)
+        5. BuyersGuideSteps  — Y 2509 (3 alternating steps)
+        6. CertifiedBanner   — Y 4237 (pine bg, "All certified by" + "Browse 47")
+      */}
       <main className="flex-1 bg-brand-ink">
         <HeroSection />
-        <DestinationsStrip />
-        <FeaturedDevelopments />
         <VerifySection />
+        <FeatureCards />
+        <TopDevelopers />
         <BuyersGuideSteps />
         <CertifiedBanner />
-        <FeatureCards />
       </main>
     </>
   );
