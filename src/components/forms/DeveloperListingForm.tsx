@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 const F =
-  "w-full rounded-(--radius-input) border border-brand-ink/10 bg-white px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted/60 outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20";
+  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-[#39d3c0]/50";
 
 type Fields = {
   contactName: string;
@@ -59,10 +59,10 @@ export function DeveloperListingForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-white p-12 text-center shadow-subtle">
-        <CheckCircle2 className="h-14 w-14 text-brand-emerald" aria-hidden="true" />
-        <p className="font-ibrand text-subtitle text-brand-ink">Application received!</p>
-        <p className="max-w-md font-body text-body text-brand-muted">
+      <div className="flex flex-col items-center gap-4 rounded-[42px] bg-brand-ink p-12 text-center shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
+        <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
+        <p className="font-ibrand text-subtitle text-brand-paper">Application received!</p>
+        <p className="max-w-md font-body text-body text-brand-paper/60">
           Our team will review your submission and contact you within 3 business days to discuss
           next steps.
         </p>
@@ -73,10 +73,10 @@ export function DeveloperListingForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-white p-8 shadow-subtle space-y-6 lg:p-10"
+      className="rounded-[42px] bg-brand-ink p-8 shadow-[0_8px_48px_rgba(0,0,0,0.5)] space-y-6 lg:p-10"
     >
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Contact name *</span>
           <input
             type="text"
@@ -88,7 +88,7 @@ export function DeveloperListingForm() {
             className={F}
           />
         </label>
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Development / company name *</span>
           <input
             type="text"
@@ -103,7 +103,7 @@ export function DeveloperListingForm() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Email *</span>
           <input
             type="email"
@@ -115,7 +115,7 @@ export function DeveloperListingForm() {
             className={F}
           />
         </label>
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Phone *</span>
           <div className="grid gap-2 grid-cols-[90px_1fr]">
             <select
@@ -141,7 +141,7 @@ export function DeveloperListingForm() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">State / region *</span>
           <select
             name="region"
@@ -163,7 +163,7 @@ export function DeveloperListingForm() {
             <option value="other">Other</option>
           </select>
         </label>
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Number of units *</span>
           <input
             type="number"
@@ -179,7 +179,7 @@ export function DeveloperListingForm() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Min price per unit (USD)</span>
           <input
             type="text"
@@ -190,7 +190,7 @@ export function DeveloperListingForm() {
             className={F}
           />
         </label>
-        <label className="space-y-2 text-sm text-brand-ink">
+        <label className="space-y-2 text-sm text-brand-paper/70">
           <span className="font-semibold">Max price per unit (USD)</span>
           <input
             type="text"
@@ -203,7 +203,7 @@ export function DeveloperListingForm() {
         </label>
       </div>
 
-      <label className="space-y-2 text-sm text-brand-ink">
+      <label className="space-y-2 text-sm text-brand-paper/70">
         <span className="font-semibold">Development status *</span>
         <select
           name="devStatus"
@@ -219,7 +219,7 @@ export function DeveloperListingForm() {
         </select>
       </label>
 
-      <label className="space-y-2 text-sm text-brand-ink">
+      <label className="space-y-2 text-sm text-brand-paper/70">
         <span className="font-semibold">Tell us about your project (optional)</span>
         <textarea
           name="description"
@@ -231,16 +231,16 @@ export function DeveloperListingForm() {
         />
       </label>
 
-      <label className="flex items-start gap-3 text-sm text-brand-ink">
+      <label className="flex items-start gap-3 text-sm text-brand-paper/70">
         <input
           type="checkbox"
           name="consent"
           required
-          className="mt-1 h-4 w-4 cursor-pointer accent-brand-emerald"
+          className="mt-1 h-4 w-4 cursor-pointer accent-[#39d3c0]"
         />
         <span>
           I agree to the{" "}
-          <a href="/privacy" className="font-semibold underline">
+          <a href="/privacy" className="font-semibold underline hover:text-brand-paper">
             privacy policy
           </a>{" "}
           and authorize Property Dreamz to contact me regarding this application. *
@@ -248,7 +248,7 @@ export function DeveloperListingForm() {
       </label>
 
       {status === "error" && (
-        <p className="text-sm text-red-600">
+        <p className="text-sm text-red-400">
           Something went wrong. Please try again or email hello@propertydreamz.com
         </p>
       )}
@@ -256,7 +256,7 @@ export function DeveloperListingForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="flex items-center gap-2 rounded-full bg-brand-emerald px-6 py-3.5 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-pine disabled:opacity-60"
+        className="flex items-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3.5 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-[#2bbba8] disabled:opacity-60"
       >
         {status === "submitting" && (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

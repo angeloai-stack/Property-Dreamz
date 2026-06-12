@@ -5,7 +5,7 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui";
 
 const F =
-  "w-full rounded-(--radius-input) border border-brand-paper/20 bg-brand-paper/10 px-4 py-3 text-sm text-brand-paper placeholder:text-brand-paper/40 outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20";
+  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-[#39d3c0]/50";
 
 type Fields = {
   name: string;
@@ -55,7 +55,7 @@ export function PropertyInquiryForm() {
       <Container>
         <div className="mx-auto max-w-2xl space-y-8">
           <div className="space-y-3 text-center">
-            <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald/80">
+            <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-[#39d3c0]">
               Speak with an advisor
             </p>
             <h2 className="font-ibrand text-[clamp(1.75rem,4vw,2.5rem)] leading-tight text-brand-paper">
@@ -68,18 +68,15 @@ export function PropertyInquiryForm() {
           </div>
 
           {status === "success" ? (
-            <div className="flex flex-col items-center gap-4 rounded-3xl border border-brand-paper/10 bg-brand-paper/5 py-12 text-center">
-              <CheckCircle2 className="h-14 w-14 text-brand-emerald" aria-hidden="true" />
+            <div className="flex flex-col items-center gap-4 py-12 text-center">
+              <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
               <p className="font-ibrand text-subtitle text-brand-paper">Request sent!</p>
               <p className="font-body text-body text-brand-paper/60">
                 An advisor will reach out within 24 hours.
               </p>
             </div>
           ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-4 rounded-3xl border border-brand-paper/10 bg-brand-paper/5 p-6 md:p-8"
-            >
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="space-y-1.5">
                   <span className="font-ewangi text-label font-semibold text-brand-paper/70">
@@ -178,7 +175,7 @@ export function PropertyInquiryForm() {
                   ].map(({ value, label }) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer items-center gap-3 rounded-(--radius-input) border border-brand-paper/20 bg-brand-paper/5 px-3 py-2"
+                      className="flex cursor-pointer items-center gap-3 rounded-(--radius-input) border border-[#d9d9d9]/30 bg-[#d9d9d9]/10 px-3 py-2"
                     >
                       <input
                         type="radio"
@@ -186,7 +183,7 @@ export function PropertyInquiryForm() {
                         value={value}
                         checked={fields.contactMethod === value}
                         onChange={set("contactMethod")}
-                        className="h-4 w-4 cursor-pointer accent-brand-emerald"
+                        className="h-4 w-4 cursor-pointer accent-[#39d3c0]"
                       />
                       <span className="font-ewangi text-label text-brand-paper/80">{label}</span>
                     </label>
@@ -213,7 +210,7 @@ export function PropertyInquiryForm() {
                   type="checkbox"
                   name="consent"
                   required
-                  className="mt-1 h-4 w-4 cursor-pointer accent-brand-emerald"
+                  className="mt-1 h-4 w-4 cursor-pointer accent-[#39d3c0]"
                 />
                 <span>
                   I agree to the{" "}
@@ -233,7 +230,7 @@ export function PropertyInquiryForm() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-emerald px-6 py-3.5 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-paper hover:text-brand-pine disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3.5 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-[#2bbba8] disabled:opacity-60"
               >
                 {status === "submitting" && (
                   <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

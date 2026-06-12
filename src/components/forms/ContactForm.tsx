@@ -5,7 +5,7 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 import { Heading } from "@/components/ui";
 
 const F =
-  "w-full rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted/60 outline-none transition focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20";
+  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-[#39d3c0]/50";
 
 type Fields = {
   name: string;
@@ -53,29 +53,29 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-4xl border border-brand-ink/10 bg-brand-paper/90 p-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-      <Heading level={2} className="mb-8 text-2xl sm:text-3xl">
+    <div className="rounded-[42px] bg-brand-ink p-10 shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
+      <Heading level={2} className="mb-8 text-2xl text-brand-paper sm:text-3xl">
         Get in touch
       </Heading>
 
       {status === "success" ? (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
-          <CheckCircle2 className="h-14 w-14 text-brand-emerald" aria-hidden="true" />
-          <p className="font-ibrand text-subtitle text-brand-ink">Message sent!</p>
-          <p className="font-body text-body text-brand-muted">
+          <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
+          <p className="font-ibrand text-subtitle text-brand-paper">Message sent!</p>
+          <p className="font-body text-body text-brand-paper/60">
             We&apos;ll be in touch within 24 hours.
           </p>
           <button
             type="button"
             onClick={() => { setStatus("idle"); setFields(INIT); }}
-            className="mt-2 font-ewangi text-label text-brand-emerald underline"
+            className="mt-2 font-ewangi text-label text-[#39d3c0] underline"
           >
             Send another message
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="grid gap-6">
-          <label className="space-y-2 text-sm text-brand-ink">
+          <label className="space-y-2 text-sm text-brand-paper/70">
             <span className="font-semibold">Full name *</span>
             <input
               type="text"
@@ -88,7 +88,7 @@ export function ContactForm() {
             />
           </label>
 
-          <label className="space-y-2 text-sm text-brand-ink">
+          <label className="space-y-2 text-sm text-brand-paper/70">
             <span className="font-semibold">Phone / WhatsApp *</span>
             <div className="grid gap-2 sm:grid-cols-[110px_1fr]">
               <select
@@ -113,7 +113,7 @@ export function ContactForm() {
           </label>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            <label className="space-y-2 text-sm text-brand-ink">
+            <label className="space-y-2 text-sm text-brand-paper/70">
               <span className="font-semibold">Email *</span>
               <input
                 type="email"
@@ -125,7 +125,7 @@ export function ContactForm() {
                 className={F}
               />
             </label>
-            <label className="space-y-2 text-sm text-brand-ink">
+            <label className="space-y-2 text-sm text-brand-paper/70">
               <span className="font-semibold">Investment budget</span>
               <select
                 name="budget"
@@ -143,7 +143,7 @@ export function ContactForm() {
             </label>
           </div>
 
-          <label className="space-y-2 text-sm text-brand-ink">
+          <label className="space-y-2 text-sm text-brand-paper/70">
             <span className="font-semibold">Region of interest</span>
             <select name="region" value={fields.region} onChange={set("region")} className={F}>
               <option value="">Select a region</option>
@@ -156,7 +156,7 @@ export function ContactForm() {
             </select>
           </label>
 
-          <fieldset className="space-y-3 text-sm text-brand-ink">
+          <fieldset className="space-y-3 text-sm text-brand-paper/70">
             <span className="font-semibold">Preferred contact method</span>
             <div className="grid gap-2 sm:grid-cols-3">
               {[
@@ -166,7 +166,7 @@ export function ContactForm() {
               ].map(({ value, label }) => (
                 <label
                   key={value}
-                  className="flex cursor-pointer items-center gap-3 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-2"
+                  className="flex cursor-pointer items-center gap-3 rounded-(--radius-input) border border-[#d9d9d9]/30 bg-[#d9d9d9]/10 px-3 py-2"
                 >
                   <input
                     type="radio"
@@ -174,15 +174,15 @@ export function ContactForm() {
                     value={value}
                     checked={fields.contactMethod === value}
                     onChange={set("contactMethod")}
-                    className="h-4 w-4 cursor-pointer accent-brand-emerald"
+                    className="h-4 w-4 cursor-pointer accent-[#39d3c0]"
                   />
-                  <span>{label}</span>
+                  <span className="text-brand-paper/80">{label}</span>
                 </label>
               ))}
             </div>
           </fieldset>
 
-          <label className="space-y-2 text-sm text-brand-ink">
+          <label className="space-y-2 text-sm text-brand-paper/70">
             <span className="font-semibold">Message (optional)</span>
             <textarea
               name="message"
@@ -194,16 +194,16 @@ export function ContactForm() {
             />
           </label>
 
-          <label className="flex items-start gap-3 text-sm text-brand-ink">
+          <label className="flex items-start gap-3 text-sm text-brand-paper/70">
             <input
               type="checkbox"
               name="consent"
               required
-              className="mt-1 h-4 w-4 cursor-pointer accent-brand-emerald"
+              className="mt-1 h-4 w-4 cursor-pointer accent-[#39d3c0]"
             />
             <span>
               I agree to the{" "}
-              <a href="/privacy" className="font-semibold underline">
+              <a href="/privacy" className="font-semibold underline hover:text-brand-paper">
                 privacy policy
               </a>{" "}
               *
@@ -211,7 +211,7 @@ export function ContactForm() {
           </label>
 
           {status === "error" && (
-            <p className="text-sm text-red-600">
+            <p className="text-sm text-red-400">
               Something went wrong. Please try again or email hello@propertydreamz.com
             </p>
           )}
@@ -220,7 +220,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-emerald px-6 py-3 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-pine disabled:opacity-60 sm:w-auto"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-[#2bbba8] disabled:opacity-60 sm:w-auto"
             >
               {status === "submitting" && (
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
