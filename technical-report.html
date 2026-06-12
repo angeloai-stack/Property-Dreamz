@@ -380,7 +380,7 @@
   <div class="cover-top">
     <div class="cover-tag">Reporte Técnico — Análisis de Arquitectura</div>
     <h1>Property<br/><span>Dreamz</span></h1>
-    <p class="cover-sub">Análisis técnico completo de la arquitectura, stack tecnológico, estructura de componentes e integraciones de la plataforma de bienes raíces de lujo.</p>
+    <p class="cover-sub">Análisis técnico completo de la arquitectura, stack tecnológico, sistema de formularios, estructura de componentes e integraciones de la plataforma de bienes raíces.</p>
 
     <div class="cover-meta">
       <div class="cover-meta-item">
@@ -401,11 +401,11 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Fecha del análisis</div>
-        <div class="cover-meta-value">10 de junio de 2026</div>
+        <div class="cover-meta-value">11 de junio de 2026</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
-        <div class="cover-meta-value">MVP — UI completa</div>
+        <div class="cover-meta-value">MVP — Formularios funcionales</div>
       </div>
     </div>
   </div>
@@ -431,11 +431,12 @@
       <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Biblioteca de Componentes UI</span><span class="toc-page">6</span></div>
       <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Componentes de Layout</span><span class="toc-page">7</span></div>
       <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Páginas y Rutas</span><span class="toc-page">8</span></div>
-      <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Explore Map — Módulo Interactivo</span><span class="toc-page">9</span></div>
-      <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">Patrones Técnicos Clave</span><span class="toc-page">10</span></div>
-      <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Integraciones Declaradas (Pendientes)</span><span class="toc-page">11</span></div>
-      <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">Métricas de Código y Calidad</span><span class="toc-page">11</span></div>
-      <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Recomendaciones y Próximos Pasos</span><span class="toc-page">12</span></div>
+      <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Sistema de Formularios</span><span class="toc-page">9</span></div>
+      <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">Explore Map — Módulo Interactivo</span><span class="toc-page">10</span></div>
+      <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Patrones Técnicos Clave</span><span class="toc-page">11</span></div>
+      <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">Integraciones Declaradas (Pendientes)</span><span class="toc-page">12</span></div>
+      <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Métricas de Código y Calidad</span><span class="toc-page">12</span></div>
+      <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Recomendaciones y Próximos Pasos</span><span class="toc-page">13</span></div>
     </div>
   </div>
 
@@ -445,17 +446,17 @@
   <div class="section">
     <div class="section-label">01 — Descripción General</div>
     <h2>Descripción General del Proyecto</h2>
-    <p><strong>Property Dreamz</strong> es una plataforma de bienes raíces de lujo diseñada para conectar compradores americanos con desarrollos inmobiliarios mexicanos verificados. Se posiciona como el único portal donde cada propiedad está certificada antes de ser publicada, bajo el sello <em>CM/RE – Certified Mexico Real Estate</em>.</p>
+    <p><strong>Property Dreamz</strong> es una plataforma de bienes raíces diseñada para conectar compradores americanos con desarrollos inmobiliarios mexicanos verificados. Se posiciona como el único portal donde cada propiedad está certificada antes de ser publicada, bajo el sello <em>CM/RE – Certified Mexico Real Estate</em>.</p>
 
     <div class="stat-row">
       <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
-      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Componentes</span></div>
-      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Rutas/Páginas</span></div>
-      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Listings Mock</span></div>
+      <div class="stat"><span class="stat-num">35+</span><span class="stat-label">Componentes</span></div>
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Páginas App</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">API Routes</span></div>
     </div>
 
     <div class="highlight-box">
-      <strong>Estado actual:</strong> La UI está completamente construida como MVP funcional. Los datos son estáticos (mock). Las integraciones con Sanity CMS, HubSpot y Mapbox están declaradas como dependencias pero aún no están conectadas.
+      <strong>Estado actual:</strong> La UI está completamente construida como MVP funcional. Se cuenta con 5 formularios interactivos con captura de leads y 4 API routes. Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
     </div>
   </div>
 
@@ -474,7 +475,7 @@
         <tr><td><code>react</code> / <code>react-dom</code></td><td>18.3.1</td><td>Biblioteca de UI base</td></tr>
         <tr><td><code>typescript</code></td><td>5.x</td><td>Tipado estático – modo strict activado</td></tr>
         <tr><td><code>tailwindcss</code></td><td>4.x</td><td>Utilidades CSS con tokens de diseño personalizados</td></tr>
-        <tr><td><code>react-hook-form</code></td><td>7.77.0</td><td>Gestión de formularios</td></tr>
+        <tr><td><code>react-hook-form</code></td><td>7.77.0</td><td>Gestión de formularios (disponible — actualmente se usa useState nativo)</td></tr>
         <tr><td><code>zod</code></td><td>4.4.3</td><td>Validación de esquemas y runtime types</td></tr>
         <tr><td><code>framer-motion</code></td><td>12.40.0</td><td>Animaciones declarativas</td></tr>
         <tr><td><code>@radix-ui/react-dialog</code></td><td>latest</td><td>Modal accesible</td></tr>
@@ -483,20 +484,21 @@
         <tr><td><code>react-icons</code></td><td>5.6.0</td><td>Iconos de redes sociales y terceros</td></tr>
         <tr><td><code>clsx</code> + <code>tailwind-merge</code></td><td>latest</td><td>Utilidad <code>cn()</code> para clases condicionales</td></tr>
         <tr><td><code>@sanity/client</code></td><td>7.22.1</td><td>CMS headless (pendiente de conexión)</td></tr>
-        <tr><td><code>@hubspot/api-client</code></td><td>13.5.0</td><td>Automatización de marketing (pendiente)</td></tr>
+        <tr><td><code>@hubspot/api-client</code></td><td>13.5.0</td><td>CRM para leads (pendiente de conexión en API routes)</td></tr>
       </tbody>
     </table>
 
-    <h3>Variables de Entorno Requeridas (No configuradas)</h3>
+    <h3>Variables de Entorno Requeridas</h3>
     <table>
       <thead>
-        <tr><th>Variable</th><th>Servicio</th></tr>
+        <tr><th>Variable</th><th>Servicio</th><th>Estado</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code></td><td>Sanity CMS</td></tr>
-        <tr><td><code>HUBSPOT_API_KEY</code></td><td>HubSpot CRM</td></tr>
-        <tr><td><code>MAPBOX_TOKEN</code></td><td>Mapbox GL</td></tr>
-        <tr><td><code>GA_ID</code>, <code>META_PIXEL_ID</code></td><td>Analytics y tracking</td></tr>
+        <tr><td><code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code></td><td>Sanity CMS</td><td>Pendiente</td></tr>
+        <tr><td><code>HUBSPOT_API_KEY</code></td><td>HubSpot CRM (leads de formularios)</td><td>Pendiente</td></tr>
+        <tr><td><code>MAPBOX_TOKEN</code></td><td>Mapbox GL</td><td>Pendiente</td></tr>
+        <tr><td><code>GA_ID</code>, <code>META_PIXEL_ID</code></td><td>Analytics y tracking</td><td>Pendiente</td></tr>
+        <tr><td><code>RESEND_API_KEY</code></td><td>Emails de confirmación de formularios</td><td>Pendiente</td></tr>
       </tbody>
     </table>
 
@@ -517,50 +519,57 @@
 <span class="dir">property-dreamz/</span>
 ├── <span class="dir">src/</span>
 │   ├── <span class="dir">app/</span>                          <span class="note"># App Router — rutas y layouts</span>
-│   │   ├── page.tsx                   <span class="note"># Home page</span>
+│   │   ├── page.tsx                   <span class="note"># Home page (CampaignForm añadido)</span>
 │   │   ├── layout.tsx                 <span class="note"># Root layout (fuentes, navbar, footer)</span>
 │   │   ├── globals.css                <span class="note"># Tokens CSS (colores, espaciado, radii)</span>
+│   │   ├── robots.ts                  <span class="note"># robots.txt generado</span>
+│   │   ├── sitemap.ts                 <span class="note"># sitemap.xml generado</span>
+│   │   ├── <span class="dir">api/</span>                       <span class="note"># API Route Handlers (Next.js)</span>
+│   │   │   ├── <span class="dir">contact/</span>route.ts       <span class="note"># Contact + Campaign forms → CRM</span>
+│   │   │   ├── <span class="dir">developer-listing/</span>route.ts <span class="note"># Developer intake → CRM</span>
+│   │   │   ├── <span class="dir">guide-download/</span>route.ts  <span class="note"># Lead magnet → email list</span>
+│   │   │   └── <span class="dir">property-inquiry/</span>route.ts <span class="note"># Qualified leads → advisor</span>
 │   │   ├── <span class="dir">explore-map/</span>
 │   │   │   ├── page.tsx               <span class="note"># Mapa interactivo + filtros</span>
+│   │   │   ├── layout.tsx             <span class="note"># Layout sin padding para mapa full-width</span>
 │   │   │   ├── data.ts                <span class="note"># Mock listings y pins</span>
 │   │   │   └── utils.ts               <span class="note"># Formateadores de precio USD/MXN</span>
-│   │   ├── <span class="dir">properties/</span>page.tsx        <span class="note"># Stub — exploración de propiedades</span>
-│   │   ├── <span class="dir">buyers-guide/</span>page.tsx      <span class="note"># Stub — guía para compradores</span>
-│   │   ├── <span class="dir">for-developers/</span>page.tsx    <span class="note"># Stub — portal para desarrolladores</span>
+│   │   ├── <span class="dir">properties/</span>page.tsx        <span class="note"># + PropertyInquiryForm al fondo</span>
+│   │   ├── <span class="dir">buyers-guide/</span>page.tsx      <span class="note"># Guía + GuideDownloadForm + FAQ</span>
+│   │   ├── <span class="dir">for-developers/</span>page.tsx    <span class="note"># Portal + DeveloperListingForm</span>
 │   │   ├── <span class="dir">about/</span>page.tsx             <span class="note"># Página Acerca de</span>
-│   │   ├── <span class="dir">contact/</span>page.tsx           <span class="note"># Formulario de contacto (estático)</span>
+│   │   ├── <span class="dir">contact/</span>page.tsx           <span class="note"># ContactForm (client component)</span>
 │   │   └── <span class="dir">saved/</span>page.tsx             <span class="note"># Stub — proyectos guardados</span>
 │   ├── <span class="dir">components/</span>
 │   │   ├── <span class="dir">ui/</span>                        <span class="note"># Primitivas reutilizables</span>
-│   │   │   ├── Button.tsx             <span class="note"># 5 variantes + polimórfico</span>
-│   │   │   ├── Input.tsx, Badge.tsx, Card.tsx
-│   │   │   ├── Section.tsx, Container.tsx
-│   │   │   ├── Heading.tsx, Label.tsx, Icon.tsx
-│   │   │   ├── Search.tsx             <span class="note"># SearchBar con submit</span>
+│   │   │   ├── Button.tsx, Input.tsx, Badge.tsx, Card.tsx
+│   │   │   ├── Section.tsx, Container.tsx, Heading.tsx
+│   │   │   ├── Label.tsx, Icon.tsx, Search.tsx
 │   │   │   └── index.ts               <span class="note"># Barrel export</span>
 │   │   ├── <span class="dir">layout/</span>
-│   │   │   ├── Navbar.tsx             <span class="note"># Nav + toggle moneda + mobile</span>
-│   │   │   ├── Footer.tsx             <span class="note"># Footer completo (5 secciones)</span>
-│   │   │   ├── WhatsAppButton.tsx     <span class="note"># FAB fijo inferior derecha</span>
-│   │   │   └── Main.tsx               <span class="note"># Wrapper de contenido principal</span>
+│   │   │   ├── Navbar.tsx, Footer.tsx, Main.tsx, WhatsAppButton.tsx
+│   │   │   └── index.ts
+│   │   ├── <span class="dir">forms/</span>                     <span class="note"># Formularios (todos "use client")</span>
+│   │   │   ├── CampaignForm.tsx        <span class="note"># Home — captura de leads ads</span>
+│   │   │   ├── ContactForm.tsx         <span class="note"># /contact — formulario general</span>
+│   │   │   ├── DeveloperListingForm.tsx <span class="note"># /for-developers — intake</span>
+│   │   │   ├── GuideDownloadForm.tsx   <span class="note"># /buyers-guide — lead magnet</span>
+│   │   │   ├── PropertyInquiryForm.tsx <span class="note"># /properties — consulta</span>
+│   │   │   └── index.ts               <span class="note"># Barrel export</span>
 │   │   ├── <span class="dir">home/</span>
-│   │   │   ├── HeroSection.tsx        <span class="note"># Hero + búsqueda + acciones rápidas</span>
-│   │   │   ├── VerifySection.tsx      <span class="note"># Propuesta de valor verificación</span>
-│   │   │   └── FeatureCards.tsx       <span class="note"># Grid de 3 características</span>
+│   │   │   ├── HeroSection.tsx, VerifySection.tsx, FeatureCards.tsx
+│   │   │   ├── TopDevelopers.tsx, BuyersGuideSteps.tsx, CertifiedBanner.tsx
+│   │   │   └── FeaturedDevelopments.tsx, DestinationsStrip.tsx
 │   │   ├── <span class="dir">explore-map/</span>
-│   │   │   ├── ExploreFilters.tsx     <span class="note"># Panel de filtros</span>
-│   │   │   ├── MapPanel.tsx           <span class="note"># SVG decorativo + pins interactivos</span>
-│   │   │   └── ListingCard.tsx        <span class="note"># Tarjeta de propiedad</span>
+│   │   │   ├── ExploreFilters.tsx, MapPanel.tsx, ListingCard.tsx
 │   │   └── <span class="dir">shared/</span>
-│   │       └── CmreBadge.tsx          <span class="note"># Badge de certificación CMRE</span>
+│   │       └── CmreBadge.tsx
 │   ├── <span class="dir">constants/</span>
 │   │   ├── theme.ts                   <span class="note"># Constantes de color</span>
 │   │   └── typography.ts             <span class="note"># Presets de clases tipográficas</span>
-│   ├── <span class="dir">lib/</span>
-│   │   ├── fonts.ts                   <span class="note"># next/font — variables CSS</span>
-│   │   └── utils.ts                   <span class="note"># cn() = clsx + twMerge</span>
-│   └── <span class="dir">styles/</span>
-│       └── globals.css                <span class="note"># Reset base + Tailwind imports</span>
+│   └── <span class="dir">lib/</span>
+│       ├── fonts.ts                   <span class="note"># next/font — variables CSS</span>
+│       └── utils.ts                   <span class="note"># cn() = clsx + twMerge</span>
 ├── next.config.mjs
 ├── tailwind.config.ts
 ├── tsconfig.json
@@ -591,7 +600,7 @@
         <tr><td><code>title</code></td><td>1.875rem / 1.15</td><td>Ibrand (Oswald)</td><td>Títulos de sección</td></tr>
         <tr><td><code>subtitle</code></td><td>1.3125rem / 1.25</td><td>Body (Playfair)</td><td>Subtítulos y destacados</td></tr>
         <tr><td><code>body</code></td><td>1.0625rem / 1.65</td><td>Body (Playfair)</td><td>Texto de lectura</td></tr>
-        <tr><td><code>label</code></td><td>0.8125rem / 1.4</td><td>Ewangi (Montserrat)</td><td>Etiquetas, microcopia</td></tr>
+        <tr><td><code>label</code></td><td>0.8125rem / 1.4</td><td>Ewangi (Montserrat)</td><td>Etiquetas, microcopia, form labels</td></tr>
       </tbody>
     </table>
 
@@ -652,8 +661,8 @@
 
     <h3>Otros primitivos</h3>
     <div class="card-grid">
-      <div class="card"><div class="card-title">Input</div><div class="card-body">Campo de texto con focus ring emerald al 20% de opacidad.</div></div>
-      <div class="card"><div class="card-title">Card</div><div class="card-body">Superficie con borde, fondo paper y sombra sutil.</div></div>
+      <div class="card"><div class="card-title">Input</div><div class="card-body">Campo de texto con focus ring emerald al 20% de opacidad. Soporte de <code>rounded-(--radius-input)</code>.</div></div>
+      <div class="card"><div class="card-title">Card</div><div class="card-body">Superficie con borde, fondo paper y sombra sutil. Usa <code>wrap-break-word</code> (Tailwind v4).</div></div>
       <div class="card"><div class="card-title">Heading (h1–h6)</div><div class="card-body">Mapeado automático a escala tipográfica según nivel semántico.</div></div>
       <div class="card"><div class="card-title">Section / Container</div><div class="card-body">Wrappers de layout: Section añade padding vertical, Container limita a max-w-7xl.</div></div>
       <div class="card"><div class="card-title">Icon</div><div class="card-body">Normaliza strokeWidth, tamaño y color de iconos Lucide. Gestiona aria-hidden y title.</div></div>
@@ -707,32 +716,110 @@
     <div class="section-label">07 — Páginas y Rutas</div>
     <h2>Páginas y Rutas (App Router)</h2>
 
+    <h3>Páginas de la aplicación</h3>
     <table>
       <thead><tr><th>Ruta</th><th>Archivo</th><th>Estado</th><th>Descripción</th></tr></thead>
       <tbody>
-        <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>HeroSection + VerifySection + FeatureCards</td></tr>
+        <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero + Verify + FeatureCards + TopDevelopers + BuyersGuide + CampaignForm + CertifiedBanner</td></tr>
         <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa + filtros + listado sincronizado (datos mock)</td></tr>
-        <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, enfoque y CTA a contacto</td></tr>
-        <tr><td><code>/contact</code></td><td>app/contact/page.tsx</td><td><span class="badge badge-gold">Parcial</span></td><td>Formulario completo (HTML estático, sin backend)</td></tr>
-        <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — exploración de propiedades pendiente</td></tr>
-        <tr><td><code>/buyers-guide</code></td><td>app/buyers-guide/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — guía de compra pendiente</td></tr>
-        <tr><td><code>/for-developers</code></td><td>app/for-developers/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — portal de desarrolladores pendiente</td></tr>
-        <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — proyectos guardados pendiente</td></tr>
+        <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, equipo y CTA</td></tr>
+        <tr><td><code>/contact</code></td><td>app/contact/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>ContactForm con estado y submit — pendiente de CRM</td></tr>
+        <tr><td><code>/buyers-guide</code></td><td>app/buyers-guide/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>5 pasos + GuideDownloadForm + FAQ + CTA</td></tr>
+        <tr><td><code>/for-developers</code></td><td>app/for-developers/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Beneficios + pricing + proceso + DeveloperListingForm</td></tr>
+        <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-gold">Parcial</span></td><td>Header + PropertyInquiryForm — falta grid de listings</td></tr>
+        <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — requiere auth para proyectos guardados</td></tr>
       </tbody>
     </table>
 
-    <h3>Metadata SEO (Root Layout)</h3>
+    <h3>API Routes</h3>
+    <table>
+      <thead><tr><th>Endpoint</th><th>Formulario(s)</th><th>Estado</th><th>Próxima integración</th></tr></thead>
+      <tbody>
+        <tr><td><code>POST /api/contact</code></td><td>ContactForm, CampaignForm</td><td><span class="badge badge-gold">Stub</span></td><td>HubSpot CRM + Resend email</td></tr>
+        <tr><td><code>POST /api/developer-listing</code></td><td>DeveloperListingForm</td><td><span class="badge badge-gold">Stub</span></td><td>HubSpot pipeline + notificación a ventas</td></tr>
+        <tr><td><code>POST /api/guide-download</code></td><td>GuideDownloadForm</td><td><span class="badge badge-gold">Stub</span></td><td>Mailchimp/Resend + envío de PDF</td></tr>
+        <tr><td><code>POST /api/property-inquiry</code></td><td>PropertyInquiryForm</td><td><span class="badge badge-gold">Stub</span></td><td>HubSpot lead + asignación de asesor</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Metadata SEO</h3>
     <div class="card-grid">
-      <div class="card"><div class="card-title">Title</div><div class="card-body">Property Dreamz | Verified Mexican Real Estate</div></div>
-      <div class="card"><div class="card-title">Description</div><div class="card-body">Luxury real estate platform connecting American buyers with verified Mexican developments.</div></div>
-      <div class="card"><div class="card-title">Icons</div><div class="card-body">Favicon + logo circular PNG registrados</div></div>
-      <div class="card"><div class="card-title">Lang</div><div class="card-body">HTML lang="en" — contenido bilingüe (nav en inglés, contacto en español)</div></div>
+      <div class="card"><div class="card-title">JSON-LD</div><div class="card-body">Organization + WebSite en home; FAQPage en buyers-guide</div></div>
+      <div class="card"><div class="card-title">OpenGraph</div><div class="card-body">Título, descripción y URL por página</div></div>
+      <div class="card"><div class="card-title">robots.ts</div><div class="card-body">Generación automática de robots.txt vía Next.js</div></div>
+      <div class="card"><div class="card-title">sitemap.ts</div><div class="card-body">Sitemap.xml automático con todas las rutas públicas</div></div>
     </div>
   </div>
 
-  <!-- ── SECCIÓN 8 ── -->
+  <!-- ── SECCIÓN 8 — NUEVA ── -->
   <div class="section page-break">
-    <div class="section-label">08 — Explore Map</div>
+    <div class="section-label">08 — Sistema de Formularios</div>
+    <h2>Sistema de Formularios</h2>
+    <p>El sistema de formularios está dividido en 5 componentes, cada uno ubicado en su página natural. Todos son <code>"use client"</code> y comparten el mismo patrón de máquina de estados.</p>
+
+    <h3>Inventario de formularios</h3>
+    <table>
+      <thead><tr><th>Componente</th><th>Página</th><th>Audiencia</th><th>API</th></tr></thead>
+      <tbody>
+        <tr><td><code>CampaignForm</code></td><td><code>/</code> — home</td><td>Tráfico frío desde anuncios pagados</td><td><code>/api/contact</code></td></tr>
+        <tr><td><code>ContactForm</code></td><td><code>/contact</code></td><td>Consultas generales y calificación de leads</td><td><code>/api/contact</code></td></tr>
+        <tr><td><code>PropertyInquiryForm</code></td><td><code>/properties</code></td><td>Compradores cualificados en búsqueda activa</td><td><code>/api/property-inquiry</code></td></tr>
+        <tr><td><code>DeveloperListingForm</code></td><td><code>/for-developers</code></td><td>Desarrolladores que desean listar en la plataforma</td><td><code>/api/developer-listing</code></td></tr>
+        <tr><td><code>GuideDownloadForm</code></td><td><code>/buyers-guide</code></td><td>Compradores educándose — lead magnet PDF</td><td><code>/api/guide-download</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Patrón de máquina de estados</h3>
+    <p>Todos los formularios implementan el mismo patrón con <code>useState</code>:</p>
+    <pre>
+type Status = "idle" | "submitting" | "success" | "error"
+
+const [status, setStatus] = useState&lt;Status&gt;("idle")
+const [fields, setFields] = useState&lt;Fields&gt;(INIT)
+
+<span class="note"># set() — helper genérico para actualizar cualquier campo</span>
+const set = (k: keyof Fields) => (e: ChangeEvent&lt;...&gt;) =>
+  setFields(p => ({ ...p, [k]: e.target.value }))
+
+<span class="note"># Submit — async fetch con transición de estado</span>
+async function handleSubmit(e: FormEvent) {
+  e.preventDefault()
+  setStatus("submitting")
+  try {
+    const res = await fetch("/api/...", { method: "POST", ... })
+    setStatus(res.ok ? "success" : "error")
+  } catch {
+    setStatus("error")
+  }
+}</pre>
+
+    <h3>Campos por formulario</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">CampaignForm</div><div class="card-body">nombre · teléfono · email · presupuesto (opt) · región (opt) · consent</div></div>
+      <div class="card"><div class="card-title">ContactForm</div><div class="card-body">nombre · código+teléfono · email · presupuesto · región · método contacto · mensaje (opt) · consent</div></div>
+      <div class="card"><div class="card-title">PropertyInquiryForm</div><div class="card-body">nombre · teléfono · email · timeline · financiamiento · método contacto · mensaje (opt) · consent</div></div>
+      <div class="card"><div class="card-title">DeveloperListingForm</div><div class="card-body">nombre · empresa · email · código+teléfono · estado · unidades · precio min/max · status · descripción · consent</div></div>
+    </div>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">GuideDownloadForm</div><div class="card-body">nombre · email · nacionalidad (opt) · consent</div></div>
+      <div class="card"><div class="card-title">Requisito legal México</div><div class="card-body">Checkbox de consent obligatorio en todos los formularios (Ley Federal de Protección de Datos Personales)</div></div>
+    </div>
+
+    <h3>Estados de UX</h3>
+    <table>
+      <thead><tr><th>Estado</th><th>Comportamiento visual</th></tr></thead>
+      <tbody>
+        <tr><td><code>idle</code></td><td>Formulario normal, botón habilitado</td></tr>
+        <tr><td><code>submitting</code></td><td>Botón deshabilitado + spinner <code>Loader2 animate-spin</code></td></tr>
+        <tr><td><code>success</code></td><td>Formulario reemplazado por ícono <code>CheckCircle2</code> + mensaje confirmación</td></tr>
+        <tr><td><code>error</code></td><td>Mensaje de error inline + email de fallback <code>hello@propertydreamz.com</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── SECCIÓN 9 ── -->
+  <div class="section page-break">
+    <div class="section-label">09 — Explore Map</div>
     <h2>Módulo Explore Map</h2>
     <p>Es el módulo más complejo del proyecto. Combina tres componentes coordinados por estado local en el page component.</p>
 
@@ -756,30 +843,14 @@
     </table>
 
     <h3>Filtrado y ordenamiento</h3>
-    <p>Procesado con <code>useMemo</code> para evitar recálculos innecesarios. La cadena de transformación es:</p>
+    <p>Procesado con <code>useMemo</code> para evitar recálculos innecesarios:</p>
     <pre>
 listings
   → filter(searchVal)      <span class="note"># match en título, zona</span>
   → filter(typeFilter)     <span class="note"># tipo de propiedad</span>
   → filter(verifiedOnly)   <span class="note"># solo verificadas</span>
   → sort(sortBy)           <span class="note"># precio asc/desc o relevancia</span>
-  → filtered[]             <span class="note"># resultado para ListingCards + conteo en filtros</span></pre>
-
-    <h3>Estructura de datos (data.ts)</h3>
-    <table>
-      <thead><tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr></thead>
-      <tbody>
-        <tr><td><code>id</code></td><td>number</td><td>Identificador único</td></tr>
-        <tr><td><code>status</code></td><td>ListingStatus</td><td>verified | preventa | destacado | vendido</td></tr>
-        <tr><td><code>priceMXN</code> / <code>priceUSD</code></td><td>number</td><td>Precios duales para toggle de moneda</td></tr>
-        <tr><td><code>beds, baths, sqft</code></td><td>number</td><td>Características de la propiedad</td></tr>
-        <tr><td><code>rating, reviews</code></td><td>number</td><td>Puntuación y cantidad de reseñas</td></tr>
-        <tr><td><code>type</code></td><td>string</td><td>Condo | House</td></tr>
-        <tr><td><code>borderKm</code></td><td>number</td><td>Distancia a la frontera USA en km</td></tr>
-        <tr><td><code>sdSavings</code></td><td>number</td><td>% de ahorro vs San Diego</td></tr>
-        <tr><td><code>image</code></td><td>string</td><td>URL de imagen (actualmente Unsplash)</td></tr>
-      </tbody>
-    </table>
+  → filtered[]             <span class="note"># resultado para ListingCards + conteo</span></pre>
 
     <h3>Formateadores de precio (utils.ts)</h3>
     <ul>
@@ -789,78 +860,76 @@ listings
     </ul>
   </div>
 
-  <!-- ── SECCIÓN 9 ── -->
+  <!-- ── SECCIÓN 10 ── -->
   <div class="section page-break">
-    <div class="section-label">09 — Patrones Técnicos</div>
+    <div class="section-label">10 — Patrones Técnicos</div>
     <h2>Patrones Técnicos Clave</h2>
 
     <h3>Server vs Client Components</h3>
     <div class="highlight-box">
-      El proyecto usa correctamente el App Router de Next.js 14: los componentes son Server Components por defecto y solo se marca <code>"use client"</code> donde hay interactividad real (Navbar, HeroSection, explore-map/page.tsx).
+      El proyecto usa correctamente el App Router de Next.js 14: los componentes son Server Components por defecto. Se marca <code>"use client"</code> solo donde hay interactividad real (Navbar, explore-map/page.tsx, todos los formularios de <code>src/components/forms/</code>).
     </div>
 
     <h3>Gestión de Estado</h3>
     <ul>
       <li>Estado local con <code>useState</code> — apropiado para el scope actual</li>
-      <li><code>useMemo</code> para el filtrado/ordenamiento de listings</li>
+      <li><code>useMemo</code> para el filtrado/ordenamiento de listings en explore-map</li>
+      <li>Máquina de estados en formularios: <code>idle → submitting → success | error</code></li>
       <li>Sin Zustand, Redux ni Context API — la aplicación no lo requiere aún</li>
     </ul>
+
+    <h3>Tailwind v4 — Sintaxis Canónica</h3>
+    <table>
+      <thead><tr><th>Patrón obsoleto</th><th>Patrón canónico v4</th></tr></thead>
+      <tbody>
+        <tr><td><code>[var(--color-brand-x)]</code></td><td><code>brand-x</code> (directo al token)</td></tr>
+        <tr><td><code>[var(--radius-input)]</code></td><td><code>(--radius-input)</code></td></tr>
+        <tr><td><code>bg-gradient-to-b</code></td><td><code>bg-linear-to-b</code></td></tr>
+        <tr><td><code>break-words</code></td><td><code>wrap-break-word</code></td></tr>
+        <tr><td><code>min-h-[220px]</code></td><td><code>min-h-55</code></td></tr>
+        <tr><td><code>rounded-[2rem]</code></td><td><code>rounded-4xl</code></td></tr>
+      </tbody>
+    </table>
 
     <h3>Accesibilidad</h3>
     <ul>
       <li>HTML semántico con niveles de heading correctos (h1 → h6)</li>
-      <li>Botones con <code>aria-label</code> explícitos</li>
+      <li>Botones con <code>aria-label</code> explícitos (formularios, FAB WhatsApp)</li>
       <li>Iconos con <code>aria-hidden="true"</code> cuando son decorativos</li>
       <li>Navegación por teclado: Enter/Space activan ListingCards</li>
-      <li>Focus visible con outlines en todos los elementos interactivos</li>
+      <li>Checkboxes de consent con label envolvente en todos los formularios</li>
     </ul>
 
     <h3>Responsive Design</h3>
     <div class="card-grid">
-      <div class="card"><div class="card-title">Mobile-first</div><div class="card-body">Breakpoints Tailwind: sm(640px), md(768px), lg(1024px), xl(1280px), 2xl(1536px)</div></div>
-      <div class="card"><div class="card-title">Mobile nav</div><div class="card-body">Hamburger con overlay backdrop-blur en &lt; lg</div></div>
+      <div class="card"><div class="card-title">Mobile-first</div><div class="card-body">Breakpoints Tailwind: sm(640px), md(768px), lg(1024px), xl(1280px)</div></div>
+      <div class="card"><div class="card-title">Formularios</div><div class="card-body">1 col en mobile → 2 col en sm para campos emparejados (nombre/teléfono, presupuesto/región)</div></div>
       <div class="card"><div class="card-title">Map/List toggle</div><div class="card-body">Vista móvil de explore-map con toggle sticky Map↔List</div></div>
       <div class="card"><div class="card-title">Grid adaptativo</div><div class="card-body">Cards: 1 col mobile → 2 col sm → 2-3 col 2xl</div></div>
-    </div>
-
-    <h3>Organización del código</h3>
-    <ul>
-      <li><strong>Barrel exports</strong> (<code>index.ts</code>) para <code>ui/</code> y <code>layout/</code></li>
-      <li><strong>Co-location de datos:</strong> <code>data.ts</code> y <code>utils.ts</code> junto al page que los usa</li>
-      <li><strong>Constantes aisladas:</strong> <code>theme.ts</code> y <code>typography.ts</code> para tokens reutilizables</li>
-      <li><strong>Utilitario <code>cn()</code>:</strong> combina <code>clsx + tailwind-merge</code> para clases condicionales sin colisiones</li>
-    </ul>
-
-    <h3>Optimización</h3>
-    <ul>
-      <li>Fuentes con <code>next/font</code>: preload + inyección de variables CSS en build time</li>
-      <li>Filtrado memoizado con <code>useMemo</code> en explore-map</li>
-      <li>Imágenes con <code>loading="lazy"</code> nativo</li>
-      <li>Nulo uso de <code>useEffect</code> innecesarios</li>
-    </ul>
-  </div>
-
-  <!-- ── SECCIÓN 10 ── -->
-  <div class="section page-break">
-    <div class="section-label">10 — Integraciones</div>
-    <h2>Integraciones Declaradas (Pendientes)</h2>
-    <p>Las dependencias están instaladas pero ninguna integración está conectada aún. La UI usa datos estáticos.</p>
-
-    <div class="card-grid">
-      <div class="card"><div class="card-title">Sanity CMS</div><div class="card-body">Para gestión dinámica de propiedades, imágenes y contenido editorial. Sustituirá el array <code>data.ts</code>. Depende de: <code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code>.</div></div>
-      <div class="card"><div class="card-title">HubSpot API</div><div class="card-body">Para captura de leads del formulario de contacto y automatización de marketing. Depende de: <code>HUBSPOT_API_KEY</code>.</div></div>
-      <div class="card"><div class="card-title">Mapbox GL</div><div class="card-body">El mapa SVG actual es decorativo. Mapbox reemplazará el componente <code>MapPanel.tsx</code> con mapa real. Depende de: <code>MAPBOX_TOKEN</code>.</div></div>
-      <div class="card"><div class="card-title">Analytics</div><div class="card-body">Google Analytics + Meta Pixel están declarados en env vars (<code>GA_ID</code>, <code>META_PIXEL_ID</code>) pero no implementados aún.</div></div>
-    </div>
-
-    <div class="highlight-box gold-box" style="margin-top: 16px;">
-      <strong>Nota:</strong> El formulario de contacto en <code>/contact</code> renderiza un formulario HTML completo pero no tiene handler de submit — los datos no se envían a ningún backend.
     </div>
   </div>
 
   <!-- ── SECCIÓN 11 ── -->
+  <div class="section page-break">
+    <div class="section-label">11 — Integraciones</div>
+    <h2>Integraciones Declaradas (Pendientes)</h2>
+    <p>Las API routes están creadas y funcionales. El siguiente paso es conectarlas a servicios externos.</p>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-title">HubSpot CRM</div><div class="card-body">Las 4 API routes reciben los datos de los formularios. Falta instanciar <code>@hubspot/api-client</code> con <code>HUBSPOT_API_KEY</code> para crear contacts/deals automáticamente.</div></div>
+      <div class="card"><div class="card-title">Resend / Email</div><div class="card-body">Cada form submission debe disparar: (1) notificación al equipo de ventas, (2) email de confirmación al usuario. Requiere <code>RESEND_API_KEY</code>.</div></div>
+      <div class="card"><div class="card-title">Sanity CMS</div><div class="card-body">Para gestión dinámica de propiedades. Sustituirá el array <code>data.ts</code>. Depende de: <code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code>.</div></div>
+      <div class="card"><div class="card-title">Mapbox GL</div><div class="card-body">El mapa SVG actual es decorativo. Mapbox reemplazará <code>MapPanel.tsx</code> con mapa real. Depende de: <code>MAPBOX_TOKEN</code>.</div></div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:8px;">
+      <strong>Progreso de formularios:</strong> Los 5 formularios tienen UI funcional, validación HTML5, estados de submit/success/error, y API routes correspondientes. Solo falta conectar las routes con HubSpot y Resend.
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 12 ── -->
   <div class="section">
-    <div class="section-label">11 — Métricas de Calidad</div>
+    <div class="section-label">12 — Métricas de Calidad</div>
     <h2>Métricas de Código y Calidad</h2>
 
     <h3>Lo que está bien implementado</h3>
@@ -868,57 +937,65 @@ listings
       <li>TypeScript con strict mode — sin tipos <code>any</code> en la capa UI</li>
       <li>Separación clara Server / Client components</li>
       <li>Sistema de diseño coherente con tokens reutilizables</li>
+      <li>Tailwind v4 — sintaxis canónica aplicada en todos los archivos</li>
+      <li>5 formularios con máquina de estados completa (idle/submitting/success/error)</li>
+      <li>4 API routes creadas y listas para conectar a CRM</li>
+      <li>Privacy consent obligatorio en todos los formularios (requerimiento legal México)</li>
+      <li>JSON-LD estructurado: Organization + WebSite + FAQPage</li>
+      <li>robots.ts y sitemap.ts generados automáticamente</li>
       <li>Componentes accesibles con ARIA labels y navegación por teclado</li>
       <li>Mobile-first con breakpoints consistentes</li>
-      <li>Barrel exports organizados</li>
+      <li>Barrel exports organizados (<code>ui/</code>, <code>layout/</code>, <code>forms/</code>)</li>
       <li>Co-location de datos por feature</li>
-      <li>Formateadores de precio correctamente encapsulados</li>
     </ul>
 
     <h3>Áreas de mejora identificadas</h3>
     <ul class="cross-list">
-      <li>Formulario de contacto sin validación ni submit handler</li>
-      <li>Datos completamente estáticos (sin Sanity ni API)</li>
+      <li>API routes sin integración real (CRM + email pendientes)</li>
+      <li>Datos de propiedades completamente estáticos (sin Sanity ni API)</li>
       <li>Mapa SVG decorativo sin funcionalidad real (sin Mapbox)</li>
-      <li>5 páginas son stubs vacíos</li>
+      <li>Página <code>/saved</code> es stub vacío (requiere auth)</li>
+      <li>Página <code>/properties</code> sin grid de listings</li>
       <li>WhatsApp link con número placeholder (<code>5210000000000</code>)</li>
       <li>Imágenes de Unsplash como placeholders</li>
       <li>Sin tests unitarios ni E2E</li>
       <li>Sin manejo de errores (Error Boundary, <code>error.tsx</code>)</li>
       <li>Sin loading states (<code>loading.tsx</code> por ruta)</li>
+      <li>Formularios usan <code>useState</code> nativo — se puede migrar a <code>react-hook-form</code> (ya instalado)</li>
     </ul>
   </div>
 
-  <!-- ── SECCIÓN 12 ── -->
+  <!-- ── SECCIÓN 13 ── -->
   <div class="section page-break">
-    <div class="section-label">12 — Próximos Pasos</div>
+    <div class="section-label">13 — Próximos Pasos</div>
     <h2>Recomendaciones y Próximos Pasos</h2>
 
-    <h3>Prioridad Alta — Funcionalidad Core</h3>
+    <h3>Prioridad Alta — Activar Captación de Leads</h3>
     <table>
       <thead><tr><th>Tarea</th><th>Archivo(s)</th><th>Depende de</th></tr></thead>
       <tbody>
-        <tr><td>Conectar Sanity CMS para listings reales</td><td>explore-map/data.ts → sanity queries</td><td>SANITY_PROJECT_ID, SANITY_DATASET</td></tr>
-        <tr><td>Implementar submit del formulario de contacto</td><td>app/contact/page.tsx</td><td>HUBSPOT_API_KEY o endpoint propio</td></tr>
+        <tr><td>Conectar API routes con HubSpot (crear contacts/deals)</td><td>src/app/api/*/route.ts</td><td>HUBSPOT_API_KEY</td></tr>
+        <tr><td>Configurar emails de confirmación con Resend</td><td>src/app/api/*/route.ts</td><td>RESEND_API_KEY</td></tr>
+        <tr><td>Conectar Sanity CMS para listings reales</td><td>explore-map/data.ts → sanity queries</td><td>SANITY_PROJECT_ID</td></tr>
         <tr><td>Integrar Mapbox real en MapPanel</td><td>components/explore-map/MapPanel.tsx</td><td>MAPBOX_TOKEN</td></tr>
-        <tr><td>Reemplazar imágenes Unsplash con assets reales</td><td>Todos los componentes con img src</td><td>Assets de marca</td></tr>
       </tbody>
     </table>
 
     <h3>Prioridad Media — Completar UI</h3>
     <ul>
-      <li>Desarrollar páginas stub: <code>/properties</code>, <code>/buyers-guide</code>, <code>/for-developers</code>, <code>/saved</code></li>
-      <li>Añadir <code>loading.tsx</code> por ruta para Suspense boundaries</li>
-      <li>Añadir <code>error.tsx</code> por ruta para Error Boundaries</li>
+      <li>Construir grid de listings en <code>/properties</code></li>
+      <li>Implementar página <code>/saved</code> con autenticación (NextAuth.js v5 o Clerk)</li>
+      <li>Reemplazar imágenes Unsplash con assets reales</li>
       <li>Actualizar número de WhatsApp real en <code>WhatsAppButton.tsx</code></li>
+      <li>Añadir <code>loading.tsx</code> por ruta para Suspense boundaries</li>
     </ul>
 
     <h3>Prioridad Baja — Calidad y Observabilidad</h3>
     <ul>
       <li>Configurar GA4 + Meta Pixel (variables en <code>.env.local</code> ya declaradas)</li>
+      <li>Migrar formularios de <code>useState</code> a <code>react-hook-form</code> (ya instalado) para validación más robusta</li>
       <li>Añadir tests con Playwright (E2E) o Vitest (unitarios)</li>
-      <li>Optimizar imágenes con <code>next/image</code> en lugar de <code>&lt;img&gt;</code> nativos</li>
-      <li>Añadir <code>sitemap.ts</code> y <code>robots.ts</code> para SEO técnico</li>
+      <li>Añadir <code>error.tsx</code> por ruta para Error Boundaries</li>
     </ul>
 
     <h3>Arquitectura a considerar cuando escale</h3>
@@ -926,7 +1003,7 @@ listings
       <div class="card"><div class="card-title">Auth (Autenticación)</div><div class="card-body">Para la feature de "Saved" se necesitará auth. Considerar NextAuth.js v5 o Clerk.</div></div>
       <div class="card"><div class="card-title">Estado Global</div><div class="card-body">Si la preferencia de moneda (USD/MXN) debe persistir entre páginas, considerar Zustand o Context.</div></div>
       <div class="card"><div class="card-title">Internacionalización</div><div class="card-body">El contenido es bilingüe (EN nav, ES contact). Evaluar <code>next-intl</code> para i18n estructurado.</div></div>
-      <div class="card"><div class="card-title">CMS Preview</div><div class="card-body">Sanity tiene Draft Mode compatible con Next.js App Router para preview en tiempo real.</div></div>
+      <div class="card"><div class="card-title">Validación de Forms</div><div class="card-body">Migrar a <code>react-hook-form</code> + <code>zod</code> (ambos ya instalados) para validación tipada y mensajes bilingües.</div></div>
     </div>
   </div>
 
@@ -935,133 +1012,63 @@ listings
   <div style="background:var(--pine);color:var(--white);padding:32px 40px;border-radius:8px;margin-bottom:0;">
     <div style="font-size:8pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Resumen Ejecutivo</div>
     <p style="font-size:11pt;line-height:1.6;color:rgba(255,255,255,0.9);margin-bottom:0;">
-      <strong style="color:var(--white);">Property Dreamz</strong> es una base de código bien estructurada y con calidad de producción en su capa de UI. El sistema de diseño es sólido, el código TypeScript es limpio y la arquitectura Next.js 14 está correctamente implementada. Las integraciones backend (CMS, CRM, Mapa) son el siguiente paso crítico para pasar de prototipo funcional a producto en producción.
+      <strong style="color:var(--white);">Property Dreamz</strong> es una base de código bien estructurada con calidad de producción en UI. El sistema de diseño es sólido, el código TypeScript es limpio y la arquitectura Next.js 14 está correctamente implementada. Los 5 formularios de captura de leads están funcionalmente completos con sus respectivas API routes. El siguiente paso crítico es conectar esas routes con HubSpot y Resend para activar el flujo de captación.
     </p>
   </div>
 
-</div><!-- /content -->
+  <!-- ═══ CHANGELOG ═══ -->
+  <div class="section" style="margin-top:40px;">
+    <div class="section-label">Changelog — sesión actual</div>
+    <h2>Archivos Modificados</h2>
+    <p class="muted">Cambios ordenados por fecha descendente. Un archivo aparece una sola vez con su modificación más reciente.</p>
 
-
-  <!-- ═══ CHANGELOG AUTOMÁTICO ═══ -->
-  <div class="section" style="margin-top:32px;">
-    <div class="section-label">Changelog automático</div>
-    <h2>Archivos Modificados Recientemente</h2>
-    <p class="muted">Esta tabla se actualiza automáticamente cada vez que Claude edita un archivo fuente del proyecto.</p>
+    <h3>11 de junio de 2026 — Sistema de formularios</h3>
     <table>
-      <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
-      <tbody><!-- CHANGELOG_ROWS -->
-        <tr><td><code>src/app/page.tsx</code></td><td>11 de junio de 2026 09:30 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>11 de junio de 2026 09:30 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>11 de junio de 2026 09:30 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>11 de junio de 2026 09:30 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/forms/ContactForm.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/contact/page.tsx</code></td><td>11 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/properties/page.tsx</code></td><td>11 de junio de 2026 09:28 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/contact/page.tsx</code></td><td>11 de junio de 2026 09:28 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/index.ts</code></td><td>11 de junio de 2026 09:28 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/PropertyInquiryForm.tsx</code></td><td>11 de junio de 2026 09:28 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/GuideDownloadForm.tsx</code></td><td>11 de junio de 2026 09:28 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/DeveloperListingForm.tsx</code></td><td>11 de junio de 2026 09:27 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/ContactForm.tsx</code></td><td>11 de junio de 2026 09:27 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/forms/CampaignForm.tsx</code></td><td>11 de junio de 2026 09:27 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/api/property-inquiry/route.ts</code></td><td>11 de junio de 2026 09:26 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/api/guide-download/route.ts</code></td><td>11 de junio de 2026 09:26 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/api/developer-listing/route.ts</code></td><td>11 de junio de 2026 09:26 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/api/contact/route.ts</code></td><td>11 de junio de 2026 09:26 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td>11 de junio de 2026 08:56 a.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>11 de junio de 2026 08:49 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/CertifiedBanner.tsx</code></td><td>11 de junio de 2026 08:48 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td>11 de junio de 2026 08:48 a.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 10:20 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 10:20 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 10:20 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Button.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Card.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Input.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/shared/CmreBadge.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Card.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ListingCard.tsx</code></td><td>10 de junio de 2026 10:19 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ListingCard.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Button.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Input.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>10 de junio de 2026 10:18 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 10:14 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 10:14 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/contact/page.tsx</code></td><td>10 de junio de 2026 10:14 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/explore-map/layout.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/saved/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/properties/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/about/page.tsx</code></td><td>10 de junio de 2026 10:13 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/robots.ts</code></td><td>10 de junio de 2026 10:12 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/sitemap.ts</code></td><td>10 de junio de 2026 10:12 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/layout.tsx</code></td><td>10 de junio de 2026 10:12 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/DestinationsStrip.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/DestinationsStrip.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/DestinationsStrip.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/index.ts</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Section.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/constants/typography.ts</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/layout/WhatsAppButton.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Heading.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/constants/theme.ts</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/layout.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Search.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/lib/utils.ts</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/layout.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/explore-map/ExploreFilters.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/ui/Label.tsx</code></td><td>10 de junio de 2026 09:52 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/lib/fonts.ts</code></td><td>10 de junio de 2026 09:51 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>10 de junio de 2026 09:51 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>next.config.mjs</code></td><td>10 de junio de 2026 09:51 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/contact/page.tsx</code></td><td>10 de junio de 2026 09:46 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>next.config.mjs</code></td><td>10 de junio de 2026 09:38 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/FeaturedDevelopments.tsx</code></td><td>10 de junio de 2026 09:36 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/components/home/BuyersGuideSteps.tsx</code></td><td>10 de junio de 2026 09:36 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/for-developers/page.tsx</code></td><td>10 de junio de 2026 09:35 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:35 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:34 p.m.</td><td>Modificado</td></tr>
-        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td>10 de junio de 2026 09:34 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/app/page.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/CertifiedBanner.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/BuyersGuideSteps.tsx</code></td><td>10 de junio de 2026 09:33 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/FeaturedDevelopments.tsx</code></td><td>10 de junio de 2026 09:32 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/home/DestinationsStrip.tsx</code></td><td>10 de junio de 2026 09:32 p.m.</td><td>Nuevo archivo</td></tr>
-        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>10 de junio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/components/forms/CampaignForm.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Formulario de captura para tráfico de anuncios — home page</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Formulario general de contacto con estado y submit</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Formulario de alta de desarrolladores (10 campos)</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Lead magnet PDF — buyers guide</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Consulta de propiedad con timeline y financiamiento</td></tr>
+        <tr><td><code>src/components/forms/index.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Barrel export del módulo de formularios</td></tr>
+        <tr><td><code>src/app/api/contact/route.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>API route stub — listo para HubSpot + Resend</td></tr>
+        <tr><td><code>src/app/api/developer-listing/route.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>API route stub — intake de desarrolladores</td></tr>
+        <tr><td><code>src/app/api/guide-download/route.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>API route stub — envío de PDF guide</td></tr>
+        <tr><td><code>src/app/api/property-inquiry/route.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>API route stub — leads cualificados</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido CampaignForm entre BuyersGuideSteps y CertifiedBanner</td></tr>
+        <tr><td><code>src/app/contact/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Reemplazado form HTML estático por &lt;ContactForm /&gt;</td></tr>
+        <tr><td><code>src/app/for-developers/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadida sección #listing-form con DeveloperListingForm; CTAs actualizados a anchor</td></tr>
+        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido GuideDownloadForm entre Steps y FAQ</td></tr>
+        <tr><td><code>src/app/properties/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido PropertyInquiryForm al final de la página</td></tr>
+      </tbody>
+    </table>
+
+    <h3>10 de junio de 2026 — UI completa y SEO</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>4 tarjetas portrait con precios, chips de specs y botón heart</td></tr>
+        <tr><td><code>src/components/home/CertifiedBanner.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadida sección "All certified by" con CMRE badge</td></tr>
+        <tr><td><code>src/components/home/BuyersGuideSteps.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>3 pasos alternados con imágenes</td></tr>
+        <tr><td><code>src/app/buyers-guide/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>FAQPage JSON-LD estructurado añadido</td></tr>
+        <tr><td><code>src/app/robots.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Generación automática robots.txt</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Generación automática sitemap.xml</td></tr>
+        <tr><td><code>src/app/explore-map/layout.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Layout sin padding lateral para mapa full-width</td></tr>
+        <tr><td><code>src/components/ui/Button.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Migrado a sintaxis canónica Tailwind v4</td></tr>
+        <tr><td><code>src/components/ui/Input.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Migrado a sintaxis canónica Tailwind v4</td></tr>
+        <tr><td><code>src/components/ui/Card.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Migrado a sintaxis canónica Tailwind v4 + wrap-break-word</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Corregidas clases z-1, min-h-55, rounded-(--radius-*)</td></tr>
+        <tr><td><code>src/components/explore-map/ListingCard.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Migrado a sintaxis canónica Tailwind v4</td></tr>
+        <tr><td><code>src/components/shared/CmreBadge.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Migrado a rounded-(--radius-card)</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>bg-linear-to-b (era bg-gradient-to-b)</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Actualizado con fuentes y diseño del sistema</td></tr>
+        <tr><td><code>next.config.mjs</code></td><td><span class="badge badge-gold">Modificado</span></td><td>remotePatterns para imágenes Unsplash</td></tr>
       </tbody>
     </table>
   </div>
+
+</div><!-- /content -->
 
 <div class="report-footer">
   <span>Property Dreamz — Reporte Técnico · Junio 2026</span>
