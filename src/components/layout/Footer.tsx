@@ -143,6 +143,9 @@ export function Footer() {
           </nav>
         </div>
 
+        {/* Line 1 — Figma: horizontal separator between logo row and main content */}
+        <hr className="border-t border-brand-ink/80" />
+
         {/* Brand blurb, socials, contact details, and grouped links */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:gap-6">
           <div className="space-y-3 sm:col-span-2 lg:col-span-1">

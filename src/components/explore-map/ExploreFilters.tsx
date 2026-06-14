@@ -1,9 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
-import { Icon } from "@/components/ui/Icon";
-import { Input } from "@/components/ui/Input";
+import { MEXICAN_STATES } from "@/app/explore-map/data";
 import { cn } from "@/lib/utils";
 
 const types = ["All", "House", "Condo", "Land"] as const;
@@ -14,6 +12,8 @@ type ExploreFiltersProps = {
   onSearchChange: (value: string) => void;
   typeFilter: string;
   onTypeChange: (value: string) => void;
+  stateFilter: string;
+  onStateChange: (value: string) => void;
   currency: string;
   onCurrencyChange: (value: string) => void;
   verifiedOnly: boolean;
@@ -23,29 +23,24 @@ type ExploreFiltersProps = {
   resultCount: number;
 };
 
-// Gold variant is reserved for the currency toggle so it stands apart from property-type pills.
-function FilterPill({
+function Pill({
   active,
-  children,
   onClick,
-  activeVariant = "default",
+  children,
 }: {
   active: boolean;
-  children: React.ReactNode;
   onClick: () => void;
-  activeVariant?: "default" | "gold";
+  children: React.ReactNode;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        "shrink-0 rounded-(--radius-btn) px-4 py-2 font-ewangi text-label font-semibold uppercase transition",
+        "shrink-0 rounded-(--radius-btn) px-4 py-2 font-ewangi text-sm uppercase tracking-wide transition",
         active
-          ? activeVariant === "gold"
-            ? "bg-brand-gold text-brand-ink shadow-subtle"
-            : "bg-brand-paper text-brand-pine shadow-subtle"
-          : "bg-transparent text-brand-paper/80 hover:bg-brand-pine/40 hover:text-brand-paper"
+          ? "bg-[#39d3c0] text-[#1e1e1e]"
+          : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
       )}
     >
       {children}
@@ -58,6 +53,8 @@ export function ExploreFilters({
   onSearchChange,
   typeFilter,
   onTypeChange,
+  stateFilter,
+  onStateChange,
   currency,
   onCurrencyChange,
   verifiedOnly,
@@ -67,62 +64,72 @@ export function ExploreFilters({
   resultCount,
 }: ExploreFiltersProps) {
   return (
-    <div className="space-y-4 rounded-(--radius-card) border border-brand-ink/10 bg-brand-emerald p-4 sm:p-5">
+    <div className="space-y-4 rounded-[22px] border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+      {/* Search + result count */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative min-w-0 flex-1">
-          <Icon
-            as={Search}
-            size={18}
-            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted"
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"
+            strokeWidth={1.5}
           />
-          <Input
+          <input
             type="search"
             placeholder="City, area, or development..."
             value={searchVal}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Search projects"
-            className="border-brand-ink/10 bg-brand-paper pl-10"
+            className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 py-2.5 pl-10 pr-4 font-ewangi text-sm text-white placeholder:text-white/30 outline-none transition focus:border-[#39d3c0]/60 focus:ring-2 focus:ring-[#39d3c0]/20"
           />
         </div>
-        <Badge variant="gold" className="w-fit shrink-0 self-start sm:self-center">
+        <span className="shrink-0 rounded-(--radius-btn) bg-[#39d3c0]/20 px-3 py-1.5 font-ewangi text-sm text-[#39d3c0]">
           {resultCount} projects
-        </Badge>
+        </span>
       </div>
 
-      <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 scrollbar-thin">
-        <div className="flex shrink-0 gap-1 rounded-(--radius-btn) border border-brand-paper/20 bg-brand-pine/60 p-1">
+      {/* State filter — updates the map view */}
+      <div>
+        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-white/35">
+          State
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {MEXICAN_STATES.map((state) => (
+            <Pill key={state} active={stateFilter === state} onClick={() => onStateChange(state)}>
+              {state === "All" ? "All states" : state}
+            </Pill>
+          ))}
+        </div>
+      </div>
+
+      {/* Property type + currency pills */}
+      <div>
+        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-white/35">
+          Type &amp; Currency
+        </p>
+        <div className="flex flex-wrap gap-2">
           {types.map((type) => (
-            <FilterPill
-              key={type}
-              active={typeFilter === type}
-              onClick={() => onTypeChange(type)}
-            >
+            <Pill key={type} active={typeFilter === type} onClick={() => onTypeChange(type)}>
               {type}
-            </FilterPill>
+            </Pill>
           ))}
-        </div>
 
-        <div className="flex shrink-0 gap-1 rounded-(--radius-btn) border border-brand-paper/20 bg-brand-pine/60 p-1">
+          <div className="mx-2 hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true" />
+
           {currencies.map((c) => (
-            <FilterPill
-              key={c}
-              active={currency === c}
-              activeVariant="gold"
-              onClick={() => onCurrencyChange(c)}
-            >
+            <Pill key={c} active={currency === c} onClick={() => onCurrencyChange(c)}>
               {c}
-            </FilterPill>
+            </Pill>
           ))}
         </div>
       </div>
 
+      {/* Verified + sort */}
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <label className="flex cursor-pointer items-center gap-2 text-sm text-brand-paper">
+        <label className="flex cursor-pointer items-center gap-2 font-ewangi text-sm text-white/60">
           <input
             type="checkbox"
             checked={verifiedOnly}
             onChange={(e) => onVerifiedChange(e.target.checked)}
-            className="h-4 w-4 cursor-pointer rounded border-brand-paper/40 accent-brand-gold"
+            className="h-4 w-4 cursor-pointer rounded border-white/30 accent-[#39d3c0]"
           />
           <span>Verified only</span>
         </label>
@@ -131,11 +138,11 @@ export function ExploreFilters({
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
           aria-label="Sort projects"
-          className="w-full rounded-(--radius-input) border border-brand-paper/20 bg-brand-pine px-3 py-2 text-sm text-brand-paper outline-none transition focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 sm:w-auto"
+          className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 px-3 py-2 font-ewangi text-sm text-white outline-none transition focus:border-[#39d3c0]/60 sm:w-auto"
         >
           <option value="rec">Relevance</option>
-          <option value="price-asc">Price: low to high</option>
-          <option value="price-desc">Price: high to low</option>
+          <option value="price-asc">Price: low → high</option>
+          <option value="price-desc">Price: high → low</option>
         </select>
       </div>
     </div>

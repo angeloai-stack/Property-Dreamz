@@ -1,115 +1,95 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck } from "lucide-react";
-import { CmreBadge } from "@/components/shared/CmreBadge";
-import { Container, Icon } from "@/components/ui";
+import { Container } from "@/components/ui";
 
-const trustPoints = [
-  "HOA reserves audited — no surprise assessments after you close.",
-  "Title searched before any property is listed.",
-  "Developer background reviewed by CM RE.",
-] as const;
+/** Figma Group 26 — Exclude boolean, #00be7c, 222×326px.
+ *  5 concentric rings + two ribbon tails below the circle. */
+function MedalBadge() {
+  return (
+    <svg
+      width="111"
+      height="163"
+      viewBox="0 0 222 326"
+      fill="none"
+      aria-hidden="true"
+    >
+      {/* Concentric ring medal — outer → inner alternating green / white */}
+      <circle cx="111" cy="111" r="111" fill="#00be7c" />
+      <circle cx="111" cy="111" r="88"  fill="#024139" />
+      <circle cx="111" cy="111" r="80"  fill="#00be7c" />
+      <circle cx="111" cy="111" r="71"  fill="#024139" />
+      <circle cx="111" cy="111" r="48"  fill="#00be7c" />
+
+      {/* Left ribbon tail */}
+      <path d="M 60 185 L 15 326 L 117 326 L 125 185 Z" fill="#00be7c" />
+      {/* Right ribbon tail */}
+      <path d="M 130 185 L 108 326 L 207 326 L 190 185 Z" fill="#00be7c" />
+    </svg>
+  );
+}
 
 export function CertifiedBanner() {
   return (
-    <section className="w-full bg-brand-pine">
-      {/* "All certified by" banner — matches Figma Group 124:1028 */}
-      <div className="border-b border-brand-paper/10">
-        <Container className="py-10 md:py-12">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-12">
-            {/* Left: label + CM RE identity */}
-            <div className="space-y-3">
-              <p className="font-ewangi text-label font-semibold text-brand-paper/60 uppercase tracking-widest">
-                All{" "}
-                <span className="font-ibrand italic text-brand-paper">
-                  certified
-                </span>{" "}
-                by
+    <section className="w-full bg-[#028e7f] py-14 md:py-20">
+      <Container>
+        {/* Pine card — Figma: Rectangle 44, #024139, r=34, 1262×489px */}
+        <div className="rounded-[34px] bg-brand-pine px-10 py-12 md:px-14 md:py-14">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
+            {/* Left: "All certified by" + CMRE logo + description */}
+            <div className="flex-1 space-y-6">
+              {/* Figma: Ewangi 40px white */}
+              <p className="font-ewangi text-[2.5rem] leading-tight text-white">
+                All certified by
               </p>
-              <CmreBadge variant="light" />
-            </div>
 
-            {/* Middle: certification description */}
-            <p className="max-w-xl font-body text-body leading-relaxed text-brand-paper/70">
-              Every property and development featured on our platform undergoes a
-              thorough verification process, including legal documentation,
-              ownership validation, regulatory compliance, and developer
-              background checks. Our certification helps ensure transparency,
-              security, and confidence throughout your real estate investment
-              journey in Mexico.
-            </p>
-
-            {/* Right: seal */}
-            <div className="flex shrink-0 items-center justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-brand-emerald/40 bg-brand-emerald/10">
-                <Icon
-                  as={BadgeCheck}
-                  size={36}
-                  color="currentColor"
-                  className="text-brand-emerald"
+              {/* Figma: CMRE Logo-04 2, 620×147px image */}
+              <div className="relative h-18.5 w-77.5 max-w-full">
+                <Image
+                  src="/brand/cmre-logo.png"
+                  alt="CMRE — Certified Mexico Real Estate"
+                  fill
+                  className="object-contain object-left"
+                  sizes="310px"
                 />
               </div>
-            </div>
-          </div>
-        </Container>
-      </div>
 
-      {/* "Browse 47 certified developments" — matches Figma Y=4819 content */}
-      <Container className="py-14 md:py-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-          {/* Left: copy */}
-          <div className="max-w-2xl space-y-6">
-            <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald/80">
-              Certified inventory
-            </p>
-            <h2 className="font-ibrand text-[clamp(2rem,4vw,2.75rem)] leading-tight text-brand-paper">
-              Browse 47 certified developments
-            </h2>
-
-            <ul className="space-y-2">
-              {trustPoints.map((point) => (
-                <li
-                  key={point}
-                  className="flex items-start gap-2.5 font-body text-body text-brand-paper/80"
-                >
-                  <Icon
-                    as={BadgeCheck}
-                    size={18}
-                    color="currentColor"
-                    className="mt-0.5 shrink-0 text-brand-emerald"
-                  />
-                  {point}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="/properties"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-emerald px-6 py-3 font-ewangi text-label font-semibold text-brand-paper transition hover:bg-brand-paper hover:text-brand-pine"
-            >
-              Browse properties
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-
-          {/* Right: stats */}
-          <div className="flex flex-col items-start gap-6 lg:items-end">
-            <div>
-              <p className="font-ibrand text-[3.5rem] font-bold leading-none text-brand-emerald">
-                47
-              </p>
-              <p className="font-ewangi text-label text-brand-paper/70">
-                certified developments
+              {/* Figma: description text Ewangi 15px white */}
+              <p className="max-w-lg font-ewangi text-[15px] leading-relaxed text-white/75">
+                Every property and development featured on our platform undergoes
+                a thorough verification process, including legal documentation,
+                ownership validation, regulatory compliance, and developer
+                background checks. Our certification helps ensure transparency,
+                security, and confidence throughout your real estate investment
+                journey in Mexico.
               </p>
             </div>
-            <div>
-              <p className="font-ibrand text-[3.5rem] font-bold leading-none text-brand-emerald">
-                100%
-              </p>
-              <p className="font-ewangi text-label text-brand-paper/70">
-                title-verified before listing
-              </p>
+
+            {/* Right: medal badge — Figma: Group 26, Exclude #00be7c, 222×326px */}
+            <div className="shrink-0 self-center">
+              <MedalBadge />
             </div>
           </div>
+        </div>
+
+        {/* Big headline — Figma: Ewangi 96px white, y=4819 */}
+        <div className="mt-14 md:mt-20">
+          <h2 className="font-ewangi text-[clamp(3rem,7.5vw,6rem)] leading-[0.9] text-white">
+            Browse 47 certified
+            <br />
+            developments
+          </h2>
+
+          {/* Figma: Ewangi 36px white, y=5093 */}
+          <p className="mt-5 font-ewangi text-[clamp(1.125rem,2.8vw,2.25rem)] leading-snug text-white/85">
+            HOA reserves audited — no surprise assessments after you close.
+          </p>
+
+          <Link
+            href="/properties"
+            className="mt-8 inline-flex items-center gap-3 rounded-full border-2 border-white/60 px-8 py-3.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white hover:text-[#028e7f]"
+          >
+            Browse developments
+          </Link>
         </div>
       </Container>
     </section>

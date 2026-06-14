@@ -3,53 +3,115 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Explore map", href: "/explore-map" },
-  { label: "Buyer's guide", href: "/buyers-guide" },
+type SubItem = { label: string; href: string; tag?: string };
+type NavItem =
+  | { label: string; href: string; sub?: never }
+  | { label: string; href?: never; sub: SubItem[] };
+
+const navItems: NavItem[] = [
+  { label: "Explore map",    href: "/explore-map" },
+  {
+    label: "Properties",
+    sub: [
+      { label: "Del Mar",              href: "/properties/fracc" },
+      { label: "Bosque Residencial",   href: "/properties/bosque",  tag: "Soon" },
+      { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
+    ],
+  },
+  { label: "Buyer's guide",  href: "/buyers-guide" },
   { label: "For developers", href: "/for-developers" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
-] as const;
+  { label: "The Mission",    href: "/about" },
+  { label: "Contact",        href: "/contact" },
+];
 
 const currencies = ["USD", "MXN"] as const;
-
 type Currency = (typeof currencies)[number];
 
 export function Navbar() {
-  const [open, setOpen] = useState(false);
-  // Currency is local UI state only — no global context or persistence yet.
+  const pathname = usePathname();
+  const dark = pathname.startsWith("/properties/fracc");
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [propertiesOpen, setPropertiesOpen] = useState(false);
   const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
-    // z-50 keeps the header above the map overlay and any modal backdrops.
-    <header className="relative z-50 border-b border-brand-ink/10 bg-white">
+    <header className={cn("relative z-50 border-b", dark ? "border-white/10 bg-brand-ink" : "border-brand-ink/10 bg-white")}>
       <Container className="flex items-center gap-4 py-4 md:py-5">
+        {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
           <Image
             src="/brand/property-dreamz-logo-horizontal.png"
             alt="Property Dreamz"
             width={180}
             height={36}
-            className="h-8 w-auto md:h-9"
+            className={cn("h-8 w-auto md:h-9", dark && "brightness-0 invert")}
             priority
           />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-4 font-ibrand text-[1.05rem] text-brand-ink/80 xl:gap-6 xl:text-subtitle lg:flex">
-          {navLinks.map((item) => (
-            <Link key={item.label} href={item.href} className="whitespace-nowrap transition hover:text-brand-emerald">
-              {item.label}
-            </Link>
-          ))}
+        {/* Desktop nav */}
+        <nav className={cn("ml-auto hidden items-center gap-5 font-ewangi text-[15px] xl:gap-7 lg:flex", dark ? "text-white" : "text-black")}>
+          {navItems.map((item) =>
+            item.sub ? (
+              /* Properties dropdown — CSS group-hover, no JS needed on desktop */
+              <div key={item.label} className="group relative">
+                <button
+                  type="button"
+                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-[#3AD3C1]" : "hover:text-[#02a592]")}
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <ChevronDown
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180"
+                    strokeWidth={2.5}
+                  />
+                </button>
+
+                {/* Dropdown panel */}
+                <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+                  <div className="min-w-[220px] overflow-hidden rounded-[16px] border border-brand-ink/8 bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                    {item.sub.map((sub, i) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        className={cn(
+                          "flex items-center justify-between px-5 py-3.5 transition hover:bg-[#eaedf0]",
+                          i < item.sub.length - 1 && "border-b border-brand-ink/6"
+                        )}
+                      >
+                        <span className="font-ewangi text-[14px] text-brand-ink">{sub.label}</span>
+                        {sub.tag && (
+                          <span className="ml-3 rounded-full bg-[#39d3c0]/15 px-2 py-0.5 font-ewangi text-[10px] uppercase tracking-wide text-[#02a592]">
+                            {sub.tag}
+                          </span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn("whitespace-nowrap transition", dark ? "hover:text-[#3AD3C1]" : "hover:text-[#02a592]")}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
+        {/* Currency toggle + mobile hamburger */}
         <div className="ml-auto flex items-center gap-3 lg:ml-6">
           <div
-            className="hidden items-center rounded-(--radius-btn) border border-brand-ink/10 bg-brand-paper p-1 sm:flex"
+            className={cn("hidden items-center rounded-(--radius-btn) border p-1 sm:flex", dark ? "border-white/15 bg-white/10" : "border-brand-ink/10 bg-brand-paper")}
             role="group"
             aria-label="Currency"
           >
@@ -60,9 +122,7 @@ export function Navbar() {
                 onClick={() => setCurrency(c)}
                 className={cn(
                   "rounded-(--radius-btn) px-3 py-1.5 font-ewangi text-label font-semibold uppercase transition",
-                  currency === c
-                    ? "bg-brand-emerald text-brand-paper"
-                    : "text-brand-muted hover:text-brand-ink"
+                  currency === c ? "bg-[#02a592] text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                 )}
               >
                 {c}
@@ -71,20 +131,23 @@ export function Navbar() {
           </div>
 
           <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen(!open)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(!mobileOpen)}
             className={cn(
-              "inline-flex items-center justify-center rounded p-2 text-brand-ink/90 transition lg:hidden",
-              open ? "bg-brand-ink/10" : "hover:bg-brand-ink/5"
+              "inline-flex items-center justify-center rounded p-2 transition lg:hidden",
+              dark ? "text-white/90" : "text-brand-ink/90",
+              mobileOpen
+                ? dark ? "bg-white/10" : "bg-brand-ink/10"
+                : dark ? "hover:bg-white/10" : "hover:bg-brand-ink/5"
             )}
           >
-            {open ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+            {mobileOpen ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 12h18M3 6h18M3 18h18" />
               </svg>
             )}
@@ -92,27 +155,62 @@ export function Navbar() {
         </div>
       </Container>
 
-      {open && (
-        // Positioned below the header (top-full) so it doesn't shift page content.
+      {/* Mobile menu */}
+      {mobileOpen && (
         <div className="absolute inset-x-0 top-full z-40 lg:hidden">
-          {/* Backdrop dismisses the menu on outside tap — intentional UX pattern. */}
           <div
             className="absolute inset-0 bg-brand-ink/70 backdrop-blur-sm"
             aria-hidden="true"
-            onClick={() => setOpen(false)}
+            onClick={() => setMobileOpen(false)}
           />
           <div className="relative border-t border-brand-paper/10 bg-brand-ink/95 text-brand-paper shadow-2xl">
-            <div className="space-y-2 px-4 py-4">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="block rounded px-2 py-2 font-ibrand text-subtitle hover:bg-brand-paper/10"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <div className="space-y-1 px-4 py-4">
+              {navItems.map((item) =>
+                item.sub ? (
+                  /* Properties accordion in mobile */
+                  <div key={item.label}>
+                    <button
+                      type="button"
+                      onClick={() => setPropertiesOpen((o) => !o)}
+                      className="flex w-full items-center justify-between rounded px-2 py-2 font-ibrand text-subtitle hover:bg-brand-paper/10"
+                    >
+                      <span>{item.label}</span>
+                      {propertiesOpen
+                        ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
+                        : <ChevronDown className="h-4 w-4 text-brand-paper/60" />}
+                    </button>
+
+                    {propertiesOpen && (
+                      <div className="ml-4 mt-1 space-y-1 border-l border-brand-paper/10 pl-3">
+                        {item.sub.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="flex items-center justify-between rounded px-2 py-2 font-ibrand text-[0.9rem] hover:bg-brand-paper/10"
+                          >
+                            <span>{sub.label}</span>
+                            {sub.tag && (
+                              <span className="ml-2 rounded-full bg-[#39d3c0]/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-[#39d3c0]">
+                                {sub.tag}
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="block rounded px-2 py-2 font-ibrand text-subtitle hover:bg-brand-paper/10"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
 
               <div className="flex gap-1 pt-2">
                 {currencies.map((c) => (
@@ -122,7 +220,7 @@ export function Navbar() {
                     onClick={() => setCurrency(c)}
                     className={cn(
                       "flex-1 rounded-(--radius-btn) px-3 py-2 font-ewangi text-label font-semibold uppercase",
-                      currency === c ? "bg-brand-emerald text-brand-paper" : "bg-brand-paper/10"
+                      currency === c ? "bg-[#02a592] text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                     )}
                   >
                     {c}

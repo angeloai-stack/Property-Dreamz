@@ -1,12 +1,12 @@
-// Client component required because the map and filters rely on interactive state.
 "use client";
 
 import { useMemo, useState } from "react";
+import { MapPin, SlidersHorizontal, X } from "lucide-react";
+import Link from "next/link";
 import { ListingCard } from "@/components/explore-map/ListingCard";
 import { MapPanel } from "@/components/explore-map/MapPanel";
 import { ExploreFilters } from "@/components/explore-map/ExploreFilters";
-import { Badge, Button, Container, Heading, Section } from "@/components/ui";
-import { listings, pins, type Currency } from "./data";
+import { listings, type Currency } from "./data";
 import { cn } from "@/lib/utils";
 
 type MobileView = "map" | "list";
@@ -14,16 +14,19 @@ type MobileView = "map" | "list";
 export default function ExploreMapPage() {
   const [activePin, setActivePin] = useState<number | null>(null);
   const [typeFilter, setTypeFilter] = useState("All");
+  const [stateFilter, setStateFilter] = useState("All");
   const [currency, setCurrency] = useState<Currency>("USD");
   const [sortBy, setSortBy] = useState("rec");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [searchVal, setSearchVal] = useState("");
   const [mobileView, setMobileView] = useState<MobileView>("list");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(
     () =>
       listings
         .filter((listing) => {
+          if (stateFilter !== "All" && listing.state !== stateFilter) return false;
           if (typeFilter !== "All" && listing.type !== typeFilter) return false;
           if (verifiedOnly && listing.status !== "verified") return false;
           if (
@@ -40,145 +43,206 @@ export default function ExploreMapPage() {
           if (sortBy === "price-desc") return b.priceUSD - a.priceUSD;
           return 0;
         }),
-    [typeFilter, verifiedOnly, searchVal, sortBy]
+    [stateFilter, typeFilter, verifiedOnly, searchVal, sortBy]
   );
 
-  const handlePin = (id: number) => {
-    // Tapping the same pin again deselects it; switching to list so the card is visible on mobile.
+  const handleCardClick = (id: number) => {
     setActivePin((prev) => (prev === id ? null : id));
     setMobileView("list");
   };
 
   return (
-    <main className="flex-1 bg-brand-paper text-brand-ink">
-      <Section className="pt-8 pb-4 md:pt-12">
-        <Container className="space-y-6">
-          <div className="space-y-3">
-            <Badge variant="gold">Explore</Badge>
-            <Heading level={1}>
-              Projects in Mexico
-            </Heading>
-            <p className="max-w-2xl font-body text-body text-brand-muted">
-              Browse verified developments on the map or in the list. Filter by type, price, and
-              location to find your next investment.
-            </p>
+    <main className="flex-1 bg-[#1e1e1e] text-white">
+      {/* Header — Figma: "Explore Map" Ewangi 48px #eaedf0, location pill, Filter button */}
+      <div className="px-8 py-8 md:px-12 lg:px-16">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] leading-tight text-[#eaedf0]">
+            Explore Map
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Location pill — Figma: Mask group r=29, glass bg */}
+            <div className="flex items-center gap-2 rounded-[29px] bg-[rgba(217,217,217,0.18)] px-5 py-3 backdrop-blur-sm">
+              <MapPin className="h-4 w-4 shrink-0 text-white/60" strokeWidth={1.5} />
+              <span className="font-ewangi text-[1.05rem] text-white">
+                {stateFilter === "All" ? "Tijuana, Rosarito, Pto. Nuevo" : stateFilter}
+              </span>
+            </div>
+
+            {/* Filter toggle — Figma: "Filter" text + icon */}
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((o) => !o)}
+              aria-expanded={filtersOpen}
+              className="flex items-center gap-2.5 rounded-[29px] border border-white/25 px-5 py-3 font-ewangi text-[1.05rem] text-white transition hover:bg-white/10"
+            >
+              <span>Filter</span>
+              {filtersOpen
+                ? <X className="h-4 w-4" strokeWidth={1.5} />
+                : <SlidersHorizontal className="h-4 w-4" strokeWidth={1.5} />}
+            </button>
           </div>
+        </div>
 
-          <ExploreFilters
-            searchVal={searchVal}
-            onSearchChange={setSearchVal}
-            typeFilter={typeFilter}
-            onTypeChange={setTypeFilter}
-            currency={currency}
-            onCurrencyChange={(value) => setCurrency(value as Currency)}
-            verifiedOnly={verifiedOnly}
-            onVerifiedChange={setVerifiedOnly}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            resultCount={filtered.length}
-          />
-        </Container>
-      </Section>
+        {filtersOpen && (
+          <div className="mt-5">
+            <ExploreFilters
+              searchVal={searchVal}
+              onSearchChange={setSearchVal}
+              typeFilter={typeFilter}
+              onTypeChange={setTypeFilter}
+              stateFilter={stateFilter}
+              onStateChange={(v) => {
+                setStateFilter(v);
+                setActivePin(null);
+              }}
+              currency={currency}
+              onCurrencyChange={(v) => setCurrency(v as Currency)}
+              verifiedOnly={verifiedOnly}
+              onVerifiedChange={setVerifiedOnly}
+              sortBy={sortBy}
+              onSortChange={setSortBy}
+              resultCount={filtered.length}
+            />
+          </div>
+        )}
+      </div>
 
-      <div className="sticky top-0 z-30 border-b border-brand-ink/10 bg-brand-paper/95 backdrop-blur-sm lg:hidden">
-        <Container className="flex gap-2 py-3">
+      {/* Mobile map/list toggle */}
+      <div className="sticky top-0 z-30 border-b border-white/10 bg-[#1e1e1e]/95 backdrop-blur-sm lg:hidden">
+        <div className="flex gap-2 px-8 py-3">
           {(["map", "list"] as const).map((view) => (
             <button
               key={view}
               type="button"
               onClick={() => setMobileView(view)}
               className={cn(
-                "flex-1 rounded-(--radius-btn) px-4 py-2.5 text-sm font-semibold uppercase tracking-widest transition",
+                "flex-1 rounded-full px-4 py-2.5 font-ewangi text-sm uppercase tracking-widest transition",
                 mobileView === view
-                  ? "bg-brand-emerald text-brand-paper"
-                  : "border border-brand-ink/10 bg-white text-brand-muted hover:text-brand-ink"
+                  ? "bg-[#39d3c0] text-[#1e1e1e]"
+                  : "border border-white/15 text-white/50 hover:text-white"
               )}
             >
               {view === "map" ? "Map" : `List (${filtered.length})`}
             </button>
           ))}
-        </Container>
+        </div>
       </div>
 
-      <div className="lg:flex lg:min-h-[calc(100vh-14rem)]">
+      {/* Map + listings — Figma: map 42% left, teal cards 58% right, both same height */}
+      <div className="mx-6 mb-8 overflow-hidden rounded-[28px] border border-white/10 lg:mx-14 lg:flex">
+        {/* Map — Google Maps iframe, updates when state filter changes */}
         <div
           className={cn(
-            "border-b border-brand-ink/10 lg:w-[44%] lg:shrink-0 lg:border-b-0 lg:border-r",
-            mobileView === "list" ? "hidden lg:block" : "block",
-            "lg:sticky lg:top-0 lg:h-[calc(100vh-14rem)]"
+            "lg:w-[42%] lg:shrink-0 lg:border-r lg:border-white/10",
+            mobileView === "list" ? "hidden lg:block" : "block"
           )}
         >
           <MapPanel
-            pins={pins}
-            listings={listings}
-            activePin={activePin}
-            onPinClick={handlePin}
-            filtered={filtered}
-            currency={currency}
-            className="h-[42vh] sm:h-[48vh] lg:h-full"
+            selectedState={stateFilter}
+            filteredCount={filtered.length}
+            className="h-[48vh] lg:h-full lg:min-h-[700px]"
           />
         </div>
 
+        {/* Cards — Figma: right 58%, teal (#39d3c0) background */}
         <div
           className={cn(
-            "flex-1",
+            "flex-1 bg-[#39d3c0]",
             mobileView === "map" ? "hidden lg:block" : "block"
           )}
         >
-          <Container className="space-y-6 py-6 lg:max-w-none lg:px-6 xl:px-8">
-            <div className="flex flex-col gap-2 border-b border-brand-ink/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
-              <Heading level={2} className="text-2xl sm:text-3xl">
+          <div className="space-y-4 p-6 lg:p-8">
+            {/* Section header */}
+            <div className="flex items-center justify-between pb-2">
+              <p className="font-ewangi text-[1.35rem] text-[#024139]">
                 Available projects
-              </Heading>
-              <p className="text-xs uppercase tracking-[0.14em] text-brand-muted">
-                Prices in {currency} · Verified by Property Dreamz
+              </p>
+              <p className="font-ewangi text-sm uppercase tracking-[0.12em] text-[#024139]/70">
+                {filtered.length} · {currency}
               </p>
             </div>
 
             {filtered.length > 0 ? (
               <>
-                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
-                  {filtered.map((listing) => (
+                {/* Figma: 2-column grid, cards with r=43 */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {filtered.slice(0, 4).map((listing) => (
                     <ListingCard
                       key={listing.id}
                       listing={listing}
                       active={activePin === listing.id}
                       currency={currency}
-                      onClick={() => handlePin(listing.id)}
+                      onClick={() => handleCardClick(listing.id)}
                     />
                   ))}
                 </div>
 
-                <div className="flex justify-center pb-8 pt-4">
-                  <Button variant="outline">View more projects</Button>
+                <div className="flex justify-center pt-2 pb-4">
+                  <button
+                    type="button"
+                    className="rounded-full border-2 border-[#024139]/40 px-8 py-3 font-ewangi text-[#024139] transition hover:bg-[#024139]/10"
+                  >
+                    View more projects
+                  </button>
                 </div>
               </>
             ) : (
-              <div className="rounded-4xl border border-brand-ink/10 bg-white px-6 py-16 text-center">
-                <p className="text-4xl" aria-hidden="true">
-                  🏖️
-                </p>
-                <Heading level={3} className="mt-4 text-xl">
-                  No results found
-                </Heading>
-                <p className="mt-2 text-sm text-brand-muted">
-                  Adjust your filters or search term to discover more projects.
-                </p>
-                <Button
-                  variant="ghost"
-                  className="mt-6"
+              <div className="rounded-[34px] border border-[#024139]/20 bg-white/30 px-6 py-16 text-center">
+                <p className="font-ewangi text-[2rem] text-[#024139]/60">No results</p>
+                <button
+                  type="button"
+                  className="mt-4 rounded-full border border-[#024139]/30 px-6 py-2 font-ewangi text-sm text-[#024139]/70 transition hover:bg-[#024139]/10"
                   onClick={() => {
                     setSearchVal("");
                     setTypeFilter("All");
+                    setStateFilter("All");
                     setVerifiedOnly(false);
                     setSortBy("rec");
                   }}
                 >
                   Clear filters
-                </Button>
+                </button>
               </div>
             )}
-          </Container>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA section — Figma: "Didn't find your dream's propertie?" Ewangi 48px #eaedf0
+          "Speak with us!" 36px, teal button #39d3c0, house illustration on right */}
+      <div className="mx-6 mb-12 overflow-hidden rounded-[28px] border border-white/10 lg:mx-14">
+        <div className="flex flex-col gap-10 px-10 py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
+          {/* Left: copy + button */}
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3rem)] leading-tight text-[#eaedf0]">
+                Didn&apos;t find your<br />dream&apos;s property?
+              </h2>
+              <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-[#eaedf0]/70">
+                Speak with us!
+              </p>
+            </div>
+
+            {/* Figma: teal #39d3c0 button, 309×83px, dark text */}
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-[#39d3c0] px-10 py-5 font-ewangi text-[1.1rem] text-[#191919] transition hover:bg-[#2bbba8]"
+            >
+              Talk to an expert
+            </Link>
+          </div>
+
+          {/* Right: house illustration — Figma: image 3, 512×512 */}
+          <div className="shrink-0">
+            <div className="relative h-56 w-56 overflow-hidden rounded-[43px] bg-white/5 lg:h-72 lg:w-72">
+              <img
+                src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80"
+                alt="Dream property"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>

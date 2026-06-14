@@ -4,6 +4,7 @@ export const listings = [
     status: "verified" as const,
     title: "Residencial Altamar",
     zone: "Zona Río, Tijuana",
+    state: "Baja California",
     priceMXN: 4250000,
     priceUSD: 250000,
     beds: 3,
@@ -21,6 +22,7 @@ export const listings = [
     status: "preventa" as const,
     title: "Torres Pacífico",
     zone: "Playas de Rosarito, BC",
+    state: "Baja California",
     priceMXN: 3100000,
     priceUSD: 182000,
     beds: 2,
@@ -38,6 +40,7 @@ export const listings = [
     status: "destacado" as const,
     title: "Hacienda Valle",
     zone: "Valle de Guadalupe, BC",
+    state: "Baja California",
     priceMXN: 12800000,
     priceUSD: 750000,
     beds: 5,
@@ -55,6 +58,7 @@ export const listings = [
     status: "verified" as const,
     title: "Punta Mita Reserve",
     zone: "Punta Mita, Nayarit",
+    state: "Nayarit",
     priceMXN: 21250000,
     priceUSD: 1250000,
     beds: 5,
@@ -72,6 +76,7 @@ export const listings = [
     status: "vendido" as const,
     title: "Tulum Nah Kin",
     zone: "Tulum, Quintana Roo",
+    state: "Quintana Roo",
     priceMXN: 5440000,
     priceUSD: 320000,
     beds: 3,
@@ -89,6 +94,7 @@ export const listings = [
     status: "verified" as const,
     title: "Ensenada Marina",
     zone: "Ensenada, Baja California",
+    state: "Baja California",
     priceMXN: 4165000,
     priceUSD: 245000,
     beds: 3,
@@ -112,7 +118,20 @@ export const pins = [
   { id: 6, x: 10, y: 72 },
 ] as const;
 
+export const MEXICAN_STATES = [
+  "All",
+  "Baja California",
+  "Baja California Sur",
+  "Nayarit",
+  "Quintana Roo",
+  "Jalisco",
+  "Yucatán",
+  "Oaxaca",
+  "Sonora",
+] as const;
+
 export type Listing = (typeof listings)[number];
 export type Pin = (typeof pins)[number];
 export type ListingStatus = Listing["status"];
 export type Currency = "USD" | "MXN";
+export type MexicanState = (typeof MEXICAN_STATES)[number];

@@ -1,8 +1,7 @@
 "use client";
 
-import { Bath, Bed, LayoutGrid, MapPin, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import type { Currency, Listing, ListingStatus } from "@/app/explore-map/data";
 import { formatMXN, formatPrice, formatUSD } from "@/app/explore-map/utils";
@@ -17,25 +16,6 @@ const statusConfig: Record<
   destacado: { label: "Featured", variant: "gold" },
   vendido: { label: "Sold", className: "bg-brand-gray text-brand-paper" },
 };
-
-function Stars({ rating }: { rating: number }) {
-  const rounded = Math.round(rating);
-
-  return (
-    <span className="inline-flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Icon
-          key={i}
-          as={Star}
-          size={12}
-          className={cn(
-            i <= rounded ? "fill-brand-gold text-brand-gold" : "fill-brand-paper text-brand-ink/20"
-          )}
-        />
-      ))}
-    </span>
-  );
-}
 
 type ListingCardProps = {
   listing: Listing;
@@ -62,85 +42,53 @@ export function ListingCard({ listing, active, currency, onClick }: ListingCardP
         }
       }}
       className={cn(
-        "overflow-hidden rounded-(--radius-card) border bg-brand-paper text-brand-ink shadow-subtle transition duration-200",
-        "cursor-pointer hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-emerald",
-        active ? "border-brand-emerald ring-2 ring-brand-emerald/30" : "border-brand-ink/10",
+        "overflow-hidden rounded-[43px] border bg-[#fcfdff] text-brand-ink shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition duration-200",
+        "cursor-pointer hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39d3c0]",
+        active ? "border-[#39d3c0] ring-2 ring-[#39d3c0]/40" : "border-transparent",
         sold && "opacity-70"
       )}
     >
-      <div className="relative h-44 overflow-hidden bg-brand-paper sm:h-48">
+      {/* Square image */}
+      <div className="relative aspect-square overflow-hidden rounded-[37px] bg-brand-paper">
         <img
           src={listing.image}
           alt={listing.title}
           className={cn(
-            "h-full w-full object-cover transition duration-300 group-hover:scale-105",
+            "h-full w-full object-cover transition duration-300 hover:scale-105",
             sold && "grayscale"
           )}
         />
-        <div className="absolute left-3 top-3 flex flex-wrap gap-2">
+        {/* Status badge top-left */}
+        <div className="absolute left-3 top-3">
           <Badge variant={status.variant} className={status.className}>
             {status.label}
           </Badge>
         </div>
+        {/* Savings badge top-right */}
         {!sold && (
-          <div className="absolute right-3 top-3 rounded-(--radius-btn) border border-brand-ink/10 bg-brand-paper px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-ink">
+          <div className="absolute right-3 top-3 rounded-lg border border-brand-ink/10 bg-brand-paper px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.06em] text-brand-ink">
             {listing.sdSavings}% vs SD
           </div>
         )}
+        {/* Price overlay on bottom */}
+        <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent px-4 pb-4 pt-10">
+          <p className="font-ibrand text-[1.1rem] leading-tight text-white">{primaryPrice}</p>
+          <p className="font-ewangi text-[11px] uppercase tracking-[0.12em] text-white/70">{secondaryPrice}</p>
+        </div>
       </div>
 
-      <div className="space-y-3 p-4">
-        <div>
-          <p className="font-ibrand text-title text-brand-ink">{primaryPrice}</p>
-          <p className="font-ewangi text-label font-semibold uppercase tracking-[0.14em] text-brand-emerald">
-            {secondaryPrice}
-          </p>
-        </div>
-
-        <div>
-          <h3 className="font-ibrand text-subtitle text-brand-ink">{listing.title}</h3>
-          <p className="mt-1 flex items-start gap-1.5 font-body text-body text-brand-muted">
-            <Icon as={MapPin} size={14} className="mt-0.5 shrink-0 text-brand-emerald" />
-            <span>
-              {listing.zone} · {listing.borderMiles}mi from the border
-            </span>
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-4 font-ewangi text-label font-semibold uppercase text-brand-ink">
-          <span className="inline-flex items-center gap-1.5">
-            <Icon as={Bed} size={14} className="text-brand-pine" />
-            {listing.beds}
+      {/* Compact info row below image */}
+      <div className="px-4 py-3">
+        <h3 className="truncate font-ibrand text-[0.95rem] text-brand-ink">{listing.title}</h3>
+        <p className="mt-1 flex items-center gap-1 font-body text-[12px] text-brand-muted">
+          <Icon as={MapPin} size={12} className="shrink-0 text-brand-emerald" />
+          <span className="truncate">{listing.zone}</span>
+        </p>
+        <div className="mt-2 flex items-center gap-1">
+          <Icon as={Star} size={11} className="fill-brand-gold text-brand-gold" />
+          <span className="font-body text-[11px] text-brand-muted">
+            {listing.rating} · {listing.beds}bd {listing.baths}ba · {listing.sqft} m²
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Icon as={Bath} size={14} className="text-brand-pine" />
-            {listing.baths}
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Icon as={LayoutGrid} size={14} className="text-brand-pine" />
-            {listing.sqft} m²
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Stars rating={listing.rating} />
-          <span className="font-body text-label text-brand-muted">
-            {listing.rating} · {listing.reviews} reviews
-          </span>
-        </div>
-
-        <div className="border-t border-brand-ink/10 pt-3">
-          {sold ? (
-            <p className="py-2 text-center text-sm text-brand-muted">Sold</p>
-          ) : (
-            <Button
-              variant="default"
-              className="w-full"
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            >
-              View project
-            </Button>
-          )}
         </div>
       </div>
     </article>

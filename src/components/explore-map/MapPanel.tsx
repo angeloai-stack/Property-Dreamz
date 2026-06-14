@@ -1,128 +1,59 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
-import { Icon } from "@/components/ui/Icon";
-import type { Currency, Listing, Pin } from "@/app/explore-map/data";
-import { formatUSD } from "@/app/explore-map/utils";
 import { cn } from "@/lib/utils";
 
+const STATE_EMBED_URLS: Record<string, string> = {
+  All: "https://maps.google.com/maps?q=Mexico&z=5&ie=UTF8&iwloc=&output=embed",
+  "Baja California":
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3526284.407177217!2d-117.97157442791178!3d30.332838154445874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d7700ca877ddd3%3A0xfca4fd9f0318de8e!2sBaja%20California!5e0!3m2!1ses-419!2smx!4v1781407328402!5m2!1ses-419!2smx",
+  "Baja California Sur":
+    "https://maps.google.com/maps?q=Baja+California+Sur,Mexico&z=7&ie=UTF8&iwloc=&output=embed",
+  Nayarit:
+    "https://maps.google.com/maps?q=Nayarit,Mexico&z=8&ie=UTF8&iwloc=&output=embed",
+  "Quintana Roo":
+    "https://maps.google.com/maps?q=Quintana+Roo,Mexico&z=8&ie=UTF8&iwloc=&output=embed",
+  Jalisco:
+    "https://maps.google.com/maps?q=Jalisco,Mexico&z=8&ie=UTF8&iwloc=&output=embed",
+  "Yucatán":
+    "https://maps.google.com/maps?q=Yucatan,Mexico&z=8&ie=UTF8&iwloc=&output=embed",
+  Oaxaca:
+    "https://maps.google.com/maps?q=Oaxaca,Mexico&z=8&ie=UTF8&iwloc=&output=embed",
+  Sonora:
+    "https://maps.google.com/maps?q=Sonora,Mexico&z=7&ie=UTF8&iwloc=&output=embed",
+};
+
 type MapPanelProps = {
-  pins: readonly Pin[];
-  listings: readonly Listing[];
-  activePin: number | null;
-  onPinClick: (id: number) => void;
-  filtered: readonly Listing[];
-  currency: Currency;
+  selectedState: string;
+  filteredCount: number;
   className?: string;
 };
 
-export function MapPanel({
-  pins,
-  listings,
-  activePin,
-  onPinClick,
-  filtered,
-  currency,
-  className,
-}: MapPanelProps) {
-  const visibleIds = new Set(filtered.map((l) => l.id));
+export function MapPanel({ selectedState, filteredCount, className }: MapPanelProps) {
+  const src = STATE_EMBED_URLS[selectedState] ?? STATE_EMBED_URLS.All;
+  const label = selectedState === "All" ? "Mexico" : selectedState;
 
   return (
     <div
       className={cn(
-        "relative h-full min-h-55 w-full overflow-hidden bg-[#D6E8C8] sm:min-h-70 lg:min-h-0",
+        "relative h-full min-h-55 w-full overflow-hidden rounded-2xl lg:rounded-none sm:min-h-70 lg:min-h-0",
         className
       )}
     >
-      <svg
-        viewBox="0 0 100 100"
+      <iframe
+        src={src}
+        width="100%"
+        height="100%"
+        style={{ border: 0, display: "block" }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Mexico real estate map"
         className="absolute inset-0 h-full w-full"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <rect width="100" height="100" fill="#D6E8C8" />
-        <path d="M0,40 Q10,35 15,50 Q12,70 0,80 Z" fill="#B8D4E8" opacity="0.6" />
-        <path d="M100,30 Q90,40 85,60 Q88,80 100,85 Z" fill="#B8D4E8" opacity="0.6" />
-        <path
-          d="M15,10 Q30,8 50,12 Q70,16 85,10 Q90,20 88,35 Q82,55 75,70 Q65,82 55,88 Q45,90 35,82 Q25,72 20,60 Q12,45 15,30 Z"
-          fill="#C8DEB8"
-        />
-        {[20, 40, 60, 80].map((v) => (
-          <g key={v}>
-            <line x1="0" y1={v} x2="100" y2={v} stroke="#B5C9A8" strokeWidth="0.4" />
-            <line x1={v} y1="0" x2={v} y2="100" stroke="#B5C9A8" strokeWidth="0.4" />
-          </g>
-        ))}
-        <path
-          d="M14,28 Q13,40 12,55 Q11,68 13,78"
-          stroke="#A8C498"
-          strokeWidth="1.5"
-          fill="none"
-        />
-      </svg>
+      />
 
-      <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-(--radius-input) border border-brand-ink/10 bg-brand-paper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-ink shadow-subtle">
-        <span className="text-brand-emerald">●</span>
-        Mexico · {filtered.length} projects
-      </div>
-
-      {pins.map((pin) => {
-        const listing = listings.find((l) => l.id === pin.id);
-        if (!listing) return null;
-
-        const isActive = activePin === pin.id;
-        const isVisible = visibleIds.has(pin.id);
-        const label =
-          currency === "USD"
-            ? formatUSD(listing.priceUSD)
-            : `$${(listing.priceMXN / 1_000_000).toFixed(1)}M`;
-
-        return (
-          <button
-            key={pin.id}
-            type="button"
-            aria-label={`${listing.title}, ${label}`}
-            aria-pressed={isActive}
-            onClick={() => onPinClick(pin.id)}
-            className={cn(
-              "absolute z-1 -translate-x-1/2 -translate-y-full transition duration-200",
-              isVisible ? "opacity-100" : "opacity-25",
-              isActive && "z-10"
-            )}
-            style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-          >
-            <span
-              className={cn(
-                "block whitespace-nowrap rounded-(--radius-btn) border border-brand-ink px-2 py-1 text-[11px] font-bold transition duration-200",
-                isActive
-                  ? "scale-110 bg-brand-ink text-brand-paper shadow-subtle"
-                  : "bg-brand-paper text-brand-ink"
-              )}
-            >
-              {label}
-            </span>
-            <span className="mx-auto block h-1.5 w-0.5 bg-brand-ink" />
-            <span
-              className={cn(
-                "mx-auto block h-1.5 w-1.5 rounded-full",
-                isActive ? "border-[1.5px] border-brand-ink bg-brand-gold" : "bg-brand-ink"
-              )}
-            />
-          </button>
-        );
-      })}
-
-      <div className="absolute bottom-4 right-3 z-10 hidden flex-col gap-1 sm:flex">
-        {[Plus, Minus].map((icon, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={i === 0 ? "Zoom in" : "Zoom out"}
-            className="flex h-8 w-8 items-center justify-center rounded-(--radius-card) border border-brand-ink/10 bg-brand-paper text-brand-ink shadow-subtle transition hover:bg-brand-paper/90"
-          >
-            <Icon as={icon} size={16} />
-          </button>
-        ))}
+      <div className="pointer-events-none absolute left-3 top-3 z-10 flex items-center gap-2 rounded-lg border border-white/10 bg-[#1e1e1e]/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/80 shadow-lg backdrop-blur-sm">
+        <span className="text-[#39d3c0]">●</span>
+        {label} · {filteredCount} projects
       </div>
     </div>
   );

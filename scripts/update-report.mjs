@@ -46,7 +46,7 @@ process.stdin.on('end', () => {
   <div class="section" style="margin-top:32px;">
     <div class="section-label">Changelog automático</div>
     <h2>Archivos Modificados Recientemente</h2>
-    <p class="muted">Esta tabla se actualiza automáticamente cada vez que Claude edita un archivo fuente del proyecto.</p>
+    <p class="muted">Esta tabla se actualiza automáticamente cada vez que se edita un archivo fuente del proyecto.</p>
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody>${MARKER}${ROW}

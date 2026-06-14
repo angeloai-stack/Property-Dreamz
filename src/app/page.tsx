@@ -92,8 +92,8 @@ export default function Home() {
         <FeatureCards />
         <TopDevelopers />
         <BuyersGuideSteps />
-        <CampaignForm />
         <CertifiedBanner />
+        <CampaignForm />
       </main>
     </>
   );

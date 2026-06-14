@@ -1,112 +1,80 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Calendar, Heart, MessageCircle, Search } from "lucide-react";
+import { Heart, Home, MapPin, MessageCircle } from "lucide-react";
 import { CmreBadge } from "@/components/shared/CmreBadge";
-import { Icon } from "@/components/ui/Icon";
-import { cn } from "@/lib/utils";
 
 const heroImage =
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80";
 
-const quickActions = [
-  { label: "Search", href: "/explore-map", icon: Search },
-  { label: "Saved", href: "/saved", icon: Heart },
-  { label: "Contact", href: "/contact", icon: MessageCircle },
-  { label: "Schedule", href: "/contact", icon: Calendar },
-] as const;
+const iconRail = [
+  { icon: Home, label: "Home", href: "/" },
+  { icon: MapPin, label: "Explore map", href: "/explore-map" },
+  { icon: Heart, label: "Saved", href: "/saved" },
+  { icon: MessageCircle, label: "Contact", href: "/contact" },
+];
 
 export function HeroSection() {
-  const router = useRouter();
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Empty query navigates to the map without a filter rather than blocking submission
-    const params = query.trim() ? `?q=${encodeURIComponent(query.trim())}` : "";
-    router.push(`/explore-map${params}`);
-  };
-
   return (
-    <section className="relative min-h-[min(92vh,820px)] overflow-hidden">
-      <img
+    <section className="relative overflow-hidden bg-[#eaedf0] min-h-[min(88vh,820px)]">
+      {/* Full-bleed hero image */}
+      <Image
         src={heroImage}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
-        aria-hidden="true"
+        alt="Modern luxury residence in Mexico"
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
       />
-      {/* Lighter mid-section keeps the headline readable without fully obscuring the sky */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/25 via-black/10 to-black/35" />
 
-      <div className="absolute bottom-6 right-4 z-10 hidden sm:block">
-        <CmreBadge variant="light" />
-      </div>
 
-      {/* Vertical action rail only appears on md+ where there's room beside the search bar */}
+      {/* Left icon rail — matches Figma sidebar vectors at x≈20, y=199/308/412/516 */}
       <aside
-        aria-label="Quick actions"
-        className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-2 rounded-2xl border border-white/25 bg-white/15 p-2 backdrop-blur-md md:left-5 md:flex lg:left-8"
+        aria-label="Quick navigation"
+        className="absolute left-5 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-7 lg:flex"
       >
-        {quickActions.map(({ label, href, icon }) => (
+        {iconRail.map(({ icon: Icon, label, href }) => (
           <Link
             key={label}
             href={href}
             aria-label={label}
-            className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition hover:bg-white/20"
+            className="flex h-7 w-7 items-center justify-center text-white/80 transition hover:text-white"
           >
-            <Icon as={icon} size={20} color="currentColor" strokeWidth={1.8} />
+            <Icon size={17} strokeWidth={1.5} />
           </Link>
         ))}
       </aside>
 
-      <div className="relative z-10 flex min-h-[min(92vh,820px)] flex-col justify-center px-4 pb-16 pt-28 sm:px-6 lg:px-10">
-        <div className="mx-auto w-full max-w-4xl space-y-8 text-center md:text-left">
-          <h1 className="font-ibrand text-[clamp(2.25rem,6vw,2.875rem)] leading-[1.05] tracking-[-0.02em]">
-            <span className="block font-normal text-white drop-shadow-sm">Find your</span>
-            <span className="block font-bold text-brand-ink">Piece of Mexico</span>
-          </h1>
-
-          <form
-            onSubmit={handleSearch}
-            role="search"
-            className="mx-auto flex max-w-3xl items-center gap-3 rounded-2xl border border-white/30 bg-white/20 px-4 py-3 backdrop-blur-md sm:px-5 sm:py-4 md:mx-0"
-          >
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Tijuana, Rosarito, Pto. Nuevo..."
-              aria-label="Search locations"
-              className="min-w-0 flex-1 bg-transparent font-body text-body text-white outline-none placeholder:text-white/75"
-            />
-            <button
-              type="submit"
-              aria-label="Search"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/35 bg-white/10 text-white transition hover:bg-white/20"
-            >
-              <Icon as={Search} size={22} color="currentColor" strokeWidth={1.8} />
-            </button>
-          </form>
-
-          {/* Mobile fallback row of action buttons replaces the desktop aside rail */}
-          <div className="flex justify-center gap-2 md:hidden">
-            {quickActions.map(({ label, href, icon }) => (
-              <Link
-                key={label}
-                href={href}
-                aria-label={label}
-                className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-md"
-                )}
-              >
-                <Icon as={icon} size={18} color="currentColor" strokeWidth={1.8} />
-              </Link>
-            ))}
-          </div>
-        </div>
+      {/* Headline — Figma: Ewangi 120px, fill=#eaedf0, x=43, y=192 */}
+      <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col justify-center px-10 pb-28 pt-16 lg:px-20">
+        <h1 className="font-ewangi text-[clamp(3.25rem,9vw,7.5rem)] leading-[0.88] tracking-tight text-[#eaedf0]">
+          Find your
+          <br />
+          Piece of Mexico
+        </h1>
       </div>
+
+      {/* Location badge — Figma: Group 23, y=556, glass pill r=74, Ewangi 34px white */}
+      <div className="absolute bottom-16 left-10 z-10 lg:left-20">
+        <Link
+          href="/explore-map"
+          className="flex items-center gap-3 rounded-full bg-[rgba(217,217,217,0.21)] px-6 py-3 backdrop-blur-sm transition hover:bg-[rgba(217,217,217,0.35)]"
+        >
+          <MapPin className="h-5 w-5 shrink-0 text-white" strokeWidth={1.5} />
+          <span className="font-ewangi text-[clamp(1rem,2.2vw,1.4rem)] text-white">
+            Tijuana, Rosarito, Pto. Nuevo
+          </span>
+        </Link>
+      </div>
+
+      {/* CMRE badge — Figma: CMRE Logo-02 1 at x=1194, y=779 (bottom-right) */}
+      <div className="absolute bottom-14 right-6 z-10">
+        <CmreBadge variant="light" />
+      </div>
+
+      {/* Turquoise bottom strip — Figma: Rectangle 9, y=874, fill=#39d3c0 */}
+      <div className="absolute inset-x-0 bottom-0 h-2 bg-[#39d3c0]" />
     </section>
   );
 }
