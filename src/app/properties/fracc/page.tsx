@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { CertifiedBanner } from "@/components/home/CertifiedBanner";
 
-const IMG_HERO_CARD = "/fracc/hero-card.jpg";
-const IMG_AERIAL    = "/fracc/aerial-map.jpg";
-const IMG_VIENTO    = "/fracc/model-viento.jpg";
-const IMG_CMRE      = "/fracc/cmre-hero.png";
+/* Figma "Fracc 3 Negative" — node 194:2107 */
+const IMG_HERO_BG      = "/fracc/f3n-hero-bg.jpg";
+const IMG_HERO_OVERLAY = "/fracc/f3n-hero-overlay.jpg";
+const IMG_AERIAL_CARD  = "/fracc/f3n-aerial-card.jpg";
+const IMG_CMRE         = "/fracc/f3n-cmre.png";
+const IMG_MODEL        = "/fracc/model-viento.jpg";
+const IMG_LOTS_SHOT    = "/fracc/hero-card.jpg";
 
+/* Shield-checkmark — Figma: stroke #3AD3C1 sw=3 */
 function TrustIcon() {
   return (
     <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true" className="shrink-0">
@@ -22,7 +25,7 @@ function TrustIcon() {
 }
 
 const trustLabels = [
-  "Legal background reviewed",
+  "Legal reviewed",
   "Regulatory compliance",
   "Infrastructure validated",
 ];
@@ -36,327 +39,560 @@ const stats = [
   { value: "100%", label: "Verified" },
 ];
 
-const mapBtns = [
-  { label: "lots",   left: 324, top: 151 },
-  { label: "house",  left: 577, top: 237 },
-  { label: "condos", left: 732, top: 237 },
+const lots = [
+  { id: "12", area: "300 m²" },
+  { id: "13", area: "300 m²" },
+  { id: "14", area: "320 m²" },
+  { id: "15", area: "315 m²" },
+  { id: "16", area: "305 m²" },
 ];
+
+type Tab = "Lots" | "Condos" | "Houses";
 
 const models = [
   {
     name: "VIENTO",
-    image: IMG_VIENTO,
-    body: "1 Bedroom Condo\nTotal Area: 55 m² / 592.015 sqft\n\nSpace Description\n- 1 bedroom\n- 1 full bathroom\n- Open-concept living and dining area\n- Ocean-view terrace",
+    sqm: "55 m²",
+    beds: "1 Bedroom",
+    baths: "1 Bathroom",
+    image: IMG_MODEL,
   },
   {
     name: "TIERRA",
-    image: IMG_VIENTO,
-    body: "3 Bedroom House\nTotal Area: 120 m² / 1,292 sqft\n\nSpace Description\n- 3 bedrooms\n- 2 full bathrooms\n- Spacious open terrace\n- Private garden & parking",
+    sqm: "120 m²",
+    beds: "3 Bedrooms",
+    baths: "2 Bathrooms",
+    image: IMG_MODEL,
   },
   {
     name: "MAR",
-    image: IMG_VIENTO,
-    body: "4 Bedroom Villa\nTotal Area: 200 m² / 2,153 sqft\n\nSpace Description\n- 4 bedrooms\n- 3 full bathrooms\n- Private pool\n- Ocean view from every room",
+    sqm: "200 m²",
+    beds: "4 Bedrooms",
+    baths: "3 Bathrooms",
+    image: IMG_MODEL,
   },
 ];
 
 export default function FraccPage() {
-  const [idx, setIdx] = useState(0);
-  const prev = () => setIdx((i) => (i - 1 + models.length) % models.length);
-  const next = () => setIdx((i) => (i + 1) % models.length);
-  const model = models[idx];
+  const [activeTab, setActiveTab] = useState<Tab>("Lots");
+  const [activeLot, setActiveLot] = useState("12");
+  const [modelIdx, setModelIdx] = useState(0);
+
+  const prev = () => setModelIdx((i) => (i - 1 + models.length) % models.length);
+  const next = () => setModelIdx((i) => (i + 1) % models.length);
+  const model = models[modelIdx];
 
   return (
-    <main>
+    <main className="bg-brand-ink">
 
       {/* ══════════════════════════════════════════════════════
-          HERO
-          Mobile:  screenshot full-width → text block below
-          Desktop: 983px fixed, all elements absolute
+          HERO — Figma: y=117-1005, 888px
+          Photo bg + secondary overlay + left gradient + text
+          Stats bar overlaid at y=726 (transparent)
           ══════════════════════════════════════════════════════ */}
-      <section className="bg-white">
 
-        {/* ── MOBILE HERO ── */}
-        <div className="lg:hidden">
-          <div className="h-56 overflow-hidden sm:h-72">
-            <img src={IMG_HERO_CARD} alt="Del Mar development" className="h-full w-full object-cover" />
-          </div>
-          <div className="px-6 py-8">
-            <span className="font-ewangi text-[2rem] font-bold text-brand-pine">Del Mar</span>
-            <h1 className="mt-3 font-ewangi text-[1.75rem] leading-snug text-black">
-              Home, condos and lots.
-            </h1>
-            <div className="mt-4 flex flex-col gap-2.5">
-              {trustLabels.map((label) => (
-                <div key={label} className="flex items-center gap-2">
-                  <TrustIcon />
-                  <span className="font-ewangi text-[0.95rem] text-[#1e1e1e]">{label}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-5 flex items-center gap-3">
-              <div className="rounded-full bg-[#E1BB35]" style={{ width: 36, height: 36 }} />
-              <span className="font-ewangi text-[1.5rem] text-black">Available</span>
-            </div>
-            <img src={IMG_CMRE} alt="CMRE Certified" className="mt-5 h-10 object-contain" />
-          </div>
+      {/* ── MOBILE HERO ── */}
+      <div className="lg:hidden">
+        <div className="relative h-64 overflow-hidden">
+          <img src={IMG_HERO_BG} alt="" aria-hidden className="h-full w-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }} />
         </div>
-
-        {/* ── DESKTOP HERO (≥ lg) ── */}
-        <div className="relative hidden lg:block" style={{ height: 983 }}>
-
-          {/* Screenshot card — Figma: x=248 y=224 1197×727 */}
-          <img
-            src={IMG_HERO_CARD}
-            alt="Del Mar development view"
-            className="absolute"
-            style={{ left: 248, top: 224, width: 1197, height: 727, objectFit: "cover" }}
-          />
-
-          {/* Del Mar logo — Figma: x=129 y=182 */}
-          <div className="absolute z-10" style={{ left: 129, top: 182 }}>
-            <span className="font-ewangi text-[2.6rem] font-bold leading-none tracking-[0.06em] text-brand-pine">
-              Del Mar
-            </span>
-          </div>
-
-          {/* Title — Figma: Ewangi 36px black x=124 y=609 */}
-          <h1 className="absolute z-10 font-ewangi text-[2.25rem] text-black" style={{ left: 124, top: 609 }}>
-            Home, condos and lots.
+        <div className="px-6 py-8">
+          <span className="font-ewangi text-[1.4rem] font-bold text-white">Del Mar</span>
+          <h1 className="mt-3 font-ewangi text-[2.2rem] leading-tight text-white">
+            Build with<br />confidence.
           </h1>
-
-          {/* Trust badges — Figma: horizontal row y=729 */}
-          <div className="absolute z-10 flex items-center gap-8" style={{ left: 124, top: 729 }}>
-            {trustLabels.map((label) => (
-              <div key={label} className="flex items-center gap-2">
+          <p className="mt-3 font-ewangi text-[1rem] text-white/85">
+            A verified and secure development for your next project.
+          </p>
+          <div className="mt-4 flex flex-col gap-2">
+            {trustLabels.map((l) => (
+              <div key={l} className="flex items-center gap-2">
                 <TrustIcon />
-                <span className="font-ewangi text-[1rem] text-[#1e1e1e]">{label}</span>
+                <span className="font-ewangi text-[0.9rem] text-white">{l}</span>
               </div>
             ))}
           </div>
-
-          {/* Gold badge + Available — Figma: x=124 y=827 */}
-          <div className="absolute z-10 flex items-center gap-4" style={{ left: 124, top: 827 }}>
-            <div className="rounded-full bg-[#E1BB35]" style={{ width: 43, height: 43 }} />
-            <span className="font-ewangi text-[2.25rem] text-black">Available</span>
+          <img src={IMG_CMRE} alt="CMRE Certified" className="mt-5 h-9 object-contain" />
+          <div className="mt-6 grid grid-cols-3 gap-y-4">
+            {stats.map(({ value, label }) => (
+              <div key={label} className="flex flex-col items-center">
+                <span className="font-ewangi text-[1.5rem] leading-none text-white">{value}</span>
+                <span className="font-ewangi text-[0.8rem] text-white/70">{label}</span>
+              </div>
+            ))}
           </div>
+        </div>
+      </div>
 
-          {/* CMRE — Figma: x=1180 y=851 171×54 */}
-          <img
-            src={IMG_CMRE}
-            alt="CMRE Certified Mexico Real Estate"
-            className="absolute"
-            style={{ left: 1180, top: 851, width: 171, height: 54, objectFit: "contain" }}
-          />
+      {/* ── DESKTOP HERO (≥ lg) — height 888px ── */}
+      <section className="relative hidden overflow-hidden lg:block" style={{ height: 888 }}>
+
+        {/* Hero photo — Figma: 1440×888 full-bleed */}
+        <img
+          src={IMG_HERO_BG}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        {/* Secondary screenshot overlay — Figma: x=1 y=227 1439×610 */}
+        <img
+          src={IMG_HERO_OVERLAY}
+          alt=""
+          aria-hidden
+          className="absolute"
+          style={{ left: 1, top: 227, width: 1439, height: 610, objectFit: "cover" }}
+        />
+
+        {/* Left gradient — Figma: x=0 w=1350 #1E1E1E@22% → transparent */}
+        <div
+          className="absolute inset-y-0 left-0 z-[1]"
+          style={{ width: 1350, background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }}
+        />
+
+        {/* Del Mar logo — Figma: x=129 y=65 white */}
+        <div className="absolute z-10" style={{ left: 129, top: 65 }}>
+          <span className="font-ewangi text-[2.6rem] font-bold leading-none tracking-[0.06em] text-white">
+            Del Mar
+          </span>
+        </div>
+
+        {/* "Build with confidence." — Figma: 96px Ewangi white x=118 y=154 w=482 */}
+        <h1
+          className="absolute z-10 font-ewangi text-[6rem] leading-[1.255] text-white"
+          style={{ left: 118, top: 154, width: 482 }}
+        >
+          Build with confidence.
+        </h1>
+
+        {/* Subtitle — Figma: 20px Ewangi white x=118 y=413 w=313 */}
+        <p
+          className="absolute z-10 font-ewangi text-[1.25rem] leading-[1.207] text-white"
+          style={{ left: 118, top: 413, width: 313 }}
+        >
+          A verified and secure development for your next project.
+        </p>
+
+        {/* Trust badges — Figma: x=118 y=519, icons at x=139/258/412 */}
+        <div className="absolute z-10 flex items-center gap-8" style={{ left: 118, top: 519 }}>
+          {trustLabels.map((label) => (
+            <div key={label} className="flex items-center gap-2">
+              <TrustIcon />
+              <span className="font-ewangi text-[1rem] text-white">{label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CMRE — Figma: x=120 y=639 204×48 */}
+        <img
+          src={IMG_CMRE}
+          alt="CMRE Certified Mexico Real Estate"
+          className="absolute z-10"
+          style={{ left: 120, top: 639, width: 204, height: 48, objectFit: "contain" }}
+        />
+
+        {/* 360° view button — Figma: x=1241 y=641 */}
+        <div className="absolute z-10 flex flex-col items-center leading-none" style={{ left: 1241, top: 641 }}>
+          <span className="font-ewangi text-[1.25rem] text-white">360°</span>
+          <span className="font-ewangi text-[0.9rem] text-white/80">view</span>
+        </div>
+
+        {/* Stats bar — Figma: x=118 y=726 1187×120 transparent bg r=18 */}
+        <div
+          className="absolute z-10 flex items-center"
+          style={{ left: 118, top: 726, width: 1187, height: 120, borderRadius: 18 }}
+        >
+          {stats.map(({ value, label }) => (
+            <div key={label} className="flex flex-1 flex-col items-center">
+              <span className="font-ewangi text-[2.25rem] leading-none text-white">{value}</span>
+              <span className="font-ewangi text-[1.25rem] leading-none text-white">{label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          PROPERTY TYPE SELECTOR
-          Mobile:  map image → buttons centered → stats grid
-          Desktop: 851px fixed, all elements absolute
+          LOT EXPLORER — Figma: card x=62 y=1044 (39px below hero)
+          1317×537 r=27 aerial photo bg | left dark panel + tabs
           ══════════════════════════════════════════════════════ */}
-      <section className="bg-white">
 
-        {/* ── MOBILE SELECTOR ── */}
-        <div className="lg:hidden">
-          {/* Map with buttons overlaid — keep relative aspect box */}
-          <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-            <img src={IMG_AERIAL} alt="Aerial view" className="h-full w-full object-cover" />
-            {/* Buttons positioned by percentage so they scale with the image */}
-            {[
-              { label: "lots",   left: "22%", top: "18%"  },
-              { label: "house",  left: "39%", top: "28%"  },
-              { label: "condos", left: "50%", top: "28%"  },
-            ].map(({ label, left, top }) => (
+      {/* ── MOBILE LOT EXPLORER ── */}
+      <div className="px-4 py-8 lg:hidden">
+        {/* Tabs */}
+        <div className="mb-4 flex gap-2">
+          {(["Lots", "Condos", "Houses"] as Tab[]).map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={cn(
+                "rounded px-4 py-1.5 font-ewangi text-[0.9rem] transition",
+                activeTab === tab ? "bg-[#3AD3C1] text-black" : "bg-[#EAEDF0] text-black"
+              )}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Map image */}
+        <div className="relative overflow-hidden rounded-[16px]" style={{ height: 220 }}>
+          <img src={IMG_AERIAL_CARD} alt="Development aerial view" className="h-full w-full object-cover" />
+        </div>
+
+        {/* Lot list */}
+        <div className="mt-4">
+          <p className="mb-2 font-ewangi text-[0.9rem] text-white/60">Select a lot to see details</p>
+          {lots.map((lot, i) => (
+            <button
+              key={lot.id}
+              type="button"
+              onClick={() => setActiveLot(lot.id)}
+              className={cn(
+                "flex w-full items-center justify-between px-3 py-2.5 font-ewangi text-[1rem] transition",
+                activeLot === lot.id ? "rounded bg-[#3AD3C1] text-black" : "text-white",
+                i > 0 && activeLot !== lot.id && "border-t border-white/15"
+              )}
+            >
+              <span>Lot {lot.id}</span>
+              <span>{lot.area}</span>
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          className="mt-4 rounded border border-white px-6 py-2.5 font-ewangi text-[1rem] text-white transition hover:bg-white/10"
+        >
+          View all lots
+        </button>
+      </div>
+
+      {/* ── DESKTOP LOT EXPLORER (≥ lg) ── */}
+      <div className="hidden lg:block" style={{ paddingTop: 39, paddingLeft: 62, paddingRight: 61 }}>
+        {/* Card — Figma: 1317×537 r=27 #D9D9D9 clipping mask */}
+        <div
+          className="relative overflow-hidden"
+          style={{ height: 537, borderRadius: 27, background: "#D9D9D9" }}
+        >
+          {/* Aerial photo — Figma: x=40 y=-27 1317×878 (overflows top) */}
+          <img
+            src={IMG_AERIAL_CARD}
+            alt="Development aerial"
+            className="absolute"
+            style={{ left: 40, top: -27, width: 1317, height: 878, objectFit: "cover" }}
+          />
+
+          {/* Left panel dark overlay — Figma: x=0 y=0 482×537 #1E1E1E@20% r=27 */}
+          <div
+            className="absolute inset-y-0 left-0 z-10"
+            style={{ width: 482, background: "rgba(30,30,30,0.72)", borderRadius: "27px 0 0 27px" }}
+          />
+
+          {/* "Explore the development" — Figma: x=41 y=39 Ewangi 20px white */}
+          <p
+            className="absolute z-20 font-ewangi text-[1.25rem] text-white"
+            style={{ left: 41, top: 39 }}
+          >
+            Explore the development
+          </p>
+
+          {/* Tabs — Figma: y=83 Lots/Condos/Houses 72×28 r=4 */}
+          <div className="absolute z-20 flex gap-3" style={{ left: 41, top: 83 }}>
+            {(["Lots", "Condos", "Houses"] as Tab[]).map((tab) => (
               <button
-                key={label}
+                key={tab}
                 type="button"
-                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#3AD3C1] transition hover:scale-105"
-                style={{ left, top, width: 56, height: 56 }}
+                onClick={() => setActiveTab(tab)}
+                className="flex items-center justify-center font-ewangi text-[1rem] text-black transition"
+                style={{
+                  width: 72, height: 28, borderRadius: 4,
+                  background: activeTab === tab ? "#3AD3C1" : "#EAEDF0",
+                }}
               >
-                <span className="font-ewangi text-[0.85rem] text-white">{label}</span>
+                {tab}
               </button>
             ))}
           </div>
-          {/* Stats — 3-col grid */}
-          <div className="grid grid-cols-3 bg-black">
-            {stats.map(({ value, label }) => (
-              <div key={label} className="flex flex-col items-center justify-center py-4">
-                <span className="font-ewangi text-[1.5rem] leading-none text-white">{value}</span>
-                <span className="font-ewangi text-[0.85rem] leading-none text-white/70">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* ── DESKTOP SELECTOR (≥ lg) ── */}
-        <div className="relative hidden overflow-hidden bg-white lg:block" style={{ height: 851 }}>
-          {/* Aerial map bg — Figma: 1451×810 x=-4 y=-15 */}
-          <img
-            src={IMG_AERIAL}
-            alt="Aerial view of Del Mar"
-            className="absolute"
-            style={{ left: -4, top: -15, width: 1451, height: 810, objectFit: "cover" }}
-          />
+          {/* "Select a lot..." — Figma: x=41 y=155 Ewangi 16px white */}
+          <p
+            className="absolute z-20 font-ewangi text-[1rem] text-white"
+            style={{ left: 41, top: 155 }}
+          >
+            Select a lot to see details
+          </p>
 
-          {/* Circular property type buttons — Figma: 71×71 #3AD3C1 */}
-          {mapBtns.map(({ label, left, top }) => (
+          {/* Lot rows — Figma: active row teal 322×40 r=4 */}
+          {lots.map((lot, i) => (
             <button
-              key={label}
+              key={lot.id}
               type="button"
-              className="absolute flex items-center justify-center rounded-full bg-[#3AD3C1] transition hover:scale-105"
-              style={{ left, top, width: 71, height: 71 }}
+              onClick={() => setActiveLot(lot.id)}
+              className={cn(
+                "absolute z-20 flex w-[322px] items-center justify-between px-3 font-ewangi text-[1rem] transition",
+                activeLot === lot.id ? "text-black" : "text-white"
+              )}
+              style={{
+                left: 41,
+                top: 193 + i * 49,
+                height: 40,
+                borderRadius: 4,
+                background: activeLot === lot.id ? "#3AD3C1" : "transparent",
+              }}
             >
-              <span className="font-ewangi text-[1rem] text-white">{label}</span>
+              <span>Lot {lot.id}</span>
+              <span>{lot.area}</span>
             </button>
           ))}
 
-          {/* Stats bar — Figma: #000 1187×99 x=127 y=611 */}
-          <div
-            className="absolute flex items-stretch"
-            style={{ left: 127, top: 611, width: 1187, height: 99, background: "#000000" }}
+          {/* Divider lines between non-active rows */}
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="absolute z-20 bg-white/30"
+              style={{ left: 41, top: 193 + i * 49, width: 322, height: 1 }}
+            />
+          ))}
+
+          {/* "View all lots" button — Figma: x=41 y=433 184×44 border white r=5 */}
+          <button
+            type="button"
+            className="absolute z-20 flex items-center justify-center font-ewangi text-[1.25rem] text-white transition hover:bg-white/10"
+            style={{ left: 41, top: 433, width: 184, height: 44, borderRadius: 5, border: "1px solid #FFFFFF" }}
           >
-            {stats.map(({ value, label }) => (
-              <div key={label} className="flex flex-1 flex-col items-center justify-center">
-                <span className="font-ewangi text-[2.25rem] leading-none text-white">{value}</span>
-                <span className="font-ewangi text-[1.25rem] leading-none text-white">{label}</span>
+            View all lots
+          </button>
+
+          {/* Lot popup (when lot selected) — Figma: x=627 y=137 187×179 #1E1E1E border #3AD3C1 r=9 */}
+          {activeLot && (
+            <div
+              className="absolute z-30"
+              style={{ left: 627, top: 137 }}
+            >
+              {/* Popup body */}
+              <div
+                className="relative px-5 py-4"
+                style={{
+                  width: 187, height: 170,
+                  background: "#1E1E1E",
+                  borderRadius: 9,
+                  border: "2px solid #3AD3C1",
+                }}
+              >
+                <p className="font-ewangi text-[1.25rem] text-white">Lot {activeLot}</p>
+                <div className="mt-2 space-y-1">
+                  <p className="font-ewangi text-[0.9rem] text-white/80">
+                    {lots.find((l) => l.id === activeLot)?.area}
+                  </p>
+                  <p className="font-ewangi text-[0.9rem] text-white/80">Residential</p>
+                  <p className="font-ewangi text-[0.9rem] text-[#3AD3C1]">Available</p>
+                </div>
               </div>
-            ))}
+              {/* Arrow pointer */}
+              <div
+                className="mx-auto"
+                style={{
+                  width: 0, height: 0,
+                  borderLeft: "9px solid transparent",
+                  borderRight: "9px solid transparent",
+                  borderTop: "11px solid #3AD3C1",
+                  marginTop: -1,
+                  marginLeft: 18,
+                }}
+              />
+            </div>
+          )}
+
+          {/* 360° icon — Figma: x=1202 y=454 */}
+          <div
+            className="absolute z-20 flex flex-col items-center leading-none text-white"
+            style={{ left: 1202, top: 454 }}
+          >
+            <span className="font-ewangi text-[1.1rem]">360°</span>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ══════════════════════════════════════════════════════
-          HOUSE MODELS
-          Mobile:  vertical stack
-          Desktop: 620px fixed, all elements absolute
+          HOUSE MODELS — Figma: y=1648-1993, 345px
+          67px gap after lot explorer
+          Photo right (634,0) 730×345 | text left
+          Arrows: EAEDF0 border | spec badges below name
           ══════════════════════════════════════════════════════ */}
-      <section className="bg-brand-ink">
 
-        {/* ── MOBILE MODELS ── */}
-        <div className="px-6 py-10 lg:hidden">
-          {/* Heading + arrows */}
-          <div className="flex items-center justify-between">
-            <h2 className="font-ewangi text-[1.75rem] text-white">House models</h2>
-            <div className="flex gap-2">
-              {[prev, next].map((fn, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={fn}
-                  aria-label={i === 0 ? "Previous" : "Next"}
-                  className="flex items-center justify-center text-brand-pine transition hover:bg-brand-pine hover:text-white"
-                  style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #024139" }}
-                >
-                  {i === 0
-                    ? <ChevronLeft style={{ width: 10, height: 14 }} strokeWidth={3} />
-                    : <ChevronRight style={{ width: 10, height: 14 }} strokeWidth={3} />}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="mt-5 border-t-2 border-white" style={{ width: 200 }} />
-
-          {/* Model name */}
-          <h3 className="mt-3 font-ewangi text-[3rem] text-white">{model.name}</h3>
-
-          {/* Image */}
-          <div className="mt-4 overflow-hidden rounded-[16px]" style={{ height: 220 }}>
-            <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
-          </div>
-
-          {/* Description */}
-          <pre className="mt-4 whitespace-pre-wrap font-ewangi text-[1.1rem] leading-relaxed text-white">
-            {model.body}
-          </pre>
-
-          {/* Dots */}
-          <div className="mt-6 flex gap-4">
-            {models.map((_, i) => (
+      {/* ── MOBILE MODELS ── */}
+      <div className="px-6 py-10 lg:hidden">
+        <div className="flex items-center justify-between">
+          <h2 className="font-ewangi text-[1.75rem] text-white">House models</h2>
+          <div className="flex gap-2">
+            {[prev, next].map((fn, i) => (
               <button
                 key={i}
                 type="button"
-                onClick={() => setIdx(i)}
-                aria-label={`Model ${i + 1}`}
-                className={cn("rounded-full transition-colors", i === idx ? "bg-[#3AD3C1]" : "bg-[#D9D9D9]")}
-                style={{ width: 16, height: 16 }}
-              />
+                onClick={fn}
+                aria-label={i === 0 ? "Previous" : "Next"}
+                className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
+                style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
+              >
+                {i === 0
+                  ? <ChevronLeft style={{ width: 10, height: 14 }} strokeWidth={3} />
+                  : <ChevronRight style={{ width: 10, height: 14 }} strokeWidth={3} />}
+              </button>
             ))}
           </div>
         </div>
-
-        {/* ── DESKTOP MODELS (≥ lg) ── */}
-        <div className="relative hidden lg:block" style={{ height: 620 }}>
-
-          {/* "House models" — Figma: Ewangi 36px white x=126 y=18 */}
-          <h2 className="absolute font-ewangi text-[2.25rem] text-white" style={{ left: 126, top: 18 }}>
-            House models
-          </h2>
-
-          {/* Divider — Figma: 260×0 border-white sw=2 x=126 y=95 */}
-          <div className="absolute border-t-2 border-white" style={{ left: 126, top: 95, width: 260 }} />
-
-          {/* Model name — Figma: Ewangi 64px white x=126 y=107 */}
-          <h3 className="absolute font-ewangi text-[4rem] text-white" style={{ left: 126, top: 107 }}>
-            {model.name}
-          </h3>
-
-          {/* Left arrow — Figma: 43×43 r=13 border #024139 x=477 y=115 */}
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Previous model"
-            className="absolute flex items-center justify-center text-brand-pine transition hover:bg-brand-pine hover:text-white"
-            style={{ left: 477, top: 115, width: 43, height: 43, borderRadius: 13, border: "3px solid #024139" }}
-          >
-            <ChevronLeft style={{ width: 10, height: 15 }} strokeWidth={3} />
-          </button>
-
-          {/* Right arrow — Figma: x=536 y=115 */}
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Next model"
-            className="absolute flex items-center justify-center text-brand-pine transition hover:bg-brand-pine hover:text-white"
-            style={{ left: 536, top: 115, width: 43, height: 43, borderRadius: 13, border: "3px solid #024139" }}
-          >
-            <ChevronRight style={{ width: 10, height: 15 }} strokeWidth={3} />
-          </button>
-
-          {/* Carousel dots — Figma: 20×20 active #3AD3C1 inactive #D9D9D9 gap=43 x=903 */}
+        <h3 className="mt-2 font-ewangi text-[3rem] text-white">{model.name}</h3>
+        <div className="mt-1 flex gap-6">
+          {[model.sqm, model.beds, model.baths].map((s) => (
+            <span key={s} className="font-ewangi text-[1rem] text-white/80">{s}</span>
+          ))}
+        </div>
+        <div className="mt-4 overflow-hidden rounded-[16px]" style={{ height: 220 }}>
+          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
+        </div>
+        <div className="mt-5 flex gap-4">
           {models.map((_, i) => (
             <button
               key={i}
               type="button"
-              onClick={() => setIdx(i)}
-              aria-label={`Model ${i + 1}`}
-              className={cn("absolute rounded-full transition-colors", i === idx ? "bg-[#3AD3C1]" : "bg-[#D9D9D9]")}
-              style={{ left: 903 + i * 43, top: 125, width: 20, height: 20 }}
+              onClick={() => setModelIdx(i)}
+              className={cn("rounded-full transition-colors", i === modelIdx ? "bg-[#3AD3C1]" : "bg-[#D9D9D9]")}
+              style={{ width: 16, height: 16 }}
             />
           ))}
-
-          {/* Product image — Figma: 730×345 r=20 x=599 y=167 */}
-          <div
-            className="absolute overflow-hidden"
-            style={{ left: 599, top: 167, width: 730, height: 345, borderRadius: 20 }}
-          >
-            <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
-          </div>
-
-          {/* Description — Figma: Ewangi 24px white x=124 y=249 364×263 */}
-          <pre
-            className="absolute whitespace-pre-wrap font-ewangi text-[1.5rem] leading-[1.3] text-white"
-            style={{ left: 124, top: 249, width: 364 }}
-          >
-            {model.body}
-          </pre>
         </div>
-      </section>
+      </div>
 
-      <CertifiedBanner />
+      {/* ── DESKTOP MODELS (≥ lg) — height 345px, mt=67px ── */}
+      <div className="relative hidden lg:block" style={{ height: 345, marginTop: 67 }}>
+
+        {/* House photo — Figma: x=634 y=0 730×345 */}
+        <div className="absolute overflow-hidden" style={{ left: 634, top: 0, width: 730, height: 345 }}>
+          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
+        </div>
+
+        {/* "House models" — Figma: x=103 y=9 36px white */}
+        <h2 className="absolute font-ewangi text-[2.25rem] text-white" style={{ left: 103, top: 9 }}>
+          House models
+        </h2>
+
+        {/* "VIENTO" name — Figma: x=103 y=111 64px white */}
+        <h3 className="absolute font-ewangi text-[4rem] leading-none text-white" style={{ left: 103, top: 111 }}>
+          {model.name}
+        </h3>
+
+        {/* Left arrow — Figma: x=417 y=129 43×43 r=13 border #EAEDF0 sw=3 */}
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous model"
+          className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
+          style={{ left: 417, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
+        >
+          <ChevronLeft style={{ width: 10, height: 15 }} strokeWidth={3} />
+        </button>
+
+        {/* Right arrow — Figma: x=476 y=129 */}
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next model"
+          className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
+          style={{ left: 476, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
+        >
+          <ChevronRight style={{ width: 10, height: 15 }} strokeWidth={3} />
+        </button>
+
+        {/* Spec badges — Figma: Ewangi 24px white y=286 x=97/209/368 */}
+        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 97, top: 286 }}>
+          {model.sqm}
+        </span>
+        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 209, top: 286 }}>
+          {model.beds}
+        </span>
+        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 368, top: 286 }}>
+          {model.baths}
+        </span>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════
+          OCEAN VIEW LOTS — Figma: y=2050-2747 (~57px after models)
+          "Ocean View Lots" teal 96px | screenshot right | body text | white CTA
+          ══════════════════════════════════════════════════════ */}
+
+      {/* ── MOBILE OCEAN LOTS ── */}
+      <div className="px-6 pb-12 pt-8 lg:hidden">
+        <h2 className="font-ewangi text-[2.5rem] leading-tight text-[#3AD3C1]">
+          Ocean View<br />Lots
+        </h2>
+        <div className="mt-4 overflow-hidden rounded-[12px]" style={{ height: 220 }}>
+          <img src={IMG_LOTS_SHOT} alt="Ocean view lots" className="h-full w-full object-cover" />
+        </div>
+        <p className="mt-5 font-ewangi text-[1rem] leading-relaxed text-white">
+          Explore premium ocean-view lots for sale, each offering a unique opportunity to build your
+          dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of coastal
+          living, where every sunrise and sunset transforms the horizon into a masterpiece.
+        </p>
+        {/* CTA */}
+        <div className="mt-8 rounded-[10px] bg-white px-6 py-4">
+          <p className="font-ewangi text-[1.25rem] text-[#1e1e1e]">
+            We certify so you can build your future
+          </p>
+        </div>
+      </div>
+
+      {/* ── DESKTOP OCEAN LOTS (≥ lg) — height ~697px, mt=57px ── */}
+      <div className="relative hidden lg:block" style={{ height: 697, marginTop: 57 }}>
+
+        {/* "Ocean View Lots" — Figma: x=111 y=12 432×240 Ewangi 96px #3AD3C1 */}
+        <h2
+          className="absolute font-ewangi text-[6rem] leading-[1.255] text-[#3AD3C1]"
+          style={{ left: 111, top: 12, width: 432 }}
+        >
+          Ocean View Lots
+        </h2>
+
+        {/* Development screenshot — Figma: x=505 y=0 927×563 shadow(-26,24,0,#000@26%) */}
+        <img
+          src={IMG_LOTS_SHOT}
+          alt="Ocean view lots development"
+          className="absolute"
+          style={{
+            left: 505, top: 0, width: 927, height: 563,
+            objectFit: "cover",
+            boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)",
+          }}
+        />
+
+        {/* Body text — Figma: x=122 y=266 598×290 Ewangi 24px white */}
+        <p
+          className="absolute font-ewangi text-[1.5rem] leading-[1.3] text-white"
+          style={{ left: 122, top: 266, width: 598 }}
+        >
+          Explore premium ocean-view lots for sale, each offering a unique opportunity to build
+          your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
+          coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
+          Our selection includes expansive lots with various square footage options to suit your vision.
+        </p>
+
+        {/* White CTA banner — Figma: x=248 y=614 945×83 r=10 fill=#FFFFFF */}
+        <div
+          className="absolute flex items-center bg-white"
+          style={{ left: 248, top: 614, width: 945, height: 83, borderRadius: 10 }}
+        >
+          <p
+            className="font-ewangi text-[3rem] text-[#1e1e1e]"
+            style={{ paddingLeft: 72 }}
+          >
+            We certify so you can build your future
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom padding before footer */}
+      <div style={{ height: 80 }} />
+
     </main>
   );
 }

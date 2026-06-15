@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
@@ -11,12 +11,13 @@ import { cn } from "@/lib/utils";
 type SubItem = { label: string; href: string; tag?: string };
 type NavItem =
   | { label: string; href: string; sub?: never }
-  | { label: string; href?: never; sub: SubItem[] };
+  | { label: string; href: string; sub: SubItem[] };
 
 const navItems: NavItem[] = [
   { label: "Explore map",    href: "/explore-map" },
   {
     label: "Properties",
+    href: "/properties",
     sub: [
       { label: "Del Mar",              href: "/properties/fracc" },
       { label: "Bosque Residencial",   href: "/properties/bosque",  tag: "Soon" },
@@ -26,6 +27,7 @@ const navItems: NavItem[] = [
   { label: "Buyer's guide",  href: "/buyers-guide" },
   { label: "For developers", href: "/for-developers" },
   { label: "The Mission",    href: "/about" },
+  { label: "Saved",          href: "/saved" },
   { label: "Contact",        href: "/contact" },
 ];
 
@@ -39,9 +41,21 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
   const [currency, setCurrency] = useState<Currency>("USD");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className={cn("relative z-50 border-b", dark ? "border-white/10 bg-brand-ink" : "border-brand-ink/10 bg-white")}>
+    <header className={cn(
+      "sticky top-0 z-50 border-b transition-all duration-300",
+      dark
+        ? scrolled ? "border-white/5 bg-brand-ink/80 backdrop-blur-md" : "border-white/10 bg-brand-ink"
+        : scrolled ? "border-brand-ink/5 bg-white/80 backdrop-blur-md"  : "border-brand-ink/10 bg-white"
+    )}>
       <Container className="flex items-center gap-4 py-4 md:py-5">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
@@ -59,10 +73,10 @@ export function Navbar() {
         <nav className={cn("ml-auto hidden items-center gap-5 font-ewangi text-[15px] xl:gap-7 lg:flex", dark ? "text-white" : "text-black")}>
           {navItems.map((item) =>
             item.sub ? (
-              /* Properties dropdown — CSS group-hover, no JS needed on desktop */
+              /* Properties dropdown — CSS group-hover; label is a Link so it's also navigable */
               <div key={item.label} className="group relative">
-                <button
-                  type="button"
+                <Link
+                  href={item.href}
                   className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-[#3AD3C1]" : "hover:text-[#02a592]")}
                   aria-haspopup="true"
                 >
@@ -71,7 +85,7 @@ export function Navbar() {
                     className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180"
                     strokeWidth={2.5}
                   />
-                </button>
+                </Link>
 
                 {/* Dropdown panel */}
                 <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
@@ -167,18 +181,27 @@ export function Navbar() {
             <div className="space-y-1 px-4 py-4">
               {navItems.map((item) =>
                 item.sub ? (
-                  /* Properties accordion in mobile */
+                  /* Properties accordion in mobile — label navigates, chevron toggles */
                   <div key={item.label}>
-                    <button
-                      type="button"
-                      onClick={() => setPropertiesOpen((o) => !o)}
-                      className="flex w-full items-center justify-between rounded px-2 py-2 font-ibrand text-subtitle hover:bg-brand-paper/10"
-                    >
-                      <span>{item.label}</span>
-                      {propertiesOpen
-                        ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
-                        : <ChevronDown className="h-4 w-4 text-brand-paper/60" />}
-                    </button>
+                    <div className="flex items-center justify-between rounded hover:bg-brand-paper/10">
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex-1 px-2 py-2 font-ibrand text-subtitle"
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setPropertiesOpen((o) => !o)}
+                        className="px-2 py-2"
+                        aria-label="Toggle properties submenu"
+                      >
+                        {propertiesOpen
+                          ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
+                          : <ChevronDown className="h-4 w-4 text-brand-paper/60" />}
+                      </button>
+                    </div>
 
                     {propertiesOpen && (
                       <div className="ml-4 mt-1 space-y-1 border-l border-brand-paper/10 pl-3">
