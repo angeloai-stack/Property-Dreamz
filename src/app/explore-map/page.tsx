@@ -129,30 +129,32 @@ export default function ExploreMapPage() {
         </div>
       </div>
 
-      {/* Map + listings — Figma: map 42% left, teal cards 58% right, both same height */}
+      {/* Map + listings — Figma: map ~43% left, teal cards panel ~57% right, equal height */}
       <div className="mx-6 mb-8 overflow-hidden rounded-[28px] border border-white/10 lg:mx-14 lg:flex">
-        {/* Map — Google Maps iframe, updates when state filter changes */}
+        {/* Map — Google Maps iframe zoomed to Baja California, updates on state filter.
+            On lg the wrapper stretches to the cards' height; MapPanel is positioned
+            absolutely inside it so it fills that height without percentage-height quirks. */}
         <div
           className={cn(
-            "lg:w-[42%] lg:shrink-0 lg:border-r lg:border-white/10",
+            "relative h-[40vh] lg:h-auto lg:w-[42%] lg:shrink-0 lg:self-stretch lg:border-r lg:border-white/10",
             mobileView === "list" ? "hidden lg:block" : "block"
           )}
         >
           <MapPanel
             selectedState={stateFilter}
             filteredCount={filtered.length}
-            className="h-[48vh] lg:h-full lg:min-h-[700px]"
+            className="lg:absolute lg:inset-0"
           />
         </div>
 
-        {/* Cards — Figma: right 58%, teal (#39d3c0) background */}
+        {/* Cards — Figma: right 58%, teal (#39d3c0) panel with 2×2 square cards */}
         <div
           className={cn(
             "flex-1 bg-[#39d3c0]",
             mobileView === "map" ? "hidden lg:block" : "block"
           )}
         >
-          <div className="space-y-4 p-6 lg:p-8">
+          <div className="space-y-3 p-5 lg:p-6">
             {/* Section header */}
             <div className="flex items-center justify-between pb-2">
               <p className="font-ewangi text-[1.35rem] text-[#024139]">
@@ -165,7 +167,7 @@ export default function ExploreMapPage() {
 
             {filtered.length > 0 ? (
               <>
-                {/* Figma: 2-column grid, cards with r=43 */}
+                {/* 2×2 grid of square cards — Figma layout */}
                 <div className="grid gap-4 sm:grid-cols-2">
                   {filtered.slice(0, 4).map((listing) => (
                     <ListingCard
@@ -174,14 +176,15 @@ export default function ExploreMapPage() {
                       active={activePin === listing.id}
                       currency={currency}
                       onClick={() => handleCardClick(listing.id)}
+                      compact
                     />
                   ))}
                 </div>
 
-                <div className="flex justify-center pt-2 pb-4">
+                <div className="flex justify-center pt-1">
                   <button
                     type="button"
-                    className="rounded-full border-2 border-[#024139]/40 px-8 py-3 font-ewangi text-[#024139] transition hover:bg-[#024139]/10"
+                    className="rounded-full border-2 border-brand-pine/40 px-8 py-2 font-ewangi text-brand-pine transition hover:bg-brand-pine/10"
                   >
                     View more projects
                   </button>

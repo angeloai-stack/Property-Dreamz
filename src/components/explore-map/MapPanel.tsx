@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 
 const STATE_EMBED_URLS: Record<string, string> = {
-  All: "https://maps.google.com/maps?q=Mexico&z=5&ie=UTF8&iwloc=&output=embed",
+  All: "https://maps.google.com/maps?q=Baja+California,+Mexico&z=7&ie=UTF8&iwloc=&output=embed",
   "Baja California":
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3526284.407177217!2d-117.97157442791178!3d30.332838154445874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d7700ca877ddd3%3A0xfca4fd9f0318de8e!2sBaja%20California!5e0!3m2!1ses-419!2smx!4v1781407328402!5m2!1ses-419!2smx",
   "Baja California Sur":
@@ -30,7 +30,7 @@ type MapPanelProps = {
 
 export function MapPanel({ selectedState, filteredCount, className }: MapPanelProps) {
   const src = STATE_EMBED_URLS[selectedState] ?? STATE_EMBED_URLS.All;
-  const label = selectedState === "All" ? "Mexico" : selectedState;
+  const label = selectedState === "All" ? "Baja California" : selectedState;
 
   return (
     <div

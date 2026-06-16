@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/* Figma "Fracc 3 Negative" — node 194:2107 */
-const IMG_HERO_BG      = "/fracc/f3n-hero-bg.jpg";
-const IMG_HERO_OVERLAY = "/fracc/f3n-hero-overlay.jpg";
-const IMG_AERIAL_CARD  = "/fracc/f3n-aerial-card.jpg";
+/* Figma "Fracc 3 Negative" — node 194:2107. Photos from Cloudinary "Del Mar" folder. */
+const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
+const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;
+const IMG_AERIAL_CARD  = `${CLD}/Panoramic_View_vy1spn.png`;
 const IMG_CMRE         = "/fracc/f3n-cmre.png";
-const IMG_MODEL        = "/fracc/model-viento.jpg";
-const IMG_LOTS_SHOT    = "/fracc/hero-card.jpg";
+const IMG_LOTS_SHOT    = `${CLD}/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png`;
 
 /* Shield-checkmark — Figma: stroke #3AD3C1 sw=3 */
 function TrustIcon() {
@@ -49,27 +48,43 @@ const lots = [
 
 type Tab = "Lots" | "Condos" | "Houses";
 
+// Del Mar house models — Cloudinary "Modelos Del Mar" (top-down floor-plan renders).
+// NOTE: m²/bed/bath specs are placeholders — confirm with real figures.
 const models = [
+  {
+    name: "PERLA",
+    sqm: "180 m²",
+    beds: "3 Bedrooms",
+    baths: "2 Bathrooms",
+    image: `${CLD}/Perla_hfejm4.png`,
+  },
+  {
+    name: "BAHÍA",
+    sqm: "210 m²",
+    beds: "3 Bedrooms",
+    baths: "3 Bathrooms",
+    image: `${CLD}/Bahia_hrdwpf.png`,
+  },
   {
     name: "VIENTO",
     sqm: "55 m²",
     beds: "1 Bedroom",
     baths: "1 Bathroom",
-    image: IMG_MODEL,
+    image: `${CLD}/Modelo_Viento_jvujul.png`,
   },
   {
-    name: "TIERRA",
-    sqm: "120 m²",
-    beds: "3 Bedrooms",
-    baths: "2 Bathrooms",
-    image: IMG_MODEL,
-  },
-  {
-    name: "MAR",
-    sqm: "200 m²",
+    name: "CORONADO",
+    sqm: "240 m²",
     beds: "4 Bedrooms",
     baths: "3 Bathrooms",
-    image: IMG_MODEL,
+    image: `${CLD}/Coronado_jsbriw.png`,
+  },
+  {
+    name: "MAREA",
+    sqm: "120 m²",
+    beds: "2 Bedrooms",
+    baths: "2 Bathrooms",
+    image: `${CLD}/Marea_tlqs8n.png`,
   },
 ];
 
@@ -98,11 +113,11 @@ export default function FraccPage() {
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }} />
         </div>
         <div className="px-6 py-8">
-          <span className="font-ewangi text-[1.4rem] font-bold text-white">Del Mar</span>
-          <h1 className="mt-3 font-ewangi text-[2.2rem] leading-tight text-white">
-            Build with<br />confidence.
+          <span className="font-ewangi font-bold text-white text-[clamp(1.4rem,6vw,2rem)]">Del Mar</span>
+          <h1 className="mt-3 font-ewangi leading-tight text-white text-[clamp(2rem,9vw,3rem)]">
+            Build with confidence.
           </h1>
-          <p className="mt-3 font-ewangi text-[1rem] text-white/85">
+          <p className="mt-3 font-ewangi text-white/85 text-[clamp(0.95rem,4vw,1.1rem)]">
             A verified and secure development for your next project.
           </p>
           <div className="mt-4 flex flex-col gap-2">
@@ -125,10 +140,10 @@ export default function FraccPage() {
         </div>
       </div>
 
-      {/* ── DESKTOP HERO (≥ lg) — height 888px ── */}
-      <section className="relative hidden overflow-hidden lg:block" style={{ height: 888 }}>
+      {/* ── DESKTOP HERO (≥ lg) — responsive flow layout so the logo + titles scale fluidly ── */}
+      <section className="relative hidden overflow-hidden lg:block">
 
-        {/* Hero photo — Figma: 1440×888 full-bleed */}
+        {/* Hero photo — full-bleed */}
         <img
           src={IMG_HERO_BG}
           alt=""
@@ -136,79 +151,66 @@ export default function FraccPage() {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        {/* Secondary screenshot overlay — Figma: x=1 y=227 1439×610 */}
-        <img
-          src={IMG_HERO_OVERLAY}
-          alt=""
-          aria-hidden
-          className="absolute"
-          style={{ left: 1, top: 227, width: 1439, height: 610, objectFit: "cover" }}
-        />
-
-        {/* Left gradient — Figma: x=0 w=1350 #1E1E1E@22% → transparent */}
+        {/* Left gradient for text legibility */}
         <div
-          className="absolute inset-y-0 left-0 z-[1]"
-          style={{ width: 1350, background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }}
+          className="absolute inset-0 z-1"
+          style={{ background: "linear-gradient(to right, #1E1E1E 28%, transparent 88%)" }}
         />
 
-        {/* Del Mar logo — Figma: x=129 y=65 white */}
-        <div className="absolute z-10" style={{ left: 129, top: 65 }}>
-          <span className="font-ewangi text-[2.6rem] font-bold leading-none tracking-[0.06em] text-white">
-            Del Mar
-          </span>
-        </div>
-
-        {/* "Build with confidence." — Figma: 96px Ewangi white x=118 y=154 w=482 */}
-        <h1
-          className="absolute z-10 font-ewangi text-[6rem] leading-[1.255] text-white"
-          style={{ left: 118, top: 154, width: 482 }}
-        >
-          Build with confidence.
-        </h1>
-
-        {/* Subtitle — Figma: 20px Ewangi white x=118 y=413 w=313 */}
-        <p
-          className="absolute z-10 font-ewangi text-[1.25rem] leading-[1.207] text-white"
-          style={{ left: 118, top: 413, width: 313 }}
-        >
-          A verified and secure development for your next project.
-        </p>
-
-        {/* Trust badges — Figma: x=118 y=519, icons at x=139/258/412 */}
-        <div className="absolute z-10 flex items-center gap-8" style={{ left: 118, top: 519 }}>
-          {trustLabels.map((label) => (
-            <div key={label} className="flex items-center gap-2">
-              <TrustIcon />
-              <span className="font-ewangi text-[1rem] text-white">{label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* CMRE — Figma: x=120 y=639 204×48 */}
-        <img
-          src={IMG_CMRE}
-          alt="CMRE Certified Mexico Real Estate"
-          className="absolute z-10"
-          style={{ left: 120, top: 639, width: 204, height: 48, objectFit: "contain" }}
-        />
-
-        {/* 360° view button — Figma: x=1241 y=641 */}
-        <div className="absolute z-10 flex flex-col items-center leading-none" style={{ left: 1241, top: 641 }}>
+        {/* 360° view affordance — anchored right, vertically centered */}
+        <div className="absolute right-10 top-1/2 z-10 flex -translate-y-1/2 flex-col items-center leading-none">
           <span className="font-ewangi text-[1.25rem] text-white">360°</span>
           <span className="font-ewangi text-[0.9rem] text-white/80">view</span>
         </div>
 
-        {/* Stats bar — Figma: x=118 y=726 1187×120 transparent bg r=18 */}
-        <div
-          className="absolute z-10 flex items-center"
-          style={{ left: 118, top: 726, width: 1187, height: 120, borderRadius: 18 }}
-        >
-          {stats.map(({ value, label }) => (
-            <div key={label} className="flex flex-1 flex-col items-center">
-              <span className="font-ewangi text-[2.25rem] leading-none text-white">{value}</span>
-              <span className="font-ewangi text-[1.25rem] leading-none text-white">{label}</span>
-            </div>
-          ))}
+        {/* Content — normal flow; fluid type scales the Del Mar logo + titles together */}
+        <div className="relative z-10 mx-auto flex min-h-180 w-full max-w-360 flex-col px-16 py-14 2xl:min-h-222">
+
+          {/* Del Mar logo (wordmark) */}
+          <span className="font-ewangi font-bold leading-none tracking-[0.06em] text-white text-[clamp(2rem,2.6vw,2.6rem)]">
+            Del Mar
+          </span>
+
+          {/* "Build with confidence." */}
+          <h1 className="mt-6 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)]">
+            Build with confidence.
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-5 max-w-sm font-ewangi text-white text-[clamp(1.1rem,1.4vw,1.25rem)]">
+            A verified and secure development for your next project.
+          </p>
+
+          {/* Trust badges */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+            {trustLabels.map((label) => (
+              <div key={label} className="flex items-center gap-2">
+                <TrustIcon />
+                <span className="font-ewangi text-[1rem] text-white">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* CMRE */}
+          <img
+            src={IMG_CMRE}
+            alt="CMRE Certified Mexico Real Estate"
+            className="mt-8 h-12 w-auto object-contain"
+          />
+
+          {/* Stats bar — pushed to the bottom, wraps fluidly */}
+          <div className="mt-auto flex flex-wrap gap-x-10 gap-y-4 pt-12 xl:gap-x-16">
+            {stats.map(({ value, label }) => (
+              <div key={label} className="flex flex-col">
+                <span className="font-ewangi leading-none text-white text-[clamp(1.75rem,2.2vw,2.25rem)]">
+                  {value}
+                </span>
+                <span className="font-ewangi leading-none text-white text-[clamp(1rem,1.4vw,1.25rem)]">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -275,12 +277,11 @@ export default function FraccPage() {
           className="relative overflow-hidden"
           style={{ height: 537, borderRadius: 27, background: "#D9D9D9" }}
         >
-          {/* Aerial photo — Figma: x=40 y=-27 1317×878 (overflows top) */}
+          {/* Aerial photo — fills the whole card */}
           <img
             src={IMG_AERIAL_CARD}
             alt="Development aerial"
-            className="absolute"
-            style={{ left: 40, top: -27, width: 1317, height: 878, objectFit: "cover" }}
+            className="absolute inset-0 h-full w-full object-cover"
           />
 
           {/* Left panel dark overlay — Figma: x=0 y=0 482×537 #1E1E1E@20% r=27 */}
@@ -443,13 +444,20 @@ export default function FraccPage() {
           </div>
         </div>
         <h3 className="mt-2 font-ewangi text-[3rem] text-white">{model.name}</h3>
-        <div className="mt-1 flex gap-6">
-          {[model.sqm, model.beds, model.baths].map((s) => (
-            <span key={s} className="font-ewangi text-[1rem] text-white/80">{s}</span>
+        <div className="mt-1 flex flex-wrap gap-x-5 gap-y-2">
+          {[
+            { Icon: Maximize, val: model.sqm },
+            { Icon: BedDouble, val: model.beds },
+            { Icon: Bath, val: model.baths },
+          ].map(({ Icon, val }) => (
+            <span key={val} className="flex flex-col items-center gap-1 font-ewangi text-[1rem] text-white/80">
+              <Icon className="h-4 w-4 shrink-0 text-brand-teal" strokeWidth={2} />
+              {val}
+            </span>
           ))}
         </div>
         <div className="mt-4 overflow-hidden rounded-[16px]" style={{ height: 220 }}>
-          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
+          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-contain" />
         </div>
         <div className="mt-5 flex gap-4">
           {models.map((_, i) => (
@@ -469,7 +477,7 @@ export default function FraccPage() {
 
         {/* House photo — Figma: x=634 y=0 730×345 */}
         <div className="absolute overflow-hidden" style={{ left: 634, top: 0, width: 730, height: 345 }}>
-          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-cover" />
+          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-contain" />
         </div>
 
         {/* "House models" — Figma: x=103 y=9 36px white */}
@@ -504,14 +512,17 @@ export default function FraccPage() {
           <ChevronRight style={{ width: 10, height: 15 }} strokeWidth={3} />
         </button>
 
-        {/* Spec badges — Figma: Ewangi 24px white y=286 x=97/209/368 */}
-        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 97, top: 286 }}>
+        {/* Spec badges with icons — Figma: Ewangi 24px white y=286 x=97/209/368 */}
+        <span className="absolute flex flex-col items-center gap-1.5 font-ewangi text-[1.5rem] text-white" style={{ left: 97, top: 286 }}>
+          <Maximize className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={2} />
           {model.sqm}
         </span>
-        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 209, top: 286 }}>
+        <span className="absolute flex flex-col items-center gap-1.5 font-ewangi text-[1.5rem] text-white" style={{ left: 209, top: 286 }}>
+          <BedDouble className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={2} />
           {model.beds}
         </span>
-        <span className="absolute font-ewangi text-[1.5rem] text-white" style={{ left: 368, top: 286 }}>
+        <span className="absolute flex flex-col items-center gap-1.5 font-ewangi text-[1.5rem] text-white" style={{ left: 368, top: 286 }}>
+          <Bath className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={2} />
           {model.baths}
         </span>
       </div>
@@ -523,8 +534,8 @@ export default function FraccPage() {
 
       {/* ── MOBILE OCEAN LOTS ── */}
       <div className="px-6 pb-12 pt-8 lg:hidden">
-        <h2 className="font-ewangi text-[2.5rem] leading-tight text-[#3AD3C1]">
-          Ocean View<br />Lots
+        <h2 className="font-ewangi leading-tight text-brand-teal text-[clamp(2.25rem,9vw,3rem)]">
+          Ocean View Lots
         </h2>
         <div className="mt-4 overflow-hidden rounded-[12px]" style={{ height: 220 }}>
           <img src={IMG_LOTS_SHOT} alt="Ocean view lots" className="h-full w-full object-cover" />
@@ -536,57 +547,47 @@ export default function FraccPage() {
         </p>
         {/* CTA */}
         <div className="mt-8 rounded-[10px] bg-white px-6 py-4">
-          <p className="font-ewangi text-[1.25rem] text-[#1e1e1e]">
+          <p className="font-ewangi text-brand-ink text-[clamp(1.15rem,4.5vw,1.4rem)]">
             We certify so you can build your future
           </p>
         </div>
       </div>
 
-      {/* ── DESKTOP OCEAN LOTS (≥ lg) — height ~697px, mt=57px ── */}
-      <div className="relative hidden lg:block" style={{ height: 697, marginTop: 57 }}>
+      {/* ── DESKTOP OCEAN LOTS (≥ lg) — responsive flow, fluid text ── */}
+      <div className="relative hidden px-16 py-16 lg:block">
+        <div className="mx-auto max-w-360">
 
-        {/* "Ocean View Lots" — Figma: x=111 y=12 432×240 Ewangi 96px #3AD3C1 */}
-        <h2
-          className="absolute font-ewangi text-[6rem] leading-[1.255] text-[#3AD3C1]"
-          style={{ left: 111, top: 12, width: 432 }}
-        >
-          Ocean View Lots
-        </h2>
+          {/* Heading + body (left) | screenshot (right) */}
+          <div className="flex items-start gap-12">
+            <div className="w-[45%] shrink-0">
+              <h2 className="font-ewangi leading-[1.05] text-brand-teal text-[clamp(3rem,5.5vw,6rem)]">
+                Ocean View Lots
+              </h2>
+              <p className="mt-8 max-w-150 font-ewangi leading-[1.4] text-white text-[clamp(1.1rem,1.5vw,1.5rem)]">
+                Explore premium ocean-view lots for sale, each offering a unique opportunity to build
+                your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
+                coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
+                Our selection includes expansive lots with various square footage options to suit your vision.
+              </p>
+            </div>
 
-        {/* Development screenshot — Figma: x=505 y=0 927×563 shadow(-26,24,0,#000@26%) */}
-        <img
-          src={IMG_LOTS_SHOT}
-          alt="Ocean view lots development"
-          className="absolute"
-          style={{
-            left: 505, top: 0, width: 927, height: 563,
-            objectFit: "cover",
-            boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)",
-          }}
-        />
+            {/* Development screenshot */}
+            <div className="flex-1">
+              <img
+                src={IMG_LOTS_SHOT}
+                alt="Ocean view lots development"
+                className="h-auto w-full rounded-[10px] object-cover"
+                style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
+              />
+            </div>
+          </div>
 
-        {/* Body text — Figma: x=122 y=266 598×290 Ewangi 24px white */}
-        <p
-          className="absolute font-ewangi text-[1.5rem] leading-[1.3] text-white"
-          style={{ left: 122, top: 266, width: 598 }}
-        >
-          Explore premium ocean-view lots for sale, each offering a unique opportunity to build
-          your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
-          coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
-          Our selection includes expansive lots with various square footage options to suit your vision.
-        </p>
-
-        {/* White CTA banner — Figma: x=248 y=614 945×83 r=10 fill=#FFFFFF */}
-        <div
-          className="absolute flex items-center bg-white"
-          style={{ left: 248, top: 614, width: 945, height: 83, borderRadius: 10 }}
-        >
-          <p
-            className="font-ewangi text-[3rem] text-[#1e1e1e]"
-            style={{ paddingLeft: 72 }}
-          >
-            We certify so you can build your future
-          </p>
+          {/* White CTA banner — full width, fluid text */}
+          <div className="mt-12 flex items-center rounded-[10px] bg-white px-10 py-6">
+            <p className="font-ewangi text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
+              We certify so you can build your future
+            </p>
+          </div>
         </div>
       </div>
 

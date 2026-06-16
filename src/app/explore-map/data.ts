@@ -15,7 +15,7 @@ export const listings = [
     type: "Condo",
     borderMiles: 5,
     sdSavings: 68,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const listings = [
     type: "Condo",
     borderMiles: 18,
     sdSavings: 71,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Render_Del_Mar_aynv6k.png",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ export const listings = [
     type: "House",
     borderMiles: 55,
     sdSavings: 69,
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Modern_House_White.H03.2k_sjznmv.png",
   },
   {
     id: 4,
@@ -69,7 +69,7 @@ export const listings = [
     type: "House",
     borderMiles: 1100,
     sdSavings: 67,
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/panoramic_1_qwo5jt.png",
   },
   {
     id: 5,
@@ -87,7 +87,7 @@ export const listings = [
     type: "Condo",
     borderMiles: 1650,
     sdSavings: 71,
-    image: "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png",
   },
   {
     id: 6,
@@ -105,7 +105,7 @@ export const listings = [
     type: "Condo",
     borderMiles: 68,
     sdSavings: 70,
-    image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=600&q=80",
+    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
   },
 ] as const;
 
