@@ -107,7 +107,7 @@ export default function ForDevelopersPage() {
           <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
             For Developers
           </p>
-          <h1 className="font-ibrand text-[clamp(2rem,5vw,3rem)] leading-tight text-brand-paper">
+          <h1 className="font-ewangi text-[clamp(2rem,5vw,3rem)] leading-tight text-brand-paper">
             Reach buyers who are ready to close
           </h1>
           <p className="font-body text-body leading-relaxed text-brand-paper/70">
@@ -134,7 +134,7 @@ export default function ForDevelopersPage() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
               Why list with us
             </p>
-            <h2 className="font-ibrand text-title text-brand-ink">
+            <h2 className="font-ewangi text-title text-brand-ink">
               Built for Mexico&apos;s international market
             </h2>
           </div>
@@ -144,7 +144,7 @@ export default function ForDevelopersPage() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-emerald/10 text-brand-emerald">
                   <Icon as={icon} size={24} color="currentColor" />
                 </span>
-                <h3 className="font-ibrand text-subtitle text-brand-ink">{title}</h3>
+                <h3 className="font-ewangi text-subtitle text-brand-ink">{title}</h3>
                 <p className="font-body text-body text-brand-muted">{body}</p>
               </div>
             ))}
@@ -159,17 +159,17 @@ export default function ForDevelopersPage() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald/70">
               How it works
             </p>
-            <h2 className="font-ibrand text-title text-brand-paper">
+            <h2 className="font-ewangi text-title text-brand-paper">
               From application to live listing
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {process.map(({ step, label, detail }) => (
               <div key={step} className="space-y-3">
-                <span className="font-ibrand text-[3rem] font-bold leading-none text-brand-emerald/20 select-none">
+                <span className="font-ewangi text-[3rem] font-bold leading-none text-brand-emerald/20 select-none">
                   {step}
                 </span>
-                <h3 className="font-ibrand text-subtitle text-brand-paper">{label}</h3>
+                <h3 className="font-ewangi text-subtitle text-brand-paper">{label}</h3>
                 <p className="font-body text-body text-brand-paper/60">{detail}</p>
               </div>
             ))}
@@ -184,7 +184,7 @@ export default function ForDevelopersPage() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
               Pricing
             </p>
-            <h2 className="font-ibrand text-title text-brand-ink">
+            <h2 className="font-ewangi text-title text-brand-ink">
               Simple, transparent tiers
             </h2>
           </div>
@@ -200,10 +200,10 @@ export default function ForDevelopersPage() {
                 )}
               >
                 <div className="space-y-1">
-                  <h3 className={cn("font-ibrand text-subtitle", tier.highlight ? "text-brand-paper" : "text-brand-ink")}>
+                  <h3 className={cn("font-ewangi text-subtitle", tier.highlight ? "text-brand-paper" : "text-brand-ink")}>
                     {tier.name}
                   </h3>
-                  <p className={cn("font-ibrand text-title font-bold", tier.highlight ? "text-brand-emerald" : "text-brand-ink")}>
+                  <p className={cn("font-ewangi text-title font-bold", tier.highlight ? "text-brand-emerald" : "text-brand-ink")}>
                     {tier.price}
                   </p>
                   <p className={cn("font-body text-body", tier.highlight ? "text-brand-paper/70" : "text-brand-muted")}>
@@ -243,7 +243,7 @@ export default function ForDevelopersPage() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
               Submit your development
             </p>
-            <h2 className="font-ibrand text-title text-brand-ink">
+            <h2 className="font-ewangi text-title text-brand-ink">
               Apply to list on Property Dreamz
             </h2>
             <p className="font-body text-body text-brand-muted">
@@ -259,7 +259,7 @@ export default function ForDevelopersPage() {
       <section className="bg-brand-pine py-14">
         <Container className="flex flex-col items-center gap-6 text-center">
           <CmreBadge />
-          <h2 className="font-ibrand text-title text-brand-paper">
+          <h2 className="font-ewangi text-title text-brand-paper">
             Ready to reach international buyers?
           </h2>
           <p className="max-w-lg font-body text-body text-brand-paper/70">

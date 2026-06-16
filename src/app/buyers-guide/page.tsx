@@ -114,7 +114,7 @@ export default function BuyersGuidePage() {
           <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald">
             Buyer&apos;s Guide
           </p>
-          <h1 className="font-ibrand text-[clamp(2rem,5vw,3rem)] leading-tight text-brand-paper">
+          <h1 className="font-ewangi text-[clamp(2rem,5vw,3rem)] leading-tight text-brand-paper">
             How to buy property in Mexico
           </h1>
           <p className="font-body text-body leading-relaxed text-brand-paper/70">
@@ -154,10 +154,10 @@ export default function BuyersGuidePage() {
                   />
                 </div>
                 <div className="space-y-4">
-                  <span className="font-ibrand text-[5rem] font-bold leading-none text-brand-emerald/15 select-none">
+                  <span className="font-ewangi text-[5rem] font-bold leading-none text-brand-emerald/15 select-none">
                     {step.number}
                   </span>
-                  <h2 className="font-ibrand text-title leading-snug text-brand-ink">
+                  <h2 className="font-ewangi text-title leading-snug text-brand-ink">
                     {step.title}
                   </h2>
                   <p className="font-body text-body leading-relaxed text-brand-muted">
@@ -179,13 +179,13 @@ export default function BuyersGuidePage() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald/70">
               Common questions
             </p>
-            <h2 className="font-ibrand text-title text-brand-paper">FAQ</h2>
+            <h2 className="font-ewangi text-title text-brand-paper">FAQ</h2>
           </div>
 
           <div className="divide-y divide-brand-paper/10">
             {faqs.map(({ q, a }) => (
               <div key={q} className="py-5 space-y-2">
-                <h3 className="flex items-start gap-2 font-ibrand text-subtitle text-brand-paper">
+                <h3 className="flex items-start gap-2 font-ewangi text-subtitle text-brand-paper">
                   <Icon
                     as={HelpCircle}
                     size={18}
@@ -212,7 +212,7 @@ export default function BuyersGuidePage() {
             color="currentColor"
             className="text-brand-emerald"
           />
-          <h2 className="font-ibrand text-title text-brand-paper">
+          <h2 className="font-ewangi text-title text-brand-paper">
             Ready to start your search?
           </h2>
           <p className="max-w-lg font-body text-body text-brand-paper/70">

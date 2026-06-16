@@ -1,8 +1,9 @@
-// Brand typography scale — Ibrand (headlines/buttons), serif body, Ewangi (labels).
+// Brand typography scale — Ewangi for all text; Ibrand reserved for the logotype only.
+// Weights: bold (700) for titles, regular (400) for body, light (300) for secondary/labels.
 export const typography = {
-  display: "font-ibrand text-display leading-[1.05] tracking-[-0.02em]",
-  title: "font-ibrand text-title leading-[1.15]",
-  subtitle: "font-ibrand text-subtitle leading-[1.25]",
-  body: "font-body text-body leading-[1.65]", // loose leading improves readability for property descriptions
-  label: "font-ewangi text-label uppercase tracking-[0.14em]", // wide tracking is a brand requirement for all label text
+  display: "font-ewangi font-bold text-display leading-[1.05] tracking-[-0.02em]",
+  title: "font-ewangi font-bold text-title leading-[1.15]",
+  subtitle: "font-ewangi font-normal text-subtitle leading-[1.25]",
+  body: "font-ewangi font-normal text-body leading-[1.65]",
+  label: "font-ewangi font-light text-label uppercase tracking-[0.14em]",
 } as const;

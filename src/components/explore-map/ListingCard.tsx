@@ -72,14 +72,14 @@ export function ListingCard({ listing, active, currency, onClick }: ListingCardP
         )}
         {/* Price overlay on bottom */}
         <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent px-4 pb-4 pt-10">
-          <p className="font-ibrand text-[1.1rem] leading-tight text-white">{primaryPrice}</p>
+          <p className="font-ewangi text-[1.1rem] leading-tight text-white">{primaryPrice}</p>
           <p className="font-ewangi text-[11px] uppercase tracking-[0.12em] text-white/70">{secondaryPrice}</p>
         </div>
       </div>
 
       {/* Compact info row below image */}
       <div className="px-4 py-3">
-        <h3 className="truncate font-ibrand text-[0.95rem] text-brand-ink">{listing.title}</h3>
+        <h3 className="truncate font-ewangi text-[0.95rem] text-brand-ink">{listing.title}</h3>
         <p className="mt-1 flex items-center gap-1 font-body text-[12px] text-brand-muted">
           <Icon as={MapPin} size={12} className="shrink-0 text-brand-emerald" />
           <span className="truncate">{listing.zone}</span>

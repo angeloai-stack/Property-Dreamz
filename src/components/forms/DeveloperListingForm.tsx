@@ -61,7 +61,7 @@ export function DeveloperListingForm() {
     return (
       <div className="flex flex-col items-center gap-4 rounded-[42px] bg-brand-ink p-12 text-center shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
         <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
-        <p className="font-ibrand text-subtitle text-brand-paper">Application received!</p>
+        <p className="font-ewangi text-subtitle text-brand-paper">Application received!</p>
         <p className="max-w-md font-body text-body text-brand-paper/60">
           Our team will review your submission and contact you within 3 business days to discuss
           next steps.

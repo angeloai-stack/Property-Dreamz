@@ -58,7 +58,7 @@ export function PropertyInquiryForm() {
             <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-[#39d3c0]">
               Speak with an advisor
             </p>
-            <h2 className="font-ibrand text-[clamp(1.75rem,4vw,2.5rem)] leading-tight text-brand-paper">
+            <h2 className="font-ewangi text-[clamp(1.75rem,4vw,2.5rem)] leading-tight text-brand-paper">
               Didn&apos;t find your dream property?
             </h2>
             <p className="font-body text-body text-brand-paper/60">
@@ -70,7 +70,7 @@ export function PropertyInquiryForm() {
           {status === "success" ? (
             <div className="flex flex-col items-center gap-4 py-12 text-center">
               <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
-              <p className="font-ibrand text-subtitle text-brand-paper">Request sent!</p>
+              <p className="font-ewangi text-subtitle text-brand-paper">Request sent!</p>
               <p className="font-body text-body text-brand-paper/60">
                 An advisor will reach out within 24 hours.
               </p>

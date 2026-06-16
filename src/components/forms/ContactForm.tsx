@@ -61,7 +61,7 @@ export function ContactForm() {
       {status === "success" ? (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
           <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
-          <p className="font-ibrand text-subtitle text-brand-paper">Message sent!</p>
+          <p className="font-ewangi text-subtitle text-brand-paper">Message sent!</p>
           <p className="font-body text-body text-brand-paper/60">
             We&apos;ll be in touch within 24 hours.
           </p>

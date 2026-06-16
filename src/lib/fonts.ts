@@ -18,9 +18,9 @@ export const ibrand = Oswald({
   weight: ["400", "600", "700"],
 });
 
-// Ewangi: labels and microcopy. Montserrat fallback until brand files ship.
+// Ewangi: primary typeface for all text. Montserrat fallback until brand files ship.
 export const ewangi = Montserrat({
   subsets: ["latin"],
   variable: "--font-ewangi",
-  weight: ["400", "600"],
+  weight: ["300", "400", "700"],
 });

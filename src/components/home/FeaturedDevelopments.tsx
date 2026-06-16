@@ -113,7 +113,7 @@ function DevelopmentCard({ dev }: { dev: Development }) {
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <h3 className="font-ibrand text-subtitle leading-snug text-brand-ink">
+            <h3 className="font-ewangi text-subtitle leading-snug text-brand-ink">
               {dev.name}
             </h3>
             <span className="mt-0.5 flex items-center gap-1 font-ewangi text-label text-brand-muted">
@@ -122,7 +122,7 @@ function DevelopmentCard({ dev }: { dev: Development }) {
             </span>
           </div>
           <div className="text-right">
-            <p className="font-ibrand text-subtitle font-bold text-brand-emerald">
+            <p className="font-ewangi text-subtitle font-bold text-brand-emerald">
               {formatUSD(dev.priceUSD)}
             </p>
             <p className="font-ewangi text-label text-brand-muted">
@@ -171,7 +171,7 @@ export function FeaturedDevelopments() {
             <p className="mb-1 font-ewangi text-label font-semibold uppercase tracking-widest text-brand-emerald/70">
               Certified & Verified
             </p>
-            <h2 className="font-ibrand text-title text-brand-paper">
+            <h2 className="font-ewangi text-title text-brand-paper">
               Featured Developments
             </h2>
           </div>

@@ -187,7 +187,7 @@ export function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="flex-1 px-2 py-2 font-ibrand text-subtitle"
+                        className="flex-1 px-2 py-2 font-ewangi text-subtitle"
                       >
                         {item.label}
                       </Link>
@@ -210,7 +210,7 @@ export function Navbar() {
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between rounded px-2 py-2 font-ibrand text-[0.9rem] hover:bg-brand-paper/10"
+                            className="flex items-center justify-between rounded px-2 py-2 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
                           >
                             <span>{sub.label}</span>
                             {sub.tag && (
@@ -227,7 +227,7 @@ export function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block rounded px-2 py-2 font-ibrand text-subtitle hover:bg-brand-paper/10"
+                    className="block rounded px-2 py-2 font-ewangi text-subtitle hover:bg-brand-paper/10"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}

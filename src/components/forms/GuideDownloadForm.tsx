@@ -42,7 +42,7 @@ export function GuideDownloadForm() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#39d3c0]/20 text-[#39d3c0]">
                 <BookOpen className="h-6 w-6" aria-hidden="true" />
               </span>
-              <h2 className="font-ibrand text-title leading-tight text-brand-paper">
+              <h2 className="font-ewangi text-title leading-tight text-brand-paper">
                 Get the full buyer&apos;s guide
               </h2>
               <p className="font-body text-body text-brand-paper/70">
@@ -54,7 +54,7 @@ export function GuideDownloadForm() {
             {status === "success" ? (
               <div className="flex flex-1 flex-col items-center gap-3 py-8 text-center">
                 <CheckCircle2 className="h-12 w-12 text-[#39d3c0]" aria-hidden="true" />
-                <p className="font-ibrand text-subtitle text-brand-paper">Check your inbox!</p>
+                <p className="font-ewangi text-subtitle text-brand-paper">Check your inbox!</p>
                 <p className="font-body text-body text-brand-paper/60">
                   Your guide has been sent to{" "}
                   <span className="font-semibold text-brand-paper">{fields.email}</span>

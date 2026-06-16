@@ -113,7 +113,7 @@ export function TopDevelopers() {
 
               {/* Price badge — full-width strip at the bottom */}
               <div className="absolute bottom-0 left-0 right-0 bg-brand-emerald px-4 py-3">
-                <p className="font-ibrand text-subtitle font-bold text-brand-paper">
+                <p className="font-ewangi text-subtitle font-bold text-brand-paper">
                   {dev.price}
                 </p>
                 <p className="font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-paper/70">

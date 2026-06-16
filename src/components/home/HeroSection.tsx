@@ -5,8 +5,7 @@ import Link from "next/link";
 import { Heart, Home, MapPin, MessageCircle } from "lucide-react";
 import { CmreBadge } from "@/components/shared/CmreBadge";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80";
+const heroImage = "/hero-suburban.jpg";
 
 const iconRail = [
   { icon: Home, label: "Home", href: "/" },
@@ -47,11 +46,11 @@ export function HeroSection() {
       </aside>
 
       {/* Headline — Figma: Ewangi 120px, fill=#eaedf0, x=43, y=192 */}
-      <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col justify-center px-10 pb-28 pt-16 lg:px-20">
-        <h1 className="font-ewangi text-[clamp(3.25rem,9vw,7.5rem)] leading-[0.88] tracking-tight text-[#eaedf0]">
-          Find your
+      <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col justify-start px-10 pt-28 lg:px-20 lg:pt-36">
+        <h1 className="font-ewangi text-[clamp(3.25rem,9vw,7.5rem)] leading-[0.88] tracking-tight">
+          <span className="text-[#EAEDF0]">Find your</span>
           <br />
-          Piece of Mexico
+          <span className="font-bold text-brand-ink">Piece of Mexico</span>
         </h1>
       </div>
 
@@ -73,8 +72,6 @@ export function HeroSection() {
         <CmreBadge variant="light" />
       </div>
 
-      {/* Turquoise bottom strip — Figma: Rectangle 9, y=874, fill=#39d3c0 */}
-      <div className="absolute inset-x-0 bottom-0 h-2 bg-[#39d3c0]" />
     </section>
   );
 }

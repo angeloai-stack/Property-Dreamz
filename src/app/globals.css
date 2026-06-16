@@ -3,6 +3,7 @@
 @theme {
   --color-brand-pine: #024139;
   --color-brand-emerald: #026559;
+  --color-brand-teal: #3AD3C1;
   --color-brand-gold: #b98a3e;
   --color-brand-ink: #191919;
   --color-brand-paper: #f4f1ea;
@@ -12,7 +13,7 @@
 
   --font-family-ibrand: var(--font-ibrand), ui-sans-serif, sans-serif;
   --font-family-ewangi: var(--font-ewangi), ui-sans-serif, sans-serif;
-  --font-family-body: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-family-body: var(--font-ewangi), ui-sans-serif, sans-serif;
 
   --text-display: 2.875rem;
   --text-display--line-height: 1.05;
@@ -30,6 +31,7 @@
   /* Brand colors (tokens) */
   --color-brand-pine: #024139;
   --color-brand-emerald: #026559;
+  --color-brand-teal: #3AD3C1;
   --color-brand-gold: #B98A3E;
   --color-brand-ink: #191919;
   --color-brand-paper: #F4F1EA;
@@ -75,7 +77,7 @@ body {
   min-height: 100vh;
   margin: 0;
   background: var(--color-brand-paper);
-  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+  font-family: var(--font-ewangi), ui-sans-serif, sans-serif;
   font-size: var(--text-body);
   line-height: 1.65;
   text-rendering: optimizeLegibility;

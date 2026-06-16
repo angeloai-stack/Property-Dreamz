@@ -12,7 +12,7 @@ type ButtonProps = {
 // Button primitive with flat, editorial styling and clear variant semantics.
 // Default buttons use emerald (#026559); gold is reserved for high-value accent actions.
 export function Button({ href, className, variant = "default", ...props }: ButtonProps) {
-  const base = "inline-flex items-center justify-center rounded-(--radius-btn) px-(--space-5) py-(--space-3) font-ibrand text-subtitle font-semibold transition duration-200 focus:outline-none disabled:pointer-events-none disabled:bg-brand-paper/70 disabled:text-brand-gray disabled:shadow-none";
+  const base = "inline-flex items-center justify-center rounded-(--radius-btn) px-(--space-5) py-(--space-3) font-ewangi text-subtitle font-semibold transition duration-200 focus:outline-none disabled:pointer-events-none disabled:bg-brand-paper/70 disabled:text-brand-gray disabled:shadow-none";
 
   const variantClasses =
     variant === "default"

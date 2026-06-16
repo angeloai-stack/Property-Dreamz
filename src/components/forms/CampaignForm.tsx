@@ -52,7 +52,7 @@ export function CampaignForm() {
               />
               <div className="absolute inset-0 bg-brand-pine/80" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-8 text-center">
-                <p className="font-ibrand text-[2rem] leading-none text-brand-paper tracking-wide">
+                <p className="font-ewangi text-[2rem] leading-none text-brand-paper tracking-wide">
                   Property<br />Dreamz
                 </p>
                 <p className="font-ewangi text-label uppercase tracking-widest text-brand-paper/60">
@@ -67,7 +67,7 @@ export function CampaignForm() {
                 <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-[#39d3c0]">
                   Free consultation
                 </p>
-                <h2 className="font-ibrand text-[clamp(1.5rem,3vw,2rem)] leading-tight text-brand-paper">
+                <h2 className="font-ewangi text-[clamp(1.5rem,3vw,2rem)] leading-tight text-brand-paper">
                   Find your ideal development
                 </h2>
               </div>
@@ -75,7 +75,7 @@ export function CampaignForm() {
               {status === "success" ? (
                 <div className="flex flex-col items-center gap-4 py-10 text-center">
                   <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
-                  <p className="font-ibrand text-subtitle text-brand-paper">You&apos;re all set!</p>
+                  <p className="font-ewangi text-subtitle text-brand-paper">You&apos;re all set!</p>
                   <p className="font-body text-body text-brand-paper/60">
                     Our team will reach out within 24 hours with verified listings matching your
                     criteria.

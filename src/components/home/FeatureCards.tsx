@@ -33,7 +33,7 @@ export function FeatureCards() {
               <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-brand-emerald/10 text-brand-emerald">
                 <Icon as={BadgeCheck} size={26} color="currentColor" />
               </span>
-              <h3 className="mb-4 font-ibrand text-subtitle leading-snug text-brand-emerald">
+              <h3 className="mb-4 font-ewangi text-subtitle leading-snug text-brand-emerald">
                 {feature.title}
               </h3>
               <p className="font-body text-body text-brand-muted">{feature.body}</p>
