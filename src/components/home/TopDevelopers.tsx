@@ -184,7 +184,7 @@ export function TopDevelopers() {
               <Link
                 key={dest.name}
                 href={dest.href}
-                className="group relative overflow-hidden rounded-lg aspect-[16/7]"
+                className="group relative block overflow-hidden rounded-lg h-28 md:h-40"
               >
                 <Image
                   src={dest.image}

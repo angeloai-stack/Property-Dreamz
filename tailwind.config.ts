@@ -36,9 +36,9 @@ const config: Config = {
       fontFamily: {
         ibrand: ["var(--font-ibrand)", "ui-sans-serif", "sans-serif"],
         ewangi: ["var(--font-ewangi)", "ui-sans-serif", "sans-serif"],
-        body: ["var(--font-playfair)", "ui-serif", "Georgia", "serif"],
-        serif: ["var(--font-playfair)", "ui-serif", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "ui-sans-serif", "sans-serif"],
+        body: ["var(--font-ewangi)", "ui-sans-serif", "sans-serif"],
+        serif: ["var(--font-ewangi)", "ui-sans-serif", "sans-serif"],
+        sans: ["var(--font-ewangi)", "ui-sans-serif", "sans-serif"],
       },
       fontSize: {
         display: ["2.875rem", { lineHeight: "1.05" }],

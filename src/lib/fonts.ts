@@ -1,4 +1,5 @@
-import { Inter, Playfair_Display, Oswald, Montserrat } from "next/font/google";
+import { Inter, Playfair_Display, Oswald } from "next/font/google";
+import localFont from "next/font/local";
 
 // Centralized font exports; CSS variables are applied in the root layout.
 export const inter = Inter({
@@ -18,9 +19,10 @@ export const ibrand = Oswald({
   weight: ["400", "600", "700"],
 });
 
-// Ewangi: primary typeface for all text. Montserrat fallback until brand files ship.
-export const ewangi = Montserrat({
-  subsets: ["latin"],
+// Ewangi: primary brand typeface loaded from the local TTF file.
+export const ewangi = localFont({
+  src: "../fonts/Ewangi.ttf",
   variable: "--font-ewangi",
-  weight: ["300", "400", "700"],
+  display: "swap",
+  weight: "100 900",
 });
