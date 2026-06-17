@@ -11,11 +11,9 @@
   --color-brand-muted: #6f7669;
   --color-brand-gray: #5c665e;
 
-  --font-family-ibrand: var(--font-ibrand), ui-sans-serif, sans-serif;
   --font-family-ewangi: var(--font-ewangi), ui-sans-serif, sans-serif;
   --font-family-body: var(--font-ewangi), ui-sans-serif, sans-serif;
   --font-family-sans: var(--font-ewangi), ui-sans-serif, sans-serif;
-  --font-family-serif: var(--font-ewangi), ui-sans-serif, sans-serif;
 
   --text-display: 2.875rem;
   --text-display--line-height: 1.05;

@@ -12,7 +12,7 @@ Verified Mexican real estate portal for American buyers. Every property title-se
 
 - Next.js 15 (App Router) · React 18 · TypeScript (strict)
 - Tailwind CSS v4 (`@tailwindcss/forms`, `@tailwindcss/typography`)
-- `next/font/local` for the Ewangi brand typeface · `next/image` with domain allowlist
+- `next/font/local` — Ewangi only, no Google Fonts · `next/image` with domain allowlist
 
 **UI / interaction**
 
@@ -58,9 +58,9 @@ npm run lint    # ESLint check
 
 ### Typography
 
-All text uses **Ewangi** — loaded from `src/fonts/Ewangi.ttf` via `next/font/local`.
+All text uses **Ewangi** — loaded from `src/fonts/Ewangi.ttf` via `next/font/local`. No Google Fonts are loaded.
 
-The CSS variable `--font-ewangi` is injected into `<html>` by the root layout. All Tailwind font families (`font-sans`, `font-serif`, `font-body`, `font-ewangi`) resolve to this variable.
+`src/lib/fonts.ts` exports only `ewangi`. The root layout applies `ewangi.variable` to `<html>`, injecting `--font-ewangi` as a CSS custom property. Tailwind's `font-ewangi` and `font-body` classes both resolve to this variable. Use `font-ewangi` for headings/UI and `font-body` for paragraph copy.
 
 | Class | Size | Usage |
 |---|---|---|

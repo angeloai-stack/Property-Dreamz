@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar, Main, Footer, WhatsAppButton } from "@/components/layout";
-import { inter, playfair, ibrand, ewangi } from "@/lib/fonts";
+import { ewangi } from "@/lib/fonts";
 import "./globals.css";
 
 // Font variables are declared here so every page inherits them via CSS custom properties.
@@ -78,7 +78,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${ibrand.variable} ${ewangi.variable}`}>
+    <html lang="en" className={ewangi.variable}>
       {/* flex-col + min-h-screen ensures the footer is always pushed to the bottom */}
       <body className="flex min-h-screen flex-col bg-brand-paper text-brand-ink">
         <Navbar />
