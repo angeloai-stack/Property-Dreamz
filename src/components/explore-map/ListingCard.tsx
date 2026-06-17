@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { type KeyboardEvent } from "react";
 import { MapPin, Star } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
@@ -56,11 +57,13 @@ export function ListingCard({ listing, active, currency, onClick, compact = fals
       >
         {/* Image — Figma image ratio 295:259 ≈ 8/7 */}
         <div className="relative aspect-8/7 overflow-hidden rounded-[22px] bg-brand-paper">
-          <img
+          <Image
             src={listing.image}
             alt={listing.title}
+            fill
+            sizes="(max-width: 1024px) 50vw, 320px"
             className={cn(
-              "h-full w-full object-cover transition duration-300 hover:scale-105",
+              "object-cover transition duration-300 hover:scale-105",
               sold && "grayscale"
             )}
           />
@@ -116,11 +119,13 @@ export function ListingCard({ listing, active, currency, onClick, compact = fals
     >
       {/* Square image */}
       <div className="relative aspect-square overflow-hidden rounded-[37px] bg-brand-paper">
-        <img
+        <Image
           src={listing.image}
           alt={listing.title}
+          fill
+          sizes="(max-width: 1024px) 50vw, 360px"
           className={cn(
-            "h-full w-full object-cover transition duration-300 hover:scale-105",
+            "object-cover transition duration-300 hover:scale-105",
             sold && "grayscale"
           )}
         />

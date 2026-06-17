@@ -1,7 +1,7 @@
 import React from "react";
 
 type IconProps = {
-  as: React.ComponentType<any>;
+  as: React.ElementType;
   size?: number | string;
   strokeWidth?: number;
   className?: string;

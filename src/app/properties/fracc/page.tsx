@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -109,7 +110,7 @@ export default function FraccPage() {
       {/* ── MOBILE HERO ── */}
       <div className="lg:hidden">
         <div className="relative h-64 overflow-hidden">
-          <img src={IMG_HERO_BG} alt="" aria-hidden className="h-full w-full object-cover" />
+          <Image src={IMG_HERO_BG} alt="" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }} />
         </div>
         <div className="px-6 py-8">
@@ -128,7 +129,7 @@ export default function FraccPage() {
               </div>
             ))}
           </div>
-          <img src={IMG_CMRE} alt="CMRE Certified" className="mt-5 h-9 object-contain" />
+          <Image src={IMG_CMRE} alt="CMRE Certified" width={2373} height={562} className="mt-5 h-9 w-auto object-contain" />
           <div className="mt-6 grid grid-cols-3 gap-y-4">
             {stats.map(({ value, label }) => (
               <div key={label} className="flex flex-col items-center">
@@ -144,11 +145,12 @@ export default function FraccPage() {
       <section className="relative hidden overflow-hidden lg:block">
 
         {/* Hero photo — full-bleed */}
-        <img
+        <Image
           src={IMG_HERO_BG}
           alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
 
         {/* Left gradient for text legibility */}
@@ -192,9 +194,11 @@ export default function FraccPage() {
           </div>
 
           {/* CMRE */}
-          <img
+          <Image
             src={IMG_CMRE}
             alt="CMRE Certified Mexico Real Estate"
+            width={2373}
+            height={562}
             className="mt-8 h-12 w-auto object-contain"
           />
 
@@ -230,7 +234,7 @@ export default function FraccPage() {
               onClick={() => setActiveTab(tab)}
               className={cn(
                 "rounded px-4 py-1.5 font-ewangi text-[0.9rem] transition",
-                activeTab === tab ? "bg-[#3AD3C1] text-black" : "bg-[#EAEDF0] text-black"
+                activeTab === tab ? "bg-brand-teal text-black" : "bg-[#EAEDF0] text-black"
               )}
             >
               {tab}
@@ -239,8 +243,8 @@ export default function FraccPage() {
         </div>
 
         {/* Map image */}
-        <div className="relative overflow-hidden rounded-[16px]" style={{ height: 220 }}>
-          <img src={IMG_AERIAL_CARD} alt="Development aerial view" className="h-full w-full object-cover" />
+        <div className="relative overflow-hidden rounded-2xl" style={{ height: 220 }}>
+          <Image src={IMG_AERIAL_CARD} alt="Development aerial view" fill sizes="100vw" className="object-cover" />
         </div>
 
         {/* Lot list */}
@@ -253,7 +257,7 @@ export default function FraccPage() {
               onClick={() => setActiveLot(lot.id)}
               className={cn(
                 "flex w-full items-center justify-between px-3 py-2.5 font-ewangi text-[1rem] transition",
-                activeLot === lot.id ? "rounded bg-[#3AD3C1] text-black" : "text-white",
+                activeLot === lot.id ? "rounded bg-brand-teal text-black" : "text-white",
                 i > 0 && activeLot !== lot.id && "border-t border-white/15"
               )}
             >
@@ -278,10 +282,12 @@ export default function FraccPage() {
           style={{ height: 537, borderRadius: 27, background: "#D9D9D9" }}
         >
           {/* Aerial photo — fills the whole card */}
-          <img
+          <Image
             src={IMG_AERIAL_CARD}
             alt="Development aerial"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            sizes="(max-width: 1024px) 100vw, 1317px"
+            className="object-cover"
           />
 
           {/* Left panel dark overlay — Figma: x=0 y=0 482×537 #1E1E1E@20% r=27 */}
@@ -331,7 +337,7 @@ export default function FraccPage() {
               type="button"
               onClick={() => setActiveLot(lot.id)}
               className={cn(
-                "absolute z-20 flex w-[322px] items-center justify-between px-3 font-ewangi text-[1rem] transition",
+                "absolute z-20 flex w-80.5 items-center justify-between px-3 font-ewangi text-[1rem] transition",
                 activeLot === lot.id ? "text-black" : "text-white"
               )}
               style={{
@@ -387,7 +393,7 @@ export default function FraccPage() {
                     {lots.find((l) => l.id === activeLot)?.area}
                   </p>
                   <p className="font-ewangi text-[0.9rem] text-white/80">Residential</p>
-                  <p className="font-ewangi text-[0.9rem] text-[#3AD3C1]">Available</p>
+                  <p className="font-ewangi text-[0.9rem] text-brand-teal">Available</p>
                 </div>
               </div>
               {/* Arrow pointer */}
@@ -456,8 +462,8 @@ export default function FraccPage() {
             </span>
           ))}
         </div>
-        <div className="mt-4 overflow-hidden rounded-[16px]" style={{ height: 220 }}>
-          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-contain" />
+        <div className="relative mt-4 overflow-hidden rounded-2xl" style={{ height: 220 }}>
+          <Image key={model.name} src={model.image} alt={model.name} fill sizes="100vw" className="object-contain" />
         </div>
         <div className="mt-5 flex gap-4">
           {models.map((_, i) => (
@@ -465,7 +471,7 @@ export default function FraccPage() {
               key={i}
               type="button"
               onClick={() => setModelIdx(i)}
-              className={cn("rounded-full transition-colors", i === modelIdx ? "bg-[#3AD3C1]" : "bg-[#D9D9D9]")}
+              className={cn("rounded-full transition-colors", i === modelIdx ? "bg-brand-teal" : "bg-[#D9D9D9]")}
               style={{ width: 16, height: 16 }}
             />
           ))}
@@ -477,7 +483,7 @@ export default function FraccPage() {
 
         {/* House photo — Figma: x=634 y=0 730×345 */}
         <div className="absolute overflow-hidden" style={{ left: 634, top: 0, width: 730, height: 345 }}>
-          <img key={model.name} src={model.image} alt={model.name} className="h-full w-full object-contain" />
+          <Image key={model.name} src={model.image} alt={model.name} fill sizes="730px" className="object-contain" />
         </div>
 
         {/* "House models" — Figma: x=103 y=9 36px white */}
@@ -537,8 +543,8 @@ export default function FraccPage() {
         <h2 className="font-ewangi leading-tight text-brand-teal text-[clamp(2.25rem,9vw,3rem)]">
           Ocean View Lots
         </h2>
-        <div className="mt-4 overflow-hidden rounded-[12px]" style={{ height: 220 }}>
-          <img src={IMG_LOTS_SHOT} alt="Ocean view lots" className="h-full w-full object-cover" />
+        <div className="relative mt-4 overflow-hidden rounded-xl" style={{ height: 220 }}>
+          <Image src={IMG_LOTS_SHOT} alt="Ocean view lots" fill sizes="100vw" className="object-cover" />
         </div>
         <p className="mt-5 font-ewangi text-[1rem] leading-relaxed text-white">
           Explore premium ocean-view lots for sale, each offering a unique opportunity to build your
@@ -573,9 +579,11 @@ export default function FraccPage() {
 
             {/* Development screenshot */}
             <div className="flex-1">
-              <img
+              <Image
                 src={IMG_LOTS_SHOT}
                 alt="Ocean view lots development"
+                width={1890}
+                height={1148}
                 className="h-auto w-full rounded-[10px] object-cover"
                 style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
               />

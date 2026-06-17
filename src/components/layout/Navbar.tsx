@@ -77,7 +77,7 @@ export function Navbar() {
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-[#3AD3C1]" : "hover:text-[#02a592]")}
+                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-[#02a592]")}
                   aria-haspopup="true"
                 >
                   {item.label}
@@ -89,7 +89,7 @@ export function Navbar() {
 
                 {/* Dropdown panel */}
                 <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                  <div className="min-w-[220px] overflow-hidden rounded-[16px] border border-brand-ink/8 bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                  <div className="min-w-55 overflow-hidden rounded-2xl border border-brand-ink/8 bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
                     {item.sub.map((sub, i) => (
                       <Link
                         key={sub.label}
@@ -114,7 +114,7 @@ export function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={cn("whitespace-nowrap transition", dark ? "hover:text-[#3AD3C1]" : "hover:text-[#02a592]")}
+                className={cn("whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-[#02a592]")}
               >
                 {item.label}
               </Link>
@@ -145,6 +145,7 @@ export function Navbar() {
           </div>
 
           <button
+            type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}

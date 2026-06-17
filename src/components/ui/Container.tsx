@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 // Responsive page container that centers content and constrains max width.
 // Provides consistent horizontal padding across screen sizes.
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ContainerProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Container({ className, ...props }: ContainerProps) {
   return (

@@ -70,7 +70,7 @@ export function TopDevelopers() {
               key={dev.id}
               href={dev.href}
               aria-label={`${dev.name}, ${dev.location} — ${dev.price}`}
-              className="relative shrink-0 w-[260px] overflow-hidden rounded-3xl block"
+              className="relative shrink-0 w-65 overflow-hidden rounded-3xl block"
               style={{ height: 420 }}
             >
               {/* Property photo — fills full card */}

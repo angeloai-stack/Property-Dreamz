@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 // Input primitive for forms and data entry fields.
 // Includes default focus ring, border, and placeholder styling.
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 export function Input({ className, ...props }: InputProps) {
   return (

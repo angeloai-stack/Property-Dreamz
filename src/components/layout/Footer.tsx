@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   FaFacebookF,
@@ -124,9 +125,11 @@ export function Footer() {
         {/* Logo and condensed navigation */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Link href="/" className="inline-flex shrink-0 items-center" aria-label="Property Dreamz home">
-            <img
+            <Image
               src="/brand/property-dreamz-logo-horizontal.png"
               alt="Property Dreamz"
+              width={3562}
+              height={684}
               className="h-7 w-auto"
             />
           </Link>

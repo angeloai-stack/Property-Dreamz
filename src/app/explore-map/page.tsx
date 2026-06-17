@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { MapPin, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
@@ -157,10 +158,10 @@ export default function ExploreMapPage() {
           <div className="space-y-3 p-5 lg:p-6">
             {/* Section header */}
             <div className="flex items-center justify-between pb-2">
-              <p className="font-ewangi text-[1.35rem] text-[#024139]">
+              <p className="font-ewangi text-[1.35rem] text-brand-pine">
                 Available projects
               </p>
-              <p className="font-ewangi text-sm uppercase tracking-[0.12em] text-[#024139]/70">
+              <p className="font-ewangi text-sm uppercase tracking-[0.12em] text-brand-pine/70">
                 {filtered.length} · {currency}
               </p>
             </div>
@@ -191,11 +192,11 @@ export default function ExploreMapPage() {
                 </div>
               </>
             ) : (
-              <div className="rounded-[34px] border border-[#024139]/20 bg-white/30 px-6 py-16 text-center">
-                <p className="font-ewangi text-[2rem] text-[#024139]/60">No results</p>
+              <div className="rounded-[34px] border border-brand-pine/20 bg-white/30 px-6 py-16 text-center">
+                <p className="font-ewangi text-[2rem] text-brand-pine/60">No results</p>
                 <button
                   type="button"
-                  className="mt-4 rounded-full border border-[#024139]/30 px-6 py-2 font-ewangi text-sm text-[#024139]/70 transition hover:bg-[#024139]/10"
+                  className="mt-4 rounded-full border border-brand-pine/30 px-6 py-2 font-ewangi text-sm text-brand-pine/70 transition hover:bg-brand-pine/10"
                   onClick={() => {
                     setSearchVal("");
                     setTypeFilter("All");
@@ -230,7 +231,7 @@ export default function ExploreMapPage() {
             {/* Figma: teal #39d3c0 button, 309×83px, dark text */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#39d3c0] px-10 py-5 font-ewangi text-[1.1rem] text-[#191919] transition hover:bg-[#2bbba8]"
+              className="inline-flex items-center justify-center rounded-full bg-[#39d3c0] px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-[#2bbba8]"
             >
               Talk to an expert
             </Link>
@@ -239,10 +240,12 @@ export default function ExploreMapPage() {
           {/* Right: house illustration — Figma: image 3, 512×512 */}
           <div className="shrink-0">
             <div className="relative h-56 w-56 overflow-hidden rounded-[43px] bg-white/5 lg:h-72 lg:w-72">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80"
                 alt="Dream property"
-                className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 224px, 288px"
+                className="object-cover"
               />
             </div>
           </div>

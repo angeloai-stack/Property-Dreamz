@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { Bed, Bath, Heart, MapPin, SlidersHorizontal, X } from "lucide-react";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
@@ -110,10 +111,12 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
       <article className="rounded-[43px] bg-white shadow-[0_4px_32px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.18)]">
         {/* Image — Figma: 295x259px inset 13px, r=37 */}
         <div className="relative mx-3 mt-3 overflow-hidden rounded-[37px]" style={{ height: 259 }}>
-          <img
+          <Image
             src={listing.image}
             alt={listing.title}
-            className="h-full w-full object-cover transition duration-500 hover:scale-105"
+            fill
+            sizes="(max-width: 1024px) 50vw, 320px"
+            className="object-cover transition duration-500 hover:scale-105"
           />
 
           {/* Heart unsave button — Figma: 24x24 teal #39D3C0 top-right */}
@@ -160,7 +163,7 @@ export default function SavedPage() {
   return (
     <main className="flex-1 bg-[#028e7f]">
       {/* Header — Figma: "Saved" 64px Ewangi #EAEDF0, frosted location pill center, Filter right */}
-      <div className="px-8 py-14 md:px-12 lg:px-[120px]">
+      <div className="px-8 py-14 md:px-12 lg:px-30">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0]">
             Saved
@@ -200,7 +203,7 @@ export default function SavedPage() {
       </div>
 
       {/* Card grid — Figma: 3col x 2row, 319px cards, ~116px gap, 120px side padding */}
-      <div className="px-8 pb-24 md:px-12 lg:px-[120px]">
+      <div className="px-8 pb-24 md:px-12 lg:px-30">
         {saved.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,8vw,7.25rem)]">
             {saved.map((listing) => (
