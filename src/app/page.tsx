@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BuyersGuideSteps } from "@/components/home/BuyersGuideSteps";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
+import { FaqSection } from "@/components/home/FaqSection";
 import { FeatureCards } from "@/components/home/FeatureCards";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TopDevelopers } from "@/components/home/TopDevelopers";
@@ -70,6 +71,7 @@ const jsonLd = {
   ],
 };
 
+
 export default function Home() {
   return (
     <>
@@ -94,6 +96,7 @@ export default function Home() {
         <BuyersGuideSteps />
         <CertifiedBanner />
         <CampaignForm />
+        <FaqSection />
       </main>
     </>
   );

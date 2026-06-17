@@ -1,5 +1,5 @@
 import { BadgeCheck } from "lucide-react";
-import { Container, Icon } from "@/components/ui";
+import { Container, Icon, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 const features = [
@@ -19,25 +19,27 @@ const features = [
 
 export function FeatureCards() {
   return (
-    <section className="w-full bg-brand-ink pb-14 pt-2 md:pb-16">
+    <section className="w-full bg-brand-ink pb-8 pt-2 md:pb-16">
       <Container>
-        <div className="grid gap-5 md:grid-cols-3 md:gap-6">
-          {features.map((feature) => (
+        <div className="grid gap-3 md:grid-cols-3 md:gap-6">
+          {features.map((feature, i) => (
+            <RevealOnScroll key={feature.title} delay={i * 120}>
             <article
-              key={feature.title}
               className={cn(
-                "flex flex-col items-center rounded-[2rem] bg-white px-6 py-8 text-center shadow-subtle",
-                "sm:px-7 sm:py-10"
+                "flex flex-col items-center rounded-2xl bg-white px-4 py-5 text-center shadow-subtle transition-all duration-300",
+                "sm:rounded-4xl sm:px-7 sm:py-10",
+                "hover:-translate-y-2 hover:shadow-xl"
               )}
             >
-              <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-brand-emerald/10 text-brand-emerald">
-                <Icon as={BadgeCheck} size={26} color="currentColor" />
+              <span className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-brand-emerald/10 text-brand-emerald sm:mb-5 sm:h-16 sm:w-16">
+                <Icon as={BadgeCheck} size={32} color="currentColor" />
               </span>
-              <h3 className="mb-4 font-ewangi text-subtitle leading-snug text-brand-emerald">
+              <h3 className="mb-2 font-ewangi text-[1rem] leading-snug text-brand-emerald sm:mb-4 sm:text-subtitle">
                 {feature.title}
               </h3>
-              <p className="font-body text-body text-brand-muted">{feature.body}</p>
+              <p className="font-body text-[0.85rem] text-brand-muted sm:text-body">{feature.body}</p>
             </article>
+            </RevealOnScroll>
           ))}
         </div>
       </Container>

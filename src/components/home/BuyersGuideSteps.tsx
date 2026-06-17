@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { MapPin, Building2, Sofa, BedDouble } from "lucide-react";
-import { Container } from "@/components/ui";
+import { Container, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
+
+const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
+const LOGO_SECTION_BG = `${CLD}/Logos_Property_D_Variante_2_mvzi3l`;
 
 function BrandMark() {
   return (
@@ -44,65 +47,71 @@ const steps = [
 
 export function BuyersGuideSteps() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#1e1e1e] py-16 md:py-20">
+    <section className="relative w-full overflow-hidden bg-[#1e1e1e] py-8 md:py-20">
 
-      {/* Background brand marks — Figma: radial-repeat vectors gradient(#000000 → #026559)
-          right side near step 1, left side near step 3 */}
-      <div className="pointer-events-none absolute -right-16 top-32 select-none">
+      {/* Background logo decorators — top-right and bottom-left, natural colors */}
+      <div className="pointer-events-none absolute -right-22.5 -top-10 select-none w-45 md:-right-45.5 md:w-91">
         <Image
-          src="/brand/property-dreamz-logo-circle.png"
+          src={LOGO_SECTION_BG}
           alt=""
-          width={420}
-          height={420}
-          className="filter-[brightness(0)_saturate(100%)_invert(18%)_sepia(60%)_saturate(600%)_hue-rotate(140deg)]"
+          width={364}
+          height={123}
+          className="h-auto w-full object-contain"
         />
       </div>
-      <div className="pointer-events-none absolute -left-16 bottom-24 select-none">
+      <div className="pointer-events-none absolute -left-22.5 -bottom-6 select-none w-45 md:-left-45.5 md:w-91">
         <Image
-          src="/brand/property-dreamz-logo-circle.png"
+          src={LOGO_SECTION_BG}
           alt=""
-          width={420}
-          height={420}
-          className="filter-[brightness(0)_saturate(100%)_invert(18%)_sepia(60%)_saturate(600%)_hue-rotate(140deg)]"
+          width={364}
+          height={123}
+          className="h-auto w-full object-contain"
         />
       </div>
 
       <Container className="relative z-10">
-        {/* Section header — Figma: Ewangi 34px label + 64px headline, white */}
-        <div className="mb-8">
-          <p className="font-ewangi text-[2.125rem] leading-tight text-white">
+        {/* Section header */}
+        <RevealOnScroll>
+        <div className="mb-4 md:mb-8">
+          <p className="font-ewangi text-[1.35rem] leading-tight text-white md:text-[2.125rem]">
             Buyer&apos;s Guide
           </p>
-          <h2 className="font-ewangi font-bold text-[clamp(2.25rem,4.5vw,4rem)] leading-tight text-white">
+          <h2 className="font-ewangi font-bold text-[clamp(1.75rem,4.5vw,4rem)] leading-tight text-white">
             How to buy property in <span className="text-brand-teal">Mexico</span>
           </h2>
         </div>
+        </RevealOnScroll>
 
         {/* Step cards */}
-        <div className="space-y-4">
+        <div className="space-y-6 md:space-y-8">
           {steps.map((step, i) => {
             const isEven = i % 2 === 1;
             return (
-              <div key={step.number} className="relative rounded-[35px] bg-[#fcfdff] px-6 py-6 lg:px-8 lg:py-7">
-                {/* Brand mark decorator — top left */}
-                <div className="absolute -top-5 left-8 flex gap-1">
-                  <BrandMark />
+              <RevealOnScroll key={step.number} delay={i * 150}>
+              <div
+                className="relative mx-3 rounded-[2.5rem] bg-[#fcfdff] px-4 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:mx-16 md:rounded-[3.5rem] lg:px-8 lg:py-7"
+              >
+                {/* BrandMark decorator — top left, bleeds above the card */}
+                <div className={cn(
+                  "absolute -top-4 md:-top-5",
+                  isEven ? "right-6 md:right-8" : "left-6 md:left-8"
+                )}>
                   <BrandMark />
                 </div>
 
                 <div
                   className={cn(
-                    "flex flex-col gap-6 md:grid md:items-center md:gap-8",
+                    "relative z-10 flex flex-col gap-4 md:grid md:items-center md:gap-8",
                     "md:grid-cols-[1fr_1fr]",
                     isEven && "md:[direction:rtl] *:[direction:ltr]!"
                   )}
                 >
-                  {/* Text content — always first in DOM = left on odd steps */}
-                  <div className="space-y-3">
-                    <span className="block font-ewangi text-[4rem] leading-none text-brand-teal">
+                  {/* Text content */}
+                  <div className="space-y-2 md:space-y-3">
+                    <span className="block font-ewangi text-[2.5rem] leading-none text-brand-teal md:text-[4rem]">
                       {step.number}
                     </span>
-                    <h3 className="font-ewangi font-bold text-[1.75rem] leading-tight text-[#002823]">
+                    <h3 className="font-ewangi font-bold text-[1.2rem] leading-tight text-[#002823] md:text-[1.75rem]">
                       {step.title}
                     </h3>
                     <p className="font-ewangi text-[15px] leading-relaxed text-black/80">
@@ -112,7 +121,7 @@ export function BuyersGuideSteps() {
 
                   {/* Image with overlays */}
                   <div className="relative">
-                    <div className="relative aspect-4/3 overflow-hidden rounded-[27px]">
+                    <div className="relative aspect-4/3 overflow-hidden rounded-2xl md:rounded-[27px]">
                       <Image
                         src={step.image}
                         alt={step.imageAlt}
@@ -121,13 +130,13 @@ export function BuyersGuideSteps() {
                         className="object-cover"
                       />
 
-                      {/* Location label — top right */}
+                      {/* Location label */}
                       <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 backdrop-blur-sm">
                         <MapPin className="h-3.5 w-3.5 text-brand-teal" strokeWidth={2} />
                         <span className="font-ewangi text-[13px] font-semibold text-brand-ink">{step.location}</span>
                       </div>
 
-                      {/* Property type icons — left side */}
+                      {/* Property type icons */}
                       <div className="absolute left-3 top-1/2 flex -translate-y-1/2 flex-col gap-2">
                         {[Building2, Sofa, BedDouble].map((Icon, idx) => (
                           <div key={idx} className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-teal">
@@ -138,12 +147,13 @@ export function BuyersGuideSteps() {
                     </div>
 
                     {/* Price badge */}
-                    <div className="absolute bottom-3 right-3 rounded-[9px] bg-brand-teal px-3 py-1.5">
-                      <span className="font-ewangi font-semibold text-xl text-white">{step.price}</span>
+                    <div className="absolute bottom-3 right-3 rounded-[9px] bg-brand-teal px-2.5 py-1">
+                      <span className="font-ewangi font-semibold text-sm text-white md:text-xl">{step.price}</span>
                     </div>
                   </div>
                 </div>
               </div>
+              </RevealOnScroll>
             );
           })}
         </div>

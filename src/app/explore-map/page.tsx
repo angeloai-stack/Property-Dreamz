@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MapPin, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
 import { ListingCard } from "@/components/explore-map/ListingCard";
@@ -20,6 +20,11 @@ export default function ExploreMapPage() {
   const [sortBy, setSortBy] = useState("rec");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [searchVal, setSearchVal] = useState("");
+
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("search");
+    if (q) setSearchVal(q);
+  }, []);
   const [mobileView, setMobileView] = useState<MobileView>("list");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
