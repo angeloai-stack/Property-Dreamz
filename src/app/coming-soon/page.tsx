@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
+import { CldImage } from "next-cloudinary";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 const F =
@@ -85,9 +87,6 @@ export default function ComingSoonPage() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        .orb-1 { animation: float-slow 8s ease-in-out infinite; }
-        .orb-2 { animation: float-med 10s ease-in-out infinite 1s; }
-        .orb-3 { animation: float-slow 12s ease-in-out infinite 3s; }
         .shimmer-text {
           background: linear-gradient(90deg, #39d3c0 0%, #fff 40%, #39d3c0 60%, #2bbba8 100%);
           background-size: 200% auto;
@@ -96,31 +95,34 @@ export default function ComingSoonPage() {
           background-clip: text;
           animation: shimmer 4s linear infinite;
         }
-        .btn-glow { animation: glow-pulse 2.5s ease-in-out infinite; }
         .logo-glow { filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(57,211,192,0.4)); }
       `}</style>
 
       <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-brand-ink px-6 py-20">
 
         {/* Animated background orbs */}
-        <div className="orb-1 pointer-events-none absolute -left-32 top-[-10%] h-[500px] w-[500px] rounded-full bg-[#39d3c0]/10 blur-[100px]" />
-        <div className="orb-2 pointer-events-none absolute -right-40 bottom-[-5%] h-[600px] w-[600px] rounded-full bg-[#39d3c0]/8 blur-[120px]" />
-        <div className="orb-3 pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-pine/10 blur-[80px]" />
+        <div className="pointer-events-none absolute -left-32 top-[-10%] h-125 w-125 rounded-full bg-[#39d3c0]/10 blur-[100px]" style={{ animation: "float-slow 8s ease-in-out infinite" }} />
+        <div className="pointer-events-none absolute -right-40 bottom-[-5%] h-150 w-150 rounded-full bg-[#39d3c0]/8 blur-[120px]" style={{ animation: "float-med 10s ease-in-out infinite 1s" }} />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-100 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-pine/10 blur-[80px]" style={{ animation: "float-slow 12s ease-in-out infinite 3s" }} />
 
         {/* Circular logo — one per corner */}
-        {[
-          { top: "-120px",   left: "-120px",  right: "auto", bottom: "auto", anim: "logo-bg-spin"    },
-          { top: "-120px",   right: "-120px", left: "auto",  bottom: "auto", anim: "logo-bg-counter" },
-          { bottom: "-120px",left: "-120px",  right: "auto", top: "auto",    anim: "logo-bg-counter" },
-          { bottom: "-120px",right: "-120px", left: "auto",  top: "auto",    anim: "logo-bg-spin"    },
-        ].map((pos, i) => (
-          <img
+        {(
+          [
+            { css: { top: "-120px",    left: "-120px",   right: "auto", bottom: "auto" }, anim: "logo-bg-spin"    },
+            { css: { top: "-120px",    right: "-120px",  left: "auto",  bottom: "auto" }, anim: "logo-bg-counter" },
+            { css: { bottom: "-120px", left: "-120px",   right: "auto", top: "auto"    }, anim: "logo-bg-counter" },
+            { css: { bottom: "-120px", right: "-120px",  left: "auto",  top: "auto"    }, anim: "logo-bg-spin"    },
+          ] as const
+        ).map(({ css, anim }, i) => (
+          <CldImage
             key={i}
-            src="https://res.cloudinary.com/dserzvrwe/image/upload/Logos_Property_D_Variante_2_mvzi3l.png"
+            src="Logos_Property_D_Variante_2_mvzi3l"
+            width={380}
+            height={380}
             alt=""
             aria-hidden="true"
-            className={`${pos.anim} pointer-events-none absolute opacity-[0.07]`}
-            style={{ width: 380, height: 380, objectFit: "contain", ...pos }}
+            className={`${anim} pointer-events-none absolute opacity-[0.07]`}
+            style={{ objectFit: "contain", ...css }}
           />
         ))}
 
@@ -138,20 +140,22 @@ export default function ComingSoonPage() {
 
           {/* Logo */}
           <div className="flex justify-center" style={fadeUp(mounted, 0)}>
-            <img
-              src="/brand/property-dreamz-logo-stacked.png"
+            <CldImage
+              src="Logos_Property_D_Variante_Negativo_1_op4iwl"
               alt="Property Dreamz"
+              width={320}
+              height={160}
               style={{
                 width: "320px",
                 height: "auto",
-                filter: "brightness(0) invert(1) drop-shadow(0 0 18px rgba(57,211,192,0.4))",
+                filter: "drop-shadow(0 0 18px rgba(57,211,192,0.4))",
               }}
             />
           </div>
 
           {/* Divider line */}
           <div
-            className="mx-auto mt-8 h-px w-24 rounded-full bg-gradient-to-r from-transparent via-[#39d3c0] to-transparent"
+            className="mx-auto mt-8 h-px w-24 rounded-full bg-linear-to-r from-transparent via-brand-teal to-transparent"
             style={fadeUp(mounted, 150)}
           />
 
