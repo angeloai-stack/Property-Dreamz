@@ -41,7 +41,7 @@ export function CertifiedBanner() {
               {/* Figma: CMRE Logo-04 2, 620×147px image */}
               <div className="relative h-10 w-52 max-w-full md:h-18.5 md:w-77.5">
                 <Image
-                  src="/brand/cmre-logo.png"
+                  src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
                   alt="CMRE — Certified Mexico Real Estate"
                   fill
                   className="object-contain object-left"

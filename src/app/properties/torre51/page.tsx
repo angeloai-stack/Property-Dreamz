@@ -5,13 +5,13 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Cloudinary delivery base — f_auto,q_auto lets Cloudinary pick the best format/quality
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO  = `${CLD}/hf_20260615_235527_0660507b-9010-447b-97cc-19d1ebca9800_rmqmxw.png`;
 const IMG_MAP   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.49.40_p.m._jsj34s.png`;
 const IMG_SEC   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.50.14_p.m._k6wpgu.png`;
-const IMG_BUILD = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.51.21_p.m._esuqwr.png`;
-const IMG_LOGO  = `${CLD}/Logo-lgo-andares_ybdmku.png`;
+const IMG_BUILD = "/torre51/build-live.jpg";
+const IMG_LOGO  = "/torre51/logo.png";
+const IMG_CMRE  = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
 const stats = [
   { value: "300",  label: "Lots" },
@@ -38,7 +38,7 @@ const lots = [
   { id: "Lot 16", area: "105 m²" },
 ];
 
-export default function AndaresPage() {
+export default function Torre51Page() {
   const [tab, setTab] = useState<Tab>("Lots");
   const [activeLot, setActiveLot] = useState("Lot 12");
 
@@ -47,17 +47,15 @@ export default function AndaresPage() {
 
       {/* ── HERO ────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
-        {/* Background image */}
         <Image
           src={IMG_HERO}
-          alt="Andares development aerial view"
+          alt="Torre 51 Negativo development aerial view"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
 
-        {/* Dark gradient overlay — left dominant */}
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(to right, #171717 30%, transparent 70%)" }}
@@ -67,10 +65,8 @@ export default function AndaresPage() {
           style={{ background: "linear-gradient(to top, #171717 5%, transparent 50%)" }}
         />
 
-        {/* Content */}
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-10 lg:pb-12">
 
-          {/* Stats bar — 3-col grid on mobile, inline row on larger screens; sizes scale up */}
           <div className="mb-auto grid grid-cols-3 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 lg:gap-x-10">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col">
@@ -80,30 +76,26 @@ export default function AndaresPage() {
             ))}
           </div>
 
-          {/* Main content row */}
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
-            {/* Left — Andares logo + CMRE */}
             <div className="flex flex-col gap-6">
               <Image
                 src={IMG_LOGO}
-                alt="Andares Santa Fe logo"
-                width={145}
-                height={114}
-                className="w-28 brightness-0 invert lg:w-36"
+                alt="Torre 51 Negativo"
+                width={143}
+                height={43}
+                className="w-36"
               />
               <Image
-                src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
+                src={IMG_CMRE}
                 alt="CMRE Certified"
                 width={204}
                 height={48}
-                className="w-40"
+                className="w-44"
               />
             </div>
 
-            {/* Right — headline + trust badges */}
             <div className="flex flex-col items-start gap-6 lg:items-end">
-              {/* Trust badges */}
               <div className="flex flex-wrap gap-6 lg:justify-end">
                 {trustBadges.map((b) => (
                   <div key={b} className="flex flex-col items-center gap-1.5">
@@ -113,7 +105,6 @@ export default function AndaresPage() {
                 ))}
               </div>
 
-              {/* Headline */}
               <div className="lg:text-right">
                 <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.92] text-white">
                   Own your<br />next chapter.
@@ -132,8 +123,6 @@ export default function AndaresPage() {
         <div className="mx-auto" style={{ maxWidth: "1318px" }}>
           <div className="flex flex-col lg:h-134.25 lg:flex-row">
 
-            {/* Left panel — Figma: Rectangle 106, 482×537, #1E1E1E, radius 27.
-                Full width on mobile; the map stacks below it. */}
             <div
               className="flex w-full flex-col bg-[#1E1E1E] p-7 lg:w-120.5 lg:shrink-0"
               style={{ borderRadius: "27px" }}
@@ -142,7 +131,6 @@ export default function AndaresPage() {
                 Explore the development
               </p>
 
-              {/* Tabs — active: teal bg, inactive: #EAEDF0, all dark text, 72×28 radius 4 */}
               <div className="flex gap-1.5 mb-4">
                 {(["Lots", "Club", "Houses"] as Tab[]).map((t) => (
                   <button
@@ -165,7 +153,6 @@ export default function AndaresPage() {
                 Select a lot to see details
               </p>
 
-              {/* Lot rows — active: teal bg radius 4, height 40 */}
               <div className="flex-1 overflow-y-auto">
                 {lots.map((lot, i) => (
                   <button
@@ -189,7 +176,6 @@ export default function AndaresPage() {
                 ))}
               </div>
 
-              {/* View all lots — Figma: 184×44, radius 5, outlined */}
               <div className="mt-5 flex justify-center">
                 <button
                   style={{ width: "184px", height: "44px", borderRadius: "5px" }}
@@ -200,21 +186,18 @@ export default function AndaresPage() {
               </div>
             </div>
 
-            {/* Map — Figma: Mask group 1317×537, radius 27, aerial image.
-                On mobile it stacks below the panel with a fixed height. */}
             <div
               className="relative mt-2 h-72 overflow-hidden lg:ml-2 lg:mt-0 lg:h-auto lg:flex-1"
               style={{ borderRadius: "27px" }}
             >
               <Image
                 src={IMG_MAP}
-                alt="Andares development aerial map"
+                alt="Torre 51 Negativo aerial map"
                 fill
                 className="object-cover"
                 sizes="836px"
               />
 
-              {/* Map point markers — Figma: Clubhouse=teal, Houses=amber, Lots=dark */}
               <div className="absolute top-[33%] left-[22%] flex items-center gap-1.5 rounded-full bg-brand-teal px-3 py-1.5">
                 <div className="h-2.5 w-2.5 rounded-full bg-brand-ink" />
                 <span className="font-ewangi text-[12px] font-medium text-brand-ink">Clubhouse</span>
@@ -231,12 +214,10 @@ export default function AndaresPage() {
                 <span className="font-ewangi text-[12px] font-medium text-white">Lots</span>
               </div>
 
-              {/* 360° icon — Figma: "360 icon" 46×46 bottom-right */}
               <div className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm">
                 <span className="font-ewangi text-[11px] font-bold text-white">360°</span>
               </div>
 
-              {/* Lot tooltip — Figma: Group 66, dark card radius 9, ~51% x / 47% y on map */}
               <div className="absolute left-3 top-3 w-44 rounded-[9px] bg-[#1E1E1E] p-3 lg:left-[51%] lg:top-[47%] lg:w-46.75">
                 <p className="font-ewangi text-[1rem] font-medium text-white mb-1">{activeLot}</p>
                 <p className="font-ewangi text-[12px] text-white/70">
@@ -257,7 +238,6 @@ export default function AndaresPage() {
       {/* ── SECURITY ────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-          {/* Left */}
           <div className="lg:w-[45%]">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Designed with Your<br />Safety in Mind
@@ -267,7 +247,6 @@ export default function AndaresPage() {
             </p>
           </div>
 
-          {/* Right — security image */}
           <div className="flex-1">
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
@@ -285,7 +264,6 @@ export default function AndaresPage() {
       {/* ── BUILD / LIVE / GROW ──────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
 
-        {/* Testimonial / header row */}
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={1.5} />
@@ -301,14 +279,12 @@ export default function AndaresPage() {
           </div>
         </div>
 
-        {/* Main two-column */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
-          {/* Left — image */}
           <div className="lg:w-[55%]">
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
                 src={IMG_BUILD}
-                alt="Build, Live, and Grow at Andares"
+                alt="Build, Live, and Grow at Torre 51 Negativo"
                 fill
                 className="object-cover"
                 sizes="(max-width:1024px) 100vw, 55vw"
@@ -316,13 +292,12 @@ export default function AndaresPage() {
             </div>
           </div>
 
-          {/* Right — headline + body + CTA */}
           <div className="flex flex-col gap-6 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Build, Live,<br />and Grow
             </h2>
             <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-115">
-              Whether you&apos;re looking for the perfect lot to build your dream home or a move-in-ready residence, Andares offers a community designed for those who value quality, security, and lasting value. Every detail has been carefully planned so you and your family can thrive.
+              Whether you&apos;re looking for the perfect lot to build your dream home or a move-in-ready residence, we offer options tailored to your lifestyle and goals. Discover a community designed for growth, comfort, and long-term value. Contact us today to learn more, schedule a visit, and find the opportunity that&apos;s right for you.
             </p>
             <button className="mt-2 rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
               Talk to an expert

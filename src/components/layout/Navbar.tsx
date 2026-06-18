@@ -19,8 +19,9 @@ const navItems: NavItem[] = [
     label: "Properties",
     href: "/properties",
     sub: [
-      { label: "Del Mar",              href: "/properties/fracc" },
+      { label: "Del Mar",              href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
+      { label: "Torre 51",              href: "/properties/torre51" },
       { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
     ],
   },
@@ -36,7 +37,7 @@ type Currency = (typeof currencies)[number];
 
 export function Navbar() {
   const pathname = usePathname();
-  const dark = pathname.startsWith("/properties/fracc") || pathname.startsWith("/properties/andares");
+  const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51");
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);

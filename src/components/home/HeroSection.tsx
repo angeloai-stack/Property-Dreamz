@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Heart, Home, MapPin, MessageCircle, Search } from "lucide-react";
-import { CmreBadge } from "@/components/shared/CmreBadge";
 
 const heroImage = "/hero-suburban.jpg";
 
@@ -84,7 +83,13 @@ export function HeroSection() {
 
       {/* CMRE badge — bottom-right */}
       <div className="absolute bottom-6 right-6 z-10">
-        <CmreBadge variant="light" />
+        <Image
+          src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-02_p8szqi.png"
+          alt="CMRE Certified Mexico Real Estate"
+          width={69}
+          height={95}
+          className="h-16 w-auto drop-shadow-md"
+        />
       </div>
 
     </section>

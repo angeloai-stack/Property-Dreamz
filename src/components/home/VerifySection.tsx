@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
-import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container, Icon, Label } from "@/components/ui";
 
 export function VerifySection() {
@@ -19,9 +19,15 @@ export function VerifySection() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Label className="text-brand-emerald/80">Certified by</Label>
-          <CmreBadge />
+        <div className="flex flex-col gap-2">
+          <Label className="text-white">Certified by</Label>
+          <Image
+            src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
+            alt="CMRE Certified Mexico Real Estate"
+            width={204}
+            height={48}
+            className="h-12 w-auto"
+          />
         </div>
       </Container>
     </section>

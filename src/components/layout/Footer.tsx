@@ -8,7 +8,6 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-import { CmreBadge } from "@/components/shared/CmreBadge";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
@@ -209,7 +208,13 @@ export function Footer() {
             </div>
           </div>
 
-          <CmreBadge />
+          <Image
+            src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-03_fuisiq.png"
+            alt="CMRE Certified Mexico Real Estate"
+            width={171}
+            height={54}
+            className="h-10 w-auto"
+          />
         </div>
       </Container>
     </footer>

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;
 const IMG_AERIAL_CARD  = `${CLD}/Panoramic_View_vy1spn.png`;
-const IMG_CMRE         = "/fracc/f3n-cmre.png";
+const IMG_CMRE         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png";
 const IMG_LOTS_SHOT    = `${CLD}/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png`;
 
 /* Shield-checkmark — Figma: stroke #3AD3C1 sw=3 */
