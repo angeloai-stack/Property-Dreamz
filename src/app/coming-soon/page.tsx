@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
@@ -139,13 +138,14 @@ export default function ComingSoonPage() {
 
           {/* Logo */}
           <div className="flex justify-center" style={fadeUp(mounted, 0)}>
-            <Image
+            <img
               src="/brand/property-dreamz-logo-stacked.png"
               alt="Property Dreamz"
-              width={400}
-              height={200}
-              className="logo-glow h-auto w-80"
-              priority
+              style={{
+                width: "320px",
+                height: "auto",
+                filter: "brightness(0) invert(1) drop-shadow(0 0 18px rgba(57,211,192,0.4))",
+              }}
             />
           </div>
 

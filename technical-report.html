@@ -401,11 +401,11 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Fecha del análisis</div>
-        <div class="cover-meta-value">11 de junio de 2026</div>
+        <div class="cover-meta-value">18 de junio de 2026</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
-        <div class="cover-meta-value">MVP — Formularios funcionales</div>
+        <div class="cover-meta-value">Soft launch — Coming Soon activo</div>
       </div>
     </div>
   </div>
@@ -451,12 +451,12 @@
     <div class="stat-row">
       <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
       <div class="stat"><span class="stat-num">35+</span><span class="stat-label">Componentes</span></div>
-      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Páginas App</span></div>
-      <div class="stat"><span class="stat-num">4</span><span class="stat-label">API Routes</span></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-label">Páginas App</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">API Routes</span></div>
     </div>
 
     <div class="highlight-box">
-      <strong>Estado actual:</strong> La UI está completamente construida como MVP funcional. Se cuenta con 5 formularios interactivos con captura de leads y 4 API routes. Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
+      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 5 formularios, 5 API routes (1 activa) y 9 páginas. Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
     </div>
   </div>
 
@@ -494,6 +494,8 @@
         <tr><th>Variable</th><th>Servicio</th><th>Estado</th></tr>
       </thead>
       <tbody>
+        <tr><td><code>PREVIEW_TOKEN</code></td><td>Coming-soon bypass (token secreto de equipo)</td><td><strong style="color:#026559">Activo</strong></td></tr>
+        <tr><td><code>WEBHOOK_COMING_SOON_URL</code></td><td>n8n webhook — formulario coming-soon</td><td><strong style="color:#026559">Activo</strong></td></tr>
         <tr><td><code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code></td><td>Sanity CMS</td><td>Pendiente</td></tr>
         <tr><td><code>HUBSPOT_API_KEY</code></td><td>HubSpot CRM (leads de formularios)</td><td>Pendiente</td></tr>
         <tr><td><code>MAPBOX_TOKEN</code></td><td>Mapbox GL</td><td>Pendiente</td></tr>
@@ -699,14 +701,14 @@
     </div>
 
     <h3>Root Layout</h3>
-    <p>Estructura del árbol en <code>src/app/layout.tsx</code>:</p>
+    <p>El layout lee el header <code>x-pathname</code> inyectado por el middleware para suprimir Navbar/Footer en <code>/coming-soon</code>:</p>
     <pre>
 &lt;html lang="en" {font variables}&gt;
   &lt;body class="flex flex-col min-h-screen bg-paper text-ink"&gt;
-    &lt;Navbar /&gt;
-    &lt;Main&gt;{children}&lt;/Main&gt;   <span class="note"># flex-1 para pushdown footer</span>
-    &lt;Footer /&gt;
-    &lt;WhatsAppButton /&gt;          <span class="note"># fixed z-50</span>
+    {!bare &amp;&amp; &lt;Navbar /&gt;}
+    {bare ? children : &lt;Main&gt;{children}&lt;/Main&gt;}   <span class="note"># bare = pathname /coming-soon</span>
+    {!bare &amp;&amp; &lt;Footer /&gt;}
+    {!bare &amp;&amp; &lt;WhatsAppButton /&gt;}          <span class="note"># fixed z-50</span>
   &lt;/body&gt;
 &lt;/html&gt;</pre>
   </div>
@@ -720,6 +722,7 @@
     <table>
       <thead><tr><th>Ruta</th><th>Archivo</th><th>Estado</th><th>Descripción</th></tr></thead>
       <tbody>
+        <tr><td><code>/coming-soon</code></td><td>app/coming-soon/page.tsx</td><td><span class="badge badge-green">Live</span></td><td>Página standalone (sin Navbar/Footer) con efectos visuales, logo animado y formulario conectado a n8n. Activa en producción vía middleware.</td></tr>
         <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero + Verify + FeatureCards + TopDevelopers + BuyersGuide + CampaignForm + CertifiedBanner</td></tr>
         <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa + filtros + listado sincronizado (datos mock)</td></tr>
         <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, equipo y CTA</td></tr>
@@ -735,6 +738,7 @@
     <table>
       <thead><tr><th>Endpoint</th><th>Formulario(s)</th><th>Estado</th><th>Próxima integración</th></tr></thead>
       <tbody>
+        <tr><td><code>POST /api/coming-soon</code></td><td>Coming-soon form</td><td><span class="badge badge-green">Live</span></td><td>n8n webhook activo — captando leads</td></tr>
         <tr><td><code>POST /api/contact</code></td><td>ContactForm, CampaignForm</td><td><span class="badge badge-gold">Stub</span></td><td>HubSpot CRM + Resend email</td></tr>
         <tr><td><code>POST /api/developer-listing</code></td><td>DeveloperListingForm</td><td><span class="badge badge-gold">Stub</span></td><td>HubSpot pipeline + notificación a ventas</td></tr>
         <tr><td><code>POST /api/guide-download</code></td><td>GuideDownloadForm</td><td><span class="badge badge-gold">Stub</span></td><td>Mailchimp/Resend + envío de PDF</td></tr>
@@ -916,14 +920,15 @@ listings
     <p>Las API routes están creadas y funcionales. El siguiente paso es conectarlas a servicios externos.</p>
 
     <div class="card-grid">
-      <div class="card"><div class="card-title">HubSpot CRM</div><div class="card-body">Las 4 API routes reciben los datos de los formularios. Falta instanciar <code>@hubspot/api-client</code> con <code>HUBSPOT_API_KEY</code> para crear contacts/deals automáticamente.</div></div>
+      <div class="card" style="border-left:3px solid #026559;"><div class="card-title" style="color:#026559;">✓ n8n Webhook</div><div class="card-body"><strong>Activo.</strong> <code>POST /api/coming-soon</code> → <code>WEBHOOK_COMING_SOON_URL</code>. Payload: nombre, email, teléfono, source, submittedAt. Conectado a flujo n8n en voltlab.</div></div>
+      <div class="card"><div class="card-title">HubSpot CRM</div><div class="card-body">Las 4 API routes restantes son stubs. Falta instanciar <code>@hubspot/api-client</code> con <code>HUBSPOT_API_KEY</code> para crear contacts/deals automáticamente.</div></div>
       <div class="card"><div class="card-title">Resend / Email</div><div class="card-body">Cada form submission debe disparar: (1) notificación al equipo de ventas, (2) email de confirmación al usuario. Requiere <code>RESEND_API_KEY</code>.</div></div>
       <div class="card"><div class="card-title">Sanity CMS</div><div class="card-body">Para gestión dinámica de propiedades. Sustituirá el array <code>data.ts</code>. Depende de: <code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code>.</div></div>
       <div class="card"><div class="card-title">Mapbox GL</div><div class="card-body">El mapa SVG actual es decorativo. Mapbox reemplazará <code>MapPanel.tsx</code> con mapa real. Depende de: <code>MAPBOX_TOKEN</code>.</div></div>
     </div>
 
     <div class="highlight-box" style="margin-top:8px;">
-      <strong>Progreso de formularios:</strong> Los 5 formularios tienen UI funcional, validación HTML5, estados de submit/success/error, y API routes correspondientes. Solo falta conectar las routes con HubSpot y Resend.
+      <strong>Progreso de formularios:</strong> El formulario de coming-soon está live con n8n. Los otros 5 formularios tienen UI funcional, validación HTML5, estados de submit/success/error, y API routes listas. Solo falta conectarlas con HubSpot y Resend.
     </div>
   </div>
 
@@ -934,6 +939,9 @@ listings
 
     <h3>Lo que está bien implementado</h3>
     <ul class="check-list">
+      <li>Middleware de coming-soon activo en producción con bypass por token (7 días en cookie)</li>
+      <li>n8n webhook live — formulario de coming-soon capturando leads en tiempo real</li>
+      <li>Root layout condicional — Navbar/Footer suprimidos en <code>/coming-soon</code> vía <code>x-pathname</code> header</li>
       <li>TypeScript con strict mode — sin tipos <code>any</code> en la capa UI</li>
       <li>Separación clara Server / Client components</li>
       <li>Sistema de diseño coherente con tokens reutilizables</li>
@@ -1071,6 +1079,20 @@ listings
 </div><!-- /content -->
 
 
+  <h3>18 de junio de 2026 — Coming Soon &amp; n8n webhook</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/middleware.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Gate de coming-soon en producción. Bypass por cookie <code>preview_access</code> (7 días). En dev, pasa todo sin redirección.</td></tr>
+        <tr><td><code>src/app/coming-soon/page.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Página standalone: orbs animados, logo circular Cloudinary rotando en 4 esquinas, entrada escalonada, shimmer en headline, formulario con 3 campos conectado a n8n.</td></tr>
+        <tr><td><code>src/app/api/coming-soon/route.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>API route activa — hace POST a <code>WEBHOOK_COMING_SOON_URL</code> (n8n) con payload estructurado.</td></tr>
+        <tr><td><code>src/app/layout.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Lee header <code>x-pathname</code> para suprimir Navbar, Footer y WhatsAppButton en <code>/coming-soon</code>.</td></tr>
+        <tr><td><code>.env.local</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadidas variables <code>PREVIEW_TOKEN</code> y <code>WEBHOOK_COMING_SOON_URL</code>.</td></tr>
+        <tr><td><code>README.md</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Actualizado con estado real: coming-soon activo, n8n live, rutas delmar/andares/torre51, tabla de API routes.</td></tr>
+        <tr><td><code>next.config.mjs</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido <code>res.cloudinary.com</code> a <code>remotePatterns</code> para logos de Cloudinary.</td></tr>
+      </tbody>
+    </table>
+
   <!-- ═══ CHANGELOG AUTOMÁTICO ═══ -->
   <div class="section" style="margin-top:32px;">
     <div class="section-label">Changelog automático</div>
@@ -1079,6 +1101,8 @@ listings
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>src/app/coming-soon/page.tsx</code></td><td>18 de junio de 2026 12:10 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/coming-soon/page.tsx</code></td><td>18 de junio de 2026 12:10 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/app/coming-soon/page.tsx</code></td><td>18 de junio de 2026 12:04 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/app/coming-soon/page.tsx</code></td><td>18 de junio de 2026 12:03 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/app/coming-soon/page.tsx</code></td><td>18 de junio de 2026 12:03 p.m.</td><td>Modificado</td></tr>
