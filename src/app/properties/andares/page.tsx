@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 // Cloudinary delivery base — f_auto,q_auto lets Cloudinary pick the best format/quality
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO  = `${CLD}/hf_20260615_235527_0660507b-9010-447b-97cc-19d1ebca9800_rmqmxw.png`;
-const IMG_MAP   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.49.40_p.m._jsj34s.png`;
 const IMG_SEC   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.50.14_p.m._k6wpgu.png`;
 const IMG_BUILD = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.51.21_p.m._esuqwr.png`;
 const IMG_LOGO  = `${CLD}/Logo-lgo-andares_ybdmku.png`;
@@ -200,54 +199,20 @@ export default function AndaresPage() {
               </div>
             </div>
 
-            {/* Map — Figma: Mask group 1317×537, radius 27, aerial image.
-                On mobile it stacks below the panel with a fixed height. */}
+            {/* Map — 360° panorama embed */}
             <div
               className="relative mt-2 h-72 overflow-hidden lg:ml-2 lg:mt-0 lg:h-auto lg:flex-1"
               style={{ borderRadius: "27px" }}
             >
-              <Image
-                src={IMG_MAP}
-                alt="Andares development aerial map"
-                fill
-                className="object-cover"
-                sizes="836px"
+              <iframe
+                src="https://panoraven.com/es/embed/E1mS8MSsQq"
+                width="100%"
+                height="100%"
+                className="absolute inset-0 h-full w-full border-0"
+                allowFullScreen
+                allow="fullscreen; gyroscope; accelerometer"
+                title="Andares 360° virtual tour"
               />
-
-              {/* Map point markers — Figma: Clubhouse=teal, Houses=amber, Lots=dark */}
-              <div className="absolute top-[33%] left-[22%] flex items-center gap-1.5 rounded-full bg-brand-teal px-3 py-1.5">
-                <div className="h-2.5 w-2.5 rounded-full bg-brand-ink" />
-                <span className="font-ewangi text-[12px] font-medium text-brand-ink">Clubhouse</span>
-              </div>
-              <div
-                className="absolute top-[18%] left-[50%] flex items-center gap-1.5 rounded-full px-3 py-1.5"
-                style={{ background: "rgb(246,181,60)" }}
-              >
-                <div className="h-2.5 w-2.5 rounded-full bg-brand-ink" />
-                <span className="font-ewangi text-[12px] font-medium text-brand-ink">Houses</span>
-              </div>
-              <div className="absolute top-[52%] left-[38%] flex items-center gap-1.5 rounded-full bg-[#171717] px-3 py-1.5">
-                <div className="h-2.5 w-2.5 rounded-full bg-white/70" />
-                <span className="font-ewangi text-[12px] font-medium text-white">Lots</span>
-              </div>
-
-              {/* 360° icon — Figma: "360 icon" 46×46 bottom-right */}
-              <div className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm">
-                <span className="font-ewangi text-[11px] font-bold text-white">360°</span>
-              </div>
-
-              {/* Lot tooltip — Figma: Group 66, dark card radius 9, ~51% x / 47% y on map */}
-              <div className="absolute left-3 top-3 w-44 rounded-[9px] bg-[#1E1E1E] p-3 lg:left-[51%] lg:top-[47%] lg:w-46.75">
-                <p className="font-ewangi text-[1rem] font-medium text-white mb-1">{activeLot}</p>
-                <p className="font-ewangi text-[12px] text-white/70">
-                  {lots.find((l) => l.id === activeLot)?.area}
-                </p>
-                <p className="font-ewangi text-[12px] text-white/70">Residential</p>
-                <div className="mt-1 flex items-center gap-1.5">
-                  <div className="h-2 w-2 rounded-full bg-brand-teal" />
-                  <span className="font-ewangi text-[12px] text-brand-teal">Available</span>
-                </div>
-              </div>
             </div>
 
           </div>

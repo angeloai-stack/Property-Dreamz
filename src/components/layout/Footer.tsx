@@ -213,7 +213,7 @@ export function Footer() {
             alt="CMRE Certified Mexico Real Estate"
             width={171}
             height={54}
-            className="h-10 w-auto"
+            className="h-10 w-auto shrink-0 self-start object-contain sm:self-center"
           />
         </div>
       </Container>

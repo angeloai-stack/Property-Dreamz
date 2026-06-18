@@ -179,7 +179,7 @@ export function Navbar() {
             aria-hidden="true"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="relative border-t border-brand-paper/10 bg-brand-ink/95 text-brand-paper shadow-2xl">
+          <div className="relative border-t border-brand-paper/10 bg-brand-ink/80 text-brand-paper shadow-2xl backdrop-blur-md">
             <div className="space-y-1 px-4 py-4">
               {navItems.map((item) =>
                 item.sub ? (

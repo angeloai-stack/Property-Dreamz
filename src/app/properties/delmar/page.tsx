@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 /* Figma "Fracc 3 Negative" — node 194:2107. Photos from Cloudinary "Del Mar" folder. */
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;
-const IMG_AERIAL_CARD  = `${CLD}/Panoramic_View_vy1spn.png`;
 const IMG_CMRE         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png";
 const IMG_LOTS_SHOT    = `${CLD}/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png`;
 
@@ -99,7 +98,7 @@ export default function FraccPage() {
   const model = models[modelIdx];
 
   return (
-    <main className="bg-brand-ink">
+    <main className="overflow-x-hidden bg-brand-ink">
 
       {/* ══════════════════════════════════════════════════════
           HERO — Figma: y=117-1005, 888px
@@ -224,7 +223,9 @@ export default function FraccPage() {
           ══════════════════════════════════════════════════════ */}
 
       {/* ── MOBILE LOT EXPLORER ── */}
-      <div className="px-4 py-8 lg:hidden">
+      <div className="px-4 pb-8 pt-6 lg:hidden">
+        <p className="mb-3 font-ewangi text-[1.1rem] text-white">Explore the development</p>
+
         {/* Tabs */}
         <div className="mb-4 flex gap-2">
           {(["Lots", "Condos", "Houses"] as Tab[]).map((tab) => (
@@ -242,21 +243,29 @@ export default function FraccPage() {
           ))}
         </div>
 
-        {/* Map image */}
-        <div className="relative overflow-hidden rounded-2xl" style={{ height: 220 }}>
-          <Image src={IMG_AERIAL_CARD} alt="Development aerial view" fill sizes="100vw" className="object-cover" />
+        {/* 360° map embed */}
+        <div className="overflow-hidden rounded-2xl" style={{ height: 300 }}>
+          <iframe
+            src="https://my.matterport.com/show/?m=yD8wTRwFeSv"
+            width="100%"
+            height="100%"
+            className="border-0"
+            allowFullScreen
+            allow="vr; gyroscope; accelerometer; fullscreen"
+            title="Del Mar 360° virtual tour"
+          />
         </div>
 
         {/* Lot list */}
-        <div className="mt-4">
-          <p className="mb-2 font-ewangi text-[0.9rem] text-white/60">Select a lot to see details</p>
+        <div className="mt-5">
+          <p className="mb-2 font-ewangi text-[0.85rem] text-white/60">Select a lot to see details</p>
           {lots.map((lot, i) => (
             <button
               key={lot.id}
               type="button"
               onClick={() => setActiveLot(lot.id)}
               className={cn(
-                "flex w-full items-center justify-between px-3 py-2.5 font-ewangi text-[1rem] transition",
+                "flex w-full items-center justify-between px-3 py-2.5 font-ewangi text-[0.95rem] transition",
                 activeLot === lot.id ? "rounded bg-brand-teal text-black" : "text-white",
                 i > 0 && activeLot !== lot.id && "border-t border-white/15"
               )}
@@ -266,9 +275,26 @@ export default function FraccPage() {
             </button>
           ))}
         </div>
+
+        {/* Lot detail card */}
+        {activeLot && (
+          <div
+            className="mt-4 rounded-[9px] border-2 border-brand-teal bg-[#1E1E1E] px-4 py-3"
+          >
+            <p className="font-ewangi text-[1rem] text-white">Lot {activeLot}</p>
+            <div className="mt-1 space-y-0.5">
+              <p className="font-ewangi text-[0.85rem] text-white/70">
+                {lots.find((l) => l.id === activeLot)?.area}
+              </p>
+              <p className="font-ewangi text-[0.85rem] text-white/70">Residential</p>
+              <p className="font-ewangi text-[0.85rem] text-brand-teal">Available</p>
+            </div>
+          </div>
+        )}
+
         <button
           type="button"
-          className="mt-4 rounded border border-white px-6 py-2.5 font-ewangi text-[1rem] text-white transition hover:bg-white/10"
+          className="mt-4 w-full rounded border border-white py-3 font-ewangi text-[0.95rem] text-white transition hover:bg-white/10"
         >
           View all lots
         </button>
@@ -281,13 +307,13 @@ export default function FraccPage() {
           className="relative overflow-hidden"
           style={{ height: 537, borderRadius: 27, background: "#D9D9D9" }}
         >
-          {/* Aerial photo — fills the whole card */}
-          <Image
-            src={IMG_AERIAL_CARD}
-            alt="Development aerial"
-            fill
-            sizes="(max-width: 1024px) 100vw, 1317px"
-            className="object-cover"
+          {/* 360° map embed — fills the whole card */}
+          <iframe
+            src="https://my.matterport.com/show/?m=yD8wTRwFeSv"
+            className="absolute inset-0 h-full w-full border-0"
+            allowFullScreen
+            allow="vr; gyroscope; accelerometer; fullscreen"
+            title="Del Mar 360° virtual tour"
           />
 
           {/* Left panel dark overlay — Figma: x=0 y=0 482×537 #1E1E1E@20% r=27 */}
@@ -431,55 +457,63 @@ export default function FraccPage() {
       {/* ── MOBILE MODELS ── */}
       <div className="px-6 py-10 lg:hidden">
         <div className="flex items-center justify-between">
-          <h2 className="font-ewangi text-[1.75rem] text-white">House models</h2>
+          <h2 className="font-ewangi text-[1.5rem] text-white">House models</h2>
           <div className="flex gap-2">
-            {[prev, next].map((fn, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={fn}
-                aria-label={i === 0 ? "Previous" : "Next"}
-                className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
-                style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
-              >
-                {i === 0
-                  ? <ChevronLeft style={{ width: 10, height: 14 }} strokeWidth={3} />
-                  : <ChevronRight style={{ width: 10, height: 14 }} strokeWidth={3} />}
-              </button>
-            ))}
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous model"
+              className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
+              style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
+            >
+              <ChevronLeft style={{ width: 10, height: 14 }} strokeWidth={3} />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next model"
+              className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
+              style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
+            >
+              <ChevronRight style={{ width: 10, height: 14 }} strokeWidth={3} />
+            </button>
           </div>
         </div>
-        <h3 className="mt-2 font-ewangi text-[3rem] text-white">{model.name}</h3>
-        <div className="mt-1 flex flex-wrap gap-x-5 gap-y-2">
+
+        <h3 className="mt-2 font-ewangi text-[2.25rem] leading-none text-white">{model.name}</h3>
+
+        <div className="mt-3 flex gap-6">
           {[
             { Icon: Maximize, val: model.sqm },
             { Icon: BedDouble, val: model.beds },
             { Icon: Bath, val: model.baths },
           ].map(({ Icon, val }) => (
-            <span key={val} className="flex flex-col items-center gap-1 font-ewangi text-[1rem] text-white/80">
+            <span key={val} className="flex flex-col items-center gap-1 font-ewangi text-[0.85rem] text-white/80">
               <Icon className="h-4 w-4 shrink-0 text-brand-teal" strokeWidth={2} />
               {val}
             </span>
           ))}
         </div>
-        <div className="relative mt-4 overflow-hidden rounded-2xl" style={{ height: 220 }}>
-          <Image key={model.name} src={model.image} alt={model.name} fill sizes="100vw" className="object-contain" />
+
+        <div className="relative mt-4 w-full overflow-hidden rounded-2xl bg-[#1E1E1E]" style={{ height: 260 }}>
+          <Image key={model.name} src={model.image} alt={model.name} fill sizes="100vw" className="object-contain p-4" />
         </div>
-        <div className="mt-5 flex gap-4">
+
+        <div className="mt-4 flex gap-3">
           {models.map((_, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setModelIdx(i)}
               className={cn("rounded-full transition-colors", i === modelIdx ? "bg-brand-teal" : "bg-[#D9D9D9]")}
-              style={{ width: 16, height: 16 }}
+              style={{ width: 14, height: 14 }}
             />
           ))}
         </div>
       </div>
 
       {/* ── DESKTOP MODELS (≥ lg) — height 345px, mt=67px ── */}
-      <div className="relative hidden lg:block" style={{ height: 345, marginTop: 67 }}>
+      <div className="relative hidden overflow-hidden lg:block" style={{ height: 345, marginTop: 67 }}>
 
         {/* House photo — Figma: x=634 y=0 730×345 */}
         <div className="absolute overflow-hidden" style={{ left: 634, top: 0, width: 730, height: 345 }}>
@@ -540,20 +574,19 @@ export default function FraccPage() {
 
       {/* ── MOBILE OCEAN LOTS ── */}
       <div className="px-6 pb-12 pt-8 lg:hidden">
-        <h2 className="font-ewangi leading-tight text-brand-teal text-[clamp(2.25rem,9vw,3rem)]">
+        <h2 className="font-ewangi leading-tight text-brand-teal text-[clamp(2rem,8vw,2.75rem)]">
           Ocean View Lots
         </h2>
-        <div className="relative mt-4 overflow-hidden rounded-xl" style={{ height: 220 }}>
+        <div className="relative mt-4 w-full overflow-hidden rounded-xl" style={{ height: 240 }}>
           <Image src={IMG_LOTS_SHOT} alt="Ocean view lots" fill sizes="100vw" className="object-cover" />
         </div>
-        <p className="mt-5 font-ewangi text-[1rem] leading-relaxed text-white">
+        <p className="mt-5 font-ewangi text-[0.95rem] leading-relaxed text-white/85">
           Explore premium ocean-view lots for sale, each offering a unique opportunity to build your
           dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of coastal
           living, where every sunrise and sunset transforms the horizon into a masterpiece.
         </p>
-        {/* CTA */}
-        <div className="mt-8 rounded-[10px] bg-white px-6 py-4">
-          <p className="font-ewangi text-brand-ink text-[clamp(1.15rem,4.5vw,1.4rem)]">
+        <div className="mt-6 rounded-[10px] bg-white px-6 py-4">
+          <p className="font-ewangi text-brand-ink text-[clamp(1rem,4vw,1.3rem)]">
             We certify so you can build your future
           </p>
         </div>
