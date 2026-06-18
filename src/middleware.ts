@@ -42,7 +42,7 @@ export function middleware(request: NextRequest) {
     response.cookies.set("preview_access", BYPASS_TOKEN, {
       httpOnly: true,
       sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24, // 1 day
     });
     return response;
   }
