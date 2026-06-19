@@ -9,8 +9,8 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO  = `${CLD}/hf_20260615_235527_0660507b-9010-447b-97cc-19d1ebca9800_rmqmxw.png`;
 const IMG_MAP   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.49.40_p.m._jsj34s.png`;
 const IMG_SEC   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.50.14_p.m._k6wpgu.png`;
-const IMG_BUILD = "/torre51/build-live.jpg";
-const IMG_LOGO  = "/torre51/logo.png";
+const IMG_BUILD = `${CLD}/torre51/build-live`;
+const IMG_LOGO  = `${CLD}/torre51/logo`;
 const IMG_CMRE  = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
 const stats = [

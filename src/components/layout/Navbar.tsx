@@ -21,6 +21,7 @@ const navItems: NavItem[] = [
     sub: [
       { label: "Del Mar",              href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
+      { label: "Alimar",               href: "/properties/alimar" },
       { label: "Torre 51",              href: "/properties/torre51" },
       { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
     ],
@@ -61,7 +62,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
           <Image
-            src="/brand/property-dreamz-logo-horizontal.png"
+            src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/brand/property-dreamz-logo-horizontal"
             alt="Property Dreamz"
             width={180}
             height={36}

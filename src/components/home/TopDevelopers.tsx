@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Bath, Bed, Heart, LayoutGrid } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
+const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
+
 const developers = [
   {
     id: 1,
@@ -14,7 +16,7 @@ const developers = [
     beds: 2,
     baths: 2,
     sqft: 85,
-    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80",
+    image: `${CLD}/home/card-boga-telchac`,
     href: "/properties",
   },
   {
@@ -25,7 +27,7 @@ const developers = [
     beds: 3,
     baths: 2,
     sqft: 140,
-    image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80",
+    image: `${CLD}/home/card-marietta`,
     href: "/properties",
   },
   {
@@ -36,7 +38,7 @@ const developers = [
     beds: 4,
     baths: 3,
     sqft: 220,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+    image: `${CLD}/home/card-punta-mita`,
     href: "/properties",
   },
   {
@@ -47,7 +49,7 @@ const developers = [
     beds: 2,
     baths: 2,
     sqft: 90,
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80",
+    image: `${CLD}/home/card-lemuria`,
     href: "/properties",
   },
 ] as const;
@@ -55,32 +57,32 @@ const developers = [
 const destinations = [
   {
     name: "Cabo San Lucas",
-    image: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=700&q=75",
+    image: `${CLD}/hf_20260615_235527_0660507b-9010-447b-97cc-19d1ebca9800_rmqmxw`,
     href: "/properties",
   },
   {
     name: "Puerto Vallarta",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=75",
+    image: `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.50.53_p.m._cwld25`,
     href: "/properties",
   },
   {
     name: "Riviera Maya",
-    image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=700&q=75",
+    image: `${CLD}/Panoramic_View_vy1spn`,
     href: "/properties",
   },
   {
     name: "Tulum",
-    image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=700&q=75",
+    image: `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.51.59_p.m._bmqrl2`,
     href: "/properties",
   },
   {
     name: "Playa del Carmen",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=700&q=75",
+    image: `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.49.40_p.m._jsj34s`,
     href: "/properties",
   },
   {
     name: "Mérida",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=75",
+    image: `${CLD}/Casa_Render_axgwpu`,
     href: "/properties",
   },
 ] as const;

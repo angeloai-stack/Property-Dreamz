@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Heart, Home, MapPin, MessageCircle, Search } from "lucide-react";
 
-const heroImage = "/hero-suburban.jpg";
+const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
 
 const iconRail = [
   { icon: Home, label: "Home", href: "/" },

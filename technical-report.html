@@ -401,7 +401,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Fecha del análisis</div>
-        <div class="cover-meta-value">18 de junio de 2026</div>
+        <div class="cover-meta-value">19 de junio de 2026</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
@@ -450,13 +450,13 @@
 
     <div class="stat-row">
       <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
-      <div class="stat"><span class="stat-num">35+</span><span class="stat-label">Componentes</span></div>
-      <div class="stat"><span class="stat-num">9</span><span class="stat-label">Páginas App</span></div>
+      <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Componentes</span></div>
+      <div class="stat"><span class="stat-num">13</span><span class="stat-label">Páginas App</span></div>
       <div class="stat"><span class="stat-num">5</span><span class="stat-label">API Routes</span></div>
     </div>
 
     <div class="highlight-box">
-      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 5 formularios, 5 API routes (1 activa) y 9 páginas. Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
+      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 5 formularios, 5 API routes (1 activa) y 13 páginas (incluidas 4 páginas de propiedades individuales). Todas las imágenes migradas a Cloudinary (cloud <code>dserzvrwe</code>). Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
     </div>
   </div>
 
@@ -496,6 +496,8 @@
       <tbody>
         <tr><td><code>PREVIEW_TOKEN</code></td><td>Coming-soon bypass (token secreto de equipo)</td><td><strong style="color:#026559">Activo</strong></td></tr>
         <tr><td><code>WEBHOOK_COMING_SOON_URL</code></td><td>n8n webhook — formulario coming-soon</td><td><strong style="color:#026559">Activo</strong></td></tr>
+        <tr><td><code>NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME</code></td><td>Cloudinary — cloud name para el CDN de imágenes</td><td><strong style="color:#026559">Activo</strong></td></tr>
+        <tr><td><code>CLOUDINARY_API_KEY</code>, <code>CLOUDINARY_API_SECRET</code></td><td>Cloudinary — credenciales de API para upload/gestión</td><td><strong style="color:#026559">Activo</strong></td></tr>
         <tr><td><code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code></td><td>Sanity CMS</td><td>Pendiente</td></tr>
         <tr><td><code>HUBSPOT_API_KEY</code></td><td>HubSpot CRM (leads de formularios)</td><td>Pendiente</td></tr>
         <tr><td><code>MAPBOX_TOKEN</code></td><td>Mapbox GL</td><td>Pendiente</td></tr>
@@ -536,7 +538,12 @@
 │   │   │   ├── layout.tsx             <span class="note"># Layout sin padding para mapa full-width</span>
 │   │   │   ├── data.ts                <span class="note"># Mock listings y pins</span>
 │   │   │   └── utils.ts               <span class="note"># Formateadores de precio USD/MXN</span>
-│   │   ├── <span class="dir">properties/</span>page.tsx        <span class="note"># + PropertyInquiryForm al fondo</span>
+│   │   ├── <span class="dir">properties/</span>
+│   │   │   ├── page.tsx               <span class="note"># Listing principal + PropertyInquiryForm</span>
+│   │   │   ├── <span class="dir">delmar/</span>page.tsx        <span class="note"># Página de propiedad Del Mar</span>
+│   │   │   ├── <span class="dir">andares/</span>page.tsx       <span class="note"># Página de propiedad Andares PD</span>
+│   │   │   ├── <span class="dir">torre51/</span>page.tsx       <span class="note"># Página de propiedad Torre 51 Negativo</span>
+│   │   │   └── <span class="dir">alimar/</span>page.tsx        <span class="note"># Página de propiedad Alimar (nuevo)</span>
 │   │   ├── <span class="dir">buyers-guide/</span>page.tsx      <span class="note"># Guía + GuideDownloadForm + FAQ</span>
 │   │   ├── <span class="dir">for-developers/</span>page.tsx    <span class="note"># Portal + DeveloperListingForm</span>
 │   │   ├── <span class="dir">about/</span>page.tsx             <span class="note"># Página Acerca de</span>
@@ -561,7 +568,7 @@
 │   │   ├── <span class="dir">home/</span>
 │   │   │   ├── HeroSection.tsx, VerifySection.tsx, FeatureCards.tsx
 │   │   │   ├── TopDevelopers.tsx, BuyersGuideSteps.tsx, CertifiedBanner.tsx
-│   │   │   └── FeaturedDevelopments.tsx, DestinationsStrip.tsx
+│   │   │   └── FaqSection.tsx, FeaturedDevelopments.tsx, DestinationsStrip.tsx
 │   │   ├── <span class="dir">explore-map/</span>
 │   │   │   ├── ExploreFilters.tsx, MapPanel.tsx, ListingCard.tsx
 │   │   └── <span class="dir">shared/</span>
@@ -598,11 +605,11 @@
     <table>
       <thead><tr><th>Token</th><th>Tamaño / Line-height</th><th>Familia</th><th>Uso</th></tr></thead>
       <tbody>
-        <tr><td><code>display</code></td><td>2.875rem / 1.05</td><td>Ibrand (Oswald)</td><td>Titulares principales hero</td></tr>
-        <tr><td><code>title</code></td><td>1.875rem / 1.15</td><td>Ibrand (Oswald)</td><td>Títulos de sección</td></tr>
-        <tr><td><code>subtitle</code></td><td>1.3125rem / 1.25</td><td>Body (Playfair)</td><td>Subtítulos y destacados</td></tr>
-        <tr><td><code>body</code></td><td>1.0625rem / 1.65</td><td>Body (Playfair)</td><td>Texto de lectura</td></tr>
-        <tr><td><code>label</code></td><td>0.8125rem / 1.4</td><td>Ewangi (Montserrat)</td><td>Etiquetas, microcopia, form labels</td></tr>
+        <tr><td><code>display</code></td><td>2.875rem / 1.05</td><td>Ewangi</td><td>Titulares principales hero</td></tr>
+        <tr><td><code>title</code></td><td>1.875rem / 1.15</td><td>Ewangi</td><td>Títulos de sección</td></tr>
+        <tr><td><code>subtitle</code></td><td>1.3125rem / 1.25</td><td>Ewangi</td><td>Subtítulos y destacados</td></tr>
+        <tr><td><code>body</code></td><td>1.0625rem / 1.65</td><td>Ewangi</td><td>Texto de lectura</td></tr>
+        <tr><td><code>label</code></td><td>0.8125rem / 1.4</td><td>Ewangi</td><td>Etiquetas, microcopia, form labels</td></tr>
       </tbody>
     </table>
 
@@ -624,13 +631,13 @@
       <div class="card"><div class="card-title">pill</div><div class="card-body">999px — badges y botones</div></div>
     </div>
 
-    <h3>Fuentes registradas (next/font Google Fonts)</h3>
+    <h3>Fuente registrada (next/font local)</h3>
     <ul>
-      <li><strong>Inter</strong> — fallback sans-serif, variable <code>--font-sans</code></li>
-      <li><strong>Playfair Display</strong> — serif de texto, variable <code>--font-body</code></li>
-      <li><strong>Oswald</strong> — headlines/botones (temporal Ibrand), variable <code>--font-ibrand</code></li>
-      <li><strong>Montserrat</strong> — labels/microcopia (temporal Ewangi), variable <code>--font-ewangi</code></li>
+      <li><strong>Ewangi</strong> — fuente de marca propia, archivo local <code>src/fonts/Ewangi.ttf</code>, variable CSS <code>--font-ewangi</code>, clase Tailwind <code>font-ewangi</code></li>
     </ul>
+    <div class="highlight-box">
+      Todo el texto del proyecto usa exclusivamente <code>font-ewangi</code>. Se carga con <code>next/font/local</code> (sin Google Fonts) para máxima performance. El root layout aplica <code>ewangi.variable</code> al elemento <code>&lt;html&gt;</code>. No hay fuentes externas.
+    </div>
   </div>
 
   <!-- ── SECCIÓN 5 ── -->
@@ -680,9 +687,10 @@
     <h3>Navbar</h3>
     <div class="card-grid">
       <div class="card"><div class="card-title">Tipo</div><div class="card-body">Client Component (<code>"use client"</code>), estado con <code>useState</code></div></div>
-      <div class="card"><div class="card-title">Navegación</div><div class="card-body">6 links principales: Explore, Guide, Developers, Mission, Saved, Contact</div></div>
+      <div class="card"><div class="card-title">Navegación</div><div class="card-body">7 items: Explore map, Properties (dropdown: Del Mar, Andares, <strong>Alimar</strong>, Torre 51, Valle Dorado), Buyer's guide, For developers, The Mission, Saved, Contact</div></div>
+      <div class="card"><div class="card-title">Modo Oscuro</div><div class="card-body">Navbar dark automático en <code>/properties/delmar</code>, <code>/andares</code>, <code>/torre51</code>. Alimar usa navbar light (fondo blanco).</div></div>
       <div class="card"><div class="card-title">Toggle de Moneda</div><div class="card-body">Selector USD/MXN con estado local — botones cambian al hacer clic</div></div>
-      <div class="card"><div class="card-title">Mobile</div><div class="card-body">Hamburger con overlay de <code>backdrop-blur</code>, fondo ink oscuro</div></div>
+      <div class="card"><div class="card-title">Mobile</div><div class="card-body">Hamburger con overlay de <code>backdrop-blur</code>, acordeón para el dropdown Properties</div></div>
     </div>
 
     <h3>Footer</h3>
@@ -723,13 +731,17 @@
       <thead><tr><th>Ruta</th><th>Archivo</th><th>Estado</th><th>Descripción</th></tr></thead>
       <tbody>
         <tr><td><code>/coming-soon</code></td><td>app/coming-soon/page.tsx</td><td><span class="badge badge-green">Live</span></td><td>Página standalone (sin Navbar/Footer) con efectos visuales, logo animado y formulario conectado a n8n. Activa en producción vía middleware.</td></tr>
-        <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero + Verify + FeatureCards + TopDevelopers + BuyersGuide + CampaignForm + CertifiedBanner</td></tr>
+        <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>HeroSection → VerifySection → FeatureCards → TopDevelopers → BuyersGuideSteps → CertifiedBanner → <strong>FaqSection</strong> → <strong>CampaignForm</strong></td></tr>
         <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa + filtros + listado sincronizado (datos mock)</td></tr>
         <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, equipo y CTA</td></tr>
         <tr><td><code>/contact</code></td><td>app/contact/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>ContactForm con estado y submit — pendiente de CRM</td></tr>
         <tr><td><code>/buyers-guide</code></td><td>app/buyers-guide/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>5 pasos + GuideDownloadForm + FAQ + CTA</td></tr>
         <tr><td><code>/for-developers</code></td><td>app/for-developers/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Beneficios + pricing + proceso + DeveloperListingForm</td></tr>
         <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-gold">Parcial</span></td><td>Header + PropertyInquiryForm — falta grid de listings</td></tr>
+        <tr><td><code>/properties/delmar</code></td><td>app/properties/delmar/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark, galería, mapa embebido. Navbar dark. Imágenes en Cloudinary.</td></tr>
+        <tr><td><code>/properties/andares</code></td><td>app/properties/andares/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark, amenidades, planos. Navbar dark. Imágenes en Cloudinary.</td></tr>
+        <tr><td><code>/properties/torre51</code></td><td>app/properties/torre51/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark + stats, explorador de lotes, sección seguridad. Navbar dark.</td></tr>
+        <tr><td><code>/properties/alimar</code></td><td>app/properties/alimar/page.tsx</td><td><span class="badge badge-green">Nuevo</span></td><td>Hero dark, explorador de amenidades (tabs), modelos con plano, CTA. Navbar <em>light</em>. Imágenes en Cloudinary.</td></tr>
         <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — requiere auth para proyectos guardados</td></tr>
       </tbody>
     </table>
@@ -921,6 +933,7 @@ listings
 
     <div class="card-grid">
       <div class="card" style="border-left:3px solid #026559;"><div class="card-title" style="color:#026559;">✓ n8n Webhook</div><div class="card-body"><strong>Activo.</strong> <code>POST /api/coming-soon</code> → <code>WEBHOOK_COMING_SOON_URL</code>. Payload: nombre, email, teléfono, source, submittedAt. Conectado a flujo n8n en voltlab.</div></div>
+      <div class="card" style="border-left:3px solid #026559;"><div class="card-title" style="color:#026559;">✓ Cloudinary CDN</div><div class="card-body"><strong>Activo.</strong> Cloud <code>dserzvrwe</code>. Todas las imágenes del proyecto sirven desde <code>res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/…</code>. Entrega automática con formato y compresión óptimos. Configurado en <code>next.config.mjs</code> como dominio permitido.</div></div>
       <div class="card"><div class="card-title">HubSpot CRM</div><div class="card-body">Las 4 API routes restantes son stubs. Falta instanciar <code>@hubspot/api-client</code> con <code>HUBSPOT_API_KEY</code> para crear contacts/deals automáticamente.</div></div>
       <div class="card"><div class="card-title">Resend / Email</div><div class="card-body">Cada form submission debe disparar: (1) notificación al equipo de ventas, (2) email de confirmación al usuario. Requiere <code>RESEND_API_KEY</code>.</div></div>
       <div class="card"><div class="card-title">Sanity CMS</div><div class="card-body">Para gestión dinámica de propiedades. Sustituirá el array <code>data.ts</code>. Depende de: <code>SANITY_PROJECT_ID</code>, <code>SANITY_DATASET</code>.</div></div>
@@ -945,6 +958,7 @@ listings
       <li>TypeScript con strict mode — sin tipos <code>any</code> en la capa UI</li>
       <li>Separación clara Server / Client components</li>
       <li>Sistema de diseño coherente con tokens reutilizables</li>
+      <li>Fuente de marca propia <strong>Ewangi</strong> cargada con <code>next/font/local</code> — zero Google Fonts</li>
       <li>Tailwind v4 — sintaxis canónica aplicada en todos los archivos</li>
       <li>5 formularios con máquina de estados completa (idle/submitting/success/error)</li>
       <li>4 API routes creadas y listas para conectar a CRM</li>
@@ -953,6 +967,8 @@ listings
       <li>robots.ts y sitemap.ts generados automáticamente</li>
       <li>Componentes accesibles con ARIA labels y navegación por teclado</li>
       <li>Mobile-first con breakpoints consistentes</li>
+      <li><strong>Todas las imágenes en Cloudinary</strong> — CDN global con transformación automática (<code>f_auto,q_auto</code>)</li>
+      <li>4 páginas de propiedad individuales: Del Mar, Andares, Torre 51, <strong>Alimar</strong></li>
       <li>Barrel exports organizados (<code>ui/</code>, <code>layout/</code>, <code>forms/</code>)</li>
       <li>Co-location de datos por feature</li>
     </ul>
@@ -965,11 +981,11 @@ listings
       <li>Página <code>/saved</code> es stub vacío (requiere auth)</li>
       <li>Página <code>/properties</code> sin grid de listings</li>
       <li>WhatsApp link con número placeholder (<code>5210000000000</code>)</li>
-      <li>Imágenes de Unsplash como placeholders</li>
       <li>Sin tests unitarios ni E2E</li>
       <li>Sin manejo de errores (Error Boundary, <code>error.tsx</code>)</li>
       <li>Sin loading states (<code>loading.tsx</code> por ruta)</li>
       <li>Formularios usan <code>useState</code> nativo — se puede migrar a <code>react-hook-form</code> (ya instalado)</li>
+      <li>Alimar usa <code>&lt;img&gt;</code> nativo en lugar de <code>next/image</code> — sin optimización automática</li>
     </ul>
   </div>
 
@@ -993,9 +1009,10 @@ listings
     <ul>
       <li>Construir grid de listings en <code>/properties</code></li>
       <li>Implementar página <code>/saved</code> con autenticación (NextAuth.js v5 o Clerk)</li>
-      <li>Reemplazar imágenes Unsplash con assets reales</li>
+      <li>Migrar <code>&lt;img&gt;</code> nativo en Alimar a <code>next/image</code> para optimización automática</li>
       <li>Actualizar número de WhatsApp real en <code>WhatsAppButton.tsx</code></li>
       <li>Añadir <code>loading.tsx</code> por ruta para Suspense boundaries</li>
+      <li>Añadir Alimar a la lista de páginas con navbar dark (<code>Navbar.tsx</code> línea 41) si el diseño lo requiere</li>
     </ul>
 
     <h3>Prioridad Baja — Calidad y Observabilidad</h3>
@@ -1020,7 +1037,7 @@ listings
   <div style="background:var(--pine);color:var(--white);padding:32px 40px;border-radius:8px;margin-bottom:0;">
     <div style="font-size:8pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Resumen Ejecutivo</div>
     <p style="font-size:11pt;line-height:1.6;color:rgba(255,255,255,0.9);margin-bottom:0;">
-      <strong style="color:var(--white);">Property Dreamz</strong> es una base de código bien estructurada con calidad de producción en UI. El sistema de diseño es sólido, el código TypeScript es limpio y la arquitectura Next.js 14 está correctamente implementada. Los 5 formularios de captura de leads están funcionalmente completos con sus respectivas API routes. El siguiente paso crítico es conectar esas routes con HubSpot y Resend para activar el flujo de captación.
+      <strong style="color:var(--white);">Property Dreamz</strong> es una base de código bien estructurada con calidad de producción en UI. El sistema de diseño es sólido usando la fuente de marca propia <strong style="color:var(--gold);">Ewangi</strong>, el código TypeScript es limpio y la arquitectura Next.js 14 está correctamente implementada. Se tienen 13 páginas (incluidas 4 páginas de propiedad individuales), todas las imágenes alojadas en <strong style="color:var(--gold);">Cloudinary CDN</strong>, y los 5 formularios de captura de leads con sus API routes listas. El siguiente paso crítico es conectar esas routes con HubSpot y Resend para activar el flujo de captación.
     </p>
   </div>
 
@@ -1029,6 +1046,22 @@ listings
     <div class="section-label">Changelog — sesión actual</div>
     <h2>Archivos Modificados</h2>
     <p class="muted">Cambios ordenados por fecha descendente. Un archivo aparece una sola vez con su modificación más reciente.</p>
+
+    <h3>19 de junio de 2026 — Alimar, Cloudinary, reordenamiento Home</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/app/properties/alimar/page.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Página de propiedad Alimar: hero con stats, explorador de amenidades por tabs, sección de modelos con plano navegable, CTA. Dark page, navbar light.</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido Alimar al dropdown Properties entre Andares y Torre 51. Logo actualizado a Cloudinary.</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Reordenadas secciones: FAQ sube (antes de CampaignForm), CampaignForm queda justo encima del footer.</td></tr>
+        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>4 tarjetas de propiedad con imágenes exactas del mockup Figma, subidas a Cloudinary: Boga Telchac, Marietta, Punta de Mita, Lemuria. Sección de destinos con imágenes del proyecto.</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Imagen hero migrada a Cloudinary (<code>hero-suburban</code>).</td></tr>
+        <tr><td><code>src/components/layout/Footer.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Logo actualizado a Cloudinary URL.</td></tr>
+        <tr><td><code>src/app/properties/torre51/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Imágenes build-live y logo migradas a Cloudinary.</td></tr>
+        <tr><td><code>.env.local</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadidas credenciales Cloudinary: <code>NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME</code>, <code>CLOUDINARY_API_KEY</code>, <code>CLOUDINARY_API_SECRET</code>.</td></tr>
+        <tr><td><code>.mcp.json</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadido servidor MCP Cloudinary (<code>cloudinary-mcp-server</code>) junto al servidor Figma ya existente.</td></tr>
+      </tbody>
+    </table>
 
     <h3>11 de junio de 2026 — Sistema de formularios</h3>
     <table>
@@ -1101,6 +1134,16 @@ listings
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td>19 de junio de 2026 09:46 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td>19 de junio de 2026 09:29 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/torre51/page.tsx</code></td><td>19 de junio de 2026 09:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Footer.tsx</code></td><td>19 de junio de 2026 09:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>19 de junio de 2026 09:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>19 de junio de 2026 09:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>19 de junio de 2026 09:09 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>19 de junio de 2026 09:07 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/alimar/page.tsx</code></td><td>19 de junio de 2026 09:04 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/alimar/page.tsx</code></td><td>19 de junio de 2026 08:55 a.m.</td><td>Nuevo archivo</td></tr>
         <tr><td><code>src/middleware.ts</code></td><td>18 de junio de 2026 02:35 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/middleware.ts</code></td><td>18 de junio de 2026 02:30 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>18 de junio de 2026 02:08 p.m.</td><td>Modificado</td></tr>

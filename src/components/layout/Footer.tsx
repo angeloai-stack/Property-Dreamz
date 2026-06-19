@@ -125,7 +125,7 @@ export function Footer() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Link href="/" className="inline-flex shrink-0 items-center" aria-label="Property Dreamz home">
             <Image
-              src="/brand/property-dreamz-logo-horizontal.png"
+              src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/brand/property-dreamz-logo-horizontal"
               alt="Property Dreamz"
               width={3562}
               height={684}
