@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO      = `${CLD}/tierra-de-agua/tierra-de-agua/hero`;
 const IMG_LOGO      = `${CLD}/tierra-de-agua/tierra-de-agua/logo`;
-const IMG_MAP       = `${CLD}/tierra-de-agua/tierra-de-agua/site-plan`;
 const IMG_AMENITIES = `${CLD}/tierra-de-agua/tierra-de-agua/amenities`;
 const IMG_PLAN      = `${CLD}/tierra-de-agua/tierra-de-agua/site-plan-2`;
 const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
