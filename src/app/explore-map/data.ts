@@ -15,6 +15,8 @@ export const listings = [
     type: "Condo",
     borderMiles: 5,
     sdSavings: 68,
+    lat: 32.5149,
+    lng: -117.0382,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
   },
   {
@@ -33,6 +35,8 @@ export const listings = [
     type: "Condo",
     borderMiles: 18,
     sdSavings: 71,
+    lat: 32.3667,
+    lng: -117.0647,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Render_Del_Mar_aynv6k.png",
   },
   {
@@ -51,6 +55,8 @@ export const listings = [
     type: "House",
     borderMiles: 55,
     sdSavings: 69,
+    lat: 32.0285,
+    lng: -116.6005,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Modern_House_White.H03.2k_sjznmv.png",
   },
   {
@@ -69,6 +75,8 @@ export const listings = [
     type: "House",
     borderMiles: 1100,
     sdSavings: 67,
+    lat: 20.7653,
+    lng: -105.5303,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/panoramic_1_qwo5jt.png",
   },
   {
@@ -87,6 +95,8 @@ export const listings = [
     type: "Condo",
     borderMiles: 1650,
     sdSavings: 71,
+    lat: 20.2114,
+    lng: -87.4654,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png",
   },
   {
@@ -105,17 +115,19 @@ export const listings = [
     type: "Condo",
     borderMiles: 68,
     sdSavings: 70,
+    lat: 31.8667,
+    lng: -116.5960,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
   },
 ] as const;
 
 export const pins = [
-  { id: 1, x: 9, y: 67 },
-  { id: 2, x: 8, y: 70 },
-  { id: 3, x: 11, y: 65 },
-  { id: 4, x: 42, y: 50 },
-  { id: 5, x: 78, y: 62 },
-  { id: 6, x: 10, y: 72 },
+  { id: 1, x: 9,  y: 67, lat: 32.5149, lng: -117.0382 },
+  { id: 2, x: 8,  y: 70, lat: 32.3667, lng: -117.0647 },
+  { id: 3, x: 11, y: 65, lat: 32.0285, lng: -116.6005 },
+  { id: 4, x: 42, y: 50, lat: 20.7653, lng: -105.5303 },
+  { id: 5, x: 78, y: 62, lat: 20.2114, lng:  -87.4654 },
+  { id: 6, x: 10, y: 72, lat: 31.8667, lng: -116.5960 },
 ] as const;
 
 export const MEXICAN_STATES = [
