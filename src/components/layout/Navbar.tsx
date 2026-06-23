@@ -23,6 +23,15 @@ const navItems: NavItem[] = [
       { label: "Andares",              href: "/properties/andares" },
       { label: "Alimar",               href: "/properties/alimar" },
       { label: "Torre 51",              href: "/properties/torre51" },
+      { label: "Tierra de Agua",       href: "/properties/tierra-de-agua" },
+      { label: "Punta Piedra",         href: "/properties/punta-piedra" },
+      { label: "Palacio del Mar",      href: "/properties/palacio-del-mar" },
+      { label: "Naos",                 href: "/properties/naos" },
+      { label: "Loma Serena",          href: "/properties/loma-serena" },
+      { label: "Pacifica",             href: "/properties/pacifica" },
+      { label: "Encanto del Valle",    href: "/properties/encanto-del-valle" },
+      { label: "Laguna Bay",           href: "/properties/laguna-bay" },
+      { label: "Costa Real",           href: "/properties/costa-real" },
       { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
     ],
   },
@@ -38,7 +47,14 @@ type Currency = (typeof currencies)[number];
 
 export function Navbar() {
   const pathname = usePathname();
-  const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51");
+  const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51") || pathname.startsWith("/properties/tierra-de-agua") || pathname.startsWith("/properties/punta-piedra")
+    || pathname.startsWith("/properties/palacio-del-mar")
+    || pathname.startsWith("/properties/naos")
+    || pathname.startsWith("/properties/loma-serena")
+    || pathname.startsWith("/properties/pacifica")
+    || pathname.startsWith("/properties/encanto-del-valle")
+    || pathname.startsWith("/properties/laguna-bay")
+    || pathname.startsWith("/properties/costa-real");
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
