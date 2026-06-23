@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO     = `${CLD}/naos/hero`;
@@ -94,30 +95,33 @@ export default function NaosPage() {
           {/* Title + description + badges */}
           <div className="flex flex-col gap-7 lg:max-w-[56%]">
             <h1
-              className="font-ewangi text-[clamp(2.5rem,6.5vw,6rem)] leading-[1.0] text-white"
+              className="font-ewangi text-[clamp(2.5rem,6.5vw,6rem)] leading-[1.0] text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
               NAOS is more than<br />a place to live
             </h1>
-            <p
-              className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
-              style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
-            >
-              A design-forward beachfront community shaped by Baja&apos;s coastline. A space to pause, feel and reconnect with what&apos;s essential.
-            </p>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {trustBadges.map((b) => (
-                <div key={b} className="flex flex-col items-center gap-1.5">
-                  <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
-                </div>
-              ))}
-            </div>
+            <RevealOnScroll direction="up" delay={200}>
+              <p
+                className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
+                style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
+              >
+                A design-forward beachfront community shaped by Baja&apos;s coastline. A space to pause, feel and reconnect with what&apos;s essential.
+              </p>
+              <div className="flex flex-wrap gap-x-10 gap-y-4">
+                {trustBadges.map((b) => (
+                  <div key={b} className="flex flex-col items-center gap-1.5">
+                    <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                    <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
           </div>
 
           {/* Bottom row: stats left + logo/CMRE right */}
           <div className="mt-auto flex items-end justify-between gap-8">
 
+            <RevealOnScroll direction="left" delay={150}>
             <div className="flex flex-wrap gap-x-10 gap-y-3 sm:gap-x-14">
               {stats.map((s) => (
                 <div key={s.label} className="flex flex-col gap-1">
@@ -126,8 +130,10 @@ export default function NaosPage() {
                 </div>
               ))}
             </div>
+            </RevealOnScroll>
 
             {/* Logo + CMRE — bottom right */}
+            <RevealOnScroll direction="right" delay={150}>
             <div className="hidden shrink-0 flex-col items-end gap-3 lg:flex">
               <Image
                 src={IMG_LOGO}
@@ -144,6 +150,7 @@ export default function NaosPage() {
                 className="w-36"
               />
             </div>
+            </RevealOnScroll>
 
           </div>
         </div>
@@ -152,6 +159,7 @@ export default function NaosPage() {
       {/* ── INTERIOR EXPLORER ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
 
+        <RevealOnScroll direction="center">
         <div className="mb-10 flex items-center gap-6">
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
           <h2 className="text-center font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-white">
@@ -159,7 +167,9 @@ export default function NaosPage() {
           </h2>
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
         </div>
+        </RevealOnScroll>
 
+        <RevealOnScroll direction="up" duration={1000}>
         <div
           className="relative mx-auto overflow-hidden rounded-[60px]"
           style={{ maxWidth: "1283px", minHeight: "524px" }}
@@ -205,6 +215,7 @@ export default function NaosPage() {
             </div>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── MODELS + CTA (light bg) ────────────────────────────────────── */}
@@ -212,6 +223,7 @@ export default function NaosPage() {
 
         {/* Models */}
         <div className="mb-16">
+          <RevealOnScroll direction="left">
           <div className="mb-8 flex items-center gap-4">
             <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 4 models</p>
             <button
@@ -227,12 +239,14 @@ export default function NaosPage() {
               <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
             </button>
           </div>
+          </RevealOnScroll>
 
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+            <RevealOnScroll direction="left" delay={100}>
             <div className="lg:w-[42%]">
               <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3.25rem)] leading-tight text-brand-ink">
                 Layout A —{" "}
-                <span className="text-[#03a593]">1,287 sq. ft.</span>
+                <span className="text-brand-teal">1,287 sq. ft.</span>
               </h2>
               <ul className="mt-6 space-y-1.5">
                 {modelFeatures.map((f) => (
@@ -240,7 +254,9 @@ export default function NaosPage() {
                 ))}
               </ul>
             </div>
+            </RevealOnScroll>
 
+            <RevealOnScroll direction="right" delay={100} className="flex-1">
             <div className="flex-1">
               <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "4096/2845" }}>
                 <Image
@@ -252,11 +268,13 @@ export default function NaosPage() {
                 />
               </div>
             </div>
+            </RevealOnScroll>
           </div>
         </div>
 
         {/* CTA */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
+          <RevealOnScroll direction="left">
           <div className="lg:w-[46%]">
             <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "663/370" }}>
               <Image
@@ -268,7 +286,9 @@ export default function NaosPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={150} className="lg:flex-1">
           <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
               A Limited Collection.<br />An Extraordinary Lifestyle.
@@ -280,6 +300,7 @@ export default function NaosPage() {
               Talk to an expert
             </button>
           </div>
+          </RevealOnScroll>
         </div>
 
       </section>

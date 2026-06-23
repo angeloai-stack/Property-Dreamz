@@ -5,7 +5,7 @@ import { BookOpen, CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui";
 
 const F =
-  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-[#39d3c0]/50";
+  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-brand-teal/50";
 
 type Fields = { name: string; email: string; nationality: string };
 const INIT: Fields = { name: "", email: "", nationality: "" };
@@ -39,7 +39,7 @@ export function GuideDownloadForm() {
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
             <div className="shrink-0 space-y-3 md:max-w-xs">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#39d3c0]/20 text-[#39d3c0]">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-teal/20 text-brand-teal">
                 <BookOpen className="h-6 w-6" aria-hidden="true" />
               </span>
               <h2 className="font-ewangi text-title leading-tight text-brand-paper">
@@ -53,7 +53,7 @@ export function GuideDownloadForm() {
 
             {status === "success" ? (
               <div className="flex flex-1 flex-col items-center gap-3 py-8 text-center">
-                <CheckCircle2 className="h-12 w-12 text-[#39d3c0]" aria-hidden="true" />
+                <CheckCircle2 className="h-12 w-12 text-brand-teal" aria-hidden="true" />
                 <p className="font-ewangi text-subtitle text-brand-paper">Check your inbox!</p>
                 <p className="font-body text-body text-brand-paper/60">
                   Your guide has been sent to{" "}
@@ -116,7 +116,7 @@ export function GuideDownloadForm() {
                     type="checkbox"
                     name="consent"
                     required
-                    className="mt-1 h-4 w-4 cursor-pointer accent-[#39d3c0]"
+                    className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
                   />
                   <span>
                     I agree to the{" "}
@@ -134,7 +134,7 @@ export function GuideDownloadForm() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-[#2bbba8] disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-teal px-6 py-3 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-brand-teal-dark disabled:opacity-60"
                 >
                   {status === "submitting" && (
                     <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

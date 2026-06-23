@@ -28,7 +28,7 @@ export function CertifiedBanner() {
     <section className="w-full bg-[#028e7f] py-8 md:py-20">
       <Container>
         {/* Pine card — Figma: Rectangle 44, #024139, r=34, 1262×489px */}
-        <RevealOnScroll>
+        <RevealOnScroll direction="center">
         <div className="rounded-2xl bg-brand-pine px-5 py-7 md:rounded-[34px] md:px-14 md:py-14">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
             {/* Left: "All certified by" + CMRE logo + description */}
@@ -69,7 +69,7 @@ export function CertifiedBanner() {
         </RevealOnScroll>
 
         {/* Big headline — Figma: Ewangi 96px white, y=4819 */}
-        <RevealOnScroll delay={150}>
+        <RevealOnScroll delay={150} direction="right">
         <div className="mt-8 md:mt-20">
           <h2 className="font-ewangi text-[clamp(3rem,7.5vw,6rem)] leading-[0.9] text-white">
             Browse 47 certified

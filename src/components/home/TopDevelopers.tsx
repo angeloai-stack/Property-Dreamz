@@ -106,18 +106,19 @@ export function TopDevelopers() {
     <section className="w-full bg-brand-paper py-8 md:py-16">
       <Container>
         {/* Centered badge heading — matches Figma Group 24 "Our top's developers" pill */}
-        <RevealOnScroll>
+        <RevealOnScroll direction="right" duration={1100} delay={0}>
         <div className="mb-5 flex justify-center md:mb-10">
           <span className="rounded-full bg-brand-emerald px-7 py-2.5 font-ewangi text-label font-semibold text-brand-paper shadow-subtle">
             Our top&apos;s developers
           </span>
         </div>
+        </RevealOnScroll>
 
         {/* Horizontal scroll row of 4 portrait cards */}
         <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden lg:gap-5">
-          {developers.map((dev) => (
+          {developers.map((dev, i) => (
+            <RevealOnScroll key={dev.id} direction="left" duration={1100} delay={i * 180} className="shrink-0">
             <Link
-              key={dev.id}
               href={dev.href}
               aria-label={`${dev.name}, ${dev.location} — ${dev.price}`}
               className="relative shrink-0 w-52 overflow-hidden rounded-2xl block h-75 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl md:w-65 md:rounded-3xl md:h-105"
@@ -170,9 +171,11 @@ export function TopDevelopers() {
                 </p>
               </div>
             </Link>
+            </RevealOnScroll>
           ))}
         </div>
 
+        <RevealOnScroll direction="up" delay={300}>
         {/* Social proof — matches Figma Group 25 "+2369 people purchasing" */}
         <p className="mt-8 text-center font-ewangi text-label text-brand-muted">
           +2,369 people purchasing properties right now
@@ -180,7 +183,7 @@ export function TopDevelopers() {
         </RevealOnScroll>
 
         {/* ── Destination image grid ───────────────────────────────────── */}
-        <RevealOnScroll className="mt-12 md:mt-16" delay={80}>
+        <RevealOnScroll className="mt-12 md:mt-16" delay={80} direction="right">
           <div className="grid grid-cols-3 gap-2 md:gap-3">
             {destinations.map((dest) => (
               <Link
@@ -214,7 +217,7 @@ export function TopDevelopers() {
         </RevealOnScroll>
 
         {/* ── Real Estate in Popular Cities ────────────────────────────── */}
-        <RevealOnScroll className="mt-12 md:mt-14" delay={100}>
+        <RevealOnScroll className="mt-12 md:mt-14" delay={100} direction="left">
           <h3 className="font-ewangi text-[1rem] font-bold text-brand-ink md:text-[1.05rem]">
             Real Estate in Popular Cities
           </h3>
@@ -235,7 +238,7 @@ export function TopDevelopers() {
         </RevealOnScroll>
 
         {/* ── Real Estate Markets ──────────────────────────────────────── */}
-        <RevealOnScroll className="mt-10 md:mt-12" delay={120}>
+        <RevealOnScroll className="mt-10 md:mt-12" delay={120} direction="right">
           <h3 className="font-ewangi text-[1rem] font-bold text-brand-ink md:text-[1.05rem]">
             Real Estate Markets
           </h3>

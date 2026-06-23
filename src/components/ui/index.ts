@@ -10,3 +10,4 @@ export { SearchBar as Search } from "./Search";
 export { Icon } from "./Icon";
 export { Label } from "./Label";
 export { RevealOnScroll } from "./RevealOnScroll";
+export { TiltCard } from "./TiltCard";

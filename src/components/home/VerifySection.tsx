@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
-import { Container, Icon, Label } from "@/components/ui";
+import { Container, Icon, Label, RevealOnScroll } from "@/components/ui";
 
 export function VerifySection() {
   return (
     <section className="w-full bg-brand-ink text-brand-emerald">
       <Container className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between md:py-12">
-        <div className="max-w-2xl space-y-3">
+        <RevealOnScroll direction="left" className="max-w-2xl space-y-3">
           <h2 className="flex flex-wrap items-center gap-2 font-ewangi text-title text-brand-emerald">
             <span className="text-white">Property Dreamz&apos;s</span>
             <span className="inline-flex items-center gap-1.5 italic text-brand-teal">
@@ -17,9 +17,9 @@ export function VerifySection() {
           <p className="font-body text-body text-white">
             The only portal where every property is certified before it&apos;s listed.
           </p>
-        </div>
+        </RevealOnScroll>
 
-        <div className="flex flex-col gap-2">
+        <RevealOnScroll direction="right" delay={120} className="flex flex-col gap-2">
           <Label className="text-white">Certified by</Label>
           <Image
             src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
@@ -28,7 +28,7 @@ export function VerifySection() {
             height={48}
             className="h-12 w-auto"
           />
-        </div>
+        </RevealOnScroll>
       </Container>
     </section>
   );

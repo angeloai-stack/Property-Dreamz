@@ -23,7 +23,7 @@ export function FeatureCards() {
       <Container>
         <div className="grid gap-3 md:grid-cols-3 md:gap-6">
           {features.map((feature, i) => (
-            <RevealOnScroll key={feature.title} delay={i * 120}>
+            <RevealOnScroll key={feature.title} delay={i * 180} duration={1100} direction={i === 0 ? "left" : i === 2 ? "right" : "up"}>
             <article
               className={cn(
                 "flex flex-col items-center rounded-2xl bg-white px-4 py-5 text-center shadow-subtle transition-all duration-300",

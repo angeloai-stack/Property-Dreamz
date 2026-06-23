@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui";
 
 // ── Images ──────────────────────────────────────────────────────────────────
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
@@ -87,7 +88,7 @@ export default function AlimarPage() {
         <div className="relative z-10 flex min-h-[820px] flex-col px-6 pt-10 pb-12 lg:px-20">
 
           {/* Top row — CMRE badge top-right */}
-          <div className="flex justify-end">
+          <RevealOnScroll direction="right" className="flex justify-end">
             <Image
               src={IMG_CMRE}
               alt="CMRE Certified"
@@ -95,40 +96,41 @@ export default function AlimarPage() {
               height={32}
               className="w-32"
             />
-          </div>
+          </RevealOnScroll>
 
           {/* Middle — headline + subtitle + badges */}
           <div className="mt-auto max-w-2xl">
-            <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white">
+            <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
               Elevated living.<br />Exceptional views.
             </h1>
-            <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-[560px]">
-              A limited collection of only 16 luxury residences designed for those who expect more.
-            </p>
-
-            {/* Trust badges */}
-            <div className="mt-8 flex flex-wrap gap-8">
-              {trustBadges.map((badge) => (
-                <div key={badge} className="flex flex-col items-center gap-1.5">
-                  <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[13px] leading-tight text-white text-center">{badge}</span>
-                </div>
-              ))}
-            </div>
+            <RevealOnScroll direction="up" delay={200}>
+              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-[560px]">
+                A limited collection of only 16 luxury residences designed for those who expect more.
+              </p>
+              {/* Trust badges */}
+              <div className="mt-8 flex flex-wrap gap-8">
+                {trustBadges.map((badge) => (
+                  <div key={badge} className="flex flex-col items-center gap-1.5">
+                    <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                    <span className="font-ewangi text-[13px] leading-tight text-white text-center">{badge}</span>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
           </div>
 
           {/* Separator line */}
           <div className="mt-8 h-px w-[247px] bg-white/40" />
 
           {/* Stats bar */}
-          <div className="mt-6 flex w-full max-w-[651px] rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
+          <RevealOnScroll direction="up" delay={200} className="mt-6 flex w-full max-w-[651px] rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-1 flex-col items-center">
                 <span className="font-ewangi text-[clamp(2rem,3.5vw,3rem)] leading-none text-white">{s.value}</span>
                 <span className="font-ewangi text-sm text-white/70 mt-1">{s.label}</span>
               </div>
             ))}
-          </div>
+          </RevealOnScroll>
 
           {/* ALIMAR logo — bottom right of hero */}
           <div className="absolute right-20 bottom-24 hidden lg:block">
@@ -144,11 +146,12 @@ export default function AlimarPage() {
 
       {/* ── EXPLORE YOUR NEXT HOME ────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
-        <h2 className="font-ewangi text-[clamp(1.75rem,3vw,2.5rem)] text-white mb-10 text-center">
+        <RevealOnScroll direction="center"><h2 className="font-ewangi text-[clamp(1.75rem,3vw,2.5rem)] text-white mb-10 text-center">
           Explore your next home
-        </h2>
+        </h2></RevealOnScroll>
 
         {/* Amenities viewer */}
+        <RevealOnScroll direction="up" duration={1000}>
         <div className="mx-auto max-w-[1317px] relative rounded-[60px] overflow-hidden h-[420px] lg:h-[538px]">
           {/* Interior photo */}
           <div className="absolute inset-0">
@@ -194,6 +197,7 @@ export default function AlimarPage() {
             </div>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────────── */}
@@ -201,6 +205,7 @@ export default function AlimarPage() {
         <div className="mx-auto max-w-[1440px]">
 
           {/* Header row */}
+          <RevealOnScroll direction="left">
           <div className="flex items-center gap-6 mb-6">
             <span className="font-ewangi text-[1.6rem] text-[#1e1e1e]">Explore our {layouts.length > 1 ? `${layouts.length} models` : "4 models"}</span>
             <div className="flex gap-2">
@@ -220,15 +225,17 @@ export default function AlimarPage() {
               </button>
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Layout row */}
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
 
             {/* Left — name + features */}
+            <RevealOnScroll direction="left" delay={100}>
             <div className="lg:w-[45%]">
               <h3 className="font-ewangi text-[clamp(2rem,4vw,3.25rem)] font-bold text-black leading-tight mb-6">
                 {currentLayout.name}{" "}
-                <span className="text-[#03a593]">– {currentLayout.area}</span>
+                <span className="text-brand-teal">– {currentLayout.area}</span>
               </h3>
               <ul className="font-ewangi text-[1.25rem] text-black space-y-1">
                 {currentLayout.features.map((f) => (
@@ -236,8 +243,10 @@ export default function AlimarPage() {
                 ))}
               </ul>
             </div>
+            </RevealOnScroll>
 
             {/* Right — floor plan */}
+            <RevealOnScroll direction="right" delay={100}>
             <div className="flex-1 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[640px] aspect-[1280/889]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -248,6 +257,7 @@ export default function AlimarPage() {
                 />
               </div>
             </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -257,6 +267,7 @@ export default function AlimarPage() {
         <div className="mx-auto flex max-w-[1440px] flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
           {/* Left — building photo */}
+          <RevealOnScroll direction="left">
           <div className="lg:w-[46%]">
             <div className="relative overflow-hidden rounded-[26px] aspect-[663/370]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -267,8 +278,10 @@ export default function AlimarPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Right — text + CTA */}
+          <RevealOnScroll direction="right" delay={150}>
           <div className="flex flex-col gap-6 lg:flex-1">
             <h2 className="font-ewangi text-[clamp(2rem,4.5vw,4rem)] leading-tight text-white">
               A Limited Collection.<br />An Extraordinary Lifestyle.
@@ -285,6 +298,7 @@ export default function AlimarPage() {
               </button>
             </div>
           </div>
+          </RevealOnScroll>
         </div>
       </section>
 

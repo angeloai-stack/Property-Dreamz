@@ -95,7 +95,7 @@ export function Navbar() {
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-[#02a592]")}
+                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-brand-teal")}
                   aria-haspopup="true"
                 >
                   {item.label}
@@ -119,7 +119,7 @@ export function Navbar() {
                       >
                         <span className="font-ewangi text-[14px] text-brand-ink">{sub.label}</span>
                         {sub.tag && (
-                          <span className="ml-3 rounded-full bg-[#39d3c0]/15 px-2 py-0.5 font-ewangi text-[10px] uppercase tracking-wide text-[#02a592]">
+                          <span className="ml-3 rounded-full bg-brand-teal/15 px-2 py-0.5 font-ewangi text-[10px] uppercase tracking-wide text-brand-teal">
                             {sub.tag}
                           </span>
                         )}
@@ -132,7 +132,7 @@ export function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={cn("whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-[#02a592]")}
+                className={cn("whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-brand-teal")}
               >
                 {item.label}
               </Link>
@@ -154,7 +154,7 @@ export function Navbar() {
                 onClick={() => setCurrency(c)}
                 className={cn(
                   "rounded-(--radius-btn) px-3 py-1.5 font-ewangi text-label font-semibold uppercase transition",
-                  currency === c ? "bg-[#02a592] text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
+                  currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                 )}
               >
                 {c}
@@ -206,14 +206,14 @@ export function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="flex-1 px-2 py-2 font-ewangi text-subtitle"
+                        className="flex-1 px-3 py-3.5 font-ewangi text-[1rem]"
                       >
                         {item.label}
                       </Link>
                       <button
                         type="button"
                         onClick={() => setPropertiesOpen((o) => !o)}
-                        className="px-2 py-2"
+                        className="flex min-h-[44px] min-w-[44px] items-center justify-center px-2"
                         aria-label="Toggle properties submenu"
                       >
                         {propertiesOpen
@@ -229,11 +229,11 @@ export function Navbar() {
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between rounded px-2 py-2 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
+                            className="flex items-center justify-between rounded px-3 py-3 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
                           >
                             <span>{sub.label}</span>
                             {sub.tag && (
-                              <span className="ml-2 rounded-full bg-[#39d3c0]/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-[#39d3c0]">
+                              <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
                                 {sub.tag}
                               </span>
                             )}
@@ -246,7 +246,7 @@ export function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block rounded px-2 py-2 font-ewangi text-subtitle hover:bg-brand-paper/10"
+                    className="block rounded px-3 py-3.5 font-ewangi text-[1rem] hover:bg-brand-paper/10"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
@@ -261,8 +261,8 @@ export function Navbar() {
                     type="button"
                     onClick={() => setCurrency(c)}
                     className={cn(
-                      "flex-1 rounded-(--radius-btn) px-3 py-2 font-ewangi text-label font-semibold uppercase",
-                      currency === c ? "bg-[#02a592] text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
+                      "flex-1 rounded-(--radius-btn) px-3 py-3 font-ewangi text-label font-semibold uppercase",
+                      currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                     )}
                   >
                     {c}

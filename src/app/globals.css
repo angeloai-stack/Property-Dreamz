@@ -4,6 +4,7 @@
   --color-brand-pine: #024139;
   --color-brand-emerald: #026559;
   --color-brand-teal: #3AD3C1;
+  --color-brand-teal-dark: #2BBBA8;
   --color-brand-gold: #b98a3e;
   --color-brand-ink: #191919;
   --color-brand-paper: #f4f1ea;
@@ -32,6 +33,7 @@
   --color-brand-pine: #024139;
   --color-brand-emerald: #026559;
   --color-brand-teal: #3AD3C1;
+  --color-brand-teal-dark: #2BBBA8;
   --color-brand-gold: #B98A3E;
   --color-brand-ink: #191919;
   --color-brand-paper: #F4F1EA;
@@ -76,6 +78,7 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
   background: var(--color-brand-paper);
   font-family: var(--font-ewangi), ui-sans-serif, sans-serif;
   font-size: var(--text-body);
@@ -85,6 +88,14 @@ body {
 
 ::selection {
   background: rgba(2, 101, 89, 0.15);
+}
+
+@media (max-width: 639px) {
+  :root {
+    --text-display: clamp(1.75rem, 8vw, 2.875rem);
+    --text-title: clamp(1.375rem, 6vw, 1.875rem);
+    --text-subtitle: clamp(1rem, 4.5vw, 1.3125rem);
+  }
 }
 
 @keyframes wiggle {
@@ -103,4 +114,20 @@ body {
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(1.75rem); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(-3rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(3rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ambient-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(4%, 6%) scale(1.08); }
+  66%       { transform: translate(-5%, -4%) scale(0.93); }
 }

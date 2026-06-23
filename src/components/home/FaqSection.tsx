@@ -107,7 +107,7 @@ export function FaqSection() {
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
 
           {/* Left — headline, sticky on desktop */}
-          <RevealOnScroll className="lg:w-72 lg:shrink-0">
+          <RevealOnScroll className="lg:w-72 lg:shrink-0" direction="left">
             <div className="lg:sticky lg:top-28">
               <span className="mb-5 inline-block rounded-full bg-brand-teal/15 px-4 py-1.5 font-ewangi text-label font-semibold text-brand-teal">
                 FAQ
@@ -129,7 +129,7 @@ export function FaqSection() {
           </RevealOnScroll>
 
           {/* Right — accordion */}
-          <RevealOnScroll className="min-w-0 flex-1" delay={120}>
+          <RevealOnScroll className="min-w-0 flex-1" delay={120} direction="right">
             <div>
               {faqs.map((faq, i) => (
                 <FaqItem

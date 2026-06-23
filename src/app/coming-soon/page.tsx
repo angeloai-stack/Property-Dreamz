@@ -6,7 +6,7 @@ import { CldImage } from "next-cloudinary";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 const F =
-  "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-brand-paper placeholder:text-brand-paper/40 outline-none transition focus:border-[#39d3c0]/60 focus:ring-2 focus:ring-[#39d3c0]/20";
+  "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-brand-paper placeholder:text-brand-paper/40 outline-none transition focus:border-brand-teal/60 focus:ring-2 focus:ring-brand-teal/20";
 
 type Fields = { name: string; email: string; phone: string };
 const INIT: Fields = { name: "", email: "", phone: "" };
@@ -88,7 +88,7 @@ export default function ComingSoonPage() {
           100% { background-position: 0% 50%; }
         }
         .shimmer-text {
-          background: linear-gradient(90deg, #39d3c0 0%, #fff 40%, #39d3c0 60%, #2bbba8 100%);
+          background: linear-gradient(90deg, #3AD3C1 0%, #fff 40%, #3AD3C1 60%, #2BBBA8 100%);
           background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -101,8 +101,8 @@ export default function ComingSoonPage() {
       <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-brand-ink px-6 py-20">
 
         {/* Animated background orbs */}
-        <div className="pointer-events-none absolute -left-32 top-[-10%] h-125 w-125 rounded-full bg-[#39d3c0]/10 blur-[100px]" style={{ animation: "float-slow 8s ease-in-out infinite" }} />
-        <div className="pointer-events-none absolute -right-40 bottom-[-5%] h-150 w-150 rounded-full bg-[#39d3c0]/8 blur-[120px]" style={{ animation: "float-med 10s ease-in-out infinite 1s" }} />
+        <div className="pointer-events-none absolute -left-32 top-[-10%] h-125 w-125 rounded-full bg-brand-teal/10 blur-[100px]" style={{ animation: "float-slow 8s ease-in-out infinite" }} />
+        <div className="pointer-events-none absolute -right-40 bottom-[-5%] h-150 w-150 rounded-full bg-brand-teal/8 blur-[120px]" style={{ animation: "float-med 10s ease-in-out infinite 1s" }} />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-100 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-pine/10 blur-[80px]" style={{ animation: "float-slow 12s ease-in-out infinite 3s" }} />
 
         {/* Circular logo — one per corner */}
@@ -179,12 +179,12 @@ export default function ComingSoonPage() {
 
           {/* Form card */}
           <div
-            className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 shadow-[0_8px_48px_rgba(0,0,0,0.4)] backdrop-blur-sm"
+            className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_8px_48px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:p-8"
             style={fadeUp(mounted, 500)}
           >
             {status === "success" ? (
               <div className="flex flex-col items-center gap-4 py-6 text-center">
-                <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
+                <CheckCircle2 className="h-14 w-14 text-brand-teal" aria-hidden="true" />
                 <p className="font-ewangi text-xl text-brand-paper">You&apos;re on the list!</p>
                 <p className="font-body text-sm text-brand-paper/60">
                   We&apos;ll notify you the moment we go live. Stay tuned.
@@ -192,7 +192,7 @@ export default function ComingSoonPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                <p className="font-ewangi text-sm font-semibold uppercase tracking-widest text-[#39d3c0]">
+                <p className="font-ewangi text-sm font-semibold uppercase tracking-widest text-brand-teal">
                   Get early access
                 </p>
 
@@ -249,7 +249,7 @@ export default function ComingSoonPage() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="btn-glow flex w-full items-center justify-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3.5 font-ewangi text-sm font-semibold text-brand-ink transition hover:bg-[#2bbba8] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+                  className="btn-glow flex w-full items-center justify-center gap-2 rounded-lg bg-brand-teal px-6 py-3.5 font-ewangi text-sm font-semibold text-brand-ink transition hover:bg-brand-teal-dark hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
                 >
                   {status === "submitting" && (
                     <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

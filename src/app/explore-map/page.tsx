@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { MapPin, SlidersHorizontal, X } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ListingCard } from "@/components/explore-map/ListingCard";
 import { MapPanel } from "@/components/explore-map/MapPanel";
@@ -58,11 +59,15 @@ export default function ExploreMapPage() {
   };
 
   return (
-    <main className="flex-1 bg-[#1e1e1e] text-white">
+    <main className="relative flex-1 bg-[#1e1e1e] text-white">
+      {/* Ambient gradient orbs — slow-drifting to make the dark bg feel alive */}
+      <div aria-hidden="true" className="pointer-events-none absolute -left-48 -top-48 h-[600px] w-[600px] rounded-full bg-brand-teal/[0.06] blur-[130px] [animation:ambient-drift_20s_ease-in-out_infinite]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-64 top-1/3 h-[480px] w-[480px] rounded-full bg-brand-pine/[0.14] blur-[110px] [animation:ambient-drift_26s_ease-in-out_infinite_5s]" />
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/4 h-[360px] w-[360px] rounded-full bg-brand-teal/[0.04] blur-[100px] [animation:ambient-drift_18s_ease-in-out_infinite_10s]" />
       {/* Header — Figma: "Explore Map" Ewangi 48px #eaedf0, location pill, Filter button */}
-      <div className="px-8 py-8 md:px-12 lg:px-16">
+      <div className="px-5 py-6 sm:px-8 sm:py-8 md:px-12 lg:px-16">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] leading-tight text-[#eaedf0]">
+          <h1 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] leading-tight text-[#eaedf0] animate-[fade-left_0.8s_ease-out_both]">
             Explore Map
           </h1>
 
@@ -116,7 +121,7 @@ export default function ExploreMapPage() {
 
       {/* Mobile map/list toggle */}
       <div className="sticky top-0 z-30 border-b border-white/10 bg-[#1e1e1e]/95 backdrop-blur-sm lg:hidden">
-        <div className="flex gap-2 px-8 py-3">
+        <div className="flex gap-2 px-5 py-3 sm:px-8">
           {(["map", "list"] as const).map((view) => (
             <button
               key={view}
@@ -125,7 +130,7 @@ export default function ExploreMapPage() {
               className={cn(
                 "flex-1 rounded-full px-4 py-2.5 font-ewangi text-sm uppercase tracking-widest transition",
                 mobileView === view
-                  ? "bg-[#39d3c0] text-[#1e1e1e]"
+                  ? "bg-brand-teal text-[#1e1e1e]"
                   : "border border-white/15 text-white/50 hover:text-white"
               )}
             >
@@ -136,7 +141,7 @@ export default function ExploreMapPage() {
       </div>
 
       {/* Map + listings — Figma: map ~43% left, teal cards panel ~57% right, equal height */}
-      <div className="mx-6 mb-8 overflow-hidden rounded-[28px] border border-white/10 lg:mx-14 lg:flex">
+      <div className="mx-4 mb-6 overflow-hidden rounded-[20px] border border-white/10 sm:mx-6 sm:mb-8 sm:rounded-[28px] lg:mx-14 lg:flex">
         {/* Map — Google Maps iframe zoomed to Baja California, updates on state filter.
             On lg the wrapper stretches to the cards' height; MapPanel is positioned
             absolutely inside it so it fills that height without percentage-height quirks. */}
@@ -153,10 +158,10 @@ export default function ExploreMapPage() {
           />
         </div>
 
-        {/* Cards — Figma: right 58%, teal (#39d3c0) panel with 2×2 square cards */}
+        {/* Cards — Figma: right 58%, teal (#3AD3C1) panel with 2×2 square cards */}
         <div
           className={cn(
-            "flex-1 bg-[#39d3c0]",
+            "flex-1 bg-brand-teal",
             mobileView === "map" ? "hidden lg:block" : "block"
           )}
         >
@@ -173,19 +178,32 @@ export default function ExploreMapPage() {
 
             {filtered.length > 0 ? (
               <>
-                {/* 2×2 grid of square cards — Figma layout */}
-                <div className="grid gap-4 sm:grid-cols-2">
+                {/* 2×2 grid — stagger each card in on filter change */}
+                <motion.div
+                  key={filtered.slice(0, 4).map((l) => l.id).join(",")}
+                  className="grid gap-4 sm:grid-cols-2"
+                  initial="hidden"
+                  animate="show"
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+                >
                   {filtered.slice(0, 4).map((listing) => (
-                    <ListingCard
+                    <motion.div
                       key={listing.id}
-                      listing={listing}
-                      active={activePin === listing.id}
-                      currency={currency}
-                      onClick={() => handleCardClick(listing.id)}
-                      compact
-                    />
+                      variants={{
+                        hidden: { opacity: 0, y: 14, scale: 0.96 },
+                        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+                      }}
+                    >
+                      <ListingCard
+                        listing={listing}
+                        active={activePin === listing.id}
+                        currency={currency}
+                        onClick={() => handleCardClick(listing.id)}
+                        compact
+                      />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
 
                 <div className="flex justify-center pt-1">
                   <button
@@ -219,9 +237,9 @@ export default function ExploreMapPage() {
       </div>
 
       {/* CTA section — Figma: "Didn't find your dream's propertie?" Ewangi 48px #eaedf0
-          "Speak with us!" 36px, teal button #39d3c0, house illustration on right */}
-      <div className="mx-6 mb-12 overflow-hidden rounded-[28px] border border-white/10 lg:mx-14">
-        <div className="flex flex-col gap-10 px-10 py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
+          "Speak with us!" 36px, teal button #3AD3C1, house illustration on right */}
+      <div className="mx-4 mb-10 overflow-hidden rounded-[20px] border border-white/10 sm:mx-6 sm:mb-12 sm:rounded-[28px] lg:mx-14">
+        <div className="flex flex-col gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
           {/* Left: copy + button */}
           <div className="space-y-6">
             <div className="space-y-3">
@@ -233,10 +251,10 @@ export default function ExploreMapPage() {
               </p>
             </div>
 
-            {/* Figma: teal #39d3c0 button, 309×83px, dark text */}
+            {/* Figma: teal #3AD3C1 button, 309×83px, dark text */}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#39d3c0] px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-[#2bbba8]"
+              className="inline-flex items-center justify-center rounded-full bg-brand-teal px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-brand-teal-dark"
             >
               Talk to an expert
             </Link>

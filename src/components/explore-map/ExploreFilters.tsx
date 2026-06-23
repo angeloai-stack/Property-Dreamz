@@ -39,7 +39,7 @@ function Pill({
       className={cn(
         "shrink-0 rounded-(--radius-btn) px-4 py-2 font-ewangi text-sm uppercase tracking-wide transition",
         active
-          ? "bg-[#39d3c0] text-[#1e1e1e]"
+          ? "bg-brand-teal text-[#1e1e1e]"
           : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
       )}
     >
@@ -78,10 +78,10 @@ export function ExploreFilters({
             value={searchVal}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Search projects"
-            className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 py-2.5 pl-10 pr-4 font-ewangi text-sm text-white placeholder:text-white/30 outline-none transition focus:border-[#39d3c0]/60 focus:ring-2 focus:ring-[#39d3c0]/20"
+            className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 py-2.5 pl-10 pr-4 font-ewangi text-sm text-white placeholder:text-white/30 outline-none transition focus:border-brand-teal/60 focus:ring-2 focus:ring-brand-teal/20"
           />
         </div>
-        <span className="shrink-0 rounded-(--radius-btn) bg-[#39d3c0]/20 px-3 py-1.5 font-ewangi text-sm text-[#39d3c0]">
+        <span className="shrink-0 rounded-(--radius-btn) bg-brand-teal/20 px-3 py-1.5 font-ewangi text-sm text-brand-teal">
           {resultCount} projects
         </span>
       </div>
@@ -129,7 +129,7 @@ export function ExploreFilters({
             type="checkbox"
             checked={verifiedOnly}
             onChange={(e) => onVerifiedChange(e.target.checked)}
-            className="h-4 w-4 cursor-pointer rounded border-white/30 accent-[#39d3c0]"
+            className="h-4 w-4 cursor-pointer rounded border-white/30 accent-brand-teal"
           />
           <span>Verified only</span>
         </label>
@@ -138,7 +138,7 @@ export function ExploreFilters({
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
           aria-label="Sort projects"
-          className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 px-3 py-2 font-ewangi text-sm text-white outline-none transition focus:border-[#39d3c0]/60 sm:w-auto"
+          className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 px-3 py-2 font-ewangi text-sm text-white outline-none transition focus:border-brand-teal/60 sm:w-auto"
         >
           <option value="rec">Relevance</option>
           <option value="price-asc">Price: low → high</option>

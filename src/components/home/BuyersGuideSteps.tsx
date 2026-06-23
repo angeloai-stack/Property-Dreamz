@@ -71,7 +71,7 @@ export function BuyersGuideSteps() {
 
       <Container className="relative z-10">
         {/* Section header */}
-        <RevealOnScroll>
+        <RevealOnScroll direction="center">
         <div className="mb-4 md:mb-8">
           <p className="font-ewangi text-[1.35rem] leading-tight text-white md:text-[2.125rem]">
             Buyer&apos;s Guide
@@ -87,7 +87,7 @@ export function BuyersGuideSteps() {
           {steps.map((step, i) => {
             const isEven = i % 2 === 1;
             return (
-              <RevealOnScroll key={step.number} delay={i * 150}>
+              <RevealOnScroll key={step.number} delay={i * 150} direction={isEven ? "right" : "left"}>
               <div
                 className="relative mx-3 rounded-[2.5rem] bg-[#fcfdff] px-4 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:mx-16 md:rounded-[3.5rem] lg:px-8 lg:py-7"
               >

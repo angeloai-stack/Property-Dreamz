@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Heart, MapPin, ChevronDown, ArrowRight, Search, CheckCircle2, X } from "lucide-react";
+import { RevealOnScroll, TiltCard } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
@@ -275,7 +276,7 @@ function FilterPill({
       {open && (
         <>
           <div className="fixed inset-0 z-48" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full z-49 mt-2 min-w-47.5 overflow-hidden rounded-[14px] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.18)]">
+          <div className="absolute left-0 top-full z-49 mt-2 min-w-47.5 max-w-[calc(100vw-1rem)] overflow-hidden rounded-[14px] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.18)]">
             {options.map((opt) => (
               <button
                 key={opt}
@@ -305,7 +306,7 @@ function PropertyCard({ property }: { property: Property }) {
     <div className="relative">
       {/* Left badges — type + CMRE, same position as beds/baths in saved page */}
       <div className="absolute left-3 top-24 z-20 flex flex-col gap-1.5">
-        <div className="flex items-center gap-1 rounded-[3px] bg-[#39d3c0] px-2 py-1 shadow-sm">
+        <div className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 shadow-sm">
           <span className="font-ewangi text-[11px] font-semibold text-white">{property.type}</span>
         </div>
         {property.certified && (
@@ -338,7 +339,7 @@ function PropertyCard({ property }: { property: Property }) {
               <Heart
                 className={cn(
                   "h-5 w-5 transition",
-                  saved ? "fill-[#39d3c0] text-[#39d3c0]" : "fill-transparent text-white"
+                  saved ? "fill-brand-teal text-brand-teal" : "fill-transparent text-white"
                 )}
                 strokeWidth={saved ? 0 : 2}
               />
@@ -410,10 +411,10 @@ export default function PropertiesPage() {
     <main className="flex-1">
 
       {/* ── Header + filter bar ─────────────────────────────────── */}
-      <div className="bg-[#028e7f] px-8 py-14 md:px-12 lg:px-30">
+      <div className="bg-[#028e7f] px-5 py-10 sm:px-8 sm:py-14 md:px-12 lg:px-30">
 
         <div className="mb-8">
-          <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0]">
+          <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0] animate-[fade-left_0.8s_ease-out_both]">
             Properties
           </h1>
           <p className="mt-2 font-ewangi text-[1.1rem] text-white/55">
@@ -421,17 +422,18 @@ export default function PropertiesPage() {
           </p>
         </div>
 
+        <RevealOnScroll direction="up" delay={150}>
         <div className="flex flex-wrap items-center gap-3">
 
           {/* Search input */}
-          <div className="flex items-center gap-2.5 rounded-[14px] bg-white/15 px-5 py-3 backdrop-blur-sm">
+          <div className="flex w-full items-center gap-2.5 rounded-[14px] bg-white/15 px-5 py-3 backdrop-blur-sm sm:w-auto">
             <Search className="h-4 w-4 shrink-0 text-white/60" strokeWidth={1.5} />
             <input
               type="text"
               placeholder="Search..."
               value={filters.search}
               onChange={(e) => set("search", e.target.value)}
-              className="w-28 bg-transparent font-ewangi text-[1rem] text-white outline-none placeholder:text-white/40"
+              className="min-w-0 flex-1 bg-transparent font-ewangi text-[1rem] text-white outline-none placeholder:text-white/40 sm:w-28 sm:flex-none"
             />
             {filters.search && (
               <button type="button" onClick={() => set("search", "")} className="text-white/50 hover:text-white">
@@ -455,18 +457,23 @@ export default function PropertiesPage() {
             </button>
           )}
         </div>
+        </RevealOnScroll>
       </div>
 
       {/* ── Card grid ───────────────────────────────────────────── */}
-      <div className="bg-brand-paper px-8 py-16 md:px-12 lg:px-30">
+      <div className="bg-brand-paper px-5 py-12 sm:px-8 sm:py-16 md:px-12 lg:px-30">
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,7vw,6rem)]">
-            {filtered.map((property) => (
-              <PropertyCard key={property.id} property={property} />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,7vw,6rem)] perspective-[1400px]">
+            {filtered.map((property, i) => (
+              <RevealOnScroll key={property.id} delay={Math.min(i, 5) * 80}>
+                <TiltCard intensity={5}>
+                  <PropertyCard property={property} />
+                </TiltCard>
+              </RevealOnScroll>
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center gap-4 py-32 text-center">
+          <div className="flex flex-col items-center gap-4 py-16 text-center sm:py-24 lg:py-32">
             <Search className="h-16 w-16 text-brand-ink/15" strokeWidth={1} />
             <h2 className="font-ewangi text-[2rem] text-brand-ink/50">No properties found</h2>
             <p className="font-ewangi text-[1.1rem] text-brand-ink/40">

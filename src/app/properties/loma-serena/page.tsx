@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_LOGO       = `${CLD}/loma-serena/logo`;
@@ -71,43 +72,48 @@ export default function LomaSerenaPage() {
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-12 lg:pb-14">
 
           {/* Logo + CMRE — top right */}
-          <div className="flex justify-end">
-            <div className="flex flex-col items-end gap-2">
-              <Image
-                src={IMG_LOGO}
-                alt="Loma Serena"
-                width={204}
-                height={54}
-                className="w-44 lg:w-52"
-              />
-              <Image
-                src={IMG_CMRE}
-                alt="CMRE Certified"
-                width={135}
-                height={32}
-                className="w-36"
-              />
+          <RevealOnScroll direction="right">
+            <div className="flex justify-end">
+              <div className="flex flex-col items-end gap-2">
+                <Image
+                  src={IMG_LOGO}
+                  alt="Loma Serena"
+                  width={204}
+                  height={54}
+                  className="w-44 lg:w-52"
+                />
+                <Image
+                  src={IMG_CMRE}
+                  alt="CMRE Certified"
+                  width={135}
+                  height={32}
+                  className="w-36"
+                />
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* Title + subtitle — left */}
           <div className="mt-6 flex flex-col gap-5 lg:mt-10 lg:max-w-[45%]">
             <h1
-              className="font-ewangi text-[clamp(2.5rem,4vw,3.5rem)] leading-[1.05] text-white"
+              className="font-ewangi text-[clamp(2.5rem,4vw,3.5rem)] leading-[1.05] text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
               Enjoy Baja life<br />by the sea
             </h1>
-            <p
-              className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
-              style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
-            >
-              Gated community in Rosarito offering modern homes &amp; ocean views, plus a more affordable cost of living than the U.S.
-            </p>
+            <RevealOnScroll direction="up" delay={200}>
+              <p
+                className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
+                style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
+              >
+                Gated community in Rosarito offering modern homes &amp; ocean views, plus a more affordable cost of living than the U.S.
+              </p>
+            </RevealOnScroll>
           </div>
 
           {/* Bottom row: badges left, stats right */}
           <div className="mt-auto flex items-end justify-between gap-8 pt-8">
+            <RevealOnScroll direction="left" delay={150}>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
               {trustBadges.map((b) => (
                 <div key={b} className="flex flex-col items-center gap-1.5">
@@ -116,7 +122,9 @@ export default function LomaSerenaPage() {
                 </div>
               ))}
             </div>
+            </RevealOnScroll>
 
+            <RevealOnScroll direction="right" delay={150}>
             <div className="hidden flex-wrap gap-x-10 gap-y-3 sm:gap-x-14 lg:flex">
               {stats.map((s) => (
                 <div key={s.label} className="flex flex-col gap-1">
@@ -125,6 +133,7 @@ export default function LomaSerenaPage() {
                 </div>
               ))}
             </div>
+            </RevealOnScroll>
           </div>
 
         </div>
@@ -132,62 +141,70 @@ export default function LomaSerenaPage() {
 
       {/* ── DIVIDER ───────────────────────────────────────────────────── */}
       <div className="bg-[#171717] px-8 py-8 lg:px-20">
-        <div className="flex items-center gap-6">
-          <div className="h-px w-44 shrink-0 bg-white/30" />
-          <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] capitalize text-white">
-            Live where others vacation
-          </p>
-        </div>
+        <RevealOnScroll direction="left">
+          <div className="flex items-center gap-6">
+            <div className="h-px w-44 shrink-0 bg-white/30" />
+            <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] capitalize text-white">
+              Live where others vacation
+            </p>
+          </div>
+        </RevealOnScroll>
       </div>
 
       {/* ── MODELS ────────────────────────────────────────────────────── */}
       <section className="rounded-tl-[50px] rounded-tr-[50px] bg-[#d9d9d9] px-8 pt-12 pb-16 lg:px-20 lg:pt-14">
 
-        <div className="mb-8 flex items-center gap-4">
-          <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 4 models</p>
-          <button
-            style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-            className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
-          >
-            <ChevronLeft className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
-          </button>
-          <button
-            style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-            className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
-          >
-            <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
-          </button>
-        </div>
+        <RevealOnScroll direction="left">
+          <div className="mb-8 flex items-center gap-4">
+            <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 4 models</p>
+            <button
+              style={{ width: "43px", height: "43px", borderRadius: "13px" }}
+              className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+            >
+              <ChevronLeft className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
+            </button>
+            <button
+              style={{ width: "43px", height: "43px", borderRadius: "13px" }}
+              className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+            >
+              <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
+            </button>
+          </div>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12">
 
-          <div className="lg:w-[43%]">
-            <div className="flex flex-col">
-              <h2 className="font-ewangi text-[clamp(3rem,6vw,5.625rem)] leading-none text-brand-ink">
-                Cala
-              </h2>
-              <p className="font-ewangi text-[clamp(2.5rem,5vw,5.625rem)] leading-none text-[#03a593]">
-                300 m²
-              </p>
+          <RevealOnScroll direction="left" delay={100}>
+            <div className="lg:w-[43%]">
+              <div className="flex flex-col">
+                <h2 className="font-ewangi text-[clamp(3rem,6vw,5.625rem)] leading-none text-brand-ink">
+                  Cala
+                </h2>
+                <p className="font-ewangi text-[clamp(2.5rem,5vw,5.625rem)] leading-none text-brand-teal">
+                  300 m²
+                </p>
+              </div>
+              <ul className="mt-6 space-y-1 list-disc pl-5">
+                {modelFeatures.map((f) => (
+                  <li key={f} className="font-ewangi text-[1.25rem] text-brand-ink">{f}</li>
+                ))}
+              </ul>
             </div>
-            <ul className="mt-6 space-y-1 list-disc pl-5">
-              {modelFeatures.map((f) => (
-                <li key={f} className="font-ewangi text-[1.25rem] text-brand-ink">{f}</li>
-              ))}
-            </ul>
-          </div>
+          </RevealOnScroll>
 
-          <div className="flex-1">
-            <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "530/353" }}>
-              <Image
-                src={IMG_MODEL}
-                alt="Cala model house render"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 57vw"
-              />
+          <RevealOnScroll direction="right" delay={100}>
+            <div className="flex-1">
+              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "530/353" }}>
+                <Image
+                  src={IMG_MODEL}
+                  alt="Cala model house render"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 57vw"
+                />
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
         </div>
       </section>
@@ -196,28 +213,32 @@ export default function LomaSerenaPage() {
       <section className="bg-[#d9d9d9] px-8 py-16 lg:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <div className="lg:w-[38%]">
-            <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] text-brand-ink">
-              Amenities
-            </h2>
-            <ul className="mt-6 space-y-2">
-              {["Infinity Pool", "High-end Restaurant", "Fully Equipped Gym", "Mini Market"].map((a) => (
-                <li key={a} className="font-ewangi text-[1.375rem] text-brand-ink">{a}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex-1">
-            <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "2724/1052" }}>
-              <Image
-                src={IMG_AMENITIES}
-                alt="Loma Serena amenities"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 62vw"
-              />
+          <RevealOnScroll direction="left">
+            <div className="lg:w-[38%]">
+              <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] text-brand-ink">
+                Amenities
+              </h2>
+              <ul className="mt-6 space-y-2">
+                {["Infinity Pool", "High-end Restaurant", "Fully Equipped Gym", "Mini Market"].map((a) => (
+                  <li key={a} className="font-ewangi text-[1.375rem] text-brand-ink">{a}</li>
+                ))}
+              </ul>
             </div>
-          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={150}>
+            <div className="flex-1">
+              <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "2724/1052" }}>
+                <Image
+                  src={IMG_AMENITIES}
+                  alt="Loma Serena amenities"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 62vw"
+                />
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>
@@ -226,18 +247,21 @@ export default function LomaSerenaPage() {
       <section className="bg-[#d9d9d9] px-8 pb-20 pt-4 lg:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <div className="lg:w-[42%]">
-            <div className="relative overflow-hidden rounded-[50px]" style={{ aspectRatio: "604/523" }}>
-              <Image
-                src={IMG_CTA}
-                alt="Loma Serena street view"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 42vw"
-              />
+          <RevealOnScroll direction="left">
+            <div className="lg:w-[42%]">
+              <div className="relative overflow-hidden rounded-[50px]" style={{ aspectRatio: "604/523" }}>
+                <Image
+                  src={IMG_CTA}
+                  alt="Loma Serena street view"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 42vw"
+                />
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={150}>
           <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
               A Limited Collection.<br />An Extraordinary Lifestyle.
@@ -249,6 +273,7 @@ export default function LomaSerenaPage() {
               Talk to an expert
             </button>
           </div>
+          </RevealOnScroll>
 
         </div>
       </section>

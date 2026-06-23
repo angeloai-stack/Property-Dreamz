@@ -50,8 +50,8 @@ export function ListingCard({ listing, active, currency, onClick, compact = fals
         onKeyDown={handleKeyDown}
         className={cn(
           "overflow-hidden rounded-[30px] border bg-[#fcfdff] p-2.5 text-brand-ink shadow-[0_4px_20px_rgba(0,0,0,0.22)] transition duration-200",
-          "cursor-pointer hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.32)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39d3c0]",
-          active ? "border-[#39d3c0] ring-2 ring-[#39d3c0]/40" : "border-transparent",
+          "cursor-pointer hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.32)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal",
+          active ? "border-brand-teal ring-2 ring-brand-teal/40" : "border-transparent",
           sold && "opacity-70"
         )}
       >
@@ -112,8 +112,8 @@ export function ListingCard({ listing, active, currency, onClick, compact = fals
       onKeyDown={handleKeyDown}
       className={cn(
         "overflow-hidden rounded-[43px] border bg-[#fcfdff] text-brand-ink shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition duration-200",
-        "cursor-pointer hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39d3c0]",
-        active ? "border-[#39d3c0] ring-2 ring-[#39d3c0]/40" : "border-transparent",
+        "cursor-pointer hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal",
+        active ? "border-brand-teal ring-2 ring-brand-teal/40" : "border-transparent",
         sold && "opacity-70"
       )}
     >

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 const F =
-  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-[#39d3c0]/50";
+  "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-brand-teal/50";
 
 type Fields = {
   contactName: string;
@@ -60,7 +60,7 @@ export function DeveloperListingForm() {
   if (status === "success") {
     return (
       <div className="flex flex-col items-center gap-4 rounded-[42px] bg-brand-ink p-12 text-center shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
-        <CheckCircle2 className="h-14 w-14 text-[#39d3c0]" aria-hidden="true" />
+        <CheckCircle2 className="h-14 w-14 text-brand-teal" aria-hidden="true" />
         <p className="font-ewangi text-subtitle text-brand-paper">Application received!</p>
         <p className="max-w-md font-body text-body text-brand-paper/60">
           Our team will review your submission and contact you within 3 business days to discuss
@@ -236,7 +236,7 @@ export function DeveloperListingForm() {
           type="checkbox"
           name="consent"
           required
-          className="mt-1 h-4 w-4 cursor-pointer accent-[#39d3c0]"
+          className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
         />
         <span>
           I agree to the{" "}
@@ -256,7 +256,7 @@ export function DeveloperListingForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="flex items-center gap-2 rounded-lg bg-[#39d3c0] px-6 py-3.5 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-[#2bbba8] disabled:opacity-60"
+        className="flex items-center gap-2 rounded-lg bg-brand-teal px-6 py-3.5 font-ewangi text-label font-semibold text-brand-ink transition hover:bg-brand-teal-dark disabled:opacity-60"
       >
         {status === "submitting" && (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

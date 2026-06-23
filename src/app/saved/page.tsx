@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Bed, Bath, Heart, MapPin, SlidersHorizontal, X } from "lucide-react";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
+import { RevealOnScroll, TiltCard } from "@/components/ui";
 
 type SavedListing = {
   id: number;
@@ -97,11 +98,11 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
     <div className="relative">
       {/* Stat badges — Figma: 34x21px teal r=3, stacked on left of image */}
       <div className="absolute left-3 top-24 z-20 flex flex-col gap-1.5">
-        <div className="flex items-center gap-1 rounded-[3px] bg-[#39d3c0] px-2 py-1 shadow-sm">
+        <div className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 shadow-sm">
           <Bed className="h-3 w-3 text-white" strokeWidth={2} />
           <span className="font-ewangi text-[11px] font-semibold text-white">{listing.beds}</span>
         </div>
-        <div className="flex items-center gap-1 rounded-[3px] bg-[#39d3c0] px-2 py-1 shadow-sm">
+        <div className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 shadow-sm">
           <Bath className="h-3 w-3 text-white" strokeWidth={2} />
           <span className="font-ewangi text-[11px] font-semibold text-white">{listing.baths}</span>
         </div>
@@ -129,7 +130,7 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
             aria-label="Remove from saved"
             className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm transition hover:bg-white/50"
           >
-            <Heart className="h-5 w-5 fill-[#39d3c0] text-[#39d3c0]" strokeWidth={0} />
+            <Heart className="h-5 w-5 fill-brand-teal text-brand-teal" strokeWidth={0} />
           </button>
 
           {/* Price badge — Figma: #028E7F r=9 bottom-left */}
@@ -163,17 +164,17 @@ export default function SavedPage() {
   return (
     <main className="flex-1 bg-[#028e7f]">
       {/* Header — Figma: "Saved" 64px Ewangi #EAEDF0, frosted location pill center, Filter right */}
-      <div className="px-8 py-14 md:px-12 lg:px-30">
+      <div className="px-5 py-10 sm:px-8 sm:py-14 md:px-12 lg:px-30">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0]">
+          <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0] animate-[fade-left_0.8s_ease-out_both]">
             Saved
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Location pill — Figma: 499x94px r=29 D9D9D9@21% backdrop-blur */}
-            <div className="flex items-center gap-3 rounded-[29px] bg-[rgba(217,217,217,0.21)] px-6 py-4 backdrop-blur-sm">
-              <MapPin className="h-5 w-5 shrink-0 text-white/60" strokeWidth={1.5} />
-              <span className="font-ewangi text-[1.2rem] text-white">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Location pill */}
+            <div className="flex items-center gap-2 rounded-[29px] bg-[rgba(217,217,217,0.21)] px-4 py-2.5 backdrop-blur-sm sm:gap-3 sm:px-6 sm:py-4">
+              <MapPin className="h-4 w-4 shrink-0 text-white/60 sm:h-5 sm:w-5" strokeWidth={1.5} />
+              <span className="font-ewangi text-[0.95rem] text-white sm:text-[1.2rem]">
                 Tijuana, Rosarito, Pto. Nuevo
               </span>
             </div>
@@ -183,7 +184,7 @@ export default function SavedPage() {
               type="button"
               onClick={() => setFiltersOpen((o) => !o)}
               aria-expanded={filtersOpen}
-              className="flex items-center gap-2.5 rounded-[29px] border border-white/25 px-6 py-4 font-ewangi text-[1.2rem] text-white transition hover:bg-white/10"
+              className="flex items-center gap-2 rounded-[29px] border border-white/25 px-4 py-2.5 font-ewangi text-[0.95rem] text-white transition hover:bg-white/10 sm:gap-2.5 sm:px-6 sm:py-4 sm:text-[1.2rem]"
             >
               <span>Filter</span>
               {filtersOpen ? (
@@ -203,19 +204,22 @@ export default function SavedPage() {
       </div>
 
       {/* Card grid — Figma: 3col x 2row, 319px cards, ~116px gap, 120px side padding */}
-      <div className="px-8 pb-24 md:px-12 lg:px-30">
+      <div className="px-5 pb-16 sm:px-8 sm:pb-24 md:px-12 lg:px-30">
         {saved.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,8vw,7.25rem)]">
-            {saved.map((listing) => (
-              <SavedCard
-                key={listing.id}
-                listing={listing}
-                onUnsave={() => unsave(listing.id)}
-              />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,8vw,7.25rem)] perspective-[1400px]">
+            {saved.map((listing, i) => (
+              <RevealOnScroll key={listing.id} delay={Math.min(i, 5) * 80}>
+                <TiltCard intensity={5}>
+                  <SavedCard
+                    listing={listing}
+                    onUnsave={() => unsave(listing.id)}
+                  />
+                </TiltCard>
+              </RevealOnScroll>
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center gap-6 py-32 text-center">
+          <div className="flex flex-col items-center gap-6 py-16 text-center sm:py-24 lg:py-32">
             <Heart className="h-16 w-16 text-white/20" strokeWidth={1} />
             <h2 className="font-ewangi text-[2rem] text-[#eaedf0]/60">No saved properties</h2>
             <p className="font-ewangi text-[1.1rem] text-white/40">
