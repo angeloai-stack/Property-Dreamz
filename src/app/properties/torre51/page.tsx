@@ -141,8 +141,7 @@ export default function Torre51Page() {
 
         <RevealOnScroll direction="up" duration={1100}>
         <div
-          className="relative mx-auto overflow-hidden rounded-[60px]"
-          style={{ maxWidth: "1283px", minHeight: "524px" }}
+          className="relative mx-auto max-w-320.75 min-h-131 overflow-hidden rounded-15"
         >
           <Image
             src={IMG_INTERIOR}
@@ -152,13 +151,13 @@ export default function Torre51Page() {
             sizes="100vw"
           />
           <div
-            className="absolute inset-0 rounded-[60px]"
+            className="absolute inset-0 rounded-15"
             style={{ background: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(30,30,30,0.62) 100%)" }}
           />
 
           {/* Right panel */}
           <div className="absolute inset-0 flex flex-col justify-center p-8 lg:left-[56.66%] lg:p-10">
-            <div className="rounded-[20px] bg-white/10 p-6 backdrop-blur-sm">
+            <div className="rounded-5 bg-white/10 p-6 backdrop-blur-sm">
               <p className="font-ewangi text-[1.1rem] leading-relaxed text-white lg:text-[1.375rem]">
                 {amenities[activeTab].description}
               </p>
@@ -169,10 +168,10 @@ export default function Torre51Page() {
                 {(["Pool", "Spa", "Gym"] as AmenityTab[]).map((t) => (
                   <button
                     key={t}
+                    type="button"
                     onClick={() => setActiveTab(t)}
-                    style={{ width: "152px", height: "36px", borderRadius: "5px" }}
                     className={cn(
-                      "font-ewangi text-[1.1rem] text-center transition",
+                      "h-9 w-38 rounded-1.25 font-ewangi text-[1.1rem] text-center transition",
                       t === activeTab
                         ? "bg-[#1e1e1e] text-brand-teal"
                         : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
@@ -189,20 +188,20 @@ export default function Torre51Page() {
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────── */}
-      <section className="rounded-tl-[24px] rounded-tr-[24px] bg-[#d9d9d9] px-8 pt-8 pb-16 lg:px-20">
+      <section className="rounded-tl-6 rounded-tr-6 bg-[#d9d9d9] px-8 pt-8 pb-16 lg:px-20">
 
         <RevealOnScroll direction="left">
         <div className="mb-8 flex items-center gap-4">
           <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 5 models</p>
           <button
-            style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-            className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+            type="button"
+            className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
           >
             <ChevronLeft className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
           </button>
           <button
-            style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-            className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+            type="button"
+            className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
           >
             <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
           </button>
@@ -227,7 +226,7 @@ export default function Torre51Page() {
 
           <RevealOnScroll direction="right" delay={100} duration={1100}>
           <div className="flex-1">
-            <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1034/730" }}>
+            <div className="relative overflow-hidden rounded-3.75 aspect-1034/730">
               <Image
                 src={IMG_MODEL}
                 alt="Vista model interior render"
@@ -255,7 +254,7 @@ export default function Torre51Page() {
 
           <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[39%]">
-            <div className="overflow-hidden rounded-[26px]" style={{ aspectRatio: "560/315" }}>
+            <div className="overflow-hidden rounded-6.5 aspect-560/315">
               <iframe
                 src="https://www.youtube.com/embed/ewrYgcNHV8Q?si=zVZA55AsGvDzGrQh"
                 title="Torre 51 Negativo"
@@ -276,7 +275,7 @@ export default function Torre51Page() {
             <p className="font-ewangi text-[1.25rem] leading-relaxed text-white/65 lg:max-w-130">
               Two towers, 90 luxury condos on a privileged stretch of the Rosarito coast. The developer&apos;s experience is your guarantee; your property value is guaranteed.
             </p>
-            <button className="rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
+            <button type="button" className="rounded-2.5 bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
               Schedule your appointment
             </button>
           </div>

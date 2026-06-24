@@ -288,7 +288,7 @@ export default function PuntaPiedraPage() {
               href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[8px] bg-[#1e1e1e] px-8 py-4 font-ewangi text-[2.25rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink"
+              className="rounded-2 bg-[#1e1e1e] px-8 py-4 font-ewangi text-[2.25rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink"
             >
               360 tour
             </a>

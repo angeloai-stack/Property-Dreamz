@@ -145,7 +145,7 @@ export default function LagunaBayPage() {
               </div>
 
               <h1
-                className="font-ewangi text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.0] text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
+                className="font-ewangi text-[clamp(2.5rem,5.5vw,5rem)] leading-none text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
                 style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
               >
                 Exclusive oceanfront<br />horizontal development
@@ -175,7 +175,7 @@ export default function LagunaBayPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="relative overflow-hidden rounded-[27px]" style={{ minHeight: "537px" }}>
+        <div className="relative overflow-hidden rounded-6.75 min-h-134.25">
           <Image
             src={IMG_MAP}
             alt="Laguna Bay development map"
@@ -197,7 +197,7 @@ export default function LagunaBayPage() {
                   type="button"
                   onClick={() => setActiveTab(t)}
                   className={cn(
-                    "rounded-[4px] px-4 py-1.5 font-ewangi text-[0.9rem] transition",
+                    "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
                     t === activeTab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
@@ -210,7 +210,7 @@ export default function LagunaBayPage() {
 
             <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
 
-            <div className="flex flex-col overflow-hidden rounded-[4px]">
+            <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
                   key={lot.id}
@@ -234,7 +234,7 @@ export default function LagunaBayPage() {
             <div className="mt-auto">
               <button
                 type="button"
-                className="rounded-[5px] border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+                className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
               >
                 View all lots
               </button>
@@ -253,7 +253,7 @@ export default function LagunaBayPage() {
               <h2 className="font-ewangi text-[clamp(2.5rem,4.5vw,3.875rem)] leading-tight text-white">
                 Impressive lake
               </h2>
-              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[480px]">
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-120">
                 At Laguna Bay, you can enjoy various outdoor activities, including the opportunity to explore an impressive lake where you can fish, kayak, paddleboard, and more. It also features a pier and a beautiful viewpoint where you can relax.
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function LagunaBayPage() {
 
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="lg:w-[45%]">
-              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1/1" }}>
+              <div className="relative overflow-hidden rounded-3.75 aspect-square">
                 <Image
                   src={IMG_LAKE}
                   alt="Laguna Bay lake and pier"
@@ -294,7 +294,7 @@ export default function LagunaBayPage() {
             href="https://www.facebook.com/reel/1517193329340563"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden shrink-0 items-center justify-center rounded-[18px] bg-white px-8 py-5 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-white/90 lg:flex"
+            className="hidden shrink-0 items-center justify-center rounded-4.5 bg-white px-8 py-5 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-white/90 lg:flex"
           >
             Hear From Our Residents
           </Link>
@@ -309,7 +309,7 @@ export default function LagunaBayPage() {
 
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[46%]">
-              <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1024/689" }}>
+              <div className="relative overflow-hidden rounded-6.5 aspect-1024/689">
                 <Image
                   src={IMG_MASTERPLAN}
                   alt="Laguna Bay masterplan"
@@ -326,7 +326,7 @@ export default function LagunaBayPage() {
               <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.875rem)] leading-tight text-white">
                 Build, Live, and Grow
               </h2>
-              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[520px]">
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-130">
                 {`Whether you're looking for the perfect lot to build your dream home or a move-in-ready residence, we offer options tailored to your lifestyle and goals. Discover a community designed for growth, comfort, and long-term value. Contact us today to learn more, schedule a visit, and find the opportunity that's right for you.`}
               </p>
             </div>
@@ -340,7 +340,7 @@ export default function LagunaBayPage() {
         <RevealOnScroll direction="up">
           <button
             type="button"
-            className="rounded-[10px] bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
+            className="rounded-2.5 bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
           >
             Talk to an expert
           </button>

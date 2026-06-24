@@ -88,7 +88,7 @@ export default function CostaRealPage() {
           {/* Title + subtitle + badges */}
           <div className="mt-8 flex flex-col gap-5 lg:mt-10 lg:max-w-[58%]">
             <h1
-              className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-[1.0] text-white animate-[fade-left_0.9s_ease-out_both]"
+              className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
               Live Beyond<br />the Ordinary
@@ -155,7 +155,7 @@ export default function CostaRealPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="relative overflow-hidden rounded-[27px]" style={{ minHeight: "537px" }}>
+        <div className="relative overflow-hidden rounded-6.75 min-h-134.25">
           <Image
             src={IMG_MAP}
             alt="Costa Real development map"
@@ -177,7 +177,7 @@ export default function CostaRealPage() {
                   type="button"
                   onClick={() => setActiveTab(t)}
                   className={cn(
-                    "rounded-[4px] px-4 py-1.5 font-ewangi text-[0.9rem] transition",
+                    "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
                     t === activeTab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
@@ -190,7 +190,7 @@ export default function CostaRealPage() {
 
             <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
 
-            <div className="flex flex-col overflow-hidden rounded-[4px]">
+            <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
                   key={lot.id}
@@ -214,7 +214,7 @@ export default function CostaRealPage() {
             <div className="mt-auto">
               <button
                 type="button"
-                className="rounded-[5px] border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+                className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
               >
                 View all lots
               </button>
@@ -241,15 +241,13 @@ export default function CostaRealPage() {
                 <div className="ml-4 flex gap-2">
                   <button
                     type="button"
-                    style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-                    className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
+                    className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-white/40 transition hover:border-white"
                   >
                     <ChevronLeft className="h-5 w-5 text-white" strokeWidth={2.5} />
                   </button>
                   <button
                     type="button"
-                    style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-                    className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
+                    className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-white/40 transition hover:border-white"
                   >
                     <ChevronRight className="h-5 w-5 text-white" strokeWidth={2.5} />
                   </button>
@@ -270,7 +268,7 @@ export default function CostaRealPage() {
 
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="lg:w-[50%]">
-              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "465/310" }}>
+              <div className="relative overflow-hidden rounded-3.75 aspect-465/310">
                 <Image
                   src={IMG_MODEL}
                   alt="Viento Condo model"
@@ -288,7 +286,7 @@ export default function CostaRealPage() {
       {/* ── 360 TOUR ──────────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 pb-20 lg:px-20">
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1265/460" }}>
+        <div className="relative overflow-hidden rounded-6.5 aspect-1265/460">
           <Image
             src={IMG_INTERIOR}
             alt="Costa Real interior living room"
@@ -308,7 +306,7 @@ export default function CostaRealPage() {
               href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-[8px] bg-[#1e1e1e] px-10 py-4 font-ewangi text-[2rem] text-brand-teal transition hover:bg-[#2e2e2e]"
+              className="rounded-2 bg-[#1e1e1e] px-10 py-4 font-ewangi text-[2rem] text-brand-teal transition hover:bg-[#2e2e2e]"
             >
               360 tour
             </Link>
@@ -318,7 +316,7 @@ export default function CostaRealPage() {
       </section>
 
       {/* ── THE ESTATES ───────────────────────────────────────────────────── */}
-      <section className="rounded-tl-[50px] rounded-tr-[50px] bg-white px-6 py-16 lg:px-20 lg:py-20">
+      <section className="rounded-tl-12.5 rounded-tr-12.5 bg-white px-6 py-16 lg:px-20 lg:py-20">
 
         <RevealOnScroll direction="center">
           <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-14">
@@ -328,7 +326,7 @@ export default function CostaRealPage() {
               </h2>
             </div>
             <div className="lg:w-[50%]">
-              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1920/528" }}>
+              <div className="relative overflow-hidden rounded-3.75 aspect-1920/528">
                 <Image
                   src={IMG_ESTATES}
                   alt="The Estates aerial view"
@@ -353,7 +351,7 @@ export default function CostaRealPage() {
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section className="bg-white px-6 pb-20 pt-4 lg:px-20 lg:pb-24">
         <RevealOnScroll direction="center">
-          <div className="mx-auto flex max-w-5xl items-center justify-center rounded-[10px] bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
+          <div className="mx-auto flex max-w-5xl items-center justify-center rounded-2.5 bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
             <p className="text-center font-ewangi text-[clamp(1.5rem,3.5vw,3rem)] text-brand-ink">
               We certify so you can build your future
             </p>

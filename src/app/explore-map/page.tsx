@@ -63,9 +63,9 @@ export default function ExploreMapPage() {
   return (
     <main className="relative flex-1 bg-[#1e1e1e] text-white">
       {/* Ambient gradient orbs — slow-drifting to make the dark bg feel alive */}
-      <div aria-hidden="true" className="pointer-events-none absolute -left-48 -top-48 h-[600px] w-[600px] rounded-full bg-brand-teal/[0.06] blur-[130px] [animation:ambient-drift_20s_ease-in-out_infinite]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -right-64 top-1/3 h-[480px] w-[480px] rounded-full bg-brand-pine/[0.14] blur-[110px] [animation:ambient-drift_26s_ease-in-out_infinite_5s]" />
-      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/4 h-[360px] w-[360px] rounded-full bg-brand-teal/[0.04] blur-[100px] [animation:ambient-drift_18s_ease-in-out_infinite_10s]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -left-48 -top-48 h-150 w-150 rounded-full bg-brand-teal/6 blur-[130px] animate-[ambient-drift_20s_ease-in-out_infinite]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-64 top-1/3 h-120 w-120 rounded-full bg-brand-pine/14 blur-[110px] animate-[ambient-drift_26s_ease-in-out_infinite_5s]" />
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/4 h-90 w-90 rounded-full bg-brand-teal/4 blur-[100px] animate-[ambient-drift_18s_ease-in-out_infinite_10s]" />
       {/* Header — Figma: "Explore Map" Ewangi 48px #eaedf0, location pill, Filter button */}
       <div className="px-5 py-6 sm:px-8 sm:py-8 md:px-12 lg:px-16">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

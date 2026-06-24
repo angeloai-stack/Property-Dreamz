@@ -95,7 +95,7 @@ export default function NaosPage() {
           {/* Title + description + badges */}
           <div className="flex flex-col gap-7 lg:max-w-[56%]">
             <h1
-              className="font-ewangi text-[clamp(2.5rem,6.5vw,6rem)] leading-[1.0] text-white animate-[fade-left_0.9s_ease-out_both]"
+              className="font-ewangi text-[clamp(2.5rem,6.5vw,6rem)] leading-none text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
               NAOS is more than<br />a place to live

@@ -63,7 +63,7 @@ export default function AlimarPage() {
     <div className="bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[820px] overflow-hidden bg-[#171717]">
+      <section className="relative min-h-205 overflow-hidden bg-[#171717]">
         {/* Background building photo */}
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -85,7 +85,7 @@ export default function AlimarPage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 flex min-h-[820px] flex-col px-6 pt-10 pb-12 lg:px-20">
+        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-12 lg:px-20">
 
           {/* Top row — CMRE badge top-right */}
           <RevealOnScroll direction="right" className="flex justify-end">
@@ -104,7 +104,7 @@ export default function AlimarPage() {
               Elevated living.<br />Exceptional views.
             </h1>
             <RevealOnScroll direction="up" delay={200}>
-              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-[560px]">
+              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
                 A limited collection of only 16 luxury residences designed for those who expect more.
               </p>
             </RevealOnScroll>
@@ -124,10 +124,10 @@ export default function AlimarPage() {
           </div>
 
           {/* Separator line */}
-          <div className="mt-8 h-px w-[247px] bg-white/40" />
+          <div className="mt-8 h-px w-61.75 bg-white/40" />
 
           {/* Stats bar */}
-          <RevealOnScroll direction="up" delay={200} className="mt-6 flex w-full max-w-[651px] rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
+          <RevealOnScroll direction="up" delay={200} className="mt-6 flex w-full max-w-162.75 rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
             {stats.map((s, i) => (
               <div
                 key={s.label}
@@ -160,7 +160,7 @@ export default function AlimarPage() {
 
         {/* Amenities viewer */}
         <RevealOnScroll direction="up" duration={1100}>
-        <div className="mx-auto max-w-[1317px] relative rounded-[60px] overflow-hidden h-[420px] lg:h-[538px]">
+        <div className="mx-auto max-w-329.25 relative rounded-15 overflow-hidden h-105 lg:h-134.5">
           {/* Interior photo */}
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -192,8 +192,9 @@ export default function AlimarPage() {
               {amenityTabs.map((tab) => (
                 <button
                   key={tab}
+                  type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`rounded-[5px] px-5 py-2.5 text-right font-ewangi text-[1.125rem] font-bold transition ${
+                  className={`rounded-1.25 px-5 py-2.5 text-right font-ewangi text-[1.125rem] font-bold transition ${
                     activeTab === tab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
@@ -209,8 +210,8 @@ export default function AlimarPage() {
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────────── */}
-      <section className="bg-[#d9d9d9] rounded-tl-[51px] rounded-tr-[50px] px-8 py-12 lg:px-20 lg:py-16">
-        <div className="mx-auto max-w-[1440px]">
+      <section className="bg-[#d9d9d9] rounded-tl-12.75 rounded-tr-12.5 px-8 py-12 lg:px-20 lg:py-16">
+        <div className="mx-auto max-w-360">
 
           {/* Header row */}
           <RevealOnScroll direction="left">
@@ -218,16 +219,18 @@ export default function AlimarPage() {
             <span className="font-ewangi text-[1.6rem] text-[#1e1e1e]">Explore our {layouts.length > 1 ? `${layouts.length} models` : "4 models"}</span>
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setModelIndex((i) => Math.max(0, i - 1))}
                 disabled={modelIndex === 0}
-                className="flex h-10 w-10 items-center justify-center rounded-[13px] border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
+                className="flex h-10 w-10 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
               >
                 <ChevronLeft className="h-5 w-5 text-black" />
               </button>
               <button
+                type="button"
                 onClick={() => setModelIndex((i) => Math.min(layouts.length - 1, i + 1))}
                 disabled={modelIndex === layouts.length - 1}
-                className="flex h-10 w-10 items-center justify-center rounded-[13px] border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
+                className="flex h-10 w-10 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
               >
                 <ChevronRight className="h-5 w-5 text-black" />
               </button>
@@ -256,7 +259,7 @@ export default function AlimarPage() {
             {/* Right — floor plan */}
             <RevealOnScroll direction="right" delay={100} duration={1100}>
             <div className="flex-1 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[640px] aspect-[1280/889]">
+              <div className="relative w-full max-w-160 aspect-1280/889">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG_PLAN}
@@ -272,12 +275,12 @@ export default function AlimarPage() {
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-24">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+        <div className="mx-auto flex max-w-360 flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
           {/* Left — building photo */}
           <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[46%]">
-            <div className="relative overflow-hidden rounded-[26px] aspect-[663/370]">
+            <div className="relative overflow-hidden rounded-6.5 aspect-663/370">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={IMG_CTA}
@@ -301,7 +304,7 @@ export default function AlimarPage() {
               to learn more and reserve your place in this exceptional development.
             </p>
             <div className="mt-2">
-              <button className="rounded-[10px] bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-brand-teal/90">
+              <button type="button" className="rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-brand-teal/90">
                 Talk to an expert
               </button>
             </div>

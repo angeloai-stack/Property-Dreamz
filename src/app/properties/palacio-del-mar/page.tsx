@@ -152,10 +152,10 @@ export default function PalacioDelMarPage() {
 
           {/* Description — left (desktop) */}
           <div className="absolute inset-0 hidden flex-col justify-center p-12 lg:flex lg:w-[58%]">
-            <p className="max-w-[520px] font-ewangi text-[1.25rem] leading-relaxed text-white">
+            <p className="max-w-130 font-ewangi text-[1.25rem] leading-relaxed text-white">
               Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.
             </p>
-            <p className="mt-4 max-w-[520px] font-ewangi text-[1rem] text-white/80">
+            <p className="mt-4 max-w-130 font-ewangi text-[1rem] text-white/80">
               Palacio del Mar is the only community on the coast that has a large indoor heated pool.
             </p>
           </div>

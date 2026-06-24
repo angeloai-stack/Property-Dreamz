@@ -118,7 +118,7 @@ export default function EncantoDelVallePage() {
               </div>
 
               <h1
-                className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-[1.0] text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
+                className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
                 style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
               >
                 The privilege of the<br />heart of the valle
@@ -148,7 +148,7 @@ export default function EncantoDelVallePage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="overflow-hidden rounded-[27px]" style={{ aspectRatio: "16/9" }}>
+        <div className="overflow-hidden rounded-6.75 aspect-video">
           <iframe
             src="https://encantodelvalle.com.mx/showroom/?sct=Luis"
             title="Encanto del Valle 360 Showroom"
@@ -168,7 +168,7 @@ export default function EncantoDelVallePage() {
               <h2 className="font-ewangi text-[clamp(2.5rem,4.5vw,3.875rem)] leading-tight text-white">
                 Safety For Your Family
               </h2>
-              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[480px]">
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-120">
                 Encanto del Valle prioritizes the safety and tranquility of its residents through rigorous measures that guarantee a secure community. The development features a highly efficient 24-hour access control system, strategically placed surveillance cameras for continuous monitoring of common areas, and proactive security policies.
               </p>
             </div>
@@ -176,7 +176,7 @@ export default function EncantoDelVallePage() {
 
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="lg:w-[50%]">
-              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "650/470" }}>
+              <div className="relative overflow-hidden rounded-3.75 aspect-650/470">
                 <Image
                   src={IMG_SAFETY}
                   alt="Encanto del Valle valley landscape"
@@ -209,7 +209,7 @@ export default function EncantoDelVallePage() {
             href="https://www.facebook.com/reel/1517193329340563"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden shrink-0 items-center justify-center rounded-[18px] bg-white px-8 py-5 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-white/90 lg:flex"
+            className="hidden shrink-0 items-center justify-center rounded-4.5 bg-white px-8 py-5 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-white/90 lg:flex"
           >
             Hear From Our Residents
           </Link>
@@ -224,7 +224,7 @@ export default function EncantoDelVallePage() {
 
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[37%]">
-              <div className="relative overflow-hidden rounded-[45px]" style={{ aspectRatio: "452/499" }}>
+              <div className="relative overflow-hidden rounded-11.25 aspect-452/499">
                 <Image
                   src={IMG_LOCATION_MAP}
                   alt="Valle de Guadalupe location map"
@@ -241,7 +241,7 @@ export default function EncantoDelVallePage() {
               <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.875rem)] leading-tight text-white">
                 More than amenities,<br />it&apos;s an experience
               </h2>
-              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[520px]">
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-130">
                 Controlled access gate, artificial lake, green areas, golf course and recreational spaces in a private, secure community in the heart of Mexico&apos;s wine country.
               </p>
             </div>
@@ -255,7 +255,7 @@ export default function EncantoDelVallePage() {
         <RevealOnScroll direction="up">
           <button
             type="button"
-            className="rounded-[10px] bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
+            className="rounded-2.5 bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
           >
             Talk to an expert
           </button>
