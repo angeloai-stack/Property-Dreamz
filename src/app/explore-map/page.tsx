@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ListingCard } from "@/components/explore-map/ListingCard";
 import { MapPanel } from "@/components/explore-map/MapPanel";
 import { ExploreFilters } from "@/components/explore-map/ExploreFilters";
+import { RevealOnScroll } from "@/components/ui";
 import { listings, type Currency } from "./data";
 import { cn } from "@/lib/utils";
 
@@ -241,27 +242,29 @@ export default function ExploreMapPage() {
       <div className="mx-4 mb-10 overflow-hidden rounded-[20px] border border-white/10 sm:mx-6 sm:mb-12 sm:rounded-[28px] lg:mx-14">
         <div className="flex flex-col gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
           {/* Left: copy + button */}
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3rem)] leading-tight text-[#eaedf0]">
-                Didn&apos;t find your<br />dream&apos;s property?
-              </h2>
-              <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-[#eaedf0]/70">
-                Speak with us!
-              </p>
-            </div>
+          <RevealOnScroll direction="center" duration={1200}>
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3rem)] leading-tight text-[#eaedf0]">
+                  Didn&apos;t find your<br />dream&apos;s property?
+                </h2>
+                <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-[#eaedf0]/70">
+                  Speak with us!
+                </p>
+              </div>
 
-            {/* Figma: teal #3AD3C1 button, 309×83px, dark text */}
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-brand-teal px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-brand-teal-dark"
-            >
-              Talk to an expert
-            </Link>
-          </div>
+              {/* Figma: teal #3AD3C1 button, 309×83px, dark text */}
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-brand-teal-dark"
+              >
+                Talk to an expert
+              </Link>
+            </div>
+          </RevealOnScroll>
 
           {/* Right: house illustration — Figma: image 3, 512×512 */}
-          <div className="shrink-0">
+          <RevealOnScroll direction="center" delay={150} duration={1200} className="shrink-0">
             <div className="relative h-56 w-56 overflow-hidden rounded-[43px] bg-white/5 lg:h-72 lg:w-72">
               <Image
                 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80"
@@ -271,7 +274,7 @@ export default function ExploreMapPage() {
                 className="object-cover"
               />
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </div>
     </main>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO       = `${CLD}/costa-real/hero`;
@@ -60,7 +61,7 @@ export default function CostaRealPage() {
           alt="Costa Real coastal development"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
         <div
@@ -71,33 +72,37 @@ export default function CostaRealPage() {
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-0 lg:px-20 lg:pt-12">
 
           {/* Costa Real wordmark — top left */}
-          <div>
-            <Image
-              src={IMG_LOGO}
-              alt="Costa Real"
-              width={319}
-              height={24}
-              className="h-auto w-52 lg:w-64 brightness-0 invert"
-            />
-          </div>
+          <RevealOnScroll direction="left">
+            <div>
+              <Image
+                src={IMG_LOGO}
+                alt="Costa Real"
+                width={319}
+                height={24}
+                className="h-auto w-52 lg:w-64 brightness-0 invert"
+              />
+            </div>
+          </RevealOnScroll>
 
           {/* Title + subtitle + badges */}
           <div className="mt-8 flex flex-col gap-5 lg:mt-10 lg:max-w-[58%]">
             <h1
-              className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-[1.0] text-white"
+              className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-[1.0] text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
               Live Beyond<br />the Ordinary
             </h1>
-            <p
-              className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
-              style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
-            >
-              A private coastal community on the shores of the Pacific, designed for those who live with intention.
-            </p>
+            <RevealOnScroll direction="up" delay={200}>
+              <p
+                className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
+                style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
+              >
+                A private coastal community on the shores of the Pacific, designed for those who live with intention.
+              </p>
+            </RevealOnScroll>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {trustBadges.map((b) => (
-                <div key={b} className="flex flex-col items-center gap-1.5">
+              {trustBadges.map((b, i) => (
+                <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                   <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                 </div>
@@ -106,6 +111,7 @@ export default function CostaRealPage() {
           </div>
 
           {/* CMRE left + 360° badge right */}
+          <RevealOnScroll direction="up" delay={350}>
           <div className="mt-6 flex items-center justify-between">
             <Image
               src={IMG_CMRE}
@@ -122,12 +128,13 @@ export default function CostaRealPage() {
               <span className="font-ewangi text-[0.75rem] text-white/70">view</span>
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Stats banner — full-width strip at bottom */}
           <div className="mt-auto -mx-6 lg:-mx-20">
             <div className="flex flex-wrap items-center justify-around gap-x-4 gap-y-4 bg-black/30 px-6 py-6 backdrop-blur-sm lg:flex-nowrap lg:justify-between lg:px-20">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center gap-1">
+              {stats.map((s, i) => (
+                <div key={s.label} className="flex flex-col items-center gap-1 animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                   <span className="font-ewangi text-[1.75rem] leading-none text-white lg:text-[2.25rem]">{s.value}</span>
                   <span className="font-ewangi text-[0.9rem] text-white/80 lg:text-[1.1rem]">{s.label}</span>
                 </div>
@@ -140,10 +147,13 @@ export default function CostaRealPage() {
 
       {/* ── EXPLORE DEVELOPMENT ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
-        <p className="mb-6 font-ewangi text-[1.25rem] text-white">
-          Explore the development
-        </p>
+        <RevealOnScroll direction="left">
+          <p className="mb-6 font-ewangi text-[1.25rem] text-white">
+            Explore the development
+          </p>
+        </RevealOnScroll>
 
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="relative overflow-hidden rounded-[27px]" style={{ minHeight: "537px" }}>
           <Image
             src={IMG_MAP}
@@ -210,6 +220,7 @@ export default function CostaRealPage() {
             </div>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────── */}
@@ -218,59 +229,64 @@ export default function CostaRealPage() {
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <div className="flex flex-col gap-6 lg:flex-1">
-            {/* Model name + nav arrows */}
-            <div className="flex items-center gap-4">
-              <div>
-                <p className="font-ewangi text-[clamp(3rem,6vw,5rem)] leading-none text-white">Viento</p>
-                <p className="font-ewangi text-[1.25rem] text-white/60">Condo</p>
-              </div>
-              <div className="ml-4 flex gap-2">
-                <button
-                  type="button"
-                  style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-                  className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
-                >
-                  <ChevronLeft className="h-5 w-5 text-white" strokeWidth={2.5} />
-                </button>
-                <button
-                  type="button"
-                  style={{ width: "43px", height: "43px", borderRadius: "13px" }}
-                  className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
-                >
-                  <ChevronRight className="h-5 w-5 text-white" strokeWidth={2.5} />
-                </button>
-              </div>
-            </div>
-
-            {/* Specs */}
-            <div className="flex gap-8">
-              {modelFeatures.map((f) => (
-                <div key={f.label} className="flex flex-col items-center gap-1">
-                  <span className="text-2xl text-brand-teal">{f.icon}</span>
-                  <span className="font-ewangi text-[1.1rem] text-white">{f.label}</span>
+          <RevealOnScroll direction="left" duration={1100}>
+            <div className="flex flex-col gap-6 lg:flex-1">
+              {/* Model name + nav arrows */}
+              <div className="flex items-center gap-4">
+                <div>
+                  <p className="font-ewangi text-[clamp(3rem,6vw,5rem)] leading-none text-white">Viento</p>
+                  <p className="font-ewangi text-[1.25rem] text-white/60">Condo</p>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="ml-4 flex gap-2">
+                  <button
+                    type="button"
+                    style={{ width: "43px", height: "43px", borderRadius: "13px" }}
+                    className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-white" strokeWidth={2.5} />
+                  </button>
+                  <button
+                    type="button"
+                    style={{ width: "43px", height: "43px", borderRadius: "13px" }}
+                    className="flex items-center justify-center border-[3px] border-white/40 transition hover:border-white"
+                  >
+                    <ChevronRight className="h-5 w-5 text-white" strokeWidth={2.5} />
+                  </button>
+                </div>
+              </div>
 
-          <div className="lg:w-[50%]">
-            <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "465/310" }}>
-              <Image
-                src={IMG_MODEL}
-                alt="Viento Condo model"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 50vw"
-              />
+              {/* Specs */}
+              <div className="flex gap-8">
+                {modelFeatures.map((f) => (
+                  <div key={f.label} className="flex flex-col items-center gap-1">
+                    <span className="text-2xl text-brand-teal">{f.icon}</span>
+                    <span className="font-ewangi text-[1.1rem] text-white">{f.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+            <div className="lg:w-[50%]">
+              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "465/310" }}>
+                <Image
+                  src={IMG_MODEL}
+                  alt="Viento Condo model"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>
 
       {/* ── 360 TOUR ──────────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 pb-20 lg:px-20">
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1265/460" }}>
           <Image
             src={IMG_INTERIOR}
@@ -297,44 +313,51 @@ export default function CostaRealPage() {
             </Link>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── THE ESTATES ───────────────────────────────────────────────────── */}
       <section className="rounded-tl-[50px] rounded-tr-[50px] bg-white px-6 py-16 lg:px-20 lg:py-20">
 
-        <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-14">
-          <div className="lg:flex-1">
-            <h2 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-none text-brand-teal">
-              The Estates
-            </h2>
-          </div>
-          <div className="lg:w-[50%]">
-            <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1920/528" }}>
-              <Image
-                src={IMG_ESTATES}
-                alt="The Estates aerial view"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 50vw"
-              />
+        <RevealOnScroll direction="center">
+          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-14">
+            <div className="lg:flex-1">
+              <h2 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-none text-brand-teal">
+                The Estates
+              </h2>
+            </div>
+            <div className="lg:w-[50%]">
+              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1920/528" }}>
+                <Image
+                  src={IMG_ESTATES}
+                  alt="The Estates aerial view"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
-        <p className="font-ewangi text-[1.25rem] leading-relaxed text-brand-ink/80 lg:max-w-[55%]">
-          The Estates is a residential development spanning approximately 34 hectares, featuring 123 ranch-style lots with an average area of 2,000 m² each. Designed to preserve the balance between built space and open land, each lot includes intentional setback restrictions — ensuring that nature remains the backdrop, not an afterthought.
-          <br /><br />
-          The main circuit, secondary streets, and pedestrian pathways follow the natural topography in graceful curves, guiding residents through a landscape that reveals new views and quiet moments at every turn.
-        </p>
+        <RevealOnScroll direction="up">
+          <p className="font-ewangi text-[1.25rem] leading-relaxed text-brand-ink/80 lg:max-w-[55%]">
+            The Estates is a residential development spanning approximately 34 hectares, featuring 123 ranch-style lots with an average area of 2,000 m² each. Designed to preserve the balance between built space and open land, each lot includes intentional setback restrictions — ensuring that nature remains the backdrop, not an afterthought.
+            <br /><br />
+            The main circuit, secondary streets, and pedestrian pathways follow the natural topography in graceful curves, guiding residents through a landscape that reveals new views and quiet moments at every turn.
+          </p>
+        </RevealOnScroll>
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section className="bg-white px-6 pb-20 pt-4 lg:px-20 lg:pb-24">
-        <div className="mx-auto flex max-w-5xl items-center justify-center rounded-[10px] bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
-          <p className="text-center font-ewangi text-[clamp(1.5rem,3.5vw,3rem)] text-brand-ink">
-            We certify so you can build your future
-          </p>
-        </div>
+        <RevealOnScroll direction="center">
+          <div className="mx-auto flex max-w-5xl items-center justify-center rounded-[10px] bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
+            <p className="text-center font-ewangi text-[clamp(1.5rem,3.5vw,3rem)] text-brand-ink">
+              We certify so you can build your future
+            </p>
+          </div>
+        </RevealOnScroll>
       </section>
 
     </div>

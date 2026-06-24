@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO     = `${CLD}/punta-piedra/punta-piedra/hero`;
@@ -53,7 +54,7 @@ export default function PuntaPiedraPage() {
           alt="Punta Piedra coastal view"
           fill
           priority
-          className="object-cover"
+          className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
         <div
@@ -68,8 +69,8 @@ export default function PuntaPiedraPage() {
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-10 lg:pb-12">
 
           <div className="mb-auto grid grid-cols-3 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 lg:gap-x-10">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col">
+            {stats.map((s, i) => (
+              <div key={s.label} className="flex flex-col animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                 <span className="font-ewangi text-xl leading-none text-white sm:text-3xl lg:text-[2.25rem]">{s.value}</span>
                 <span className="font-ewangi text-xs text-white/80 sm:text-base lg:text-[1.25rem]">{s.label}</span>
               </div>
@@ -78,27 +79,29 @@ export default function PuntaPiedraPage() {
 
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
-            <div className="flex flex-col gap-6">
-              <Image
-                src={IMG_LOGO}
-                alt="Punta Piedra Misión"
-                width={200}
-                height={55}
-                className="w-44 lg:w-56"
-              />
-              <Image
-                src={IMG_CMRE}
-                alt="CMRE Certified"
-                width={204}
-                height={48}
-                className="w-44"
-              />
-            </div>
+            <RevealOnScroll direction="left">
+              <div className="flex flex-col gap-6">
+                <Image
+                  src={IMG_LOGO}
+                  alt="Punta Piedra Misión"
+                  width={200}
+                  height={55}
+                  className="w-44 lg:w-56"
+                />
+                <Image
+                  src={IMG_CMRE}
+                  alt="CMRE Certified"
+                  width={204}
+                  height={48}
+                  className="w-44"
+                />
+              </div>
+            </RevealOnScroll>
 
             <div className="flex flex-col items-start gap-6 lg:items-end">
               <div className="flex flex-wrap gap-6 lg:justify-end">
-                {trustBadges.map((b) => (
-                  <div key={b} className="flex flex-col items-center gap-1.5">
+                {trustBadges.map((b, i) => (
+                  <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                     <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                   </div>
@@ -106,12 +109,14 @@ export default function PuntaPiedraPage() {
               </div>
 
               <div className="lg:text-right">
-                <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white">
+                <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_both]">
                   Your dream home<br />by the sea
                 </h1>
-                <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
-                  Punta Piedra Misión is a residential development on the northwest coast of Baja California, designed for those seeking an exclusive lifestyle.
-                </p>
+                <RevealOnScroll direction="up" delay={350}>
+                  <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
+                    Punta Piedra Misión is a residential development on the northwest coast of Baja California, designed for those seeking an exclusive lifestyle.
+                  </p>
+                </RevealOnScroll>
               </div>
             </div>
           </div>
@@ -120,6 +125,7 @@ export default function PuntaPiedraPage() {
 
       {/* ── LOT EXPLORER ──────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-10 lg:px-20">
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="mx-auto" style={{ maxWidth: "1318px" }}>
           <div className="flex flex-col lg:h-134.25 lg:flex-row">
 
@@ -213,50 +219,56 @@ export default function PuntaPiedraPage() {
 
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── HOUSE MODELS ──────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
-          <div className="flex flex-col gap-6 lg:flex-1">
-            <p className="font-ewangi text-[1.375rem] text-white/60">House models</p>
-            <h2 className="font-ewangi text-[clamp(3rem,5vw,4rem)] leading-tight text-white">
-              Santo Tomás
-            </h2>
-            <div className="flex flex-wrap items-start gap-8 pt-2">
-              <div className="flex flex-col gap-2">
-                <Maximize2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                <span className="font-ewangi text-[1.375rem] text-white">159.5 m²</span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <BedDouble className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                <span className="font-ewangi text-[1.375rem] text-white">4 Bedroom</span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <Bath className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                <span className="font-ewangi text-[1.375rem] text-white">3 Bathroom</span>
+          <RevealOnScroll direction="left" duration={1100}>
+            <div className="flex flex-col gap-6 lg:flex-1">
+              <p className="font-ewangi text-[1.375rem] text-white/60">House models</p>
+              <h2 className="font-ewangi text-[clamp(3rem,5vw,4rem)] leading-tight text-white">
+                Santo Tomás
+              </h2>
+              <div className="flex flex-wrap items-start gap-8 pt-2">
+                <div className="flex flex-col gap-2">
+                  <Maximize2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                  <span className="font-ewangi text-[1.375rem] text-white">159.5 m²</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <BedDouble className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                  <span className="font-ewangi text-[1.375rem] text-white">4 Bedroom</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Bath className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                  <span className="font-ewangi text-[1.375rem] text-white">3 Bathroom</span>
+                </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
-          <div className="w-full lg:w-[38%]">
-            <div className="relative mx-auto overflow-hidden rounded-[15px]" style={{ maxWidth: "340px", aspectRatio: "441/839" }}>
-              <Image
-                src={IMG_MODEL}
-                alt="Santo Tomás house model floor plan"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 80vw, 38vw"
-              />
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+            <div className="w-full lg:w-[38%]">
+              <div className="relative mx-auto overflow-hidden rounded-[15px]" style={{ maxWidth: "340px", aspectRatio: "441/839" }}>
+                <Image
+                  src={IMG_MODEL}
+                  alt="Santo Tomás house model floor plan"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 80vw, 38vw"
+                />
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
         </div>
       </section>
 
       {/* ── 360 TOUR ──────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 pb-16 lg:px-20 lg:pb-20">
+        <RevealOnScroll direction="up" duration={1100}>
         <div className="relative overflow-hidden rounded-[26px]" style={{ minHeight: "460px" }}>
           <Image
             src={IMG_TOUR}
@@ -282,43 +294,50 @@ export default function PuntaPiedraPage() {
             </a>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── YOUR DREAM HOME / LOCATION ────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
 
-          <div className="lg:w-[45%]">
-            <h2 className="font-ewangi text-[clamp(3rem,6vw,6rem)] leading-tight text-brand-teal">
-              Your dream<br />home
-            </h2>
-            <p className="mt-8 font-ewangi text-[1.375rem] leading-relaxed text-white/80">
-              Live near the sea and end your day with the most beautiful sunsets. Punta Piedra Misión offers the best of Baja within reach — just 25 minutes from Valle de Guadalupe.
-            </p>
-          </div>
-
-          <div className="flex-1">
-            <div className="relative aspect-video overflow-hidden rounded-[15px]">
-              <Image
-                src={IMG_LOCATION}
-                alt="Punta Piedra location distances map"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 55vw"
-              />
+          <RevealOnScroll direction="left" duration={1100}>
+            <div className="lg:w-[45%]">
+              <h2 className="font-ewangi text-[clamp(3rem,6vw,6rem)] leading-tight text-brand-teal">
+                Your dream<br />home
+              </h2>
+              <p className="mt-8 font-ewangi text-[1.375rem] leading-relaxed text-white/80">
+                Live near the sea and end your day with the most beautiful sunsets. Punta Piedra Misión offers the best of Baja within reach — just 25 minutes from Valle de Guadalupe.
+              </p>
             </div>
-          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+            <div className="flex-1">
+              <div className="relative aspect-video overflow-hidden rounded-[15px]">
+                <Image
+                  src={IMG_LOCATION}
+                  alt="Punta Piedra location distances map"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 55vw"
+                />
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>
 
       {/* ── CERTIFY BANNER ────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 pb-20 lg:px-20">
-        <div className="flex items-center justify-center rounded-[18px] bg-brand-teal px-8 py-8">
-          <p className="font-ewangi text-center text-[clamp(1.5rem,3vw,2.5rem)] text-brand-ink">
-            We certify so you can build your future
-          </p>
-        </div>
+        <RevealOnScroll direction="center">
+          <div className="flex items-center justify-center rounded-[18px] bg-brand-teal px-8 py-8">
+            <p className="font-ewangi text-center text-[clamp(1.5rem,3vw,2.5rem)] text-brand-ink">
+              We certify so you can build your future
+            </p>
+          </div>
+        </RevealOnScroll>
       </section>
 
     </div>

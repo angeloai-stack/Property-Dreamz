@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 // Cloudinary delivery base — f_auto,q_auto lets Cloudinary pick the best format/quality
@@ -52,7 +53,7 @@ export default function AndaresPage() {
           alt="Andares development aerial view"
           fill
           priority
-          className="object-cover"
+          className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
 
@@ -71,8 +72,8 @@ export default function AndaresPage() {
 
           {/* Stats bar — 3-col grid on mobile, inline row on larger screens; sizes scale up */}
           <div className="mb-auto grid grid-cols-3 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 lg:gap-x-10">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col">
+            {stats.map((s, i) => (
+              <div key={s.label} className="flex flex-col animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                 <span className="font-ewangi text-xl leading-none text-white sm:text-3xl lg:text-[2.25rem]">{s.value}</span>
                 <span className="font-ewangi text-xs text-white/80 sm:text-base lg:text-[1.25rem]">{s.label}</span>
               </div>
@@ -83,6 +84,7 @@ export default function AndaresPage() {
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
             {/* Left — Andares logo + CMRE */}
+            <RevealOnScroll direction="left">
             <div className="flex flex-col gap-6">
               <Image
                 src={IMG_LOGO}
@@ -99,13 +101,14 @@ export default function AndaresPage() {
                 className="w-40"
               />
             </div>
+            </RevealOnScroll>
 
             {/* Right — headline + trust badges */}
             <div className="flex flex-col items-start gap-6 lg:items-end">
               {/* Trust badges */}
               <div className="flex flex-wrap gap-6 lg:justify-end">
-                {trustBadges.map((b) => (
-                  <div key={b} className="flex flex-col items-center gap-1.5">
+                {trustBadges.map((b, i) => (
+                  <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                     <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                   </div>
@@ -114,12 +117,14 @@ export default function AndaresPage() {
 
               {/* Headline */}
               <div className="lg:text-right">
-                <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.92] text-white">
+                <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_both]">
                   Own your<br />next chapter.
                 </h1>
+                <RevealOnScroll direction="up" delay={350}>
                 <p className="mt-4 font-ewangi text-[1.25rem] text-white/80">
                   Land, Homes, and Opportunities That Last.
                 </p>
+                </RevealOnScroll>
               </div>
             </div>
           </div>
@@ -128,6 +133,7 @@ export default function AndaresPage() {
 
       {/* ── LOT EXPLORER ────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-10 lg:px-20">
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="mx-auto" style={{ maxWidth: "1318px" }}>
           <div className="flex flex-col lg:h-134.25 lg:flex-row">
 
@@ -217,12 +223,14 @@ export default function AndaresPage() {
 
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── SECURITY ────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
           {/* Left */}
+          <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[45%]">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Designed with Your<br />Safety in Mind
@@ -231,8 +239,10 @@ export default function AndaresPage() {
               Our security gatehouse is designed to provide controlled access and enhance the safety of the entire community. By helping regulate entry and maintain a secure environment, it offers residents the confidence and peace of mind that come from knowing their families are protected in a thoughtfully planned neighborhood.
             </p>
           </div>
+          </RevealOnScroll>
 
           {/* Right — security image */}
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex-1">
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
@@ -244,6 +254,7 @@ export default function AndaresPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -251,6 +262,7 @@ export default function AndaresPage() {
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
 
         {/* Testimonial / header row */}
+        <RevealOnScroll direction="center">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={1.5} />
@@ -265,10 +277,12 @@ export default function AndaresPage() {
             </span>
           </div>
         </div>
+        </RevealOnScroll>
 
         {/* Main two-column */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
           {/* Left — image */}
+          <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[55%]">
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
@@ -280,8 +294,10 @@ export default function AndaresPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
 
           {/* Right — headline + body + CTA */}
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col gap-6 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Build, Live,<br />and Grow
@@ -293,6 +309,7 @@ export default function AndaresPage() {
               Talk to an expert
             </button>
           </div>
+          </RevealOnScroll>
         </div>
       </section>
 

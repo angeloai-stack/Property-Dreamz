@@ -113,27 +113,31 @@ export default function LomaSerenaPage() {
 
           {/* Bottom row: badges left, stats right */}
           <div className="mt-auto flex items-end justify-between gap-8 pt-8">
-            <RevealOnScroll direction="left" delay={150}>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {trustBadges.map((b) => (
-                <div key={b} className="flex flex-col items-center gap-1.5">
+              {trustBadges.map((b, i) => (
+                <div
+                  key={b}
+                  className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                  style={{ animationDelay: `${350 + i * 150}ms` }}
+                >
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                   <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                 </div>
               ))}
             </div>
-            </RevealOnScroll>
 
-            <RevealOnScroll direction="right" delay={150}>
             <div className="hidden flex-wrap gap-x-10 gap-y-3 sm:gap-x-14 lg:flex">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className="flex flex-col gap-1 animate-[fade-up_0.7s_ease-out_both]"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                >
                   <span className="font-ewangi text-[2.25rem] leading-none text-white">{s.value}</span>
                   <span className="font-ewangi text-[1.1rem] text-white/80">{s.label}</span>
                 </div>
               ))}
             </div>
-            </RevealOnScroll>
           </div>
 
         </div>
@@ -174,7 +178,7 @@ export default function LomaSerenaPage() {
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12">
 
-          <RevealOnScroll direction="left" delay={100}>
+          <RevealOnScroll direction="left" delay={100} duration={1100}>
             <div className="lg:w-[43%]">
               <div className="flex flex-col">
                 <h2 className="font-ewangi text-[clamp(3rem,6vw,5.625rem)] leading-none text-brand-ink">
@@ -192,7 +196,7 @@ export default function LomaSerenaPage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll direction="right" delay={100}>
+          <RevealOnScroll direction="right" delay={100} duration={1100}>
             <div className="flex-1">
               <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "530/353" }}>
                 <Image
@@ -213,7 +217,7 @@ export default function LomaSerenaPage() {
       <section className="bg-[#d9d9d9] px-8 py-16 lg:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <RevealOnScroll direction="left">
+          <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[38%]">
               <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] text-brand-ink">
                 Amenities
@@ -226,7 +230,7 @@ export default function LomaSerenaPage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll direction="right" delay={150}>
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="flex-1">
               <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "2724/1052" }}>
                 <Image
@@ -247,7 +251,7 @@ export default function LomaSerenaPage() {
       <section className="bg-[#d9d9d9] px-8 pb-20 pt-4 lg:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <RevealOnScroll direction="left">
+          <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[42%]">
               <div className="relative overflow-hidden rounded-[50px]" style={{ aspectRatio: "604/523" }}>
                 <Image
@@ -261,7 +265,7 @@ export default function LomaSerenaPage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll direction="right" delay={150}>
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
               A Limited Collection.<br />An Extraordinary Lifestyle.

@@ -48,6 +48,7 @@ type Currency = (typeof currencies)[number];
 export function Navbar() {
   const pathname = usePathname();
   const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51") || pathname.startsWith("/properties/tierra-de-agua") || pathname.startsWith("/properties/punta-piedra")
+    || pathname.startsWith("/properties/alimar")
     || pathname.startsWith("/properties/palacio-del-mar")
     || pathname.startsWith("/properties/naos")
     || pathname.startsWith("/properties/loma-serena")

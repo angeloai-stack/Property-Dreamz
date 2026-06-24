@@ -54,7 +54,7 @@ export default function PalacioDelMarPage() {
           muted
           loop
           playsInline
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover animate-[ken-burns_18s_ease-in-out_infinite_alternate]"
         />
         <div
           className="absolute inset-0"
@@ -67,16 +67,18 @@ export default function PalacioDelMarPage() {
 
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-10 lg:pb-12">
 
-          <RevealOnScroll direction="up" className="mb-auto">
-            <div className="flex flex-wrap gap-x-10 gap-y-3">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col">
-                  <span className="font-ewangi text-xl leading-none text-white sm:text-3xl lg:text-[2.25rem]">{s.value}</span>
-                  <span className="font-ewangi text-xs text-white/80 sm:text-base lg:text-[1.25rem]">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </RevealOnScroll>
+          <div className="mb-auto flex flex-wrap gap-x-10 gap-y-3">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className="flex flex-col animate-[fade-up_0.7s_ease-out_both]"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <span className="font-ewangi text-xl leading-none text-white sm:text-3xl lg:text-[2.25rem]">{s.value}</span>
+                <span className="font-ewangi text-xs text-white/80 sm:text-base lg:text-[1.25rem]">{s.label}</span>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
@@ -100,16 +102,18 @@ export default function PalacioDelMarPage() {
             </RevealOnScroll>
 
             <div className="flex flex-col items-start gap-6 lg:items-end">
-              <RevealOnScroll direction="up" delay={100}>
-                <div className="flex flex-wrap gap-6 lg:justify-end">
-                  {trustBadges.map((b) => (
-                    <div key={b} className="flex flex-col items-center gap-1.5">
-                      <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                      <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
-                    </div>
-                  ))}
-                </div>
-              </RevealOnScroll>
+              <div className="flex flex-wrap gap-6 lg:justify-end">
+                {trustBadges.map((b, i) => (
+                  <div
+                    key={b}
+                    className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                    style={{ animationDelay: `${250 + i * 150}ms` }}
+                  >
+                    <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                    <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
+                  </div>
+                ))}
+              </div>
 
               <div className="lg:text-right">
                 <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_0.15s_both]">
@@ -134,7 +138,7 @@ export default function PalacioDelMarPage() {
           </h2>
         </RevealOnScroll>
 
-        <RevealOnScroll direction="up" duration={1000}>
+        <RevealOnScroll direction="up" duration={1100}>
           <div className="relative min-h-80 overflow-hidden rounded-[30px] lg:min-h-130">
           <Image
             src={IMG_AMENITIES}
@@ -197,7 +201,7 @@ export default function PalacioDelMarPage() {
           </RevealOnScroll>
 
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-            <RevealOnScroll direction="left" delay={100}>
+            <RevealOnScroll direction="left" delay={100} duration={1100}>
               <div className="lg:w-[42%]">
                 <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3.25rem)] leading-tight text-brand-ink">
                   Layout A —{" "}
@@ -211,7 +215,7 @@ export default function PalacioDelMarPage() {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll direction="right" delay={100}>
+            <RevealOnScroll direction="right" delay={100} duration={1100}>
               <div className="flex-1">
                 <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "4096/2845" }}>
                   <Image
@@ -229,7 +233,7 @@ export default function PalacioDelMarPage() {
 
         {/* Finished residences */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
-          <RevealOnScroll direction="left">
+          <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[46%]">
               <div className="relative aspect-video overflow-hidden rounded-[26px]">
                 <Image
@@ -243,7 +247,7 @@ export default function PalacioDelMarPage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll direction="right" delay={150}>
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
               <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
                 Finished residences,<br />ready to move in

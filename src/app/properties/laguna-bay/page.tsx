@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_LOGO       = `${CLD}/laguna-bay/laguna-bay/logo`;
@@ -77,8 +78,8 @@ export default function LagunaBayPage() {
           {/* Stats banner — top */}
           <div className="-mx-6 lg:-mx-20 bg-black/30 backdrop-blur-sm">
             <div className="flex flex-wrap items-center justify-around gap-x-4 gap-y-3 px-6 py-5 lg:flex-nowrap lg:justify-between lg:px-20">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center gap-0.5">
+              {stats.map((s, i) => (
+                <div key={s.label} className="flex flex-col items-center gap-0.5 animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                   <span className="font-ewangi text-[1.625rem] leading-none text-white lg:text-[2.25rem]">{s.value}</span>
                   <span className="font-ewangi text-[0.875rem] text-white/80 lg:text-[1.1rem]">{s.label}</span>
                 </div>
@@ -93,22 +94,24 @@ export default function LagunaBayPage() {
           <div className="flex items-end justify-between gap-6 pb-10 lg:pb-14">
 
             {/* Left: Logo + CMRE */}
-            <div className="hidden flex-col gap-3 lg:flex">
-              <Image
-                src={IMG_LOGO}
-                alt="Laguna Bay"
-                width={214}
-                height={150}
-                className="w-36 lg:w-44"
-              />
-              <Image
-                src={IMG_CMRE}
-                alt="CMRE Certified"
-                width={204}
-                height={48}
-                className="w-40 lg:w-48"
-              />
-            </div>
+            <RevealOnScroll direction="left">
+              <div className="hidden flex-col gap-3 lg:flex">
+                <Image
+                  src={IMG_LOGO}
+                  alt="Laguna Bay"
+                  width={214}
+                  height={150}
+                  className="w-36 lg:w-44"
+                />
+                <Image
+                  src={IMG_CMRE}
+                  alt="CMRE Certified"
+                  width={204}
+                  height={48}
+                  className="w-40 lg:w-48"
+                />
+              </div>
+            </RevealOnScroll>
 
             {/* Right: badges + title + subtitle */}
             <div className="flex flex-col items-start gap-5 lg:items-end lg:max-w-[62%]">
@@ -132,8 +135,8 @@ export default function LagunaBayPage() {
               </div>
 
               <div className="flex flex-wrap gap-x-10 gap-y-4 lg:justify-end">
-                {trustBadges.map((b) => (
-                  <div key={b} className="flex flex-col items-center gap-1.5">
+                {trustBadges.map((b, i) => (
+                  <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                     <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                   </div>
@@ -141,18 +144,20 @@ export default function LagunaBayPage() {
               </div>
 
               <h1
-                className="font-ewangi text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.0] text-white lg:text-right"
+                className="font-ewangi text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.0] text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
                 style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
               >
                 Exclusive oceanfront<br />horizontal development
               </h1>
 
-              <p
-                className="font-ewangi text-[1.1rem] leading-relaxed text-white/80 lg:text-right"
-                style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
-              >
-                The most exclusive oceanfront horizontal development in Rosarito, offering the best quality of life in Baja with a wide range of amenities and two impressive lakes by the sea.
-              </p>
+              <RevealOnScroll direction="up" delay={350}>
+                <p
+                  className="font-ewangi text-[1.1rem] leading-relaxed text-white/80 lg:text-right"
+                  style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
+                >
+                  The most exclusive oceanfront horizontal development in Rosarito, offering the best quality of life in Baja with a wide range of amenities and two impressive lakes by the sea.
+                </p>
+              </RevealOnScroll>
 
             </div>
           </div>
@@ -162,10 +167,13 @@ export default function LagunaBayPage() {
 
       {/* ── EXPLORE DEVELOPMENT ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
-        <p className="mb-6 font-ewangi text-[1.25rem] text-white">
-          Explore the development
-        </p>
+        <RevealOnScroll direction="left">
+          <p className="mb-6 font-ewangi text-[1.25rem] text-white">
+            Explore the development
+          </p>
+        </RevealOnScroll>
 
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="relative overflow-hidden rounded-[27px]" style={{ minHeight: "537px" }}>
           <Image
             src={IMG_MAP}
@@ -232,38 +240,44 @@ export default function LagunaBayPage() {
             </div>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── IMPRESSIVE LAKE ───────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
 
-          <div className="flex flex-col gap-6 lg:flex-1">
-            <h2 className="font-ewangi text-[clamp(2.5rem,4.5vw,3.875rem)] leading-tight text-white">
-              Impressive lake
-            </h2>
-            <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[480px]">
-              At Laguna Bay, you can enjoy various outdoor activities, including the opportunity to explore an impressive lake where you can fish, kayak, paddleboard, and more. It also features a pier and a beautiful viewpoint where you can relax.
-            </p>
-          </div>
-
-          <div className="lg:w-[45%]">
-            <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1/1" }}>
-              <Image
-                src={IMG_LAKE}
-                alt="Laguna Bay lake and pier"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 45vw"
-              />
+          <RevealOnScroll direction="left" duration={1100}>
+            <div className="flex flex-col gap-6 lg:flex-1">
+              <h2 className="font-ewangi text-[clamp(2.5rem,4.5vw,3.875rem)] leading-tight text-white">
+                Impressive lake
+              </h2>
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[480px]">
+                At Laguna Bay, you can enjoy various outdoor activities, including the opportunity to explore an impressive lake where you can fish, kayak, paddleboard, and more. It also features a pier and a beautiful viewpoint where you can relax.
+              </p>
             </div>
-          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+            <div className="lg:w-[45%]">
+              <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1/1" }}>
+                <Image
+                  src={IMG_LAKE}
+                  alt="Laguna Bay lake and pier"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 45vw"
+                />
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>
 
       {/* ── TESTIMONIALS ──────────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-10 lg:px-20">
+        <RevealOnScroll direction="center">
         <div className="flex items-center gap-6 lg:gap-10">
 
           <div className="flex items-center gap-3">
@@ -285,44 +299,51 @@ export default function LagunaBayPage() {
           </Link>
 
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── BUILD, LIVE, AND GROW ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
-          <div className="lg:w-[46%]">
-            <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1024/689" }}>
-              <Image
-                src={IMG_MASTERPLAN}
-                alt="Laguna Bay masterplan"
-                fill
-                className="object-cover"
-                sizes="(max-width:1024px) 100vw, 46vw"
-              />
+          <RevealOnScroll direction="left" duration={1100}>
+            <div className="lg:w-[46%]">
+              <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1024/689" }}>
+                <Image
+                  src={IMG_MASTERPLAN}
+                  alt="Laguna Bay masterplan"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 46vw"
+                />
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
-          <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
-            <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.875rem)] leading-tight text-white">
-              Build, Live, and Grow
-            </h2>
-            <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[520px]">
-              {`Whether you're looking for the perfect lot to build your dream home or a move-in-ready residence, we offer options tailored to your lifestyle and goals. Discover a community designed for growth, comfort, and long-term value. Contact us today to learn more, schedule a visit, and find the opportunity that's right for you.`}
-            </p>
-          </div>
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+            <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
+              <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.875rem)] leading-tight text-white">
+                Build, Live, and Grow
+              </h2>
+              <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-[520px]">
+                {`Whether you're looking for the perfect lot to build your dream home or a move-in-ready residence, we offer options tailored to your lifestyle and goals. Discover a community designed for growth, comfort, and long-term value. Contact us today to learn more, schedule a visit, and find the opportunity that's right for you.`}
+              </p>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#171717] flex justify-center px-6 pb-20 lg:px-20 lg:pb-24">
-        <button
-          type="button"
-          className="rounded-[10px] bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
-        >
-          Talk to an expert
-        </button>
+        <RevealOnScroll direction="up">
+          <button
+            type="button"
+            className="rounded-[10px] bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
+          >
+            Talk to an expert
+          </button>
+        </RevealOnScroll>
       </section>
 
     </div>

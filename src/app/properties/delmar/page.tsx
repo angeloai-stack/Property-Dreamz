@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 /* Figma "Fracc 3 Negative" — node 194:2107. Photos from Cloudinary "Del Mar" folder. */
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
@@ -149,7 +150,7 @@ export default function FraccPage() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
         />
 
         {/* Left gradient for text legibility */}
@@ -173,19 +174,19 @@ export default function FraccPage() {
           </span>
 
           {/* "Build with confidence." */}
-          <h1 className="mt-6 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)]">
+          <h1 className="mt-6 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)] animate-[fade-left_0.9s_ease-out_both]">
             Build with confidence.
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-5 max-w-sm font-ewangi text-white text-[clamp(1.1rem,1.4vw,1.25rem)]">
+          <p className="mt-5 max-w-sm font-ewangi text-white text-[clamp(1.1rem,1.4vw,1.25rem)] animate-[fade-up_0.8s_ease-out_0.3s_both]">
             A verified and secure development for your next project.
           </p>
 
           {/* Trust badges */}
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-            {trustLabels.map((label) => (
-              <div key={label} className="flex items-center gap-2">
+            {trustLabels.map((label, i) => (
+              <div key={label} className="flex items-center gap-2 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                 <TrustIcon />
                 <span className="font-ewangi text-[1rem] text-white">{label}</span>
               </div>
@@ -203,8 +204,8 @@ export default function FraccPage() {
 
           {/* Stats bar — pushed to the bottom, wraps fluidly */}
           <div className="mt-auto flex flex-wrap gap-x-10 gap-y-4 pt-12 xl:gap-x-16">
-            {stats.map(({ value, label }) => (
-              <div key={label} className="flex flex-col">
+            {stats.map(({ value, label }, i) => (
+              <div key={label} className="flex flex-col animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                 <span className="font-ewangi leading-none text-white text-[clamp(1.75rem,2.2vw,2.25rem)]">
                   {value}
                 </span>
@@ -598,37 +599,43 @@ export default function FraccPage() {
 
           {/* Heading + body (left) | screenshot (right) */}
           <div className="flex items-start gap-12">
-            <div className="w-[45%] shrink-0">
-              <h2 className="font-ewangi leading-[1.05] text-brand-teal text-[clamp(3rem,5.5vw,6rem)]">
-                Ocean View Lots
-              </h2>
-              <p className="mt-8 max-w-150 font-ewangi leading-[1.4] text-white text-[clamp(1.1rem,1.5vw,1.5rem)]">
-                Explore premium ocean-view lots for sale, each offering a unique opportunity to build
-                your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
-                coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
-                Our selection includes expansive lots with various square footage options to suit your vision.
-              </p>
-            </div>
+            <RevealOnScroll direction="left" duration={1100}>
+              <div className="w-[45%] shrink-0">
+                <h2 className="font-ewangi leading-[1.05] text-brand-teal text-[clamp(3rem,5.5vw,6rem)]">
+                  Ocean View Lots
+                </h2>
+                <p className="mt-8 max-w-150 font-ewangi leading-[1.4] text-white text-[clamp(1.1rem,1.5vw,1.5rem)]">
+                  Explore premium ocean-view lots for sale, each offering a unique opportunity to build
+                  your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
+                  coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
+                  Our selection includes expansive lots with various square footage options to suit your vision.
+                </p>
+              </div>
+            </RevealOnScroll>
 
             {/* Development screenshot */}
-            <div className="flex-1">
-              <Image
-                src={IMG_LOTS_SHOT}
-                alt="Ocean view lots development"
-                width={1890}
-                height={1148}
-                className="h-auto w-full rounded-[10px] object-cover"
-                style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
-              />
-            </div>
+            <RevealOnScroll direction="right" delay={150} duration={1100}>
+              <div className="flex-1">
+                <Image
+                  src={IMG_LOTS_SHOT}
+                  alt="Ocean view lots development"
+                  width={1890}
+                  height={1148}
+                  className="h-auto w-full rounded-[10px] object-cover"
+                  style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
+                />
+              </div>
+            </RevealOnScroll>
           </div>
 
           {/* White CTA banner — full width, fluid text */}
-          <div className="mt-12 flex items-center rounded-[10px] bg-white px-10 py-6">
-            <p className="font-ewangi text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
-              We certify so you can build your future
-            </p>
-          </div>
+          <RevealOnScroll direction="center">
+            <div className="mt-12 flex items-center rounded-[10px] bg-white px-10 py-6">
+              <p className="font-ewangi text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
+                We certify so you can build your future
+              </p>
+            </div>
+          </RevealOnScroll>
         </div>
       </div>
 

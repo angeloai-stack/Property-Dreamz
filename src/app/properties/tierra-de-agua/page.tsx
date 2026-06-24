@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO      = `${CLD}/tierra-de-agua/tierra-de-agua/hero`;
@@ -40,6 +41,11 @@ const lots = [
 export default function TierraDeAguaPage() {
   const [tab, setTab] = useState<Tab>("Lots");
   const [activeLot, setActiveLot] = useState("Lot 12");
+  const [tourStarted, setTourStarted] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   return (
     <div className="bg-[#171717] text-white">
@@ -51,7 +57,7 @@ export default function TierraDeAguaPage() {
           alt="Tierra de Agua aerial view"
           fill
           priority
-          className="object-cover"
+          className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
         <div
@@ -66,8 +72,8 @@ export default function TierraDeAguaPage() {
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-10 lg:pb-12">
 
           <div className="mb-auto grid grid-cols-3 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 lg:gap-x-10">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col">
+            {stats.map((s, i) => (
+              <div key={s.label} className="flex flex-col animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                 <span className="font-ewangi text-xl leading-none text-white sm:text-3xl lg:text-[2.25rem]">{s.value}</span>
                 <span className="font-ewangi text-xs text-white/80 sm:text-base lg:text-[1.25rem]">{s.label}</span>
               </div>
@@ -76,6 +82,7 @@ export default function TierraDeAguaPage() {
 
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
+            <RevealOnScroll direction="left">
             <div className="flex flex-col gap-6">
               <Image
                 src={IMG_LOGO}
@@ -92,11 +99,12 @@ export default function TierraDeAguaPage() {
                 className="w-44"
               />
             </div>
+            </RevealOnScroll>
 
             <div className="flex flex-col items-start gap-6 lg:items-end">
               <div className="flex flex-wrap gap-6 lg:justify-end">
-                {trustBadges.map((b) => (
-                  <div key={b} className="flex flex-col items-center gap-1.5">
+                {trustBadges.map((b, i) => (
+                  <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                     <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                   </div>
@@ -104,12 +112,14 @@ export default function TierraDeAguaPage() {
               </div>
 
               <div className="lg:text-right">
-                <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white">
+                <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_both]">
                   Exclusive residential<br />lots in Rosarito
                 </h1>
+                <RevealOnScroll direction="up" delay={350}>
                 <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
                   A new residential development with first-class architecture and amenities for an exclusive lifestyle. Build the life you dreamed of. Pre-sale from $75,000 USD.
                 </p>
+                </RevealOnScroll>
               </div>
             </div>
           </div>
@@ -118,6 +128,7 @@ export default function TierraDeAguaPage() {
 
       {/* ── LOT EXPLORER ──────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-10 lg:px-20">
+        <RevealOnScroll direction="center" duration={1100}>
         <div className="mx-auto" style={{ maxWidth: "1318px" }}>
           <div className="flex flex-col lg:h-134.25 lg:flex-row">
 
@@ -188,15 +199,29 @@ export default function TierraDeAguaPage() {
               className="relative mt-2 h-72 overflow-hidden lg:ml-2 lg:mt-0 lg:h-auto lg:flex-1"
               style={{ borderRadius: "27px" }}
             >
-              <iframe
-                src="https://ai.youvisit.app/mx/tour/f11pngptp7?pano=ajcm42xg7y&play=1"
-                width="100%"
-                height="100%"
-                className="absolute inset-0 h-full w-full border-0"
-                allowFullScreen
-                allow="fullscreen; gyroscope; accelerometer"
-                title="Tierra de Agua 360° virtual tour"
-              />
+              {tourStarted ? (
+                <iframe
+                  src="https://ai.youvisit.app/mx/tour/f11pngptp7?pano=ajcm42xg7y&play=1"
+                  width="100%"
+                  height="100%"
+                  className="absolute inset-0 h-full w-full border-0"
+                  allowFullScreen
+                  allow="fullscreen; gyroscope; accelerometer"
+                  title="Tierra de Agua 360° virtual tour"
+                />
+              ) : (
+                <button
+                  onClick={() => setTourStarted(true)}
+                  className="absolute inset-0 flex w-full flex-col items-center justify-center gap-4 bg-[#111] transition hover:bg-[#1a1a1a]"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-teal">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="translate-x-0.5 text-brand-ink">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <span className="font-ewangi text-[1.1rem] text-white/80">Start 360° Tour</span>
+                </button>
+              )}
 
               <div className="absolute left-3 top-3 w-44 rounded-[9px] bg-[#1E1E1E]/90 p-3 lg:left-auto lg:right-4 lg:top-4 lg:w-46.75">
                 <p className="font-ewangi text-[1rem] font-medium text-white mb-1">{activeLot}</p>
@@ -213,11 +238,13 @@ export default function TierraDeAguaPage() {
 
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── COASTAL SANCTUARY ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+          <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[45%]">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Your Coastal Sanctuary<br />Awaits
@@ -226,7 +253,9 @@ export default function TierraDeAguaPage() {
               Set along the beautiful coast of Playas de Rosarito, Tierra de Agua is a new residential development that blends first-class architecture with resort-style amenities. By thoughtfully designing every space for comfort and tranquility, the community offers residents a refined coastal lifestyle where each day feels like living exactly as you always imagined.
             </p>
           </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex-1">
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
@@ -238,12 +267,14 @@ export default function TierraDeAguaPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* ── YOUR NEW HOME IN BAJA ─────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
 
+        <RevealOnScroll direction="center">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={1.5} />
@@ -263,8 +294,10 @@ export default function TierraDeAguaPage() {
             </span>
           </a>
         </div>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
+          <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[45%]">
             <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1 / 1" }}>
               <Image
@@ -276,7 +309,9 @@ export default function TierraDeAguaPage() {
               />
             </div>
           </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col gap-6 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
               Your new home<br />in Baja
@@ -288,6 +323,7 @@ export default function TierraDeAguaPage() {
               Talk to an expert
             </button>
           </div>
+          </RevealOnScroll>
         </div>
       </section>
 

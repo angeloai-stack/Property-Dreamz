@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO     = `${CLD}/torre51/hero`;
@@ -58,7 +59,7 @@ export default function Torre51Page() {
           alt="Torre 51 Negativo oceanfront development"
           fill
           priority
-          className="object-cover object-top"
+          className="object-cover object-top animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           sizes="100vw"
         />
         <div
@@ -70,15 +71,17 @@ export default function Torre51Page() {
 
           {/* Title + description + badges — upper area */}
           <div className="flex flex-col gap-7 lg:max-w-[56%]">
-            <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] text-white">
+            <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] text-white animate-[fade-left_0.9s_ease-out_both]">
               Wake up every morning<br />to the sound of the waves
             </h1>
+            <RevealOnScroll direction="up" delay={200}>
             <p className="font-ewangi text-[1.1rem] leading-relaxed text-white/80">
               A project inspired by luxury and the beach, creating a unique oceanfront atmosphere in Rosarito. Pre-sale from $396K USD.
             </p>
+            </RevealOnScroll>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {trustBadges.map((b) => (
-                <div key={b} className="flex flex-col items-center gap-1.5">
+              {trustBadges.map((b, i) => (
+                <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                   <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                 </div>
@@ -90,8 +93,8 @@ export default function Torre51Page() {
           <div className="mt-auto flex items-end justify-between gap-8">
 
             <div className="flex flex-wrap gap-x-10 gap-y-3 sm:gap-x-14">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
+              {stats.map((s, i) => (
+                <div key={s.label} className="flex flex-col gap-1 animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
                   <span className="font-ewangi text-[2.25rem] leading-none text-white">{s.value}</span>
                   <span className="font-ewangi text-[1.1rem] text-white/80">{s.label}</span>
                 </div>
@@ -99,6 +102,7 @@ export default function Torre51Page() {
             </div>
 
             {/* Logo + CMRE — bottom right */}
+            <RevealOnScroll direction="right" delay={150}>
             <div className="hidden shrink-0 flex-col items-end gap-3 lg:flex">
               <Image
                 src={IMG_LOGO}
@@ -115,6 +119,7 @@ export default function Torre51Page() {
                 className="w-36"
               />
             </div>
+            </RevealOnScroll>
 
           </div>
 
@@ -124,6 +129,7 @@ export default function Torre51Page() {
       {/* ── INTERIOR EXPLORER ─────────────────────────────────────────── */}
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
 
+        <RevealOnScroll direction="center">
         <div className="mb-10 flex items-center gap-6">
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
           <h2 className="text-center font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-white">
@@ -131,7 +137,9 @@ export default function Torre51Page() {
           </h2>
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
         </div>
+        </RevealOnScroll>
 
+        <RevealOnScroll direction="up" duration={1100}>
         <div
           className="relative mx-auto overflow-hidden rounded-[60px]"
           style={{ maxWidth: "1283px", minHeight: "524px" }}
@@ -177,11 +185,13 @@ export default function Torre51Page() {
             </div>
           </div>
         </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────── */}
       <section className="rounded-tl-[24px] rounded-tr-[24px] bg-[#d9d9d9] px-8 pt-8 pb-16 lg:px-20">
 
+        <RevealOnScroll direction="left">
         <div className="mb-8 flex items-center gap-4">
           <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 5 models</p>
           <button
@@ -197,9 +207,11 @@ export default function Torre51Page() {
             <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
           </button>
         </div>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
 
+          <RevealOnScroll direction="left" delay={100} duration={1100}>
           <div className="flex flex-col gap-3 lg:w-[37%]">
             <h2 className="font-ewangi text-[clamp(3rem,5vw,3.25rem)] leading-none text-brand-ink">
               Vista
@@ -211,7 +223,9 @@ export default function Torre51Page() {
               <p className="font-ewangi text-[1.25rem] text-brand-ink">136.08 m²</p>
             </div>
           </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={100} duration={1100}>
           <div className="flex-1">
             <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1034/730" }}>
               <Image
@@ -223,6 +237,7 @@ export default function Torre51Page() {
               />
             </div>
           </div>
+          </RevealOnScroll>
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-2">
@@ -238,6 +253,7 @@ export default function Torre51Page() {
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
 
+          <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[39%]">
             <div className="overflow-hidden rounded-[26px]" style={{ aspectRatio: "560/315" }}>
               <iframe
@@ -250,7 +266,9 @@ export default function Torre51Page() {
               />
             </div>
           </div>
+          </RevealOnScroll>
 
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col items-start gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2rem,3.5vw,2.5rem)] leading-tight text-white">
               Reserve your oceanfront<br />paradise from $5,000 USD
@@ -262,6 +280,7 @@ export default function Torre51Page() {
               Schedule your appointment
             </button>
           </div>
+          </RevealOnScroll>
 
         </div>
       </section>
