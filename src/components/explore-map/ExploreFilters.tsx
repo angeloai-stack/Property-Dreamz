@@ -1,5 +1,5 @@
 "use client";
-
+// Controlled filter panel for the explore-map page — state lives in the parent page component.
 import { Search } from "lucide-react";
 import { MEXICAN_STATES } from "@/app/explore-map/data";
 import { cn } from "@/lib/utils";

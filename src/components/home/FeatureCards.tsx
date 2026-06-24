@@ -1,3 +1,4 @@
+// Three trust/certification feature cards with staggered scroll-reveal animations.
 import { BadgeCheck } from "lucide-react";
 import { Container, Icon, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";

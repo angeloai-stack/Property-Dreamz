@@ -1,5 +1,5 @@
 "use client";
-
+// IntersectionObserver-based entrance animation wrapper — fires once when element enters the viewport.
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 

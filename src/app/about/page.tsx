@@ -1,3 +1,4 @@
+// About / Mission page — editorial brand story, approach cards, and a CTA directing to contact.
 import type { Metadata } from "next";
 import { Badge, Button, Container, Heading, Section } from "@/components/ui";
 

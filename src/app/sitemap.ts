@@ -1,3 +1,4 @@
+// Generates the XML sitemap served at /sitemap.xml for search-engine crawlers.
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://propertydreamz.com";

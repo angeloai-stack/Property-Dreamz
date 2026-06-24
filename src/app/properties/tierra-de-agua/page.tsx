@@ -1,5 +1,5 @@
 "use client";
-
+// Tierra de Agua page — residential lots in Rosarito with a lazy-loaded YouVisit 360° tour.
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { CheckCircle2 } from "lucide-react";
@@ -43,6 +43,7 @@ export default function TierraDeAguaPage() {
   const [activeLot, setActiveLot] = useState("Lot 12");
   const [tourStarted, setTourStarted] = useState(false);
 
+  // Scroll to top on mount — prevents landing mid-page when navigating from the map.
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
@@ -195,6 +196,7 @@ export default function TierraDeAguaPage() {
               </div>
             </div>
 
+            {/* Tour is lazy-loaded behind a click to avoid an autoplay iframe blocking page load. */}
             <div
               className="relative mt-2 h-72 overflow-hidden lg:ml-2 lg:mt-0 lg:h-auto lg:flex-1"
               style={{ borderRadius: "27px" }}

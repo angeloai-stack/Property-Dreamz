@@ -1,3 +1,4 @@
+// POST handler for the coming-soon waitlist form — forwards leads to a webhook immediately.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

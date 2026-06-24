@@ -1,10 +1,11 @@
 "use client";
-
+// Lead-capture form for marketing campaigns — posts to /api/contact with source:"campaign".
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
+// Shared input class string — avoids repeating Tailwind across every field.
 const F =
   "w-full rounded-(--radius-input) border-0 bg-[#d9d9d9] px-4 py-3 text-sm text-brand-ink placeholder:text-brand-ink/50 outline-none transition focus:ring-2 focus:ring-brand-teal/50";
 

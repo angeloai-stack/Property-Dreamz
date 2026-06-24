@@ -1,11 +1,12 @@
 "use client";
-
+// Del Mar property detail page — hero, 360° lot explorer, carousel of house models, and Ocean View Lots section.
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
 
+// Cloudinary folder for this development — all image keys are relative to this base URL.
 /* Figma "Fracc 3 Negative" — node 194:2107. Photos from Cloudinary "Del Mar" folder. */
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;

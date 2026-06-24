@@ -1,5 +1,5 @@
 "use client";
-
+// Accordion FAQ section with sticky left headline and CSS grid-rows height transition (no JS measurement).
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";

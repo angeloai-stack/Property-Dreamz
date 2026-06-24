@@ -1,12 +1,12 @@
 "use client";
-
+// Andares Santa Fe property page — hero with stats, lot explorer with Panoraven 360°, security and community sections.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-// Cloudinary delivery base — f_auto,q_auto lets Cloudinary pick the best format/quality
+// Cloudinary delivery base — format and quality negotiated per-browser by Cloudinary.
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO  = `${CLD}/hf_20260615_235527_0660507b-9010-447b-97cc-19d1ebca9800_rmqmxw.png`;
 const IMG_SEC   = `${CLD}/Captura_de_pantalla_2026-06-15_a_las_4.50.14_p.m._k6wpgu.png`;

@@ -1,5 +1,5 @@
 "use client";
-
+// Encanto del Valle page — wine-country lots in Valle de Guadalupe with a developer-hosted 360° showroom iframe.
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -48,6 +48,7 @@ export default function EncantoDelVallePage() {
 
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-0 pb-0 lg:px-20">
 
+          {/* Stats banner sits at the very top of the hero — negative margin breaks out of the flex padding. */}
           {/* Stats banner — top */}
           <div className="-mx-6 lg:-mx-20 bg-black/30 backdrop-blur-sm">
             <div className="flex flex-wrap items-center justify-around gap-x-4 gap-y-3 px-6 py-5 lg:flex-nowrap lg:justify-between lg:px-20">

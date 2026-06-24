@@ -1,5 +1,5 @@
 "use client";
-
+// Saved listings page — client-only, uses local React state (no persistence yet).
 import Image from "next/image";
 import { useState } from "react";
 import { Bed, Bath, Heart, MapPin, SlidersHorizontal, X } from "lucide-react";
@@ -17,6 +17,7 @@ type SavedListing = {
   image: string;
 };
 
+// Placeholder data — replace with persisted favourites once a backend/localStorage layer exists.
 const initialSaved: SavedListing[] = [
   {
     id: 1,

@@ -1,3 +1,4 @@
+// Horizontally scrollable pill strip of popular destination cities that link to the explore map.
 import Link from "next/link";
 import { Container } from "@/components/ui";
 
@@ -35,6 +36,7 @@ export function DestinationsStrip() {
               </Link>
             ))}
           </div>
+          {/* Fade mask hints that the row is scrollable without a visible scrollbar. */}
           <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-brand-ink to-transparent" />
         </div>
       </Container>

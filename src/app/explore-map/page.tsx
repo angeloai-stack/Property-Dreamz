@@ -1,5 +1,5 @@
 "use client";
-
+// Interactive map page — splits into a Google Maps panel (left) and filtered listing cards (right).
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { MapPin, SlidersHorizontal, X } from "lucide-react";
@@ -23,6 +23,7 @@ export default function ExploreMapPage() {
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [searchVal, setSearchVal] = useState("");
 
+  // Pre-fill search from the ?search= query param — used by the homepage sitelinks search action.
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get("search");
     if (q) setSearchVal(q);

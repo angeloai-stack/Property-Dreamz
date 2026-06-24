@@ -1,5 +1,5 @@
 "use client";
-
+// Full-bleed hero with Ken Burns background image, icon rail sidebar, and search bar.
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -55,7 +55,7 @@ export function HeroSection() {
         ))}
       </aside>
 
-      {/* Headline + search — flex column fills the full hero height */}
+      {/* Headline + search — flex column fills the full hero height, mt-[15vh] pushes search to visual center */}
       <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col px-6 pt-24 sm:px-10 lg:px-20 lg:pt-36">
         <h1 className="font-ewangi text-[clamp(4rem,10vw,7.5rem)] leading-[0.88] tracking-tight">
           <span className="block text-[#EAEDF0] animate-[fade-left_0.8s_ease-out_both]">Find your</span>

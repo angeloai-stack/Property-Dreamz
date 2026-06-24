@@ -1,5 +1,4 @@
-// Separate layout to hold metadata for the explore-map route,
-// since the page itself is "use client" and cannot export metadata directly.
+// Thin layout wrapper whose sole purpose is exporting metadata for this "use client" route.
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,3 +1,4 @@
+// Static colour palette used before Tailwind tokens existed — prefer brand-* CSS vars in new code.
 export const COLORS = {
   navy: "#0A1628",
   ocean: "#1A3A5C",

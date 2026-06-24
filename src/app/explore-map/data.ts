@@ -1,3 +1,4 @@
+// Static data for the explore-map: listings, pin coordinates, and supported Mexican states.
 export const listings = [
   {
     id: 1,
@@ -121,6 +122,7 @@ export const listings = [
   },
 ] as const;
 
+// Pin positions are expressed as percentage offsets on the static Mexico map SVG/image.
 export const pins = [
   { id: 1, x: 9,  y: 67, lat: 32.5149, lng: -117.0382 },
   { id: 2, x: 8,  y: 70, lat: 32.3667, lng: -117.0647 },

@@ -1,5 +1,5 @@
 "use client";
-
+// Loma Serena page — hero uses a Vimeo background video; gated ocean-view community in Rosarito.
 import Image from "next/image";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
@@ -45,6 +45,7 @@ export default function LomaSerenaPage() {
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
 
+        {/* Vimeo embed sized to always cover the section regardless of viewport ratio. */}
         {/* Vimeo background video */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <iframe

@@ -1,5 +1,5 @@
 "use client";
-
+// Pacífica property page — tourist corridor lots in Rosarito with a stats banner strip and 360° interior tour.
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -122,6 +122,7 @@ export default function PacificaPage() {
           </div>
           </RevealOnScroll>
 
+          {/* Negative margin breaks out of the flex column padding so the strip is truly full-bleed. */}
           {/* Stats banner — full-width strip at bottom */}
           <div className="mt-auto -mx-6 lg:-mx-20">
             <div className="flex flex-wrap items-center justify-around gap-x-4 gap-y-4 bg-black/30 px-6 py-6 backdrop-blur-sm lg:flex-nowrap lg:justify-between lg:px-20">

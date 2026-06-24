@@ -1,3 +1,4 @@
+// Compact trust bar that pairs the "Property Dreamz Verify" headline with the CMRE logo.
 import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
 import { Container, Icon, Label, RevealOnScroll } from "@/components/ui";

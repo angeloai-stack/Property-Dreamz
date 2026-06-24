@@ -1,3 +1,4 @@
+// Homepage — assembles the marketing sections in Figma-spec order and injects Organization/WebSite schema.
 import type { Metadata } from "next";
 import { BuyersGuideSteps } from "@/components/home/BuyersGuideSteps";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";

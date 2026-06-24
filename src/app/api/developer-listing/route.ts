@@ -1,3 +1,4 @@
+// POST handler for developer listing applications — stubs until CRM and email are wired.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

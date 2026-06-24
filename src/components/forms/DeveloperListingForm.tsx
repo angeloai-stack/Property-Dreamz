@@ -1,5 +1,5 @@
 "use client";
-
+// Developer application form for listing a project — posts to /api/developer-listing.
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 

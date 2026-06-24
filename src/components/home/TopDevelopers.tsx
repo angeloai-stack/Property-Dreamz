@@ -1,5 +1,5 @@
 "use client";
-
+// Homepage section: scrollable developer cards, destination photo grid, and city/market SEO links.
 import Image from "next/image";
 import Link from "next/link";
 import { Bath, Bed, Heart, LayoutGrid } from "lucide-react";

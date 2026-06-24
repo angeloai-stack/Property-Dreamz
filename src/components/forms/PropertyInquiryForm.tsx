@@ -1,5 +1,5 @@
 "use client";
-
+// Buyer advisor request form — posts to /api/property-inquiry when no suitable listing is found.
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui";

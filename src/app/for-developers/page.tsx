@@ -1,3 +1,4 @@
+// For Developers page — marketing pitch with benefits, onboarding process, pricing tiers, and application form.
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

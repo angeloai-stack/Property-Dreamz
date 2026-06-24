@@ -1,3 +1,4 @@
+// POST handler for property inquiry forms on individual listing pages.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

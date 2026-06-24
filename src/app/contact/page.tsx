@@ -1,3 +1,4 @@
+// Contact page — static layout with direct contact info on the left and the ContactForm on the right.
 import type { Metadata } from "next";
 import { Badge, Container, Heading, Section } from "@/components/ui";
 import { ContactForm } from "@/components/forms";

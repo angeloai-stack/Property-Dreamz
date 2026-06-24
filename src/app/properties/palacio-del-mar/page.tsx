@@ -1,5 +1,5 @@
 "use client";
-
+// Palacio del Mar page — hero uses a background video; move-in-ready luxury condos in Rosarito.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
@@ -48,6 +48,7 @@ export default function PalacioDelMarPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
+        {/* Background video hosted on developer's own CDN — autoplay+muted satisfies browser autoplay policy. */}
         <video
           src="https://palaciodelmar.com/wp-content/uploads/2025/06/palacio-del-mar-home-page-video.mp4"
           autoPlay

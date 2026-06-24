@@ -1,5 +1,5 @@
 "use client";
-
+// Properties listing page — client-side filter/search over a hardcoded property catalogue.
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { Heart, MapPin, ChevronDown, ArrowRight, Search, CheckCircle2, X } from 
 import { RevealOnScroll, TiltCard } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
+// Cloudinary base URL — f_auto,q_auto picks the best format and quality per browser.
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 
 type PropertyType = "Lots" | "Condos" | "Mixed";
@@ -226,6 +227,7 @@ const REGIONS = ["All", "Rosarito", "Valle de Guadalupe", "Tijuana", "Ensenada"]
 const PRICES  = ["All prices", "Under $200K", "$200K – $500K", "Over $500K"];
 const AVAIL   = ["All", "Available", "Coming Soon"];
 
+// All filtering runs on the client — no API call needed while the catalogue is static.
 function applyFilters(list: Property[], f: FilterState): Property[] {
   return list.filter((p) => {
     if (f.region !== "All" && p.region !== f.region) return false;

@@ -1,3 +1,4 @@
+// POST handler for buyer's guide download form — captures lead email before sending PDF.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

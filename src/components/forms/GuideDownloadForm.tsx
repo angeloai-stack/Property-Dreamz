@@ -1,5 +1,5 @@
 "use client";
-
+// Email-gate form for the buyer's guide PDF — posts to /api/guide-download on submit.
 import { useState } from "react";
 import { BookOpen, CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui";

@@ -1,5 +1,5 @@
 "use client";
-
+// Punta Piedra Misión page — Ensenada coastal lots, Santo Tomás house model, 360° Matterport tour, and location map.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, Maximize2, BedDouble, Bath } from "lucide-react";

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+// Pre-launch waitlist page — full-screen dark layout, bypasses the shared Navbar/Footer.
 
 import { useEffect, useState } from "react";
 import { CldImage } from "next-cloudinary";
@@ -11,6 +12,7 @@ const F =
 type Fields = { name: string; email: string; phone: string };
 const INIT: Fields = { name: "", email: "", phone: "" };
 
+// fadeUp drives CSS transitions on mount instead of a motion library, keeping this page bundle lean.
 function fadeUp(mounted: boolean, delay = 0) {
   return {
     opacity: mounted ? 1 : 0,

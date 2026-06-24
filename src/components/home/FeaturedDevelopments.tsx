@@ -1,3 +1,4 @@
+// Homepage section showing 4 hardcoded featured developments — replace with API data when live.
 import Image from "next/image";
 import Link from "next/link";
 import { Bed, Bath, Maximize2, MapPin, ArrowRight } from "lucide-react";

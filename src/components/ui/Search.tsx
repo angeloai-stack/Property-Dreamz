@@ -1,3 +1,4 @@
+// Pill-shaped search form — exported as SearchBar but aliased to Search in ui/index.ts.
 import { Icon } from "./Icon";
 import { Search } from "lucide-react";
 import { Input } from "./Input";

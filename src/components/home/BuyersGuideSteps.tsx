@@ -1,3 +1,4 @@
+// Three-step buyer's guide section with alternating image/text layout and decorative brand marks.
 import Image from "next/image";
 import { MapPin, Building2, Sofa, BedDouble } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
@@ -103,7 +104,8 @@ export function BuyersGuideSteps() {
                   className={cn(
                     "relative z-10 flex flex-col gap-4 md:grid md:items-center md:gap-8",
                     "md:grid-cols-[1fr_1fr]",
-                    isEven && "md:[direction:rtl] *:[direction:ltr]!"
+                    // rtl trick flips column order on even cards; child reset restores text direction.
+                  isEven && "md:[direction:rtl] *:[direction:ltr]!"
                   )}
                 >
                   {/* Text content */}

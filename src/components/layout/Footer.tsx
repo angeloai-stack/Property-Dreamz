@@ -1,3 +1,4 @@
+// Site-wide footer: logo, nav, social icons, link columns, copyright, and CMRE badge.
 import Image from "next/image";
 import Link from "next/link";
 import {

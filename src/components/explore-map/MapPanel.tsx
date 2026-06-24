@@ -1,5 +1,5 @@
 "use client";
-
+// Google Maps embed panel that updates its src based on the currently selected Mexican state.
 import { cn } from "@/lib/utils";
 
 const STATE_EMBED_URLS: Record<string, string> = {
@@ -21,6 +21,7 @@ type MapPanelProps = {
 };
 
 export function MapPanel({ selectedState, filteredCount, className }: MapPanelProps) {
+  // Fall back to the national "All" view if the state has no specific embed URL yet.
   const src = STATE_EMBED_URLS[selectedState] ?? STATE_EMBED_URLS["All"];
   const label = selectedState === "All" ? "México" : selectedState;
 

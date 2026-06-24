@@ -1,3 +1,4 @@
+// Preview-access gate — blocks all production routes until a valid token cookie is present.
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 

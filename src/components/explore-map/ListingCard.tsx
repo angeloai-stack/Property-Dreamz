@@ -1,5 +1,5 @@
 "use client";
-
+// Property listing card with two display modes: default (square) and compact (8/7 ratio) for tighter grids.
 import Image from "next/image";
 import { type KeyboardEvent } from "react";
 import { MapPin, Star } from "lucide-react";

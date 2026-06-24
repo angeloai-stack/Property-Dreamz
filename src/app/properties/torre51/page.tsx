@@ -1,5 +1,5 @@
 "use client";
-
+// Torre 51 Negativo page — oceanfront pre-sale condos, amenity viewer (Pool/Spa/Gym), model floor plans, and YouTube CTA.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";

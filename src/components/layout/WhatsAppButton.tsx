@@ -11,6 +11,7 @@ export function WhatsAppButton() {
 
   function trigger() {
     setAnimating(false);
+    // Double rAF forces a paint between false→true so the CSS animation always restarts.
     requestAnimationFrame(() => requestAnimationFrame(() => setAnimating(true)));
   }
 

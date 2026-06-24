@@ -1,11 +1,11 @@
 "use client";
-
+// Alimar luxury condos page — hero, room amenity viewer with tab switcher, floor plan carousel, and CTA.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 
-// ── Images ──────────────────────────────────────────────────────────────────
+// All Alimar images are served from Cloudinary — paths are relative to the /alimar/ folder.
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO     = `${CLD}/alimar/hero.png`;
 const IMG_INTERIOR = `${CLD}/alimar/interior.png`;

@@ -1,3 +1,4 @@
+// Price formatting helpers for the explore-map listing cards — handles USD and MXN display.
 import type { Currency } from "./data";
 
 export function formatMXN(value: number) {

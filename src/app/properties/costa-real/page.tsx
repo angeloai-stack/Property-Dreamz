@@ -1,5 +1,5 @@
 "use client";
-
+// Costa Real page — Pacific coast community with lot explorer, Viento condo model, 360° tour, and The Estates section.
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -41,6 +41,7 @@ const lots = [
   { id: "Lot 16", size: "305 m²" },
 ];
 
+// Emoji icons are intentional here — they serve as decorative spec badges matching the Figma design.
 const modelFeatures = [
   { icon: "📐", label: "55 m²" },
   { icon: "🛏", label: "1 Bedroom" },

@@ -1,5 +1,5 @@
 "use client";
-
+// NAOS beachfront condos page — interior room explorer, floor plan carousel, and CTA section on a light background.
 import Image from "next/image";
 import { useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";

@@ -1,5 +1,5 @@
 "use client";
-
+// 3-D perspective tilt driven by Framer Motion springs — intensity capped at 6° for a luxury feel.
 import { useRef, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -25,6 +25,7 @@ export function TiltCard({ children, className, intensity = 6 }: TiltCardProps) 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
+    // Normalize to [-0.5, 0.5] so the rotation maps symmetrically around the card center.
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
   }

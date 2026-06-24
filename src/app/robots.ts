@@ -1,3 +1,4 @@
+// Generates /robots.txt — controls which paths crawlers can index.
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://propertydreamz.com";

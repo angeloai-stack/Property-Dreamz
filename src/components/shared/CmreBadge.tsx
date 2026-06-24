@@ -1,3 +1,4 @@
+// Inline CMRE trust badge in dark (pine) or light (white) variants — used on cards and footers.
 import { cn } from "@/lib/utils";
 
 type CmreBadgeProps = {

@@ -1,3 +1,4 @@
+// Barrel export for all shared UI primitives.
 export { Button } from "./Button";
 export { Badge } from "./Badge";
 export { Card } from "./Card";

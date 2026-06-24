@@ -1,5 +1,5 @@
 "use client";
-
+// Sticky top navigation with dark/light modes, Properties dropdown, currency toggle, and mobile drawer.
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -47,6 +47,7 @@ type Currency = (typeof currencies)[number];
 
 export function Navbar() {
   const pathname = usePathname();
+  // Dark navbar for property detail pages that have dark hero sections; white for everything else.
   const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51") || pathname.startsWith("/properties/tierra-de-agua") || pathname.startsWith("/properties/punta-piedra")
     || pathname.startsWith("/properties/alimar")
     || pathname.startsWith("/properties/palacio-del-mar")
@@ -62,6 +63,7 @@ export function Navbar() {
   const [currency, setCurrency] = useState<Currency>("USD");
   const [scrolled, setScrolled] = useState(false);
 
+  // Apply frosted-glass background after 10px scroll; passive avoids blocking scroll performance.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -214,7 +216,7 @@ export function Navbar() {
                       <button
                         type="button"
                         onClick={() => setPropertiesOpen((o) => !o)}
-                        className="flex min-h-[44px] min-w-[44px] items-center justify-center px-2"
+                        className="flex min-h-11 min-w-11 items-center justify-center px-2"
                         aria-label="Toggle properties submenu"
                       >
                         {propertiesOpen

@@ -1,3 +1,4 @@
+// Semantic heading primitive — maps h1–h6 to brand typography scale automatically.
 import { cn } from "@/lib/utils";
 import { typography } from "@/constants/typography";
 

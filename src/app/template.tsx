@@ -1,5 +1,5 @@
 "use client";
-
+// Wraps every page with a fade-up entry animation on each navigation.
 import { motion } from "framer-motion";
 
 // Re-mounts on every navigation (unlike layout.tsx which persists).

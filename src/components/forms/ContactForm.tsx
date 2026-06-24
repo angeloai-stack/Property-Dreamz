@@ -1,5 +1,5 @@
 "use client";
-
+// Full contact form with preferred-contact radio group — posts to /api/contact with source:"contact".
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Heading, RevealOnScroll } from "@/components/ui";

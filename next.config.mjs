@@ -1,3 +1,4 @@
+// Next.js config — only images.remotePatterns is set; all other defaults are fine.
 const nextConfig = {
   images: {
     // Approved external image hosts; add new domains explicitly here.

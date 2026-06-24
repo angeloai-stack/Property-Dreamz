@@ -1,5 +1,5 @@
 "use client";
-
+// Laguna Bay page — oceanfront lots with two artificial lakes; hero uses a YouTube background video.
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -49,6 +49,7 @@ export default function LagunaBayPage() {
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-ink">
 
+        {/* YouTube iframe sized to always cover the section — same cover technique as the Vimeo embeds. */}
         {/* YouTube background video */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <iframe

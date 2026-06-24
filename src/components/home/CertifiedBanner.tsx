@@ -1,3 +1,4 @@
+// Full-width CMRE certification banner with inline SVG medal badge and CTA to browse developments.
 import Image from "next/image";
 import Link from "next/link";
 import { Container, RevealOnScroll } from "@/components/ui";
