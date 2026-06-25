@@ -22,6 +22,7 @@ const navItems: NavItem[] = [
       { label: "Del Mar",              href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
       { label: "Alimar",               href: "/properties/alimar" },
+      { label: "Cíbola del Mar",        href: "/properties/cibola-del-mar" },
       { label: "Torre 51",              href: "/properties/torre51" },
       { label: "Tierra de Agua",       href: "/properties/tierra-de-agua" },
       { label: "Punta Piedra",         href: "/properties/punta-piedra" },
@@ -32,6 +33,8 @@ const navItems: NavItem[] = [
       { label: "Encanto del Valle",    href: "/properties/encanto-del-valle" },
       { label: "Laguna Bay",           href: "/properties/laguna-bay" },
       { label: "Costa Real",           href: "/properties/costa-real" },
+      { label: "Costa Baja",           href: "/properties/costa-baja" },
+      { label: "Costa Bella",          href: "/properties/costa-bella" },
       { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
     ],
   },
@@ -50,13 +53,16 @@ export function Navbar() {
   // Dark navbar for property detail pages that have dark hero sections; white for everything else.
   const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51") || pathname.startsWith("/properties/tierra-de-agua") || pathname.startsWith("/properties/punta-piedra")
     || pathname.startsWith("/properties/alimar")
+    || pathname.startsWith("/properties/cibola-del-mar")
     || pathname.startsWith("/properties/palacio-del-mar")
     || pathname.startsWith("/properties/naos")
     || pathname.startsWith("/properties/loma-serena")
     || pathname.startsWith("/properties/pacifica")
     || pathname.startsWith("/properties/encanto-del-valle")
     || pathname.startsWith("/properties/laguna-bay")
-    || pathname.startsWith("/properties/costa-real");
+    || pathname.startsWith("/properties/costa-real")
+    || pathname.startsWith("/properties/costa-baja")
+    || pathname.startsWith("/properties/costa-bella");
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
