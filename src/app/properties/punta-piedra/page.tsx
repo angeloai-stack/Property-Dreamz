@@ -45,7 +45,7 @@ export default function PuntaPiedraPage() {
   const [activeLot, setActiveLot] = useState("Lot 12");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
@@ -66,7 +66,25 @@ export default function PuntaPiedraPage() {
           style={{ background: "linear-gradient(to top, #171717 5%, transparent 50%)" }}
         />
 
-        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-10 lg:pb-12">
+        {/* Logo — mobile only, absolute centered */}
+        <div className="absolute left-1/2 top-[30%] z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 lg:hidden">
+          <Image
+            src={IMG_LOGO}
+            alt="Punta Piedra Misión"
+            width={200}
+            height={55}
+            className="w-40"
+          />
+          <Image
+            src={IMG_CMRE}
+            alt="CMRE Certified"
+            width={204}
+            height={48}
+            className="w-32"
+          />
+        </div>
+
+        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-32 lg:px-20 lg:pt-10 lg:pb-12">
 
           <div className="mb-auto grid grid-cols-3 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 lg:gap-x-10">
             {stats.map((s, i) => (
@@ -80,7 +98,7 @@ export default function PuntaPiedraPage() {
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
             <RevealOnScroll direction="left">
-              <div className="flex flex-col gap-6">
+              <div className="hidden flex-col gap-6 lg:flex">
                 <Image
                   src={IMG_LOGO}
                   alt="Punta Piedra Misión"
@@ -99,7 +117,7 @@ export default function PuntaPiedraPage() {
             </RevealOnScroll>
 
             <div className="flex flex-col items-start gap-6 lg:items-end">
-              <div className="flex flex-wrap gap-6 lg:justify-end">
+              <div className="grid grid-cols-3 gap-x-6 gap-y-4 lg:flex lg:justify-end lg:gap-6">
                 {trustBadges.map((b, i) => (
                   <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />

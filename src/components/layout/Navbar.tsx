@@ -116,6 +116,7 @@ export function Navbar() {
   }, []);
 
   return (
+    <>
     <header className={cn(
       "sticky top-0 z-50 border-b transition-all duration-300",
       dark
@@ -259,110 +260,104 @@ export function Navbar() {
         </Link>
       </Container>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-14.25 z-40 lg:hidden">
-          <div
-            className="absolute inset-0 bg-brand-ink/70 backdrop-blur-sm"
-            aria-hidden="true"
-            onClick={() => setMobileOpen(false)}
-          />
-          <div className="relative flex h-full flex-col border-t border-brand-paper/10 bg-brand-ink/80 text-brand-paper shadow-2xl backdrop-blur-md">
-            <div className="overflow-y-auto overscroll-contain space-y-1 px-4 py-4 pb-28">
-              {navItems.map((item) =>
-                item.zones ? (
-                  /* Properties accordion — zones are shown flat with zone headers */
-                  <div key={item.label}>
-                    <div className="flex items-center justify-between rounded hover:bg-brand-paper/10">
-                      <Link
-                        href={item.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex-1 px-3 py-3.5 font-ewangi text-[1rem]"
-                      >
-                        {item.label}
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={() => setPropertiesOpen((o) => !o)}
-                        className="flex min-h-11 min-w-11 items-center justify-center px-2"
-                        aria-label="Toggle properties submenu"
-                      >
-                        {propertiesOpen
-                          ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
-                          : <ChevronDown className="h-4 w-4 text-brand-paper/60" />}
-                      </button>
-                    </div>
+    </header>
 
-                    {propertiesOpen && (
-                      <div className="ml-4 mt-1 space-y-3 border-l border-brand-paper/10 pl-3">
-                        {item.zones.map((zoneGroup) => (
-                          <div key={zoneGroup.zone}>
-                            <p className="px-3 py-1 font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-teal">
-                              {zoneGroup.zone}
-                            </p>
-                            {zoneGroup.items.map((sub) => (
-                              <Link
-                                key={sub.label}
-                                href={sub.href}
-                                onClick={() => setMobileOpen(false)}
-                                className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
-                              >
-                                <span>{sub.label}</span>
-                                {sub.tag && (
-                                  <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
-                                    {sub.tag}
-                                  </span>
-                                )}
-                              </Link>
-                            ))}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
+    {/* Mobile menu — outside <header> so it's not trapped inside its stacking context */}
+    {mobileOpen && (
+      <div className="fixed inset-x-0 bottom-0 top-14.25 z-9999 overflow-y-auto overscroll-contain border-t border-brand-paper/10 bg-brand-ink/85 backdrop-blur-sm text-brand-paper lg:hidden">
+        <div className="space-y-1 px-4 py-4 pb-28">
+          {navItems.map((item) =>
+            item.zones ? (
+              <div key={item.label}>
+                <div className="flex items-center justify-between rounded hover:bg-brand-paper/10">
                   <Link
-                    key={item.label}
                     href={item.href}
-                    className="block rounded px-3 py-3.5 font-ewangi text-[1rem] hover:bg-brand-paper/10"
                     onClick={() => setMobileOpen(false)}
+                    className="flex-1 px-3 py-3.5 font-ewangi text-[1rem]"
                   >
                     {item.label}
                   </Link>
-                )
-              )}
-
-              <div className="flex gap-1 pt-2">
-                {currencies.map((c) => (
                   <button
-                    key={c}
                     type="button"
-                    onClick={() => setCurrency(c)}
-                    className={cn(
-                      "flex-1 rounded-(--radius-btn) px-3 py-3 font-ewangi text-label font-semibold uppercase",
-                      currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
-                    )}
+                    onClick={() => setPropertiesOpen((o) => !o)}
+                    className="flex min-h-11 min-w-11 items-center justify-center px-2"
+                    aria-label="Toggle properties submenu"
                   >
-                    {c}
+                    {propertiesOpen
+                      ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
+                      : <ChevronDown className="h-4 w-4 text-brand-paper/60" />}
                   </button>
-                ))}
-              </div>
+                </div>
 
+                {propertiesOpen && (
+                  <div className="ml-4 mt-1 space-y-3 border-l border-brand-paper/10 pl-3">
+                    {item.zones.map((zoneGroup) => (
+                      <div key={zoneGroup.zone}>
+                        <p className="px-3 py-1 font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-teal">
+                          {zoneGroup.zone}
+                        </p>
+                        {zoneGroup.items.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
+                          >
+                            <span>{sub.label}</span>
+                            {sub.tag && (
+                              <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
+                                {sub.tag}
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
               <Link
-                href="/login"
+                key={item.label}
+                href={item.href}
+                className="block rounded px-3 py-3.5 font-ewangi text-[1rem] hover:bg-brand-paper/10"
                 onClick={() => setMobileOpen(false)}
-                className="mt-1 flex items-center justify-center gap-2 rounded-(--radius-btn) border border-brand-paper/20 py-3 font-ewangi text-[1rem] text-brand-paper hover:bg-brand-paper/10"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                </svg>
-                Login
+                {item.label}
               </Link>
-            </div>
+            )
+          )}
+
+          <div className="flex gap-1 pt-2">
+            {currencies.map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setCurrency(c)}
+                className={cn(
+                  "flex-1 rounded-(--radius-btn) px-3 py-3 font-ewangi text-label font-semibold uppercase",
+                  currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
+                )}
+              >
+                {c}
+              </button>
+            ))}
           </div>
+
+          <Link
+            href="/login"
+            onClick={() => setMobileOpen(false)}
+            className="mt-1 flex items-center justify-center gap-2 rounded-(--radius-btn) border border-brand-paper/20 py-3 font-ewangi text-[1rem] text-brand-paper hover:bg-brand-paper/10"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+            Login
+          </Link>
         </div>
-      )}
-    </header>
+      </div>
+    )}
+    </>
   );
 }

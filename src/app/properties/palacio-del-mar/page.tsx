@@ -44,7 +44,7 @@ export default function PalacioDelMarPage() {
   const [activeRoom, setActiveRoom] = useState("Living room");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">

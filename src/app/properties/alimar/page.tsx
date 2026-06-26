@@ -60,7 +60,7 @@ export default function AlimarPage() {
   const currentLayout = layouts[modelIndex];
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-[#171717]">
@@ -109,7 +109,7 @@ export default function AlimarPage() {
               </p>
             </RevealOnScroll>
             {/* Trust badges — staggered */}
-            <div className="mt-8 flex flex-wrap gap-8">
+            <div className="mt-8 grid grid-cols-3 gap-x-6 gap-y-4">
               {trustBadges.map((badge, i) => (
                 <div
                   key={badge}
@@ -140,14 +140,14 @@ export default function AlimarPage() {
             ))}
           </RevealOnScroll>
 
-          {/* ALIMAR logo — bottom right of hero */}
+          {/* ALIMAR logo — top-left on mobile, bottom-right on desktop */}
+          <div className="absolute left-6 top-8 lg:hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={IMG_LOGO} alt="Alimar" className="w-20 opacity-90" />
+          </div>
           <div className="absolute right-20 bottom-24 hidden lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMG_LOGO}
-              alt="Alimar"
-              className="w-28 opacity-90"
-            />
+            <img src={IMG_LOGO} alt="Alimar" className="w-28 opacity-90" />
           </div>
         </div>
       </section>

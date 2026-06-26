@@ -45,7 +45,7 @@ export default function PacificaPage() {
   const [selectedLot, setSelectedLot] = useState("Lot 12");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-ink">

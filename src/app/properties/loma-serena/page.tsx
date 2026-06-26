@@ -40,7 +40,7 @@ const modelFeatures = [
 
 export default function LomaSerenaPage() {
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
@@ -112,9 +112,23 @@ export default function LomaSerenaPage() {
             </RevealOnScroll>
           </div>
 
-          {/* Bottom row: badges left, stats right */}
+          {/* Badges — mobile only, right after title */}
+          <div className="mt-6 grid grid-cols-3 gap-x-6 gap-y-4 lg:hidden">
+            {trustBadges.map((b, i) => (
+              <div
+                key={b}
+                className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                style={{ animationDelay: `${350 + i * 150}ms` }}
+              >
+                <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom row: badges left (desktop), stats right */}
           <div className="mt-auto flex items-end justify-between gap-8 pt-8">
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div className="hidden flex-wrap gap-x-10 gap-y-4 lg:flex">
               {trustBadges.map((b, i) => (
                 <div
                   key={b}
@@ -127,7 +141,7 @@ export default function LomaSerenaPage() {
               ))}
             </div>
 
-            <div className="hidden flex-wrap gap-x-10 gap-y-3 sm:gap-x-14 lg:flex">
+            <div className="flex flex-wrap gap-x-8 gap-y-3 sm:gap-x-14">
               {stats.map((s, i) => (
                 <div
                   key={s.label}

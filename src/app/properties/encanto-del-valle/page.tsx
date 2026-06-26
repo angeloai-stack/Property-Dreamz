@@ -29,7 +29,7 @@ const trustBadges = [
 export default function EncantoDelVallePage() {
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-ink">
@@ -45,6 +45,24 @@ export default function EncantoDelVallePage() {
           className="absolute inset-0"
           style={{ background: "linear-gradient(to bottom, rgba(23,23,23,0.25) 0%, rgba(23,23,23,0.5) 55%, #171717 100%)" }}
         />
+
+        {/* Logo — mobile only, absolute centered */}
+        <div className="absolute left-1/2 top-[38%] z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 lg:hidden">
+          <Image
+            src={IMG_LOGO}
+            alt="Encanto del Valle"
+            width={339}
+            height={60}
+            className="w-40"
+          />
+          <Image
+            src={IMG_CMRE}
+            alt="CMRE Certified"
+            width={204}
+            height={48}
+            className="w-32"
+          />
+        </div>
 
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-0 pb-0 lg:px-20">
 
@@ -90,25 +108,7 @@ export default function EncantoDelVallePage() {
             {/* Right: badges + title + subtitle */}
             <div className="flex flex-col items-start gap-5 lg:items-end lg:max-w-[62%]">
 
-              {/* Mobile logo */}
-              <div className="flex flex-col gap-2 lg:hidden">
-                <Image
-                  src={IMG_LOGO}
-                  alt="Encanto del Valle"
-                  width={339}
-                  height={60}
-                  className="w-36"
-                />
-                <Image
-                  src={IMG_CMRE}
-                  alt="CMRE Certified"
-                  width={204}
-                  height={48}
-                  className="w-32"
-                />
-              </div>
-
-              <div className="flex flex-wrap gap-x-10 gap-y-4 lg:justify-end">
+              <div className="grid grid-cols-3 gap-x-6 gap-y-4 lg:flex lg:justify-end lg:gap-x-10">
                 {trustBadges.map((b, i) => (
                   <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />

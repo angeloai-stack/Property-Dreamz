@@ -12,6 +12,8 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;
 const IMG_CMRE         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png";
 const IMG_LOTS_SHOT    = `${CLD}/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png`;
+const IMG_TOUR         = `${CLD}/panoramic_1_qwo5jt`;
+const IMG_LOGO         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Propery%20Dreamz/Property%20Pics/Del%20Mar/del-mar-logo-img";
 
 /* Shield-checkmark — Figma: stroke #3AD3C1 sw=3 */
 function TrustIcon() {
@@ -55,6 +57,7 @@ type Tab = "Lots" | "Condos" | "Houses";
 const models = [
   {
     name: "PERLA",
+    type: "House",
     sqm: "180 m²",
     beds: "3 Bedrooms",
     baths: "2 Bathrooms",
@@ -62,6 +65,7 @@ const models = [
   },
   {
     name: "BAHÍA",
+    type: "House",
     sqm: "210 m²",
     beds: "3 Bedrooms",
     baths: "3 Bathrooms",
@@ -69,6 +73,7 @@ const models = [
   },
   {
     name: "VIENTO",
+    type: "Condo",
     sqm: "55 m²",
     beds: "1 Bedroom",
     baths: "1 Bathroom",
@@ -76,6 +81,7 @@ const models = [
   },
   {
     name: "CORONADO",
+    type: "House",
     sqm: "240 m²",
     beds: "4 Bedrooms",
     baths: "3 Bathrooms",
@@ -83,6 +89,7 @@ const models = [
   },
   {
     name: "MAREA",
+    type: "House",
     sqm: "120 m²",
     beds: "2 Bedrooms",
     baths: "2 Bathrooms",
@@ -113,9 +120,9 @@ export default function FraccPage() {
         <div className="relative h-64 overflow-hidden">
           <Image src={IMG_HERO_BG} alt="" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }} />
+          <Image src={IMG_LOGO} alt="Del Mar" width={194} height={70} className="absolute left-6 top-6 z-10 h-10 w-auto object-contain" />
         </div>
         <div className="px-6 py-8">
-          <span className="font-ewangi font-bold text-white text-[clamp(1.4rem,6vw,2rem)]">Del Mar</span>
           <h1 className="mt-3 font-ewangi leading-tight text-white text-[clamp(2rem,9vw,3rem)]">
             Build with confidence.
           </h1>
@@ -161,21 +168,25 @@ export default function FraccPage() {
         />
 
         {/* 360° view affordance — anchored right, vertically centered */}
-        <div className="absolute right-10 top-1/2 z-10 flex -translate-y-1/2 flex-col items-center leading-none">
+        <div className="absolute right-10 top-1/2 z-10 flex h-20.5 w-20.5 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/40 bg-black/30 leading-none backdrop-blur-sm">
           <span className="font-ewangi text-[1.25rem] text-white">360°</span>
           <span className="font-ewangi text-[0.9rem] text-white/80">view</span>
         </div>
 
-        {/* Content — normal flow; fluid type scales the Del Mar logo + titles together */}
+        {/* Del Mar logo — Figma: x=129 y=182, absolute top-left corner */}
+        <Image
+          src={IMG_LOGO}
+          alt="Del Mar"
+          width={194}
+          height={70}
+          className="absolute left-16 top-14 z-20 h-[clamp(2.5rem,4vw,4.375rem)] w-auto object-contain"
+        />
+
+        {/* Content */}
         <div className="relative z-10 mx-auto flex min-h-180 w-full max-w-360 flex-col px-16 py-14 2xl:min-h-222">
 
-          {/* Del Mar logo (wordmark) */}
-          <span className="font-ewangi font-bold leading-none tracking-[0.06em] text-white text-[clamp(2rem,2.6vw,2.6rem)]">
-            Del Mar
-          </span>
-
           {/* "Build with confidence." */}
-          <h1 className="mt-6 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)] animate-[fade-left_0.9s_ease-out_both]">
+          <h1 className="mt-24 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)] animate-[fade-left_0.9s_ease-out_both]">
             Build with confidence.
           </h1>
 
@@ -185,11 +196,11 @@ export default function FraccPage() {
           </p>
 
           {/* Trust badges */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <div className="mt-8 flex flex-wrap items-start gap-x-10 gap-y-3">
             {trustLabels.map((label, i) => (
-              <div key={label} className="flex items-center gap-2 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
+              <div key={label} className="flex flex-col items-center gap-2 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                 <TrustIcon />
-                <span className="font-ewangi text-[1rem] text-white">{label}</span>
+                <span className="text-center font-ewangi text-[0.875rem] leading-tight text-white">{label}</span>
               </div>
             ))}
           </div>
@@ -482,7 +493,10 @@ export default function FraccPage() {
           </div>
         </div>
 
-        <h3 className="mt-2 font-ewangi text-[2.25rem] leading-none text-white">{model.name}</h3>
+        <div className="mt-2">
+          <h3 className="font-ewangi text-[2.25rem] leading-none text-white">{model.name}</h3>
+          <p className="font-ewangi text-[1rem] text-white/60">{model.type}</p>
+        </div>
 
         <div className="mt-3 flex gap-6">
           {[
@@ -527,10 +541,11 @@ export default function FraccPage() {
           House models
         </h2>
 
-        {/* "VIENTO" name — Figma: x=103 y=111 64px white */}
-        <h3 className="absolute font-ewangi text-[4rem] leading-none text-white" style={{ left: 103, top: 111 }}>
-          {model.name}
-        </h3>
+        {/* Model name + type — Figma: x=103 y=111 */}
+        <div className="absolute flex flex-col leading-none" style={{ left: 103, top: 111 }}>
+          <h3 className="font-ewangi text-[4rem] leading-none text-white">{model.name}</h3>
+          <span className="mt-1 font-ewangi text-[1.25rem] text-white/60">{model.type}</span>
+        </div>
 
         {/* Left arrow — Figma: x=417 y=129 43×43 r=13 border #EAEDF0 sw=3 */}
         <button
@@ -570,6 +585,40 @@ export default function FraccPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════
+          360 TOUR BANNER — Figma: y=2059-2519 (Group 70)
+          Wide rounded card: interior photo bg + right dark panel
+          ══════════════════════════════════════════════════════ */}
+      <section className="px-4 py-10 lg:px-15.5 lg:py-12">
+        <RevealOnScroll direction="up" duration={1100}>
+          <div className="relative overflow-hidden rounded-[26px]" style={{ minHeight: 300 }}>
+            <Image
+              src={IMG_TOUR}
+              alt="Del Mar interior"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-y-0 right-0 flex w-full flex-col items-end justify-center gap-6 p-8 lg:w-[45%] lg:p-12"
+              style={{ background: "linear-gradient(to left, rgba(0,0,0,0.85) 55%, transparent 100%)" }}
+            >
+              <h2 className="font-ewangi text-[clamp(1.75rem,3.5vw,3.4375rem)] leading-tight text-right text-white">
+                Let&apos;s take a look<br />from your<br />next home.
+              </h2>
+              <a
+                href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-[#1e1e1e] px-8 py-4 font-ewangi text-[1.5rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink lg:text-[2.25rem]"
+              >
+                360 tour
+              </a>
+            </div>
+          </div>
+        </RevealOnScroll>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           OCEAN VIEW LOTS — Figma: y=2050-2747 (~57px after models)
           "Ocean View Lots" teal 96px | screenshot right | body text | white CTA
           ══════════════════════════════════════════════════════ */}
@@ -582,7 +631,7 @@ export default function FraccPage() {
         <div className="relative mt-4 w-full overflow-hidden rounded-xl" style={{ height: 240 }}>
           <Image src={IMG_LOTS_SHOT} alt="Ocean view lots" fill sizes="100vw" className="object-cover" />
         </div>
-        <p className="mt-5 font-ewangi text-[0.95rem] leading-relaxed text-white/85">
+        <p className="mt-5 text-justify font-ewangi text-[0.95rem] leading-[1.7] text-white/85">
           Explore premium ocean-view lots for sale, each offering a unique opportunity to build your
           dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of coastal
           living, where every sunrise and sunset transforms the horizon into a masterpiece.
@@ -600,12 +649,12 @@ export default function FraccPage() {
 
           {/* Heading + body (left) | screenshot (right) */}
           <div className="flex items-start gap-12">
-            <RevealOnScroll direction="left" duration={1100}>
-              <div className="w-[45%] shrink-0">
+            <RevealOnScroll direction="left" duration={1100} className="w-[42%] shrink-0">
+              <div>
                 <h2 className="font-ewangi leading-[1.05] text-brand-teal text-[clamp(3rem,5.5vw,6rem)]">
                   Ocean View Lots
                 </h2>
-                <p className="mt-8 max-w-150 font-ewangi leading-[1.4] text-white text-[clamp(1.1rem,1.5vw,1.5rem)]">
+                <p className="mt-8 w-full text-justify font-ewangi leading-[1.65] text-white text-[clamp(1.1rem,1.3vw,1.375rem)]">
                   Explore premium ocean-view lots for sale, each offering a unique opportunity to build
                   your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
                   coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
@@ -615,26 +664,26 @@ export default function FraccPage() {
             </RevealOnScroll>
 
             {/* Development screenshot */}
-            <RevealOnScroll direction="right" delay={150} duration={1100}>
-              <div className="flex-1">
-                <Image
-                  src={IMG_LOTS_SHOT}
-                  alt="Ocean view lots development"
-                  width={1890}
-                  height={1148}
-                  className="h-auto w-full rounded-[10px] object-cover"
-                  style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
-                />
-              </div>
+            <RevealOnScroll direction="right" delay={150} duration={1100} className="min-w-0 flex-1">
+              <Image
+                src={IMG_LOTS_SHOT}
+                alt="Ocean view lots development"
+                width={1890}
+                height={1148}
+                className="h-auto w-full rounded-[10px] object-cover"
+                style={{ boxShadow: "-26px 24px 49px rgba(0,0,0,0.26)" }}
+              />
             </RevealOnScroll>
           </div>
 
-          {/* White CTA banner — full width, fluid text */}
+          {/* White CTA banner — centered, Figma: w=945 centered in 1440 */}
           <RevealOnScroll direction="center">
-            <div className="mt-12 flex items-center rounded-[10px] bg-white px-10 py-6">
-              <p className="font-ewangi text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
-                We certify so you can build your future
-              </p>
+            <div className="mt-12 flex items-center justify-center">
+              <div className="w-full max-w-236.25 rounded-[10px] bg-white px-10 py-6">
+                <p className="font-ewangi text-center text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
+                  We certify so you can build your future
+                </p>
+              </div>
             </div>
           </RevealOnScroll>
         </div>

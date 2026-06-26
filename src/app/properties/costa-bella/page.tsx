@@ -132,7 +132,7 @@ export default function CostaBellaPage() {
   const currentAmenity = amenities[activeTab];
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-[#171717]">
@@ -161,7 +161,7 @@ export default function CostaBellaPage() {
                 A limited collection of only 16 luxury condominiums designed for those who seek coastal elegance.
               </p>
             </RevealOnScroll>
-            <div className="flex flex-wrap gap-8 mt-2">
+            <div className="grid grid-cols-3 gap-x-6 gap-y-3 mt-2">
               {trustBadges.map((badge, i) => (
                 <div
                   key={badge}
@@ -175,8 +175,8 @@ export default function CostaBellaPage() {
             </div>
           </div>
 
-          {/* Dev logo + CMRE — right side */}
-          <div className="absolute right-6 bottom-44 lg:right-20 flex flex-col items-center gap-4">
+          {/* Dev logo + CMRE — mobile: centered below navbar | desktop: right side */}
+          <div className="absolute left-1/2 top-16 z-20 -translate-x-1/2 flex flex-col items-center gap-4 lg:left-auto lg:translate-x-0 lg:right-20 lg:top-auto lg:bottom-44">
             <Image
               src={IMG_LOGO}
               alt="Costa Bella"
@@ -223,8 +223,49 @@ export default function CostaBellaPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" duration={1100}>
-          <div className="mx-auto max-w-[1283px] relative rounded-[60px] overflow-hidden" style={{ height: "524px" }}>
-            {/* Background */}
+
+          {/* ── Mobile ── */}
+          <div className="lg:hidden">
+            <div className="relative overflow-hidden rounded-3xl" style={{ height: 260 }}>
+              <Image
+                src={IMG_AMENITIES}
+                alt={activeTab}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 35%, transparent 100%)" }}
+              />
+              <p className="absolute bottom-4 left-5 right-5 font-ewangi text-[0.8rem] text-brand-teal leading-snug">
+                {currentAmenity.title}
+              </p>
+            </div>
+            <p className="mt-5 font-ewangi text-[0.95rem] leading-relaxed text-white/80">
+              {currentAmenity.description}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={cn(
+                    "rounded-[5px] px-4 py-2 font-ewangi text-[0.95rem] transition",
+                    activeTab === tab
+                      ? "bg-[#1e1e1e] text-brand-teal border border-brand-teal/50"
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  )}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Desktop ── */}
+          <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-[60px] overflow-hidden" style={{ height: "524px" }}>
             <Image
               src={IMG_AMENITIES}
               alt={activeTab}
@@ -232,7 +273,6 @@ export default function CostaBellaPage() {
               className="object-cover"
               sizes="100vw"
             />
-            {/* Gradient + frosted right panel */}
             <div
               className="absolute inset-0"
               style={{ background: "linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(30,30,30,0.62) 57%)" }}
@@ -241,9 +281,7 @@ export default function CostaBellaPage() {
               className="absolute right-0 top-0 bottom-0 rounded-r-[60px]"
               style={{ width: "43.3%", background: "rgba(217,217,217,0.2)" }}
             />
-
-            {/* Right panel */}
-            <div className="absolute right-0 top-0 bottom-0 flex flex-col justify-center px-10 lg:px-14" style={{ width: "43.3%" }}>
+            <div className="absolute right-0 top-0 bottom-0 flex flex-col justify-center px-14" style={{ width: "43.3%" }}>
               <p className="font-ewangi text-[1.05rem] leading-relaxed text-white mb-2">
                 {currentAmenity.description}
               </p>
@@ -269,6 +307,7 @@ export default function CostaBellaPage() {
               </div>
             </div>
           </div>
+
         </RevealOnScroll>
       </section>
 

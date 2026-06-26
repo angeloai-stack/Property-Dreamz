@@ -74,7 +74,7 @@ export default function CostaBajaPage() {
   const currentModel   = unitModels[modelIndex];
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* YouTube video modal — iframe only injected after user click */}
       {videoOpen && (
@@ -127,7 +127,7 @@ export default function CostaBajaPage() {
           style={{ background: "linear-gradient(to top, #171717 6%, transparent 50%)" }}
         />
 
-        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-12 lg:px-20">
+        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-36 lg:px-20 lg:pb-12">
 
           {/* Logo + CMRE */}
           <div className="flex items-start justify-between">
@@ -158,7 +158,7 @@ export default function CostaBajaPage() {
               </p>
             </RevealOnScroll>
 
-            <div className="mt-8 flex flex-wrap gap-8">
+            <div className="mt-8 grid grid-cols-3 gap-x-6 gap-y-4">
               {trustBadges.map((badge, i) => (
                 <div
                   key={badge}

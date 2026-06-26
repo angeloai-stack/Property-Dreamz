@@ -9,7 +9,7 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO      = `${CLD}/the-wave/the-wave/hero`;
 const IMG_LOGO      = `${CLD}/the-wave/the-wave/logo`;
 const IMG_AMENITIES = `${CLD}/the-wave/the-wave/amenities`;
-const IMG_CTA       = `${CLD}/the-wave/the-wave/cta`;
+const IMG_CTA       = `${CLD}/the-wave/the-wave/hero`; // TODO: replace with dedicated cta image once uploaded
 const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
 const stats = [
@@ -113,7 +113,7 @@ export default function TheWavePage() {
   const modelImg = `${CLD}/the-wave/the-wave/model-studio`;
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[820px] overflow-hidden bg-[#171717]">
@@ -141,7 +141,7 @@ export default function TheWavePage() {
         <div className="relative z-10 flex min-h-[820px] flex-col px-6 pt-10 pb-12 lg:px-20">
 
           {/* Top row — dev logo + CMRE */}
-          <div className="flex justify-end items-center gap-5">
+          <div className="flex justify-start items-center gap-5 lg:justify-end">
             <RevealOnScroll direction="right">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={IMG_LOGO} alt="The Wave" className="h-10 w-auto object-contain" />
@@ -152,7 +152,7 @@ export default function TheWavePage() {
           </div>
 
           {/* Headline + description + badges */}
-          <div className="mt-auto max-w-2xl">
+          <div className="mt-10 max-w-2xl lg:mt-auto">
             <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
               Where the wave<br />meets luxury.
             </h1>
@@ -162,7 +162,7 @@ export default function TheWavePage() {
               </p>
             </RevealOnScroll>
 
-            <div className="mt-8 flex flex-wrap gap-8">
+            <div className="mt-8 grid grid-cols-3 gap-x-6 gap-y-3">
               {trustBadges.map((badge, i) => (
                 <div
                   key={badge}
@@ -206,32 +206,59 @@ export default function TheWavePage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" duration={1100}>
-          <div className="mx-auto max-w-[1283px] relative rounded-[60px] overflow-hidden h-[524px]">
-            {/* Interior image */}
+
+          {/* ── Mobile ── */}
+          <div className="lg:hidden">
+            <div className="relative overflow-hidden rounded-3xl" style={{ height: 260 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMG_AMENITIES} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 35%, transparent 100%)" }}
+              />
+              <p className="absolute bottom-4 left-5 right-5 font-ewangi text-[0.8rem] text-brand-teal leading-snug">
+                {amenities[activeTab].title}
+              </p>
+            </div>
+            <p className="mt-5 font-ewangi text-[0.95rem] leading-relaxed text-white/80">
+              {amenities[activeTab].description}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={cn(
+                    "rounded-[5px] px-4 py-2 font-ewangi text-[0.95rem] transition",
+                    activeTab === tab
+                      ? "bg-[#1e1e1e] text-brand-teal border border-brand-teal/50"
+                      : "bg-white/10 text-white hover:bg-white/20"
+                  )}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Desktop ── */}
+          <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-[60px] overflow-hidden h-131">
             <div className="absolute inset-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={IMG_AMENITIES}
-                alt={activeTab}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+              <img src={IMG_AMENITIES} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
             </div>
-
-            {/* Frosted gradient for right panel */}
             <div
               className="absolute inset-0"
               style={{ background: "linear-gradient(to left, rgba(30,30,30,0.90) 36%, transparent 60%)" }}
             />
-
-            {/* Right panel */}
-            <div className="absolute right-0 top-0 bottom-0 w-[40%] flex flex-col justify-center px-10 lg:px-14">
+            <div className="absolute right-0 top-0 bottom-0 w-[40%] flex flex-col justify-center px-14">
               <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-3">
                 {amenities[activeTab].description}
               </p>
               <p className="font-ewangi text-[0.9rem] text-white/65 mb-8">
                 {amenities[activeTab].title}
               </p>
-
               <div className="flex flex-col gap-[6px] items-end">
                 {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
                   <button
@@ -251,6 +278,7 @@ export default function TheWavePage() {
               </div>
             </div>
           </div>
+
         </RevealOnScroll>
       </section>
 

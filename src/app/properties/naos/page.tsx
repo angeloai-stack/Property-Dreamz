@@ -73,7 +73,7 @@ export default function NaosPage() {
   const [activeRoom, setActiveRoom] = useState<RoomTab>("Living room");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">

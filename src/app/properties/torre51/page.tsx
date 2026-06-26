@@ -50,7 +50,7 @@ export default function Torre51Page() {
   const [activeTab, setActiveTab] = useState<AmenityTab>("Pool");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
@@ -67,10 +67,28 @@ export default function Torre51Page() {
           style={{ background: "linear-gradient(to bottom, rgba(23,23,23,0.15) 3%, #171717 100%)" }}
         />
 
+        {/* Logo + CMRE — absolute top-right */}
+        <div className="absolute right-6 top-8 z-20 flex flex-col items-end gap-2 lg:right-20 lg:top-12">
+          <Image
+            src={IMG_LOGO}
+            alt="Torre 51 Negativo"
+            width={170}
+            height={51}
+            className="w-28 brightness-0 invert sm:w-36 lg:w-44"
+          />
+          <Image
+            src={IMG_CMRE}
+            alt="CMRE Certified"
+            width={135}
+            height={32}
+            className="w-24 sm:w-28 lg:w-36"
+          />
+        </div>
+
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-12 lg:pb-14">
 
           {/* Title + description + badges — upper area */}
-          <div className="flex flex-col gap-7 lg:max-w-[56%]">
+          <div className="flex flex-col gap-7 mt-20 sm:mt-24 lg:mt-0 lg:max-w-[56%]">
             <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] text-white animate-[fade-left_0.9s_ease-out_both]">
               Wake up every morning<br />to the sound of the waves
             </h1>
@@ -79,7 +97,7 @@ export default function Torre51Page() {
               A project inspired by luxury and the beach, creating a unique oceanfront atmosphere in Rosarito. Pre-sale from $396K USD.
             </p>
             </RevealOnScroll>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
               {trustBadges.map((b, i) => (
                 <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
@@ -89,9 +107,8 @@ export default function Torre51Page() {
             </div>
           </div>
 
-          {/* Bottom row: stats left + logo/CMRE right */}
-          <div className="mt-auto flex items-end justify-between gap-8">
-
+          {/* Bottom row: stats */}
+          <div className="mt-auto">
             <div className="flex flex-wrap gap-x-10 gap-y-3 sm:gap-x-14">
               {stats.map((s, i) => (
                 <div key={s.label} className="flex flex-col gap-1 animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
@@ -100,27 +117,6 @@ export default function Torre51Page() {
                 </div>
               ))}
             </div>
-
-            {/* Logo + CMRE — bottom right */}
-            <RevealOnScroll direction="right" delay={150}>
-            <div className="hidden shrink-0 flex-col items-end gap-3 lg:flex">
-              <Image
-                src={IMG_LOGO}
-                alt="Torre 51 Negativo"
-                width={170}
-                height={51}
-                className="w-44 brightness-0 invert"
-              />
-              <Image
-                src={IMG_CMRE}
-                alt="CMRE Certified"
-                width={135}
-                height={32}
-                className="w-36"
-              />
-            </div>
-            </RevealOnScroll>
-
           </div>
 
         </div>

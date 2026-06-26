@@ -53,7 +53,7 @@ export default function CostaRealPage() {
   const [selectedLot, setSelectedLot] = useState("Lot 12");
 
   return (
-    <div className="bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-ink">
@@ -72,17 +72,11 @@ export default function CostaRealPage() {
 
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-0 lg:px-20 lg:pt-12">
 
-          {/* Costa Real wordmark — top left */}
+          {/* Real del Mar wordmark — top left */}
           <RevealOnScroll direction="left">
-            <div>
-              <Image
-                src={IMG_LOGO}
-                alt="Costa Real"
-                width={319}
-                height={24}
-                className="h-auto w-52 lg:w-64 brightness-0 invert"
-              />
-            </div>
+            <span className="font-ewangi text-[clamp(1.75rem,2.8vw,2.5rem)] tracking-wide text-white drop-shadow-md">
+              Real del Mar
+            </span>
           </RevealOnScroll>
 
           {/* Title + subtitle + badges */}
@@ -101,7 +95,7 @@ export default function CostaRealPage() {
                 A private coastal community on the shores of the Pacific, designed for those who live with intention.
               </p>
             </RevealOnScroll>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div className="grid grid-cols-3 gap-x-6 gap-y-3">
               {trustBadges.map((b, i) => (
                 <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />

@@ -3,8 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart, Home, MapPin, MessageCircle, Search } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const slides = [
+  { line1: "Find your",   line2: "Piece of Mexico"  },
+  { line1: "Own a slice", line2: "of Paradise"      },
+  { line1: "Live the",    line2: "Mexican Dream"    },
+];
 
 const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
 
@@ -18,6 +25,19 @@ const iconRail = [
 export function HeroSection() {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [slide, setSlide] = useState(0);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setShow(false);
+      setTimeout(() => {
+        setSlide(s => (s + 1) % slides.length);
+        setShow(true);
+      }, 500);
+    }, 4500);
+    return () => clearInterval(id);
+  }, []);
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     const q = query.trim();
@@ -60,9 +80,47 @@ export function HeroSection() {
       {/* Headline + search — flex column fills the full hero height, mt-[15vh] pushes search to visual center */}
       <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col px-6 pt-24 sm:px-10 lg:px-20 lg:pt-36">
         <h1 className="font-ewangi text-[clamp(4rem,10vw,7.5rem)] leading-[0.88] tracking-tight">
-          <span className="block text-[#EAEDF0] animate-[fade-left_0.8s_ease-out_both]">Find your</span>
-          <span className="font-bold text-brand-ink animate-[fade-left_0.9s_ease-out_0.18s_both]">Piece of Mexico</span>
+          <span
+            className="block text-[#EAEDF0]"
+            style={{
+              opacity: show ? 1 : 0,
+              transform: show ? "translateY(0)" : "translateY(-14px)",
+              transition: "opacity 0.5s ease, transform 0.5s ease",
+            }}
+          >
+            {slides[slide].line1}
+          </span>
+          <span
+            className="block font-bold text-brand-ink"
+            style={{
+              opacity: show ? 1 : 0,
+              transform: show ? "translateY(0)" : "translateY(-14px)",
+              transition: "opacity 0.5s ease, transform 0.5s ease",
+              transitionDelay: show ? "90ms" : "0ms",
+            }}
+          >
+            {slides[slide].line2}
+          </span>
         </h1>
+
+        {/* Carousel dots */}
+        <div className="mt-5 flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Slide ${i + 1}`}
+              onClick={() => {
+                setShow(false);
+                setTimeout(() => { setSlide(i); setShow(true); }, 500);
+              }}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-300",
+                i === slide ? "w-6 bg-white" : "w-1.5 bg-white/35 hover:bg-white/60"
+              )}
+            />
+          ))}
+        </div>
 
         {/* Search bar + desktop icon rail */}
         <div className="mt-[15vh] w-full max-w-xl mx-auto animate-[fade-up_0.8s_ease-out_0.35s_both]">
