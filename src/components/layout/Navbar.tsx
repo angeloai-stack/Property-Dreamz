@@ -1,5 +1,5 @@
 "use client";
-// Sticky top navigation with dark/light modes, Properties dropdown, currency toggle, and mobile drawer.
+// Sticky top navigation with dark/light modes, Properties mega-menu by zone, currency toggle, and mobile drawer.
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -8,41 +8,77 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-type SubItem = { label: string; href: string; tag?: string };
-type NavItem =
-  | { label: string; href: string; sub?: never }
-  | { label: string; href: string; sub: SubItem[] };
+type SubItem  = { label: string; href: string; tag?: string };
+type Zone     = { zone: string; items: SubItem[] };
+type NavItem  =
+  | { label: string; href: string; zones?: never }
+  | { label: string; href: string; zones: Zone[] };
 
-const navItems: NavItem[] = [
-  { label: "Explore map",    href: "/explore-map" },
+// ─── Properties grouped by zone (swap in real data when ready) ───────────────
+const propertyZones: Zone[] = [
   {
-    label: "Properties",
-    href: "/properties",
-    sub: [
-      { label: "Del Mar",              href: "/properties/delmar" },
-      { label: "Andares",              href: "/properties/andares" },
-      { label: "Alimar",               href: "/properties/alimar" },
-      { label: "Cíbola del Mar",        href: "/properties/cibola-del-mar" },
-      { label: "Torre 51",              href: "/properties/torre51" },
-      { label: "Tierra de Agua",       href: "/properties/tierra-de-agua" },
-      { label: "Punta Piedra",         href: "/properties/punta-piedra" },
-      { label: "Palacio del Mar",      href: "/properties/palacio-del-mar" },
-      { label: "Naos",                 href: "/properties/naos" },
-      { label: "Loma Serena",          href: "/properties/loma-serena" },
-      { label: "Pacifica",             href: "/properties/pacifica" },
-      { label: "Encanto del Valle",    href: "/properties/encanto-del-valle" },
-      { label: "Laguna Bay",           href: "/properties/laguna-bay" },
-      { label: "Costa Real",           href: "/properties/costa-real" },
-      { label: "Costa Baja",           href: "/properties/costa-baja" },
-      { label: "Costa Bella",          href: "/properties/costa-bella" },
-      { label: "Valle Dorado",         href: "/properties/valle",   tag: "Soon" },
+    zone: "Tijuana",
+    items: [
+      { label: "Torre 51",   href: "/properties/torre51" },
+      { label: "Andares",    href: "/properties/andares" },
+      { label: "Alimar",     href: "/properties/alimar" },
     ],
   },
-  { label: "Buyer's guide",  href: "/buyers-guide" },
-  { label: "For developers", href: "/for-developers" },
-  { label: "The Mission",    href: "/about" },
-  { label: "Saved",          href: "/saved" },
-  { label: "Contact",        href: "/contact" },
+  {
+    zone: "Tecate",
+    items: [
+      { label: "Encanto del Valle", href: "/properties/encanto-del-valle" },
+      { label: "Valle Dorado",      href: "/properties/valle", tag: "Soon" },
+    ],
+  },
+  {
+    zone: "Mexicali",
+    items: [
+      { label: "Laguna Bay",    href: "/properties/laguna-bay" },
+      { label: "Tierra de Agua",href: "/properties/tierra-de-agua" },
+    ],
+  },
+  {
+    zone: "Ensenada",
+    items: [
+      { label: "Punta Piedra", href: "/properties/punta-piedra" },
+      { label: "Loma Serena",  href: "/properties/loma-serena" },
+      { label: "Costa Baja",   href: "/properties/costa-baja" },
+    ],
+  },
+  {
+    zone: "Rosarito",
+    items: [
+      { label: "Del Mar",     href: "/properties/delmar" },
+      { label: "Costa Bella", href: "/properties/costa-bella" },
+      { label: "Costa Real",  href: "/properties/costa-real" },
+      { label: "The Wave",    href: "/properties/the-wave" },
+    ],
+  },
+  {
+    zone: "San Felipe",
+    items: [
+      { label: "Cíbola del Mar", href: "/properties/cibola-del-mar" },
+      { label: "Pacifica",       href: "/properties/pacifica" },
+    ],
+  },
+  {
+    zone: "San Quintín",
+    items: [
+      { label: "Palacio del Mar", href: "/properties/palacio-del-mar" },
+      { label: "Naos",            href: "/properties/naos" },
+    ],
+  },
+];
+
+const navItems: NavItem[] = [
+  { label: "Home",        href: "/" },
+  { label: "About us",    href: "/about" },
+  { label: "Properties",  href: "/properties", zones: propertyZones },
+  { label: "Map",         href: "/explore-map" },
+  { label: "Buyers",      href: "/buyers-guide" },
+  { label: "Developers",  href: "/for-developers" },
+  { label: "Contact",     href: "/contact" },
 ];
 
 const currencies = ["USD", "MXN"] as const;
@@ -50,8 +86,11 @@ type Currency = (typeof currencies)[number];
 
 export function Navbar() {
   const pathname = usePathname();
-  // Dark navbar for property detail pages that have dark hero sections; white for everything else.
-  const dark = pathname.startsWith("/properties/delmar") || pathname.startsWith("/properties/andares") || pathname.startsWith("/properties/torre51") || pathname.startsWith("/properties/tierra-de-agua") || pathname.startsWith("/properties/punta-piedra")
+  const dark = pathname.startsWith("/properties/delmar")
+    || pathname.startsWith("/properties/andares")
+    || pathname.startsWith("/properties/torre51")
+    || pathname.startsWith("/properties/tierra-de-agua")
+    || pathname.startsWith("/properties/punta-piedra")
     || pathname.startsWith("/properties/alimar")
     || pathname.startsWith("/properties/cibola-del-mar")
     || pathname.startsWith("/properties/palacio-del-mar")
@@ -62,14 +101,14 @@ export function Navbar() {
     || pathname.startsWith("/properties/laguna-bay")
     || pathname.startsWith("/properties/costa-real")
     || pathname.startsWith("/properties/costa-baja")
-    || pathname.startsWith("/properties/costa-bella");
+    || pathname.startsWith("/properties/costa-bella")
+    || pathname.startsWith("/properties/the-wave");
 
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen]       = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
-  const [currency, setCurrency] = useState<Currency>("USD");
-  const [scrolled, setScrolled] = useState(false);
+  const [currency, setCurrency]           = useState<Currency>("USD");
+  const [scrolled, setScrolled]           = useState(false);
 
-  // Apply frosted-glass background after 10px scroll; passive avoids blocking scroll performance.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -99,41 +138,48 @@ export function Navbar() {
         {/* Desktop nav */}
         <nav className={cn("ml-auto hidden items-center gap-5 font-ewangi text-[15px] xl:gap-7 lg:flex", dark ? "text-white" : "text-black")}>
           {navItems.map((item) =>
-            item.sub ? (
-              /* Properties dropdown — CSS group-hover; label is a Link so it's also navigable */
+            item.zones ? (
+              /* ── Properties mega-menu ── */
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={cn("flex items-center gap-1 whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-brand-teal")}
+                  className="flex items-center gap-1 whitespace-nowrap transition hover:text-brand-teal"
                   aria-haspopup="true"
                 >
                   {item.label}
-                  <ChevronDown
-                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180"
-                    strokeWidth={2.5}
-                  />
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" strokeWidth={2.5} />
                 </Link>
 
-                {/* Dropdown panel */}
-                <div className="pointer-events-none absolute left-0 top-full z-50 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                  <div className="min-w-55 overflow-hidden rounded-2xl border border-brand-ink/8 bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
-                    {item.sub.map((sub, i) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        className={cn(
-                          "flex items-center justify-between px-5 py-3.5 transition hover:bg-[#eaedf0]",
-                          i < item.sub.length - 1 && "border-b border-brand-ink/6"
-                        )}
-                      >
-                        <span className="font-ewangi text-[14px] text-brand-ink">{sub.label}</span>
-                        {sub.tag && (
-                          <span className="ml-3 rounded-full bg-brand-teal/15 px-2 py-0.5 font-ewangi text-[10px] uppercase tracking-wide text-brand-teal">
-                            {sub.tag}
-                          </span>
-                        )}
-                      </Link>
-                    ))}
+                {/* Mega-menu panel — centered under the trigger, 7 zone columns */}
+                <div className="pointer-events-none absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+                  <div className="overflow-hidden rounded-2xl border border-brand-ink/8 bg-white shadow-[0_8px_40px_rgba(0,0,0,0.14)]">
+                    <div className="flex divide-x divide-brand-ink/6">
+                      {item.zones.map((zoneGroup) => (
+                        <div key={zoneGroup.zone} className="flex min-w-[120px] flex-col px-4 py-4">
+                          {/* Zone header */}
+                          <p className="mb-2 whitespace-nowrap font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal">
+                            {zoneGroup.zone}
+                          </p>
+                          {/* Properties in this zone */}
+                          <div className="flex flex-col gap-0.5">
+                            {zoneGroup.items.map((sub) => (
+                              <Link
+                                key={sub.label}
+                                href={sub.href}
+                                className="flex items-center justify-between gap-2 rounded-lg px-2 py-2 transition hover:bg-[#eaedf0]"
+                              >
+                                <span className="whitespace-nowrap font-ewangi text-[13px] text-brand-ink">{sub.label}</span>
+                                {sub.tag && (
+                                  <span className="rounded-full bg-brand-teal/15 px-1.5 py-0.5 font-ewangi text-[9px] uppercase tracking-wide text-brand-teal">
+                                    {sub.tag}
+                                  </span>
+                                )}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -149,7 +195,7 @@ export function Navbar() {
           )}
         </nav>
 
-        {/* Currency toggle + mobile hamburger */}
+        {/* Currency toggle + login + mobile hamburger */}
         <div className="ml-auto flex items-center gap-3 lg:ml-6">
           <div
             className={cn("hidden items-center rounded-(--radius-btn) border p-1 sm:flex", dark ? "border-white/15 bg-white/10" : "border-brand-ink/10 bg-brand-paper")}
@@ -195,21 +241,37 @@ export function Navbar() {
             )}
           </button>
         </div>
+
+        <Link
+          href="/login"
+          className={cn(
+            "hidden items-center gap-1.5 rounded-(--radius-btn) border px-3.5 py-1.5 font-ewangi text-label font-semibold transition lg:flex",
+            dark
+              ? "border-white/20 text-white hover:bg-white/10"
+              : "border-brand-ink/20 text-brand-ink hover:bg-brand-ink/5"
+          )}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+          </svg>
+          Login
+        </Link>
       </Container>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="absolute inset-x-0 top-full z-40 lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-14.25 z-40 lg:hidden">
           <div
             className="absolute inset-0 bg-brand-ink/70 backdrop-blur-sm"
             aria-hidden="true"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="relative border-t border-brand-paper/10 bg-brand-ink/80 text-brand-paper shadow-2xl backdrop-blur-md">
-            <div className="space-y-1 px-4 py-4">
+          <div className="relative flex h-full flex-col border-t border-brand-paper/10 bg-brand-ink/80 text-brand-paper shadow-2xl backdrop-blur-md">
+            <div className="overflow-y-auto overscroll-contain space-y-1 px-4 py-4 pb-28">
               {navItems.map((item) =>
-                item.sub ? (
-                  /* Properties accordion in mobile — label navigates, chevron toggles */
+                item.zones ? (
+                  /* Properties accordion — zones are shown flat with zone headers */
                   <div key={item.label}>
                     <div className="flex items-center justify-between rounded hover:bg-brand-paper/10">
                       <Link
@@ -232,21 +294,28 @@ export function Navbar() {
                     </div>
 
                     {propertiesOpen && (
-                      <div className="ml-4 mt-1 space-y-1 border-l border-brand-paper/10 pl-3">
-                        {item.sub.map((sub) => (
-                          <Link
-                            key={sub.label}
-                            href={sub.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between rounded px-3 py-3 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
-                          >
-                            <span>{sub.label}</span>
-                            {sub.tag && (
-                              <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
-                                {sub.tag}
-                              </span>
-                            )}
-                          </Link>
+                      <div className="ml-4 mt-1 space-y-3 border-l border-brand-paper/10 pl-3">
+                        {item.zones.map((zoneGroup) => (
+                          <div key={zoneGroup.zone}>
+                            <p className="px-3 py-1 font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-teal">
+                              {zoneGroup.zone}
+                            </p>
+                            {zoneGroup.items.map((sub) => (
+                              <Link
+                                key={sub.label}
+                                href={sub.href}
+                                onClick={() => setMobileOpen(false)}
+                                className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
+                              >
+                                <span>{sub.label}</span>
+                                {sub.tag && (
+                                  <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
+                                    {sub.tag}
+                                  </span>
+                                )}
+                              </Link>
+                            ))}
+                          </div>
                         ))}
                       </div>
                     )}
@@ -278,6 +347,18 @@ export function Navbar() {
                   </button>
                 ))}
               </div>
+
+              <Link
+                href="/login"
+                onClick={() => setMobileOpen(false)}
+                className="mt-1 flex items-center justify-center gap-2 rounded-(--radius-btn) border border-brand-paper/20 py-3 font-ewangi text-[1rem] text-brand-paper hover:bg-brand-paper/10"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+                Login
+              </Link>
             </div>
           </div>
         </div>

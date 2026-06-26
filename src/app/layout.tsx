@@ -1,7 +1,7 @@
 // Root layout — shared shell (Navbar, Footer, WhatsApp) injected on every page except /coming-soon.
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { Navbar, Main, Footer, WhatsAppButton } from "@/components/layout";
+import { Navbar, Main, Footer, WhatsAppButton, MobileBottomNav } from "@/components/layout";
 import { ewangi } from "@/lib/fonts";
 import "./globals.css";
 
@@ -90,6 +90,7 @@ export default function RootLayout({
         {bare ? children : <Main>{children}</Main>}
         {!bare && <Footer />}
         {!bare && <WhatsAppButton />}
+        {!bare && <MobileBottomNav />}
       </body>
     </html>
   );

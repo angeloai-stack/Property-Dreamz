@@ -89,7 +89,7 @@ export default function Home() {
         5. BuyersGuideSteps  — Y 2509 (3 alternating steps)
         6. CertifiedBanner   — Y 4237 (pine bg, "All certified by" + "Browse 47")
       */}
-      <main className="flex-1 bg-brand-ink">
+      <main className="flex-1 overflow-x-hidden bg-brand-ink">
         <HeroSection />
         <VerifySection />
         <FeatureCards />

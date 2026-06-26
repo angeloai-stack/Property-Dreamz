@@ -16,7 +16,7 @@ export function WhatsAppButton() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-9999 hidden pb-[env(safe-area-inset-bottom,0px)] lg:block">
       <a
         // Replace with the real business WhatsApp number before going live.
         href="https://wa.me/5210000000000"

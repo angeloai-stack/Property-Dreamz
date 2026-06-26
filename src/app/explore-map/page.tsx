@@ -61,7 +61,7 @@ export default function ExploreMapPage() {
   };
 
   return (
-    <main className="relative flex-1 bg-[#1e1e1e] text-white">
+    <main className="relative flex-1 overflow-x-hidden bg-[#1e1e1e] pb-28 text-white lg:pb-0">
       {/* Ambient gradient orbs — slow-drifting to make the dark bg feel alive */}
       <div aria-hidden="true" className="pointer-events-none absolute -left-48 -top-48 h-150 w-150 rounded-full bg-brand-teal/6 blur-[130px] animate-[ambient-drift_20s_ease-in-out_infinite]" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-64 top-1/3 h-120 w-120 rounded-full bg-brand-pine/14 blur-[110px] animate-[ambient-drift_26s_ease-in-out_infinite_5s]" />
@@ -73,7 +73,7 @@ export default function ExploreMapPage() {
             Explore Map
           </h1>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {/* Location pill — Figma: Mask group r=29, glass bg */}
             <div className="flex items-center gap-2 rounded-[29px] bg-[rgba(217,217,217,0.18)] px-5 py-3 backdrop-blur-sm">
               <MapPin className="h-4 w-4 shrink-0 text-white/60" strokeWidth={1.5} />
@@ -122,7 +122,7 @@ export default function ExploreMapPage() {
       </div>
 
       {/* Mobile map/list toggle */}
-      <div className="sticky top-0 z-30 border-b border-white/10 bg-[#1e1e1e]/95 backdrop-blur-sm lg:hidden">
+      <div className="sticky top-14.25 z-30 border-b border-white/10 bg-[#1e1e1e]/95 backdrop-blur-sm lg:hidden">
         <div className="flex gap-2 px-5 py-3 sm:px-8">
           {(["map", "list"] as const).map((view) => (
             <button
@@ -143,7 +143,7 @@ export default function ExploreMapPage() {
       </div>
 
       {/* Map + listings — Figma: map ~43% left, teal cards panel ~57% right, equal height */}
-      <div className="mx-4 mb-6 overflow-hidden rounded-[20px] border border-white/10 sm:mx-6 sm:mb-8 sm:rounded-[28px] lg:mx-14 lg:flex">
+      <div className="mb-6 overflow-hidden border-y border-white/10 sm:mx-6 sm:mb-8 sm:rounded-[28px] sm:border lg:mx-14 lg:flex">
         {/* Map — Google Maps iframe zoomed to Baja California, updates on state filter.
             On lg the wrapper stretches to the cards' height; MapPanel is positioned
             absolutely inside it so it fills that height without percentage-height quirks. */}
@@ -240,7 +240,7 @@ export default function ExploreMapPage() {
 
       {/* CTA section — Figma: "Didn't find your dream's propertie?" Ewangi 48px #eaedf0
           "Speak with us!" 36px, teal button #3AD3C1, house illustration on right */}
-      <div className="mx-4 mb-10 overflow-hidden rounded-[20px] border border-white/10 sm:mx-6 sm:mb-12 sm:rounded-[28px] lg:mx-14">
+      <div className="mb-10 overflow-hidden border-y border-white/10 sm:mx-6 sm:mb-12 sm:rounded-[28px] sm:border lg:mx-14">
         <div className="flex flex-col gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
           {/* Left: copy + button */}
           <RevealOnScroll direction="center" duration={1200}>

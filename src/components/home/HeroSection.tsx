@@ -9,16 +9,15 @@ import { Heart, Home, MapPin, MessageCircle, Search } from "lucide-react";
 const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
 
 const iconRail = [
-  { icon: Home, label: "Home", href: "/" },
-  { icon: MapPin, label: "Explore map", href: "/explore-map" },
-  { icon: Heart, label: "Saved", href: "/saved" },
-  { icon: MessageCircle, label: "Contact", href: "/contact" },
+  { icon: Home,          label: "Home",            href: "/",                           external: false },
+  { icon: MapPin,        label: "Explore the map", href: "/explore-map",                external: false },
+  { icon: Heart,         label: "Saved",           href: "/saved",                      external: false },
+  { icon: MessageCircle, label: "WhatsApp",        href: "https://wa.me/5210000000000", external: true  },
 ];
 
 export function HeroSection() {
   const router = useRouter();
   const [query, setQuery] = useState("");
-
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     const q = query.trim();
@@ -38,21 +37,24 @@ export function HeroSection() {
       />
 
 
-      {/* Left icon rail — matches Figma sidebar vectors at x≈20, y=199/308/412/516 */}
+      {/* Left icon rail — vertical, static, desktop only */}
       <aside
         aria-label="Quick navigation"
-        className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-11 rounded-full bg-white/20 px-1 py-24 backdrop-blur-md lg:flex"
+        className="absolute left-4 top-6 bottom-6 z-20 hidden flex-col items-center justify-center gap-16 rounded-full border border-white/20 bg-white/10 px-1 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl lg:flex"
       >
-        {iconRail.map(({ icon: Icon, label, href }) => (
-          <Link
-            key={label}
-            href={href}
-            aria-label={label}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition hover:bg-white/10 hover:text-white"
-          >
-            <Icon size={20} strokeWidth={1.5} />
-          </Link>
-        ))}
+        {iconRail.map(({ icon: Icon, label, href, external }) =>
+          external ? (
+            <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-brand-ink/80 transition hover:bg-black/10 hover:text-brand-ink">
+              <Icon size={22} strokeWidth={1.5} />
+            </a>
+          ) : (
+            <Link key={label} href={href} aria-label={label}
+              className="flex h-11 w-11 items-center justify-center rounded-full text-brand-ink/80 transition hover:bg-black/10 hover:text-brand-ink">
+              <Icon size={22} strokeWidth={1.5} />
+            </Link>
+          )
+        )}
       </aside>
 
       {/* Headline + search — flex column fills the full hero height, mt-[15vh] pushes search to visual center */}
@@ -62,7 +64,7 @@ export function HeroSection() {
           <span className="font-bold text-brand-ink animate-[fade-left_0.9s_ease-out_0.18s_both]">Piece of Mexico</span>
         </h1>
 
-        {/* Search bar — roughly centered vertically */}
+        {/* Search bar + desktop icon rail */}
         <div className="mt-[15vh] w-full max-w-xl mx-auto animate-[fade-up_0.8s_ease-out_0.35s_both]">
           <form onSubmit={handleSearch}>
             <label htmlFor="hero-search" className="sr-only">Search properties</label>
@@ -78,6 +80,7 @@ export function HeroSection() {
               />
             </div>
           </form>
+
         </div>
       </div>
 

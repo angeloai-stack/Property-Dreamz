@@ -413,7 +413,7 @@ export default function PropertiesPage() {
     <main className="flex-1">
 
       {/* ── Header + filter bar ─────────────────────────────────── */}
-      <div className="bg-[#028e7f] px-5 py-10 sm:px-8 sm:py-14 md:px-12 lg:px-30">
+      <div className="relative z-20 bg-[#028e7f] px-5 py-10 sm:px-8 sm:py-14 md:px-12 lg:px-30">
 
         <div className="mb-8">
           <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-[#eaedf0] animate-[fade-left_0.8s_ease-out_both]">
@@ -463,7 +463,7 @@ export default function PropertiesPage() {
       </div>
 
       {/* ── Card grid ───────────────────────────────────────────── */}
-      <div className="bg-brand-paper px-5 py-12 sm:px-8 sm:py-16 md:px-12 lg:px-30">
+      <div className="relative z-0 bg-brand-paper px-5 py-12 sm:px-8 sm:py-16 md:px-12 lg:px-30">
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[clamp(2rem,7vw,6rem)] perspective-[1400px]">
             {filtered.map((property, i) => (
