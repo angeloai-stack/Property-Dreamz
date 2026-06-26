@@ -160,41 +160,28 @@ export default function AlimarPage() {
 
         {/* Amenities viewer */}
         <RevealOnScroll direction="up" duration={1100}>
-        <div className="mx-auto max-w-329.25 relative rounded-15 overflow-hidden h-105 lg:h-134.5">
-          {/* Interior photo */}
-          <div className="absolute inset-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMG_INTERIOR}
-              alt={activeTab}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
 
-          {/* Gradient right overlay for panel */}
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to left, rgba(30,30,30,0.85) 30%, transparent 60%)" }}
-          />
-
-          {/* Right panel */}
-          <div className="absolute right-0 top-0 bottom-0 w-[38%] flex flex-col justify-center px-8 lg:px-12">
-            {/* Description */}
-            <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-4">
-              Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.
-            </p>
-            <p className="font-ewangi text-[0.95rem] text-white/70 mb-8">
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-65 overflow-hidden rounded-3xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMG_INTERIOR} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(23,23,23,0.85) 0%, transparent 60%)" }}
+              />
+              <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">{activeTab}</p>
+            </div>
+            <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
               {amenityDescriptions[activeTab]}
             </p>
-
-            {/* Room tabs */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap gap-2">
               {amenityTabs.map((tab) => (
                 <button
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`rounded-1.25 px-5 py-2.5 text-right font-ewangi text-[1.125rem] font-bold transition ${
+                  className={`rounded-1.25 px-4 py-2 font-ewangi text-[0.9rem] transition ${
                     activeTab === tab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
@@ -205,7 +192,43 @@ export default function AlimarPage() {
               ))}
             </div>
           </div>
-        </div>
+
+          {/* Desktop layout */}
+          <div className="mx-auto max-w-329.25 relative hidden rounded-15 overflow-hidden h-134.5 lg:block">
+            <div className="absolute inset-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMG_INTERIOR} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+            </div>
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to left, rgba(30,30,30,0.85) 30%, transparent 60%)" }}
+            />
+            <div className="absolute right-0 top-0 bottom-0 w-[38%] flex flex-col justify-center px-12">
+              <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-4">
+                Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.
+              </p>
+              <p className="font-ewangi text-[0.95rem] text-white/70 mb-8">
+                {amenityDescriptions[activeTab]}
+              </p>
+              <div className="flex flex-col gap-3">
+                {amenityTabs.map((tab) => (
+                  <button
+                    key={tab}
+                    type="button"
+                    onClick={() => setActiveTab(tab)}
+                    className={`rounded-1.25 px-5 py-2.5 text-right font-ewangi text-[1.125rem] font-bold transition ${
+                      activeTab === tab
+                        ? "bg-brand-teal text-brand-ink"
+                        : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </RevealOnScroll>
       </section>
 

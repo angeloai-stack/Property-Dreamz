@@ -148,21 +148,18 @@ export default function CostaRealPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="relative overflow-hidden rounded-6.75 min-h-134.25">
-          <Image
-            src={IMG_MAP}
-            alt="Costa Real development map"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
 
-          {/* Left panel */}
-          <div
-            className="absolute inset-y-0 left-0 z-10 flex w-full flex-col gap-4 p-8 lg:w-[38%]"
-            style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
-          >
-            {/* Tabs */}
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-52 overflow-hidden rounded-3xl">
+              <Image
+                src={IMG_MAP}
+                alt="Costa Real development map"
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </div>
             <div className="flex gap-2">
               {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
                 <button
@@ -180,9 +177,7 @@ export default function CostaRealPage() {
                 </button>
               ))}
             </div>
-
             <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
-
             <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
@@ -203,17 +198,76 @@ export default function CostaRealPage() {
                 </button>
               ))}
             </div>
+            <button
+              type="button"
+              className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+            >
+              View all lots
+            </button>
+          </div>
 
-            <div className="mt-auto">
-              <button
-                type="button"
-                className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
-              >
-                View all lots
-              </button>
+          {/* Desktop layout */}
+          <div className="relative hidden overflow-hidden rounded-6.75 min-h-134.25 lg:block">
+            <Image
+              src={IMG_MAP}
+              alt="Costa Real development map"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-y-0 left-0 z-10 flex w-[38%] flex-col gap-4 p-8"
+              style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
+            >
+              <div className="flex gap-2">
+                {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setActiveTab(t)}
+                    className={cn(
+                      "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
+                      t === activeTab
+                        ? "bg-brand-teal text-brand-ink"
+                        : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
+                    )}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+              <div className="flex flex-col overflow-hidden rounded-1">
+                {lots.map((lot) => (
+                  <button
+                    key={lot.id}
+                    type="button"
+                    onClick={() => setSelectedLot(lot.id)}
+                    className={cn(
+                      "flex items-center justify-between border-b border-white/10 px-3 py-2.5 text-left transition last:border-b-0",
+                      lot.id === selectedLot ? "bg-brand-teal" : "hover:bg-white/10"
+                    )}
+                  >
+                    <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white")}>
+                      {lot.id}
+                    </span>
+                    <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white/70")}>
+                      {lot.size}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="mt-auto">
+                <button
+                  type="button"
+                  className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+                >
+                  View all lots
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+
         </RevealOnScroll>
       </section>
 

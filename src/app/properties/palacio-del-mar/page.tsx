@@ -83,8 +83,8 @@ export default function PalacioDelMarPage() {
 
           <div className="mt-auto flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
-            <RevealOnScroll direction="left">
-              <div className="flex flex-col gap-6">
+            <RevealOnScroll direction="left" className="absolute left-1/2 top-[38%] z-20 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0">
+              <div className="flex flex-col items-center gap-6 lg:items-start">
                 <Image
                   src={IMG_LOGO}
                   alt="Palacio del Mar"
@@ -103,11 +103,11 @@ export default function PalacioDelMarPage() {
             </RevealOnScroll>
 
             <div className="flex flex-col items-start gap-6 lg:items-end">
-              <div className="flex flex-wrap gap-6 lg:justify-end">
+              <div className="flex w-full gap-2 lg:flex-wrap lg:gap-6 lg:justify-end">
                 {trustBadges.map((b, i) => (
                   <div
                     key={b}
-                    className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                    className="flex flex-1 flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
                     style={{ animationDelay: `${250 + i * 150}ms` }}
                   >
                     <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
@@ -140,47 +140,88 @@ export default function PalacioDelMarPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" duration={1100}>
-          <div className="relative min-h-80 overflow-hidden rounded-[30px] lg:min-h-130">
-          <Image
-            src={IMG_AMENITIES}
-            alt="Palacio del Mar amenities"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.35)" }} />
 
-          {/* Description — left (desktop) */}
-          <div className="absolute inset-0 hidden flex-col justify-center p-12 lg:flex lg:w-[58%]">
-            <p className="max-w-130 font-ewangi text-[1.25rem] leading-relaxed text-white">
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-65 overflow-hidden rounded-3xl">
+              <Image
+                src={IMG_AMENITIES}
+                alt="Palacio del Mar amenities"
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(23,23,23,0.85) 0%, transparent 60%)" }}
+              />
+              <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">
+                {activeRoom}
+              </p>
+            </div>
+            <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
               Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.
             </p>
-            <p className="mt-4 max-w-130 font-ewangi text-[1rem] text-white/80">
+            <p className="font-ewangi text-[0.9rem] text-white/60">
               Palacio del Mar is the only community on the coast that has a large indoor heated pool.
             </p>
+            <div className="flex flex-wrap gap-2">
+              {amenityRooms.map((room) => (
+                <button
+                  key={room}
+                  onClick={() => setActiveRoom(room)}
+                  className={cn(
+                    "rounded-[5px] px-4 py-2 font-ewangi text-[0.9rem] transition",
+                    activeRoom === room
+                      ? "bg-brand-teal text-brand-ink"
+                      : "bg-[#1e1e1e] text-white hover:bg-white/10"
+                  )}
+                >
+                  {room}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Room tabs — right */}
-          <div
-            className="absolute inset-y-0 right-0 flex w-full flex-col justify-center gap-2 p-8 lg:w-[38%] lg:p-10"
-            style={{ background: "linear-gradient(to left, rgba(23,23,23,0.92) 55%, transparent 100%)" }}
-          >
-            {amenityRooms.map((room) => (
-              <button
-                key={room}
-                onClick={() => setActiveRoom(room)}
-                className={cn(
-                  "rounded-[5px] px-5 py-3 text-left font-ewangi text-[1.1rem] transition",
-                  activeRoom === room
-                    ? "bg-brand-teal text-brand-ink"
-                    : "bg-[#1e1e1e] text-white hover:bg-white/10"
-                )}
-              >
-                {room}
-              </button>
-            ))}
+          {/* Desktop layout */}
+          <div className="relative hidden min-h-130 overflow-hidden rounded-[30px] lg:block">
+            <Image
+              src={IMG_AMENITIES}
+              alt="Palacio del Mar amenities"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.35)" }} />
+            <div className="absolute inset-0 flex flex-col justify-center p-12 lg:w-[58%]">
+              <p className="max-w-130 font-ewangi text-[1.25rem] leading-relaxed text-white">
+                Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.
+              </p>
+              <p className="mt-4 max-w-130 font-ewangi text-[1rem] text-white/80">
+                Palacio del Mar is the only community on the coast that has a large indoor heated pool.
+              </p>
+            </div>
+            <div
+              className="absolute inset-y-0 right-0 flex w-[38%] flex-col justify-center gap-2 p-10"
+              style={{ background: "linear-gradient(to left, rgba(23,23,23,0.92) 55%, transparent 100%)" }}
+            >
+              {amenityRooms.map((room) => (
+                <button
+                  key={room}
+                  onClick={() => setActiveRoom(room)}
+                  className={cn(
+                    "rounded-[5px] px-5 py-3 text-left font-ewangi text-[1.1rem] transition",
+                    activeRoom === room
+                      ? "bg-brand-teal text-brand-ink"
+                      : "bg-[#1e1e1e] text-white hover:bg-white/10"
+                  )}
+                >
+                  {room}
+                </button>
+              ))}
+            </div>
           </div>
-          </div>
+
         </RevealOnScroll>
       </section>
 

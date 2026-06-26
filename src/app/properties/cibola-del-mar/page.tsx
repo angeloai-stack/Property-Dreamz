@@ -97,11 +97,11 @@ export default function CibolaDelMarPage() {
                 Oceanfront residences in Ensenada,<br className="hidden sm:block" /> Baja California.
               </p>
             </RevealOnScroll>
-            <div className="flex flex-wrap gap-8 mt-2">
+            <div className="mt-2 flex w-full gap-2">
               {trustBadges.map((b, i) => (
                 <div
                   key={b}
-                  className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                  className="flex flex-1 flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
                   style={{ animationDelay: `${350 + i * 150}ms` }}
                 >
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
@@ -148,10 +148,62 @@ export default function CibolaDelMarPage() {
       {/* ── LOT EXPLORER ──────────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-10 lg:px-20">
         <RevealOnScroll direction="center" duration={1100}>
-          <div className="mx-auto overflow-hidden rounded-[27px]" style={{ maxWidth: "1318px" }}>
-            <div className="relative flex flex-col lg:flex-row" style={{ minHeight: "537px" }}>
 
-              {/* Map background */}
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-52 overflow-hidden rounded-3xl">
+              <Image
+                src={IMG_MAP}
+                alt="Cíbola del Mar development map"
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </div>
+            <p className="font-ewangi text-[1.1rem] text-white">Explore the development</p>
+            <div className="flex gap-1.5">
+              {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setLotTab(t)}
+                  className={cn(
+                    "rounded-sm px-4 py-1.5 font-ewangi text-[13px] font-medium transition",
+                    lotTab === t
+                      ? "bg-brand-teal text-brand-ink"
+                      : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
+                  )}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+            <p className="font-ewangi text-[13px] text-white/50">Select a lot to see details</p>
+            <div className="flex flex-col overflow-hidden rounded-sm">
+              {lots.map((lot, i) => (
+                <button
+                  key={lot.id}
+                  onClick={() => setActiveLot(lot.id)}
+                  className={cn(
+                    "flex w-full items-center justify-between px-2 py-2.5 font-ewangi text-[13px] transition",
+                    activeLot === lot.id
+                      ? "rounded-sm bg-brand-teal text-brand-ink"
+                      : "text-white hover:bg-white/10",
+                    i > 0 && "border-t border-white/10"
+                  )}
+                >
+                  <span>{lot.id}</span>
+                  <span>{lot.area}</span>
+                </button>
+              ))}
+            </div>
+            <button className="w-full rounded-[5px] border border-white/40 py-3 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink">
+              View all lots
+            </button>
+          </div>
+
+          {/* Desktop layout */}
+          <div className="mx-auto hidden overflow-hidden rounded-[27px] lg:block" style={{ maxWidth: "1318px" }}>
+            <div className="relative flex" style={{ minHeight: "537px" }}>
               <div className="absolute inset-0">
                 <Image
                   src={IMG_MAP}
@@ -161,23 +213,18 @@ export default function CibolaDelMarPage() {
                   sizes="100vw"
                 />
               </div>
-
-              {/* Left panel */}
               <div
-                className="relative z-10 flex flex-col p-7 lg:w-[36%] lg:shrink-0"
+                className="relative z-10 flex w-[36%] shrink-0 flex-col p-7"
                 style={{ background: "rgba(23,23,23,0.9)", minHeight: "537px" }}
               >
-                <p className="font-ewangi text-[1.1rem] text-white mb-4">
-                  Explore the development
-                </p>
-
+                <p className="font-ewangi text-[1.1rem] text-white mb-4">Explore the development</p>
                 <div className="flex gap-1.5 mb-4">
                   {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
                     <button
                       key={t}
                       onClick={() => setLotTab(t)}
                       className={cn(
-                        "rounded-[4px] px-4 py-1.5 font-ewangi text-[13px] font-medium transition",
+                        "rounded-sm px-4 py-1.5 font-ewangi text-[13px] font-medium transition",
                         lotTab === t
                           ? "bg-brand-teal text-brand-ink"
                           : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
@@ -187,11 +234,7 @@ export default function CibolaDelMarPage() {
                     </button>
                   ))}
                 </div>
-
-                <p className="font-ewangi text-[13px] text-white/50 mb-3">
-                  Select a lot to see details
-                </p>
-
+                <p className="font-ewangi text-[13px] text-white/50 mb-3">Select a lot to see details</p>
                 <div className="flex-1">
                   {lots.map((lot, i) => (
                     <button
@@ -200,7 +243,7 @@ export default function CibolaDelMarPage() {
                       className={cn(
                         "flex w-full items-center justify-between px-2 py-2.5 font-ewangi text-[13px] transition",
                         activeLot === lot.id
-                          ? "rounded-[4px] bg-brand-teal text-brand-ink"
+                          ? "rounded-sm bg-brand-teal text-brand-ink"
                           : "text-white hover:bg-white/10",
                         i > 0 && "border-t border-white/10"
                       )}
@@ -210,15 +253,12 @@ export default function CibolaDelMarPage() {
                     </button>
                   ))}
                 </div>
-
                 <button className="mt-5 w-full rounded-[5px] border border-white/40 py-3 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink">
                   View all lots
                 </button>
               </div>
-
-              {/* Selected lot popup — desktop */}
               {selectedLot && (
-                <div className="absolute hidden lg:block" style={{ top: "28%", left: "42%" }}>
+                <div className="absolute" style={{ top: "28%", left: "42%" }}>
                   <div className="min-w-[160px] rounded-[14px] bg-[#1e1e1e]/90 p-4 backdrop-blur-sm">
                     <p className="font-ewangi text-[1.1rem] text-white mb-1">{selectedLot.id}</p>
                     <p className="font-ewangi text-[12px] text-white/70">{selectedLot.area}</p>
@@ -230,9 +270,9 @@ export default function CibolaDelMarPage() {
                   </div>
                 </div>
               )}
-
             </div>
           </div>
+
         </RevealOnScroll>
       </section>
 

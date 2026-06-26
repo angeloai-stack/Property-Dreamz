@@ -109,17 +109,28 @@ export default function NaosPage() {
               </p>
             </RevealOnScroll>
             {/* Trust badges — staggered */}
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div className="flex w-full gap-2">
               {trustBadges.map((b, i) => (
                 <div
                   key={b}
-                  className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
+                  className="flex flex-1 flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]"
                   style={{ animationDelay: `${420 + i * 150}ms` }}
                 >
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                   <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                 </div>
               ))}
+            </div>
+
+            {/* NAOS logo — mobile only, below badges */}
+            <div className="flex justify-center lg:hidden">
+              <Image
+                src={IMG_LOGO}
+                alt="NAOS"
+                width={132}
+                height={58}
+                className="w-32 brightness-0 invert"
+              />
             </div>
           </div>
 
@@ -177,51 +188,94 @@ export default function NaosPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" duration={1100}>
-        <div
-          className="relative mx-auto overflow-hidden rounded-[60px]"
-          style={{ maxWidth: "1283px", minHeight: "524px" }}
-        >
-          <Image
-            src={IMG_INTERIOR}
-            alt="NAOS interior living area"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            className="absolute inset-0 rounded-[60px]"
-            style={{ background: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(30,30,30,0.62) 100%)" }}
-          />
 
-          {/* Right panel */}
-          <div className="absolute inset-0 flex flex-col justify-center p-8 lg:left-[56.66%] lg:p-10">
-            <div className="rounded-[20px] bg-white/10 p-6 backdrop-blur-sm">
-              <p className="font-ewangi text-[1.1rem] leading-relaxed text-white lg:text-[1.375rem]">
-                {rooms[activeRoom].description}
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-65 overflow-hidden rounded-3xl">
+              <Image
+                src={IMG_INTERIOR}
+                alt="NAOS interior living area"
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(23,23,23,0.85) 0%, transparent 60%)" }}
+              />
+              <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">
+                {activeRoom}
               </p>
-              <p className="mt-4 font-ewangi text-[1rem] text-white/80">
-                {rooms[activeRoom].sub}
-              </p>
-              <div className="mt-6 flex flex-col items-start gap-1.5">
-                {(["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as RoomTab[]).map((t) => (
-                  <button
-                    key={t}
-                    onClick={() => setActiveRoom(t)}
-                    style={{ width: "152px", height: "36px", borderRadius: "5px" }}
-                    className={cn(
-                      "font-ewangi text-[1rem] text-center transition",
-                      t === activeRoom
-                        ? "bg-[#1e1e1e] text-brand-teal"
-                        : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
-                    )}
-                  >
-                    {t}
-                  </button>
-                ))}
+            </div>
+            <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
+              {rooms[activeRoom].description}
+            </p>
+            <p className="font-ewangi text-[0.9rem] text-white/60">
+              {rooms[activeRoom].sub}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {(["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as RoomTab[]).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setActiveRoom(t)}
+                  className={cn(
+                    "rounded-[5px] px-4 py-2 font-ewangi text-[0.9rem] transition",
+                    t === activeRoom
+                      ? "bg-[#1e1e1e] text-brand-teal"
+                      : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
+                  )}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop layout */}
+          <div
+            className="relative mx-auto hidden overflow-hidden rounded-[60px] lg:block"
+            style={{ maxWidth: "1283px", minHeight: "524px" }}
+          >
+            <Image
+              src={IMG_INTERIOR}
+              alt="NAOS interior living area"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-0 rounded-[60px]"
+              style={{ background: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(30,30,30,0.62) 100%)" }}
+            />
+            <div className="absolute inset-0 flex flex-col justify-center p-10 lg:left-[56.66%]">
+              <div className="rounded-[20px] bg-white/10 p-6 backdrop-blur-sm">
+                <p className="font-ewangi text-[1.375rem] leading-relaxed text-white">
+                  {rooms[activeRoom].description}
+                </p>
+                <p className="mt-4 font-ewangi text-[1rem] text-white/80">
+                  {rooms[activeRoom].sub}
+                </p>
+                <div className="mt-6 flex flex-col items-start gap-1.5">
+                  {(["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as RoomTab[]).map((t) => (
+                    <button
+                      key={t}
+                      onClick={() => setActiveRoom(t)}
+                      style={{ width: "152px", height: "36px", borderRadius: "5px" }}
+                      className={cn(
+                        "font-ewangi text-[1rem] text-center transition",
+                        t === activeRoom
+                          ? "bg-[#1e1e1e] text-brand-teal"
+                          : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
+                      )}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
         </RevealOnScroll>
       </section>
 

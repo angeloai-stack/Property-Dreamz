@@ -9,7 +9,7 @@ import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO     = `${CLD}/pacifica/hero`;
-const IMG_LOGO     = `${CLD}/pacifica/logo`;
+const IMG_LOGO     = `https://res.cloudinary.com/dserzvrwe/image/upload/f_png,q_auto/pacifica/logo`;
 const IMG_MAP      = `${CLD}/pacifica/map`;
 const IMG_INTERIOR = `${CLD}/pacifica/360-interior`;
 const IMG_AERIAL   = `${CLD}/pacifica/aerial`;
@@ -72,7 +72,7 @@ export default function PacificaPage() {
                 alt="Pacifica"
                 width={447}
                 height={64}
-                className="h-auto w-40 lg:w-52"
+                className="h-12 w-auto lg:h-16"
               />
             </div>
           </RevealOnScroll>
@@ -93,9 +93,9 @@ export default function PacificaPage() {
                 Invest in the tourist corridor of Baja California — the development with the highest appreciation, where every day is a space to enjoy with your family.
               </p>
             </RevealOnScroll>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
+            <div className="mt-0 flex w-full gap-2">
               {trustBadges.map((b, i) => (
-                <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
+                <div key={b} className="flex flex-1 flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
                   <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
                   <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
                 </div>
@@ -147,21 +147,18 @@ export default function PacificaPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="center" duration={1100}>
-        <div className="relative overflow-hidden rounded-6.75 min-h-134.25">
-          <Image
-            src={IMG_MAP}
-            alt="Pacifica development map"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
 
-          {/* Left panel */}
-          <div
-            className="absolute inset-y-0 left-0 z-10 flex w-full flex-col gap-4 p-8 lg:w-[38%]"
-            style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
-          >
-            {/* Tabs */}
+          {/* Mobile layout */}
+          <div className="flex flex-col gap-5 lg:hidden">
+            <div className="relative h-52 overflow-hidden rounded-3xl">
+              <Image
+                src={IMG_MAP}
+                alt="Pacifica development map"
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </div>
             <div className="flex gap-2">
               {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
                 <button
@@ -179,10 +176,7 @@ export default function PacificaPage() {
                 </button>
               ))}
             </div>
-
             <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
-
-            {/* Lot list */}
             <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
@@ -194,32 +188,85 @@ export default function PacificaPage() {
                     lot.id === selectedLot ? "bg-brand-teal" : "hover:bg-white/10"
                   )}
                 >
-                  <span className={cn(
-                    "font-ewangi text-[1rem]",
-                    lot.id === selectedLot ? "text-brand-ink" : "text-white"
-                  )}>
+                  <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white")}>
                     {lot.id}
                   </span>
-                  <span className={cn(
-                    "font-ewangi text-[1rem]",
-                    lot.id === selectedLot ? "text-brand-ink" : "text-white/70"
-                  )}>
+                  <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white/70")}>
                     {lot.size}
                   </span>
                 </button>
               ))}
             </div>
+            <button
+              type="button"
+              className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+            >
+              View all lots
+            </button>
+          </div>
 
-            <div className="mt-auto">
-              <button
-                type="button"
-                className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
-              >
-                View all lots
-              </button>
+          {/* Desktop layout */}
+          <div className="relative hidden overflow-hidden rounded-6.75 min-h-134.25 lg:block">
+            <Image
+              src={IMG_MAP}
+              alt="Pacifica development map"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            <div
+              className="absolute inset-y-0 left-0 z-10 flex w-[38%] flex-col gap-4 p-8"
+              style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
+            >
+              <div className="flex gap-2">
+                {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setActiveTab(t)}
+                    className={cn(
+                      "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
+                      t === activeTab
+                        ? "bg-brand-teal text-brand-ink"
+                        : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
+                    )}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+              <div className="flex flex-col overflow-hidden rounded-1">
+                {lots.map((lot) => (
+                  <button
+                    key={lot.id}
+                    type="button"
+                    onClick={() => setSelectedLot(lot.id)}
+                    className={cn(
+                      "flex items-center justify-between border-b border-white/10 px-3 py-2.5 text-left transition last:border-b-0",
+                      lot.id === selectedLot ? "bg-brand-teal" : "hover:bg-white/10"
+                    )}
+                  >
+                    <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white")}>
+                      {lot.id}
+                    </span>
+                    <span className={cn("font-ewangi text-[1rem]", lot.id === selectedLot ? "text-brand-ink" : "text-white/70")}>
+                      {lot.size}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="mt-auto">
+                <button
+                  type="button"
+                  className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
+                >
+                  View all lots
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+
         </RevealOnScroll>
       </section>
 
