@@ -9,7 +9,6 @@ import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO       = `${CLD}/costa-real/hero`;
-const IMG_LOGO       = `${CLD}/costa-real/logo`;
 const IMG_MAP        = `${CLD}/costa-real/map`;
 const IMG_MODEL      = `${CLD}/costa-real/model-house`;
 const IMG_INTERIOR   = `${CLD}/costa-real/interior`;
