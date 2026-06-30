@@ -1,7 +1,6 @@
-// Root layout — shared shell (Navbar, Footer, WhatsApp) injected on every page except /coming-soon.
+// Root layout — shared shell (Navbar, Footer, WhatsApp) injected on every page except /coming-soon and /portal.
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { Navbar, Main, Footer, WhatsAppButton, MobileBottomNav } from "@/components/layout";
+import { LayoutShell } from "@/components/layout/LayoutShell";
 import { ewangi } from "@/lib/fonts";
 import "./globals.css";
 
@@ -79,18 +78,11 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const pathname = headers().get("x-pathname") ?? "";
-  const bare = pathname.startsWith("/coming-soon");
-
   return (
     <html lang="en" className={ewangi.variable}>
       {/* flex-col + min-h-screen ensures the footer is always pushed to the bottom */}
       <body className="flex min-h-screen flex-col bg-brand-paper text-brand-ink">
-        {!bare && <Navbar />}
-        {bare ? children : <Main>{children}</Main>}
-        {!bare && <Footer />}
-        {!bare && <WhatsAppButton />}
-        {!bare && <MobileBottomNav />}
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );

@@ -1,13 +1,25 @@
-// POST handler for buyer's guide download form — captures lead email before sending PDF.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
+  const webhookUrl = process.env.WEBHOOK_PAGE_FORM_URL;
+  if (!webhookUrl) {
+    console.error("[guide-download] WEBHOOK_PAGE_FORM_URL is not set");
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
   try {
     const body = await req.json();
-    // TODO: Add to email list, send PDF guide via Resend/Mailchimp
-    console.log("[guide-download]", body);
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body, source: "guide-download", submittedAt: new Date().toISOString() }),
+    });
+    if (!res.ok) {
+      console.error("[guide-download] Webhook responded with", res.status);
+      return NextResponse.json({ success: false }, { status: 502 });
+    }
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("[guide-download]", err);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

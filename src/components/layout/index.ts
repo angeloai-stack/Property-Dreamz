@@ -5,3 +5,4 @@ export { Footer } from "./Footer";
 export { WhatsAppButton } from "./WhatsAppButton";
 export { MobileBottomNav } from "./MobileBottomNav";
 export { SideNavRail } from "./SideNavRail";
+export { LayoutShell } from "./LayoutShell";

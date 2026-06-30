@@ -156,7 +156,7 @@ export function Navbar() {
                   <div className="overflow-hidden rounded-2xl border border-brand-ink/8 bg-white shadow-[0_8px_40px_rgba(0,0,0,0.14)]">
                     <div className="flex divide-x divide-brand-ink/6">
                       {item.zones.map((zoneGroup) => (
-                        <div key={zoneGroup.zone} className="flex min-w-[120px] flex-col px-4 py-4">
+                        <div key={zoneGroup.zone} className="flex min-w-30 flex-col px-4 py-4">
                           {/* Zone header */}
                           <p className="mb-2 whitespace-nowrap font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal">
                             {zoneGroup.zone}
