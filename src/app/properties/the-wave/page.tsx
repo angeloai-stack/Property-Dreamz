@@ -116,7 +116,7 @@ export default function TheWavePage() {
     <div className="overflow-x-hidden bg-[#171717] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[820px] overflow-hidden bg-[#171717]">
+      <section className="relative min-h-205 overflow-hidden bg-[#171717]">
         {/* Background photo */}
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -138,7 +138,7 @@ export default function TheWavePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 flex min-h-[820px] flex-col px-6 pt-10 pb-12 lg:px-20">
+        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-12 lg:px-20">
 
           {/* Top row — dev logo + CMRE */}
           <div className="flex justify-start items-center gap-5 lg:justify-end">
@@ -157,7 +157,7 @@ export default function TheWavePage() {
               Where the wave<br />meets luxury.
             </h1>
             <RevealOnScroll direction="up" delay={200}>
-              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-[560px]">
+              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
                 A curated collection of oceanfront residences in Rosarito Beach, designed for those who live on the edge of extraordinary.
               </p>
             </RevealOnScroll>
@@ -230,7 +230,7 @@ export default function TheWavePage() {
                   type="button"
                   onClick={() => setActiveTab(tab)}
                   className={cn(
-                    "rounded-[5px] px-4 py-2 font-ewangi text-[0.95rem] transition",
+                    "rounded-1.25 px-4 py-2 font-ewangi text-[0.95rem] transition",
                     activeTab === tab
                       ? "bg-[#1e1e1e] text-brand-teal border border-brand-teal/50"
                       : "bg-white/10 text-white hover:bg-white/20"
@@ -243,7 +243,7 @@ export default function TheWavePage() {
           </div>
 
           {/* ── Desktop ── */}
-          <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-[60px] overflow-hidden h-131">
+          <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-15 overflow-hidden h-131">
             <div className="absolute inset-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={IMG_AMENITIES} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
@@ -252,21 +252,21 @@ export default function TheWavePage() {
               className="absolute inset-0"
               style={{ background: "linear-gradient(to left, rgba(30,30,30,0.90) 36%, transparent 60%)" }}
             />
-            <div className="absolute right-0 top-0 bottom-0 w-[40%] flex flex-col justify-center px-14">
+            <div className="absolute right-0 top-0 bottom-0 w-2/5 flex flex-col justify-center px-14">
               <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-3">
                 {amenities[activeTab].description}
               </p>
               <p className="font-ewangi text-[0.9rem] text-white/65 mb-8">
                 {amenities[activeTab].title}
               </p>
-              <div className="flex flex-col gap-[6px] items-end">
+              <div className="flex flex-col gap-1.5 items-end">
                 {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
                     className={cn(
-                      "rounded-[5px] px-4 py-2 text-right font-ewangi text-[1.3rem] font-bold transition w-[152px]",
+                      "rounded-1.25 px-4 py-2 text-right font-ewangi text-[1.3rem] font-bold transition w-38",
                       activeTab === tab
                         ? "bg-[#1e1e1e] text-brand-teal"
                         : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
@@ -283,8 +283,8 @@ export default function TheWavePage() {
       </section>
 
       {/* ── MODELS ────────────────────────────────────────────────────────── */}
-      <section className="bg-[#d9d9d9] rounded-tl-[50px] rounded-tr-[50px] px-8 py-12 lg:px-20 lg:py-16">
-        <div className="mx-auto max-w-[1280px]">
+      <section className="bg-[#d9d9d9] rounded-tl-12.5 rounded-tr-12.5 px-8 py-12 lg:px-20 lg:py-16">
+        <div className="mx-auto max-w-7xl">
 
           <RevealOnScroll direction="left">
             <div className="flex items-center gap-4 mb-8">
@@ -294,7 +294,7 @@ export default function TheWavePage() {
                   type="button"
                   onClick={() => setModelIndex((i) => Math.max(0, i - 1))}
                   disabled={modelIndex === 0}
-                  className="flex h-[43px] w-[43px] items-center justify-center rounded-[13px] border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
+                  className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
                 >
                   <ChevronLeft className="h-5 w-5 text-black" />
                 </button>
@@ -302,7 +302,7 @@ export default function TheWavePage() {
                   type="button"
                   onClick={() => setModelIndex((i) => Math.min(models.length - 1, i + 1))}
                   disabled={modelIndex === models.length - 1}
-                  className="flex h-[43px] w-[43px] items-center justify-center rounded-[13px] border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
+                  className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
                 >
                   <ChevronRight className="h-5 w-5 text-black" />
                 </button>
@@ -312,7 +312,7 @@ export default function TheWavePage() {
 
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <RevealOnScroll direction="left" delay={100} duration={1100}>
-              <div className="lg:w-[380px] shrink-0">
+              <div className="lg:w-95 shrink-0">
                 <h3 className="font-ewangi text-[clamp(2.25rem,4vw,3.25rem)] font-bold text-black leading-tight mb-3">
                   {currentModel.name}
                 </h3>
@@ -326,7 +326,7 @@ export default function TheWavePage() {
             </RevealOnScroll>
 
             <RevealOnScroll direction="right" delay={100} duration={1100} className="flex-1 flex justify-end">
-              <div className="relative w-full max-w-[818px] aspect-[818/460] rounded-2xl overflow-hidden">
+              <div className="relative w-full max-w-204.5 aspect-818/460 rounded-2xl overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={modelImg}
@@ -345,7 +345,7 @@ export default function TheWavePage() {
                 type="button"
                 onClick={() => setModelIndex(i)}
                 className={cn(
-                  "rounded-[4px] h-2 transition-all",
+                  "rounded-1 h-2 transition-all",
                   i === modelIndex ? "bg-brand-teal w-6" : "bg-[#b3b3b3] w-2"
                 )}
               />
@@ -356,11 +356,11 @@ export default function TheWavePage() {
 
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#d9d9d9] px-8 py-16 lg:px-20 lg:py-20">
-        <div className="mx-auto max-w-[1280px] flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+        <div className="mx-auto max-w-7xl flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[46%] shrink-0">
-              <div className="relative overflow-hidden rounded-[10px] aspect-[531/354]">
+              <div className="relative overflow-hidden rounded-2.5 aspect-531/354">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG_CTA}
@@ -384,7 +384,7 @@ export default function TheWavePage() {
             <div className="mt-2">
               <button
                 type="button"
-                className="rounded-[10px] bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] font-bold text-brand-ink transition hover:bg-brand-teal/90"
+                className="rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] font-bold text-brand-ink transition hover:bg-brand-teal/90"
               >
                 Talk to an expert
               </button>

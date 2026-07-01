@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, Home, MapPin, MessageCircle } from "lucide-react";
+import { Heart, Home, MapPin, UserCircle } from "lucide-react";
 
 const items = [
-  { icon: Home,          label: "Home",    href: "/",                           external: false },
-  { icon: MapPin,        label: "Map",     href: "/explore-map",                external: false },
-  { icon: Heart,         label: "Saved",   href: "/saved",                      external: false },
-  { icon: MessageCircle, label: "WhatsApp",href: "https://wa.me/5210000000000", external: true  },
+  { icon: Home,   label: "Home",   href: "/",            external: false },
+  { icon: MapPin, label: "Map",    href: "/explore-map", external: false },
+  { icon: Heart,  label: "Saved",  href: "/saved",       external: false },
+  { icon: UserCircle, label: "Login", href: "/login",    external: false },
 ];
 
 export function MobileBottomNav() {

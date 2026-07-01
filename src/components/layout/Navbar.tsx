@@ -2,7 +2,7 @@
 // Sticky top navigation with dark/light modes, Properties mega-menu by zone, currency toggle, and mobile drawer.
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
@@ -104,13 +104,24 @@ export function Navbar() {
     || pathname.startsWith("/properties/costa-bella")
     || pathname.startsWith("/properties/the-wave");
 
-  const [mobileOpen, setMobileOpen]       = useState(false);
+  const [mobileOpen, setMobileOpen]         = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
-  const [currency, setCurrency]           = useState<Currency>("USD");
-  const [scrolled, setScrolled]           = useState(false);
+  const [currency, setCurrency]             = useState<Currency>("USD");
+  const [scrolled, setScrolled]             = useState(false);
+  const [navHidden, setNavHidden]           = useState(false);
+  const lastScrollY                         = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      if (y > 80) {
+        setNavHidden(y > lastScrollY.current);
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -119,6 +130,7 @@ export function Navbar() {
     <>
     <header className={cn(
       "sticky top-0 z-50 border-b transition-all duration-300",
+      navHidden ? "-translate-y-full" : "translate-y-0",
       dark
         ? scrolled ? "border-white/5 bg-brand-ink/80 backdrop-blur-md" : "border-white/10 bg-brand-ink"
         : scrolled ? "border-brand-ink/5 bg-white/80 backdrop-blur-md"  : "border-brand-ink/10 bg-white"

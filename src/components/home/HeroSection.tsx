@@ -1,10 +1,9 @@
 "use client";
-// Full-bleed hero with Ken Burns background image, icon rail sidebar, and search bar.
+// Full-bleed hero with Ken Burns background image and search bar.
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Heart, Home, MapPin, MessageCircle, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const slides = [
@@ -14,13 +13,6 @@ const slides = [
 ];
 
 const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
-
-const iconRail = [
-  { icon: Home,          label: "Home",            href: "/",                           external: false },
-  { icon: MapPin,        label: "Explore the map", href: "/explore-map",                external: false },
-  { icon: Heart,         label: "Saved",           href: "/saved",                      external: false },
-  { icon: MessageCircle, label: "WhatsApp",        href: "https://wa.me/5210000000000", external: true  },
-];
 
 export function HeroSection() {
   const router = useRouter();
@@ -56,26 +48,6 @@ export function HeroSection() {
         sizes="100vw"
       />
 
-
-      {/* Left icon rail — vertical, static, desktop only */}
-      <aside
-        aria-label="Quick navigation"
-        className="absolute left-4 top-6 bottom-6 z-20 hidden flex-col items-center justify-center gap-16 rounded-full border border-white/20 bg-white/10 px-1 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl lg:flex"
-      >
-        {iconRail.map(({ icon: Icon, label, href, external }) =>
-          external ? (
-            <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full text-brand-ink/80 transition hover:bg-black/10 hover:text-brand-ink">
-              <Icon size={22} strokeWidth={1.5} />
-            </a>
-          ) : (
-            <Link key={label} href={href} aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-brand-ink/80 transition hover:bg-black/10 hover:text-brand-ink">
-              <Icon size={22} strokeWidth={1.5} />
-            </Link>
-          )
-        )}
-      </aside>
 
       {/* Headline + search — flex column fills the full hero height, mt-[15vh] pushes search to visual center */}
       <div className="relative z-10 flex min-h-[min(88vh,820px)] flex-col px-6 pt-24 sm:px-10 lg:px-20 lg:pt-36">

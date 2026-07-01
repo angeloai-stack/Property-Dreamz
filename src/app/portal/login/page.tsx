@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Eye, EyeOff, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
+import { Eye, EyeOff, Loader2, ArrowRight, ShieldCheck, ArrowLeft, Home } from "lucide-react";
 
 type Portal = "buyer" | "developer";
 
@@ -85,7 +85,22 @@ export default function PortalLoginPage() {
     "w-full rounded-lg border border-white/10 bg-white/[0.05] px-4 py-3 text-sm text-brand-paper placeholder:text-brand-paper/30 outline-none transition-all duration-200 focus:border-brand-teal/50 focus:ring-2 focus:ring-brand-teal/15";
 
   return (
-    <main className={`flex min-h-screen transition-colors duration-500 ${portal === "buyer" ? "bg-brand-ink" : "bg-brand-pine"}`}>
+    <main className={`relative flex min-h-screen transition-colors duration-500 ${portal === "buyer" ? "bg-brand-ink" : "bg-brand-pine"}`}>
+
+      {/* Back to home */}
+      <Link
+        href="/"
+        aria-label="Back to home"
+        className="group absolute left-3 top-3 z-20 flex items-center gap-2 sm:left-5 sm:top-5 lg:left-auto lg:right-5 lg:top-5"
+      >
+        <ArrowLeft
+          className="h-3.5 w-3.5 text-brand-paper/50 transition-colors group-hover:text-brand-paper/90"
+          aria-hidden="true"
+        />
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white/80 backdrop-blur-md transition hover:bg-white/20 hover:text-white">
+          <Home size={20} strokeWidth={1.5} aria-hidden="true" />
+        </div>
+      </Link>
       <style>{`
         @keyframes panel-in {
           from { opacity: 0; transform: translateY(10px); }
@@ -108,11 +123,11 @@ export default function PortalLoginPage() {
         />
 
         {/* Gold separator on right edge */}
-        <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#B98A3E]/45 to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-px bg-linear-to-b from-transparent via-[#B98A3E]/45 to-transparent" />
 
         {/* Teal ambient glow */}
         <div
-          className="pointer-events-none absolute -bottom-56 -left-56 w-[560px] h-[560px] rounded-full"
+          className="pointer-events-none absolute -bottom-56 -left-56 w-140 h-140 rounded-full"
           style={{ background: "radial-gradient(circle, rgba(58,211,193,0.09) 0%, transparent 65%)" }}
         />
 

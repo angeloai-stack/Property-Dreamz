@@ -1,20 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, Home, MapPin, MessageCircle } from "lucide-react";
+import { Heart, Home, MapPin, UserCircle } from "lucide-react";
 
 const items = [
-  { icon: Home,          label: "Home",            href: "/",                            external: false },
-  { icon: MapPin,        label: "Explore the map", href: "/explore-map",                 external: false },
-  { icon: Heart,         label: "Saved",           href: "/saved",                       external: false },
-  { icon: MessageCircle, label: "WhatsApp",        href: "https://wa.me/5210000000000",  external: true  },
+  { icon: Home,   label: "Home",            href: "/",           external: false },
+  { icon: MapPin, label: "Explore the map", href: "/explore-map", external: false },
+  { icon: Heart,  label: "Saved",           href: "/saved",       external: false },
+  { icon: UserCircle, label: "Login",        href: "/login",       external: false },
 ];
 
 export function SideNavRail() {
   return (
     <aside
       aria-label="Side navigation"
-      className="fixed left-4 top-[76px] bottom-0 z-40 hidden flex-col items-center justify-center gap-10 py-10 lg:flex"
+      className="fixed left-4 top-4 bottom-4 z-40 hidden flex-col items-center justify-center gap-10 py-10 lg:flex"
     >
       <div className="flex flex-col items-center justify-center gap-10 rounded-full bg-black/50 px-1 py-8 backdrop-blur-md">
         {items.map(({ icon: Icon, label, href, external }) =>

@@ -20,14 +20,14 @@ export function VerifySection() {
           </p>
         </RevealOnScroll>
 
-        <RevealOnScroll direction="right" delay={120} className="flex flex-col gap-2">
+        <RevealOnScroll direction="right" delay={120} className="flex flex-col items-center gap-2 md:items-start">
           <Label className="text-white">Certified by</Label>
           <Image
             src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
             alt="CMRE Certified Mexico Real Estate"
             width={204}
             height={48}
-            className="h-12 w-auto"
+            className="h-auto w-40 md:h-12 md:w-auto"
           />
         </RevealOnScroll>
       </Container>
