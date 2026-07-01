@@ -401,7 +401,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Fecha del análisis</div>
-        <div class="cover-meta-value">19 de junio de 2026</div>
+        <div class="cover-meta-value">30 de junio de 2026</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
@@ -435,8 +435,9 @@
       <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">Explore Map — Módulo Interactivo</span><span class="toc-page">10</span></div>
       <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Patrones Técnicos Clave</span><span class="toc-page">11</span></div>
       <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">Integraciones Declaradas (Pendientes)</span><span class="toc-page">12</span></div>
-      <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Métricas de Código y Calidad</span><span class="toc-page">12</span></div>
-      <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Recomendaciones y Próximos Pasos</span><span class="toc-page">13</span></div>
+      <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Pruebas Unitarias</span><span class="toc-page">12</span></div>
+      <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Métricas de Código y Calidad</span><span class="toc-page">13</span></div>
+      <div class="toc-item"><span class="toc-num">14</span><span class="toc-title">Recomendaciones y Próximos Pasos</span><span class="toc-page">14</span></div>
     </div>
   </div>
 
@@ -452,7 +453,7 @@
       <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
       <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Componentes</span></div>
       <div class="stat"><span class="stat-num">13</span><span class="stat-label">Páginas App</span></div>
-      <div class="stat"><span class="stat-num">5</span><span class="stat-label">API Routes</span></div>
+      <div class="stat"><span class="stat-num">66</span><span class="stat-label">Unit Tests</span></div>
     </div>
 
     <div class="highlight-box">
@@ -578,7 +579,10 @@
 │   │   └── typography.ts             <span class="note"># Presets de clases tipográficas</span>
 │   └── <span class="dir">lib/</span>
 │       ├── fonts.ts                   <span class="note"># next/font — variables CSS</span>
-│       └── utils.ts                   <span class="note"># cn() = clsx + twMerge</span>
+│       ├── utils.ts                   <span class="note"># cn() = clsx + twMerge</span>
+│       └── utils.test.ts              <span class="note"># 9 tests — cn() helper</span>
+├── <span class="file">jest.config.js</span>                 <span class="note"># Jest con next/jest (SWC transform)</span>
+├── <span class="file">jest.setup.ts</span>                 <span class="note"># Mocks globales: IntersectionObserver + fetch</span>
 ├── next.config.mjs
 ├── tailwind.config.ts
 ├── tsconfig.json
@@ -945,9 +949,85 @@ listings
     </div>
   </div>
 
-  <!-- ── SECCIÓN 12 ── -->
+  <!-- ── SECCIÓN 12 — NUEVA ── -->
+  <div class="section page-break">
+    <div class="section-label">12 — Pruebas Unitarias</div>
+    <h2>Pruebas Unitarias</h2>
+    <p>El proyecto cuenta con una suite completa de pruebas unitarias implementada con <strong>Jest 30 + React Testing Library</strong>. Todos los test pasaron con el build de producción verificado.</p>
+
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">66</span><span class="stat-label">Tests totales</span></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-label">Suites</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Pass rate</span></div>
+      <div class="stat"><span class="stat-num">~4s</span><span class="stat-label">Tiempo total</span></div>
+    </div>
+
+    <h3>Stack de testing</h3>
+    <table>
+      <thead><tr><th>Paquete</th><th>Versión</th><th>Propósito</th></tr></thead>
+      <tbody>
+        <tr><td><code>jest</code></td><td>30.x</td><td>Test runner y framework principal</td></tr>
+        <tr><td><code>jest-environment-jsdom</code></td><td>30.x</td><td>Simulación del DOM en Node.js</td></tr>
+        <tr><td><code>@testing-library/react</code></td><td>16.x</td><td>Renderizado de componentes React en tests</td></tr>
+        <tr><td><code>@testing-library/user-event</code></td><td>14.x</td><td>Simulación de interacciones de usuario</td></tr>
+        <tr><td><code>@testing-library/jest-dom</code></td><td>6.x</td><td>Matchers DOM extra (<code>toBeInTheDocument</code>, <code>toBeDisabled</code>, etc.)</td></tr>
+        <tr><td><code>next/jest</code></td><td>incluido</td><td>Configuración oficial Next.js: SWC transform + aliases <code>@/</code> + mocks CSS</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Mocks globales (jest.setup.ts)</h3>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">IntersectionObserver</div><div class="card-body">Definido via <code>Object.defineProperty(window, 'IntersectionObserver', …)</code>. Necesario porque <code>RevealOnScroll</code> lo usa en <code>useEffect</code> y jsdom no lo implementa.</div></div>
+      <div class="card"><div class="card-title">fetch</div><div class="card-body">Pre-definido como configurable via <code>Object.defineProperty(global, 'fetch', …)</code>. Permite que cada test use <code>global.fetch = jest.fn()</code> en <code>beforeEach</code> sin errores de "non-writable property".</div></div>
+    </div>
+
+    <h3>Inventario de suites</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tests</th><th>Qué cubre</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/lib/utils.test.ts</code></td><td>9</td><td><code>cn()</code>: args vacíos, clases múltiples, valores falsy, sintaxis objeto, resolución de conflictos Tailwind</td></tr>
+        <tr><td><code>src/app/explore-map/utils.test.ts</code></td><td>12</td><td><code>formatMXN</code> (4), <code>formatUSD</code> (5), <code>formatPrice</code> (3) — millones, miles y formato dual</td></tr>
+        <tr><td><code>src/components/ui/Button.test.tsx</code></td><td>7</td><td>Renderiza <code>&lt;button&gt;</code> y <code>&lt;a&gt;</code>, onClick, disabled, className, atributos extra</td></tr>
+        <tr><td><code>src/components/ui/Input.test.tsx</code></td><td>7</td><td>Placeholder, onChange, disabled, type, className</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>7</td><td>Renders, éxito, error servidor, error red, loading state, reset, payload POST</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>5</td><td>Renders, éxito, error, loading state, payload con <code>source:"campaign"</code></td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td>6</td><td>Renders, éxito (muestra email), error servidor, error red, loading state, payload</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td>7</td><td>Renders, WhatsApp por defecto, cambio de método contacto, éxito, error, loading, endpoint</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td>6</td><td>Renders, éxito, error servidor, error red, loading state, payload con campos empresa</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Patrones usados en los tests de formularios</h3>
+    <div class="highlight-box">
+      <strong>Submit:</strong> Se usa <code>fireEvent.submit(form)</code> en lugar de <code>userEvent.click(button)</code> para disparar el evento de submit — más fiable en jsdom que simular clicks en el botón.
+    </div>
+    <pre>
+<span class="note"># Patrón de submit en todos los form tests</span>
+function submitForm() {
+  const form = screen.getByPlaceholderText('Your name').closest('form')!
+  fireEvent.submit(form)
+}
+
+<span class="note"># Estado "loading": fetch no resuelve hasta que el test lo controla</span>
+let settle: (v: { ok: boolean }) => void
+;(global.fetch as jest.Mock).mockImplementationOnce(
+  () => new Promise((resolve) => { settle = resolve })
+)
+submitForm()
+expect(await screen.findByRole('button', { name: /submit/i })).toBeDisabled()
+settle!({ ok: true })</pre>
+
+    <h3>Comandos</h3>
+    <div class="card-grid cols-3">
+      <div class="card"><div class="card-title">npm test</div><div class="card-body">Ejecuta toda la suite una vez</div></div>
+      <div class="card"><div class="card-title">npm run test:watch</div><div class="card-body">Re-ejecuta tests al guardar archivos</div></div>
+      <div class="card"><div class="card-title">npm run test:coverage</div><div class="card-body">Genera reporte de cobertura (proveedor v8)</div></div>
+    </div>
+  </div>
+
+  <!-- ── SECCIÓN 13 ── -->
   <div class="section">
-    <div class="section-label">12 — Métricas de Calidad</div>
+    <div class="section-label">13 — Métricas de Calidad</div>
     <h2>Métricas de Código y Calidad</h2>
 
     <h3>Lo que está bien implementado</h3>
@@ -971,6 +1051,7 @@ listings
       <li>4 páginas de propiedad individuales: Del Mar, Andares, Torre 51, <strong>Alimar</strong></li>
       <li>Barrel exports organizados (<code>ui/</code>, <code>layout/</code>, <code>forms/</code>)</li>
       <li>Co-location de datos por feature</li>
+      <li><strong>Suite de pruebas unitarias completa:</strong> 66 tests en 9 suites — Jest 30 + React Testing Library. Cubre utilidades, componentes UI y los 5 formularios de captura de leads.</li>
     </ul>
 
     <h3>Áreas de mejora identificadas</h3>
@@ -981,7 +1062,8 @@ listings
       <li>Página <code>/saved</code> es stub vacío (requiere auth)</li>
       <li>Página <code>/properties</code> sin grid de listings</li>
       <li>WhatsApp link con número placeholder (<code>5210000000000</code>)</li>
-      <li>Sin tests unitarios ni E2E</li>
+      <li>Sin tests E2E (Playwright) — los unitarios cubren lógica de componentes, falta cobertura de flujos completos</li>
+      <li>Sin CI pipeline (GitHub Actions no configurado)</li>
       <li>Sin manejo de errores (Error Boundary, <code>error.tsx</code>)</li>
       <li>Sin loading states (<code>loading.tsx</code> por ruta)</li>
       <li>Formularios usan <code>useState</code> nativo — se puede migrar a <code>react-hook-form</code> (ya instalado)</li>
@@ -989,9 +1071,9 @@ listings
     </ul>
   </div>
 
-  <!-- ── SECCIÓN 13 ── -->
+  <!-- ── SECCIÓN 14 ── -->
   <div class="section page-break">
-    <div class="section-label">13 — Próximos Pasos</div>
+    <div class="section-label">14 — Próximos Pasos</div>
     <h2>Recomendaciones y Próximos Pasos</h2>
 
     <h3>Prioridad Alta — Activar Captación de Leads</h3>
@@ -1019,7 +1101,8 @@ listings
     <ul>
       <li>Configurar GA4 + Meta Pixel (variables en <code>.env.local</code> ya declaradas)</li>
       <li>Migrar formularios de <code>useState</code> a <code>react-hook-form</code> (ya instalado) para validación más robusta</li>
-      <li>Añadir tests con Playwright (E2E) o Vitest (unitarios)</li>
+      <li>Añadir tests E2E con Playwright para flujos críticos de submit (coming-soon, contact, property inquiry)</li>
+      <li>Configurar CI pipeline (GitHub Actions) para ejecutar <code>npm test</code> y <code>npm run build</code> en cada PR</li>
       <li>Añadir <code>error.tsx</code> por ruta para Error Boundaries</li>
     </ul>
 
@@ -1046,6 +1129,26 @@ listings
     <div class="section-label">Changelog — sesión actual</div>
     <h2>Archivos Modificados</h2>
     <p class="muted">Cambios ordenados por fecha descendente. Un archivo aparece una sola vez con su modificación más reciente.</p>
+
+    <h3>30 de junio de 2026 — Pruebas unitarias (Jest + RTL)</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>jest.config.js</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Configuración Jest via <code>next/jest</code>: SWC transform, jsdom, setupFilesAfterEnv, cobertura v8.</td></tr>
+        <tr><td><code>jest.setup.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Mocks globales: <code>IntersectionObserver</code> (via <code>Object.defineProperty</code>) y <code>fetch</code> configurable para todos los tests.</td></tr>
+        <tr><td><code>package.json</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Scripts <code>test</code>, <code>test:watch</code>, <code>test:coverage</code>. devDependencies: jest 30, jest-environment-jsdom, @testing-library/react 16, @testing-library/user-event 14, @testing-library/jest-dom 6, @types/jest.</td></tr>
+        <tr><td><code>.eslintrc.json</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Override <code>@typescript-eslint/no-explicit-any: off</code> para archivos <code>*.test.ts</code> / <code>*.test.tsx</code> — permite mocks tipados sin romper el build.</td></tr>
+        <tr><td><code>src/lib/utils.test.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>9 tests para <code>cn()</code>: args vacíos, clases múltiples, valores falsy, sintaxis objeto, conflictos Tailwind.</td></tr>
+        <tr><td><code>src/app/explore-map/utils.test.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>12 tests: <code>formatMXN</code> (4), <code>formatUSD</code> (5), <code>formatPrice</code> (3).</td></tr>
+        <tr><td><code>src/components/ui/Button.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>7 tests: renderiza <code>&lt;button&gt;</code>/<code>&lt;a&gt;</code>, onClick, disabled, className, forward de atributos.</td></tr>
+        <tr><td><code>src/components/ui/Input.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>7 tests: placeholder, onChange, disabled, type, className.</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>7 tests: renders, éxito, error servidor, error red, loading state, reset "send another", payload POST con source/name/email.</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>5 tests: renders, éxito, error, loading state, payload con <code>source:"campaign"</code>.</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>6 tests: renders, éxito mostrando email, error servidor, error red, loading state, payload.</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>7 tests: renders, WhatsApp por defecto, cambio de método de contacto, éxito, error, loading, endpoint.</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td><span class="badge badge-green">Nuevo</span></td><td>6 tests: renders, éxito, error servidor, error red, loading state, payload con contactName/companyName/email.</td></tr>
+      </tbody>
+    </table>
 
     <h3>19 de junio de 2026 — Alimar, Cloudinary, reordenamiento Home</h3>
     <table>
@@ -1134,6 +1237,37 @@ listings
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>30 de junio de 2026 10:42 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>30 de junio de 2026 10:42 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td>30 de junio de 2026 10:39 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td>30 de junio de 2026 10:38 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>30 de junio de 2026 10:38 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td>30 de junio de 2026 10:38 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>30 de junio de 2026 10:38 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>jest.setup.ts</code></td><td>30 de junio de 2026 10:38 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td>30 de junio de 2026 10:23 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td>30 de junio de 2026 10:22 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>30 de junio de 2026 10:22 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td>30 de junio de 2026 10:22 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>30 de junio de 2026 10:22 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td>30 de junio de 2026 10:13 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td>30 de junio de 2026 10:13 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>30 de junio de 2026 10:13 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td>30 de junio de 2026 10:13 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>30 de junio de 2026 10:13 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/forms/DeveloperListingForm.test.tsx</code></td><td>30 de junio de 2026 10:11 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/PropertyInquiryForm.test.tsx</code></td><td>30 de junio de 2026 10:11 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/CampaignForm.test.tsx</code></td><td>30 de junio de 2026 10:11 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/GuideDownloadForm.test.tsx</code></td><td>30 de junio de 2026 10:10 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/forms/ContactForm.test.tsx</code></td><td>30 de junio de 2026 10:10 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>jest.setup.ts</code></td><td>30 de junio de 2026 10:10 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ui/Input.test.tsx</code></td><td>30 de junio de 2026 10:04 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ui/Button.test.tsx</code></td><td>30 de junio de 2026 10:04 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/explore-map/utils.test.ts</code></td><td>30 de junio de 2026 10:04 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/lib/utils.test.ts</code></td><td>30 de junio de 2026 10:03 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>package.json</code></td><td>30 de junio de 2026 10:03 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>jest.setup.ts</code></td><td>30 de junio de 2026 10:03 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>jest.config.js</code></td><td>30 de junio de 2026 10:03 a.m.</td><td>Nuevo archivo</td></tr>
         <tr><td><code>src/app/portal/login/page.tsx</code></td><td>29 de junio de 2026 06:39 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/app/portal/login/page.tsx</code></td><td>29 de junio de 2026 06:39 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/components/layout/LayoutShell.tsx</code></td><td>29 de junio de 2026 06:37 p.m.</td><td>Modificado</td></tr>

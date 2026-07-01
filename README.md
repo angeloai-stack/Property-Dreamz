@@ -2,7 +2,7 @@
 
 Verified Mexican real estate portal for international buyers. Every property title-searched, developer-reviewed, and HOA-audited before listing.
 
-> **Status:** Frontend complete. Coming-soon gate active in production. n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
+> **Status:** Frontend complete. Unit test suite live (66 tests, 9 suites). Coming-soon gate active in production. n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
 
 ---
 
@@ -40,10 +40,35 @@ npm run dev     # http://localhost:3000
 ```
 
 ```bash
-npm run build   # production build
-npm run start   # production server
-npm run lint    # ESLint check
+npm run build        # production build
+npm run start        # production server
+npm run lint         # ESLint check
+npm run test         # unit tests (Jest)
+npm run test:watch   # watch mode
+npm run test:coverage  # coverage report
 ```
+
+---
+
+## Testing
+
+**Stack:** Jest 30 · jest-environment-jsdom · @testing-library/react 16 · @testing-library/user-event 14 · @testing-library/jest-dom 6
+
+**Config:** `jest.config.js` uses `next/jest` (SWC transform, `@/` alias resolution). `jest.setup.ts` provides global mocks for `IntersectionObserver` and `fetch`.
+
+| Suite | File | Tests |
+|---|---|---|
+| `cn()` utility | `src/lib/utils.test.ts` | 9 |
+| Price formatters | `src/app/explore-map/utils.test.ts` | 12 |
+| Button | `src/components/ui/Button.test.tsx` | 7 |
+| Input | `src/components/ui/Input.test.tsx` | 7 |
+| ContactForm | `src/components/forms/ContactForm.test.tsx` | 7 |
+| CampaignForm | `src/components/forms/CampaignForm.test.tsx` | 5 |
+| GuideDownloadForm | `src/components/forms/GuideDownloadForm.test.tsx` | 6 |
+| PropertyInquiryForm | `src/components/forms/PropertyInquiryForm.test.tsx` | 7 |
+| DeveloperListingForm | `src/components/forms/DeveloperListingForm.test.tsx` | 6 |
+
+**Total: 66 tests — 9 suites — all passing.**
 
 ---
 
@@ -214,7 +239,7 @@ Rendered in order in `src/app/page.tsx`:
 - **Analytics not wired** (GA / Meta Pixel env vars defined but unused).
 - **Missing routes:** `/privacy`, `not-found.tsx`, `error.tsx`.
 - **No security headers** in `next.config.mjs`.
-- **No tests, no CI.**
+- **No CI pipeline** (GitHub Actions not configured).
 
 ---
 
@@ -226,3 +251,5 @@ Rendered in order in `src/app/page.tsx`:
 4. Inject GA4 + Meta Pixel scripts in root layout.
 5. Implement interactive Mapbox map in `/explore-map`.
 6. Add `/privacy`, `not-found.tsx`, `error.tsx`.
+7. Add E2E tests (Playwright) for critical form submission flows.
+8. Set up CI pipeline (GitHub Actions) to run `npm test` and `npm run build` on every PR.
