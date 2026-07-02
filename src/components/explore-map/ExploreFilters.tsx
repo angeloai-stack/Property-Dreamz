@@ -39,8 +39,8 @@ function Pill({
       className={cn(
         "shrink-0 rounded-(--radius-btn) px-4 py-2 font-ewangi text-sm uppercase tracking-wide transition",
         active
-          ? "bg-brand-teal text-[#1e1e1e]"
-          : "border border-white/20 text-white/60 hover:border-white/40 hover:text-white"
+          ? "bg-brand-teal text-brand-ink"
+          : "border border-brand-ink/15 text-brand-ink/60 hover:border-brand-teal/60 hover:text-brand-pine"
       )}
     >
       {children}
@@ -64,12 +64,12 @@ export function ExploreFilters({
   resultCount,
 }: ExploreFiltersProps) {
   return (
-    <div className="space-y-4 rounded-[22px] border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+    <div className="space-y-4 rounded-[22px] border border-brand-ink/10 bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
       {/* Search + result count */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative min-w-0 flex-1">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-ink/40"
             strokeWidth={1.5}
           />
           <input
@@ -78,17 +78,17 @@ export function ExploreFilters({
             value={searchVal}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Search projects"
-            className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 py-2.5 pl-10 pr-4 font-ewangi text-sm text-white placeholder:text-white/30 outline-none transition focus:border-brand-teal/60 focus:ring-2 focus:ring-brand-teal/20"
+            className="w-full rounded-(--radius-input) border border-brand-ink/15 bg-[#eaedf0]/50 py-2.5 pl-10 pr-4 font-ewangi text-sm text-brand-ink placeholder:text-brand-ink/35 outline-none transition focus:border-brand-teal/60 focus:ring-2 focus:ring-brand-teal/20"
           />
         </div>
-        <span className="shrink-0 rounded-(--radius-btn) bg-brand-teal/20 px-3 py-1.5 font-ewangi text-sm text-brand-teal">
+        <span className="shrink-0 rounded-(--radius-btn) bg-brand-teal/15 px-3 py-1.5 font-ewangi text-sm text-brand-pine">
           {resultCount} projects
         </span>
       </div>
 
       {/* State filter — updates the map view */}
       <div>
-        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-white/35">
+        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-brand-ink/40">
           State
         </p>
         <div className="flex flex-wrap gap-2">
@@ -102,7 +102,7 @@ export function ExploreFilters({
 
       {/* Property type + currency pills */}
       <div>
-        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-white/35">
+        <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-brand-ink/40">
           Type &amp; Currency
         </p>
         <div className="flex flex-wrap gap-2">
@@ -112,7 +112,7 @@ export function ExploreFilters({
             </Pill>
           ))}
 
-          <div className="mx-2 hidden w-px self-stretch bg-white/15 sm:block" aria-hidden="true" />
+          <div className="mx-2 hidden w-px self-stretch bg-brand-ink/10 sm:block" aria-hidden="true" />
 
           {currencies.map((c) => (
             <Pill key={c} active={currency === c} onClick={() => onCurrencyChange(c)}>
@@ -124,12 +124,12 @@ export function ExploreFilters({
 
       {/* Verified + sort */}
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <label className="flex cursor-pointer items-center gap-2 font-ewangi text-sm text-white/60">
+        <label className="flex cursor-pointer items-center gap-2 font-ewangi text-sm text-brand-ink/60">
           <input
             type="checkbox"
             checked={verifiedOnly}
             onChange={(e) => onVerifiedChange(e.target.checked)}
-            className="h-4 w-4 cursor-pointer rounded border-white/30 accent-brand-teal"
+            className="h-4 w-4 cursor-pointer rounded border-brand-ink/25 accent-brand-teal"
           />
           <span>Verified only</span>
         </label>
@@ -138,7 +138,7 @@ export function ExploreFilters({
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
           aria-label="Sort projects"
-          className="w-full rounded-(--radius-input) border border-white/20 bg-white/8 px-3 py-2 font-ewangi text-sm text-white outline-none transition focus:border-brand-teal/60 sm:w-auto"
+          className="w-full rounded-(--radius-input) border border-brand-ink/15 bg-[#eaedf0]/50 px-3 py-2 font-ewangi text-sm text-brand-ink outline-none transition focus:border-brand-teal/60 sm:w-auto"
         >
           <option value="rec">Relevance</option>
           <option value="price-asc">Price: low → high</option>

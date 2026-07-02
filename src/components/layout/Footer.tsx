@@ -21,6 +21,7 @@ const topNav = [
   { label: "Buyer's guide", href: "/buyers-guide" },
   { label: "For developers", href: "/for-developers" },
   { label: "The Mission", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Saved", href: "/saved" },
 ] as const;
 

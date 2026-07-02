@@ -19,6 +19,10 @@ export const listings = [
     lat: 32.5149,
     lng: -117.0382,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
+    constructionStatus: "Ready to move in" as const,
+    financingAvailable: true,
+    photos: 14,
+    tags: ["Homes"] as const,
   },
   {
     id: 2,
@@ -39,6 +43,10 @@ export const listings = [
     lat: 32.3667,
     lng: -117.0647,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Render_Del_Mar_aynv6k.png",
+    constructionStatus: "Pre-sale" as const,
+    financingAvailable: true,
+    photos: 10,
+    tags: ["Homes", "Oceanfront"] as const,
   },
   {
     id: 3,
@@ -59,6 +67,10 @@ export const listings = [
     lat: 32.0285,
     lng: -116.6005,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Modern_House_White.H03.2k_sjznmv.png",
+    constructionStatus: "Under construction" as const,
+    financingAvailable: false,
+    photos: 22,
+    tags: ["Homes"] as const,
   },
   {
     id: 4,
@@ -79,6 +91,10 @@ export const listings = [
     lat: 20.7653,
     lng: -105.5303,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/panoramic_1_qwo5jt.png",
+    constructionStatus: "Ready to move in" as const,
+    financingAvailable: true,
+    photos: 31,
+    tags: ["Homes", "Oceanfront"] as const,
   },
   {
     id: 5,
@@ -99,6 +115,10 @@ export const listings = [
     lat: 20.2114,
     lng: -87.4654,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png",
+    constructionStatus: "Ready to move in" as const,
+    financingAvailable: false,
+    photos: 18,
+    tags: ["Homes", "Oceanfront"] as const,
   },
   {
     id: 6,
@@ -119,8 +139,14 @@ export const listings = [
     lat: 31.8667,
     lng: -116.5960,
     image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Panoramic_View_vy1spn.png",
+    constructionStatus: "Pre-sale" as const,
+    financingAvailable: true,
+    photos: 9,
+    tags: ["Homes", "Oceanfront"] as const,
   },
 ] as const;
+
+export const CONSTRUCTION_STATUSES = ["Pre-sale", "Under construction", "Ready to move in"] as const;
 
 // Pin positions are expressed as percentage offsets on the static Mexico map SVG/image.
 export const pins = [
@@ -147,5 +173,6 @@ export const MEXICAN_STATES = [
 export type Listing = (typeof listings)[number];
 export type Pin = (typeof pins)[number];
 export type ListingStatus = Listing["status"];
+export type ConstructionStatus = (typeof CONSTRUCTION_STATUSES)[number];
 export type Currency = "USD" | "MXN";
 export type MexicanState = (typeof MEXICAN_STATES)[number];

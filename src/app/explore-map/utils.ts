@@ -14,3 +14,14 @@ export function formatUSD(value: number) {
 export function formatPrice(mxn: number, usd: number, currency: Currency) {
   return currency === "MXN" ? formatMXN(mxn) : formatUSD(usd);
 }
+
+// Full, non-abbreviated price — Figma explore-map cards: "$89,000 USD" / "$4,250,000 MXN".
+export function formatFullPrice(mxn: number, usd: number, currency: Currency) {
+  const value = currency === "MXN" ? mxn : usd;
+  return `$${new Intl.NumberFormat("en-US").format(value)} ${currency}`;
+}
+
+// Compact price for map pin badges — Figma: "From $89k".
+export function formatShortPrice(usd: number) {
+  return `From $${Math.round(usd / 1000)}k`;
+}

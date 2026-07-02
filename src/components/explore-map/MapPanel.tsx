@@ -36,7 +36,7 @@ export function MapPanel({ selectedState, filteredCount, className }: MapPanelPr
         title={`Map of ${label}`}
       />
 
-      <div className="pointer-events-none absolute left-3 top-3 z-10 flex items-center gap-2 rounded-lg border border-white/10 bg-[#1e1e1e]/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/80 shadow-lg backdrop-blur-sm">
+      <div className="pointer-events-none absolute bottom-3 right-3 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-pine shadow-lg backdrop-blur-sm">
         <span className="text-brand-teal">●</span>
         {label} · {filteredCount} projects
       </div>

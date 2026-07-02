@@ -18,12 +18,18 @@ const features = [
   },
 ] as const;
 
-export function FeatureCards() {
+type Feature = { title: string; body: string };
+
+type FeatureCardsProps = {
+  features?: readonly Feature[];
+};
+
+export function FeatureCards({ features: items = features }: FeatureCardsProps) {
   return (
     <section className="w-full bg-brand-ink pb-8 pt-2 md:pb-16">
       <Container>
         <div className="grid gap-3 md:grid-cols-3 md:gap-6">
-          {features.map((feature, i) => (
+          {items.map((feature, i) => (
             <RevealOnScroll key={feature.title} delay={i * 180} duration={1100} direction={i === 0 ? "left" : i === 2 ? "right" : "up"}>
             <article
               className={cn(

@@ -1,18 +1,22 @@
 "use client";
-// Interactive map page — splits into a Google Maps panel (left) and filtered listing cards (right).
+// Interactive map page — light theme per Figma: map + filter overlay (left), listing cards (right), teal CTA band.
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
-import { MapPin, SlidersHorizontal, X } from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ListingCard } from "@/components/explore-map/ListingCard";
+import { useEffect, useMemo, useState } from "react";
+import { Search, SlidersHorizontal, X } from "lucide-react";
+import { ExploreListingCard } from "@/components/explore-map/ExploreListingCard";
 import { MapPanel } from "@/components/explore-map/MapPanel";
+import { MapFiltersCard } from "@/components/explore-map/MapFiltersCard";
 import { ExploreFilters } from "@/components/explore-map/ExploreFilters";
 import { RevealOnScroll } from "@/components/ui";
-import { listings, type Currency } from "./data";
+import { VerifyFeatures } from "@/components/shared/VerifyFeatures";
+import { listings, pins, CONSTRUCTION_STATUSES, type ConstructionStatus, type Currency } from "./data";
+import { formatShortPrice } from "./utils";
 import { cn } from "@/lib/utils";
 
 type MobileView = "map" | "list";
+
+const QUICK_FILTERS = ["Oceanfront", "Lots", "Homes", "Under $100k"] as const;
 
 export default function ExploreMapPage() {
   const [activePin, setActivePin] = useState<number | null>(null);
@@ -22,6 +26,9 @@ export default function ExploreMapPage() {
   const [sortBy, setSortBy] = useState("rec");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [searchVal, setSearchVal] = useState("");
+  const [statusFilters, setStatusFilters] = useState<Set<ConstructionStatus>>(new Set(CONSTRUCTION_STATUSES));
+  const [financingOnly, setFinancingOnly] = useState(false);
+  const [quickFilters, setQuickFilters] = useState<Set<string>>(new Set());
 
   // Pre-fill search from the ?search= query param — used by the homepage sitelinks search action.
   useEffect(() => {
@@ -31,6 +38,24 @@ export default function ExploreMapPage() {
   const [mobileView, setMobileView] = useState<MobileView>("list");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  const toggleStatus = (status: ConstructionStatus) => {
+    setStatusFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(status)) next.delete(status);
+      else next.add(status);
+      return next;
+    });
+  };
+
+  const toggleQuickFilter = (tag: string) => {
+    setQuickFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(tag)) next.delete(tag);
+      else next.add(tag);
+      return next;
+    });
+  };
+
   const filtered = useMemo(
     () =>
       listings
@@ -38,6 +63,13 @@ export default function ExploreMapPage() {
           if (stateFilter !== "All" && listing.state !== stateFilter) return false;
           if (typeFilter !== "All" && listing.type !== typeFilter) return false;
           if (verifiedOnly && listing.status !== "verified") return false;
+          if (!statusFilters.has(listing.constructionStatus)) return false;
+          if (financingOnly && !listing.financingAvailable) return false;
+          if (quickFilters.has("Under $100k") && listing.priceUSD >= 100_000) return false;
+          const tagFilters = [...quickFilters].filter((f) => f !== "Under $100k");
+          if (tagFilters.length > 0 && !tagFilters.some((tag) => (listing.tags as readonly string[]).includes(tag))) {
+            return false;
+          }
           if (
             searchVal &&
             !listing.title.toLowerCase().includes(searchVal.toLowerCase()) &&
@@ -52,7 +84,12 @@ export default function ExploreMapPage() {
           if (sortBy === "price-desc") return b.priceUSD - a.priceUSD;
           return 0;
         }),
-    [stateFilter, typeFilter, verifiedOnly, searchVal, sortBy]
+    [stateFilter, typeFilter, verifiedOnly, statusFilters, financingOnly, quickFilters, searchVal, sortBy]
+  );
+
+  const mapPins = useMemo(
+    () => pins.filter((p) => filtered.some((l) => l.id === p.id)).map((p) => ({ ...p, listing: filtered.find((l) => l.id === p.id)! })),
+    [filtered]
   );
 
   const handleCardClick = (id: number) => {
@@ -61,44 +98,73 @@ export default function ExploreMapPage() {
   };
 
   return (
-    <main className="relative flex-1 overflow-x-hidden bg-[#1e1e1e] pb-28 text-white lg:pb-0">
-      {/* Ambient gradient orbs — slow-drifting to make the dark bg feel alive */}
-      <div aria-hidden="true" className="pointer-events-none absolute -left-48 -top-48 h-150 w-150 rounded-full bg-brand-teal/6 blur-[130px] animate-[ambient-drift_20s_ease-in-out_infinite]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -right-64 top-1/3 h-120 w-120 rounded-full bg-brand-pine/14 blur-[110px] animate-[ambient-drift_26s_ease-in-out_infinite_5s]" />
-      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/4 h-90 w-90 rounded-full bg-brand-teal/4 blur-[100px] animate-[ambient-drift_18s_ease-in-out_infinite_10s]" />
-      {/* Header — Figma: "Explore Map" Ewangi 48px #eaedf0, location pill, Filter button */}
-      <div className="px-5 py-6 sm:px-8 sm:py-8 md:px-12 lg:px-16">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] leading-tight text-[#eaedf0] animate-[fade-left_0.8s_ease-out_both]">
-            Explore Map
-          </h1>
+    <main className="flex-1 bg-white">
+      {/* Header — Figma: light #eaedf0 band, "Explore Map" + subtitle, search bar, Filter, quick pills */}
+      <div className="bg-[#eaedf0] px-5 py-8 shadow-[0_2px_18px_rgba(0,0,0,0.08)] sm:px-8 md:px-12 lg:px-16 lg:py-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-xs space-y-2 sm:max-w-sm">
+            <h1 className="font-ewangi text-[clamp(2rem,4vw,3rem)] leading-none text-brand-pine animate-[fade-left_0.8s_ease-out_both]">
+              Explore Map
+            </h1>
+            <p className="font-ewangi text-[1.15rem] font-semibold leading-snug text-brand-ink">
+              Explore verified developments in Mexico
+            </p>
+            <p className="font-ewangi text-[0.95rem] font-light text-brand-ink/60">
+              Move the map to discover properties in your ideal location.
+            </p>
+          </div>
 
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {/* Location pill — Figma: Mask group r=29, glass bg */}
-            <div className="flex items-center gap-2 rounded-[29px] bg-[rgba(217,217,217,0.18)] px-5 py-3 backdrop-blur-sm">
-              <MapPin className="h-4 w-4 shrink-0 text-white/60" strokeWidth={1.5} />
-              <span className="font-ewangi text-[1.05rem] text-white">
-                {stateFilter === "All" ? "Tijuana, Rosarito, Pto. Nuevo" : stateFilter}
-              </span>
+          <div className="flex flex-1 flex-col items-stretch gap-4 lg:items-end">
+            <div className="flex w-full flex-wrap items-center gap-4 lg:justify-end">
+              <div className="flex w-full items-center gap-3 rounded-[14px] border-2 border-black/20 bg-white px-5 py-3.5 sm:w-auto sm:min-w-95">
+                <input
+                  type="text"
+                  value={searchVal}
+                  onChange={(e) => setSearchVal(e.target.value)}
+                  placeholder="Where would you like to go?"
+                  className="min-w-0 flex-1 bg-transparent font-ewangi text-[1rem] text-brand-ink outline-none placeholder:text-brand-ink/40"
+                />
+                <Search className="h-5 w-5 shrink-0 text-brand-teal" strokeWidth={2} />
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setFiltersOpen((o) => !o)}
+                aria-expanded={filtersOpen}
+                className="flex items-center gap-2 font-ewangi text-[1.3rem] text-brand-pine transition hover:text-brand-teal"
+              >
+                <span>Filter</span>
+                {filtersOpen ? (
+                  <X className="h-6 w-6" strokeWidth={1.5} />
+                ) : (
+                  <SlidersHorizontal className="h-6 w-6" strokeWidth={1.5} />
+                )}
+              </button>
             </div>
 
-            {/* Filter toggle — Figma: "Filter" text + icon */}
-            <button
-              type="button"
-              onClick={() => setFiltersOpen((o) => !o)}
-              aria-expanded={filtersOpen}
-              className="flex items-center gap-2.5 rounded-[29px] border border-white/25 px-5 py-3 font-ewangi text-[1.05rem] text-white transition hover:bg-white/10"
-            >
-              <span>Filter</span>
-              {filtersOpen
-                ? <X className="h-4 w-4" strokeWidth={1.5} />
-                : <SlidersHorizontal className="h-4 w-4" strokeWidth={1.5} />}
-            </button>
+            {/* Quick filter pills — Figma: teal r=6 pills */}
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              {QUICK_FILTERS.map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleQuickFilter(tag)}
+                  className={cn(
+                    "rounded-[6px] px-5 py-2.5 font-ewangi text-[1rem] font-medium transition",
+                    quickFilters.has(tag)
+                      ? "bg-brand-pine text-white"
+                      : "bg-brand-teal text-brand-ink hover:bg-brand-teal-dark"
+                  )}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {filtersOpen && (
-          <div className="mt-5">
+          <div className="mt-6">
             <ExploreFilters
               searchVal={searchVal}
               onSearchChange={setSearchVal}
@@ -121,103 +187,100 @@ export default function ExploreMapPage() {
         )}
       </div>
 
-      {/* Mobile map/list toggle */}
-      <div className="sticky top-14.25 z-30 border-b border-white/10 bg-[#1e1e1e]/95 backdrop-blur-sm lg:hidden">
-        <div className="flex gap-2 px-5 py-3 sm:px-8">
-          {(["map", "list"] as const).map((view) => (
-            <button
-              key={view}
-              type="button"
-              onClick={() => setMobileView(view)}
-              className={cn(
-                "flex-1 rounded-full px-4 py-2.5 font-ewangi text-sm uppercase tracking-widest transition",
-                mobileView === view
-                  ? "bg-brand-teal text-[#1e1e1e]"
-                  : "border border-white/15 text-white/50 hover:text-white"
-              )}
-            >
-              {view === "map" ? "Map" : `List (${filtered.length})`}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Map + listings — Figma: map ~43% left, teal cards panel ~57% right, equal height */}
-      <div className="mb-6 overflow-hidden border-y border-white/10 sm:mx-6 sm:mb-8 sm:rounded-[28px] sm:border lg:mx-14 lg:flex">
-        {/* Map — Google Maps iframe zoomed to Baja California, updates on state filter.
-            On lg the wrapper stretches to the cards' height; MapPanel is positioned
-            absolutely inside it so it fills that height without percentage-height quirks. */}
-        <div
-          className={cn(
-            "relative h-[40vh] lg:h-auto lg:w-[42%] lg:shrink-0 lg:self-stretch lg:border-r lg:border-white/10",
-            mobileView === "list" ? "hidden lg:block" : "block"
-          )}
-        >
-          <MapPanel
-            selectedState={stateFilter}
-            filteredCount={filtered.length}
-            className="lg:absolute lg:inset-0"
-          />
+      {/* Sticky toggle + map/listings share this wrapper so the sticky bar un-sticks before the CTA */}
+      <div className="relative">
+        {/* Mobile map/list toggle */}
+        <div className="sticky top-14.25 z-30 border-b border-brand-ink/10 bg-white/95 backdrop-blur-sm lg:hidden">
+          <div className="flex gap-2 px-5 py-3 sm:px-8">
+            {(["map", "list"] as const).map((view) => (
+              <button
+                key={view}
+                type="button"
+                onClick={() => setMobileView(view)}
+                className={cn(
+                  "flex-1 rounded-full px-4 py-2.5 font-ewangi text-sm uppercase tracking-widest transition",
+                  mobileView === view
+                    ? "bg-brand-teal text-brand-ink"
+                    : "border border-brand-ink/15 text-brand-ink/50 hover:text-brand-pine"
+                )}
+              >
+                {view === "map" ? "Map" : `List (${filtered.length})`}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Cards — Figma: right 58%, teal (#3AD3C1) panel with 2×2 square cards */}
-        <div
-          className={cn(
-            "flex-1 bg-brand-teal",
-            mobileView === "map" ? "hidden lg:block" : "block"
-          )}
-        >
-          <div className="space-y-3 p-5 lg:p-6">
-            {/* Section header */}
-            <div className="flex items-center justify-between pb-2">
-              <p className="font-ewangi text-[1.35rem] text-brand-pine">
-                Available projects
-              </p>
-              <p className="font-ewangi text-sm uppercase tracking-[0.12em] text-brand-pine/70">
-                {filtered.length} · {currency}
-              </p>
+        {/* Map + listings — Figma: map ~49% left, listing cards ~43% right */}
+        <div className="px-5 py-8 sm:px-8 md:px-12 lg:px-16">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
+          {/* Map */}
+          <div
+            className={cn(
+              "relative h-[70vh] w-full overflow-hidden rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.12)] lg:h-auto lg:w-[46%]",
+              mobileView === "list" ? "hidden lg:block" : "block"
+            )}
+          >
+            <MapPanel selectedState={stateFilter} filteredCount={filtered.length} className="absolute inset-0" />
+
+            <MapFiltersCard
+              activeStatuses={statusFilters}
+              onToggleStatus={toggleStatus}
+              financingOnly={financingOnly}
+              onToggleFinancing={setFinancingOnly}
+              onSearchArea={() => {}}
+            />
+
+            {/* Legend */}
+            <div className="pointer-events-none absolute bottom-3 left-3 z-10 flex max-w-45 items-center gap-2 rounded-[10px] bg-white px-3 py-2 shadow-[0_1px_6px_rgba(0,0,0,0.22)] sm:left-4 sm:bottom-4">
+              <span className="h-3.5 w-3.5 shrink-0 rounded-full bg-brand-emerald" />
+              <span className="font-ewangi text-[9px] leading-tight text-brand-emerald">
+                Clusters show number of available properties
+              </span>
             </div>
 
-            {filtered.length > 0 ? (
-              <>
-                {/* 2×2 grid — stagger each card in on filter change */}
-                <motion.div
-                  key={filtered.slice(0, 4).map((l) => l.id).join(",")}
-                  className="grid gap-4 sm:grid-cols-2"
-                  initial="hidden"
-                  animate="show"
-                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+            {/* Decorative price pins — approximate positions from the static pin map */}
+            {mapPins.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => handleCardClick(p.id)}
+                style={{ left: `${p.x}%`, top: `${p.y}%` }}
+                className="absolute z-10 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
+              >
+                <span
+                  className={cn(
+                    "flex h-8.5 w-8.5 items-center justify-center rounded-full border-2 border-white font-ewangi text-[13px] font-bold text-white shadow-md transition",
+                    activePin === p.id ? "bg-brand-pine" : "bg-brand-emerald"
+                  )}
                 >
-                  {filtered.slice(0, 4).map((listing) => (
-                    <motion.div
-                      key={listing.id}
-                      variants={{
-                        hidden: { opacity: 0, y: 14, scale: 0.96 },
-                        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
-                      }}
-                    >
-                      <ListingCard
-                        listing={listing}
-                        active={activePin === listing.id}
-                        currency={currency}
-                        onClick={() => handleCardClick(listing.id)}
-                        compact
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
+                  1
+                </span>
+                <span className="whitespace-nowrap rounded-[7px] border border-white bg-brand-emerald px-2.5 py-1 font-ewangi text-[11px] font-bold text-white shadow-md">
+                  {formatShortPrice(p.listing.priceUSD)}
+                </span>
+              </button>
+            ))}
+          </div>
 
-                <div className="flex justify-center pt-1">
-                  <button
-                    type="button"
-                    className="rounded-full border-2 border-brand-pine/40 px-8 py-2 font-ewangi text-brand-pine transition hover:bg-brand-pine/10"
-                  >
-                    View more projects
-                  </button>
-                </div>
-              </>
+          {/* Listing cards */}
+          <div
+            className={cn(
+              "flex-1 space-y-4 lg:max-h-[845px] lg:overflow-y-auto lg:pr-1",
+              mobileView === "map" ? "hidden lg:block" : "block"
+            )}
+          >
+            {filtered.length > 0 ? (
+              filtered.map((listing) => (
+                <ExploreListingCard
+                  key={listing.id}
+                  listing={listing}
+                  active={activePin === listing.id}
+                  currency={currency}
+                  onClick={() => handleCardClick(listing.id)}
+                />
+              ))
             ) : (
-              <div className="rounded-[34px] border border-brand-pine/20 bg-white/30 px-6 py-16 text-center">
+              <div className="rounded-[22px] border border-brand-ink/10 bg-[#eaedf0]/50 px-6 py-16 text-center">
                 <p className="font-ewangi text-[2rem] text-brand-pine/60">No results</p>
                 <button
                   type="button"
@@ -228,6 +291,9 @@ export default function ExploreMapPage() {
                     setStateFilter("All");
                     setVerifiedOnly(false);
                     setSortBy("rec");
+                    setStatusFilters(new Set(CONSTRUCTION_STATUSES));
+                    setFinancingOnly(false);
+                    setQuickFilters(new Set());
                   }}
                 >
                   Clear filters
@@ -237,44 +303,38 @@ export default function ExploreMapPage() {
           </div>
         </div>
       </div>
+    </div>
 
-      {/* CTA section — Figma: "Didn't find your dream's propertie?" Ewangi 48px #eaedf0
-          "Speak with us!" 36px, teal button #3AD3C1, house illustration on right */}
-      <div className="mb-10 overflow-hidden border-y border-white/10 sm:mx-6 sm:mb-12 sm:rounded-[28px] sm:border lg:mx-14">
-        <div className="flex flex-col gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-16">
-          {/* Left: copy + button */}
-          <RevealOnScroll direction="center" duration={1200}>
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3rem)] leading-tight text-[#eaedf0]">
-                  Didn&apos;t find your<br />dream&apos;s property?
-                </h2>
-                <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-[#eaedf0]/70">
-                  Speak with us!
-                </p>
-              </div>
+      {/* CTA — Figma: full-width teal band, verify checklist, headline, house illustration */}
+      <div className="bg-[#03a593] px-6 py-12 sm:px-10 sm:py-16 lg:rounded-t-[20px] lg:px-16">
+        <RevealOnScroll direction="up">
+          <VerifyFeatures className="mb-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" />
+        </RevealOnScroll>
 
-              {/* Figma: teal #3AD3C1 button, 309×83px, dark text */}
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-10 py-5 font-ewangi text-[1.1rem] text-brand-ink transition hover:bg-brand-teal-dark"
-              >
-                Talk to an expert
-              </Link>
-            </div>
+        <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <RevealOnScroll direction="left" className="max-w-lg space-y-5">
+            <h2 className="font-ewangi text-[clamp(1.75rem,4vw,3rem)] leading-tight text-[#eaedf0]">
+              <span className="font-light italic">Didn&apos;t find your</span> dream&apos;s property?
+            </h2>
+            <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] font-bold text-[#eaedf0]">
+              Speak with us!
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-ewangi text-[1.05rem] font-bold text-brand-ink transition hover:bg-white/90"
+            >
+              Talk to an advisor
+            </Link>
           </RevealOnScroll>
 
-          {/* Right: house illustration — Figma: image 3, 512×512 */}
-          <RevealOnScroll direction="center" delay={150} duration={1200} className="shrink-0">
-            <div className="relative h-56 w-56 overflow-hidden rounded-[43px] bg-white/5 lg:h-72 lg:w-72">
-              <Image
-                src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80"
-                alt="Dream property"
-                fill
-                sizes="(max-width: 1024px) 224px, 288px"
-                className="object-cover"
-              />
-            </div>
+          <RevealOnScroll direction="right" delay={150} className="relative h-56 w-56 shrink-0 sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+            <Image
+              src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Modern_House_White.H03.2k_sjznmv.png"
+              alt="Modern house illustration"
+              fill
+              sizes="(max-width: 1024px) 288px, 320px"
+              className="object-contain"
+            />
           </RevealOnScroll>
         </div>
       </div>

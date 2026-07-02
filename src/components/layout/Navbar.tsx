@@ -78,6 +78,7 @@ const navItems: NavItem[] = [
   { label: "Map",         href: "/explore-map" },
   { label: "Buyers",      href: "/buyers-guide" },
   { label: "Developers",  href: "/for-developers" },
+  { label: "Blog",        href: "/blog" },
   { label: "Contact",     href: "/contact" },
 ];
 
