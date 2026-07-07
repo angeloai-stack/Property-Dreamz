@@ -18,7 +18,7 @@ const cards = [
   {
     title: "Direct Developer Access",
     body: "Connect directly with qualified developers. No middlemen, no confusion.",
-    image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=700&q=75",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=75",
     alt: "Aerial view of a residential development",
   },
   {

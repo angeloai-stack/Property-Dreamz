@@ -13,7 +13,7 @@ const checklist = [
 
 export function CertificationSection() {
   return (
-    <section id="certification" className="w-full bg-[#028e7f] py-14 md:py-20">
+    <section className="w-full bg-[#028e7f] py-14 md:py-20">
       <Container className="grid gap-10 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-12">
         <RevealOnScroll direction="left">
           <span className="mb-4 inline-flex w-fit items-center rounded-full bg-white/15 px-4 py-1.5 font-ewangi text-label font-semibold text-white">
@@ -30,10 +30,10 @@ export function CertificationSection() {
             Buyers can easily identify developments that have completed independent verification processes.
           </p>
           <Link
-            href="#certification"
+            href="/properties"
             className="mt-7 inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-6 py-2.5 font-ewangi text-[14px] font-semibold text-white transition hover:bg-white hover:text-[#028e7f]"
           >
-            Learn about CMRE Certification <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            Browse certified developments <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
           </Link>
         </RevealOnScroll>
 
