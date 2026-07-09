@@ -401,7 +401,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Fecha del análisis</div>
-        <div class="cover-meta-value">30 de junio de 2026</div>
+        <div class="cover-meta-value">8 de julio de 2026</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
@@ -451,13 +451,13 @@
 
     <div class="stat-row">
       <div class="stat"><span class="stat-num">14</span><span class="stat-label">Next.js</span></div>
-      <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Componentes</span></div>
-      <div class="stat"><span class="stat-num">13</span><span class="stat-label">Páginas App</span></div>
+      <div class="stat"><span class="stat-num">85</span><span class="stat-label">Componentes</span></div>
+      <div class="stat"><span class="stat-num">34</span><span class="stat-label">Páginas App</span></div>
       <div class="stat"><span class="stat-num">66</span><span class="stat-label">Unit Tests</span></div>
     </div>
 
     <div class="highlight-box">
-      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 5 formularios, 5 API routes (1 activa) y 13 páginas (incluidas 4 páginas de propiedades individuales). Todas las imágenes migradas a Cloudinary (cloud <code>dserzvrwe</code>). Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS, CRM y Mapbox están declaradas pero aún no conectadas.
+      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 34 páginas: 17 de detalle de propiedad (16 con metadata SEO propia), 4 landings regionales (Baja California, Tijuana, Rosarito, Ensenada), blog con 13 artículos, mapa interactivo Mapbox GL y página de favoritos conectada a un store global (localStorage) alimentado por todos los corazones del sitio. El SEO sigue el documento de contenido aprobado (meta tags, asignación de ciudades, FAQs con schema FAQPage). Todas las imágenes en Cloudinary (cloud <code>dserzvrwe</code>). Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS y CRM están declaradas pero aún no conectadas.
     </div>
   </div>
 
@@ -540,16 +540,20 @@
 │   │   │   ├── data.ts                <span class="note"># Mock listings y pins</span>
 │   │   │   └── utils.ts               <span class="note"># Formateadores de precio USD/MXN</span>
 │   │   ├── <span class="dir">properties/</span>
-│   │   │   ├── page.tsx               <span class="note"># Listing principal + PropertyInquiryForm</span>
-│   │   │   ├── <span class="dir">delmar/</span>page.tsx        <span class="note"># Página de propiedad Del Mar</span>
-│   │   │   ├── <span class="dir">andares/</span>page.tsx       <span class="note"># Página de propiedad Andares PD</span>
-│   │   │   ├── <span class="dir">torre51/</span>page.tsx       <span class="note"># Página de propiedad Torre 51 Negativo</span>
-│   │   │   └── <span class="dir">alimar/</span>page.tsx        <span class="note"># Página de propiedad Alimar (nuevo)</span>
+│   │   │   ├── page.tsx               <span class="note"># Grid con filtros + PropertyInquiryForm</span>
+│   │   │   ├── data.ts                <span class="note"># Catálogo (regiones según documento SEO) + adaptador saved</span>
+│   │   │   └── <span class="dir">&lt;slug&gt;/</span>                <span class="note"># 17 páginas de detalle; 16 con layout.tsx de metadata SEO</span>
+│   │   ├── <span class="dir">baja-california-real-estate/</span> <span class="note"># Landing regional Baja California</span>
+│   │   ├── <span class="dir">tijuana-real-estate/</span>       <span class="note"># Landing de ciudad Tijuana</span>
+│   │   ├── <span class="dir">rosarito-real-estate/</span>      <span class="note"># Landing de ciudad Rosarito</span>
+│   │   ├── <span class="dir">ensenada-real-estate/</span>      <span class="note"># Landing de ciudad Ensenada</span>
+│   │   ├── <span class="dir">blog/</span>                      <span class="note"># Índice + [slug] — 13 artículos (data.ts)</span>
+│   │   ├── <span class="dir">portal/</span>                    <span class="note"># Portal de desarrolladores (login)</span>
 │   │   ├── <span class="dir">buyers-guide/</span>page.tsx      <span class="note"># Guía + GuideDownloadForm + FAQ</span>
 │   │   ├── <span class="dir">for-developers/</span>page.tsx    <span class="note"># Portal + DeveloperListingForm</span>
 │   │   ├── <span class="dir">about/</span>page.tsx             <span class="note"># Página Acerca de</span>
 │   │   ├── <span class="dir">contact/</span>page.tsx           <span class="note"># ContactForm (client component)</span>
-│   │   └── <span class="dir">saved/</span>page.tsx             <span class="note"># Stub — proyectos guardados</span>
+│   │   └── <span class="dir">saved/</span>page.tsx             <span class="note"># Favoritos — store global localStorage</span>
 │   ├── <span class="dir">components/</span>
 │   │   ├── <span class="dir">ui/</span>                        <span class="note"># Primitivas reutilizables</span>
 │   │   │   ├── Button.tsx, Input.tsx, Badge.tsx, Card.tsx
@@ -568,12 +572,17 @@
 │   │   │   └── index.ts               <span class="note"># Barrel export</span>
 │   │   ├── <span class="dir">home/</span>
 │   │   │   ├── HeroSection.tsx, VerifySection.tsx, FeatureCards.tsx
-│   │   │   ├── TopDevelopers.tsx, BuyersGuideSteps.tsx, CertifiedBanner.tsx
-│   │   │   └── FaqSection.tsx, FeaturedDevelopments.tsx, DestinationsStrip.tsx
+│   │   │   ├── TopDevelopers.tsx, TopDevelopersCards.tsx, BuyersGuideSteps.tsx
+│   │   │   └── CertifiedBanner.tsx, FaqSection.tsx, faq-data.ts, …
+│   │   ├── <span class="dir">baja/</span>                      <span class="note"># Secciones landing Baja + PropertiesByCity</span>
+│   │   ├── <span class="dir">tijuana/</span>, <span class="dir">rosarito/</span>, <span class="dir">ensenada/</span>  <span class="note"># Secciones por ciudad (hero, SEO block, grid, blog)</span>
+│   │   ├── <span class="dir">blog/</span>                      <span class="note"># BlogCard y componentes de artículo</span>
 │   │   ├── <span class="dir">explore-map/</span>
-│   │   │   ├── ExploreFilters.tsx, MapPanel.tsx, ListingCard.tsx
+│   │   │   ├── ExploreFilters.tsx, MapPanel.tsx (mapbox-gl), ExploreListingCard.tsx
 │   │   └── <span class="dir">shared/</span>
-│   │       └── CmreBadge.tsx
+│   │       └── CmreBadge.tsx, VerifyFeatures.tsx
+│   ├── <span class="dir">hooks/</span>
+│   │   └── useSavedProperties.tsx     <span class="note"># Store de favoritos (context + localStorage)</span>
 │   ├── <span class="dir">constants/</span>
 │   │   ├── theme.ts                   <span class="note"># Constantes de color</span>
 │   │   └── typography.ts             <span class="note"># Presets de clases tipográficas</span>
@@ -736,17 +745,20 @@
       <tbody>
         <tr><td><code>/coming-soon</code></td><td>app/coming-soon/page.tsx</td><td><span class="badge badge-green">Live</span></td><td>Página standalone (sin Navbar/Footer) con efectos visuales, logo animado y formulario conectado a n8n. Activa en producción vía middleware.</td></tr>
         <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>HeroSection → VerifySection → FeatureCards → TopDevelopers → BuyersGuideSteps → CertifiedBanner → <strong>FaqSection</strong> → <strong>CampaignForm</strong></td></tr>
-        <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa + filtros + listado sincronizado (datos mock)</td></tr>
+        <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa interactivo Mapbox GL (markers reales, fit-to-results, popup con heart) + filtros + listado sincronizado (datos mock)</td></tr>
+        <tr><td><code>/baja-california-real-estate</code></td><td>app/baja-california-real-estate/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Landing regional: hero, bloque SEO con enlaces internos, PropertiesByCity, FAQ</td></tr>
+        <tr><td><code>/tijuana-real-estate</code></td><td>app/tijuana-real-estate/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Landing de ciudad (Figma 1303:17725): hero, Verify, Why Us?, top developers, bloque SEO, grid de propiedades, blog relacionado</td></tr>
+        <tr><td><code>/rosarito-real-estate</code></td><td>app/rosarito-real-estate/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Landing de ciudad (Figma 1313:18151) — misma arquitectura que Tijuana con copy y listings de Rosarito</td></tr>
+        <tr><td><code>/ensenada-real-estate</code></td><td>app/ensenada-real-estate/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Landing de ciudad (Figma 1313:17496) — misma arquitectura con copy y listings de Ensenada</td></tr>
+        <tr><td><code>/blog</code> y <code>/blog/[slug]</code></td><td>app/blog/</td><td><span class="badge badge-green">Completa</span></td><td>Índice + 13 artículos desde catálogo local (<code>data.ts</code>)</td></tr>
         <tr><td><code>/about</code></td><td>app/about/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Propuesta de valor, equipo y CTA</td></tr>
         <tr><td><code>/contact</code></td><td>app/contact/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>ContactForm con estado y submit — pendiente de CRM</td></tr>
         <tr><td><code>/buyers-guide</code></td><td>app/buyers-guide/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>5 pasos + GuideDownloadForm + FAQ + CTA</td></tr>
         <tr><td><code>/for-developers</code></td><td>app/for-developers/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Beneficios + pricing + proceso + DeveloperListingForm</td></tr>
-        <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-gold">Parcial</span></td><td>Header + PropertyInquiryForm — falta grid de listings</td></tr>
-        <tr><td><code>/properties/delmar</code></td><td>app/properties/delmar/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark, galería, mapa embebido. Navbar dark. Imágenes en Cloudinary.</td></tr>
-        <tr><td><code>/properties/andares</code></td><td>app/properties/andares/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark, amenidades, planos. Navbar dark. Imágenes en Cloudinary.</td></tr>
-        <tr><td><code>/properties/torre51</code></td><td>app/properties/torre51/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Hero dark + stats, explorador de lotes, sección seguridad. Navbar dark.</td></tr>
-        <tr><td><code>/properties/alimar</code></td><td>app/properties/alimar/page.tsx</td><td><span class="badge badge-green">Nuevo</span></td><td>Hero dark, explorador de amenidades (tabs), modelos con plano, CTA. Navbar <em>light</em>. Imágenes en Cloudinary.</td></tr>
-        <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-gray">Stub</span></td><td>Placeholder — requiere auth para proyectos guardados</td></tr>
+        <tr><td><code>/properties</code></td><td>app/properties/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Grid con filtro/búsqueda sobre el catálogo (<code>data.ts</code>) + PropertyInquiryForm + hearts de guardado</td></tr>
+        <tr><td><code>/properties/&lt;slug&gt;</code></td><td>app/properties/*/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>17 páginas de detalle — Tijuana: costa-baja, costa-real, delmar, andares · Ensenada: cibola-del-mar, encanto-del-valle, pacifica, punta-piedra · Rosarito: alimar, costa-bella, laguna-bay, loma-serena, naos, palacio-del-mar, tierra-de-agua, torre51, the-wave. Las 16 cubiertas por el documento SEO tienen <code>layout.tsx</code> con title/description propios.</td></tr>
+        <tr><td><code>/portal</code></td><td>app/portal/</td><td><span class="badge badge-gold">Parcial</span></td><td>Portal de desarrolladores con login (<code>/login</code> redirige a <code>/portal/login</code>)</td></tr>
+        <tr><td><code>/saved</code></td><td>app/saved/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Grid de favoritos con orden y unsave — lee del store global <code>useSavedProperties</code> (localStorage). Sin auth: los guardados son por dispositivo.</td></tr>
       </tbody>
     </table>
 
@@ -763,11 +775,14 @@
     </table>
 
     <h3>Metadata SEO</h3>
+    <p class="muted">El documento de contenido SEO aprobado es la fuente de verdad (jul 2026) para meta tags, asignación de ciudades, titles/descriptions por desarrollo, copy de "Why Us?" y FAQs.</p>
     <div class="card-grid">
-      <div class="card"><div class="card-title">JSON-LD</div><div class="card-body">Organization + WebSite en home; FAQPage en buyers-guide</div></div>
+      <div class="card"><div class="card-title">Meta tags home</div><div class="card-body">Title "Mexico Real Estate | Verified Properties | Property Dreamz" + description del documento; H1 con keyword + subtítulo SEO estático en el hero</div></div>
+      <div class="card"><div class="card-title">JSON-LD</div><div class="card-body">Organization + WebSite + FAQPage (9 Q&amp;As) en home; FAQPage en buyers-guide</div></div>
+      <div class="card"><div class="card-title">Metadata por propiedad</div><div class="card-body">16 layouts finos con title/description exactos del documento + OpenGraph por desarrollo</div></div>
       <div class="card"><div class="card-title">OpenGraph</div><div class="card-body">Título, descripción y URL por página</div></div>
       <div class="card"><div class="card-title">robots.ts</div><div class="card-body">Generación automática de robots.txt vía Next.js</div></div>
-      <div class="card"><div class="card-title">sitemap.ts</div><div class="card-body">Sitemap.xml automático con todas las rutas públicas</div></div>
+      <div class="card"><div class="card-title">sitemap.ts</div><div class="card-body">42 URLs: rutas estáticas, 4 landings regionales, 17 páginas de propiedad disponibles y 13 posts del blog</div></div>
     </div>
   </div>
 
@@ -1083,14 +1098,13 @@ settle!({ ok: true })</pre>
         <tr><td>Conectar API routes con HubSpot (crear contacts/deals)</td><td>src/app/api/*/route.ts</td><td>HUBSPOT_API_KEY</td></tr>
         <tr><td>Configurar emails de confirmación con Resend</td><td>src/app/api/*/route.ts</td><td>RESEND_API_KEY</td></tr>
         <tr><td>Conectar Sanity CMS para listings reales</td><td>explore-map/data.ts → sanity queries</td><td>SANITY_PROJECT_ID</td></tr>
-        <tr><td>Integrar Mapbox real en MapPanel</td><td>components/explore-map/MapPanel.tsx</td><td>MAPBOX_TOKEN</td></tr>
       </tbody>
     </table>
 
     <h3>Prioridad Media — Completar UI</h3>
     <ul>
-      <li>Construir grid de listings en <code>/properties</code></li>
-      <li>Implementar página <code>/saved</code> con autenticación (NextAuth.js v5 o Clerk)</li>
+      <li>Construir páginas de detalle para Alma Nova, Divino y Quinta Misión (en el documento SEO, sin página aún) y reemplazar precios/m² placeholder de Costa Bella, Cíbola del Mar y The Wavve en <code>properties/data.ts</code></li>
+      <li>Sincronizar favoritos con cuenta de usuario — hoy <code>/saved</code> es por dispositivo (localStorage); requiere auth (NextAuth.js v5 o Clerk)</li>
       <li>Migrar <code>&lt;img&gt;</code> nativo en Alimar a <code>next/image</code> para optimización automática</li>
       <li>Actualizar número de WhatsApp real en <code>WhatsAppButton.tsx</code></li>
       <li>Añadir <code>loading.tsx</code> por ruta para Suspense boundaries</li>
@@ -1129,6 +1143,28 @@ settle!({ ok: true })</pre>
     <div class="section-label">Changelog — sesión actual</div>
     <h2>Archivos Modificados</h2>
     <p class="muted">Cambios ordenados por fecha descendente. Un archivo aparece una sola vez con su modificación más reciente.</p>
+
+    <h3>8 de julio de 2026 — Landings Rosarito/Ensenada, SEO sitewide y guardado global</h3>
+    <table>
+      <thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><code>src/app/rosarito-real-estate/</code> + <code>src/components/rosarito/</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Landing de Rosarito desde Figma (nodo 1313:18151): página + layout con metadata, RosaritoHero, RosaritoSeoBlock, RosaritoProperties, RosaritoRelatedBlog.</td></tr>
+        <tr><td><code>src/app/ensenada-real-estate/</code> + <code>src/components/ensenada/</code></td><td><span class="badge badge-green">Nuevo</span></td><td>Landing de Ensenada desde Figma (nodo 1313:17496): misma arquitectura que Tijuana/Rosarito con copy propio (vino, Valle de Guadalupe, 80 mi de San Diego).</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Regiones según el documento SEO (fuente de verdad): Costa Real y Del Mar Residencial → Tijuana; Tower 51 y Loma Serena → Rosarito; Pacifica y Encanto del Valle → Ensenada. 4 entradas nuevas (Costa Baja, Costa Bella, Cíbola del Mar, The Wavve). Adaptador <code>toSavedProperty()</code> para el store de favoritos.</td></tr>
+        <tr><td><code>src/app/properties/*/layout.tsx</code> (16 archivos)</td><td><span class="badge badge-green">Nuevo</span></td><td>Layouts finos por desarrollo con title/description exactos del documento SEO + OpenGraph.</td></tr>
+        <tr><td><code>src/app/layout.tsx</code> + <code>src/app/page.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Meta tags del documento SEO ("Mexico Real Estate | Verified Properties…"). JSON-LD ampliado con FAQPage.</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Subtítulo SEO estático bajo el H1 rotativo (H1 description del documento).</td></tr>
+        <tr><td><code>src/components/home/FeatureCards.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Copy extendido de "Why Us?" del documento SEO (3 tarjetas).</td></tr>
+        <tr><td><code>src/components/home/faq-data.ts</code></td><td><span class="badge badge-green">Nuevo</span></td><td>FAQs compartidas entre el acordeón (cliente) y el JSON-LD FAQPage (servidor): 4 preguntas del documento SEO + 5 existentes.</td></tr>
+        <tr><td><code>src/components/home/FaqSection.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Consume <code>faq-data.ts</code> en lugar del array inline.</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Mega-menú Properties reducido a las 3 ciudades del documento SEO (Tijuana/Ensenada/Rosarito) con headers enlazando a las landings dedicadas. Eliminadas zonas Tecate/Mexicali/San Felipe/San Quintín.</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Añadidas landings de Rosarito y Ensenada + las 17 páginas de propiedad disponibles (42 URLs totales).</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Badge "Our top's developers" reducido 50%. Hearts conectados al store de favoritos con id canónico por slug.</td></tr>
+        <tr><td>Grids de propiedades (tijuana/rosarito/ensenada, <code>PropertiesByCity</code>, <code>properties/page.tsx</code>)</td><td><span class="badge badge-gold">Modificado</span></td><td>Todos los botones de corazón guardan/quitan en el store global <code>useSavedProperties</code> (localStorage) con ids <code>catalog-&lt;slug&gt;</code> — un guardado se refleja en todo el sitio y en <code>/saved</code>.</td></tr>
+        <tr><td><code>src/components/baja/BajaSeoBlock.tsx</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Enlaces internos de Rosarito y Ensenada apuntan a las landings dedicadas.</td></tr>
+        <tr><td><code>README.md</code> + <code>technical-report.html</code></td><td><span class="badge badge-gold">Modificado</span></td><td>Documentación actualizada al estado actual del proyecto.</td></tr>
+      </tbody>
+    </table>
 
     <h3>30 de junio de 2026 — Pruebas unitarias (Jest + RTL)</h3>
     <table>
@@ -1237,6 +1273,165 @@ settle!({ ok: true })</pre>
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/page.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/page.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/page.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/PropertiesByCity.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/PropertiesByCity.tsx</code></td><td>8 de julio de 2026 08:45 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/PropertiesByCity.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/PropertiesByCity.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/PropertiesByCity.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaProperties.tsx</code></td><td>8 de julio de 2026 08:44 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaProperties.tsx</code></td><td>8 de julio de 2026 08:43 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:43 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:43 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 08:23 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/faq-data.ts</code></td><td>8 de julio de 2026 08:22 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td>8 de julio de 2026 08:14 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td>8 de julio de 2026 08:14 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>2e77be0e-3c71-48e6-a1c8-70a820175d1a/scratchpad/gen-property-layouts.js</code></td><td>8 de julio de 2026 08:13 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 08:12 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 08:12 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 08:12 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/FaqSection.tsx</code></td><td>8 de julio de 2026 08:12 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/FeatureCards.tsx</code></td><td>8 de julio de 2026 08:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 08:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/layout.tsx</code></td><td>8 de julio de 2026 08:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/layout.tsx</code></td><td>8 de julio de 2026 08:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 08:10 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 08:10 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 08:09 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 07:56 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/BajaSeoBlock.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/ensenada-real-estate/page.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/ensenada-real-estate/layout.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaRelatedBlog.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaProperties.tsx</code></td><td>8 de julio de 2026 07:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaSeoBlock.tsx</code></td><td>8 de julio de 2026 07:49 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/ensenada/EnsenadaHero.tsx</code></td><td>8 de julio de 2026 07:49 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/baja/BajaSeoBlock.tsx</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/rosarito-real-estate/page.tsx</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/rosarito-real-estate/layout.tsx</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoRelatedBlog.tsx</code></td><td>8 de julio de 2026 07:26 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoProperties.tsx</code></td><td>8 de julio de 2026 07:25 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoSeoBlock.tsx</code></td><td>8 de julio de 2026 07:25 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/rosarito/RosaritoHero.tsx</code></td><td>8 de julio de 2026 07:23 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 06:53 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 06:53 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>8 de julio de 2026 06:53 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/blog/data.ts</code></td><td>8 de julio de 2026 06:14 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/properties/data.ts</code></td><td>8 de julio de 2026 06:13 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 06:04 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 06:03 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopers.tsx</code></td><td>8 de julio de 2026 05:51 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 04:59 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 04:58 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 04:58 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:54 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:40 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 04:34 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/page.tsx</code></td><td>8 de julio de 2026 04:34 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:33 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:33 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/BajaSeoBlock.tsx</code></td><td>8 de julio de 2026 04:33 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/BajaSeoBlock.tsx</code></td><td>8 de julio de 2026 04:33 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:18 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:18 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:12 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/home/HeroSection.tsx</code></td><td>8 de julio de 2026 04:11 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/BajaHero.tsx</code></td><td>8 de julio de 2026 03:42 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:41 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:41 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:40 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:34 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:30 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:23 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 03:17 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/baja/BajaHero.tsx</code></td><td>8 de julio de 2026 03:16 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/sitemap.ts</code></td><td>8 de julio de 2026 12:52 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/tijuana-real-estate/page.tsx</code></td><td>8 de julio de 2026 12:51 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/tijuana-real-estate/layout.tsx</code></td><td>8 de julio de 2026 12:51 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaRelatedBlog.tsx</code></td><td>8 de julio de 2026 12:51 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaProperties.tsx</code></td><td>8 de julio de 2026 12:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaSeoBlock.tsx</code></td><td>8 de julio de 2026 12:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/tijuana/TijuanaHero.tsx</code></td><td>8 de julio de 2026 12:50 p.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:49 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:48 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:48 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:48 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:43 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:43 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:41 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:41 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:39 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:39 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:39 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/saved/page.tsx</code></td><td>8 de julio de 2026 10:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/saved/page.tsx</code></td><td>8 de julio de 2026 10:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/saved/page.tsx</code></td><td>8 de julio de 2026 10:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/saved/page.tsx</code></td><td>8 de julio de 2026 10:23 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/utils.ts</code></td><td>8 de julio de 2026 10:22 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/utils.ts</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/ExploreListingCard.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:21 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/globals.css</code></td><td>8 de julio de 2026 10:20 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:20 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 10:20 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/layout.tsx</code></td><td>8 de julio de 2026 10:18 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/layout.tsx</code></td><td>8 de julio de 2026 10:18 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/hooks/useSavedProperties.tsx</code></td><td>8 de julio de 2026 10:18 a.m.</td><td>Nuevo archivo</td></tr>
+        <tr><td><code>src/app/explore-map/data.ts</code></td><td>8 de julio de 2026 10:09 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapFiltersCard.tsx</code></td><td>8 de julio de 2026 10:04 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapFiltersCard.tsx</code></td><td>8 de julio de 2026 10:04 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapFiltersCard.tsx</code></td><td>8 de julio de 2026 10:04 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 09:59 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:59 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:59 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:55 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:45 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:39 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:39 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 09:38 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 09:38 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/page.tsx</code></td><td>8 de julio de 2026 09:37 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/data.ts</code></td><td>8 de julio de 2026 09:37 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/app/explore-map/data.ts</code></td><td>8 de julio de 2026 09:37 a.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/explore-map/MapPanel.tsx</code></td><td>8 de julio de 2026 09:37 a.m.</td><td>Nuevo archivo</td></tr>
         <tr><td><code>src/app/contact/page.tsx</code></td><td>7 de julio de 2026 11:28 p.m.</td><td>Nuevo archivo</td></tr>
         <tr><td><code>src/components/contact/ContactClosingCta.tsx</code></td><td>7 de julio de 2026 11:28 p.m.</td><td>Nuevo archivo</td></tr>
         <tr><td><code>src/components/contact/WhyContactUs.tsx</code></td><td>7 de julio de 2026 11:28 p.m.</td><td>Nuevo archivo</td></tr>

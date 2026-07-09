@@ -5,32 +5,7 @@ import { Plus } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-const faqs = [
-  {
-    q: "Can Americans legally own property in Mexico?",
-    a: "Yes — through a bank trust called a Fideicomiso, U.S. citizens can hold full ownership rights to property in Mexico's restricted zones (within 50 km of the coast or 100 km of borders). Outside those zones, direct title ownership is available.",
-  },
-  {
-    q: "What exactly is a Fideicomiso?",
-    a: "A Fideicomiso is a Mexican bank trust that holds title on your behalf. You retain all ownership rights — sell, lease, remodel, or pass to heirs — while the bank acts as trustee in name only. It renews every 50 years.",
-  },
-  {
-    q: "How does Property Dreamz verify each property?",
-    a: "Every development passes a 4-point review: title search, developer background check, HOA financial audit, and on-site inspection. Only developments that pass all four gates earn the Certified badge.",
-  },
-  {
-    q: "What does CMRE certification mean?",
-    a: "CMRE (Certified Mexican Real Estate) is the independent body that validates our review process. Their seal confirms Property Dreamz meets the highest professional standards for cross-border real estate brokerage.",
-  },
-  {
-    q: "How long does the buying process take?",
-    a: "From signed offer to recorded deed, most buyers close in 60–90 days. Fideicomiso approval from the Mexican Ministry of Foreign Affairs takes 30–45 days and is typically the longest single step.",
-  },
-  {
-    q: "Are prices listed in USD?",
-    a: "Yes. Every listing is priced in U.S. dollars and our closing coordinators work exclusively in USD. We also partner with U.S.-based lenders who offer financing for Mexico properties.",
-  },
-];
+import { faqs } from "./faq-data";
 
 function FaqItem({
   q,

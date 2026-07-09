@@ -7,6 +7,7 @@ import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const slides = [
+  { line1: "Mexico Real Estate:", line2: "Find the Right Property" },
   { line1: "Find your",   line2: "Piece of Mexico"  },
   { line1: "Own a slice", line2: "of Paradise"      },
   { line1: "Live the",    line2: "Mexican Dream"    },
@@ -74,6 +75,12 @@ export function HeroSection() {
             {slides[slide].line2}
           </span>
         </h1>
+
+        {/* Static SEO subtitle — stays put while the headline carousel rotates */}
+        <p className="mt-4 max-w-2xl font-ewangi text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed text-white/90">
+          Find certified properties across Mexico. Buy a house in Mexico with peace of mind — every
+          listing title-searched, developer-vetted, and HOA-audited before you invest.
+        </p>
 
         {/* Carousel dots */}
         <div className="mt-5 flex gap-2">

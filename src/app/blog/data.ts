@@ -270,7 +270,7 @@ export const posts = [
     author: "María Ruiz",
     authorRole: "Senior Market Analyst",
     authorInitials: "MR",
-    image: "https://images.unsplash.com/photo-1439405328-8e6e24c98c0e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1474722883778-792e7990302f?w=800&q=80",
     featured: false,
     toc: [
       { id: "why-now", label: "Why now" },

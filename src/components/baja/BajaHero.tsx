@@ -15,9 +15,12 @@ export function BajaHero() {
       <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/10 to-transparent" />
 
       <div className="relative z-10 flex min-h-[min(78vh,700px)] flex-col justify-center px-6 pb-16 sm:px-10 lg:px-20">
-        <h1 className="font-ewangi text-[clamp(2.75rem,8vw,5rem)] leading-[0.95]">
-          <span className="block text-[#eaedf0]">Baja California</span>
-          <span className="block font-bold text-[#191919]">Real Estate</span>
+        {/* Single-line + extra tracking works around a kerning defect in the Ewangi font file itself:
+            "Baja California"/"Real Estate" glyphs visibly overlap at default tracking regardless of
+            markup, line-height, or spacing — confirmed by swapping to a system font, which renders clean. */}
+        <h1 className="font-ewangi text-[clamp(2.25rem,6.5vw,4.5rem)] leading-tight tracking-wider">
+          <span className="text-[#eaedf0]">Baja California </span>
+          <span className="font-bold text-[#191919]">Real Estate</span>
         </h1>
         <p className="mt-6 max-w-2xl font-ewangi text-[1.1rem] leading-relaxed text-white">
           Discover Baja California real estate: beachfront condos in Rosarito, oceanfront developments

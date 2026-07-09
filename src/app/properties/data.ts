@@ -1,4 +1,6 @@
 // Property catalogue shared by the properties listing page and regional landing pages (e.g. Baja California).
+import type { SavedProperty } from "@/hooks/useSavedProperties";
+
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 
 export type PropertyType = "Lots" | "Condos" | "Mixed";
@@ -17,12 +19,32 @@ export type Property = {
   certified: boolean;
 };
 
+// Adapts a catalogue entry to the shared saved-properties store. The `catalog-` id prefix keeps
+// the namespace separate from explore-map listings while staying stable across every card that
+// renders the same development, so hearting it anywhere toggles it everywhere.
+// Catalogue entries don't carry beds/baths — derive card-friendly values from the property type.
+export function toSavedProperty(p: Property): SavedProperty {
+  const isLots = p.type === "Lots";
+  return {
+    id: `catalog-${p.id}`,
+    title: p.title,
+    zone: p.zone,
+    priceUSD: p.priceUSD,
+    beds: isLots ? 0 : 2,
+    baths: isLots ? 0 : 2,
+    sqm: p.sqmMin,
+    status: p.availability,
+    image: p.image,
+  };
+}
+
 export const properties: Property[] = [
+  // City assignments follow the SEO content document (source of truth as of Jul 2026).
   {
     id: "delmar",
-    title: "Del Mar",
-    zone: "Rosarito, BC",
-    region: "Rosarito",
+    title: "Del Mar Residencial",
+    zone: "Tijuana, BC",
+    region: "Tijuana",
     sqmMin: 250,
     priceUSD: 320000,
     availability: "Available",
@@ -59,9 +81,9 @@ export const properties: Property[] = [
   },
   {
     id: "torre51",
-    title: "Torre 51",
-    zone: "Tijuana, BC",
-    region: "Tijuana",
+    title: "Tower 51",
+    zone: "Rosarito, BC",
+    region: "Rosarito",
     sqmMin: 72,
     priceUSD: 165000,
     availability: "Available",
@@ -125,21 +147,21 @@ export const properties: Property[] = [
   {
     id: "loma-serena",
     title: "Loma Serena",
-    zone: "Ensenada, BC",
-    region: "Ensenada",
+    zone: "Rosarito, BC",
+    region: "Rosarito",
     sqmMin: 400,
     priceUSD: 145000,
     availability: "Available",
     type: "Lots",
     href: "/properties/loma-serena",
-    image: "https://images.unsplash.com/photo-1439405328-8e6e24c98c0e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&q=80",
     certified: true,
   },
   {
     id: "pacifica",
     title: "Pacifica",
-    zone: "Rosarito, BC",
-    region: "Rosarito",
+    zone: "Ensenada, BC",
+    region: "Ensenada",
     sqmMin: 300,
     priceUSD: 180000,
     availability: "Available",
@@ -152,7 +174,7 @@ export const properties: Property[] = [
     id: "encanto-del-valle",
     title: "Encanto del Valle",
     zone: "Valle de Guadalupe, BC",
-    region: "Valle de Guadalupe",
+    region: "Ensenada",
     sqmMin: 450,
     priceUSD: 95000,
     availability: "Available",
@@ -177,14 +199,66 @@ export const properties: Property[] = [
   {
     id: "costa-real",
     title: "Costa Real",
-    zone: "Rosarito, BC",
-    region: "Rosarito",
+    zone: "Tijuana, BC",
+    region: "Tijuana",
     sqmMin: 300,
     priceUSD: 220000,
     availability: "Available",
     type: "Mixed",
     href: "/properties/costa-real",
     image: `${CLD}/costa-real/hero`,
+    certified: true,
+  },
+  {
+    id: "costa-baja",
+    title: "Costa Baja",
+    zone: "Tijuana, BC",
+    region: "Tijuana",
+    sqmMin: 120,
+    priceUSD: 427000,
+    availability: "Available",
+    type: "Condos",
+    href: "/properties/costa-baja",
+    image: `${CLD}/costa-baja/hero`,
+    certified: true,
+  },
+  {
+    id: "costa-bella",
+    title: "Costa Bella",
+    zone: "Rosarito, BC",
+    region: "Rosarito",
+    sqmMin: 95,
+    priceUSD: 210000,
+    availability: "Available",
+    type: "Condos",
+    href: "/properties/costa-bella",
+    image: `${CLD}/costa-bella/hero`,
+    certified: true,
+  },
+  {
+    id: "cibola-del-mar",
+    title: "Cíbola del Mar",
+    zone: "Ensenada, BC",
+    region: "Ensenada",
+    sqmMin: 100,
+    priceUSD: 190000,
+    availability: "Available",
+    type: "Condos",
+    href: "/properties/cibola-del-mar",
+    image: `${CLD}/cibola-del-mar/hero`,
+    certified: true,
+  },
+  {
+    id: "the-wave",
+    title: "The Wavve",
+    zone: "Rosarito, BC",
+    region: "Rosarito",
+    sqmMin: 80,
+    priceUSD: 175000,
+    availability: "Available",
+    type: "Condos",
+    href: "/properties/the-wave",
+    image: `${CLD}/the-wave/the-wave/hero`,
     certified: true,
   },
   {

@@ -1,6 +1,7 @@
 // Generates the XML sitemap served at /sitemap.xml for search-engine crawlers.
 import type { MetadataRoute } from "next";
 import { posts } from "./blog/data";
+import { properties } from "./properties/data";
 
 const SITE_URL = "https://propertydreamz.com";
 
@@ -38,6 +39,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/tijuana-real-estate`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/rosarito-real-estate`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/ensenada-real-estate`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/for-developers`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -61,6 +80,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    // "Coming Soon" entries have no detail page yet, so they stay out of the sitemap.
+    ...properties
+      .filter((p) => p.availability === "Available")
+      .map((p) => ({
+        url: `${SITE_URL}${p.href}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      })),
     ...posts.map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,
       lastModified: new Date(),

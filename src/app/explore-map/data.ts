@@ -75,54 +75,6 @@ export const listings = [
   {
     id: 4,
     status: "verified" as const,
-    title: "Punta Mita Reserve",
-    zone: "Punta Mita, Nayarit",
-    state: "Nayarit",
-    priceMXN: 21250000,
-    priceUSD: 1250000,
-    beds: 5,
-    baths: 5,
-    sqft: 540,
-    rating: 4.9,
-    reviews: 37,
-    type: "House",
-    borderMiles: 1100,
-    sdSavings: 67,
-    lat: 20.7653,
-    lng: -105.5303,
-    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/panoramic_1_qwo5jt.png",
-    constructionStatus: "Ready to move in" as const,
-    financingAvailable: true,
-    photos: 31,
-    tags: ["Homes", "Oceanfront"] as const,
-  },
-  {
-    id: 5,
-    status: "vendido" as const,
-    title: "Tulum Nah Kin",
-    zone: "Tulum, Quintana Roo",
-    state: "Quintana Roo",
-    priceMXN: 5440000,
-    priceUSD: 320000,
-    beds: 3,
-    baths: 2,
-    sqft: 195,
-    rating: 4.7,
-    reviews: 58,
-    type: "Condo",
-    borderMiles: 1650,
-    sdSavings: 71,
-    lat: 20.2114,
-    lng: -87.4654,
-    image: "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png",
-    constructionStatus: "Ready to move in" as const,
-    financingAvailable: false,
-    photos: 18,
-    tags: ["Homes", "Oceanfront"] as const,
-  },
-  {
-    id: 6,
-    status: "verified" as const,
     title: "Ensenada Marina",
     zone: "Ensenada, Baja California",
     state: "Baja California",
@@ -148,16 +100,6 @@ export const listings = [
 
 export const CONSTRUCTION_STATUSES = ["Pre-sale", "Under construction", "Ready to move in"] as const;
 
-// Pin positions are expressed as percentage offsets on the static Mexico map SVG/image.
-export const pins = [
-  { id: 1, x: 9,  y: 67, lat: 32.5149, lng: -117.0382 },
-  { id: 2, x: 8,  y: 70, lat: 32.3667, lng: -117.0647 },
-  { id: 3, x: 11, y: 65, lat: 32.0285, lng: -116.6005 },
-  { id: 4, x: 42, y: 50, lat: 20.7653, lng: -105.5303 },
-  { id: 5, x: 78, y: 62, lat: 20.2114, lng:  -87.4654 },
-  { id: 6, x: 10, y: 72, lat: 31.8667, lng: -116.5960 },
-] as const;
-
 export const MEXICAN_STATES = [
   "All",
   "Baja California",
@@ -171,7 +113,6 @@ export const MEXICAN_STATES = [
 ] as const;
 
 export type Listing = (typeof listings)[number];
-export type Pin = (typeof pins)[number];
 export type ListingStatus = Listing["status"];
 export type ConstructionStatus = (typeof CONSTRUCTION_STATUSES)[number];
 export type Currency = "USD" | "MXN";

@@ -10,8 +10,7 @@ import { MapFiltersCard } from "@/components/explore-map/MapFiltersCard";
 import { ExploreFilters } from "@/components/explore-map/ExploreFilters";
 import { RevealOnScroll } from "@/components/ui";
 import { VerifyFeatures } from "@/components/shared/VerifyFeatures";
-import { listings, pins, CONSTRUCTION_STATUSES, type ConstructionStatus, type Currency } from "./data";
-import { formatShortPrice } from "./utils";
+import { listings, CONSTRUCTION_STATUSES, type ConstructionStatus, type Currency } from "./data";
 import { cn } from "@/lib/utils";
 
 type MobileView = "map" | "list";
@@ -85,11 +84,6 @@ export default function ExploreMapPage() {
           return 0;
         }),
     [stateFilter, typeFilter, verifiedOnly, statusFilters, financingOnly, quickFilters, searchVal, sortBy]
-  );
-
-  const mapPins = useMemo(
-    () => pins.filter((p) => filtered.some((l) => l.id === p.id)).map((p) => ({ ...p, listing: filtered.find((l) => l.id === p.id)! })),
-    [filtered]
   );
 
   const handleCardClick = (id: number) => {
@@ -220,7 +214,12 @@ export default function ExploreMapPage() {
               mobileView === "list" ? "hidden lg:block" : "block"
             )}
           >
-            <MapPanel selectedState={stateFilter} filteredCount={filtered.length} className="absolute inset-0" />
+            <MapPanel
+              listings={filtered}
+              activeId={activePin}
+              onMarkerClick={handleCardClick}
+              className="absolute inset-0"
+            />
 
             <MapFiltersCard
               activeStatuses={statusFilters}
@@ -231,35 +230,13 @@ export default function ExploreMapPage() {
             />
 
             {/* Legend */}
-            <div className="pointer-events-none absolute bottom-3 left-3 z-10 flex max-w-45 items-center gap-2 rounded-[10px] bg-white px-3 py-2 shadow-[0_1px_6px_rgba(0,0,0,0.22)] sm:left-4 sm:bottom-4">
+            <div className="pointer-events-none absolute bottom-3 left-3 z-10 flex max-w-50 items-center gap-2 rounded-[10px] bg-white px-3 py-2 shadow-[0_1px_6px_rgba(0,0,0,0.22)] sm:left-4 sm:bottom-4">
               <span className="h-3.5 w-3.5 shrink-0 rounded-full bg-brand-emerald" />
               <span className="font-ewangi text-[9px] leading-tight text-brand-emerald">
-                Clusters show number of available properties
+                Each pin marks a verified property. Shaded area is approximate — not the official
+                property boundary.
               </span>
             </div>
-
-            {/* Decorative price pins — approximate positions from the static pin map */}
-            {mapPins.map((p) => (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => handleCardClick(p.id)}
-                style={{ left: `${p.x}%`, top: `${p.y}%` }}
-                className="absolute z-10 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
-              >
-                <span
-                  className={cn(
-                    "flex h-8.5 w-8.5 items-center justify-center rounded-full border-2 border-white font-ewangi text-[13px] font-bold text-white shadow-md transition",
-                    activePin === p.id ? "bg-brand-pine" : "bg-brand-emerald"
-                  )}
-                >
-                  1
-                </span>
-                <span className="whitespace-nowrap rounded-[7px] border border-white bg-brand-emerald px-2.5 py-1 font-ewangi text-[11px] font-bold text-white shadow-md">
-                  {formatShortPrice(p.listing.priceUSD)}
-                </span>
-              </button>
-            ))}
           </div>
 
           {/* Listing cards */}

@@ -1,6 +1,16 @@
 // SEO text block with trust stats — Figma: "Section / Baja California SEO Text".
 import Image from "next/image";
+import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui";
+
+// Figma marks these phrases bold + underlined in teal — the design's convention for an inline link.
+function SeoLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="font-bold text-[#03a593] underline underline-offset-2 hover:text-brand-teal">
+      {children}
+    </Link>
+  );
+}
 
 const stats = [
   { value: "47+", label: "Certified Developments" },
@@ -23,16 +33,25 @@ export function BajaSeoBlock() {
                 Baja California Real Estate
               </h2>
               <p className="max-w-xl font-ewangi text-[15px] leading-[1.75] text-[#3a4a44]">
-                Baja California is one of the most sought-after destinations for Americans and Canadians
-                buying property in Mexico. With its stunning Pacific coastline, thriving border economy,
-                and proximity to San Diego, cities like Tijuana, Ensenada, and Rosarito offer exceptional
-                value for buyers at every budget. Whether you are searching for a beachfront condo, a
-                gated community home, or a vacation retreat, Baja California real estate delivers
-                world-class lifestyle options backed by a strong legal framework for foreign ownership.
-                All developments listed on Property Dreamz are certified — every title has been searched,
-                every developer background-checked, and every HOA reserve audited before a single property
-                goes live on our platform. Investing in Baja California real estate has never been more
-                transparent or secure.
+                Baja California is one of the most sought-after destinations for Americans and Canadians{" "}
+                <span className="font-bold text-brand-pine">buying property in Mexico</span>. With its
+                stunning Pacific coastline, thriving border economy, and proximity to San Diego, cities
+                like <SeoLink href="/tijuana-real-estate">Tijuana</SeoLink>,{" "}
+                <SeoLink href="/ensenada-real-estate">Ensenada</SeoLink>, and{" "}
+                <SeoLink href="/rosarito-real-estate">Rosarito</SeoLink> offer exceptional value for
+                buyers at every budget. Whether you are searching for a{" "}
+                <span className="font-bold text-brand-pine">beachfront condo</span>, a gated community
+                home, or a vacation retreat,{" "}
+                <SeoLink href="/baja-california-real-estate">Baja California real estate</SeoLink>{" "}
+                delivers world-class lifestyle options backed by a strong legal framework for foreign
+                ownership. All developments listed on{" "}
+                <span className="font-bold text-brand-pine">Property Dreamz</span> are{" "}
+                <SeoLink href="/about">certified</SeoLink> — every title has been searched, every
+                developer background-checked, and every{" "}
+                <span className="font-bold text-brand-pine">HOA reserve audited</span> before a single
+                property goes live on our platform. Investing in{" "}
+                <SeoLink href="/baja-california-real-estate">Baja California real estate</SeoLink> has
+                never been more transparent or secure.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">

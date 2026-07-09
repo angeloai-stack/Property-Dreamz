@@ -1,6 +1,7 @@
 // Root layout — shared shell (Navbar, Footer, WhatsApp) injected on every page except /coming-soon and /portal.
 import type { Metadata } from "next";
 import { LayoutShell } from "@/components/layout/LayoutShell";
+import { SavedPropertiesProvider } from "@/hooks/useSavedProperties";
 import { ewangi } from "@/lib/fonts";
 import "./globals.css";
 
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
   // %s is replaced by each page's own title string; default is used when no title is set.
   title: {
     template: "%s — Property Dreamz",
-    default: "Property Dreamz | Verified Mexican Real Estate for Americans",
+    default: "Mexico Real Estate | Verified Properties | Property Dreamz",
   },
   description:
-    "The only portal where every Mexico property is certified before listing. Browse 47 verified developments — title searched, developer reviewed, HOA audited.",
+    "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited.",
   keywords: [
     "mexico real estate",
     "buy property mexico",
@@ -35,9 +36,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Property Dreamz",
-    title: "Property Dreamz | Verified Mexican Real Estate for Americans",
+    title: "Mexico Real Estate | Verified Properties | Property Dreamz",
     description:
-      "The only portal where every Mexico property is certified before listing. Browse 47 verified developments.",
+      "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited.",
     images: [
       {
         url: "/brand/property-dreamz-logo-stacked.png",
@@ -82,7 +83,9 @@ export default function RootLayout({
     <html lang="en" className={ewangi.variable}>
       {/* flex-col + min-h-screen ensures the footer is always pushed to the bottom */}
       <body className="flex min-h-screen flex-col bg-brand-paper text-brand-ink">
-        <LayoutShell>{children}</LayoutShell>
+        <SavedPropertiesProvider>
+          <LayoutShell>{children}</LayoutShell>
+        </SavedPropertiesProvider>
       </body>
     </html>
   );

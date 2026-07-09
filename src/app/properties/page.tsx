@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { Heart, MapPin, ChevronDown, ArrowRight, Search, CheckCircle2, X } from "lucide-react";
 import { RevealOnScroll, TiltCard } from "@/components/ui";
+import { useSavedProperties } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
-import { properties, type Property } from "./data";
+import { properties, toSavedProperty, type Property } from "./data";
 
 function formatPrice(n: number) {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
@@ -99,7 +100,8 @@ function FilterPill({
 // ── PropertyCard ──────────────────────────────────────────────────────────────
 
 function PropertyCard({ property }: { property: Property }) {
-  const [saved, setSaved] = useState(false);
+  const { isSaved, toggleSaved } = useSavedProperties();
+  const saved = isSaved(`catalog-${property.id}`);
 
   return (
     <div className="relative">
@@ -131,7 +133,7 @@ function PropertyCard({ property }: { property: Property }) {
             {/* Heart — empty by default, fills on click */}
             <button
               type="button"
-              onClick={(e) => { e.preventDefault(); setSaved((s) => !s); }}
+              onClick={(e) => { e.preventDefault(); toggleSaved(toSavedProperty(property)); }}
               aria-label={saved ? "Remove from saved" : "Save property"}
               className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm transition hover:bg-white/50"
             >

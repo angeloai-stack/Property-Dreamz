@@ -22,17 +22,17 @@ function CheckboxRow({
   onChange: () => void;
 }) {
   return (
-    <label className="flex cursor-pointer items-center gap-2.5">
+    <label className="flex cursor-pointer items-center gap-2">
       <span
         onClick={onChange}
         className={cn(
-          "flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-[4px] border-2 transition",
+          "flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border-2 transition",
           checked ? "border-brand-teal bg-brand-teal" : "border-brand-ink/25 bg-white"
         )}
       >
-        {checked && <Check className="h-3 w-3 text-white" strokeWidth={3} />}
+        {checked && <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />}
       </span>
-      <span className="font-ewangi text-[13px] text-brand-pine">{label}</span>
+      <span className="font-ewangi text-[11px] text-brand-pine">{label}</span>
     </label>
   );
 }
@@ -45,10 +45,10 @@ export function MapFiltersCard({
   onSearchArea,
 }: MapFiltersCardProps) {
   return (
-    <div className="absolute left-3 top-3 z-10 w-52 rounded-[10px] bg-white p-4 shadow-[3px_2px_10px_rgba(0,0,0,0.25)] sm:left-4 sm:top-4">
-      <p className="mb-2.5 font-ewangi text-[16px] font-bold text-brand-pine">Show only:</p>
+    <div className="absolute left-3 top-3 z-10 w-38 rounded-lg bg-white p-2.5 shadow-[3px_2px_10px_rgba(0,0,0,0.25)] sm:left-4 sm:top-4">
+      <p className="mb-1.5 font-ewangi text-[12px] font-bold text-brand-pine">Show only:</p>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {CONSTRUCTION_STATUSES.map((status) => (
           <CheckboxRow
             key={status}
@@ -59,17 +59,17 @@ export function MapFiltersCard({
         ))}
       </div>
 
-      <hr className="my-2.5 border-brand-ink/10" />
+      <hr className="my-1.5 border-brand-ink/10" />
 
       <CheckboxRow label="Financing available" checked={financingOnly} onChange={() => onToggleFinancing(!financingOnly)} />
 
       <button
         type="button"
         onClick={onSearchArea}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-[10px] bg-brand-pine px-4 py-2.5 font-ewangi text-[13px] font-semibold text-white transition hover:bg-black"
+        className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-pine px-2.5 py-1.5 font-ewangi text-[11px] font-semibold text-white transition hover:bg-black"
       >
         Search this area
-        <Search className="h-3.5 w-3.5" strokeWidth={2} />
+        <Search className="h-3 w-3" strokeWidth={2} />
       </button>
     </div>
   );

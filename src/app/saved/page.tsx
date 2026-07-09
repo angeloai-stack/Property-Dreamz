@@ -1,5 +1,6 @@
 "use client";
-// Saved listings page — client-only, uses local React state (no persistence yet).
+// Saved listings page — reads from the shared, localStorage-backed saved-properties store so
+// hearting a property anywhere on the site (e.g. the explore-map pin popup) shows up here.
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,94 +17,13 @@ import {
 } from "lucide-react";
 import { RevealOnScroll, TiltCard } from "@/components/ui";
 import { VerifyFeatures } from "@/components/shared/VerifyFeatures";
+import { useSavedProperties, type SavedProperty } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
-
-type SavedListing = {
-  id: number;
-  title: string;
-  zone: string;
-  sqm: number;
-  priceUSD: number;
-  beds: number;
-  baths: number;
-  status: string;
-  image: string;
-};
-
-// Placeholder data — replace with persisted favourites once a backend/localStorage layer exists.
-const initialSaved: SavedListing[] = [
-  {
-    id: 1,
-    title: "Loft in Los Cabos",
-    zone: "Cabo San Lucas, BCS",
-    sqm: 120,
-    priceUSD: 653894,
-    beds: 2,
-    baths: 2,
-    status: "Pre sale",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-  },
-  {
-    id: 2,
-    title: "Residencial Altamar",
-    zone: "Zona Rio, Tijuana",
-    sqm: 180,
-    priceUSD: 250000,
-    beds: 3,
-    baths: 2,
-    status: "Available",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-  },
-  {
-    id: 3,
-    title: "Torres Pacifico",
-    zone: "Playas de Rosarito, BC",
-    sqm: 130,
-    priceUSD: 182000,
-    beds: 2,
-    baths: 2,
-    status: "Pre sale",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-  },
-  {
-    id: 4,
-    title: "Hacienda Valle",
-    zone: "Valle de Guadalupe, BC",
-    sqm: 420,
-    priceUSD: 750000,
-    beds: 5,
-    baths: 4,
-    status: "Available",
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80",
-  },
-  {
-    id: 5,
-    title: "Punta Mita Reserve",
-    zone: "Punta Mita, Nayarit",
-    sqm: 540,
-    priceUSD: 1250000,
-    beds: 5,
-    baths: 5,
-    status: "Verified",
-    image: "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=800&q=80",
-  },
-  {
-    id: 6,
-    title: "Ensenada Marina",
-    zone: "Ensenada, Baja California",
-    sqm: 150,
-    priceUSD: 245000,
-    beds: 3,
-    baths: 2,
-    status: "Pre sale",
-    image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80",
-  },
-];
 
 const SORT_OPTIONS = ["Newest first", "Price: low to high", "Price: high to low"] as const;
 type SortOption = (typeof SORT_OPTIONS)[number];
 
-function sortListings(list: SavedListing[], sort: SortOption): SavedListing[] {
+function sortListings(list: SavedProperty[], sort: SortOption): SavedProperty[] {
   if (sort === "Price: low to high") return [...list].sort((a, b) => a.priceUSD - b.priceUSD);
   if (sort === "Price: high to low") return [...list].sort((a, b) => b.priceUSD - a.priceUSD);
   return list;
@@ -164,7 +84,7 @@ function SortDropdown({ value, onChange }: { value: SortOption; onChange: (v: So
 // ── SavedCard — Figma: "Saved cuadro" 352x438 white card r=14 ────────────────
 
 type SavedCardProps = {
-  listing: SavedListing;
+  listing: SavedProperty;
   onUnsave: () => void;
 };
 
@@ -263,12 +183,11 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
 }
 
 export default function SavedPage() {
-  const [saved, setSaved] = useState<SavedListing[]>(initialSaved);
+  const { saved, removeSaved } = useSavedProperties();
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [sort, setSort] = useState<SortOption>("Newest first");
   const [query, setQuery] = useState("Tijuana, Rosarito, Puerto Nuevo");
 
-  const unsave = (id: number) => setSaved((prev) => prev.filter((l) => l.id !== id));
   const visible = sortListings(saved, sort);
 
   return (
@@ -338,7 +257,7 @@ export default function SavedPage() {
             {visible.map((listing, i) => (
               <RevealOnScroll key={listing.id} delay={Math.min(i, 5) * 80}>
                 <TiltCard intensity={4}>
-                  <SavedCard listing={listing} onUnsave={() => unsave(listing.id)} />
+                  <SavedCard listing={listing} onUnsave={() => removeSaved(listing.id)} />
                 </TiltCard>
               </RevealOnScroll>
             ))}

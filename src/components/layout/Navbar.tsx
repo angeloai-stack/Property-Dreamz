@@ -9,64 +9,49 @@ import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 type SubItem  = { label: string; href: string; tag?: string };
-type Zone     = { zone: string; items: SubItem[] };
+type Zone     = { zone: string; href: string; items: SubItem[] };
 type NavItem  =
   | { label: string; href: string; zones?: never }
   | { label: string; href: string; zones: Zone[] };
 
-// ─── Properties grouped by zone (swap in real data when ready) ───────────────
+// ─── Properties grouped by zone ───────────────────────────────────────────────
+// City assignments follow the SEO content document (source of truth as of Jul 2026).
+// Zone header links to the dedicated city page. Alma Nova, Divino, and Quinta Misión
+// are in the document but have no detail page yet — add them here once built.
 const propertyZones: Zone[] = [
   {
     zone: "Tijuana",
+    href: "/tijuana-real-estate",
     items: [
-      { label: "Torre 51",   href: "/properties/torre51" },
-      { label: "Andares",    href: "/properties/andares" },
-      { label: "Alimar",     href: "/properties/alimar" },
-    ],
-  },
-  {
-    zone: "Tecate",
-    items: [
-      { label: "Encanto del Valle", href: "/properties/encanto-del-valle" },
-      { label: "Valle Dorado",      href: "/properties/valle", tag: "Soon" },
-    ],
-  },
-  {
-    zone: "Mexicali",
-    items: [
-      { label: "Laguna Bay",    href: "/properties/laguna-bay" },
-      { label: "Tierra de Agua",href: "/properties/tierra-de-agua" },
+      { label: "Costa Baja",          href: "/properties/costa-baja" },
+      { label: "Costa Real",          href: "/properties/costa-real" },
+      { label: "Del Mar Residencial", href: "/properties/delmar" },
+      { label: "Andares",             href: "/properties/andares" },
     ],
   },
   {
     zone: "Ensenada",
+    href: "/ensenada-real-estate",
     items: [
-      { label: "Punta Piedra", href: "/properties/punta-piedra" },
-      { label: "Loma Serena",  href: "/properties/loma-serena" },
-      { label: "Costa Baja",   href: "/properties/costa-baja" },
+      { label: "Cíbola del Mar",    href: "/properties/cibola-del-mar" },
+      { label: "Encanto del Valle", href: "/properties/encanto-del-valle" },
+      { label: "Pacifica",          href: "/properties/pacifica" },
+      { label: "Punta Piedra",      href: "/properties/punta-piedra" },
     ],
   },
   {
     zone: "Rosarito",
+    href: "/rosarito-real-estate",
     items: [
-      { label: "Del Mar",     href: "/properties/delmar" },
-      { label: "Costa Bella", href: "/properties/costa-bella" },
-      { label: "Costa Real",  href: "/properties/costa-real" },
-      { label: "The Wave",    href: "/properties/the-wave" },
-    ],
-  },
-  {
-    zone: "San Felipe",
-    items: [
-      { label: "Cíbola del Mar", href: "/properties/cibola-del-mar" },
-      { label: "Pacifica",       href: "/properties/pacifica" },
-    ],
-  },
-  {
-    zone: "San Quintín",
-    items: [
-      { label: "Palacio del Mar", href: "/properties/palacio-del-mar" },
+      { label: "Alimar",          href: "/properties/alimar" },
+      { label: "Costa Bella",     href: "/properties/costa-bella" },
+      { label: "Laguna Bay",      href: "/properties/laguna-bay" },
+      { label: "Loma Serena",     href: "/properties/loma-serena" },
       { label: "Naos",            href: "/properties/naos" },
+      { label: "Palacio del Mar", href: "/properties/palacio-del-mar" },
+      { label: "Tierra de Agua",  href: "/properties/tierra-de-agua" },
+      { label: "Tower 51",        href: "/properties/torre51" },
+      { label: "The Wavve",       href: "/properties/the-wave" },
     ],
   },
 ];
@@ -170,10 +155,13 @@ export function Navbar() {
                     <div className="flex divide-x divide-brand-ink/6">
                       {item.zones.map((zoneGroup) => (
                         <div key={zoneGroup.zone} className="flex min-w-30 flex-col px-4 py-4">
-                          {/* Zone header */}
-                          <p className="mb-2 whitespace-nowrap font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal">
+                          {/* Zone header — links to the city page/map */}
+                          <Link
+                            href={zoneGroup.href}
+                            className="mb-2 whitespace-nowrap font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal hover:text-brand-pine"
+                          >
                             {zoneGroup.zone}
-                          </p>
+                          </Link>
                           {/* Properties in this zone */}
                           <div className="flex flex-col gap-0.5">
                             {zoneGroup.items.map((sub) => (
@@ -306,9 +294,13 @@ export function Navbar() {
                   <div className="ml-4 mt-1 space-y-3 border-l border-brand-paper/10 pl-3">
                     {item.zones.map((zoneGroup) => (
                       <div key={zoneGroup.zone}>
-                        <p className="px-3 py-1 font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-teal">
+                        <Link
+                          href={zoneGroup.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="block px-3 py-1 font-ewangi text-[10px] font-semibold uppercase tracking-widest text-brand-teal"
+                        >
                           {zoneGroup.zone}
-                        </p>
+                        </Link>
                         {zoneGroup.items.map((sub) => (
                           <Link
                             key={sub.label}

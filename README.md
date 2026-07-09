@@ -2,7 +2,7 @@
 
 Verified Mexican real estate portal for international buyers. Every property title-searched, developer-reviewed, and HOA-audited before listing.
 
-> **Status:** Frontend complete. Unit test suite live (66 tests, 9 suites). Coming-soon gate active in production. n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
+> **Status:** Frontend complete — 17 property detail pages, 4 regional landing pages (Baja California, Tijuana, Rosarito, Ensenada), blog, interactive Mapbox map, cross-page saved-properties store, and sitewide SEO from the approved SEO content document. Unit test suite live (66 tests, 9 suites). Coming-soon gate active in production. n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
 
 ---
 
@@ -12,10 +12,11 @@ Verified Mexican real estate portal for international buyers. Every property tit
 
 - Next.js 14 (App Router) · React 18 · TypeScript (strict)
 - Tailwind CSS v4 (`@tailwindcss/forms`, `@tailwindcss/typography`)
-- `next/font/local` — Ewangi only, no Google Fonts · `next/image` with domain allowlist
+- `next/font/local` — Ewangi only, no Google Fonts · `next/image` with domain allowlist (Cloudinary, Unsplash)
 
 **UI / interaction**
 
+- `mapbox-gl` — interactive explore map (real markers, fit-to-results, pin popups)
 - `@radix-ui/react-dialog`, `@radix-ui/react-select` — accessible primitives
 - `framer-motion` — animations
 - `lucide-react` / `react-icons` — iconography
@@ -24,6 +25,10 @@ Verified Mexican real estate portal for international buyers. Every property tit
 **Forms & validation**
 
 - `react-hook-form` + `@hookform/resolvers` + `zod` — form state & validation
+
+**Media**
+
+- Cloudinary (`next-cloudinary`) — all project imagery under cloud `dserzvrwe`, delivery base `f_auto,q_auto`
 
 **Installed but not yet wired** (intended integrations)
 
@@ -85,7 +90,7 @@ PREVIEW_TOKEN=                      # secret token — share with team for previ
 WEBHOOK_COMING_SOON_URL=            # n8n webhook — active
 
 # Maps
-NEXT_PUBLIC_MAPBOX_TOKEN=           # (not yet consumed — map uses static embeds)
+NEXT_PUBLIC_MAPBOX_TOKEN=           # consumed by /explore-map (mapbox-gl)
 
 # CMS
 NEXT_PUBLIC_SANITY_PROJECT_ID=      # (not yet consumed)
@@ -112,7 +117,27 @@ All production traffic redirects to `/coming-soon`. The middleware passes throug
 https://yoursite.com/?preview=<PREVIEW_TOKEN>
 ```
 
-Sets a 7-day `preview_access` cookie. To disable the gate, remove `src/middleware.ts`.
+Sets a `preview_access` cookie. To disable the gate, remove `src/middleware.ts`.
+
+---
+
+## SEO
+
+The approved **SEO content document** is the source of truth (as of Jul 2026) for meta tags, city assignments, per-development titles/descriptions, "Why Us?" copy, and FAQs.
+
+- **Meta tags** — home title `Mexico Real Estate | Verified Properties | Property Dreamz` + description from the document (`src/app/layout.tsx`, `src/app/page.tsx`).
+- **Per-property metadata** — each of the 16 document-covered detail pages has a thin `layout.tsx` exporting its exact SEO title/description + Open Graph.
+- **Regional landing pages** — `/baja-california-real-estate`, `/tijuana-real-estate`, `/rosarito-real-estate`, `/ensenada-real-estate`, each with hero, SEO text block, city-filtered listings grid, and curated related-blog posts.
+- **JSON-LD** — `Organization` + `WebSite` (sitelinks searchbox) + `FAQPage` on the home page; `FAQPage` on buyers-guide.
+- **`sitemap.ts` / `robots.ts`** — sitemap includes static routes, all available property pages, and every blog post (42 URLs).
+
+---
+
+## Saved properties
+
+Cross-page favorites store: `src/hooks/useSavedProperties.tsx` (`SavedPropertiesProvider` mounted in the root layout, persisted to `localStorage` under `pd-saved-properties`).
+
+Every heart button on the site is wired to it — explore-map cards and map-pin popups, `/properties` grid, the home "Properties by City" carousel, Top Developers cards, and the three city landing grids. Saves use canonical `catalog-<slug>` ids, so hearting the same development anywhere toggles a single entry, and everything shows up on `/saved` (sortable grid with unsave).
 
 ---
 
@@ -123,21 +148,34 @@ src/
 ├─ app/
 │  ├─ api/                  Route handlers (contact, property-inquiry,
 │  │                        developer-listing, guide-download, coming-soon)
+│  ├─ baja-california-real-estate/  Regional landing page
+│  ├─ tijuana-real-estate/          Regional landing page
+│  ├─ rosarito-real-estate/         Regional landing page
+│  ├─ ensenada-real-estate/         Regional landing page
+│  ├─ blog/                 Blog index + [slug] article pages (data.ts catalogue)
 │  ├─ coming-soon/          Gated launch page with n8n form
-│  ├─ explore-map/          Interactive listings + map view
-│  ├─ properties/           Listings: andares, delmar, torre51
+│  ├─ explore-map/          Interactive Mapbox map + synced listing cards
+│  ├─ properties/           Listings index + 17 detail pages (data.ts catalogue
+│  │                        with regions per the SEO document + saved-store adapter)
+│  ├─ portal/               Developer portal (login)
 │  ├─ about, buyers-guide, contact, for-developers, saved
-│  ├─ layout.tsx            Root layout — conditional Navbar/Footer via x-pathname header
-│  ├─ page.tsx              Homepage
+│  ├─ layout.tsx            Root layout — metadata, SavedPropertiesProvider,
+│  │                        conditional Navbar/Footer via x-pathname header
+│  ├─ page.tsx              Homepage (+ Organization/WebSite/FAQPage JSON-LD)
 │  ├─ globals.css           Tailwind @theme tokens + keyframes
 │  └─ sitemap.ts, robots.ts SEO endpoints
 ├─ components/
-│  ├─ home/                 Homepage sections
-│  ├─ layout/               Navbar, Footer, Main, WhatsAppButton
+│  ├─ home/                 Homepage sections (+ faq-data.ts shared with JSON-LD)
+│  ├─ baja/                 Baja California landing sections + PropertiesByCity
+│  ├─ tijuana/, rosarito/, ensenada/   City landing sections
+│  ├─ blog/                 BlogCard and article components
+│  ├─ layout/               Navbar (Properties mega-menu by city), Footer, …
 │  ├─ forms/                CampaignForm, ContactForm, PropertyInquiryForm, …
-│  ├─ explore-map/          MapPanel, ListingCard, ExploreFilters
-│  ├─ shared/               CmreBadge
+│  ├─ explore-map/          MapPanel (mapbox-gl), ExploreListingCard, filters
+│  ├─ shared/               CmreBadge, VerifyFeatures
 │  └─ ui/                   Design system primitives
+├─ hooks/
+│  └─ useSavedProperties.tsx  localStorage-backed favorites store (context)
 ├─ fonts/
 │  └─ Ewangi.ttf            Brand typeface (required)
 ├─ constants/               theme.ts, typography.ts
@@ -153,17 +191,21 @@ src/
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero, featured developments, trust signals, FAQ |
-| `/properties` | Browse all listings |
-| `/properties/delmar` | Del Mar development detail |
-| `/properties/andares` | Andares development detail |
-| `/properties/torre51` | Torre 51 development detail |
-| `/explore-map` | Interactive map with filters |
+| `/` | Homepage — hero, verify, Why Us?, top developers, Baja SEO block, properties by city, buyer steps, certified banner, FAQ (9 Q&As + FAQPage schema), campaign form |
+| `/baja-california-real-estate` | Regional landing — Baja California |
+| `/tijuana-real-estate` | Regional landing — Tijuana |
+| `/rosarito-real-estate` | Regional landing — Rosarito |
+| `/ensenada-real-estate` | Regional landing — Ensenada |
+| `/properties` | Browse all listings (filter/search over the catalogue) |
+| `/properties/<slug>` | 17 development detail pages — Tijuana: costa-baja, costa-real, delmar, andares · Ensenada: cibola-del-mar, encanto-del-valle, pacifica, punta-piedra · Rosarito: alimar, costa-bella, laguna-bay, loma-serena, naos, palacio-del-mar, tierra-de-agua, torre51, the-wave |
+| `/explore-map` | Interactive Mapbox map with filters, synced cards, save hearts |
+| `/blog` | Blog index + 13 article pages (`/blog/<slug>`) |
 | `/buyers-guide` | 5-step buying guide + PDF download |
 | `/contact` | Contact form |
 | `/about` | About / mission |
 | `/for-developers` | Developer listing portal with pricing tiers |
-| `/saved` | Saved properties (client-side) |
+| `/portal` | Developer portal (login) |
+| `/saved` | Saved properties — localStorage store, sort + unsave |
 | `/coming-soon` | Gated launch page (active in production) |
 
 ---
@@ -219,14 +261,16 @@ Rendered in order in `src/app/page.tsx`:
 
 | # | Component | Notes |
 |---|---|---|
-| 1 | `HeroSection` | Ken Burns effect, fade-up headline, search bar, social icon sidebar |
-| 2 | `VerifySection` | "The only portal…" trust copy |
-| 3 | `FeatureCards` | 3 certification benefit cards |
-| 4 | `TopDevelopers` | Property carousel + destination grid |
-| 5 | `BuyersGuideSteps` | 3-step buyer journey, alternating layout |
-| 6 | `CertifiedBanner` | CMRE badge + "Browse 47" CTA |
-| 7 | `CampaignForm` | Lead capture form (stub — see limitations) |
-| 8 | `FaqSection` | 6-question accordion |
+| 1 | `HeroSection` | Ken Burns effect, rotating headline carousel (first slide "Mexico Real Estate:"), static SEO subtitle, search bar |
+| 2 | `VerifySection` | "The only portal…" trust copy + CMRE logo |
+| 3 | `FeatureCards` | 3 "Why Us?" cards — extended copy from the SEO document |
+| 4 | `TopDevelopers` | Property carousel (save hearts) + destination grid |
+| 5 | `BajaSeoBlock` | "Baja California Real Estate" SEO text + stats + internal links |
+| 6 | `PropertiesByCity` | Tabbed carousel: Tijuana / Ensenada / Rosarito (save hearts) |
+| 7 | `BuyersGuideSteps` | 3-step buyer journey, alternating layout |
+| 8 | `CertifiedBanner` | CMRE badge + "Browse 47" CTA |
+| 9 | `FaqSection` | 9-question accordion — content in `faq-data.ts`, mirrored as FAQPage JSON-LD |
+| 10 | `CampaignForm` | Lead capture form (stub — see limitations) |
 
 ---
 
@@ -234,8 +278,9 @@ Rendered in order in `src/app/page.tsx`:
 
 - **Most API routes are stubs.** Only `/api/coming-soon` is live. The rest log the body and return `{ success: true }` — leads are not persisted.
 - **Forms lack server-side validation** and rate limiting.
-- **Content is hardcoded.** Listings and developers use inline mock data; Sanity is not connected.
-- **Map is not interactive.** `explore-map` embeds static iframes; Mapbox token unused.
+- **Content is hardcoded.** Listings, blog posts, and developers use inline mock data; Sanity is not connected. Catalogue prices/sqm for Costa Bella, Cíbola del Mar, and The Wavve are placeholders.
+- **Three SEO-document developments have no detail page yet:** Alma Nova, Divino, Quinta Misión (excluded from nav/catalogue until built).
+- **Saved properties are device-local** (localStorage) — no account sync.
 - **Analytics not wired** (GA / Meta Pixel env vars defined but unused).
 - **Missing routes:** `/privacy`, `not-found.tsx`, `error.tsx`.
 - **No security headers** in `next.config.mjs`.
@@ -248,8 +293,8 @@ Rendered in order in `src/app/page.tsx`:
 1. Wire remaining API routes — Zod validation + HubSpot lead sync + Resend emails.
 2. Add rate limiting, honeypot, and security headers.
 3. Connect Sanity CMS for listings and content.
-4. Inject GA4 + Meta Pixel scripts in root layout.
-5. Implement interactive Mapbox map in `/explore-map`.
+4. Build detail pages for Alma Nova, Divino, and Quinta Misión; replace placeholder catalogue prices.
+5. Inject GA4 + Meta Pixel scripts in root layout.
 6. Add `/privacy`, `not-found.tsx`, `error.tsx`.
-7. Add E2E tests (Playwright) for critical form submission flows.
+7. Add E2E tests (Playwright) for critical form submission flows and the saved-properties flow.
 8. Set up CI pipeline (GitHub Actions) to run `npm test` and `npm run build` on every PR.

@@ -1,5 +1,6 @@
 // Price formatting helpers for the explore-map listing cards — handles USD and MXN display.
-import type { Currency } from "./data";
+import type { Currency, Listing } from "./data";
+import type { SavedProperty } from "@/hooks/useSavedProperties";
 
 export function formatMXN(value: number) {
   return `$${(value / 1_000_000).toFixed(2).replace(/\.?0+$/, "")}M MXN`;
@@ -24,4 +25,20 @@ export function formatFullPrice(mxn: number, usd: number, currency: Currency) {
 // Compact price for map pin badges — Figma: "From $89k".
 export function formatShortPrice(usd: number) {
   return `From $${Math.round(usd / 1000)}k`;
+}
+
+// Shared shape used to save a listing to the cross-page /saved store, from either the map
+// popup or the results-list card.
+export function toSavedProperty(listing: Listing): SavedProperty {
+  return {
+    id: `explore-${listing.id}`,
+    title: listing.title,
+    zone: listing.zone,
+    priceUSD: listing.priceUSD,
+    beds: listing.beds,
+    baths: listing.baths,
+    sqm: listing.sqft,
+    status: listing.constructionStatus,
+    image: listing.image,
+  };
 }

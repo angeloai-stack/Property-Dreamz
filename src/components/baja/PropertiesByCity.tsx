@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Bath, Bed, Heart, Maximize2 } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
-import { properties } from "@/app/properties/data";
+import { properties, toSavedProperty } from "@/app/properties/data";
+import { useSavedProperties } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
 
 const CITIES = ["Tijuana", "Ensenada", "Rosarito"] as const;
@@ -13,6 +14,7 @@ const CITIES = ["Tijuana", "Ensenada", "Rosarito"] as const;
 export function PropertiesByCity() {
   const [city, setCity] = useState<(typeof CITIES)[number]>("Tijuana");
   const trackRef = useRef<HTMLDivElement>(null);
+  const { isSaved, toggleSaved } = useSavedProperties();
 
   const cityProperties = useMemo(() => properties.filter((p) => p.region === city), [city]);
 
@@ -56,7 +58,9 @@ export function PropertiesByCity() {
               ref={trackRef}
               className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
             >
-              {cityProperties.map((property, i) => (
+              {cityProperties.map((property, i) => {
+                const saved = isSaved(`catalog-${property.id}`);
+                return (
                 <RevealOnScroll key={property.id} delay={Math.min(i, 4) * 90} className="shrink-0 snap-start">
                   <article className="w-70 overflow-hidden rounded-[24px] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
                     <div className="relative h-75 w-full overflow-hidden">
@@ -78,11 +82,14 @@ export function PropertiesByCity() {
                       {/* Heart */}
                       <button
                         type="button"
-                        aria-label={`Save ${property.title}`}
-                        onClick={(e) => e.preventDefault()}
+                        aria-label={saved ? `Remove ${property.title} from saved` : `Save ${property.title}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleSaved(toSavedProperty(property));
+                        }}
                         className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-brand-ink backdrop-blur-sm transition hover:bg-white"
                       >
-                        <Heart className="h-4 w-4" strokeWidth={2} />
+                        <Heart className={cn("h-4 w-4", saved && "fill-brand-teal text-brand-teal")} strokeWidth={saved ? 0 : 2} />
                       </button>
 
                       {/* Price badge */}
@@ -109,7 +116,8 @@ export function PropertiesByCity() {
                     </div>
                   </article>
                 </RevealOnScroll>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <p className="py-10 text-center font-ewangi text-brand-ink/40">No listings in {city} yet.</p>

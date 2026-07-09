@@ -2,10 +2,11 @@
 // Wide horizontal listing card for the explore-map results list — Figma: "Developments Map Section", 614x190 r=13.
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type KeyboardEvent } from "react";
+import type { KeyboardEvent } from "react";
 import { Bath, Bed, Heart, Images, Maximize2, MapPin } from "lucide-react";
 import type { Currency, Listing } from "@/app/explore-map/data";
-import { formatFullPrice } from "@/app/explore-map/utils";
+import { formatFullPrice, toSavedProperty } from "@/app/explore-map/utils";
+import { useSavedProperties } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
 
 type ExploreListingCardProps = {
@@ -16,7 +17,9 @@ type ExploreListingCardProps = {
 };
 
 export function ExploreListingCard({ listing, active, currency, onClick }: ExploreListingCardProps) {
-  const [saved, setSaved] = useState(false);
+  const { isSaved, toggleSaved } = useSavedProperties();
+  const savedProperty = toSavedProperty(listing);
+  const saved = isSaved(savedProperty.id);
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -72,7 +75,7 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            setSaved((s) => !s);
+            toggleSaved(savedProperty);
           }}
           aria-label={saved ? "Remove from saved" : "Save property"}
           className="absolute right-2.5 top-2.5 text-brand-ink/25 transition hover:text-brand-teal"
