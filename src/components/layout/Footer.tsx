@@ -21,7 +21,8 @@ const topNav = [
   { label: "Buyer's guide", href: "/buyers-guide" },
   { label: "For developers", href: "/for-developers" },
   { label: "The Mission", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  // Blog link hidden until the CMS is in place — restore alongside the Navbar tab.
+  // { label: "Blog", href: "/blog" },
   { label: "Saved", href: "/saved" },
 ] as const;
 

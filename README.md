@@ -2,7 +2,7 @@
 
 Verified Mexican real estate portal for international buyers. Every property title-searched, developer-reviewed, and HOA-audited before listing.
 
-> **Status:** Frontend complete — 17 property detail pages, 4 regional landing pages (Baja California, Tijuana, Rosarito, Ensenada), blog, interactive Mapbox map, cross-page saved-properties store, and sitewide SEO from the approved SEO content document. Unit test suite live (66 tests, 9 suites). Coming-soon gate active in production. n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
+> **Status:** **Live to the public** — the coming-soon gate was removed for launch (Jul 2026). Frontend complete — 17 property detail pages, 4 regional landing pages (Baja California, Tijuana, Rosarito, Ensenada), blog, interactive Mapbox map, cross-page saved-properties store, and sitewide SEO from the approved SEO content document. Unit test suite live (66 tests, 9 suites). n8n webhook live. Several integrations still scaffolded — see [Known limitations](#known-limitations).
 
 ---
 
@@ -83,8 +83,8 @@ npm run test:coverage  # coverage report
 # Site
 NEXT_PUBLIC_SITE_URL=
 
-# Coming-soon gate
-PREVIEW_TOKEN=                      # secret token — share with team for preview access
+# Coming-soon gate (middleware removed at launch — only needed if the gate is restored)
+PREVIEW_TOKEN=
 
 # Automations
 WEBHOOK_COMING_SOON_URL=            # n8n webhook — active
@@ -107,17 +107,9 @@ NEXT_PUBLIC_META_PIXEL_ID=          # (not yet consumed — pixel not wired)
 
 ---
 
-## Coming-soon mode
+## Coming-soon page
 
-All production traffic redirects to `/coming-soon`. The middleware passes through in development, so no bypass is needed locally.
-
-**Preview full site in production:**
-
-```
-https://yoursite.com/?preview=<PREVIEW_TOKEN>
-```
-
-Sets a `preview_access` cookie. To disable the gate, remove `src/middleware.ts`.
+The production gate (`src/middleware.ts`) was **removed at launch** — the whole site is now public. The `/coming-soon` page itself still exists as a standalone route (own layout, no Navbar/Footer via `LayoutShell`) and its n8n-connected form keeps working, but nothing redirects to it. To re-enable the gate, restore `src/middleware.ts` from git history (`PREVIEW_TOKEN` bypass included).
 
 ---
 
@@ -182,7 +174,6 @@ src/
 ├─ lib/
 │  ├─ fonts.ts              next/font declarations
 │  └─ utils.ts              cn() helper
-└─ middleware.ts             Coming-soon gate + preview token bypass
 ```
 
 ---
@@ -206,7 +197,7 @@ src/
 | `/for-developers` | Developer listing portal with pricing tiers |
 | `/portal` | Developer portal (login) |
 | `/saved` | Saved properties — localStorage store, sort + unsave |
-| `/coming-soon` | Gated launch page (active in production) |
+| `/coming-soon` | Standalone launch page (gate removed — no longer redirected to) |
 
 ---
 

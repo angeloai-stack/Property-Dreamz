@@ -405,7 +405,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">Estado del proyecto</div>
-        <div class="cover-meta-value">Soft launch — Coming Soon activo</div>
+        <div class="cover-meta-value">Lanzado — sitio público</div>
       </div>
     </div>
   </div>
@@ -457,7 +457,7 @@
     </div>
 
     <div class="highlight-box">
-      <strong>Estado actual:</strong> La UI está completamente construida. Soft launch activo: middleware de coming-soon en producción con bypass por token. El formulario de coming-soon está conectado en vivo a n8n webhook. Se cuenta con 34 páginas: 17 de detalle de propiedad (16 con metadata SEO propia), 4 landings regionales (Baja California, Tijuana, Rosarito, Ensenada), blog con 13 artículos, mapa interactivo Mapbox GL y página de favoritos conectada a un store global (localStorage) alimentado por todos los corazones del sitio. El SEO sigue el documento de contenido aprobado (meta tags, asignación de ciudades, FAQs con schema FAQPage). Todas las imágenes en Cloudinary (cloud <code>dserzvrwe</code>). Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS y CRM están declaradas pero aún no conectadas.
+      <strong>Estado actual:</strong> La UI está completamente construida y el sitio es <strong>público</strong>: el middleware de coming-soon se eliminó en el lanzamiento (jul 2026); la página <code>/coming-soon</code> permanece como ruta standalone con su formulario n8n activo. Se cuenta con 34 páginas: 17 de detalle de propiedad (16 con metadata SEO propia), 4 landings regionales (Baja California, Tijuana, Rosarito, Ensenada), blog con 13 artículos, mapa interactivo Mapbox GL y página de favoritos conectada a un store global (localStorage) alimentado por todos los corazones del sitio. El SEO sigue el documento de contenido aprobado (meta tags, asignación de ciudades, FAQs con schema FAQPage). Todas las imágenes en Cloudinary (cloud <code>dserzvrwe</code>). Los datos de propiedades son estáticos (mock). Las integraciones con Sanity CMS y CRM están declaradas pero aún no conectadas.
     </div>
   </div>
 
@@ -743,7 +743,7 @@
     <table>
       <thead><tr><th>Ruta</th><th>Archivo</th><th>Estado</th><th>Descripción</th></tr></thead>
       <tbody>
-        <tr><td><code>/coming-soon</code></td><td>app/coming-soon/page.tsx</td><td><span class="badge badge-green">Live</span></td><td>Página standalone (sin Navbar/Footer) con efectos visuales, logo animado y formulario conectado a n8n. Activa en producción vía middleware.</td></tr>
+        <tr><td><code>/coming-soon</code></td><td>app/coming-soon/page.tsx</td><td><span class="badge badge-green">Live</span></td><td>Página standalone (sin Navbar/Footer) con efectos visuales, logo animado y formulario conectado a n8n. El gate de producción (middleware) se eliminó en el lanzamiento — ya nada redirige aquí.</td></tr>
         <tr><td><code>/</code></td><td>app/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>HeroSection → VerifySection → FeatureCards → TopDevelopers → BuyersGuideSteps → CertifiedBanner → <strong>FaqSection</strong> → <strong>CampaignForm</strong></td></tr>
         <tr><td><code>/explore-map</code></td><td>app/explore-map/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Mapa interactivo Mapbox GL (markers reales, fit-to-results, popup con heart) + filtros + listado sincronizado (datos mock)</td></tr>
         <tr><td><code>/baja-california-real-estate</code></td><td>app/baja-california-real-estate/page.tsx</td><td><span class="badge badge-green">Completa</span></td><td>Landing regional: hero, bloque SEO con enlaces internos, PropertiesByCity, FAQ</td></tr>
@@ -1273,6 +1273,8 @@ settle!({ ok: true })</pre>
     <table>
       <thead><tr><th>Archivo</th><th>Fecha / Hora</th><th>Tipo de cambio</th></tr></thead>
       <tbody><!-- CHANGELOG_ROWS -->
+        <tr><td><code>src/components/layout/Footer.tsx</code></td><td>9 de julio de 2026 02:51 p.m.</td><td>Modificado</td></tr>
+        <tr><td><code>src/components/layout/Navbar.tsx</code></td><td>9 de julio de 2026 02:51 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
         <tr><td><code>src/components/home/TopDevelopersCards.tsx</code></td><td>8 de julio de 2026 08:46 p.m.</td><td>Modificado</td></tr>
