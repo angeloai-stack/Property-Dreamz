@@ -1,5 +1,6 @@
 // Root layout — shared shell (Navbar, Footer, WhatsApp) injected on every page except /coming-soon and /portal.
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { LayoutShell } from "@/components/layout/LayoutShell";
 import { SavedPropertiesProvider } from "@/hooks/useSavedProperties";
 import { ewangi } from "@/lib/fonts";
@@ -86,6 +87,7 @@ export default function RootLayout({
         <SavedPropertiesProvider>
           <LayoutShell>{children}</LayoutShell>
         </SavedPropertiesProvider>
+        <Analytics />
       </body>
     </html>
   );
