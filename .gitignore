@@ -43,3 +43,6 @@ next-env.d.ts
 
 # claude mcp (contiene tokens, no commitear)
 .mcp.json
+
+.vercel
+.env*
