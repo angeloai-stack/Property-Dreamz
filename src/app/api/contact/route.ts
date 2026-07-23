@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const res = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...body, submittedAt: new Date().toISOString() }),
+      body: JSON.stringify({ ...body, source: "contact", submittedAt: new Date().toISOString() }),
     });
     if (!res.ok) {
       console.error("[contact] Webhook responded with", res.status);
