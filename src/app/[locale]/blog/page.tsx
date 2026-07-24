@@ -1,8 +1,9 @@
 "use client";
 // Blog listing page — Figma: dark "Related Blogs" section, featured post, filterable grid, pagination.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { Pagination } from "@/components/blog/Pagination";
 import { CampaignForm } from "@/components/forms/CampaignForm";
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 const POSTS_PER_PAGE = 6;
 
 export default function BlogPage() {
+  const t = useTranslations("blog");
   const [category, setCategory] = useState<BlogCategoryFilter>("All");
   const [page, setPage] = useState(1);
 
@@ -38,13 +40,13 @@ export default function BlogPage() {
         {/* Header */}
         <div className="max-w-2xl space-y-3">
           <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-            From the blog
+            {t("listing.eyebrow")}
           </p>
           <h1 className="font-ewangi text-[clamp(1.9rem,4vw,2.5rem)] font-bold leading-tight text-white">
-            All about real estate, explained
+            {t("listing.heading")}
           </h1>
           <p className="font-ewangi text-[1rem] text-brand-paper/55">
-            Guides, market insights and neighborhood deep-dives for cross-border buyers.
+            {t("listing.subheading")}
           </p>
         </div>
 
@@ -62,7 +64,7 @@ export default function BlogPage() {
                   : "border border-white/22 text-brand-paper/55 hover:border-white/40 hover:text-white"
               )}
             >
-              {c}
+              {t(`categories.${c}`)}
             </button>
           ))}
         </div>
@@ -76,7 +78,7 @@ export default function BlogPage() {
             <div className="relative h-56 w-full shrink-0 md:h-auto md:w-[45%]">
               <Image
                 src={featured.image}
-                alt={featured.title}
+                alt={t(`posts.${featured.slug}.title`)}
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
                 className="object-cover"
@@ -85,18 +87,20 @@ export default function BlogPage() {
             </div>
             <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 sm:px-11 sm:py-10">
               <span className="inline-flex w-fit items-center rounded-full bg-brand-teal px-3 py-1.5 font-ewangi text-[10px] font-bold uppercase tracking-[0.06em] text-brand-pine">
-                Featured · {featured.category}
+                {t("listing.featuredBadge")} · {t(`categories.${featured.category}`)}
               </span>
               <p className="font-ewangi text-[1.5rem] font-bold leading-snug text-brand-pine md:text-[1.9rem]">
-                {featured.title}
+                {t(`posts.${featured.slug}.title`)}
               </p>
-              <p className="font-ewangi text-[15px] leading-relaxed text-brand-ink/55">{featured.excerpt}</p>
+              <p className="font-ewangi text-[15px] leading-relaxed text-brand-ink/55">
+                {t(`posts.${featured.slug}.excerpt`)}
+              </p>
               <div className="flex items-center gap-3">
                 <span className="flex h-9.5 w-9.5 shrink-0 items-center justify-center rounded-full bg-brand-pine font-ewangi text-[13px] font-bold text-white">
                   {featured.authorInitials}
                 </span>
                 <span className="font-ewangi text-[13px] text-brand-ink/55">
-                  By {featured.author} · {featured.date} · {featured.readTime}
+                  {t("listing.byLine", { author: featured.author, date: featured.date, readTime: featured.readTime })}
                 </span>
               </div>
             </div>
@@ -114,7 +118,7 @@ export default function BlogPage() {
           </div>
         ) : (
           <div className="mt-10 rounded-[22px] border border-white/10 bg-white/5 px-6 py-16 text-center">
-            <p className="font-ewangi text-[1.5rem] text-brand-paper/50">No posts in this category yet.</p>
+            <p className="font-ewangi text-[1.5rem] text-brand-paper/50">{t("listing.noPostsInCategory")}</p>
           </div>
         )}
 

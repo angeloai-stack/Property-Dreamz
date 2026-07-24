@@ -1,7 +1,8 @@
 "use client";
 // "Show only" quick-filter overlay for the map panel — Figma: white card, r=10, top-left of the map.
+import { useTranslations } from "next-intl";
 import { Check, Search } from "lucide-react";
-import { CONSTRUCTION_STATUSES, type ConstructionStatus } from "@/app/explore-map/data";
+import { CONSTRUCTION_STATUSES, type ConstructionStatus } from "@/app/[locale]/explore-map/data";
 import { cn } from "@/lib/utils";
 
 type MapFiltersCardProps = {
@@ -44,15 +45,17 @@ export function MapFiltersCard({
   onToggleFinancing,
   onSearchArea,
 }: MapFiltersCardProps) {
+  const t = useTranslations("exploreMap");
+
   return (
     <div className="absolute left-3 top-3 z-10 w-38 rounded-lg bg-white p-2.5 shadow-[3px_2px_10px_rgba(0,0,0,0.25)] sm:left-4 sm:top-4">
-      <p className="mb-1.5 font-ewangi text-[12px] font-bold text-brand-pine">Show only:</p>
+      <p className="mb-1.5 font-ewangi text-[12px] font-bold text-brand-pine">{t("mapFiltersCard.showOnly")}</p>
 
       <div className="space-y-1.5">
         {CONSTRUCTION_STATUSES.map((status) => (
           <CheckboxRow
             key={status}
-            label={status}
+            label={t(`constructionStatusLabels.${status}`)}
             checked={activeStatuses.has(status)}
             onChange={() => onToggleStatus(status)}
           />
@@ -61,14 +64,18 @@ export function MapFiltersCard({
 
       <hr className="my-1.5 border-brand-ink/10" />
 
-      <CheckboxRow label="Financing available" checked={financingOnly} onChange={() => onToggleFinancing(!financingOnly)} />
+      <CheckboxRow
+        label={t("mapFiltersCard.financingAvailable")}
+        checked={financingOnly}
+        onChange={() => onToggleFinancing(!financingOnly)}
+      />
 
       <button
         type="button"
         onClick={onSearchArea}
         className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-pine px-2.5 py-1.5 font-ewangi text-[11px] font-semibold text-white transition hover:bg-black"
       >
-        Search this area
+        {t("mapFiltersCard.searchThisArea")}
         <Search className="h-3 w-3" strokeWidth={2} />
       </button>
     </div>

@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "title": "Buyer's Guide",
+    "description": "A complete guide to buying property in Mexico: fideicomiso, title search, financing, closing costs, and certified developers. Written for international buyers.",
+    "ogTitle": "Buyer's Guide — How to Buy Property in Mexico",
+    "ogDescription": "Step-by-step guide for Americans buying real estate in Mexico. Fideicomiso, title search, closing costs, and certified developers explained."
+  },
+  "hero": {
+    "badge": "Buyer's guide",
+    "heading": "Your journey to owning in Mexico, made simple.",
+    "subheading": "We help international buyers explore verified properties with confidence, clarity, and full support every step of the way.",
+    "checklist": [
+      "100% verified developments",
+      "Transparent information",
+      "Expert guidance in your language"
+    ],
+    "ctaExplore": "Explore properties",
+    "ctaHowItWorks": "How it works",
+    "heroImageAlt": "Modern residential development in Mexico",
+    "sidebar": {
+      "heading": "Why buy in Mexico?",
+      "benefits": [
+        { "title": "Unbeatable lifestyle", "body": "Enjoy beautiful beaches, great weather, and vibrant culture." },
+        { "title": "Strong Investment Potential", "body": "High demand in top coastal and city destinations." },
+        { "title": "Affordable opportunities", "body": "Luxury and value options that fit your goals." },
+        { "title": "Easy access from USA", "body": "Close, convenient, and buyer-friendly." }
+      ]
+    }
+  },
+  "howWeHelp": {
+    "badge": "How we help buyers",
+    "heading": "A better way to buy in Mexico",
+    "subheading": "We've built a platform and process designed specifically for international buyers.",
+    "steps": [
+      { "title": "Discover", "body": "Explore verified properties that match your lifestyle and goals." },
+      { "title": "Compare", "body": "Easily compare developments, locations, prices, and amenities." },
+      { "title": "Get answers", "body": "Our team and AI advisor (Dreamzy) provide clear answers in your language." },
+      { "title": "Connect", "body": "Speak directly with trusted developers or book a call with our advisors." },
+      { "title": "Own with confidence", "body": "We support you from due diligence to closing and beyond." }
+    ]
+  },
+  "platformFeatures": {
+    "badge": "Inside the platform",
+    "heading": "Powerful tools. Premium experience.",
+    "subheading": "Everything you need to explore, evaluate, and connect — all in one seamless platform.",
+    "features": [
+      { "title": "Certified developments only", "body": "All listings are verified for legitimacy, legal standing and quality." },
+      { "title": "Immersive 360º tours", "body": "Walk through every space with a smooth, interactive 360º experience." },
+      { "title": "High-quality photo & video", "body": "Stunning galleries and videos that showcase every detail." },
+      { "title": "Interactive location search", "body": "Explore by map, neighborhood, or lifestyle with real-time location insights." },
+      { "title": "Development details & amenities", "body": "View floor plans, pricing, amenities and community information clearly." },
+      { "title": "Direct contact & guidance", "body": "Connect directly with advisors or developers for fast, personalized guidance." }
+    ],
+    "showcaseImageAlt": "Aerial view of a certified residential development"
+  },
+  "topDestinations": {
+    "badge": "Explore top destinations",
+    "heading": "Find the perfect place to call your own.",
+    "priceFrom": "From {price}",
+    "viewDevelopment": "View Development",
+    "cta": {
+      "heading": "Ready to start the journey?",
+      "body": "Explore certified properties or speak with a bilingual advisor who will guide you every step of the way.",
+      "ctaExplore": "Explore properties",
+      "ctaAdvisor": "Talk to an advisor",
+      "mascotAlt": "Dreamzy, the Property Dreamz AI advisor"
+    }
+  }
+}

@@ -2,16 +2,18 @@
 // "Properties in Rosarito" grid — Figma: "Section / Properties by City Carousel" (nodes 1313:18301-18488).
 // Figma repeats one placeholder card 9x; shown here are the real certified Rosarito listings instead.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, Bath, Bed, Heart, Maximize2 } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
-import { properties, toSavedProperty } from "@/app/properties/data";
+import { properties, toSavedProperty } from "@/app/[locale]/properties/data";
 import { useSavedProperties } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
 
 const rosaritoProperties = properties.filter((p) => p.region === "Rosarito");
 
 export function RosaritoProperties() {
+  const t = useTranslations("rosarito.properties");
   const { isSaved, toggleSaved } = useSavedProperties();
 
   return (
@@ -19,14 +21,13 @@ export function RosaritoProperties() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 md:px-12">
         <RevealOnScroll direction="up" className="flex flex-col items-center gap-3 text-center">
           <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-            Browse properties and developments in Rosarito
+            {t("eyebrow")}
           </p>
           <span className="rounded-full bg-brand-emerald px-7 py-2.5 font-ewangi text-[1.1rem] font-semibold text-brand-paper shadow-subtle">
-            Properties in Rosarito
+            {t("badge")}
           </span>
           <p className="font-ewangi text-[14px] text-brand-ink/60">
-            <span className="font-bold text-brand-pine">{rosaritoProperties.length}</span> certified developments
-            in Rosarito
+            <span className="font-bold text-brand-pine">{rosaritoProperties.length}</span> {t("countSuffix")}
           </p>
         </RevealOnScroll>
 
@@ -53,7 +54,7 @@ export function RosaritoProperties() {
 
                   <button
                     type="button"
-                    aria-label={saved ? `Remove ${property.title} from saved` : `Save ${property.title}`}
+                    aria-label={saved ? t("removeAria", { title: property.title }) : t("saveAria", { title: property.title })}
                     onClick={(e) => {
                       e.preventDefault();
                       toggleSaved(toSavedProperty(property));
@@ -65,7 +66,7 @@ export function RosaritoProperties() {
 
                   <div className="absolute bottom-3 right-3 rounded-[10px] bg-[#024139] px-4 py-2">
                     <span className="font-ewangi text-[15px] font-bold text-white">
-                      From ${Math.round(property.priceUSD / 1000)}K
+                      {t("priceFrom", { price: Math.round(property.priceUSD / 1000) })}
                     </span>
                   </div>
                 </div>
@@ -81,7 +82,7 @@ export function RosaritoProperties() {
                     href={property.href}
                     className="mt-1 flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#024139] py-2.5 font-ewangi text-[13px] font-semibold text-white transition hover:bg-black"
                   >
-                    View Development <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+                    {t("viewDevelopment")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
                   </Link>
                 </div>
               </article>

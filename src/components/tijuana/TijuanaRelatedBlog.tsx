@@ -1,15 +1,17 @@
 // "Related Blog" grid, curated for Tijuana — Figma: "Related Blog — Baja California (cuadrícula)".
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { RevealOnScroll } from "@/components/ui";
-import { posts } from "@/app/blog/data";
+import { posts } from "@/app/[locale]/blog/data";
 
 // Figma's own picks include "Rosarito vs. Ensenada", which isn't about Tijuana — swapped in the
 // two posts that are actually Tijuana-specific, plus one broadly-relevant legal guide.
 const FEATURED_SLUGS = ["presale-condos-tijuana-outperforming", "30-minutes-from-san-diego", "fideicomiso-explained"];
 
 export function TijuanaRelatedBlog() {
+  const t = useTranslations("tijuana.relatedBlog");
   const relatedPosts = FEATURED_SLUGS.map((slug) => posts.find((p) => p.slug === slug)).filter(
     (p): p is (typeof posts)[number] => p !== undefined
   );
@@ -19,20 +21,20 @@ export function TijuanaRelatedBlog() {
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div className="space-y-2">
           <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-            From the blog
+            {t("eyebrow")}
           </p>
           <h2 className="max-w-xl font-ewangi text-[clamp(1.6rem,3.5vw,2.2rem)] font-bold leading-tight text-white">
-            Tijuana real estate, explained
+            {t("heading")}
           </h2>
           <p className="max-w-xl font-ewangi text-[15px] text-white/50">
-            Guides, market insights and neighborhood deep-dives for cross-border buyers.
+            {t("subtitle")}
           </p>
         </div>
         <Link
           href="/blog"
           className="inline-flex shrink-0 items-center gap-1.5 font-ewangi text-[14px] font-semibold text-brand-teal transition hover:text-white"
         >
-          View all articles <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+          {t("viewAll")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
         </Link>
       </div>
 

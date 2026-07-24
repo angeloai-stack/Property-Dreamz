@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -15,41 +16,20 @@ const IMG_INTERIOR   = `${CLD}/costa-real/interior`;
 const IMG_ESTATES    = `${CLD}/costa-real/estates`;
 const IMG_CMRE       = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "120",  label: "Lots" },
-  { value: "25",   label: "Condos" },
-  { value: "5",    label: "Models" },
-  { value: "80",   label: "Houses" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type LotTab = "Lots" | "Condos" | "Houses";
-
-const lots = [
-  { id: "Lot 12", size: "300 m²" },
-  { id: "Lot 13", size: "300 m²" },
-  { id: "Lot 14", size: "320 m²" },
-  { id: "Lot 15", size: "315 m²" },
-  { id: "Lot 16", size: "305 m²" },
-];
-
-// Emoji icons are intentional here — they serve as decorative spec badges matching the Figma design.
-const modelFeatures = [
-  { icon: "📐", label: "55 m²" },
-  { icon: "🛏", label: "1 Bedroom" },
-  { icon: "🚿", label: "1 Bathroom" },
-];
+type Stat = { value: string; label: string };
+type Lot = { id: string; size: string };
+type ModelFeature = { icon: string; label: string };
 
 export default function CostaRealPage() {
-  const [activeTab, setActiveTab] = useState<LotTab>("Lots");
-  const [selectedLot, setSelectedLot] = useState("Lot 12");
+  const t = useTranslations("propertyCostaReal");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const lotTabs = t.raw("lotExplorer.tabs") as string[];
+  const lots = t.raw("lotExplorer.lots") as Lot[];
+  const modelFeatures = t.raw("models.features") as ModelFeature[];
+
+  const [activeTab, setActiveTab] = useState<string>(lotTabs[0]);
+  const [selectedLot, setSelectedLot] = useState(lots[0]?.id);
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -58,7 +38,7 @@ export default function CostaRealPage() {
       <section className="relative overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Costa Real coastal development"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -84,14 +64,14 @@ export default function CostaRealPage() {
               className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
-              Live Beyond<br />the Ordinary
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p
                 className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
                 style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
               >
-                A private coastal community on the shores of the Pacific, designed for those who live with intention.
+                {t("hero.subtitle")}
               </p>
             </RevealOnScroll>
             <div className="grid grid-cols-3 gap-x-6 gap-y-3">
@@ -109,7 +89,7 @@ export default function CostaRealPage() {
           <div className="mt-6 flex items-center justify-between">
             <Image
               src={IMG_CMRE}
-              alt="CMRE Certified"
+              alt={t("hero.cmreAlt")}
               width={204}
               height={48}
               className="w-40 lg:w-48"
@@ -118,8 +98,8 @@ export default function CostaRealPage() {
               className="hidden flex-col items-center justify-center rounded-full border-2 border-white/50 bg-white/10 backdrop-blur-sm lg:flex"
               style={{ width: "82px", height: "82px" }}
             >
-              <span className="font-ewangi text-[1.1rem] text-white">360°</span>
-              <span className="font-ewangi text-[0.75rem] text-white/70">view</span>
+              <span className="font-ewangi text-[1.1rem] text-white">{t("hero.tourBadgeValue")}</span>
+              <span className="font-ewangi text-[0.75rem] text-white/70">{t("hero.tourBadgeLabel")}</span>
             </div>
           </div>
           </RevealOnScroll>
@@ -143,7 +123,7 @@ export default function CostaRealPage() {
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="left">
           <p className="mb-6 font-ewangi text-[1.25rem] text-white">
-            Explore the development
+            {t("lotExplorer.sectionLabel")}
           </p>
         </RevealOnScroll>
 
@@ -154,30 +134,30 @@ export default function CostaRealPage() {
             <div className="relative h-52 overflow-hidden rounded-3xl">
               <Image
                 src={IMG_MAP}
-                alt="Costa Real development map"
+                alt={t("lotExplorer.mapAlt")}
                 fill
                 className="object-cover object-center"
                 sizes="100vw"
               />
             </div>
             <div className="flex gap-2">
-              {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+              {lotTabs.map((tab) => (
                 <button
-                  key={t}
+                  key={tab}
                   type="button"
-                  onClick={() => setActiveTab(t)}
+                  onClick={() => setActiveTab(tab)}
                   className={cn(
                     "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
-                    t === activeTab
+                    tab === activeTab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
                   )}
                 >
-                  {t}
+                  {tab}
                 </button>
               ))}
             </div>
-            <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+            <p className="font-ewangi text-[0.875rem] text-white/60">{t("lotExplorer.selectPrompt")}</p>
             <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
@@ -202,7 +182,7 @@ export default function CostaRealPage() {
               type="button"
               className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
             >
-              View all lots
+              {t("lotExplorer.viewAllButton")}
             </button>
           </div>
 
@@ -210,7 +190,7 @@ export default function CostaRealPage() {
           <div className="relative hidden overflow-hidden rounded-6.75 min-h-134.25 lg:block">
             <Image
               src={IMG_MAP}
-              alt="Costa Real development map"
+              alt={t("lotExplorer.mapAlt")}
               fill
               className="object-cover object-center"
               sizes="100vw"
@@ -220,23 +200,23 @@ export default function CostaRealPage() {
               style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
             >
               <div className="flex gap-2">
-                {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                {lotTabs.map((tab) => (
                   <button
-                    key={t}
+                    key={tab}
                     type="button"
-                    onClick={() => setActiveTab(t)}
+                    onClick={() => setActiveTab(tab)}
                     className={cn(
                       "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
-                      t === activeTab
+                      tab === activeTab
                         ? "bg-brand-teal text-brand-ink"
                         : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
                     )}
                   >
-                    {t}
+                    {tab}
                   </button>
                 ))}
               </div>
-              <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+              <p className="font-ewangi text-[0.875rem] text-white/60">{t("lotExplorer.selectPrompt")}</p>
               <div className="flex flex-col overflow-hidden rounded-1">
                 {lots.map((lot) => (
                   <button
@@ -262,7 +242,7 @@ export default function CostaRealPage() {
                   type="button"
                   className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
                 >
-                  View all lots
+                  {t("lotExplorer.viewAllButton")}
                 </button>
               </div>
             </div>
@@ -283,7 +263,7 @@ export default function CostaRealPage() {
               <div className="flex items-center gap-4">
                 <div>
                   <p className="font-ewangi text-[clamp(3rem,6vw,5rem)] leading-none text-white">Viento</p>
-                  <p className="font-ewangi text-[1.25rem] text-white/60">Condo</p>
+                  <p className="font-ewangi text-[1.25rem] text-white/60">{t("models.typeLabel")}</p>
                 </div>
                 <div className="ml-4 flex gap-2">
                   <button
@@ -318,7 +298,7 @@ export default function CostaRealPage() {
               <div className="relative overflow-hidden rounded-3.75 aspect-465/310">
                 <Image
                   src={IMG_MODEL}
-                  alt="Viento Condo model"
+                  alt={t("models.modelAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 50vw"
@@ -336,7 +316,7 @@ export default function CostaRealPage() {
         <div className="relative overflow-hidden rounded-6.5 aspect-1265/460">
           <Image
             src={IMG_INTERIOR}
-            alt="Costa Real interior living room"
+            alt={t("tour.interiorAlt")}
             fill
             className="object-cover"
             sizes="100vw"
@@ -346,8 +326,8 @@ export default function CostaRealPage() {
             style={{ background: "linear-gradient(to left, rgba(30,30,30,0.92) 55%, transparent 100%)" }}
           >
             <h2 className="text-right font-ewangi text-[clamp(1.5rem,3vw,3.25rem)] leading-tight text-white">
-              {"Let's take a "}<br />look from your<br />
-              <span className="text-[#1e1e1e]" style={{ WebkitTextStroke: "1.5px white" }}>next home.</span>
+              {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />
+              <span className="text-[#1e1e1e]" style={{ WebkitTextStroke: "1.5px white" }}>{t("tour.headingLine3")}</span>
             </h2>
             <Link
               href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
@@ -355,7 +335,7 @@ export default function CostaRealPage() {
               rel="noopener noreferrer"
               className="rounded-2 bg-[#1e1e1e] px-10 py-4 font-ewangi text-[2rem] text-brand-teal transition hover:bg-[#2e2e2e]"
             >
-              360 tour
+              {t("tour.button")}
             </Link>
           </div>
         </div>
@@ -376,7 +356,7 @@ export default function CostaRealPage() {
               <div className="relative overflow-hidden rounded-3.75 aspect-1920/528">
                 <Image
                   src={IMG_ESTATES}
-                  alt="The Estates aerial view"
+                  alt={t("estates.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 50vw"
@@ -387,10 +367,8 @@ export default function CostaRealPage() {
         </RevealOnScroll>
 
         <RevealOnScroll direction="up">
-          <p className="font-ewangi text-[1.25rem] leading-relaxed text-brand-ink/80 lg:max-w-[55%]">
-            The Estates is a residential development spanning approximately 34 hectares, featuring 123 ranch-style lots with an average area of 2,000 m² each. Designed to preserve the balance between built space and open land, each lot includes intentional setback restrictions — ensuring that nature remains the backdrop, not an afterthought.
-            <br /><br />
-            The main circuit, secondary streets, and pedestrian pathways follow the natural topography in graceful curves, guiding residents through a landscape that reveals new views and quiet moments at every turn.
+          <p className="font-ewangi text-[1.25rem] leading-relaxed text-brand-ink/80 lg:max-w-[55%] whitespace-pre-line">
+            {t("estates.body")}
           </p>
         </RevealOnScroll>
       </section>
@@ -400,7 +378,7 @@ export default function CostaRealPage() {
         <RevealOnScroll direction="center">
           <div className="mx-auto flex max-w-5xl items-center justify-center rounded-2.5 bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
             <p className="text-center font-ewangi text-[clamp(1.5rem,3.5vw,3rem)] text-brand-ink">
-              We certify so you can build your future
+              {t("cta.text")}
             </p>
           </div>
         </RevealOnScroll>

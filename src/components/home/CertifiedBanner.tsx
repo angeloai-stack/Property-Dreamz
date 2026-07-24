@@ -1,6 +1,7 @@
 // Full-width CMRE certification banner with inline SVG medal badge and CTA to browse developments.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Container, RevealOnScroll } from "@/components/ui";
 
 /** Figma Group 26 — node 124:741. Exact Exclude boolean export from Figma.
@@ -25,6 +26,7 @@ function MedalBadge({ className }: { className?: string }) {
 }
 
 export function CertifiedBanner() {
+  const t = useTranslations("home.certifiedBanner");
   return (
     <section className="w-full bg-[#028e7f] py-8 md:py-20">
       <Container>
@@ -36,14 +38,14 @@ export function CertifiedBanner() {
             <div className="flex-1 space-y-4 md:space-y-6">
               {/* Figma: Ewangi 40px white */}
               <p className="font-ewangi text-[1.6rem] leading-tight text-white md:text-[2.5rem]">
-                All certified by
+                {t("allCertifiedBy")}
               </p>
 
               {/* Figma: CMRE Logo-04 2, 620×147px image */}
               <div className="relative h-10 w-52 max-w-full md:h-18.5 md:w-77.5">
                 <Image
                   src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png"
-                  alt="CMRE — Certified Mexico Real Estate"
+                  alt={t("cmreLogoAlt")}
                   fill
                   className="object-contain object-left"
                   sizes="310px"
@@ -52,12 +54,7 @@ export function CertifiedBanner() {
 
               {/* Figma: description text Ewangi 15px white */}
               <p className="max-w-lg font-ewangi text-[15px] leading-relaxed text-white/75">
-                Every property and development featured on our platform undergoes
-                a thorough verification process, including legal documentation,
-                ownership validation, regulatory compliance, and developer
-                background checks. Our certification helps ensure transparency,
-                security, and confidence throughout your real estate investment
-                journey in Mexico.
+                {t("description")}
               </p>
             </div>
 
@@ -73,21 +70,21 @@ export function CertifiedBanner() {
         <RevealOnScroll delay={150} direction="right">
         <div className="mt-8 md:mt-20">
           <h2 className="font-ewangi text-[clamp(3rem,7.5vw,6rem)] leading-[0.9] text-white">
-            Browse 47 certified
+            {t("headlineLine1")}
             <br />
-            developments
+            {t("headlineLine2")}
           </h2>
 
           {/* Figma: Ewangi 36px white, y=5093 */}
           <p className="mt-5 font-ewangi text-[clamp(1.125rem,2.8vw,2.25rem)] leading-snug text-white/85">
-            HOA reserves audited — no surprise assessments after you close.
+            {t("subheadline")}
           </p>
 
           <Link
             href="/properties"
             className="mt-8 inline-flex items-center gap-3 rounded-full border-2 border-white/60 px-8 py-3.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white hover:text-[#028e7f]"
           >
-            Browse developments
+            {t("cta")}
           </Link>
         </div>
         </RevealOnScroll>

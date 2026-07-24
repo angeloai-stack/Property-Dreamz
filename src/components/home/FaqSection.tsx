@@ -1,11 +1,11 @@
 "use client";
 // Accordion FAQ section with sticky left headline and CSS grid-rows height transition (no JS measurement).
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Plus } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
-
-import { faqs } from "./faq-data";
 
 function FaqItem({
   q,
@@ -70,6 +70,8 @@ function FaqItem({
 }
 
 export function FaqSection() {
+  const t = useTranslations("home.faq");
+  const faqs = t.raw("items") as { q: string; a: string }[];
   const [open, setOpen] = useState<number | null>(0);
 
   function toggle(i: number) {
@@ -85,21 +87,21 @@ export function FaqSection() {
           <RevealOnScroll className="lg:w-72 lg:shrink-0" direction="left">
             <div className="lg:sticky lg:top-28">
               <span className="mb-5 inline-block rounded-full bg-brand-teal/15 px-4 py-1.5 font-ewangi text-label font-semibold text-brand-teal">
-                FAQ
+                {t("badge")}
               </span>
               <h2 className="font-ewangi font-bold text-[clamp(2rem,3.5vw,2.75rem)] leading-tight text-brand-ink">
-                Have questions?{" "}
-                <span className="text-brand-emerald">We have answers.</span>
+                {t("headingPrefix")}{" "}
+                <span className="text-brand-emerald">{t("headingHighlight")}</span>
               </h2>
               <p className="mt-4 font-body text-sm leading-relaxed text-brand-muted">
-                Everything you need to know before buying property in Mexico — from legal ownership to closing day.
+                {t("subheading")}
               </p>
-              <a
+              <Link
                 href="/buyers-guide"
                 className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-pine px-5 py-2.5 font-ewangi text-label font-semibold text-brand-paper transition-colors duration-200 hover:bg-brand-emerald"
               >
-                Full Buyer&apos;s Guide →
-              </a>
+                {t("cta")}
+              </Link>
             </div>
           </RevealOnScroll>
 

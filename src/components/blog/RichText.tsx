@@ -1,6 +1,6 @@
 // Tiny markdown-lite renderer for article body paragraphs — supports **bold** and [label](href).
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/navigation";
 
 const TOKEN_RE = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
 

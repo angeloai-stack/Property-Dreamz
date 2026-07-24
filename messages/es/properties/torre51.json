@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Tower 51 – Torre de Condominios Urbanos en Venta en Rosarito, Baja California",
+    "description": "Tower 51 es una moderna torre de condominios en el núcleo urbano de Rosarito. Desarrollado por Vive Inversión y Desarrollos, ofrece una vida urbana contemporánea con fácil acceso a las playas de Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Desarrollo frente al mar Torre 51 Negativo",
+    "logoAlt": "Torre 51 Negativo",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Despierta cada mañana",
+    "headlineLine2": "con el sonido de las olas",
+    "description": "Un proyecto inspirado en el lujo y la playa, que crea una atmósfera única frente al mar en Rosarito. Preventa desde $396K USD."
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "90", "label": "Condominios" },
+    { "value": "9", "label": "Amenidades" },
+    { "value": "3", "label": "Albercas" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "interiorExplorer": {
+    "heading": "Exclusividad y confort en cada rincón, junto al mar",
+    "interiorImageAlt": "Área de estar interior de Torre 51",
+    "amenities": {
+      "pool": {
+        "tabLabel": "Alberca",
+        "description": "Tres albercas, incluyendo una alberca infinita frente al mar, alberca para adultos y alberca infantil — sobre un acantilado de 16 metros con 134 m de frente de playa y elevador hacia la playa.",
+        "sub": "Alberca infinita frente al mar con vista directa al Pacífico."
+      },
+      "spa": {
+        "tabLabel": "Spa",
+        "description": "Un spa de servicio completo con vista al mar, diseñado para la relajación y el descanso después de un día de playa.",
+        "sub": "Tratamientos de spa de clase mundial en un entorno sereno frente al mar."
+      },
+      "gym": {
+        "tabLabel": "Gimnasio",
+        "description": "Un gimnasio totalmente equipado con vistas panorámicas al Pacífico, abierto las 24 horas exclusivamente para los residentes.",
+        "sub": "Equipo de última generación con vistas frente al mar."
+      }
+    }
+  },
+  "models": {
+    "headingTemplate": "Explora nuestros 5 modelos",
+    "name": "Vista",
+    "area": "136.08 m²",
+    "bedroomsLabel": "2 Recámaras",
+    "bathroomsLabel": "2 Baños",
+    "modelImageAlt": "Render del interior del modelo Vista"
+  },
+  "cta": {
+    "youtubeTitle": "Torre 51 Negativo",
+    "headingLine1": "Reserva tu paraíso",
+    "headingLine2": "frente al mar desde $5,000 USD",
+    "body": "Dos torres, 90 condominios de lujo en un tramo privilegiado de la costa de Rosarito. La experiencia del desarrollador es tu garantía; el valor de tu propiedad está garantizado.",
+    "button": "Agenda tu cita"
+  }
+}

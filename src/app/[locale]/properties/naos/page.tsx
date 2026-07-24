@@ -2,6 +2,7 @@
 // NAOS beachfront condos page — interior room explorer, floor plan carousel, and CTA section on a light background.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -14,63 +15,21 @@ const IMG_FLOOR    = `${CLD}/naos/floor-plan`;
 const IMG_CTA      = `${CLD}/naos/cta`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "16",   label: "Condos" },
-  { value: "4",    label: "Models" },
-  { value: "82%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
+type Stat = { value: string; label: string };
+type RoomKey = "livingRoom" | "bedroom" | "bathroom" | "kitchen" | "terrace";
+type Room = { description: string; sub: string };
 
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type RoomTab = "Living room" | "Bedroom" | "Bathroom" | "Kitchen" | "Terrace";
-
-const rooms: Record<RoomTab, { description: string; sub: string }> = {
-  "Living room": {
-    description:
-      "Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.",
-    sub: "Floor-to-ceiling windows, refined finishes, and seamless comfort designed for modern living.",
-  },
-  Bedroom: {
-    description:
-      "Spacious bedrooms designed as personal sanctuaries with panoramic ocean views and premium finishes that redefine restful living.",
-    sub: "Custom cabinetry, premium flooring, and thoughtful lighting for ultimate comfort.",
-  },
-  Bathroom: {
-    description:
-      "Resort-style bathrooms featuring designer fixtures, natural stone finishes, and spa-inspired layouts for your daily ritual.",
-    sub: "Rainfall showers, soaking tubs, and heated floors in a serene oceanfront setting.",
-  },
-  Kitchen: {
-    description:
-      "Gourmet kitchens equipped with integrated appliances, bespoke cabinetry, and premium countertops — the perfect space to create and entertain.",
-    sub: "High-end appliances and custom millwork blended with contemporary design.",
-  },
-  Terrace: {
-    description:
-      "Private terraces with sweeping Pacific views — an extension of your living space where the inside flows seamlessly to the outdoors.",
-    sub: "Expansive outdoor areas with unobstructed ocean and coastline panoramas.",
-  },
-};
-
-const modelFeatures = [
-  "3  balconies",
-  "Living room with balcony",
-  "Dining room",
-  "Breakfast bar",
-  "Kitchen (Integral)",
-  "2  Bedrooms",
-  "2 Bathrooms",
-  "Patio with laundry room",
-  "1 covered parking space",
-];
+const ROOM_ORDER: RoomKey[] = ["livingRoom", "bedroom", "bathroom", "kitchen", "terrace"];
 
 export default function NaosPage() {
-  const [activeRoom, setActiveRoom] = useState<RoomTab>("Living room");
+  const t = useTranslations("propertyNaos");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const tabs = t.raw("interiorExplorer.tabs") as Record<RoomKey, string>;
+  const rooms = t.raw("interiorExplorer.rooms") as Record<RoomKey, Room>;
+  const modelFeatures = t.raw("models.features") as string[];
+
+  const [activeRoom, setActiveRoom] = useState<RoomKey>("livingRoom");
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -98,14 +57,14 @@ export default function NaosPage() {
               className="font-ewangi text-[clamp(2.5rem,6.5vw,6rem)] leading-none text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
-              NAOS is more than<br />a place to live
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p
                 className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
                 style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
               >
-                A design-forward beachfront community shaped by Baja&apos;s coastline. A space to pause, feel and reconnect with what&apos;s essential.
+                {t("hero.subheadline")}
               </p>
             </RevealOnScroll>
             {/* Trust badges — staggered */}
@@ -126,7 +85,7 @@ export default function NaosPage() {
             <div className="flex justify-center lg:hidden">
               <Image
                 src={IMG_LOGO}
-                alt="NAOS"
+                alt={t("hero.logoAlt")}
                 width={132}
                 height={58}
                 className="w-32 brightness-0 invert"
@@ -155,14 +114,14 @@ export default function NaosPage() {
             <div className="hidden shrink-0 flex-col items-end gap-3 lg:flex">
               <Image
                 src={IMG_LOGO}
-                alt="NAOS"
+                alt={t("hero.logoAlt")}
                 width={132}
                 height={58}
                 className="w-36 brightness-0 invert"
               />
               <Image
                 src={IMG_CMRE}
-                alt="CMRE Certified"
+                alt={t("hero.cmreAlt")}
                 width={135}
                 height={32}
                 className="w-36"
@@ -181,7 +140,7 @@ export default function NaosPage() {
         <div className="mb-10 flex items-center gap-6">
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
           <h2 className="text-center font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-white">
-            Unrivaled coastal living with resort-inspired amenities
+            {t("interiorExplorer.heading")}
           </h2>
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
         </div>
@@ -194,7 +153,7 @@ export default function NaosPage() {
             <div className="relative h-65 overflow-hidden rounded-3xl">
               <Image
                 src={IMG_INTERIOR}
-                alt="NAOS interior living area"
+                alt={t("interiorExplorer.imageAlt")}
                 fill
                 className="object-cover"
                 sizes="100vw"
@@ -204,7 +163,7 @@ export default function NaosPage() {
                 style={{ background: "linear-gradient(to top, rgba(23,23,23,0.85) 0%, transparent 60%)" }}
               />
               <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">
-                {activeRoom}
+                {tabs[activeRoom]}
               </p>
             </div>
             <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
@@ -214,18 +173,18 @@ export default function NaosPage() {
               {rooms[activeRoom].sub}
             </p>
             <div className="flex flex-wrap gap-2">
-              {(["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as RoomTab[]).map((t) => (
+              {ROOM_ORDER.map((key) => (
                 <button
-                  key={t}
-                  onClick={() => setActiveRoom(t)}
+                  key={key}
+                  onClick={() => setActiveRoom(key)}
                   className={cn(
                     "rounded-[5px] px-4 py-2 font-ewangi text-[0.9rem] transition",
-                    t === activeRoom
+                    key === activeRoom
                       ? "bg-[#1e1e1e] text-brand-teal"
                       : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
                   )}
                 >
-                  {t}
+                  {tabs[key]}
                 </button>
               ))}
             </div>
@@ -238,7 +197,7 @@ export default function NaosPage() {
           >
             <Image
               src={IMG_INTERIOR}
-              alt="NAOS interior living area"
+              alt={t("interiorExplorer.imageAlt")}
               fill
               className="object-cover"
               sizes="100vw"
@@ -256,19 +215,19 @@ export default function NaosPage() {
                   {rooms[activeRoom].sub}
                 </p>
                 <div className="mt-6 flex flex-col items-start gap-1.5">
-                  {(["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as RoomTab[]).map((t) => (
+                  {ROOM_ORDER.map((key) => (
                     <button
-                      key={t}
-                      onClick={() => setActiveRoom(t)}
+                      key={key}
+                      onClick={() => setActiveRoom(key)}
                       style={{ width: "152px", height: "36px", borderRadius: "5px" }}
                       className={cn(
                         "font-ewangi text-[1rem] text-center transition",
-                        t === activeRoom
+                        key === activeRoom
                           ? "bg-[#1e1e1e] text-brand-teal"
                           : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
                       )}
                     >
-                      {t}
+                      {tabs[key]}
                     </button>
                   ))}
                 </div>
@@ -286,7 +245,7 @@ export default function NaosPage() {
         <div className="mb-16">
           <RevealOnScroll direction="left">
           <div className="mb-8 flex items-center gap-4">
-            <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 4 models</p>
+            <p className="font-ewangi text-[1.875rem] text-brand-ink">{t("models.heading")}</p>
             <button
               style={{ width: "43px", height: "43px", borderRadius: "13px" }}
               className="flex items-center justify-center border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
@@ -306,8 +265,8 @@ export default function NaosPage() {
             <RevealOnScroll direction="left" delay={100} duration={1100}>
             <div className="lg:w-[42%]">
               <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3.25rem)] leading-tight text-brand-ink">
-                Layout A —{" "}
-                <span className="text-brand-teal">1,287 sq. ft.</span>
+                {t("models.layoutLabel")} —{" "}
+                <span className="text-brand-teal">{t("models.layoutSize")}</span>
               </h2>
               <ul className="mt-6 space-y-1.5">
                 {modelFeatures.map((f) => (
@@ -322,7 +281,7 @@ export default function NaosPage() {
               <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "4096/2845" }}>
                 <Image
                   src={IMG_FLOOR}
-                  alt="Layout A floor plan"
+                  alt={t("models.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 58vw"
@@ -340,7 +299,7 @@ export default function NaosPage() {
             <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "663/370" }}>
               <Image
                 src={IMG_CTA}
-                alt="NAOS building exterior"
+                alt={t("cta.imageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width:1024px) 100vw, 46vw"
@@ -352,13 +311,13 @@ export default function NaosPage() {
           <RevealOnScroll direction="right" delay={150} duration={1100} className="lg:flex-1">
           <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
-              A Limited Collection.<br />An Extraordinary Lifestyle.
+              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
             </h2>
             <p className="font-ewangi text-[1.375rem] leading-relaxed text-brand-ink/80 lg:max-w-130">
-              Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined living spaces, breathtaking views, and a sense of community unlike any other.
+              {t("cta.body")}
             </p>
             <button className="mt-2 rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
-              Talk to an expert
+              {t("cta.button")}
             </button>
           </div>
           </RevealOnScroll>

@@ -1,15 +1,12 @@
 // Shared 3-item "More visibility / More trust / More sales" checklist.
 // Figma: appears identically on the For Developers and Contact Us pages, always over a dark/photo background.
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const items = [
-  { title: "More visibility", subtitle: "Reach serious buyers" },
-  { title: "More trust", subtitle: "With verification" },
-  { title: "More sales", subtitle: "Close faster" },
-] as const;
-
 export function TrustChecklist({ className }: { className?: string }) {
+  const t = useTranslations("site");
+  const items = t.raw("trustChecklist") as { title: string; subtitle: string }[];
   return (
     <div className={cn("flex flex-wrap gap-x-8 gap-y-3", className)}>
       {items.map((item) => (

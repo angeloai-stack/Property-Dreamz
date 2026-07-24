@@ -9,8 +9,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Saved listings are user-specific — no SEO value and should stay private.
-        disallow: ["/saved", "/api/"],
+        // Saved listings are user-specific — no SEO value and should stay private. Disallowed under both locales.
+        disallow: ["/saved", "/es/saved", "/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

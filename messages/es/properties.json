@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Propiedades",
+    "description": "Explora desarrollos inmobiliarios certificados en Baja California, México. Filtra por zona, precio y disponibilidad — cada propiedad con título investigado y desarrollador revisado."
+  },
+  "heading": "Propiedades",
+  "developmentsFound": "{count, plural, one {# desarrollo encontrado} other {# desarrollos encontrados}}",
+  "searchPlaceholder": "Buscar...",
+  "filters": {
+    "zoneLabel": "Zona",
+    "priceLabel": "Precio",
+    "availabilityLabel": "Disponibilidad",
+    "clear": "Limpiar",
+    "all": "Todas",
+    "allPrices": "Todos los precios",
+    "under200k": "Menos de $200K",
+    "200k-500k": "$200K – $500K",
+    "over500k": "Más de $500K"
+  },
+  "comingSoon": "Próximamente",
+  "fromPrice": "Desde {price}",
+  "fromArea": "Desde {area} m²",
+  "removeFromSaved": "Quitar de guardados",
+  "save": "Guardar propiedad",
+  "noResults": {
+    "heading": "No se encontraron propiedades",
+    "body": "Intenta ajustar tus filtros.",
+    "clear": "Limpiar filtros"
+  },
+  "types": {
+    "Lots": "Terrenos",
+    "Condos": "Condominios",
+    "Mixed": "Mixto"
+  },
+  "availability": {
+    "Available": "Disponible",
+    "Coming Soon": "Próximamente"
+  }
+}

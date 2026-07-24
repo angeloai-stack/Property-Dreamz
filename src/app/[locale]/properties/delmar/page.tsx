@@ -2,6 +2,7 @@
 // Del Mar property detail page — hero, 360° lot explorer, carousel of house models, and Ocean View Lots section.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Maximize, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -27,84 +28,36 @@ function TrustIcon() {
   );
 }
 
-const trustLabels = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-const stats = [
-  { value: "120",  label: "Lots" },
-  { value: "25",   label: "Condos" },
-  { value: "5",    label: "Models" },
-  { value: "80",   label: "Houses" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const lots = [
-  { id: "12", area: "300 m²" },
-  { id: "13", area: "300 m²" },
-  { id: "14", area: "320 m²" },
-  { id: "15", area: "315 m²" },
-  { id: "16", area: "305 m²" },
-];
-
-type Tab = "Lots" | "Condos" | "Houses";
-
 // Del Mar house models — Cloudinary "Modelos Del Mar" (top-down floor-plan renders).
 // NOTE: m²/bed/bath specs are placeholders — confirm with real figures.
-const models = [
-  {
-    name: "PERLA",
-    type: "House",
-    sqm: "180 m²",
-    beds: "3 Bedrooms",
-    baths: "2 Bathrooms",
-    image: `${CLD}/Perla_hfejm4.png`,
-  },
-  {
-    name: "BAHÍA",
-    type: "House",
-    sqm: "210 m²",
-    beds: "3 Bedrooms",
-    baths: "3 Bathrooms",
-    image: `${CLD}/Bahia_hrdwpf.png`,
-  },
-  {
-    name: "VIENTO",
-    type: "Condo",
-    sqm: "55 m²",
-    beds: "1 Bedroom",
-    baths: "1 Bathroom",
-    image: `${CLD}/Modelo_Viento_jvujul.png`,
-  },
-  {
-    name: "CORONADO",
-    type: "House",
-    sqm: "240 m²",
-    beds: "4 Bedrooms",
-    baths: "3 Bathrooms",
-    image: `${CLD}/Coronado_jsbriw.png`,
-  },
-  {
-    name: "MAREA",
-    type: "House",
-    sqm: "120 m²",
-    beds: "2 Bedrooms",
-    baths: "2 Bathrooms",
-    image: `${CLD}/Marea_tlqs8n.png`,
-  },
-];
+const MODEL_IMAGES: Record<string, string> = {
+  PERLA: `${CLD}/Perla_hfejm4.png`,
+  "BAHÍA": `${CLD}/Bahia_hrdwpf.png`,
+  VIENTO: `${CLD}/Modelo_Viento_jvujul.png`,
+  CORONADO: `${CLD}/Coronado_jsbriw.png`,
+  MAREA: `${CLD}/Marea_tlqs8n.png`,
+};
+
+type Stat = { value: string; label: string };
+type Lot = { id: string; area: string };
+type ModelItem = { name: string; type: string; sqm: string; beds: string; baths: string };
 
 export default function FraccPage() {
-  const [activeTab, setActiveTab] = useState<Tab>("Lots");
-  const [activeLot, setActiveLot] = useState("12");
+  const t = useTranslations("propertyDelmar");
+  const stats = t.raw("stats") as Stat[];
+  const trustLabels = t.raw("trustBadges") as string[];
+  const lots = t.raw("lotExplorer.lots") as Lot[];
+  const lotTabs = t.raw("lotExplorer.tabs") as string[];
+  const models = t.raw("models.items") as ModelItem[];
+
+  const [activeTab, setActiveTab] = useState<string>(lotTabs[0]);
+  const [activeLot, setActiveLot] = useState(lots[0]?.id);
   const [modelIdx, setModelIdx] = useState(0);
 
   const prev = () => setModelIdx((i) => (i - 1 + models.length) % models.length);
   const next = () => setModelIdx((i) => (i + 1) % models.length);
   const model = models[modelIdx];
+  const modelImage = MODEL_IMAGES[model.name];
 
   return (
     <main className="overflow-x-hidden bg-brand-ink">
@@ -120,14 +73,14 @@ export default function FraccPage() {
         <div className="relative h-64 overflow-hidden">
           <Image src={IMG_HERO_BG} alt="" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #1E1E1E 22%, transparent 100%)" }} />
-          <Image src={IMG_LOGO} alt="Del Mar" width={194} height={70} className="absolute left-6 top-6 z-10 h-10 w-auto object-contain" />
+          <Image src={IMG_LOGO} alt={t("hero.logoAlt")} width={194} height={70} className="absolute left-6 top-6 z-10 h-10 w-auto object-contain" />
         </div>
         <div className="px-6 py-8">
           <h1 className="mt-3 font-ewangi leading-tight text-white text-[clamp(2rem,9vw,3rem)]">
-            Build with confidence.
+            {t("hero.headline")}
           </h1>
           <p className="mt-3 font-ewangi text-white/85 text-[clamp(0.95rem,4vw,1.1rem)]">
-            A verified and secure development for your next project.
+            {t("hero.subtitle")}
           </p>
           <div className="mt-4 flex flex-col gap-2">
             {trustLabels.map((l) => (
@@ -137,7 +90,7 @@ export default function FraccPage() {
               </div>
             ))}
           </div>
-          <Image src={IMG_CMRE} alt="CMRE Certified" width={2373} height={562} className="mt-5 h-9 w-auto object-contain" />
+          <Image src={IMG_CMRE} alt={t("hero.cmreAltMobile")} width={2373} height={562} className="mt-5 h-9 w-auto object-contain" />
           <div className="mt-6 grid grid-cols-3 gap-y-4">
             {stats.map(({ value, label }) => (
               <div key={label} className="flex flex-col items-center">
@@ -169,14 +122,14 @@ export default function FraccPage() {
 
         {/* 360° view affordance — anchored right, vertically centered */}
         <div className="absolute right-10 top-1/2 z-10 flex h-20.5 w-20.5 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/40 bg-black/30 leading-none backdrop-blur-sm">
-          <span className="font-ewangi text-[1.25rem] text-white">360°</span>
-          <span className="font-ewangi text-[0.9rem] text-white/80">view</span>
+          <span className="font-ewangi text-[1.25rem] text-white">{t("hero.tourBadgeValue")}</span>
+          <span className="font-ewangi text-[0.9rem] text-white/80">{t("hero.tourBadgeLabel")}</span>
         </div>
 
         {/* Del Mar logo — Figma: x=129 y=182, absolute top-left corner */}
         <Image
           src={IMG_LOGO}
-          alt="Del Mar"
+          alt={t("hero.logoAlt")}
           width={194}
           height={70}
           className="absolute left-16 top-14 z-20 h-[clamp(2.5rem,4vw,4.375rem)] w-auto object-contain"
@@ -187,12 +140,12 @@ export default function FraccPage() {
 
           {/* "Build with confidence." */}
           <h1 className="mt-24 max-w-136 font-ewangi leading-[1.08] text-white text-[clamp(3rem,5.6vw,6rem)] animate-[fade-left_0.9s_ease-out_both]">
-            Build with confidence.
+            {t("hero.headline")}
           </h1>
 
           {/* Subtitle */}
           <p className="mt-5 max-w-sm font-ewangi text-white text-[clamp(1.1rem,1.4vw,1.25rem)] animate-[fade-up_0.8s_ease-out_0.3s_both]">
-            A verified and secure development for your next project.
+            {t("hero.subtitle")}
           </p>
 
           {/* Trust badges */}
@@ -208,7 +161,7 @@ export default function FraccPage() {
           {/* CMRE */}
           <Image
             src={IMG_CMRE}
-            alt="CMRE Certified Mexico Real Estate"
+            alt={t("hero.cmreAltDesktop")}
             width={2373}
             height={562}
             className="mt-8 h-12 w-auto object-contain"
@@ -237,11 +190,11 @@ export default function FraccPage() {
 
       {/* ── MOBILE LOT EXPLORER ── */}
       <div className="px-4 pb-8 pt-6 lg:hidden">
-        <p className="mb-3 font-ewangi text-[1.1rem] text-white">Explore the development</p>
+        <p className="mb-3 font-ewangi text-[1.1rem] text-white">{t("lotExplorer.sectionLabel")}</p>
 
         {/* Tabs */}
         <div className="mb-4 flex gap-2">
-          {(["Lots", "Condos", "Houses"] as Tab[]).map((tab) => (
+          {lotTabs.map((tab) => (
             <button
               key={tab}
               type="button"
@@ -265,13 +218,13 @@ export default function FraccPage() {
             className="border-0"
             allowFullScreen
             allow="vr; gyroscope; accelerometer; fullscreen"
-            title="Del Mar 360° virtual tour"
+            title={t("lotExplorer.tourTitle")}
           />
         </div>
 
         {/* Lot list */}
         <div className="mt-5">
-          <p className="mb-2 font-ewangi text-[0.85rem] text-white/60">Select a lot to see details</p>
+          <p className="mb-2 font-ewangi text-[0.85rem] text-white/60">{t("lotExplorer.selectPrompt")}</p>
           {lots.map((lot, i) => (
             <button
               key={lot.id}
@@ -283,7 +236,7 @@ export default function FraccPage() {
                 i > 0 && activeLot !== lot.id && "border-t border-white/15"
               )}
             >
-              <span>Lot {lot.id}</span>
+              <span>{t("lotExplorer.lotLabelPrefix")} {lot.id}</span>
               <span>{lot.area}</span>
             </button>
           ))}
@@ -294,13 +247,13 @@ export default function FraccPage() {
           <div
             className="mt-4 rounded-[9px] border-2 border-brand-teal bg-[#1E1E1E] px-4 py-3"
           >
-            <p className="font-ewangi text-[1rem] text-white">Lot {activeLot}</p>
+            <p className="font-ewangi text-[1rem] text-white">{t("lotExplorer.lotLabelPrefix")} {activeLot}</p>
             <div className="mt-1 space-y-0.5">
               <p className="font-ewangi text-[0.85rem] text-white/70">
                 {lots.find((l) => l.id === activeLot)?.area}
               </p>
-              <p className="font-ewangi text-[0.85rem] text-white/70">Residential</p>
-              <p className="font-ewangi text-[0.85rem] text-brand-teal">Available</p>
+              <p className="font-ewangi text-[0.85rem] text-white/70">{t("lotExplorer.popoverType")}</p>
+              <p className="font-ewangi text-[0.85rem] text-brand-teal">{t("lotExplorer.popoverStatus")}</p>
             </div>
           </div>
         )}
@@ -309,7 +262,7 @@ export default function FraccPage() {
           type="button"
           className="mt-4 w-full rounded border border-white py-3 font-ewangi text-[0.95rem] text-white transition hover:bg-white/10"
         >
-          View all lots
+          {t("lotExplorer.viewAllButton")}
         </button>
       </div>
 
@@ -326,7 +279,7 @@ export default function FraccPage() {
             className="absolute inset-0 h-full w-full border-0"
             allowFullScreen
             allow="vr; gyroscope; accelerometer; fullscreen"
-            title="Del Mar 360° virtual tour"
+            title={t("lotExplorer.tourTitle")}
           />
 
           {/* Left panel dark overlay — Figma: x=0 y=0 482×537 #1E1E1E@20% r=27 */}
@@ -340,12 +293,12 @@ export default function FraccPage() {
             className="absolute z-20 font-ewangi text-[1.25rem] text-white"
             style={{ left: 41, top: 39 }}
           >
-            Explore the development
+            {t("lotExplorer.sectionLabel")}
           </p>
 
           {/* Tabs — Figma: y=83 Lots/Condos/Houses 72×28 r=4 */}
           <div className="absolute z-20 flex gap-3" style={{ left: 41, top: 83 }}>
-            {(["Lots", "Condos", "Houses"] as Tab[]).map((tab) => (
+            {lotTabs.map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -366,7 +319,7 @@ export default function FraccPage() {
             className="absolute z-20 font-ewangi text-[1rem] text-white"
             style={{ left: 41, top: 155 }}
           >
-            Select a lot to see details
+            {t("lotExplorer.selectPrompt")}
           </p>
 
           {/* Lot rows — Figma: active row teal 322×40 r=4 */}
@@ -387,7 +340,7 @@ export default function FraccPage() {
                 background: activeLot === lot.id ? "#3AD3C1" : "transparent",
               }}
             >
-              <span>Lot {lot.id}</span>
+              <span>{t("lotExplorer.lotLabelPrefix")} {lot.id}</span>
               <span>{lot.area}</span>
             </button>
           ))}
@@ -407,7 +360,7 @@ export default function FraccPage() {
             className="absolute z-20 flex items-center justify-center font-ewangi text-[1.25rem] text-white transition hover:bg-white/10"
             style={{ left: 41, top: 433, width: 184, height: 44, borderRadius: 5, border: "1px solid #FFFFFF" }}
           >
-            View all lots
+            {t("lotExplorer.viewAllButton")}
           </button>
 
           {/* Lot popup (when lot selected) — Figma: x=627 y=137 187×179 #1E1E1E border #3AD3C1 r=9 */}
@@ -426,13 +379,13 @@ export default function FraccPage() {
                   border: "2px solid #3AD3C1",
                 }}
               >
-                <p className="font-ewangi text-[1.25rem] text-white">Lot {activeLot}</p>
+                <p className="font-ewangi text-[1.25rem] text-white">{t("lotExplorer.lotLabelPrefix")} {activeLot}</p>
                 <div className="mt-2 space-y-1">
                   <p className="font-ewangi text-[0.9rem] text-white/80">
                     {lots.find((l) => l.id === activeLot)?.area}
                   </p>
-                  <p className="font-ewangi text-[0.9rem] text-white/80">Residential</p>
-                  <p className="font-ewangi text-[0.9rem] text-brand-teal">Available</p>
+                  <p className="font-ewangi text-[0.9rem] text-white/80">{t("lotExplorer.popoverType")}</p>
+                  <p className="font-ewangi text-[0.9rem] text-brand-teal">{t("lotExplorer.popoverStatus")}</p>
                 </div>
               </div>
               {/* Arrow pointer */}
@@ -455,7 +408,7 @@ export default function FraccPage() {
             className="absolute z-20 flex flex-col items-center leading-none text-white"
             style={{ left: 1202, top: 454 }}
           >
-            <span className="font-ewangi text-[1.1rem]">360°</span>
+            <span className="font-ewangi text-[1.1rem]">{t("hero.tourBadgeValue")}</span>
           </div>
         </div>
       </div>
@@ -470,12 +423,12 @@ export default function FraccPage() {
       {/* ── MOBILE MODELS ── */}
       <div className="px-6 py-10 lg:hidden">
         <div className="flex items-center justify-between">
-          <h2 className="font-ewangi text-[1.5rem] text-white">House models</h2>
+          <h2 className="font-ewangi text-[1.5rem] text-white">{t("models.sectionLabel")}</h2>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={prev}
-              aria-label="Previous model"
+              aria-label={t("models.prevAriaLabel")}
               className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
               style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
             >
@@ -484,7 +437,7 @@ export default function FraccPage() {
             <button
               type="button"
               onClick={next}
-              aria-label="Next model"
+              aria-label={t("models.nextAriaLabel")}
               className="flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
               style={{ width: 40, height: 40, borderRadius: 11, border: "3px solid #EAEDF0" }}
             >
@@ -512,7 +465,7 @@ export default function FraccPage() {
         </div>
 
         <div className="relative mt-4 w-full overflow-hidden rounded-2xl bg-[#1E1E1E]" style={{ height: 260 }}>
-          <Image key={model.name} src={model.image} alt={model.name} fill sizes="100vw" className="object-contain p-4" />
+          <Image key={model.name} src={modelImage} alt={model.name} fill sizes="100vw" className="object-contain p-4" />
         </div>
 
         <div className="mt-4 flex gap-3">
@@ -533,12 +486,12 @@ export default function FraccPage() {
 
         {/* House photo — Figma: x=634 y=0 730×345 */}
         <div className="absolute overflow-hidden" style={{ left: 634, top: 0, width: 730, height: 345 }}>
-          <Image key={model.name} src={model.image} alt={model.name} fill sizes="730px" className="object-contain" />
+          <Image key={model.name} src={modelImage} alt={model.name} fill sizes="730px" className="object-contain" />
         </div>
 
         {/* "House models" — Figma: x=103 y=9 36px white */}
         <h2 className="absolute font-ewangi text-[2.25rem] text-white" style={{ left: 103, top: 9 }}>
-          House models
+          {t("models.sectionLabel")}
         </h2>
 
         {/* Model name + type — Figma: x=103 y=111 */}
@@ -551,7 +504,7 @@ export default function FraccPage() {
         <button
           type="button"
           onClick={prev}
-          aria-label="Previous model"
+          aria-label={t("models.prevAriaLabel")}
           className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
           style={{ left: 417, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
         >
@@ -562,7 +515,7 @@ export default function FraccPage() {
         <button
           type="button"
           onClick={next}
-          aria-label="Next model"
+          aria-label={t("models.nextAriaLabel")}
           className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
           style={{ left: 476, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
         >
@@ -593,7 +546,7 @@ export default function FraccPage() {
           <div className="relative overflow-hidden rounded-[26px]" style={{ minHeight: 300 }}>
             <Image
               src={IMG_TOUR}
-              alt="Del Mar interior"
+              alt={t("tour.imageAlt")}
               fill
               className="object-cover"
               sizes="100vw"
@@ -603,7 +556,7 @@ export default function FraccPage() {
               style={{ background: "linear-gradient(to left, rgba(0,0,0,0.85) 55%, transparent 100%)" }}
             >
               <h2 className="font-ewangi text-[clamp(1.75rem,3.5vw,3.4375rem)] leading-tight text-right text-white">
-                Let&apos;s take a look<br />from your<br />next home.
+                {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />{t("tour.headingLine3")}
               </h2>
               <a
                 href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
@@ -611,7 +564,7 @@ export default function FraccPage() {
                 rel="noopener noreferrer"
                 className="rounded-lg bg-[#1e1e1e] px-8 py-4 font-ewangi text-[1.5rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink lg:text-[2.25rem]"
               >
-                360 tour
+                {t("tour.button")}
               </a>
             </div>
           </div>
@@ -626,19 +579,17 @@ export default function FraccPage() {
       {/* ── MOBILE OCEAN LOTS ── */}
       <div className="px-6 pb-12 pt-8 lg:hidden">
         <h2 className="font-ewangi leading-tight text-brand-teal text-[clamp(2rem,8vw,2.75rem)]">
-          Ocean View Lots
+          {t("oceanLots.heading")}
         </h2>
         <div className="relative mt-4 w-full overflow-hidden rounded-xl" style={{ height: 240 }}>
-          <Image src={IMG_LOTS_SHOT} alt="Ocean view lots" fill sizes="100vw" className="object-cover" />
+          <Image src={IMG_LOTS_SHOT} alt={t("oceanLots.imageAltMobile")} fill sizes="100vw" className="object-cover" />
         </div>
         <p className="mt-5 text-justify font-ewangi text-[0.95rem] leading-[1.7] text-white/85">
-          Explore premium ocean-view lots for sale, each offering a unique opportunity to build your
-          dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of coastal
-          living, where every sunrise and sunset transforms the horizon into a masterpiece.
+          {t("oceanLots.body")}
         </p>
         <div className="mt-6 rounded-[10px] bg-white px-6 py-4">
           <p className="font-ewangi text-brand-ink text-[clamp(1rem,4vw,1.3rem)]">
-            We certify so you can build your future
+            {t("ctaBanner.text")}
           </p>
         </div>
       </div>
@@ -652,13 +603,10 @@ export default function FraccPage() {
             <RevealOnScroll direction="left" duration={1100} className="w-[42%] shrink-0">
               <div>
                 <h2 className="font-ewangi leading-[1.05] text-brand-teal text-[clamp(3rem,5.5vw,6rem)]">
-                  Ocean View Lots
+                  {t("oceanLots.heading")}
                 </h2>
                 <p className="mt-8 w-full text-justify font-ewangi leading-[1.65] text-white text-[clamp(1.1rem,1.3vw,1.375rem)]">
-                  Explore premium ocean-view lots for sale, each offering a unique opportunity to build
-                  your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of
-                  coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.
-                  Our selection includes expansive lots with various square footage options to suit your vision.
+                  {t("oceanLots.body")} {t("oceanLots.bodyExtra")}
                 </p>
               </div>
             </RevealOnScroll>
@@ -667,7 +615,7 @@ export default function FraccPage() {
             <RevealOnScroll direction="right" delay={150} duration={1100} className="min-w-0 flex-1">
               <Image
                 src={IMG_LOTS_SHOT}
-                alt="Ocean view lots development"
+                alt={t("oceanLots.imageAltDesktop")}
                 width={1890}
                 height={1148}
                 className="h-auto w-full rounded-[10px] object-cover"
@@ -681,7 +629,7 @@ export default function FraccPage() {
             <div className="mt-12 flex items-center justify-center">
               <div className="w-full max-w-236.25 rounded-[10px] bg-white px-10 py-6">
                 <p className="font-ewangi text-center text-brand-ink text-[clamp(1.5rem,3vw,3rem)]">
-                  We certify so you can build your future
+                  {t("ctaBanner.text")}
                 </p>
               </div>
             </div>

@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "title": "The Mission",
+    "description": "Property Dreamz is on a mission to make buying real estate in Mexico safe, transparent, and accessible for international buyers. Learn who we are and why we built this.",
+    "ogTitle": "The Mission — Property Dreamz",
+    "ogDescription": "Safe, transparent, and accessible Mexican real estate for international buyers."
+  },
+  "hero": {
+    "badge": "About us",
+    "heading": "Your trusted partner for real estate in Mexico.",
+    "paragraph1": "Property Dreamz® connects international buyers with verified real estate opportunities across Mexico.",
+    "paragraph2": "We make the process transparent, simple, and secure so you can invest with confidence.",
+    "location": "Based in San Diego, serving all of Mexico.",
+    "certifiedByLabel": "All certified by",
+    "cmreLogoAlt": "CMRE — Certified Mexico Real Estate",
+    "mapTitle": "Baja California region map",
+    "stats": [
+      { "value": "+80", "label": "Verified developments" },
+      { "value": "+200", "label": "International Buyers" },
+      { "value": "100%", "label": "Certified Projects" },
+      { "value": "+20", "label": "Locations across Mexico" }
+    ],
+    "regionPills": ["Baja California", "Baja California Sur", "Los Cabos"]
+  },
+  "whyDifferent": {
+    "badge": "Why Property Dreamz® exists",
+    "heading": "Buying in another country should feel exciting, not risky.",
+    "body": "Many buyers face challenges understanding legal requirements, verifying developers, and comparing real opportunities. Property Dreamz® was created to simplify that journey by providing a trusted platform focused on transparency, verification, and buyer confidence.",
+    "steps": [
+      { "title": "Discover", "body": "Explore verified developments in the best locations." },
+      { "title": "Verify", "body": "We review each project to ensure it meets our standards." },
+      { "title": "Compare", "body": "Easily compare options, prices, amenities and locations." },
+      { "title": "Invest", "body": "Connect directly with developers and move forward." },
+      { "title": "Enjoy Mexico", "body": "Live, vacation or invest in the lifestyle you deserve." }
+    ]
+  },
+  "differentiators": {
+    "badge": "What makes us different",
+    "cards": [
+      {
+        "title": "Verified Developments",
+        "body": "Every listing goes through a review process before being featured on our platform.",
+        "alt": "Modern residential building facade"
+      },
+      {
+        "title": "Buyer-Focused Platform",
+        "body": "Built specifically for international buyers with clear information and local expertise.",
+        "alt": "Couple reviewing a property together"
+      },
+      {
+        "title": "Direct Developer Access",
+        "body": "Connect directly with qualified developers. No middlemen, no confusion.",
+        "alt": "Aerial view of a residential development"
+      },
+      {
+        "title": "Trusted Information",
+        "body": "Clear details, transparent documentation, and reliable guidance at every step.",
+        "alt": "Aerial view of coastal terrain"
+      }
+    ]
+  },
+  "certification": {
+    "badge": "Powered by certification",
+    "heading": "Raising the standard of real estate in Mexico.",
+    "paragraph1": "Property Dreamz® works alongside the <b>CMRE® certification</b> framework to promote transparency and higher standards within Mexico's real estate market.",
+    "paragraph2": "Buyers can easily identify developments that have completed independent verification processes.",
+    "cta": "Browse certified developments",
+    "logoAlt": "CMRE — Certified Mexico Real Estate seal",
+    "checklist": [
+      "Legal & title review",
+      "Financial & regulatory compliance",
+      "Developer background verification",
+      "Projects transparency standards"
+    ]
+  },
+  "mission": {
+    "badge": "Our mission",
+    "heading": "Making real estate in Mexico easier to understand, safer to explore, and more accessible to international buyers.",
+    "values": [
+      { "title": "Transparency", "body": "We believe in clear information and open communication." },
+      { "title": "Trust", "body": "We verify, we review, and we stand behind what we promote." },
+      { "title": "Opportunity", "body": "We connect buyers with incredible places and real possibilities." }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to explore Mexico's verified developments?",
+    "subheading": "Discover opportunities with confidence.",
+    "exploreProperties": "Explore properties",
+    "talkToAdvisor": "Talk to an advisor",
+    "imageAlt": "Sunset over the Baja California coastline"
+  }
+}

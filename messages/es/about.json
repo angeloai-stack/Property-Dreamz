@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "title": "La Misión",
+    "description": "Property Dreamz tiene la misión de hacer que comprar bienes raíces en México sea seguro, transparente y accesible para compradores internacionales. Conoce quiénes somos y por qué creamos esta plataforma.",
+    "ogTitle": "La Misión — Property Dreamz",
+    "ogDescription": "Bienes raíces en México seguros, transparentes y accesibles para compradores internacionales."
+  },
+  "hero": {
+    "badge": "Nosotros",
+    "heading": "Tu socio de confianza para bienes raíces en México.",
+    "paragraph1": "Property Dreamz® conecta a compradores internacionales con oportunidades inmobiliarias verificadas en todo México.",
+    "paragraph2": "Hacemos que el proceso sea transparente, sencillo y seguro para que puedas invertir con confianza.",
+    "location": "Con sede en San Diego, damos servicio a todo México.",
+    "certifiedByLabel": "Certificado por",
+    "cmreLogoAlt": "CMRE — Bienes Raíces Certificados de México",
+    "mapTitle": "Mapa de la región de Baja California",
+    "stats": [
+      { "value": "+80", "label": "Desarrollos verificados" },
+      { "value": "+200", "label": "Compradores internacionales" },
+      { "value": "100%", "label": "Proyectos certificados" },
+      { "value": "+20", "label": "Ubicaciones en México" }
+    ],
+    "regionPills": ["Baja California", "Baja California Sur", "Los Cabos"]
+  },
+  "whyDifferent": {
+    "badge": "Por qué existe Property Dreamz®",
+    "heading": "Comprar en otro país debería sentirse emocionante, no riesgoso.",
+    "body": "Muchos compradores enfrentan dificultades para entender los requisitos legales, verificar a los desarrolladores y comparar oportunidades reales. Property Dreamz® fue creado para simplificar ese proceso, ofreciendo una plataforma confiable centrada en la transparencia, la verificación y la confianza del comprador.",
+    "steps": [
+      { "title": "Descubre", "body": "Explora desarrollos verificados en las mejores ubicaciones." },
+      { "title": "Verifica", "body": "Revisamos cada proyecto para asegurarnos de que cumpla con nuestros estándares." },
+      { "title": "Compara", "body": "Compara fácilmente opciones, precios, amenidades y ubicaciones." },
+      { "title": "Invierte", "body": "Conéctate directamente con los desarrolladores y avanza con tu inversión." },
+      { "title": "Disfruta México", "body": "Vive, vacaciona o invierte en el estilo de vida que mereces." }
+    ]
+  },
+  "differentiators": {
+    "badge": "Qué nos hace diferentes",
+    "cards": [
+      {
+        "title": "Desarrollos verificados",
+        "body": "Cada propiedad pasa por un proceso de revisión antes de ser publicada en nuestra plataforma.",
+        "alt": "Fachada de un edificio residencial moderno"
+      },
+      {
+        "title": "Plataforma enfocada en el comprador",
+        "body": "Diseñada especialmente para compradores internacionales, con información clara y experiencia local.",
+        "alt": "Pareja revisando una propiedad juntos"
+      },
+      {
+        "title": "Acceso directo a desarrolladores",
+        "body": "Conéctate directamente con desarrolladores calificados. Sin intermediarios, sin confusión.",
+        "alt": "Vista aérea de un desarrollo residencial"
+      },
+      {
+        "title": "Información confiable",
+        "body": "Detalles claros, documentación transparente y asesoría confiable en cada paso.",
+        "alt": "Vista aérea de un terreno costero"
+      }
+    ]
+  },
+  "certification": {
+    "badge": "Respaldado por certificación",
+    "heading": "Elevando el estándar de los bienes raíces en México.",
+    "paragraph1": "Property Dreamz® trabaja junto con el marco de <b>certificación CMRE®</b> para promover la transparencia y estándares más altos dentro del mercado inmobiliario de México.",
+    "paragraph2": "Los compradores pueden identificar fácilmente los desarrollos que han completado procesos de verificación independientes.",
+    "cta": "Ver desarrollos certificados",
+    "logoAlt": "Sello CMRE — Bienes Raíces Certificados de México",
+    "checklist": [
+      "Revisión legal y de títulos de propiedad",
+      "Cumplimiento financiero y regulatorio",
+      "Verificación de antecedentes del desarrollador",
+      "Estándares de transparencia de los proyectos"
+    ]
+  },
+  "mission": {
+    "badge": "Nuestra misión",
+    "heading": "Hacer que los bienes raíces en México sean más fáciles de entender, más seguros de explorar y más accesibles para compradores internacionales.",
+    "values": [
+      { "title": "Transparencia", "body": "Creemos en la información clara y la comunicación abierta." },
+      { "title": "Confianza", "body": "Verificamos, revisamos y respaldamos lo que promovemos." },
+      { "title": "Oportunidad", "body": "Conectamos a los compradores con lugares increíbles y posibilidades reales." }
+    ]
+  },
+  "cta": {
+    "heading": "¿Listo para explorar los desarrollos verificados de México?",
+    "subheading": "Descubre oportunidades con confianza.",
+    "exploreProperties": "Explorar propiedades",
+    "talkToAdvisor": "Habla con un asesor",
+    "imageAlt": "Atardecer sobre la costa de Baja California"
+  }
+}

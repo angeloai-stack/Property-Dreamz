@@ -2,7 +2,8 @@
 // Saved listings page — reads from the shared, localStorage-backed saved-properties store so
 // hearting a property anywhere on the site (e.g. the explore-map pin popup) shows up here.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import {
   Bath,
@@ -20,12 +21,13 @@ import { VerifyFeatures } from "@/components/shared/VerifyFeatures";
 import { useSavedProperties, type SavedProperty } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
 
-const SORT_OPTIONS = ["Newest first", "Price: low to high", "Price: high to low"] as const;
-type SortOption = (typeof SORT_OPTIONS)[number];
+// Filter STATE uses stable, untranslated keys; display LABELS come from translations.
+const SORT_VALUES = ["newest", "priceLowHigh", "priceHighLow"] as const;
+type SortOption = (typeof SORT_VALUES)[number];
 
 function sortListings(list: SavedProperty[], sort: SortOption): SavedProperty[] {
-  if (sort === "Price: low to high") return [...list].sort((a, b) => a.priceUSD - b.priceUSD);
-  if (sort === "Price: high to low") return [...list].sort((a, b) => b.priceUSD - a.priceUSD);
+  if (sort === "priceLowHigh") return [...list].sort((a, b) => a.priceUSD - b.priceUSD);
+  if (sort === "priceHighLow") return [...list].sort((a, b) => b.priceUSD - a.priceUSD);
   return list;
 }
 
@@ -40,6 +42,7 @@ function formatUSD(n: number) {
 // ── SortDropdown — Figma: Rectangle 138, #1e1e1e r=7 pill above the grid ──────
 
 function SortDropdown({ value, onChange }: { value: SortOption; onChange: (v: SortOption) => void }) {
+  const t = useTranslations("misc.saved");
   const [open, setOpen] = useState(false);
 
   return (
@@ -50,7 +53,7 @@ function SortDropdown({ value, onChange }: { value: SortOption; onChange: (v: So
         aria-expanded={open}
         className="flex items-center gap-3 rounded-[7px] bg-[#1e1e1e] px-5 py-3 font-ewangi text-[0.9rem] text-white transition hover:bg-black"
       >
-        <span>{value}</span>
+        <span>{t(`sortOptions.${value}`)}</span>
         <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")} strokeWidth={2} />
       </button>
 
@@ -58,7 +61,7 @@ function SortDropdown({ value, onChange }: { value: SortOption; onChange: (v: So
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-full z-50 mt-2 min-w-full overflow-hidden rounded-[10px] bg-[#1e1e1e] shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-            {SORT_OPTIONS.map((opt) => (
+            {SORT_VALUES.map((opt) => (
               <button
                 key={opt}
                 type="button"
@@ -71,7 +74,7 @@ function SortDropdown({ value, onChange }: { value: SortOption; onChange: (v: So
                   opt === value ? "text-brand-teal" : "text-white/80"
                 )}
               >
-                {opt}
+                {t(`sortOptions.${opt}`)}
               </button>
             ))}
           </div>
@@ -89,6 +92,13 @@ type SavedCardProps = {
 };
 
 function SavedCard({ listing, onUnsave }: SavedCardProps) {
+  const t = useTranslations("misc.saved");
+  const tp = useTranslations("properties");
+  // `listing.status` may come from the property catalogue ("Available"/"Coming Soon") or from
+  // explore-map listings (construction-status vocabulary) — look up a label, falling back to the
+  // raw value so an unrecognized status never renders a missing-translation error.
+  const availabilityLabels = tp.raw("availability") as Record<string, string>;
+  const statusLabel = availabilityLabels[listing.status] ?? listing.status;
   return (
     <article className="group overflow-hidden rounded-[14px] bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.16)]">
       {/* Image — flush to the card's top corners, no inset margin */}
@@ -103,7 +113,7 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
 
         {/* Status badge — Figma: rgba(2,142,127,0.84) r=2, top-left */}
         <div className="absolute left-3 top-3 rounded-xs bg-[#028e7f]/84 px-3 py-1">
-          <span className="font-ewangi text-[13px] text-white sm:text-[15px]">{listing.status}</span>
+          <span className="font-ewangi text-[13px] text-white sm:text-[15px]">{statusLabel}</span>
         </div>
 
         {/* Heart unsave button — Figma: solid white circle 45x45, top-right */}
@@ -113,7 +123,7 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
             e.stopPropagation();
             onUnsave();
           }}
-          aria-label="Remove from saved"
+          aria-label={t("removeFromSaved")}
           className="absolute right-3 top-3 flex h-10.5 w-10.5 items-center justify-center rounded-full bg-white shadow-md transition hover:scale-105"
         >
           <Heart className="h-5 w-5 fill-brand-teal text-brand-teal" strokeWidth={0} />
@@ -150,15 +160,15 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5">
           <span className="flex items-center gap-1 font-ewangi text-[13px] text-[#1e1e1e]">
             <Maximize2 className="h-3.5 w-3.5 text-brand-teal" strokeWidth={2} />
-            <span className="font-bold text-brand-emerald">{listing.sqm}</span> sqm
+            <span className="font-bold text-brand-emerald">{listing.sqm}</span> {t("sqmLabel")}
           </span>
           <span className="flex items-center gap-1 font-ewangi text-[13px] text-[#1e1e1e]">
             <Bed className="h-3.5 w-3.5 text-brand-teal" strokeWidth={2} />
-            <span className="font-bold text-brand-emerald">{listing.beds}</span> Rooms
+            <span className="font-bold text-brand-emerald">{listing.beds}</span> {t("roomsLabel")}
           </span>
           <span className="flex items-center gap-1 font-ewangi text-[13px] text-[#1e1e1e]">
             <Bath className="h-3.5 w-3.5 text-brand-teal" strokeWidth={2} />
-            <span className="font-bold text-brand-emerald">{listing.baths}</span> Baths
+            <span className="font-bold text-brand-emerald">{listing.baths}</span> {t("bathsLabel")}
           </span>
         </div>
 
@@ -168,13 +178,13 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
             href="/properties"
             className="flex-1 rounded-xs border border-brand-teal py-1.5 text-center font-ewangi text-[13px] text-brand-pine transition hover:bg-brand-teal/10"
           >
-            See details
+            {t("seeDetails")}
           </Link>
           <Link
             href="/contact"
             className="flex-1 rounded-xs bg-brand-teal py-1.5 text-center font-ewangi text-[13px] font-bold text-white transition hover:bg-brand-teal-dark"
           >
-            Talk to an expert
+            {t("talkToExpert")}
           </Link>
         </div>
       </div>
@@ -183,9 +193,10 @@ function SavedCard({ listing, onUnsave }: SavedCardProps) {
 }
 
 export default function SavedPage() {
+  const t = useTranslations("misc.saved");
   const { saved, removeSaved } = useSavedProperties();
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [sort, setSort] = useState<SortOption>("Newest first");
+  const [sort, setSort] = useState<SortOption>("newest");
   const [query, setQuery] = useState("Tijuana, Rosarito, Puerto Nuevo");
 
   const visible = sortListings(saved, sort);
@@ -196,7 +207,7 @@ export default function SavedPage() {
       <div className="px-5 py-10 sm:px-8 sm:py-14 md:px-12 lg:px-30">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-none text-brand-pine animate-[fade-left_0.8s_ease-out_both]">
-            Saved
+            {t("heading")}
           </h1>
 
           <div className="flex flex-1 flex-wrap items-center gap-4 lg:justify-end">
@@ -206,7 +217,7 @@ export default function SavedPage() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by zone..."
+                placeholder={t("searchPlaceholder")}
                 className="min-w-0 flex-1 bg-transparent font-ewangi text-[1rem] text-brand-ink outline-none placeholder:text-brand-ink/40"
               />
               <Search className="h-5 w-5 shrink-0 text-brand-teal" strokeWidth={2} />
@@ -219,7 +230,7 @@ export default function SavedPage() {
               aria-expanded={filtersOpen}
               className="flex items-center gap-2 font-ewangi text-[1.1rem] text-brand-ink transition hover:text-brand-teal"
             >
-              <span>Filter</span>
+              <span>{t("filter")}</span>
               {filtersOpen ? (
                 <X className="h-5 w-5" strokeWidth={1.5} />
               ) : (
@@ -231,7 +242,7 @@ export default function SavedPage() {
 
         {filtersOpen && (
           <div className="mt-6 rounded-[22px] border border-black/10 bg-white p-6">
-            <p className="font-ewangi text-[1rem] text-brand-ink/50">Filters coming soon.</p>
+            <p className="font-ewangi text-[1rem] text-brand-ink/50">{t("filtersComingSoon")}</p>
           </div>
         )}
 
@@ -265,16 +276,16 @@ export default function SavedPage() {
         ) : (
           <div className="flex flex-col items-center gap-6 py-16 text-center sm:py-24 lg:py-32">
             <Heart className="h-16 w-16 text-brand-ink/15" strokeWidth={1} />
-            <h2 className="font-ewangi text-[2rem] text-brand-ink/50">No saved properties</h2>
+            <h2 className="font-ewangi text-[2rem] text-brand-ink/50">{t("noSaved.heading")}</h2>
             <p className="font-ewangi text-[1.1rem] text-brand-ink/40">
-              Browse the map and heart the properties you love.
+              {t("noSaved.body")}
             </p>
-            <a
+            <Link
               href="/explore-map"
               className="mt-2 inline-flex rounded-full border-2 border-brand-ink/20 px-8 py-3 font-ewangi text-brand-ink/60 transition hover:border-brand-teal hover:text-brand-teal"
             >
-              Explore Map
-            </a>
+              {t("noSaved.exploreMap")}
+            </Link>
           </div>
         )}
       </div>

@@ -1,6 +1,6 @@
 // Renders a post's ContentBlock[] — headings get scroll-anchor ids for the "On this page" TOC.
 import Image from "next/image";
-import type { ContentBlock } from "@/app/blog/data";
+import type { ContentBlock } from "@/app/[locale]/blog/data";
 import { RichText } from "./RichText";
 
 export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {

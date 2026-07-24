@@ -1,6 +1,7 @@
 "use client";
 // Social share row — Figma: small outlined circles in the byline, larger filled circles in the Share section.
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 const NETWORKS = ["X", "f", "in", "WA"] as const;
@@ -12,6 +13,7 @@ type ShareButtonsProps = {
 };
 
 export function ShareButtons({ size = "sm", showCopyLink = false, className }: ShareButtonsProps) {
+  const t = useTranslations("blog.share");
   const [copied, setCopied] = useState(false);
   const large = size === "lg";
 
@@ -31,7 +33,7 @@ export function ShareButtons({ size = "sm", showCopyLink = false, className }: S
         <button
           key={label}
           type="button"
-          aria-label={`Share on ${label}`}
+          aria-label={t("shareOn", { network: label })}
           className={cn(
             "flex shrink-0 items-center justify-center rounded-full font-bold transition",
             large
@@ -49,7 +51,7 @@ export function ShareButtons({ size = "sm", showCopyLink = false, className }: S
           onClick={copyLink}
           className="rounded-full border-[1.5px] border-[#dee5e3] px-5 py-3.5 font-ewangi text-[14px] font-semibold text-brand-pine transition hover:border-brand-teal"
         >
-          {copied ? "Copied!" : "Copy link"}
+          {copied ? t("copied") : t("copyLink")}
         </button>
       )}
     </div>

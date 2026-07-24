@@ -1,21 +1,17 @@
 "use client";
 // Full-bleed hero with Ken Burns background image and search bar.
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const slides = [
-  { line1: "Mexico Real Estate:", line2: "Find the Right Property" },
-  { line1: "Find your",   line2: "Piece of Mexico"  },
-  { line1: "Own a slice", line2: "of Paradise"      },
-  { line1: "Live the",    line2: "Mexican Dream"    },
-];
-
 const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
 
 export function HeroSection() {
+  const t = useTranslations("home.hero");
+  const slides = t.raw("slides") as { line1: string; line2: string }[];
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [slide, setSlide] = useState(0);
@@ -30,7 +26,7 @@ export function HeroSection() {
       }, 500);
     }, 4500);
     return () => clearInterval(id);
-  }, []);
+  }, [slides.length]);
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     const q = query.trim();
@@ -78,8 +74,7 @@ export function HeroSection() {
 
         {/* Static SEO subtitle — stays put while the headline carousel rotates */}
         <p className="mt-4 max-w-2xl font-ewangi text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed text-white/90">
-          Find certified properties across Mexico. Buy a house in Mexico with peace of mind — every
-          listing title-searched, developer-vetted, and HOA-audited before you invest.
+          {t("seoText")}
         </p>
 
         {/* Carousel dots */}
@@ -88,7 +83,7 @@ export function HeroSection() {
             <button
               key={i}
               type="button"
-              aria-label={`Slide ${i + 1}`}
+              aria-label={t("slideAriaLabel", { number: i + 1 })}
               onClick={() => {
                 setShow(false);
                 setTimeout(() => { setSlide(i); setShow(true); }, 500);
@@ -104,7 +99,7 @@ export function HeroSection() {
         {/* Search bar + desktop icon rail */}
         <div className="mt-[15vh] w-full max-w-xl mx-auto animate-[fade-up_0.8s_ease-out_0.35s_both]">
           <form onSubmit={handleSearch}>
-            <label htmlFor="hero-search" className="sr-only">Search properties</label>
+            <label htmlFor="hero-search" className="sr-only">{t("searchLabel")}</label>
             <div className="flex items-center gap-3 rounded-full bg-[rgba(0,0,0,0.35)] px-5 py-3.5 ring-1 ring-white/10 backdrop-blur-sm transition hover:bg-[rgba(0,0,0,0.45)] focus-within:ring-white/30">
               <Search className="h-5 w-5 shrink-0 text-white/70" strokeWidth={1.5} />
               <input
@@ -112,7 +107,7 @@ export function HeroSection() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Tijuana, Rosarito, Pto. Nuevo…"
+                placeholder={t("searchPlaceholder")}
                 className="flex-1 bg-transparent font-ewangi text-[clamp(0.95rem,1.8vw,1.2rem)] text-white placeholder:text-white/55 outline-none"
               />
             </div>

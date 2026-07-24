@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -12,97 +13,20 @@ const IMG_AMENITIES = `${CLD}/the-wave/the-wave/amenities`;
 const IMG_CTA       = `${CLD}/the-wave/the-wave/hero`; // TODO: replace with dedicated cta image once uploaded
 const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "40",   label: "Units" },
-  { value: "4",    label: "Models" },
-  { value: "65%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = ["Title reviewed", "Regulatory compliance", "Infrastructure validated"];
-
-type AmenityTab = "Pool" | "Rooftop" | "Gym" | "Kitchen" | "Terrace";
-
-const amenities: Record<AmenityTab, { title: string; description: string }> = {
-  Pool: {
-    title: "Infinity pool with direct Pacific Ocean views.",
-    description: "Infinity-edge pool overlooking the Pacific Ocean, with sun loungers, swim-up bar, and a dedicated relaxation deck. The centerpiece of resort-style living at The Wavve Baja.",
-  },
-  Rooftop: {
-    title: "Panoramic rooftop lounge with 360° views.",
-    description: "An exclusive rooftop terrace offering unobstructed views of the Pacific and the Rosarito coastline — perfect for sunsets, social gatherings, and private events.",
-  },
-  Gym: {
-    title: "State-of-the-art fitness center.",
-    description: "Fully equipped fitness studio with premium machines, free weights, and a dedicated yoga and stretching zone — all with natural light and ocean-facing windows.",
-  },
-  Kitchen: {
-    title: "Premium kitchens with European finishes.",
-    description: "Open-concept kitchens featuring European cabinetry, quartz countertops, stainless steel appliances, and a breakfast bar designed for both everyday living and entertaining.",
-  },
-  Terrace: {
-    title: "Private ocean-view terraces in every unit.",
-    description: "Every residence features a private terrace with sweeping Pacific Ocean views — ideal for morning coffee, evening dining, or simply breathing in the coastal air.",
-  },
-};
-
-const models = [
-  {
-    name: "The Studio",
-    area: "543 sq. ft.",
-    features: [
-      "Open-concept living & kitchen",
-      "Full bathroom",
-      "Ocean-view terrace",
-      "Laundry hookup",
-      "1 Parking space",
-      "Floor-to-ceiling windows",
-      "Premium kitchen finishes",
-    ],
-  },
-  {
-    name: "The Coastal",
-    area: "756 sq. ft.",
-    features: [
-      "1 Bedroom",
-      "1 Bathroom",
-      "Open kitchen & dining area",
-      "Ocean-view terrace",
-      "Laundry hookup",
-      "1 Parking space",
-      "Floor-to-ceiling windows",
-    ],
-  },
-  {
-    name: "The Pacific",
-    area: "1,087 sq. ft.",
-    features: [
-      "2 Bedrooms",
-      "2 Bathrooms",
-      "Open kitchen & living room",
-      "Panoramic ocean terrace",
-      "Laundry room",
-      "1 Parking space",
-      "Premium finishes throughout",
-    ],
-  },
-  {
-    name: "The Penthouse",
-    area: "1,458 sq. ft.",
-    features: [
-      "3 Bedrooms",
-      "3 Bathrooms",
-      "Chef's kitchen",
-      "Expansive living & dining room",
-      "Two private ocean terraces",
-      "Laundry room",
-      "2 Parking spaces",
-    ],
-  },
-];
+type Stat = { value: string; label: string };
+type AmenityKey = "pool" | "rooftop" | "gym" | "kitchen" | "terrace";
+type Amenity = { tabLabel: string; title: string; description: string };
+type Model = { name: string; area: string; features: string[] };
 
 export default function TheWavePage() {
-  const [activeTab, setActiveTab] = useState<AmenityTab>("Pool");
+  const t = useTranslations("propertyTheWave");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const amenities = t.raw("stepInside.amenities") as Record<AmenityKey, Amenity>;
+  const amenityKeys = Object.keys(amenities) as AmenityKey[];
+  const models = t.raw("models.list") as Model[];
+
+  const [activeTab, setActiveTab] = useState<AmenityKey>("pool");
   const [modelIndex, setModelIndex] = useState(0);
 
   useEffect(() => {
@@ -122,7 +46,7 @@ export default function TheWavePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={IMG_HERO}
-            alt="The Wave oceanfront residences, Rosarito Beach"
+            alt={t("hero.heroImageAlt")}
             className="absolute inset-0 h-full w-full object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           />
         </div>
@@ -144,21 +68,21 @@ export default function TheWavePage() {
           <div className="flex justify-start items-center gap-5 lg:justify-end">
             <RevealOnScroll direction="right">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_LOGO} alt="The Wave" className="h-10 w-auto object-contain" />
+              <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="h-10 w-auto object-contain" />
             </RevealOnScroll>
             <RevealOnScroll direction="right" delay={100}>
-              <Image src={IMG_CMRE} alt="CMRE Certified" width={135} height={32} className="w-32" />
+              <Image src={IMG_CMRE} alt={t("hero.cmreAlt")} width={135} height={32} className="w-32" />
             </RevealOnScroll>
           </div>
 
           {/* Headline + description + badges */}
           <div className="mt-10 max-w-2xl lg:mt-auto">
             <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
-              Where the wave<br />meets luxury.
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
-                A curated collection of oceanfront residences in Rosarito Beach, designed for those who live on the edge of extraordinary.
+                {t("hero.description")}
               </p>
             </RevealOnScroll>
 
@@ -200,7 +124,7 @@ export default function TheWavePage() {
         <RevealOnScroll direction="center">
           <div className="flex items-center gap-6 mb-10">
             <div className="h-px flex-1 bg-white/30" />
-            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white whitespace-nowrap">Step inside The Wavve</h2>
+            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white whitespace-nowrap">{t("stepInside.heading")}</h2>
             <div className="h-px flex-1 bg-white/30" />
           </div>
         </RevealOnScroll>
@@ -211,7 +135,7 @@ export default function TheWavePage() {
           <div className="lg:hidden">
             <div className="relative overflow-hidden rounded-3xl" style={{ height: 260 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_AMENITIES} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <img src={IMG_AMENITIES} alt={amenities[activeTab].tabLabel} className="absolute inset-0 h-full w-full object-cover" />
               <div
                 className="absolute inset-0"
                 style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 35%, transparent 100%)" }}
@@ -224,7 +148,7 @@ export default function TheWavePage() {
               {amenities[activeTab].description}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+              {amenityKeys.map((tab) => (
                 <button
                   key={tab}
                   type="button"
@@ -236,7 +160,7 @@ export default function TheWavePage() {
                       : "bg-white/10 text-white hover:bg-white/20"
                   )}
                 >
-                  {tab}
+                  {amenities[tab].tabLabel}
                 </button>
               ))}
             </div>
@@ -246,7 +170,7 @@ export default function TheWavePage() {
           <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-15 overflow-hidden h-131">
             <div className="absolute inset-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_AMENITIES} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <img src={IMG_AMENITIES} alt={amenities[activeTab].tabLabel} className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div
               className="absolute inset-0"
@@ -260,7 +184,7 @@ export default function TheWavePage() {
                 {amenities[activeTab].title}
               </p>
               <div className="flex flex-col gap-1.5 items-end">
-                {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+                {amenityKeys.map((tab) => (
                   <button
                     key={tab}
                     type="button"
@@ -272,7 +196,7 @@ export default function TheWavePage() {
                         : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
                     )}
                   >
-                    {tab}
+                    {amenities[tab].tabLabel}
                   </button>
                 ))}
               </div>
@@ -288,7 +212,7 @@ export default function TheWavePage() {
 
           <RevealOnScroll direction="left">
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-ewangi text-[1.75rem] text-[#1e1e1e]">Explore our {models.length} models</span>
+              <span className="font-ewangi text-[1.75rem] text-[#1e1e1e]">{t("models.headingTemplate", { count: models.length })}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -330,7 +254,7 @@ export default function TheWavePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={modelImg}
-                  alt={`${currentModel.name} interior`}
+                  alt={t("models.modelImageAltTemplate", { name: currentModel.name })}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -364,7 +288,7 @@ export default function TheWavePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG_CTA}
-                  alt="Pacific coastline at Rosarito Beach"
+                  alt={t("cta.imageAlt")}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -373,20 +297,20 @@ export default function TheWavePage() {
 
           <RevealOnScroll direction="right" delay={150} duration={1100} className="flex flex-col gap-5 lg:flex-1">
             <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.75rem)] leading-tight text-black">
-              Life Elevated.<br />Ocean Uninterrupted.
+              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
             </h2>
             <p className="font-ewangi text-[1.1rem] leading-relaxed text-black/70">
-              At The Wavve Baja, every residence is an invitation to live differently — with the Pacific Ocean as your backyard, premium finishes as your standard, and a private community designed for those who expect more. Only 40 exclusive units, each certified and ready to deliver the coastal lifestyle you deserve.
+              {t("cta.bodyMain")}
             </p>
             <p className="font-ewangi text-[1.05rem] leading-relaxed text-black/60">
-              Reserve your residence today and live where the wave meets luxury.
+              {t("cta.bodySecondary")}
             </p>
             <div className="mt-2">
               <button
                 type="button"
                 className="rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] font-bold text-brand-ink transition hover:bg-brand-teal/90"
               >
-                Talk to an expert
+                {t("cta.button")}
               </button>
             </div>
           </RevealOnScroll>

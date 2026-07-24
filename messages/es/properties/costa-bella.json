@@ -1,0 +1,130 @@
+{
+  "metadata": {
+    "title": "Costa Bella – Condominios Frente a la Playa en Venta en Rosarito, Baja California",
+    "description": "Costa Bella ofrece condominios costeros en el corredor norte de Baja California, cerca de Rosarito. A pasos del océano Pacífico, ideal para casa de vacaciones o residencia permanente en Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Exterior de los condominios de lujo Costa Bella",
+    "logoAlt": "Costa Bella",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Vida junto a la playa.",
+    "headlineLine2": "A pasos del Pacífico.",
+    "subtitle": "Una colección limitada de solo 16 condominios de lujo diseñados para quienes buscan elegancia costera."
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "16", "label": "Condominios" },
+    { "value": "4", "label": "Modelos" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "explore": {
+    "heading": "Explora tu próximo hogar",
+    "amenities": [
+      {
+        "id": "pool",
+        "label": "Alberca",
+        "title": "Alberca en la azotea con vistas panorámicas al Pacífico.",
+        "description": "Alberca estilo resort en la azotea con área de camastros y descanso, con vista al océano Pacífico. El lugar perfecto para relajarte a pasos de la playa en Rosarito."
+      },
+      {
+        "id": "terrace",
+        "label": "Terraza",
+        "title": "Terrazas privadas con vistas al mar impresionantes.",
+        "description": "Amplias terrazas pensadas para la vida al aire libre — disfruta los amaneceres sobre el Pacífico y la costa de Rosarito desde la comodidad de tu propio hogar."
+      },
+      {
+        "id": "gym",
+        "label": "Gimnasio",
+        "title": "Centro de acondicionamiento totalmente equipado.",
+        "description": "Gimnasio de vanguardia con equipo premium, luz natural y amplias vistas al Pacífico. Mantente activo sin salir de la comodidad de tu edificio."
+      },
+      {
+        "id": "kitchen",
+        "label": "Cocina",
+        "title": "Cocinas de diseño con acabados premium.",
+        "description": "Cocinas integrales con cubiertas de mármol, electrodomésticos de alta gama y líneas modernas y limpias, pensadas para inspirar cada comida con el Pacífico de fondo."
+      },
+      {
+        "id": "bedroom",
+        "label": "Recámara",
+        "title": "Recámaras amplias con walk-in closet.",
+        "description": "Recámaras cuidadosamente diseñadas con acceso directo a la terraza, walk-in closet y acabados premium que traen la elegancia costera a cada rincón de tu hogar."
+      }
+    ]
+  },
+  "models": {
+    "sectionHeadingTemplate": "Explora nuestros {count} modelos",
+    "modelNameTemplate": "Modelo {id}",
+    "floorPlanAltTemplate": "Plano de planta del Modelo {id}",
+    "list": [
+      {
+        "id": "A",
+        "area": "2,152.78 pies²",
+        "features": [
+          "Cocina, sala y comedor",
+          "Recámara principal con baño completo y walk-in closet",
+          "Recámara secundaria con clóset y baño completo compartido",
+          "Cuarto multiusos de concepto abierto",
+          "Cuarto de lavado",
+          "Terraza con vista al mar de 40 m²"
+        ]
+      },
+      {
+        "id": "B",
+        "area": "2,152.78 pies²",
+        "features": [
+          "Cocina, sala y comedor",
+          "Recámara principal con baño completo y walk-in closet",
+          "Recámara secundaria con baño completo compartido",
+          "Cuarto multiusos de concepto abierto",
+          "Cuarto de lavado",
+          "Terraza con vista al mar de 40 m²",
+          "Cava / mueble bar",
+          "Electrodomésticos incluidos"
+        ]
+      },
+      {
+        "id": "C",
+        "area": "2,152.78 pies²",
+        "features": [
+          "Sala y comedor",
+          "Recámara principal",
+          "Cocina con despensa",
+          "Walk-in closet",
+          "Terrazas",
+          "Baño principal",
+          "Área de lavado y almacenamiento",
+          "Medio baño",
+          "Recámara 1 con baño completo",
+          "Recámara 2 con baño completo",
+          "Escalera a la azotea"
+        ]
+      },
+      {
+        "id": "D",
+        "area": "4,305.56 pies²",
+        "features": [
+          "Sala y comedor",
+          "Escalera a la azotea",
+          "Cocina con despensa",
+          "Recámara principal",
+          "Terrazas",
+          "Walk-in closet",
+          "Área de lavado y almacenamiento",
+          "Baño principal",
+          "Medio baño",
+          "Recámara 1 con baño completo",
+          "Recámara 2 con baño completo"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "imageAlt": "Costa Bella — playa de Rosarito",
+    "headingLine1": "Una Colección Limitada.",
+    "headingLine2": "Un Estilo de Vida Excepcional.",
+    "body": "Diseñados para quienes buscan más que una simple residencia, estos 16 condominios exclusivos ofrecen una refinada vida costera, vistas impresionantes al Pacífico y una comunidad privada como ninguna otra. Cada hogar brinda comodidad, elegancia y valor duradero a solo pasos de la playa. Contáctanos hoy para reservar tu lugar en este desarrollo excepcional.",
+    "button": "Habla con un experto"
+  }
+}

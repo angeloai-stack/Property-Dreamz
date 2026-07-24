@@ -1,30 +1,30 @@
 // "Inside the platform" feature grid + showcase image — Figma nodes 1405:18529-19118.
+"use client";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Camera, LayoutGrid, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
-const features = [
-  { icon: ShieldCheck, title: "Certified developments only", body: "All listings are verified for legitimacy, legal standing and quality." },
-  { icon: null, title: "Immersive 360º tours", body: "Walk through every space with a smooth, interactive 360º experience." },
-  { icon: Camera, title: "High-quality photo & video", body: "Stunning galleries and videos that showcase every detail." },
-  { icon: MapPin, title: "Interactive location search", body: "Explore by map, neighborhood, or lifestyle with real-time location insights." },
-  { icon: LayoutGrid, title: "Development details & amenities", body: "View floor plans, pricing, amenities and community information clearly." },
-  { icon: MessageCircle, title: "Direct contact & guidance", body: "Connect directly with advisors or developers for fast, personalized guidance." },
-] as const;
+// Non-translatable per-feature icon (null renders the "360°" glyph) — title/body come from messages.
+const featureIcons = [ShieldCheck, null, Camera, MapPin, LayoutGrid, MessageCircle] as const;
 
 export function PlatformFeatures() {
+  const t = useTranslations("buyersGuide.platformFeatures");
+  const featureText = t.raw("features") as { title: string; body: string }[];
+  const features = featureIcons.map((icon, i) => ({ icon, ...featureText[i] }));
+
   return (
     <section className="w-full bg-white py-14 md:py-20">
       <Container>
         <RevealOnScroll className="mb-10 max-w-xl">
           <span className="inline-flex items-center rounded-full bg-brand-teal/15 px-4 py-1.5 font-ewangi text-label font-semibold text-brand-emerald">
-            Inside the platform
+            {t("badge")}
           </span>
           <h2 className="mt-4 font-ewangi text-[clamp(1.7rem,3.2vw,2.25rem)] font-bold leading-tight text-brand-ink">
-            Powerful tools. Premium experience.
+            {t("heading")}
           </h2>
           <p className="mt-3 font-ewangi text-[15px] leading-relaxed text-brand-ink/60">
-            Everything you need to explore, evaluate, and connect — all in one seamless platform.
+            {t("subheading")}
           </p>
         </RevealOnScroll>
 
@@ -46,7 +46,7 @@ export function PlatformFeatures() {
           <RevealOnScroll direction="right" delay={140} className="relative h-64 overflow-hidden rounded-2xl sm:h-full sm:min-h-100">
             <Image
               src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80"
-              alt="Aerial view of a certified residential development"
+              alt={t("showcaseImageAlt")}
               fill
               sizes="(max-width: 1024px) 100vw, 420px"
               className="object-cover"

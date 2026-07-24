@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Encanto del Valle – Casas y Lotes Residenciales en el Valle de Ensenada, Baja California",
+    "description": "Encanto del Valle es un desarrollo residencial en la pintoresca región del valle de Ensenada. Descubre casas unifamiliares y lotes en una de las comunidades más encantadoras de Baja California."
+  },
+  "hero": {
+    "logoAlt": "Encanto del Valle",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "El privilegio del",
+    "headlineLine2": "corazón del valle",
+    "subtitle": "Un exclusivo desarrollo de baja densidad con lotes residenciales en las montañas del Valle de Guadalupe, Baja California — rodeado de naturaleza, viñedos y la Ruta del Vino."
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "300", "label": "Lotes" },
+    { "value": "10", "label": "Condominios" },
+    { "value": "2", "label": "Modelos" },
+    { "value": "45", "label": "Casas" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "explore": {
+    "sectionLabel": "Explora el desarrollo",
+    "showroomTitle": "Showroom 360 de Encanto del Valle"
+  },
+  "safety": {
+    "heading": "Seguridad Para Tu Familia",
+    "body": "Encanto del Valle prioriza la seguridad y tranquilidad de sus residentes mediante medidas rigurosas que garantizan una comunidad segura. El desarrollo cuenta con un eficiente sistema de control de acceso las 24 horas, cámaras de vigilancia estratégicamente colocadas para el monitoreo continuo de las áreas comunes, y políticas de seguridad proactivas.",
+    "imageAlt": "Paisaje del valle en Encanto del Valle"
+  },
+  "testimonials": {
+    "trustedText": "La confianza de + 100 familias",
+    "button": "Escucha a Nuestros Residentes"
+  },
+  "amenities": {
+    "imageAlt": "Mapa de ubicación del Valle de Guadalupe",
+    "headingLine1": "Más que amenidades,",
+    "headingLine2": "es una experiencia",
+    "body": "Caseta de acceso controlado, lago artificial, áreas verdes, campo de golf y espacios recreativos en una comunidad privada y segura, en el corazón de la ruta del vino de México."
+  },
+  "cta": {
+    "button": "Habla con un experto"
+  }
+}

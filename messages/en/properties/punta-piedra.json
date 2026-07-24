@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "title": "Punta Piedra – Homes & Lots for Sale South of Ensenada, Baja California",
+    "description": "Punta Piedra offers residential lots and homes in a pristine natural setting south of Ensenada. Build your Baja California retreat with Pacific Ocean access and stunning coastal scenery."
+  },
+  "hero": {
+    "heroImageAlt": "Punta Piedra coastal view",
+    "logoAlt": "Punta Piedra Misión",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Your dream home",
+    "headlineLine2": "by the sea",
+    "description": "Punta Piedra Misión is a residential development on the northwest coast of Baja California, designed for those seeking an exclusive lifestyle."
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "120", "label": "Lots" },
+    { "value": "25", "label": "Condos" },
+    { "value": "5", "label": "Models" },
+    { "value": "80", "label": "Houses" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "lotExplorer": {
+    "exploreLabel": "Explore the development",
+    "tabs": { "lots": "Lots", "condos": "Condos", "houses": "Houses" },
+    "selectLotHint": "Select a lot to see details",
+    "viewAllLots": "View all lots",
+    "mapImageAlt": "Punta Piedra development aerial view",
+    "residentialLabel": "Residential",
+    "availableLabel": "Available",
+    "lots": [
+      { "id": "Lot 12", "area": "300 m²" },
+      { "id": "Lot 13", "area": "300 m²" },
+      { "id": "Lot 14", "area": "320 m²" },
+      { "id": "Lot 15", "area": "315 m²" },
+      { "id": "Lot 16", "area": "305 m²" }
+    ]
+  },
+  "houseModels": {
+    "label": "House models",
+    "name": "Santo Tomás",
+    "areaValue": "159.5 m²",
+    "bedroomLabel": "4 Bedroom",
+    "bathroomLabel": "3 Bathroom",
+    "modelImageAlt": "Santo Tomás house model floor plan"
+  },
+  "tour": {
+    "tourImageAlt": "Punta Piedra interior living area",
+    "headingLine1": "Let's take a look",
+    "headingLine2": "from your",
+    "headingLine3": "next home.",
+    "cta": "360 tour"
+  },
+  "dreamHome": {
+    "headingLine1": "Your dream",
+    "headingLine2": "home",
+    "body": "Live near the sea and end your day with the most beautiful sunsets. Punta Piedra Misión offers the best of Baja within reach — just 25 minutes from Valle de Guadalupe.",
+    "locationImageAlt": "Punta Piedra location distances map"
+  },
+  "certifyBanner": {
+    "text": "We certify so you can build your future"
+  }
+}

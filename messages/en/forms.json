@@ -1,0 +1,144 @@
+{
+  "common": {
+    "consentPrefix": "I agree to the",
+    "consentLink": "privacy policy",
+    "errorGeneric": "Something went wrong. Please try again or email hello@propertydreamz.com",
+    "selectRange": "Select a range",
+    "anyRegion": "Any region",
+    "budgetOptions": {
+      "under150k": "Under $150k USD",
+      "150k-300k": "$150k – $300k USD",
+      "300k-500k": "$300k – $500k USD",
+      "over500k": "$500k+ USD",
+      "unsure": "Not sure yet"
+    },
+    "regionOptions": {
+      "baja": "Baja California",
+      "riviera": "Riviera Maya",
+      "nayarit": "Nayarit",
+      "yucatan": "Yucatán",
+      "cdmx": "Mexico City",
+      "other": "Other"
+    }
+  },
+  "campaign": {
+    "eyebrow": "Free consultation",
+    "heading": "Find your ideal development",
+    "brandLine1": "Property",
+    "brandLine2": "Dreamz",
+    "certifiedRealEstate": "Certified Real Estate",
+    "successTitle": "You're all set!",
+    "successBody": "Our team will reach out within 24 hours with verified listings matching your criteria.",
+    "fullName": "Full name *",
+    "namePlaceholder": "Your name",
+    "phoneWhatsapp": "Phone / WhatsApp *",
+    "phonePlaceholder": "+1 555 000 0000",
+    "email": "Email *",
+    "emailPlaceholder": "you@email.com",
+    "budgetOptional": "Budget (optional)",
+    "regionOptional": "Region (optional)",
+    "submit": "Get verified listings"
+  },
+  "propertyInquiry": {
+    "eyebrow": "Speak with an advisor",
+    "heading": "Didn't find your dream property?",
+    "subheading": "Tell us your requirements and our certified advisors will hand-pick matching developments.",
+    "successTitle": "Request sent!",
+    "successBody": "An advisor will reach out within 24 hours.",
+    "fullName": "Full name *",
+    "namePlaceholder": "Your name",
+    "phoneWhatsapp": "Phone / WhatsApp *",
+    "phonePlaceholder": "+1 555 000 0000",
+    "email": "Email *",
+    "emailPlaceholder": "you@email.com",
+    "timeline": "Purchase timeline *",
+    "selectTimeline": "Select timeline",
+    "timelineOptions": {
+      "now": "Ready to buy now",
+      "3mo": "Within 3 months",
+      "6mo": "3 – 6 months",
+      "12mo": "6 – 12 months",
+      "browsing": "Just browsing"
+    },
+    "financing": "Financing method *",
+    "selectFinancing": "Select method",
+    "financingOptions": {
+      "cash": "Cash",
+      "usMortgage": "US mortgage",
+      "developer": "Developer financing",
+      "unsure": "Not sure yet"
+    },
+    "preferredContact": "Preferred contact",
+    "contactMethods": {
+      "whatsapp": "WhatsApp",
+      "call": "Phone call",
+      "email": "Email"
+    },
+    "messageLabel": "Message (optional)",
+    "messagePlaceholder": "Budget, preferred region, bedrooms, or any specific requirements...",
+    "submit": "Request more information"
+  },
+  "guideDownload": {
+    "heading": "Get the full buyer's guide",
+    "description": "A concise PDF covering fideicomiso, due diligence, financing, and closing — sent directly to your inbox.",
+    "successTitle": "Check your inbox!",
+    "successBody": "Your guide has been sent to",
+    "fullName": "Full name *",
+    "namePlaceholder": "Your name",
+    "email": "Email *",
+    "emailPlaceholder": "you@email.com",
+    "nationality": "Nationality (optional)",
+    "selectCountry": "Select country",
+    "countryOptions": {
+      "us": "United States",
+      "ca": "Canada",
+      "mx": "Mexico",
+      "other": "Other"
+    },
+    "errorMessage": "Something went wrong. Please try again.",
+    "submit": "Get my free guide"
+  },
+  "developerListing": {
+    "contactName": "Contact name *",
+    "namePlaceholder": "Your name",
+    "companyName": "Development / company name *",
+    "companyPlaceholder": "e.g. Grupo Inmobiliario XYZ",
+    "email": "Email *",
+    "emailPlaceholder": "you@company.com",
+    "phone": "Phone *",
+    "phonePlaceholder": "55 1234 5678",
+    "region": "State / region *",
+    "selectState": "Select state",
+    "regionOptions": {
+      "bajaCalifornia": "Baja California",
+      "bajaCaliforniaSur": "Baja California Sur",
+      "quintanaRoo": "Quintana Roo",
+      "yucatan": "Yucatán",
+      "jalisco": "Jalisco",
+      "nayarit": "Nayarit",
+      "oaxaca": "Oaxaca",
+      "cdmx": "Mexico City (CDMX)",
+      "nuevoLeon": "Nuevo León",
+      "other": "Other"
+    },
+    "units": "Number of units *",
+    "unitsPlaceholder": "e.g. 48",
+    "priceMin": "Min price per unit (USD)",
+    "priceMinPlaceholder": "e.g. $150,000",
+    "priceMax": "Max price per unit (USD)",
+    "priceMaxPlaceholder": "e.g. $500,000",
+    "devStatus": "Development status *",
+    "selectStatus": "Select status",
+    "statusOptions": {
+      "presale": "Pre-sale",
+      "construction": "Under construction",
+      "ready": "Ready to deliver"
+    },
+    "description": "Tell us about your project (optional)",
+    "descriptionPlaceholder": "Describe the development, amenities, certifications, or any relevant details...",
+    "consentSuffix": "and authorize Property Dreamz to contact me regarding this application. *",
+    "successTitle": "Application received!",
+    "successBody": "Our team will review your submission and contact you within 3 business days to discuss next steps.",
+    "submit": "Submit application"
+  }
+}

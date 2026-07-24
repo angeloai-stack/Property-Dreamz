@@ -1,28 +1,29 @@
 // "How we help buyers" 5-step process — Figma nodes 1379:18513-18565.
+"use client";
+import { useTranslations } from "next-intl";
 import { Building2, Handshake, MessageCircleQuestion, Search, ShieldCheck } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
-const steps = [
-  { icon: Search, title: "Discover", body: "Explore verified properties that match your lifestyle and goals." },
-  { icon: Building2, title: "Compare", body: "Easily compare developments, locations, prices, and amenities." },
-  { icon: MessageCircleQuestion, title: "Get answers", body: "Our team and AI advisor (Dreamzy) provide clear answers in English." },
-  { icon: Handshake, title: "Connect", body: "Speak directly with trusted developers or book a call with our advisors." },
-  { icon: ShieldCheck, title: "Own with confidence", body: "We support you from due diligence to closing and beyond." },
-] as const;
+// Non-translatable per-step icon — title/body come from messages.
+const stepIcons = [Search, Building2, MessageCircleQuestion, Handshake, ShieldCheck] as const;
 
 export function HowWeHelp() {
+  const t = useTranslations("buyersGuide.howWeHelp");
+  const stepText = t.raw("steps") as { title: string; body: string }[];
+  const steps = stepIcons.map((icon, i) => ({ icon, ...stepText[i] }));
+
   return (
     <section id="how-we-help" className="w-full bg-[#028e7f] py-14 md:py-20">
       <Container>
         <RevealOnScroll className="text-center">
           <span className="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 font-ewangi text-label font-semibold text-white">
-            How we help buyers
+            {t("badge")}
           </span>
           <h2 className="mx-auto mt-4 max-w-xl font-ewangi text-[clamp(1.7rem,3.2vw,2.25rem)] font-bold leading-tight text-white">
-            A better way to buy in Mexico
+            {t("heading")}
           </h2>
           <p className="mx-auto mt-3 max-w-lg font-ewangi text-[15px] text-white/75">
-            We&apos;ve built a platform and process designed specifically for international buyers.
+            {t("subheading")}
           </p>
         </RevealOnScroll>
 

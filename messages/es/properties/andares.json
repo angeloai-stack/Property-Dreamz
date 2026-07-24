@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "title": "Andares Santa Fe – Lotes, Condominios y Casas en Venta en Tijuana, Baja California",
+    "description": "Andares Santa Fe ofrece 300 lotes, 10 condominios y 45 casas en una comunidad segura y planeada en Tijuana. Construye la casa de tus sueños o múdate a una residencia diseñada para durar."
+  },
+  "hero": {
+    "heroImageAlt": "Vista aérea del desarrollo Andares",
+    "logoAlt": "Logotipo de Andares Santa Fe",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Sé dueño de tu",
+    "headlineLine2": "próximo capítulo.",
+    "tagline": "Tierra, hogares y oportunidades que perduran."
+  },
+  "stats": [
+    { "value": "300", "label": "Lotes" },
+    { "value": "10", "label": "Condominios" },
+    { "value": "2", "label": "Modelos" },
+    { "value": "45", "label": "Casas" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "lotExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "tabs": ["Lotes", "Club", "Casas"],
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "viewAllButton": "Ver todos los lotes",
+    "tourTitle": "Recorrido virtual 360° de Andares",
+    "lots": [
+      { "id": "Lote 12", "area": "180 m²" },
+      { "id": "Lote 13", "area": "120 m²" },
+      { "id": "Lote 14", "area": "140 m²" },
+      { "id": "Lote 15", "area": "115 m²" },
+      { "id": "Lote 16", "area": "105 m²" }
+    ]
+  },
+  "security": {
+    "headingLine1": "Diseñado Pensando",
+    "headingLine2": "en tu Seguridad",
+    "body": "Nuestra caseta de vigilancia está diseñada para brindar acceso controlado y reforzar la seguridad de toda la comunidad. Al ayudar a regular el ingreso y mantener un entorno seguro, ofrece a los residentes la tranquilidad de saber que sus familias están protegidas en un vecindario cuidadosamente planeado.",
+    "imageAlt": "Caseta de vigilancia"
+  },
+  "buildLiveGrow": {
+    "trustedBadge": "La confianza de más de 100 familias",
+    "testimonialHeader": "Escucha a Nuestros Residentes",
+    "headingLine1": "Construye, Vive",
+    "headingLine2": "y Crece",
+    "body": "Ya sea que busques el lote perfecto para construir la casa de tus sueños o una residencia lista para habitar, Andares ofrece una comunidad diseñada para quienes valoran la calidad, la seguridad y el valor duradero. Cada detalle ha sido cuidadosamente planeado para que tú y tu familia puedan prosperar.",
+    "imageAlt": "Construye, vive y crece en Andares",
+    "button": "Habla con un experto"
+  }
+}

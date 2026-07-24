@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "title": "Para Desarrolladores",
+    "description": "Publica tu desarrollo en México en Property Dreamz y llega a miles de compradores internacionales precalificados. Obtén la certificación CMRE y accede al portal para desarrolladores.",
+    "ogTitle": "Publica Tu Desarrollo — Property Dreamz",
+    "ogDescription": "Llega a miles de compradores internacionales precalificados. Obtén la certificación CMRE y publica tu desarrollo en México."
+  },
+  "hero": {
+    "badge": "Para desarrolladores",
+    "headline": "Te ayudamos a generar visibilidad, confianza y prospectos calificados.",
+    "description": "Property Dreamz® es la plataforma integral que ayuda a los desarrolladores a mostrar sus proyectos, ganarse la confianza de compradores internacionales y cerrar más ventas.",
+    "ctaVerified": "Desarrollos verificados",
+    "ctaHowItWorks": "Cómo funciona"
+  },
+  "quickForm": {
+    "heading": "Impulsa Tu Desarrollo Con Property Dreamz®",
+    "subheading": "Súmate a una plataforma diseñada para conectar grandes desarrollos con los compradores correctos.",
+    "fullNamePlaceholder": "Nombre completo",
+    "emailPlaceholder": "Correo electrónico",
+    "companyPlaceholder": "Desarrollo / Empresa",
+    "messagePlaceholder": "Cuéntanos sobre tu desarrollo",
+    "submit": "Solicitar una consulta gratuita",
+    "successTitle": "¡Solicitud recibida!",
+    "successBody": "Nuestro equipo se pondrá en contacto contigo dentro de los próximos 3 días hábiles para revisar los siguientes pasos."
+  },
+  "steps": {
+    "badge": "Cómo funciona",
+    "heading": "Pasos simples para impulsar tus ventas",
+    "items": [
+      { "title": "Envía tu proyecto", "body": "Cuéntanos sobre tu desarrollo y sube la información clave." },
+      { "title": "Obtén la verificación", "body": "Revisamos tu documentación y certificamos tu proyecto." },
+      { "title": "Creamos tu vitrina", "body": "Creamos tu publicación premium con recorridos 360° y contenido multimedia." },
+      { "title": "Te generamos prospectos", "body": "Promovemos tu desarrollo y te entregamos prospectos calificados." },
+      { "title": "Cierras más ventas", "body": "Conecta con compradores y cierra con confianza." }
+    ]
+  },
+  "platformTools": {
+    "badge": "Todo lo que necesitas para triunfar",
+    "heading": "Todas las herramientas. Una plataforma poderosa.",
+    "cards": [
+      {
+        "title": "Recorridos 360° y contenido multimedia",
+        "body": "Recorridos 360° inmersivos, fotografías de alta calidad, videos y planos que dan vida a tu desarrollo.",
+        "alt": "Vista aérea de un desarrollo residencial"
+      },
+      {
+        "title": "Prospectos calificados",
+        "body": "Generamos y te entregamos prospectos de alta intención de compradores internacionales interesados en invertir en México.",
+        "alt": "Equipo revisando prospectos de compradores"
+      },
+      {
+        "title": "Certificación CMRE",
+        "body": "Destaca con la insignia de certificación CMRE y genera confianza inmediata con compradores internacionales.",
+        "alt": "Torre de condominios moderna"
+      },
+      {
+        "title": "Información verificable",
+        "body": "Los compradores tienen todo lo que necesitan: documentos, información legal, amenidades, precios y más, todo verificado y accesible.",
+        "alt": "Documentos legales y papeleo"
+      },
+      {
+        "title": "Marketing y exposición",
+        "body": "Promovemos tu desarrollo en canales digitales, poniéndolo frente a miles de compradores potenciales.",
+        "alt": "Comunidad residencial vista desde arriba"
+      }
+    ]
+  },
+  "showcase": {
+    "badge": "Una plataforma diseñada para desarrolladores",
+    "heading": "Muestra tu desarrollo como nunca antes.",
+    "description": "Ofrece a los compradores una experiencia completa y transparente que les ayude a decir \"sí\" con confianza.",
+    "checklist": [
+      "Micrositio personalizado para tu desarrollo",
+      "Mapa interactivo y beneficios de ubicación",
+      "Recorridos 360°, fotos, videos y planos",
+      "Precios, disponibilidad y planes de pago",
+      "Documentos e información legal",
+      "Panel de seguimiento de prospectos y analítica"
+    ],
+    "mockupAlt": "Ejemplo de página de publicación de un desarrollo",
+    "mockupCaptionLine1": "Vive tu",
+    "mockupCaptionLine2": "próximo capítulo."
+  },
+  "certificationTrust": {
+    "badge": "Confianza que vende",
+    "heading": "La certificación CMRE® marca la diferencia.",
+    "description": "Nuestro proceso de certificación verifica el estatus legal, financiero y operativo de tu desarrollo, dando a los compradores la confianza que necesitan para invertir.",
+    "sealAlt": "Sello CMRE — Certified Mexico Real Estate",
+    "points": [
+      { "title": "Verificación de título y escrituras", "body": "Revisión y validación de la documentación de propiedad." },
+      { "title": "Desarrollador", "body": "Revisión corporativa, legal y operativa del desarrollador." },
+      { "title": "Fideicomiso bancario", "body": "Revisión de las estructuras fiduciarias aplicables y su documentación de respaldo." },
+      { "title": "Producción de contenido multimedia", "body": "Verificación de que el material de marketing representa fielmente el desarrollo." }
+    ]
+  },
+  "closingCta": {
+    "heading": "Construyamos algo extraordinario juntos.",
+    "cta": "Publica tu desarrollo",
+    "scheduleCall": "o agenda una llamada con nuestro equipo"
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 // Full contact form with preferred-contact radio group — posts to /api/contact with source:"contact".
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Heading, RevealOnScroll } from "@/components/ui";
 
@@ -30,6 +31,8 @@ const INIT: Fields = {
 };
 
 export function ContactForm() {
+  const t = useTranslations("contact.leadForm");
+  const tc = useTranslations("forms.common");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [fields, setFields] = useState<Fields>(INIT);
   const set =
@@ -56,32 +59,32 @@ export function ContactForm() {
     <RevealOnScroll direction="up" duration={900}>
     <div className="rounded-[42px] bg-brand-ink p-10 shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
       <Heading level={2} className="mb-8 text-2xl text-brand-paper sm:text-3xl">
-        Get in touch
+        {t("heading")}
       </Heading>
 
       {status === "success" ? (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
           <CheckCircle2 className="h-14 w-14 text-brand-teal" aria-hidden="true" />
-          <p className="font-ewangi text-subtitle text-brand-paper">Message sent!</p>
+          <p className="font-ewangi text-subtitle text-brand-paper">{t("successTitle")}</p>
           <p className="font-body text-body text-brand-paper/60">
-            We&apos;ll be in touch within 24 hours.
+            {t("successBody")}
           </p>
           <button
             type="button"
             onClick={() => { setStatus("idle"); setFields(INIT); }}
             className="mt-2 font-ewangi text-label text-brand-teal underline"
           >
-            Send another message
+            {t("sendAnother")}
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="grid gap-6">
           <label className="space-y-2 text-sm text-brand-paper/70">
-            <span className="font-semibold">Full name *</span>
+            <span className="font-semibold">{t("fullName")}</span>
             <input
               type="text"
               name="name"
-              placeholder="Your full name"
+              placeholder={t("namePlaceholder")}
               required
               value={fields.name}
               onChange={set("name")}
@@ -90,7 +93,7 @@ export function ContactForm() {
           </label>
 
           <label className="space-y-2 text-sm text-brand-paper/70">
-            <span className="font-semibold">Phone / WhatsApp *</span>
+            <span className="font-semibold">{t("phoneWhatsapp")}</span>
             <div className="grid gap-2 sm:grid-cols-[110px_1fr]">
               <select
                 name="phoneCode"
@@ -104,7 +107,7 @@ export function ContactForm() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="123 456 7890"
+                placeholder={t("phonePlaceholder")}
                 required
                 value={fields.phone}
                 onChange={set("phone")}
@@ -115,11 +118,11 @@ export function ContactForm() {
 
           <div className="grid gap-6 sm:grid-cols-2">
             <label className="space-y-2 text-sm text-brand-paper/70">
-              <span className="font-semibold">Email *</span>
+              <span className="font-semibold">{t("email")}</span>
               <input
                 type="email"
                 name="email"
-                placeholder="you@email.com"
+                placeholder={t("emailPlaceholder")}
                 required
                 value={fields.email}
                 onChange={set("email")}
@@ -127,43 +130,43 @@ export function ContactForm() {
               />
             </label>
             <label className="space-y-2 text-sm text-brand-paper/70">
-              <span className="font-semibold">Investment budget</span>
+              <span className="font-semibold">{t("budget")}</span>
               <select
                 name="budget"
                 value={fields.budget}
                 onChange={set("budget")}
                 className={F}
               >
-                <option value="">Select a range</option>
-                <option value="under150k">Under $150k USD</option>
-                <option value="150k-300k">$150k – $300k USD</option>
-                <option value="300k-500k">$300k – $500k USD</option>
-                <option value="over500k">$500k+ USD</option>
-                <option value="unsure">Not sure yet</option>
+                <option value="">{tc("selectRange")}</option>
+                <option value="under150k">{tc("budgetOptions.under150k")}</option>
+                <option value="150k-300k">{tc("budgetOptions.150k-300k")}</option>
+                <option value="300k-500k">{tc("budgetOptions.300k-500k")}</option>
+                <option value="over500k">{tc("budgetOptions.over500k")}</option>
+                <option value="unsure">{tc("budgetOptions.unsure")}</option>
               </select>
             </label>
           </div>
 
           <label className="space-y-2 text-sm text-brand-paper/70">
-            <span className="font-semibold">Region of interest</span>
+            <span className="font-semibold">{t("region")}</span>
             <select name="region" value={fields.region} onChange={set("region")} className={F}>
-              <option value="">Select a region</option>
-              <option value="baja">Baja California</option>
-              <option value="riviera">Riviera Maya</option>
-              <option value="nayarit">Nayarit</option>
-              <option value="yucatan">Yucatán</option>
-              <option value="cdmx">Mexico City</option>
-              <option value="other">Other</option>
+              <option value="">{t("regionPlaceholder")}</option>
+              <option value="baja">{tc("regionOptions.baja")}</option>
+              <option value="riviera">{tc("regionOptions.riviera")}</option>
+              <option value="nayarit">{tc("regionOptions.nayarit")}</option>
+              <option value="yucatan">{tc("regionOptions.yucatan")}</option>
+              <option value="cdmx">{tc("regionOptions.cdmx")}</option>
+              <option value="other">{tc("regionOptions.other")}</option>
             </select>
           </label>
 
           <fieldset className="space-y-3 text-sm text-brand-paper/70">
-            <span className="font-semibold">Preferred contact method</span>
+            <span className="font-semibold">{t("contactMethod")}</span>
             <div className="grid gap-2 sm:grid-cols-3">
               {[
-                { value: "whatsapp", label: "WhatsApp" },
-                { value: "call", label: "Phone call" },
-                { value: "email", label: "Email" },
+                { value: "whatsapp", label: t("methodWhatsapp") },
+                { value: "call", label: t("methodCall") },
+                { value: "email", label: t("methodEmail") },
               ].map(({ value, label }) => (
                 <label
                   key={value}
@@ -184,11 +187,11 @@ export function ContactForm() {
           </fieldset>
 
           <label className="space-y-2 text-sm text-brand-paper/70">
-            <span className="font-semibold">Message (optional)</span>
+            <span className="font-semibold">{t("message")}</span>
             <textarea
               name="message"
               rows={3}
-              placeholder="Tell us more about what you're looking for..."
+              placeholder={t("messagePlaceholder")}
               value={fields.message}
               onChange={set("message")}
               className={`${F} resize-none`}
@@ -203,9 +206,9 @@ export function ContactForm() {
               className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
             />
             <span>
-              I agree to the{" "}
+              {tc("consentPrefix")}{" "}
               <a href="/privacy" className="font-semibold underline hover:text-brand-paper">
-                privacy policy
+                {tc("consentLink")}
               </a>{" "}
               *
             </span>
@@ -213,7 +216,7 @@ export function ContactForm() {
 
           {status === "error" && (
             <p className="text-sm text-red-400">
-              Something went wrong. Please try again or email hello@propertydreamz.com
+              {tc("errorGeneric")}
             </p>
           )}
 
@@ -226,7 +229,7 @@ export function ContactForm() {
               {status === "submitting" && (
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
               )}
-              Send message
+              {t("submit")}
             </button>
           </div>
         </form>

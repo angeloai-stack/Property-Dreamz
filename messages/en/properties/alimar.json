@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "title": "Alimar Residencial – Oceanside Condos for Sale in Rosarito, Baja California",
+    "description": "Discover Alimar Residencial: 16 boutique condos just 3 blocks from the beach in Rosarito. Spacious 2-bed/2-bath units from 1,046–1,287 sq ft. Modern living on the Baja California coast."
+  },
+  "hero": {
+    "heroImageAlt": "Alimar building exterior",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Elevated living.",
+    "headlineLine2": "Exceptional views.",
+    "subtitle": "A limited collection of only 16 luxury residences designed for those who expect more.",
+    "logoAlt": "Alimar"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "16", "label": "Condos" },
+    { "value": "4", "label": "Models" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "explore": {
+    "heading": "Explore your next home",
+    "desktopIntro": "Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.",
+    "amenities": [
+      { "id": "livingRoom", "label": "Living room", "description": "Floor-to-ceiling windows, refined finishes, and seamless comfort designed for modern living." },
+      { "id": "bedroom", "label": "Bedroom", "description": "Spacious bedrooms with premium finishes and ample natural light." },
+      { "id": "bathroom", "label": "Bathroom", "description": "Elegant bathrooms with high-end fixtures and spa-like details." },
+      { "id": "kitchen", "label": "Kitchen", "description": "Integral kitchen with premium appliances and clean modern lines." },
+      { "id": "terrace", "label": "Terrace", "description": "Private terraces with breathtaking panoramic views of the city." }
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explore our {count} models",
+    "floorPlanAltTemplate": "{name} floor plan",
+    "layouts": [
+      {
+        "name": "Layout A",
+        "area": "1287 sq. ft.",
+        "features": [
+          "3 balconies",
+          "Living room with balcony",
+          "Dining room",
+          "Breakfast bar",
+          "Kitchen (Integral)",
+          "2 Bedrooms",
+          "2 Bathrooms",
+          "Patio with laundry room",
+          "1 covered parking space"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "imageAlt": "Alimar luxury residences",
+    "headingLine1": "A Limited Collection.",
+    "headingLine2": "An Extraordinary Lifestyle.",
+    "body": "Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined living spaces, breathtaking views, and a sense of community unlike any other. Every home is crafted to deliver comfort, elegance, and lasting value. Contact us today to learn more and reserve your place in this exceptional development.",
+    "button": "Talk to an expert"
+  }
+}

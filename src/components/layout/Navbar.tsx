@@ -1,9 +1,9 @@
 "use client";
 // Sticky top navigation with dark/light modes, Properties mega-menu by zone, currency toggle, and mobile drawer.
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 type SubItem  = { label: string; href: string; tag?: string };
 type Zone     = { zone: string; href: string; items: SubItem[] };
 type NavItem  =
-  | { label: string; href: string; zones?: never }
-  | { label: string; href: string; zones: Zone[] };
+  | { key: string; href: string; zones?: never }
+  | { key: string; href: string; zones: Zone[] };
 
 // ─── Properties grouped by zone ───────────────────────────────────────────────
 // City assignments follow the SEO content document (source of truth as of Jul 2026).
@@ -57,22 +57,28 @@ const propertyZones: Zone[] = [
 ];
 
 const navItems: NavItem[] = [
-  { label: "Home",        href: "/" },
-  { label: "About us",    href: "/about" },
-  { label: "Properties",  href: "/properties", zones: propertyZones },
-  { label: "Map",         href: "/explore-map" },
-  { label: "Buyers",      href: "/buyers-guide" },
-  { label: "Developers",  href: "/for-developers" },
+  { key: "home",       href: "/" },
+  { key: "aboutUs",    href: "/about" },
+  { key: "properties", href: "/properties", zones: propertyZones },
+  { key: "map",        href: "/explore-map" },
+  { key: "buyers",     href: "/buyers-guide" },
+  { key: "developers", href: "/for-developers" },
   // Blog tab hidden until the CMS is in place — restore alongside the Footer link.
-  // { label: "Blog",        href: "/blog" },
-  { label: "Contact",     href: "/contact" },
+  // { key: "blog",        href: "/blog" },
+  { key: "contact",    href: "/contact" },
 ];
 
+// The currency toggle doubles as the language switcher: USD ↔ English, MXN ↔ Spanish.
 const currencies = ["USD", "MXN"] as const;
 type Currency = (typeof currencies)[number];
+const CURRENCY_LOCALE = { USD: "en", MXN: "es" } as const;
 
 export function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const currency: Currency = locale === "es" ? "MXN" : "USD";
   const pathname = usePathname();
+  const router = useRouter();
   const dark = pathname.startsWith("/properties/delmar")
     || pathname.startsWith("/properties/andares")
     || pathname.startsWith("/properties/torre51")
@@ -93,7 +99,6 @@ export function Navbar() {
 
   const [mobileOpen, setMobileOpen]         = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
-  const [currency, setCurrency]             = useState<Currency>("USD");
   const [scrolled, setScrolled]             = useState(false);
   const [navHidden, setNavHidden]           = useState(false);
   const lastScrollY                         = useRef(0);
@@ -124,7 +129,7 @@ export function Navbar() {
     )}>
       <Container className="flex items-center gap-4 py-4 md:py-5">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center" aria-label="Property Dreamz home">
+        <Link href="/" className="flex shrink-0 items-center" aria-label={t("logoAlt")}>
           <Image
             src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/brand/property-dreamz-logo-horizontal"
             alt="Property Dreamz"
@@ -140,13 +145,13 @@ export function Navbar() {
           {navItems.map((item) =>
             item.zones ? (
               /* ── Properties mega-menu ── */
-              <div key={item.label} className="group relative">
+              <div key={item.key} className="group relative">
                 <Link
                   href={item.href}
                   className="flex items-center gap-1 whitespace-nowrap transition hover:text-brand-teal"
                   aria-haspopup="true"
                 >
-                  {item.label}
+                  {t(`items.${item.key}`)}
                   <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" strokeWidth={2.5} />
                 </Link>
 
@@ -188,28 +193,28 @@ export function Navbar() {
               </div>
             ) : (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 className={cn("whitespace-nowrap transition", dark ? "hover:text-brand-teal" : "hover:text-brand-teal")}
               >
-                {item.label}
+                {t(`items.${item.key}`)}
               </Link>
             )
           )}
         </nav>
 
-        {/* Currency toggle + login + mobile hamburger */}
+        {/* Currency toggle (doubles as the language switcher) + login + mobile hamburger */}
         <div className="ml-auto flex items-center gap-3 lg:ml-6">
           <div
             className={cn("hidden items-center rounded-(--radius-btn) border p-1 sm:flex", dark ? "border-white/15 bg-white/10" : "border-brand-ink/10 bg-brand-paper")}
             role="group"
-            aria-label="Currency"
+            aria-label={t("currency")}
           >
             {currencies.map((c) => (
               <button
                 key={c}
                 type="button"
-                onClick={() => setCurrency(c)}
+                onClick={() => router.replace(pathname, { locale: CURRENCY_LOCALE[c] })}
                 className={cn(
                   "rounded-(--radius-btn) px-3 py-1.5 font-ewangi text-label font-semibold uppercase transition",
                   currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
@@ -222,7 +227,7 @@ export function Navbar() {
 
           <button
             type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
             className={cn(
@@ -258,7 +263,7 @@ export function Navbar() {
             <circle cx="12" cy="8" r="4" />
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
           </svg>
-          Login
+          {t("login")}
         </Link>
       </Container>
 
@@ -270,20 +275,20 @@ export function Navbar() {
         <div className="space-y-1 px-4 py-4 pb-28">
           {navItems.map((item) =>
             item.zones ? (
-              <div key={item.label}>
+              <div key={item.key}>
                 <div className="flex items-center justify-between rounded hover:bg-brand-paper/10">
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
                     className="flex-1 px-3 py-3.5 font-ewangi text-[1rem]"
                   >
-                    {item.label}
+                    {t(`items.${item.key}`)}
                   </Link>
                   <button
                     type="button"
                     onClick={() => setPropertiesOpen((o) => !o)}
                     className="flex min-h-11 min-w-11 items-center justify-center px-2"
-                    aria-label="Toggle properties submenu"
+                    aria-label={t("togglePropertiesSubmenu")}
                   >
                     {propertiesOpen
                       ? <ChevronUp className="h-4 w-4 text-brand-paper/60" />
@@ -324,12 +329,12 @@ export function Navbar() {
               </div>
             ) : (
               <Link
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 className="block rounded px-3 py-3.5 font-ewangi text-[1rem] hover:bg-brand-paper/10"
                 onClick={() => setMobileOpen(false)}
               >
-                {item.label}
+                {t(`items.${item.key}`)}
               </Link>
             )
           )}
@@ -339,7 +344,7 @@ export function Navbar() {
               <button
                 key={c}
                 type="button"
-                onClick={() => setCurrency(c)}
+                onClick={() => router.replace(pathname, { locale: CURRENCY_LOCALE[c] })}
                 className={cn(
                   "flex-1 rounded-(--radius-btn) px-3 py-3 font-ewangi text-label font-semibold uppercase",
                   currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
@@ -359,7 +364,7 @@ export function Navbar() {
               <circle cx="12" cy="8" r="4" />
               <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
             </svg>
-            Login
+            {t("login")}
           </Link>
         </div>
       </div>

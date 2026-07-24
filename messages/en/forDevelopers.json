@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "title": "For Developers",
+    "description": "List your Mexico development on Property Dreamz and reach thousands of pre-qualified international buyers. Get CMRE certified and access the developer portal.",
+    "ogTitle": "List Your Development — Property Dreamz",
+    "ogDescription": "Reach thousands of pre-qualified international buyers. Get CMRE certified and list your Mexico development."
+  },
+  "hero": {
+    "badge": "For developers",
+    "headline": "We help you build visibility, trust, and qualified leads.",
+    "description": "Property Dreamz® is the all-in-one platform that helps developers showcase their projects, gain the trust of international buyers, and close more sales.",
+    "ctaVerified": "Verified developments",
+    "ctaHowItWorks": "How it works"
+  },
+  "quickForm": {
+    "heading": "Grow Your Development With Property Dreamz®",
+    "subheading": "Join a platform built to connect great developments with the right buyers.",
+    "fullNamePlaceholder": "Full name",
+    "emailPlaceholder": "Email",
+    "companyPlaceholder": "Development / Company",
+    "messagePlaceholder": "Tell us about your development",
+    "submit": "Request a free consultation",
+    "successTitle": "Request received!",
+    "successBody": "Our team will reach out within 3 business days to discuss next steps."
+  },
+  "steps": {
+    "badge": "How it works",
+    "heading": "Simple steps to grow your sales",
+    "items": [
+      { "title": "Submit your project", "body": "Tell us about your development and upload key information." },
+      { "title": "Get verified", "body": "We review your documentation and certify your project." },
+      { "title": "We build your showcase", "body": "We create your premium listing with 360° tours and media." },
+      { "title": "We bring you leads", "body": "We promote your development and deliver qualified leads." },
+      { "title": "You close more sales", "body": "Connect with buyers and close with confidence." }
+    ]
+  },
+  "platformTools": {
+    "badge": "Everything you need to succeed",
+    "heading": "All the tools. One powerful platform.",
+    "cards": [
+      {
+        "title": "360° tours & media",
+        "body": "Immersive 360° tours, high-quality photos, videos and floor plans that bring your development to life.",
+        "alt": "Aerial view of a residential development"
+      },
+      {
+        "title": "Qualified leads",
+        "body": "We generate and deliver high-intent leads from international buyers actively looking to invest in Mexico.",
+        "alt": "Team reviewing buyer leads"
+      },
+      {
+        "title": "CMRE Certification",
+        "body": "Stand out with the CMRE certification badge and build instant trust with international buyers.",
+        "alt": "Modern condominium tower"
+      },
+      {
+        "title": "Verifiable information",
+        "body": "Buyers have everything they need: documents, legal info, amenities, pricing and more — all verified and accessible.",
+        "alt": "Legal documents and paperwork"
+      },
+      {
+        "title": "Marketing & exposure",
+        "body": "We promote your development across digital channels, putting it in front of thousands of potential buyers.",
+        "alt": "Residential community from above"
+      }
+    ]
+  },
+  "showcase": {
+    "badge": "A platform designed for developers",
+    "heading": "Showcase your development like never before.",
+    "description": "Give buyers a complete and transparent experience that helps them say \"yes\" with confidence.",
+    "checklist": [
+      "Custom development microsite",
+      "Interactive map & location benefits",
+      "360° tours, photos, videos & floor plans",
+      "Pricing, availability & payment plans",
+      "Documents & legal information",
+      "Lead tracking & analytics dashboard"
+    ],
+    "mockupAlt": "Sample development listing page",
+    "mockupCaptionLine1": "Own your",
+    "mockupCaptionLine2": "next chapter."
+  },
+  "certificationTrust": {
+    "badge": "Trust that sells",
+    "heading": "The CMRE® Certification makes the difference.",
+    "description": "Our certification process verifies the legal, financial and operational status of your development, giving buyers the confidence they need to invest.",
+    "sealAlt": "CMRE — Certified Mexico Real Estate seal",
+    "points": [
+      { "title": "Title & Deed Verification", "body": "Property ownership documentation review and validation." },
+      { "title": "Developer", "body": "Corporate, legal, and operational review of the developer." },
+      { "title": "Bank Trust (Fideicomiso)", "body": "Review of applicable trust structures and supporting documentation." },
+      { "title": "Media Production", "body": "Verification that marketing materials accurately represent the development." }
+    ]
+  },
+  "closingCta": {
+    "heading": "Let's build something amazing together.",
+    "cta": "List your development",
+    "scheduleCall": "or schedule a call with our team"
+  }
+}

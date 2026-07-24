@@ -1,4 +1,5 @@
 // Inline CMRE trust badge in dark (pine) or light (white) variants — used on cards and footers.
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 type CmreBadgeProps = {
@@ -7,6 +8,7 @@ type CmreBadgeProps = {
 };
 
 export function CmreBadge({ className, variant = "dark" }: CmreBadgeProps) {
+  const t = useTranslations("site.cmreBadge");
   const isDark = variant === "dark";
 
   return (
@@ -16,7 +18,7 @@ export function CmreBadge({ className, variant = "dark" }: CmreBadgeProps) {
         isDark ? "bg-brand-pine text-brand-paper" : "bg-white/95 text-brand-ink",
         className
       )}
-      aria-label="CMRE Certified Mexico Real Estate"
+      aria-label={t("ariaLabel")}
     >
       <span
         className={cn(
@@ -29,9 +31,9 @@ export function CmreBadge({ className, variant = "dark" }: CmreBadgeProps) {
         RE
       </span>
       <span className="text-[9px] font-semibold leading-tight">
-        Certified
+        {t("line1")}
         <br />
-        Mexico Real Estate
+        {t("line2")}
       </span>
     </div>
   );

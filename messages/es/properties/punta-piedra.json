@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "title": "Punta Piedra – Casas y Terrenos en Venta al Sur de Ensenada, Baja California",
+    "description": "Punta Piedra ofrece terrenos residenciales y casas en un entorno natural privilegiado al sur de Ensenada. Construye tu retiro en Baja California con acceso al Océano Pacífico y un paisaje costero impresionante."
+  },
+  "hero": {
+    "heroImageAlt": "Vista costera de Punta Piedra",
+    "logoAlt": "Punta Piedra Misión",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "El hogar de tus sueños",
+    "headlineLine2": "junto al mar",
+    "description": "Punta Piedra Misión es un desarrollo residencial en la costa noroeste de Baja California, diseñado para quienes buscan un estilo de vida exclusivo."
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "120", "label": "Lotes" },
+    { "value": "25", "label": "Condominios" },
+    { "value": "5", "label": "Modelos" },
+    { "value": "80", "label": "Casas" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "lotExplorer": {
+    "exploreLabel": "Explora el desarrollo",
+    "tabs": { "lots": "Lotes", "condos": "Condominios", "houses": "Casas" },
+    "selectLotHint": "Selecciona un lote para ver los detalles",
+    "viewAllLots": "Ver todos los lotes",
+    "mapImageAlt": "Vista aérea del desarrollo Punta Piedra",
+    "residentialLabel": "Residencial",
+    "availableLabel": "Disponible",
+    "lots": [
+      { "id": "Lot 12", "area": "300 m²" },
+      { "id": "Lot 13", "area": "300 m²" },
+      { "id": "Lot 14", "area": "320 m²" },
+      { "id": "Lot 15", "area": "315 m²" },
+      { "id": "Lot 16", "area": "305 m²" }
+    ]
+  },
+  "houseModels": {
+    "label": "Modelos de casa",
+    "name": "Santo Tomás",
+    "areaValue": "159.5 m²",
+    "bedroomLabel": "4 Recámaras",
+    "bathroomLabel": "3 Baños",
+    "modelImageAlt": "Plano del modelo de casa Santo Tomás"
+  },
+  "tour": {
+    "tourImageAlt": "Área de estar interior en Punta Piedra",
+    "headingLine1": "Echemos un vistazo",
+    "headingLine2": "a lo que será",
+    "headingLine3": "tu próximo hogar.",
+    "cta": "Tour 360°"
+  },
+  "dreamHome": {
+    "headingLine1": "El hogar de",
+    "headingLine2": "tus sueños",
+    "body": "Vive cerca del mar y termina tu día con los atardeceres más hermosos. Punta Piedra Misión te ofrece lo mejor de Baja al alcance de la mano — a solo 25 minutos del Valle de Guadalupe.",
+    "locationImageAlt": "Mapa de distancias de la ubicación de Punta Piedra"
+  },
+  "certifyBanner": {
+    "text": "Certificamos para que construyas tu futuro"
+  }
+}

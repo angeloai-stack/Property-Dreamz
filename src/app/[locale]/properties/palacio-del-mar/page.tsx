@@ -2,6 +2,7 @@
 // Palacio del Mar page — hero uses a background video; move-in-ready luxury condos in Rosarito.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -13,35 +14,18 @@ const IMG_FLOOR     = `${CLD}/palacio-del-mar/floor-plan`;
 const IMG_EXTERIOR  = `${CLD}/palacio-del-mar/exterior`;
 const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "16",   label: "Condos" },
-  { value: "4",    label: "Models" },
-  { value: "82%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-const amenityRooms = ["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"];
-
-const modelFeatures = [
-  "3  balconies",
-  "Living room with balcony",
-  "Dining room",
-  "Breakfast bar",
-  "Kitchen (Integral)",
-  "2  Bedrooms",
-  "2 Bathrooms",
-  "Patio with laundry room",
-  "1 covered parking space",
-];
+type Stat = { value: string; label: string };
+type Rooms = { livingRoom: string; bedroom: string; bathroom: string; kitchen: string; terrace: string };
 
 export default function PalacioDelMarPage() {
-  const [activeRoom, setActiveRoom] = useState("Living room");
+  const t = useTranslations("propertyPalacioDelMar");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const rooms = t.raw("amenities.rooms") as Rooms;
+  const amenityRooms = [rooms.livingRoom, rooms.bedroom, rooms.bathroom, rooms.kitchen, rooms.terrace];
+  const modelFeatures = t.raw("models.features") as string[];
+
+  const [activeRoom, setActiveRoom] = useState(amenityRooms[0]);
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -87,14 +71,14 @@ export default function PalacioDelMarPage() {
               <div className="flex flex-col items-center gap-6 lg:items-start">
                 <Image
                   src={IMG_LOGO}
-                  alt="Palacio del Mar"
+                  alt={t("hero.logoAlt")}
                   width={269}
                   height={130}
                   className="w-48 lg:w-64"
                 />
                 <Image
                   src={IMG_CMRE}
-                  alt="CMRE Certified"
+                  alt={t("hero.cmreAlt")}
                   width={204}
                   height={48}
                   className="w-44"
@@ -118,11 +102,11 @@ export default function PalacioDelMarPage() {
 
               <div className="lg:text-right">
                 <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_0.15s_both]">
-                  Luxury condos,<br />luxury villas
+                  {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
                 </h1>
                 <RevealOnScroll direction="up" delay={350}>
                   <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
-                    The premiere oceanfront community in Baja — finished, move-in-ready luxury condos and oceanfront villas in Rosarito, just south of the San Diego border.
+                    {t("hero.subheadline")}
                   </p>
                 </RevealOnScroll>
               </div>
@@ -135,7 +119,7 @@ export default function PalacioDelMarPage() {
       <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="center">
           <h2 className="mb-10 text-center font-ewangi text-[clamp(1.5rem,3vw,2.25rem)] text-white">
-            Resort-style amenities designed for everyday living
+            {t("amenities.heading")}
           </h2>
         </RevealOnScroll>
 
@@ -146,7 +130,7 @@ export default function PalacioDelMarPage() {
             <div className="relative h-65 overflow-hidden rounded-3xl">
               <Image
                 src={IMG_AMENITIES}
-                alt="Palacio del Mar amenities"
+                alt={t("amenities.imageAlt")}
                 fill
                 className="object-cover object-center"
                 sizes="100vw"
@@ -160,10 +144,10 @@ export default function PalacioDelMarPage() {
               </p>
             </div>
             <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
-              Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.
+              {t("amenities.body1")}
             </p>
             <p className="font-ewangi text-[0.9rem] text-white/60">
-              Palacio del Mar is the only community on the coast that has a large indoor heated pool.
+              {t("amenities.body2")}
             </p>
             <div className="flex flex-wrap gap-2">
               {amenityRooms.map((room) => (
@@ -187,7 +171,7 @@ export default function PalacioDelMarPage() {
           <div className="relative hidden min-h-130 overflow-hidden rounded-[30px] lg:block">
             <Image
               src={IMG_AMENITIES}
-              alt="Palacio del Mar amenities"
+              alt={t("amenities.imageAlt")}
               fill
               className="object-cover object-center"
               sizes="100vw"
@@ -195,10 +179,10 @@ export default function PalacioDelMarPage() {
             <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.35)" }} />
             <div className="absolute inset-0 flex flex-col justify-center p-12 lg:w-[58%]">
               <p className="max-w-130 font-ewangi text-[1.25rem] leading-relaxed text-white">
-                Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.
+                {t("amenities.body1")}
               </p>
               <p className="mt-4 max-w-130 font-ewangi text-[1rem] text-white/80">
-                Palacio del Mar is the only community on the coast that has a large indoor heated pool.
+                {t("amenities.body2")}
               </p>
             </div>
             <div
@@ -232,7 +216,7 @@ export default function PalacioDelMarPage() {
         <div className="mb-16">
           <RevealOnScroll direction="left">
             <div className="mb-8 flex items-center gap-4">
-              <p className="font-ewangi text-[1.25rem] text-brand-ink">Explore our 4 models</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.heading")}</p>
               <button className="flex h-10 w-10 items-center justify-center rounded-[13px] border-2 border-brand-ink transition hover:bg-brand-ink/10">
                 <ChevronLeft className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
               </button>
@@ -246,8 +230,8 @@ export default function PalacioDelMarPage() {
             <RevealOnScroll direction="left" delay={100} duration={1100}>
               <div className="lg:w-[42%]">
                 <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3.25rem)] leading-tight text-brand-ink">
-                  Layout A —{" "}
-                  <span className="text-brand-teal">1,287 sq. ft.</span>
+                  {t("models.layoutLabel")} —{" "}
+                  <span className="text-brand-teal">{t("models.layoutSize")}</span>
                 </h2>
                 <ul className="mt-6 space-y-1.5">
                   {modelFeatures.map((f) => (
@@ -262,7 +246,7 @@ export default function PalacioDelMarPage() {
                 <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "4096/2845" }}>
                   <Image
                     src={IMG_FLOOR}
-                    alt="Layout A floor plan"
+                    alt={t("models.imageAlt")}
                     fill
                     className="object-cover"
                     sizes="(max-width:1024px) 100vw, 58vw"
@@ -280,7 +264,7 @@ export default function PalacioDelMarPage() {
               <div className="relative aspect-video overflow-hidden rounded-[26px]">
                 <Image
                   src={IMG_EXTERIOR}
-                  alt="Palacio del Mar building exterior"
+                  alt={t("finishedResidences.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 46vw"
@@ -292,13 +276,13 @@ export default function PalacioDelMarPage() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
               <h2 className="font-ewangi text-[clamp(2.5rem,4vw,3.75rem)] leading-tight text-brand-ink">
-                Finished residences,<br />ready to move in
+                {t("finishedResidences.headingLine1")}<br />{t("finishedResidences.headingLine2")}
               </h2>
               <p className="font-ewangi text-[1.375rem] leading-relaxed text-brand-ink/80 lg:max-w-130">
-                An established oceanfront community in Rosarito&apos;s Bahía Descanso. Tower II represents the final inventory of luxury condos currently available — fully built and move-in ready.
+                {t("finishedResidences.body")}
               </p>
               <button className="mt-2 rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
-                Talk to an expert
+                {t("finishedResidences.button")}
               </button>
             </div>
           </RevealOnScroll>

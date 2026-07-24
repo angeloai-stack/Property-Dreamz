@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Pacifica Ensenada – Condominios Frente al Mar en Venta en Ensenada, Baja California",
+    "description": "Pacifica es un desarrollo premier de condominios frente al mar en Ensenada, Baja California. Despierta con vista al Océano Pacífico y disfruta amenidades estilo resort a pasos del mar."
+  },
+  "hero": {
+    "heroImageAlt": "Vista aérea del desarrollo Pacifica",
+    "logoAlt": "Pacifica",
+    "cmreAlt": "Certificado por CMRE",
+    "headline": "Vive lo extraordinario",
+    "subheadline": "Invierte en el corredor turístico de Baja California — el desarrollo con la mayor plusvalía, donde cada día es un espacio para disfrutar en familia.",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "vista"
+  },
+  "stats": [
+    { "value": "120", "label": "Lotes" },
+    { "value": "25", "label": "Condominios" },
+    { "value": "5", "label": "Modelos" },
+    { "value": "80", "label": "Casas" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Revisión legal", "Cumplimiento normativo", "Infraestructura validada"],
+  "explore": {
+    "heading": "Explora el desarrollo",
+    "mapImageAlt": "Mapa del desarrollo Pacifica",
+    "tabs": { "lots": "Lotes", "condos": "Condominios", "houses": "Casas" },
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "viewAllButton": "Ver todos los lotes"
+  },
+  "lots": [
+    { "id": "Lote 12", "size": "300 m²" },
+    { "id": "Lote 13", "size": "300 m²" },
+    { "id": "Lote 14", "size": "320 m²" },
+    { "id": "Lote 15", "size": "315 m²" },
+    { "id": "Lote 16", "size": "305 m²" }
+  ],
+  "tour": {
+    "imageAlt": "Sala de estar interior en Pacifica",
+    "headingLine1": "Démosle un",
+    "headingLine2": "vistazo a tu",
+    "headingHighlight": "próximo hogar.",
+    "button": "Tour 360"
+  },
+  "dreamsStart": {
+    "headingLine1": "Tus sueños",
+    "headingLine2": "comienzan aquí",
+    "body": "Adquiere tu lote y elige uno de nuestros modelos listos para construir. Ya sea un condominio o lotes residenciales en Villas y Privadas — Pacífica es el lugar para vivir y crecer con plusvalía garantizada.",
+    "imageAlt": "Vista aérea del desarrollo Pacifica"
+  },
+  "ctaBanner": {
+    "text": "Certificamos para que construyas tu futuro"
+  }
+}

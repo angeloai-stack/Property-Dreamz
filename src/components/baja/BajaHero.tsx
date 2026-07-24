@@ -1,7 +1,9 @@
 // Static regional hero (no rotating slides) — Figma: "Section / Hero" for the Baja California landing page.
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function BajaHero() {
+  const t = useTranslations("baja.hero");
   return (
     <section className="relative min-h-[min(78vh,700px)] w-full overflow-hidden bg-[#eaedf0]">
       <Image
@@ -19,12 +21,11 @@ export function BajaHero() {
             "Baja California"/"Real Estate" glyphs visibly overlap at default tracking regardless of
             markup, line-height, or spacing — confirmed by swapping to a system font, which renders clean. */}
         <h1 className="font-ewangi text-[clamp(2.25rem,6.5vw,4.5rem)] leading-tight tracking-wider">
-          <span className="text-[#eaedf0]">Baja California </span>
-          <span className="font-bold text-[#191919]">Real Estate</span>
+          <span className="text-[#eaedf0]">{t("headingLine1")}</span>
+          <span className="font-bold text-[#191919]">{t("headingLine2")}</span>
         </h1>
         <p className="mt-6 max-w-2xl font-ewangi text-[1.1rem] leading-relaxed text-white">
-          Discover Baja California real estate: beachfront condos in Rosarito, oceanfront developments
-          in Ensenada, and resort communities near Tijuana. Every listing certified.
+          {t("description")}
         </p>
       </div>
 

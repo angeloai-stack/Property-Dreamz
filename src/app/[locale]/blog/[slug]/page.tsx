@@ -1,20 +1,22 @@
 "use client";
 // Individual blog article — Figma: "Blog artículo" / "Article / Template".
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { ArticleBody } from "@/components/blog/ArticleBody";
 import { ArticleToc } from "@/components/blog/ArticleToc";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { CampaignForm } from "@/components/forms/CampaignForm";
 import { RevealOnScroll } from "@/components/ui";
-import { BLOG_CATEGORIES, posts, type BlogCategoryFilter } from "../data";
+import { BLOG_CATEGORIES, posts, type BlogCategoryFilter, type ContentBlock } from "../data";
 import { cn } from "@/lib/utils";
 
 function RelatedPosts({ currentId }: { currentId: number }) {
+  const t = useTranslations("blog");
   const [category, setCategory] = useState<BlogCategoryFilter>("All");
 
   const candidates = useMemo(() => posts.filter((p) => p.id !== currentId), [currentId]);
@@ -28,13 +30,13 @@ function RelatedPosts({ currentId }: { currentId: number }) {
     <section className="bg-white px-5 py-14 sm:px-8 md:px-12 lg:px-20">
       <div className="space-y-2.5">
         <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-          More content from our blog
+          {t("related.eyebrow")}
         </p>
         <h2 className="max-w-xl font-ewangi text-[clamp(1.6rem,3.5vw,2.2rem)] font-bold leading-tight text-black">
-          All about real estate, explained
+          {t("listing.heading")}
         </h2>
         <p className="max-w-xl font-ewangi text-[15px] text-brand-ink/50">
-          Guides, market insights and neighborhood deep-dives for cross-border buyers.
+          {t("listing.subheading")}
         </p>
       </div>
 
@@ -51,7 +53,7 @@ function RelatedPosts({ currentId }: { currentId: number }) {
                 : "border border-brand-ink/15 text-brand-ink/50 hover:border-brand-teal/50 hover:text-brand-pine"
             )}
           >
-            {c}
+            {t(`categories.${c}`)}
           </button>
         ))}
       </div>
@@ -65,17 +67,31 @@ function RelatedPosts({ currentId }: { currentId: number }) {
           ))}
         </div>
       ) : (
-        <p className="mt-8 font-ewangi text-brand-ink/40">No other posts in this category yet.</p>
+        <p className="mt-8 font-ewangi text-brand-ink/40">{t("related.noOtherPosts")}</p>
       )}
     </section>
   );
 }
 
 export default function BlogArticlePage({ params }: { params: { slug: string } }) {
+  const t = useTranslations("blog");
   const post = posts.find((p) => p.slug === params.slug);
   if (!post) notFound();
 
-  const breadcrumbTitle = post.title.split(":")[0];
+  const title = t(`posts.${post.slug}.title`);
+  const dek = t(`posts.${post.slug}.dek`);
+  const authorRole = t(`posts.${post.slug}.authorRole`);
+  const tocLabels = t.raw(`posts.${post.slug}.toc`) as Record<string, string>;
+  const bodyText = t.raw(`posts.${post.slug}.body`) as string[];
+
+  const translatedToc = post.toc.map((item) => ({ id: item.id, label: tocLabels[item.id] ?? item.label }));
+  const translatedBody: ContentBlock[] = post.body.map((block, i) => {
+    const text = bodyText[i] ?? ("text" in block ? block.text : "");
+    if (block.type === "image") return { ...block, caption: bodyText[i] ?? block.caption };
+    return { ...block, text };
+  });
+
+  const breadcrumbTitle = title.split(":")[0];
 
   return (
     <main className="flex-1 bg-white">
@@ -83,25 +99,25 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         {/* Breadcrumb */}
         <p className="font-ewangi text-[13px] font-bold text-[#8c99a8]">
           <Link href="/" className="hover:text-brand-pine">
-            Home
+            {t("article.breadcrumbHome")}
           </Link>{" "}
           ›{" "}
           <Link href="/blog" className="hover:text-brand-pine">
-            Blog
+            {t("article.breadcrumbBlog")}
           </Link>{" "}
-          › {post.category} › <span className="text-brand-pine">{breadcrumbTitle}</span>
+          › {t(`categories.${post.category}`)} › <span className="text-brand-pine">{breadcrumbTitle}</span>
         </p>
 
         {/* Header */}
         <div className="flex w-full flex-col items-start gap-4.5">
           <span className="inline-flex items-center rounded-full bg-brand-teal px-3 py-1.5 font-ewangi text-[10px] font-bold uppercase tracking-[0.06em] text-brand-pine">
-            {post.category}
+            {t(`categories.${post.category}`)}
           </span>
           <h1 className="w-full font-ewangi text-[2rem] font-bold leading-tight text-brand-pine sm:text-[2.6rem] lg:text-[46px] lg:leading-[54px]">
-            {post.title}
+            {title}
           </h1>
           <p className="w-full max-w-3xl font-ewangi text-[17px] leading-relaxed text-[#5c6978] sm:text-[20px] sm:leading-[30px]">
-            {post.dek}
+            {dek}
           </p>
 
           <div className="flex items-center gap-3 pt-1.5">
@@ -110,29 +126,29 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
             </span>
             <div className="flex flex-col gap-0.5">
               <p className="font-ewangi text-[15px] font-bold text-brand-pine">
-                By {post.author} · {post.authorRole}
+                {t("article.byline", { author: post.author, authorRole })}
               </p>
               <p className="font-ewangi text-[13px] text-[#8c99a8]">
-                Updated {post.date} · {post.readTime}
+                {t("article.updated", { date: post.date, readTime: post.readTime })}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5 pt-1.5">
-            <p className="font-ewangi text-[13px] font-medium text-[#5c6978]">Share</p>
+            <p className="font-ewangi text-[13px] font-medium text-[#5c6978]">{t("article.shareLabel")}</p>
             <ShareButtons size="sm" />
           </div>
         </div>
 
         {/* Hero image */}
         <div className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-96 lg:h-125">
-          <Image src={post.image} alt={post.title} fill sizes="(max-width: 1024px) 100vw, 1080px" className="object-cover" priority />
+          <Image src={post.image} alt={title} fill sizes="(max-width: 1024px) 100vw, 1080px" className="object-cover" priority />
         </div>
 
         {/* Body row: TOC + content */}
         <div className="flex w-full flex-col items-start gap-10 lg:flex-row lg:gap-16">
-          <ArticleToc items={post.toc} />
-          <ArticleBody blocks={[...post.body]} />
+          <ArticleToc items={translatedToc} />
+          <ArticleBody blocks={translatedBody} />
         </div>
 
         {/* Share section */}
@@ -140,9 +156,11 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           <hr className="w-full border-t border-[#e3ede8]" />
           <div className="flex w-full flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-1.5">
-              <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">Share</p>
+              <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
+                {t("article.shareSectionEyebrow")}
+              </p>
               <p className="font-ewangi text-[1.3rem] font-bold text-brand-pine sm:text-[22px]">
-                Found this useful? Share it with a buyer
+                {t("article.shareSectionHeading")}
               </p>
             </div>
             <ShareButtons size="lg" showCopyLink />
@@ -153,20 +171,20 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
         <div className="flex w-full flex-col items-start justify-between gap-6 rounded-3xl bg-brand-pine px-6 py-9 sm:flex-row sm:items-center sm:px-10">
           <div className="max-w-xl space-y-2">
             <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-              Ready to buy?
+              {t("article.readyToBuyEyebrow")}
             </p>
             <p className="font-ewangi text-[1.5rem] font-bold leading-snug text-white sm:text-[30px]">
-              Browse certified developments in Baja California
+              {t("article.readyToBuyHeading")}
             </p>
             <p className="font-ewangi text-[15px] text-[#b2f2e5]">
-              Every listing is title-searched and developer-verified before it goes live.
+              {t("article.readyToBuySubheading")}
             </p>
           </div>
           <Link
             href="/properties"
             className="inline-flex shrink-0 items-center gap-2 rounded-[14px] bg-brand-teal px-7 py-4 font-ewangi text-[16px] font-bold text-brand-pine transition hover:bg-brand-teal-dark"
           >
-            Browse properties <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+            {t("article.browseProperties")} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </Link>
         </div>
       </article>

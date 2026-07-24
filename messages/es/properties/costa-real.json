@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "Costa Real en Real del Mar – Casas y Condominios con Vista al Mar en Tijuana",
+    "description": "Costa Real forma parte del prestigioso complejo Real del Mar, cerca de Tijuana. Elige entre casas y condominios con vista al mar en una comunidad privada totalmente planeada en la costa de Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Desarrollo costero Costa Real",
+    "headlineLine1": "Vive más allá",
+    "headlineLine2": "de lo ordinario",
+    "subtitle": "Una comunidad costera privada a la orilla del Pacífico, diseñada para quienes viven con intención.",
+    "cmreAlt": "Certificado por CMRE",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "vista"
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "120", "label": "Lotes" },
+    { "value": "25", "label": "Condominios" },
+    { "value": "5", "label": "Modelos" },
+    { "value": "80", "label": "Casas" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "mapAlt": "Mapa del desarrollo Costa Real",
+    "tabs": ["Lotes", "Condominios", "Casas"],
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "viewAllButton": "Ver todos los lotes",
+    "lots": [
+      { "id": "Lote 12", "size": "300 m²" },
+      { "id": "Lote 13", "size": "300 m²" },
+      { "id": "Lote 14", "size": "320 m²" },
+      { "id": "Lote 15", "size": "315 m²" },
+      { "id": "Lote 16", "size": "305 m²" }
+    ]
+  },
+  "models": {
+    "typeLabel": "Condominio",
+    "modelAlt": "Modelo Viento Condominio",
+    "features": [
+      { "icon": "📐", "label": "55 m²" },
+      { "icon": "🛏", "label": "1 Recámara" },
+      { "icon": "🚿", "label": "1 Baño" }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Vamos a echar un",
+    "headingLine2": "vistazo desde tu",
+    "headingLine3": "próximo hogar.",
+    "interiorAlt": "Sala interior de Costa Real",
+    "button": "Tour 360°"
+  },
+  "estates": {
+    "imageAlt": "Vista aérea de The Estates",
+    "body": "The Estates es un desarrollo residencial de aproximadamente 34 hectáreas, con 123 lotes tipo rancho de un área promedio de 2,000 m² cada uno. Diseñado para preservar el equilibrio entre lo construido y los espacios abiertos, cada lote incluye restricciones de retiro intencionales, asegurando que la naturaleza siga siendo el escenario principal y no un simple detalle.\n\nEl circuito principal, las calles secundarias y los senderos peatonales siguen la topografía natural en curvas elegantes, guiando a los residentes a través de un paisaje que revela nuevas vistas y momentos de calma en cada vuelta."
+  },
+  "cta": {
+    "text": "Certificamos para que construyas tu futuro"
+  }
+}

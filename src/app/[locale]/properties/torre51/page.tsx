@@ -2,6 +2,7 @@
 // Torre 51 Negativo page — oceanfront pre-sale condos, amenity viewer (Pool/Spa/Gym), model floor plans, and YouTube CTA.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -13,41 +14,18 @@ const IMG_INTERIOR = `${CLD}/torre51/interior`;
 const IMG_MODEL    = `${CLD}/torre51/model-floor-plan`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "90",   label: "Condos" },
-  { value: "9",    label: "Amenities" },
-  { value: "3",    label: "Pools" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type AmenityTab = "Pool" | "Spa" | "Gym";
-
-const amenities: Record<AmenityTab, { description: string; sub: string }> = {
-  Pool: {
-    description:
-      "Three pools including an oceanfront infinity pool, adult pool and children's pool — on a 16-meter cliff with 134 m of beach frontage and elevator to the beach.",
-    sub: "Oceanfront infinity pool with direct Pacific views.",
-  },
-  Spa: {
-    description:
-      "A full-service spa with ocean views, designed for relaxation and rejuvenation after a day at the beach.",
-    sub: "World-class spa treatments in a serene oceanfront setting.",
-  },
-  Gym: {
-    description:
-      "A fully equipped fitness center with panoramic Pacific views, open 24 hours exclusively for residents.",
-    sub: "State-of-the-art equipment with oceanfront views.",
-  },
-};
+type Stat = { value: string; label: string };
+type AmenityKey = "pool" | "spa" | "gym";
+type Amenity = { tabLabel: string; description: string; sub: string };
 
 export default function Torre51Page() {
-  const [activeTab, setActiveTab] = useState<AmenityTab>("Pool");
+  const t = useTranslations("propertyTorre51");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const amenities = t.raw("interiorExplorer.amenities") as Record<AmenityKey, Amenity>;
+  const amenityKeys = Object.keys(amenities) as AmenityKey[];
+
+  const [activeTab, setActiveTab] = useState<AmenityKey>("pool");
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -56,7 +34,7 @@ export default function Torre51Page() {
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Torre 51 Negativo oceanfront development"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover object-top animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -71,14 +49,14 @@ export default function Torre51Page() {
         <div className="absolute right-6 top-8 z-20 flex flex-col items-end gap-2 lg:right-20 lg:top-12">
           <Image
             src={IMG_LOGO}
-            alt="Torre 51 Negativo"
+            alt={t("hero.logoAlt")}
             width={170}
             height={51}
             className="w-28 brightness-0 invert sm:w-36 lg:w-44"
           />
           <Image
             src={IMG_CMRE}
-            alt="CMRE Certified"
+            alt={t("hero.cmreAlt")}
             width={135}
             height={32}
             className="w-24 sm:w-28 lg:w-36"
@@ -90,11 +68,11 @@ export default function Torre51Page() {
           {/* Title + description + badges — upper area */}
           <div className="flex flex-col gap-7 mt-20 sm:mt-24 lg:mt-0 lg:max-w-[56%]">
             <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] text-white animate-[fade-left_0.9s_ease-out_both]">
-              Wake up every morning<br />to the sound of the waves
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
             <p className="font-ewangi text-[1.1rem] leading-relaxed text-white/80">
-              A project inspired by luxury and the beach, creating a unique oceanfront atmosphere in Rosarito. Pre-sale from $396K USD.
+              {t("hero.description")}
             </p>
             </RevealOnScroll>
             <div className="grid grid-cols-3 gap-x-6 gap-y-4">
@@ -129,7 +107,7 @@ export default function Torre51Page() {
         <div className="mb-10 flex items-center gap-6">
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
           <h2 className="text-center font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-white">
-            Exclusivity and comfort in every corner, by the sea
+            {t("interiorExplorer.heading")}
           </h2>
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
         </div>
@@ -141,7 +119,7 @@ export default function Torre51Page() {
         >
           <Image
             src={IMG_INTERIOR}
-            alt="Torre 51 interior living area"
+            alt={t("interiorExplorer.interiorImageAlt")}
             fill
             className="object-cover"
             sizes="100vw"
@@ -161,19 +139,19 @@ export default function Torre51Page() {
                 {amenities[activeTab].sub}
               </p>
               <div className="mt-6 flex flex-col items-start gap-1.5">
-                {(["Pool", "Spa", "Gym"] as AmenityTab[]).map((t) => (
+                {amenityKeys.map((tab) => (
                   <button
-                    key={t}
+                    key={tab}
                     type="button"
-                    onClick={() => setActiveTab(t)}
+                    onClick={() => setActiveTab(tab)}
                     className={cn(
                       "h-9 w-38 rounded-1.25 font-ewangi text-[1.1rem] text-center transition",
-                      t === activeTab
+                      tab === activeTab
                         ? "bg-[#1e1e1e] text-brand-teal"
                         : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
                     )}
                   >
-                    {t}
+                    {amenities[tab].tabLabel}
                   </button>
                 ))}
               </div>
@@ -188,7 +166,7 @@ export default function Torre51Page() {
 
         <RevealOnScroll direction="left">
         <div className="mb-8 flex items-center gap-4">
-          <p className="font-ewangi text-[1.875rem] text-brand-ink">Explore our 5 models</p>
+          <p className="font-ewangi text-[1.875rem] text-brand-ink">{t("models.headingTemplate")}</p>
           <button
             type="button"
             className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
@@ -209,13 +187,13 @@ export default function Torre51Page() {
           <RevealOnScroll direction="left" delay={100} duration={1100}>
           <div className="flex flex-col gap-3 lg:w-[37%]">
             <h2 className="font-ewangi text-[clamp(3rem,5vw,3.25rem)] leading-none text-brand-ink">
-              Vista
+              {t("models.name")}
             </h2>
-            <p className="font-ewangi text-[2.5rem] leading-none text-[#00c9a7]">136.08 m²</p>
+            <p className="font-ewangi text-[2.5rem] leading-none text-[#00c9a7]">{t("models.area")}</p>
             <div className="mt-2 space-y-1">
-              <p className="font-ewangi text-[1.25rem] text-brand-ink">2  Bedrooms</p>
-              <p className="font-ewangi text-[1.25rem] text-brand-ink">2 Bathrooms</p>
-              <p className="font-ewangi text-[1.25rem] text-brand-ink">136.08 m²</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.bedroomsLabel")}</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.bathroomsLabel")}</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.area")}</p>
             </div>
           </div>
           </RevealOnScroll>
@@ -225,7 +203,7 @@ export default function Torre51Page() {
             <div className="relative overflow-hidden rounded-3.75 aspect-1034/730">
               <Image
                 src={IMG_MODEL}
-                alt="Vista model interior render"
+                alt={t("models.modelImageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width:1024px) 100vw, 60vw"
@@ -253,7 +231,7 @@ export default function Torre51Page() {
             <div className="overflow-hidden rounded-6.5 aspect-560/315">
               <iframe
                 src="https://www.youtube.com/embed/ewrYgcNHV8Q?si=zVZA55AsGvDzGrQh"
-                title="Torre 51 Negativo"
+                title={t("cta.youtubeTitle")}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
@@ -266,13 +244,13 @@ export default function Torre51Page() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col items-start gap-6 lg:flex-1 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2rem,3.5vw,2.5rem)] leading-tight text-white">
-              Reserve your oceanfront<br />paradise from $5,000 USD
+              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
             </h2>
             <p className="font-ewangi text-[1.25rem] leading-relaxed text-white/65 lg:max-w-130">
-              Two towers, 90 luxury condos on a privileged stretch of the Rosarito coast. The developer&apos;s experience is your guarantee; your property value is guaranteed.
+              {t("cta.body")}
             </p>
             <button type="button" className="rounded-2.5 bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
-              Schedule your appointment
+              {t("cta.button")}
             </button>
           </div>
           </RevealOnScroll>

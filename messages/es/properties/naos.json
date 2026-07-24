@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Naos Baja – Condominios Modernos en Venta en Rosarito, Baja California",
+    "description": "Naos Baja ofrece condominios modernos y elegantes en la costa de Baja California, en Rosarito. Diseño contemporáneo que se combina con la vida costera en este nuevo y estiloso desarrollo."
+  },
+  "hero": {
+    "logoAlt": "NAOS",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "NAOS es más que",
+    "headlineLine2": "un lugar para vivir",
+    "subheadline": "Una comunidad frente al mar con un diseño vanguardista, moldeada por la costa de Baja. Un espacio para hacer una pausa, sentir y reconectar con lo esencial."
+  },
+  "stats": [
+    { "value": "16", "label": "Condominios" },
+    { "value": "4", "label": "Modelos" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Revisión legal", "Cumplimiento normativo", "Infraestructura validada"],
+  "interiorExplorer": {
+    "heading": "Vida costera incomparable con amenidades de estilo resort",
+    "imageAlt": "Sala interior de NAOS",
+    "tabs": {
+      "livingRoom": "Sala",
+      "bedroom": "Recámara",
+      "bathroom": "Baño",
+      "kitchen": "Cocina",
+      "terrace": "Terraza"
+    },
+    "rooms": {
+      "livingRoom": {
+        "description": "Vive una colección de interiores diseñados para una vida más elevada. De espacios de concepto abierto a acabados impresionantes, cada rincón está pensado para inspirar.",
+        "sub": "Ventanales de piso a techo, acabados refinados y una comodidad perfecta para la vida moderna."
+      },
+      "bedroom": {
+        "description": "Recámaras amplias diseñadas como santuarios personales, con vistas panorámicas al mar y acabados premium que redefinen el descanso.",
+        "sub": "Closets a la medida, pisos premium e iluminación pensada para el máximo confort."
+      },
+      "bathroom": {
+        "description": "Baños de estilo resort con accesorios de diseño, acabados en piedra natural y espacios inspirados en un spa para tu ritual diario.",
+        "sub": "Regaderas tipo lluvia, tinas y pisos con calefacción en un entorno frente al mar."
+      },
+      "kitchen": {
+        "description": "Cocinas gourmet equipadas con electrodomésticos integrados, gabinetes a la medida y cubiertas premium — el espacio perfecto para crear y recibir invitados.",
+        "sub": "Electrodomésticos de alta gama y carpintería a la medida combinados con un diseño contemporáneo."
+      },
+      "terrace": {
+        "description": "Terrazas privadas con amplias vistas al Pacífico — una extensión de tu espacio de vida donde el interior fluye sin interrupciones hacia el exterior.",
+        "sub": "Espacios exteriores amplios con vistas sin obstáculos al mar y a la costa."
+      }
+    }
+  },
+  "models": {
+    "heading": "Explora nuestros 4 modelos",
+    "layoutLabel": "Modelo A",
+    "layoutSize": "1,287 pies²",
+    "imageAlt": "Plano del Modelo A",
+    "features": [
+      "3 balcones",
+      "Sala con balcón",
+      "Comedor",
+      "Barra desayunadora",
+      "Cocina integral",
+      "2 recámaras",
+      "2 baños",
+      "Patio con área de lavado",
+      "1 espacio de estacionamiento techado"
+    ]
+  },
+  "cta": {
+    "imageAlt": "Exterior del edificio NAOS",
+    "headingLine1": "Una Colección Limitada.",
+    "headingLine2": "Un Estilo de Vida Extraordinario.",
+    "body": "Diseñados para quienes buscan más que una residencia, estos 16 condominios exclusivos ofrecen espacios refinados, vistas impresionantes y un sentido de comunidad como ningún otro.",
+    "button": "Habla con un experto"
+  }
+}

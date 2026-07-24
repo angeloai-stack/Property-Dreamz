@@ -1,0 +1,321 @@
+{
+  "categories": {
+    "All": "Todo",
+    "Guides": "Guías",
+    "Neighborhoods": "Vecindarios",
+    "Finance": "Finanzas",
+    "Market": "Mercado",
+    "Lifestyle": "Estilo de vida",
+    "Trust": "Confianza"
+  },
+  "listing": {
+    "eyebrow": "Desde el blog",
+    "heading": "Todo sobre bienes raíces, explicado",
+    "subheading": "Guías, análisis de mercado y a fondo por vecindario para compradores transfronterizos.",
+    "noPostsInCategory": "Todavía no hay publicaciones en esta categoría.",
+    "featuredBadge": "Destacado",
+    "byLine": "Por {author} · {date} · {readTime}"
+  },
+  "related": {
+    "eyebrow": "Más contenido de nuestro blog",
+    "noOtherPosts": "Todavía no hay otras publicaciones en esta categoría."
+  },
+  "article": {
+    "breadcrumbHome": "Inicio",
+    "breadcrumbBlog": "Blog",
+    "byline": "Por {author} · {authorRole}",
+    "updated": "Actualizado {date} · {readTime}",
+    "shareLabel": "Compartir",
+    "shareSectionEyebrow": "Compartir",
+    "shareSectionHeading": "¿Te resultó útil? Compártelo con un comprador",
+    "readyToBuyEyebrow": "¿Listo para comprar?",
+    "readyToBuyHeading": "Explora desarrollos certificados en Baja California",
+    "readyToBuySubheading": "Cada propiedad está verificada en título y desarrollador antes de publicarse.",
+    "browseProperties": "Ver propiedades"
+  },
+  "toc": {
+    "onThisPage": "EN ESTA PÁGINA",
+    "ariaLabel": "Tabla de contenidos"
+  },
+  "share": {
+    "shareOn": "Compartir en {network}",
+    "copyLink": "Copiar enlace",
+    "copied": "¡Copiado!"
+  },
+  "pagination": {
+    "ariaLabel": "Paginación del blog",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente"
+  },
+  "posts": {
+    "2026-baja-california-buyers-report": {
+      "title": "El Informe 2026 del Comprador en Baja California: precios, zonas en auge y qué cambió",
+      "excerpt": "Precios medianos, los corredores que se mueven más rápido entre Rosarito y Ensenada, y qué significan las nuevas reglas de certificación para los compradores estadounidenses este año.",
+      "dek": "Precios medianos, los corredores que se mueven más rápido entre Rosarito y Ensenada, y qué significan las nuevas reglas de certificación para los compradores estadounidenses este año.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "median-prices-by-corridor": "Precios medianos por corredor",
+        "the-fastest-moving-zones": "Las zonas que se mueven más rápido",
+        "what-the-new-rules-change": "Qué cambian las nuevas reglas"
+      },
+      "body": [
+        "El mercado de desarrollos certificados en Baja California creció más rápido en la primera mitad de 2026 que en cualquier periodo comparable desde que Property Dreamz comenzó a monitorearlo.",
+        "Precios medianos por corredor",
+        "Rosarito sigue siendo el corredor frente al mar más accesible, con precios medianos de preventa todavía por debajo de $2,600 por metro cuadrado. Ensenada y la costa de Punta Banda ahora tienen una prima considerable sobre Rosarito, impulsada por una costa edificable más limitada y menos proyectos activos.",
+        "Las zonas que se mueven más rápido",
+        "**Zona Río en Tijuana** y el frente de playa de Rosarito absorbieron inventario más rápido este año, con varios desarrollos certificados que agotaron su primera fase de lanzamiento en menos de 90 días.",
+        "Qué cambian las nuevas reglas",
+        "Los nuevos requisitos de certificación estatal ahora exigen una auditoría de reserva del HOA por parte de un tercero antes de que un desarrollo pueda promocionarse entre compradores extranjeros — una regla que Property Dreamz ya aplicaba a cada propiedad [certificada](/about)."
+      ]
+    },
+    "fideicomiso-explained": {
+      "title": "El fideicomiso, explicado: cómo comprar en la zona restringida de México",
+      "excerpt": "Cómo funciona el fideicomiso bancario, cuánto cuesta y por qué es la vía estándar para compradores extranjeros cerca de la costa.",
+      "dek": "Una guía clara y sencilla sobre el fideicomiso bancario que permite a los extranjeros tener título de propiedad frente al mar en Baja California: cómo funciona, cuánto cuesta y cuánto tiempo toma.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "what-is-a-fideicomiso": "¿Qué es un fideicomiso?",
+        "why-the-restricted-zone-exists": "Por qué existe la zona restringida",
+        "setting-it-up-step-by-step": "Cómo establecerlo, paso a paso",
+        "costs-and-timeline": "Costos y tiempos",
+        "key-takeaways": "Puntos clave"
+      },
+      "body": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "What is a fideicomiso?",
+        "Baja California is one of the most sought-after destinations for Americans and Canadians **buying property in Mexico**. With its stunning Pacific coastline, thriving border economy, and proximity to San Diego, cities like [Tijuana](/explore-map?search=Tijuana), [Ensenada](/explore-map?search=Ensenada), and [Rosarito](/explore-map?search=Rosarito) offer exceptional value for buyers at every budget. Whether you are searching for a **beachfront condo**, a gated community home, or a vacation retreat, [Baja California real estate](/properties) delivers world-class lifestyle options backed by a strong legal framework for foreign ownership. All developments listed on **Property Dreamz** are [certified](/about) — every title has been searched, every developer background-checked, and every **HOA reserve audited** before a single property goes live on our platform. Investing in [Baja California real estate](/properties) has never been more transparent or secure.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Why the restricted zone exists",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Setting it up, step by step",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Beachfront developments in Rosarito, where fideicomiso title is standard for foreign buyers.",
+        "Costs and timeline",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Key takeaways",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      ]
+    },
+    "rosarito-vs-ensenada": {
+      "title": "Rosarito vs. Ensenada: dónde comprar tu condominio frente al mar",
+      "excerpt": "Comparamos ambos corredores en precio por metro, tiempo de trayecto a la frontera y ritmo de nuevos desarrollos.",
+      "dek": "Comparamos ambos corredores en precio por metro, tiempo de trayecto a la frontera y ritmo de nuevos desarrollos.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "price-per-meter": "Precio por metro cuadrado",
+        "commute-and-border-access": "Trayecto y acceso a la frontera",
+        "which-one-fits-you": "Cuál te conviene más"
+      },
+      "body": [
+        "Rosarito y Ensenada están a menos de una hora de distancia sobre la misma costa, pero atraen a tipos de compradores muy distintos.",
+        "Precio por metro cuadrado",
+        "Las torres frente al mar en Rosarito todavía se cotizan por debajo de $2,500 por metro cuadrado en la mayoría de los desarrollos en preventa, mientras que el mercado boutique de condominios en Ensenada ronda los $3,200 gracias a una oferta más limitada y una costa edificable más pequeña.",
+        "Trayecto y acceso a la frontera",
+        "Rosarito se encuentra a unos 20 minutos del cruce fronterizo de San Ysidro, lo que lo convierte en la opción natural para propietarios de fin de semana. Ensenada está 90 minutos más al sur, lo que filtra a compradores que planean mudarse en lugar de viajar con frecuencia.",
+        "Cuál te conviene más",
+        "Si buscas una propiedad de fin de semana de bajo mantenimiento cerca de la frontera, Rosarito gana en conveniencia. Si prefieres un pueblo más tranquilo y consolidado, con una economía local real más allá del turismo, Ensenada es la apuesta más sólida a largo plazo."
+      ]
+    },
+    "closing-costs-and-taxes": {
+      "title": "Costos de cierre e impuestos para compradores estadounidenses en Baja California",
+      "excerpt": "Un desglose línea por línea de los honorarios notariales, el impuesto de adquisición y el impuesto predial anual que realmente pagarás.",
+      "dek": "Un vistazo línea por línea a lo que realmente aparece en un estado de cierre en Baja California, desde los honorarios notariales hasta el recibo anual del impuesto predial.",
+      "authorRole": "Editor de Vida Transfronteriza",
+      "toc": {
+        "one-time-closing-costs": "Costos de cierre únicos",
+        "the-fideicomiso-fee": "La cuota del fideicomiso",
+        "ongoing-property-taxes": "Impuestos prediales recurrentes"
+      },
+      "body": [
+        "La mayoría de los compradores primerizos subestiman los costos de cierre en México porque las categorías no coinciden claramente con un estado de cierre estadounidense.",
+        "Costos de cierre únicos",
+        "Considera presupuestar entre el 5% y el 7% del precio de compra para el impuesto de adquisición, los honorarios notariales y el registro, aproximadamente el doble de lo que costaría un cierre comparable en Estados Unidos.",
+        "La cuota del fideicomiso",
+        "Si la propiedad está dentro de la zona restringida, suma una cuota única de constitución del fideicomiso más una cuota anual del fiduciario, normalmente entre $500 y $700 USD al año. Consulta nuestra [guía del fideicomiso](/blog/fideicomiso-explained) para conocer la estructura completa.",
+        "Impuestos prediales recurrentes",
+        "El predial, el impuesto anual sobre la propiedad en México, se calcula sobre el valor catastral y no sobre el valor de mercado, y suele ser una fracción de lo que los propietarios estadounidenses están acostumbrados a pagar."
+      ]
+    },
+    "oceanfront-developments-under-300k": {
+      "title": "Los mejores desarrollos frente al mar por debajo de $300k en 2026",
+      "excerpt": "Seis desarrollos certificados con unidades que todavía cuestan menos de $300k USD, y cuánto es probable que dure esa ventana.",
+      "dek": "Seis desarrollos certificados donde las unidades frente al mar o con vista al mar todavía cuestan menos de $300,000 USD, por ahora.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "why-prices-are-still-low": "Por qué los precios siguen bajos",
+        "the-six-developments": "Los seis desarrollos",
+        "how-long-this-will-last": "Cuánto durará esto"
+      },
+      "body": [
+        "Los precios frente al mar por debajo de $300k están desapareciendo más rápido en Rosarito y se mantienen por más tiempo en un puñado de fases de preventa más al sur.",
+        "Por qué los precios siguen bajos",
+        "Las primeras fases de construcción se cotizan por debajo del inventario terminado, y varios **desarrolladores certificados** todavía venden sus primeros lanzamientos muy por debajo de su valor proyectado al momento de la entrega.",
+        "Los seis desarrollos",
+        "La lista actual abarca [Rosarito](/explore-map?search=Rosarito), Ensenada y Puerto Nuevo, con un peso mayor hacia unidades de una y dos recámaras en edificios de altura media, con fechas de entrega en 2027 y 2028.",
+        "Cuánto durará esto",
+        "Con base en las tasas de absorción de los últimos tres ciclos de entrega, el inventario frente al mar por debajo de $300k en estos corredores históricamente se ha agotado entre 12 y 18 meses después del lanzamiento público de un proyecto."
+      ]
+    },
+    "what-certified-development-means": {
+      "title": "Qué significa realmente un 'desarrollo certificado' en Property Dreamz",
+      "excerpt": "Cada propiedad pasa por una revisión legal, regulatoria y de seguridad antes de ser certificada. Este es el checklist.",
+      "dek": "Cada propiedad en Property Dreamz pasa por el mismo checklist de certificación antes de poder publicarse. Esto es exactamente lo que eso significa.",
+      "authorRole": "Editor Legal y de Cumplimiento",
+      "toc": {
+        "title-search": "Búsqueda de título",
+        "developer-background-check": "Verificación de antecedentes del desarrollador",
+        "hoa-reserve-audit": "Auditoría de reserva del HOA"
+      },
+      "body": [
+        "'Certificado' no es una etiqueta de marketing en Property Dreamz: es un proceso de revisión específico y repetible que todo desarrollo debe superar.",
+        "Búsqueda de título",
+        "Un notario público local confirma que el título esté limpio, correctamente registrado y libre de gravámenes antes de publicar la propiedad.",
+        "Verificación de antecedentes del desarrollador",
+        "Revisamos el historial de entregas del desarrollador, su historial de litigios y su situación regulatoria ante autoridades estatales y federales.",
+        "Auditoría de reserva del HOA",
+        "En comunidades ya terminadas, auditamos el financiamiento de la reserva del HOA para identificar desarrollos que puedan sorprender a los compradores con cuotas especiales inesperadas."
+      ]
+    },
+    "30-minutes-from-san-diego": {
+      "title": "A 30 minutos de San Diego: el estilo de vida transfronterizo",
+      "excerpt": "Cómo es realmente la vida diaria para los estadounidenses que reparten su tiempo entre San Diego y Baja California.",
+      "dek": "Cómo es realmente la vida diaria para los estadounidenses que dividen su tiempo entre San Diego y Baja California.",
+      "authorRole": "Editor de Vida Transfronteriza",
+      "toc": {
+        "the-daily-commute": "El trayecto diario",
+        "cost-of-living": "Costo de vida",
+        "building-a-routine": "Cómo construir una rutina"
+      },
+      "body": [
+        "La promesa de los 30 minutos es real en un buen día, pero depende por completo de a qué hora cruces.",
+        "El trayecto diario",
+        "Los propietarios inscritos en SENTRI que cruzan fuera de horas pico suelen pasar la frontera en 15 a 20 minutos; los cruces en la tarde, en horas pico, pueden tomar más de una hora.",
+        "Costo de vida",
+        "El supermercado, salir a comer y la ayuda doméstica suelen costar entre 40% y 60% menos que sus equivalentes en San Diego, lo que representa el cambio de estilo de vida más notorio para la mayoría de los nuevos propietarios.",
+        "Cómo construir una rutina",
+        "Los propietarios que logran que este esquema funcione suelen organizar su semana en torno a días fijos de cruce, en lugar de viajar a diario, tratando la propiedad más como una segunda casa a un vuelo muy corto de distancia."
+      ]
+    },
+    "first-timers-guide-notary-process": {
+      "title": "Guía para principiantes sobre el proceso notarial en México",
+      "excerpt": "El notario público desempeña un papel distinto al de un notario en Estados Unidos: esto es lo que realmente verifica antes del cierre.",
+      "dek": "El notario público desempeña un papel distinto al de un notario en Estados Unidos: esto es exactamente lo que verifica antes de que firmes cualquier documento.",
+      "authorRole": "Editor Legal y de Cumplimiento",
+      "toc": {
+        "not-a-us-notary": "No es un notario estadounidense",
+        "what-gets-verified": "Qué se verifica",
+        "what-to-bring-to-closing": "Qué llevar al cierre"
+      },
+      "body": [
+        "En México, el notario público es un abogado con licencia designado por el estado, no un simple testigo que sella documentos.",
+        "No es un notario estadounidense",
+        "El notario es legalmente responsable de la exactitud de la transacción, por lo que su revisión tiene mucho más peso que la de un agente de cierre típico en Estados Unidos.",
+        "Qué se verifica",
+        "El notario confirmará el historial del título, gravámenes pendientes, el cumplimiento de la zonificación y que todos los impuestos aplicables estén pagados antes de autorizar la escritura.",
+        "Qué llevar al cierre",
+        "Lleva un pasaporte vigente, comprobante de tu estatus migratorio (FMM o tarjeta de residencia) y la documentación de tu fideicomiso si la propiedad está dentro de la zona restringida."
+      ]
+    },
+    "valle-de-guadalupe-buyers-market": {
+      "title": "Valle de Guadalupe: la zona vinícola de México se está convirtiendo en un mercado de compradores",
+      "excerpt": "Terrenos junto a viñedos y proyectos hoteleros boutique están atrayendo a un nuevo tipo de comprador transfronterizo.",
+      "dek": "Terrenos junto a viñedos y proyectos hoteleros boutique están atrayendo a un nuevo tipo de comprador transfronterizo hacia la zona vinícola de México.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "why-now": "Por qué ahora",
+        "what-is-selling": "Qué se está vendiendo",
+        "things-to-check-before-you-buy": "Qué revisar antes de comprar"
+      },
+      "body": [
+        "Valle de Guadalupe ha pasado una década construyendo su reputación como la zona vinícola de México. Apenas recientemente comenzó a construir vivienda a la altura de esa reputación.",
+        "Por qué ahora",
+        "Los precios de la tierra todavía son una fracción de los de mercados vinícolas comparables en California, incluso mientras las cifras de turismo aumentan cada temporada.",
+        "Qué se está vendiendo",
+        "La mayor demanda está en terrenos con vista cerca de viñedos consolidados y pequeños desarrollos de hoteles boutique dirigidos a visitantes de fin de semana más que a residentes de tiempo completo.",
+        "Qué revisar antes de comprar",
+        "Los derechos de agua y el acceso a pozos son los dos temas que más suelen complicar una compra aquí: confirma ambos antes de firmar el contrato."
+      ]
+    },
+    "financing-options-for-us-citizens": {
+      "title": "Opciones de financiamiento para ciudadanos estadounidenses que compran propiedad en México",
+      "excerpt": "Hipotecas transfronterizas, financiamiento del desarrollador y las cuentas de comprar de contado que casi siempre siguen ganando.",
+      "dek": "Hipotecas transfronterizas, financiamiento del desarrollador y las cuentas de comprar de contado que siguen siendo la mejor opción para la mayoría de los compradores.",
+      "authorRole": "Editor de Vida Transfronteriza",
+      "toc": {
+        "cross-border-mortgages": "Hipotecas transfronterizas",
+        "developer-financing": "Financiamiento del desarrollador",
+        "the-cash-math": "Las cuentas de comprar de contado"
+      },
+      "body": [
+        "El financiamiento es la parte de comprar en México que más sorprende a los compradores estadounidenses: las opciones existen, pero no se parecen a una hipoteca convencional.",
+        "Hipotecas transfronterizas",
+        "Un número reducido de instituciones financieras ahora ofrece hipotecas denominadas en dólares respaldadas por propiedad mexicana, generalmente con tasas más altas y plazos más cortos que el financiamiento en Estados Unidos.",
+        "Financiamiento del desarrollador",
+        "La mayoría de los **desarrolladores certificados** ofrecen sus propios planes de pago durante la preventa, distribuyendo entre el 30% y el 50% del precio a lo largo del periodo de construcción sin intereses.",
+        "Las cuentas de comprar de contado",
+        "Dado el costo del financiamiento, una gran parte de los compradores todavía paga de contado: el precio de preventa combinado con el financiamiento del desarrollador suele salir más barato que pedir un préstamo a las tasas hipotecarias transfronterizas actuales."
+      ]
+    },
+    "presale-condos-tijuana-outperforming": {
+      "title": "Por qué los condominios en preventa en Tijuana están superando al mercado de reventa",
+      "excerpt": "Datos de plusvalía de los últimos tres ciclos de entrega, y cómo evaluar el historial de un desarrollador.",
+      "dek": "Los datos de plusvalía de los últimos tres ciclos de entrega muestran por qué comprar temprano en una preventa en Tijuana sigue siendo mejor que esperar el inventario de reventa.",
+      "authorRole": "Analista Senior de Mercado",
+      "toc": {
+        "the-appreciation-data": "Los datos de plusvalía",
+        "why-the-gap-exists": "Por qué existe esta brecha",
+        "evaluating-a-developers-track-record": "Cómo evaluar el historial de un desarrollador"
+      },
+      "body": [
+        "Los compradores que adquirieron en preventa durante los últimos tres ciclos de entrega en Tijuana superaron por un amplio margen a los compradores de reventa, aunque la brecha depende en gran medida de qué desarrollador eligieron.",
+        "Los datos de plusvalía",
+        "Las unidades compradas en la primera fase de lanzamiento de un proyecto históricamente han tenido una plusvalía de entre 15% y 25% para el momento de la entrega, incluso antes de que comience cualquier actividad en el mercado de reventa.",
+        "Por qué existe esta brecha",
+        "El precio de las primeras fases refleja el riesgo de construcción que los compradores de reventa ya no tienen que asumir, que es exactamente la prima que se les paga a los compradores de preventa por aceptar.",
+        "Cómo evaluar el historial de un desarrollador",
+        "Aquí el historial importa más que el precio: los últimos dos o tres proyectos completados de un desarrollador son el mejor indicador de si vale la pena esperar por un descuento de preventa."
+      ]
+    },
+    "remote-work-home-office-in-baja": {
+      "title": "Trabajo remoto y bienes raíces: cómo montar tu oficina en casa en Baja",
+      "excerpt": "Confiabilidad de internet por zona, espacios de coworking y qué revisar antes de firmar un contrato de renta o cerrar la compra de una unidad.",
+      "dek": "Confiabilidad de internet por zona, opciones de coworking y qué revisar antes de firmar un contrato de renta o cerrar la compra de una unidad pensada para trabajo remoto.",
+      "authorRole": "Editor de Vida Transfronteriza",
+      "toc": {
+        "internet-reliability-by-zone": "Confiabilidad de internet por zona",
+        "coworking-options": "Opciones de coworking",
+        "before-you-commit": "Antes de comprometerte"
+      },
+      "body": [
+        "El trabajo remoto es una de las razones que más rápido está creciendo entre los estadounidenses que compran en Baja California, y la conectividad es lo primero que hay que revisar.",
+        "Confiabilidad de internet por zona",
+        "Zona Río en Tijuana y el centro de Rosarito tienen la cobertura de fibra óptica más confiable; los terrenos costeros más aislados suelen depender de datos móviles como respaldo.",
+        "Opciones de coworking",
+        "En los últimos dos años han abierto varios espacios de coworking en Tijuana y Ensenada, con pases por día para propietarios que buscan un cambio de ambiente.",
+        "Antes de comprometerte",
+        "Pídele a cualquier desarrollador cifras reales de velocidad de subida desde una unidad del edificio, no solo el plan anunciado: los materiales de construcción y la distancia al cuarto del router también influyen."
+      ]
+    },
+    "red-flags-developer-contract": {
+      "title": "5 señales de alerta que debes revisar antes de firmar cualquier contrato con un desarrollador",
+      "excerpt": "Calendarios de pago, penalizaciones por entrega y las cláusulas que distinguen a un desarrollador certificado de uno riesgoso.",
+      "dek": "Calendarios de pago, penalizaciones por entrega y las cláusulas que distinguen a un desarrollador certificado de uno riesgoso.",
+      "authorRole": "Editor Legal y de Cumplimiento",
+      "toc": {
+        "payment-schedule-red-flags": "Señales de alerta en el calendario de pagos",
+        "delivery-penalties": "Penalizaciones por entrega",
+        "clauses-to-avoid": "Cláusulas que debes evitar"
+      },
+      "body": [
+        "La mayoría de las disputas con desarrolladores en México se remontan a un puñado de cláusulas contractuales que los compradores no cuestionaron antes de firmar.",
+        "Señales de alerta en el calendario de pagos",
+        "Ten cuidado con cualquier calendario que concentre más del 30% del precio antes del inicio de obra, especialmente si el desarrollador no tiene proyectos terminados.",
+        "Penalizaciones por entrega",
+        "El contrato de un desarrollador serio incluye una penalización específica y exigible por incumplir las fechas de entrega; un lenguaje vago sobre 'retrasos razonables' es una señal de alerta.",
+        "Cláusulas que debes evitar",
+        "Cuídate de cláusulas unilaterales de escalamiento de precio y de cualquier lenguaje que le permita al desarrollador sustituir materiales o especificaciones de la unidad sin tu consentimiento por escrito."
+      ]
+    }
+  }
+}

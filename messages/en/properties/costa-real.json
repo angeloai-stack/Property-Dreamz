@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "Costa Real at Real del Mar – Ocean-View Homes & Condos in Tijuana",
+    "description": "Costa Real is part of the prestigious Real del Mar complex near Tijuana. Choose from ocean-view homes and condominiums in a master-planned gated community on the Baja California coast."
+  },
+  "hero": {
+    "heroImageAlt": "Costa Real coastal development",
+    "headlineLine1": "Live Beyond",
+    "headlineLine2": "the Ordinary",
+    "subtitle": "A private coastal community on the shores of the Pacific, designed for those who live with intention.",
+    "cmreAlt": "CMRE Certified",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "view"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "120", "label": "Lots" },
+    { "value": "25", "label": "Condos" },
+    { "value": "5", "label": "Models" },
+    { "value": "80", "label": "Houses" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explore the development",
+    "mapAlt": "Costa Real development map",
+    "tabs": ["Lots", "Condos", "Houses"],
+    "selectPrompt": "Select a lot to see details",
+    "viewAllButton": "View all lots",
+    "lots": [
+      { "id": "Lot 12", "size": "300 m²" },
+      { "id": "Lot 13", "size": "300 m²" },
+      { "id": "Lot 14", "size": "320 m²" },
+      { "id": "Lot 15", "size": "315 m²" },
+      { "id": "Lot 16", "size": "305 m²" }
+    ]
+  },
+  "models": {
+    "typeLabel": "Condo",
+    "modelAlt": "Viento Condo model",
+    "features": [
+      { "icon": "📐", "label": "55 m²" },
+      { "icon": "🛏", "label": "1 Bedroom" },
+      { "icon": "🚿", "label": "1 Bathroom" }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Let's take a",
+    "headingLine2": "look from your",
+    "headingLine3": "next home.",
+    "interiorAlt": "Costa Real interior living room",
+    "button": "360 tour"
+  },
+  "estates": {
+    "imageAlt": "The Estates aerial view",
+    "body": "The Estates is a residential development spanning approximately 34 hectares, featuring 123 ranch-style lots with an average area of 2,000 m² each. Designed to preserve the balance between built space and open land, each lot includes intentional setback restrictions — ensuring that nature remains the backdrop, not an afterthought.\n\nThe main circuit, secondary streets, and pedestrian pathways follow the natural topography in graceful curves, guiding residents through a landscape that reveals new views and quiet moments at every turn."
+  },
+  "cta": {
+    "text": "We certify so you can build your future"
+  }
+}

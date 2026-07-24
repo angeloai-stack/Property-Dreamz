@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Laguna Bay – Condominios Frente al Mar y con Vista a la Laguna en Rosarito, Baja California",
+    "description": "Laguna Bay ofrece impresionantes condominios con vista a la laguna y al mar en Rosarito, Baja California. Perfecto para quienes buscan un estilo de vida único frente al mar en la costa del Pacífico mexicano."
+  },
+  "hero": {
+    "logoAlt": "Laguna Bay",
+    "cmreAlt": "Certificado por CMRE",
+    "videoTitle": "Laguna Bay",
+    "headlineLine1": "Exclusivo desarrollo horizontal",
+    "headlineLine2": "frente al mar",
+    "subtitle": "El desarrollo horizontal frente al mar más exclusivo de Rosarito, que ofrece la mejor calidad de vida en Baja con una amplia variedad de amenidades y dos impresionantes lagos junto al mar."
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "300", "label": "Lotes" },
+    { "value": "10", "label": "Condominios" },
+    { "value": "2", "label": "Modelos" },
+    { "value": "45", "label": "Casas" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "mapAlt": "Mapa del desarrollo Laguna Bay",
+    "tabs": ["Lotes", "Club", "Casas"],
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "viewAllButton": "Ver todos los lotes",
+    "lots": [
+      { "id": "Lote 12", "size": "180 m²" },
+      { "id": "Lote 13", "size": "120 m²" },
+      { "id": "Lote 14", "size": "140 m²" },
+      { "id": "Lote 15", "size": "115 m²" },
+      { "id": "Lote 16", "size": "105 m²" }
+    ]
+  },
+  "lake": {
+    "heading": "Un lago impresionante",
+    "body": "En Laguna Bay puedes disfrutar de diversas actividades al aire libre, incluida la oportunidad de explorar un impresionante lago donde podrás pescar, remar en kayak, practicar paddleboard y más. También cuenta con un muelle y un hermoso mirador donde relajarte.",
+    "imageAlt": "Lago y muelle de Laguna Bay"
+  },
+  "testimonials": {
+    "trustedText": "La confianza de + 100 familias",
+    "button": "Escucha a Nuestros Residentes"
+  },
+  "buildLiveGrow": {
+    "heading": "Construye, Vive y Crece",
+    "body": "Ya sea que busques el lote perfecto para construir la casa de tus sueños o una residencia lista para habitar, ofrecemos opciones adaptadas a tu estilo de vida y objetivos. Descubre una comunidad diseñada para el crecimiento, la comodidad y el valor a largo plazo. Contáctanos hoy para conocer más, agendar una visita y encontrar la oportunidad ideal para ti.",
+    "imageAlt": "Masterplan de Laguna Bay"
+  },
+  "cta": {
+    "button": "Habla con un experto"
+  }
+}

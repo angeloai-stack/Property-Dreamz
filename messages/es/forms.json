@@ -1,0 +1,42 @@
+{
+  "common": {
+    "consentPrefix": "Acepto el",
+    "consentLink": "aviso de privacidad",
+    "errorGeneric": "Algo salió mal. Intenta de nuevo o escribe a hello@propertydreamz.com",
+    "selectRange": "Selecciona un rango",
+    "anyRegion": "Cualquier región",
+    "budgetOptions": {
+      "under150k": "Menos de $150k USD",
+      "150k-300k": "$150k – $300k USD",
+      "300k-500k": "$300k – $500k USD",
+      "over500k": "Más de $500k USD",
+      "unsure": "Aún no lo sé"
+    },
+    "regionOptions": {
+      "baja": "Baja California",
+      "riviera": "Riviera Maya",
+      "nayarit": "Nayarit",
+      "yucatan": "Yucatán",
+      "cdmx": "Ciudad de México",
+      "other": "Otra"
+    }
+  },
+  "campaign": {
+    "eyebrow": "Consulta gratuita",
+    "heading": "Encuentra tu desarrollo ideal",
+    "brandLine1": "Property",
+    "brandLine2": "Dreamz",
+    "certifiedRealEstate": "Bienes Raíces Certificados",
+    "successTitle": "¡Todo listo!",
+    "successBody": "Nuestro equipo se pondrá en contacto contigo en menos de 24 horas con propiedades verificadas que coincidan con tus criterios.",
+    "fullName": "Nombre completo *",
+    "namePlaceholder": "Tu nombre",
+    "phoneWhatsapp": "Teléfono / WhatsApp *",
+    "phonePlaceholder": "+1 555 000 0000",
+    "email": "Correo electrónico *",
+    "emailPlaceholder": "tu@correo.com",
+    "budgetOptional": "Presupuesto (opcional)",
+    "regionOptional": "Región (opcional)",
+    "submit": "Ver propiedades verificadas"
+  }
+}

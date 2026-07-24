@@ -1,15 +1,11 @@
 // Shared 4-column "Verify Developments / Best Prices / Secure Purchase / Expert Guidance" checklist.
 // Figma: appears identically on the Saved and Explore Map pages, always on a teal background.
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 
-const verifyFeatures = [
-  { title: "Verify Developments", subtitle: "Certified Listings Only" },
-  { title: "Best Prices", subtitle: "Direct from Developers" },
-  { title: "Secure Purchase", subtitle: "Transparency Every Step" },
-  { title: "Expert Guidance", subtitle: "We're Here to Help" },
-] as const;
-
 export function VerifyFeatures({ className }: { className?: string }) {
+  const t = useTranslations("site");
+  const verifyFeatures = t.raw("verifyFeatures") as { title: string; subtitle: string }[];
   return (
     <div className={className ?? "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"}>
       {verifyFeatures.map((feature) => (

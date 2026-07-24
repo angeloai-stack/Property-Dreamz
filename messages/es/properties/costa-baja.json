@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Costa Baja – Residencias de Lujo con Marina y Golf en Baja California",
+    "description": "Costa Baja es una comunidad turística de lujo de clase mundial en Baja California, con marina de servicio completo, campo de golf de campeonato y residencias premium frente al mar. El destino definitivo del estilo de vida en Baja."
+  },
+  "videoModal": {
+    "closeAriaLabel": "Cerrar video",
+    "videoTitle": "Costa Baja — Vida de Lujo Junto al Mar"
+  },
+  "hero": {
+    "logoAlt": "Costa Baja",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Vida de Lujo",
+    "headlineLine2": "Junto al Mar.",
+    "taglineLine1": "Condominios y casas con vista al mar",
+    "taglineLine2": "en Real del Mar, Tijuana.",
+    "playButtonAriaLabel": "Ver video de Costa Baja",
+    "watchVideoLabel": "Ver video"
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "4", "label": "Modelos" },
+    { "value": "2", "label": "Tipos" },
+    { "value": "4", "label": "Recámaras" },
+    { "value": "18", "label": "Hoyos de golf" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "unitExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "tabs": ["Condominios", "Casas", "Modelos"],
+    "selectPrompt": "Selecciona una unidad para ver los detalles",
+    "viewAllButton": "Ver todas las unidades",
+    "mapAlt": "Mapa del desarrollo Costa Baja",
+    "bedroomsLabel": "Recámaras",
+    "bathroomsLabel": "Baños",
+    "availableLabel": "Disponible",
+    "condos": [
+      { "id": "Condo Ibiza", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 },
+      { "id": "Condo Mikonos", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "id": "Condo Santorini", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 }
+    ],
+    "houses": [
+      { "id": "Casa Mallorca", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 },
+      { "id": "Casa Monaco", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 }
+    ]
+  },
+  "modelsCarousel": {
+    "typeCondo": "Modelos de condominio",
+    "typeHouse": "Modelos de casa",
+    "models": [
+      { "key": "Ibiza", "label": "Condominio B — Modelo Ibiza", "type": "condo", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 },
+      { "key": "Mikonos", "label": "Condominio C — Modelo Mikonos", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "key": "Santorini", "label": "Condominio D — Modelo Santorini", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "key": "Mallorca", "label": "Casa Mallorca", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 },
+      { "key": "Monaco", "label": "Casa Monaco", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Enamórate",
+    "headingLine2": "de tu hogar",
+    "headingLine3": "junto al mar.",
+    "button": "Tour 360°",
+    "imageAlt": "Sala de estar interior de Costa Baja"
+  },
+  "seaView": {
+    "headingLine1": "Condominios y",
+    "headingLine2": "Casas con",
+    "headingLine3": "Vista al Mar",
+    "body1": "Costa Baja Residencial es el desarrollo de lujo líder en Real del Mar, Tijuana — una comunidad privada con acceso controlado y un concepto de Vida de Resort donde cada propiedad disfruta de vistas panorámicas al mar de la costa del Pacífico.",
+    "body2": "Elige entre condominios exclusivos de 2 o 3 recámaras desde $427,000 USD, o casas de lujo de 4 recámaras en lotes amplios desde $720,500 USD. Balcones privados, walk-in closets, acceso al campo de golf de Real del Mar, alberca en la azotea y gimnasio completo: cada detalle está pensado para el estilo de vida que mereces.",
+    "imageAlt": "Plano de sitio de Costa Baja"
+  },
+  "ctaBanner": {
+    "text": "Vida de resort con vista al mar — certificado, verificado, listo para ti."
+  }
+}

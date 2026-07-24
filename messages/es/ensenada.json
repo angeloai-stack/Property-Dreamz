@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Bienes Raíces en Ensenada",
+    "description": "Casas en venta en Ensenada, México — condominios frente al mar, casas de valle cerca de Valle de Guadalupe y terrenos para construir, a 80 millas de San Diego. Cada propiedad con título investigado y desarrollador verificado.",
+    "ogTitle": "Bienes Raíces en Ensenada — Property Dreamz",
+    "ogDescription": "Desarrollos certificados en Ensenada. Cada propiedad con título investigado y desarrollador verificado, a 80 millas de San Diego."
+  },
+  "hero": {
+    "titlePart1": "Ensenada",
+    "titlePart2": "Bienes Raíces",
+    "description": "Explora los bienes raíces de Ensenada — condominios frente al mar, casas de valle y terrenos cerca de Valle de Guadalupe. Desarrolladores verificados, atención bilingüe, a 80 millas de San Diego.",
+    "badgeAlt": "CMRE — Certificación de Bienes Raíces en México",
+    "imageAlt": "Residencia de lujo moderna en Ensenada"
+  },
+  "features": [
+    {
+      "title": "Desarrolladores Verificados, Título Limpio",
+      "body": "Cada desarrollo en Ensenada dentro de nuestra plataforma ha pasado por una rigurosa revisión de debida diligencia — incluyendo antecedentes judiciales, actas constitutivas y documentación del proyecto. Te ayudamos a identificar constructores con un historial impecable antes de que comprometas un solo dólar."
+    },
+    {
+      "title": "Región Vitivinícola, Vistas al Mar y Valor Real",
+      "body": "Ensenada es el único lugar en Baja donde puedes tener una propiedad frente al mar a solo 20 minutos de una de las regiones vinícolas más importantes de México. El Valle de Guadalupe añade una dimensión de estilo de vida que distingue a los bienes raíces de Ensenada — restaurantes de clase mundial, vinícolas boutique y una escena culinaria que rivaliza con Napa, a una fracción del costo."
+    },
+    {
+      "title": "Atención Bilingüe para Compradores Estadounidenses",
+      "body": "Nos especializamos en guiar a compradores de Estados Unidos y Canadá a través de transacciones inmobiliarias en Ensenada — desde la selección de la propiedad y la constitución del fideicomiso hasta la coordinación notarial y el cierre. Hablamos tu idioma, conocemos el mercado local y hacemos que el proceso transfronterizo sea sencillo."
+    }
+  ],
+  "seoBlock": {
+    "eyebrow": "Desarrollos certificados · Baja California, México",
+    "heading": "Propiedades en venta en Ensenada",
+    "body": "Los bienes raíces en Ensenada ofrecen algo cada vez más difícil de encontrar: una auténtica ciudad costera del Pacífico con cultura, vino y acceso al mar — a precios que sorprenden gratamente a los compradores de California. Ubicada a 80 millas al sur de San Diego, Ensenada es el destino costero más cosmopolita de Baja California, con una escena gastronómica y vinícola en pleno auge, pesca deportiva de clase mundial y una creciente comunidad de expatriados atraída por la calidad de vida y el valor de las propiedades. Ya sea que busques un condominio frente al mar, una casa de campo cerca de la región vinícola del Valle de Guadalupe o un terreno para construir el retiro de tus sueños, Ensenada ofrece una diversidad de propiedades que pocas ciudades costeras del Pacífico pueden igualar. Cada desarrollo presentado aquí ha sido cuidadosamente evaluado en cuanto a transparencia legal e integridad del desarrollador — para que puedas explorar los bienes raíces de Ensenada con total confianza.",
+    "stats": [
+      { "value": "47+", "label": "Desarrollos Certificados" },
+      { "value": "3", "label": "Ciudades Cubiertas" },
+      { "value": "100%", "label": "Título Verificado" }
+    ],
+    "imageAlt": "Costa del Pacífico cerca de Ensenada, Baja California",
+    "imageCaptionTitle": "Costa del Pacífico",
+    "imageCaptionSubtitle": "Baja California, México"
+  },
+  "properties": {
+    "eyebrow": "Explora propiedades y desarrollos en Ensenada",
+    "badge": "Propiedades en Ensenada",
+    "countSuffix": "desarrollos certificados en Ensenada",
+    "fromPrefix": "Desde",
+    "viewDevelopment": "Ver Desarrollo",
+    "saveAria": "Guardar {title}",
+    "removeAria": "Quitar {title} de guardados"
+  },
+  "relatedBlog": {
+    "eyebrow": "Del blog",
+    "heading": "Bienes raíces en Ensenada, explicados",
+    "description": "Guías, análisis de mercado y perspectivas de cada zona para compradores transfronterizos.",
+    "viewAllArticles": "Ver todos los artículos"
+  }
+}

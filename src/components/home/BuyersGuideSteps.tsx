@@ -1,5 +1,6 @@
 // Three-step buyer's guide section with alternating image/text layout and decorative brand marks.
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { MapPin, Building2, Sofa, BedDouble } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -16,37 +17,32 @@ function BrandMark() {
   );
 }
 
-const steps = [
+// Non-translatable per-step data (images, city names, prices) — title/body/imageAlt come from messages.
+const stepMeta = [
   {
     number: "1",
-    title: "Choose your location",
-    body: "Select your location to view developers, services, and certification information relevant to your region. This helps us provide a more personalized experience and ensure you see the most accurate content based on local requirements and availability.",
     image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=75",
-    imageAlt: "Mexico city skyline",
     location: "Tijuana",
     price: "$653,894.79",
   },
   {
     number: "2",
-    title: "Set up your Fideicomiso",
-    body: "Whether you're purchasing property or securing long-term ownership rights in Mexico's restricted zones, our network of verified professionals can help you establish your fideicomiso efficiently and with peace of mind.",
     image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=75",
-    imageAlt: "Business professionals shaking hands",
     location: "Rosarito",
     price: "$420,000.00",
   },
   {
     number: "3",
-    title: "Decide and Purchase",
-    body: "Compare properties, evaluate your options, and choose the investment that best fits your goals. With verified professionals and a streamlined process, you can complete your purchase with confidence and peace of mind.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=75",
-    imageAlt: "House keys and realtor",
     location: "Puerto Nuevo",
     price: "$890,500.00",
   },
 ];
 
 export function BuyersGuideSteps() {
+  const t = useTranslations("home.buyersGuideSteps");
+  const stepText = t.raw("steps") as { title: string; body: string; imageAlt: string }[];
+  const steps = stepMeta.map((meta, i) => ({ ...meta, ...stepText[i] }));
   return (
     <section className="relative w-full overflow-hidden bg-[#1e1e1e] py-8 md:py-20">
 
@@ -75,10 +71,10 @@ export function BuyersGuideSteps() {
         <RevealOnScroll direction="center">
         <div className="mb-4 md:mb-8">
           <p className="font-ewangi text-[1.35rem] leading-tight text-white md:text-[2.125rem]">
-            Buyer&apos;s Guide
+            {t("eyebrow")}
           </p>
           <h2 className="font-ewangi font-bold text-[clamp(1.75rem,4.5vw,4rem)] leading-tight text-white">
-            How to buy property in <span className="text-brand-teal">Mexico</span>
+            {t("headingPrefix")} <span className="text-brand-teal">{t("headingHighlight")}</span>
           </h2>
         </div>
         </RevealOnScroll>

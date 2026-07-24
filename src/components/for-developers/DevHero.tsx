@@ -1,12 +1,14 @@
 // For Developers hero — Figma nodes 1423:19365-1423:20103.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight, Play } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Container, RevealOnScroll } from "@/components/ui";
 import { DevQuickForm } from "./DevQuickForm";
 import { TrustChecklist } from "@/components/shared/TrustChecklist";
 
 export function DevHero() {
+  const t = useTranslations("forDevelopers.hero");
   return (
     <section className="relative w-full overflow-hidden bg-brand-ink">
       <Image
@@ -22,14 +24,13 @@ export function DevHero() {
       <Container className="relative z-10 grid gap-10 py-14 md:py-20 lg:grid-cols-[1fr_442px] lg:items-start lg:gap-16">
         <RevealOnScroll direction="left">
           <span className="mb-5 inline-flex w-fit items-center rounded-full bg-brand-teal/20 px-4 py-1.5 font-ewangi text-label font-semibold text-brand-teal">
-            For developers
+            {t("badge")}
           </span>
           <h1 className="font-ewangi text-[clamp(2rem,4.2vw,2.75rem)] font-bold leading-tight text-white">
-            We help you build visibility, trust, and qualified leads.
+            {t("headline")}
           </h1>
           <p className="mt-4 max-w-md font-ewangi text-[15px] leading-relaxed text-white/70">
-            Property Dreamz® is the all-in-one platform that helps developers showcase their projects, gain the
-            trust of international buyers, and close more sales.
+            {t("description")}
           </p>
 
           <TrustChecklist className="mt-6" />
@@ -39,13 +40,13 @@ export function DevHero() {
               href="/properties"
               className="inline-flex items-center gap-2 rounded-full bg-brand-teal px-7 py-3 font-ewangi text-[15px] font-semibold text-brand-ink transition hover:bg-brand-teal-dark"
             >
-              Verified developments <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              {t("ctaVerified")} <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
             </Link>
             <a
               href="#how-it-works"
               className="inline-flex items-center gap-2 rounded-full bg-white/10 px-7 py-3 font-ewangi text-[15px] font-semibold text-white transition hover:bg-white/20"
             >
-              How it works <Play className="h-3.5 w-3.5" strokeWidth={2.5} />
+              {t("ctaHowItWorks")} <Play className="h-3.5 w-3.5" strokeWidth={2.5} />
             </a>
           </div>
         </RevealOnScroll>

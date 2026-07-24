@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Costa Baja – Luxury Resort Residences with Marina & Golf in Baja California",
+    "description": "Costa Baja is a world-class luxury resort community in Baja California featuring a full-service marina, championship golf course, and premium oceanfront residences. The ultimate Baja lifestyle destination."
+  },
+  "videoModal": {
+    "closeAriaLabel": "Close video",
+    "videoTitle": "Costa Baja — Luxury Living By the Sea"
+  },
+  "hero": {
+    "logoAlt": "Costa Baja",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Luxury Living",
+    "headlineLine2": "By the Sea.",
+    "taglineLine1": "Condos & houses with sea views",
+    "taglineLine2": "in Real del Mar, Tijuana.",
+    "playButtonAriaLabel": "Watch Costa Baja video",
+    "watchVideoLabel": "Watch video"
+  },
+  "trustBadges": ["Title reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "4", "label": "Models" },
+    { "value": "2", "label": "Types" },
+    { "value": "4", "label": "Bedrooms" },
+    { "value": "18", "label": "Golf holes" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "unitExplorer": {
+    "sectionLabel": "Explore the development",
+    "tabs": ["Condos", "Houses", "Models"],
+    "selectPrompt": "Select a unit to see details",
+    "viewAllButton": "View all units",
+    "mapAlt": "Costa Baja development map",
+    "bedroomsLabel": "Bedrooms",
+    "bathroomsLabel": "Bathrooms",
+    "availableLabel": "Available",
+    "condos": [
+      { "id": "Condo Ibiza", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 },
+      { "id": "Condo Mikonos", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "id": "Condo Santorini", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 }
+    ],
+    "houses": [
+      { "id": "Casa Mallorca", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 },
+      { "id": "Casa Monaco", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 }
+    ]
+  },
+  "modelsCarousel": {
+    "typeCondo": "Condo models",
+    "typeHouse": "House models",
+    "models": [
+      { "key": "Ibiza", "label": "Condominio B — Modelo Ibiza", "type": "condo", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 },
+      { "key": "Mikonos", "label": "Condominio C — Modelo Mikonos", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "key": "Santorini", "label": "Condominio D — Modelo Santorini", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
+      { "key": "Mallorca", "label": "Casa Mallorca", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 },
+      { "key": "Monaco", "label": "Casa Monaco", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Fall in love",
+    "headingLine2": "with your home",
+    "headingLine3": "by the sea.",
+    "button": "360° tour",
+    "imageAlt": "Costa Baja interior living room"
+  },
+  "seaView": {
+    "headingLine1": "Sea View",
+    "headingLine2": "Condos &",
+    "headingLine3": "Houses",
+    "body1": "Costa Baja Residential is the leading luxury development in Real del Mar, Tijuana — a private gated community with a Resort Living concept where every property enjoys panoramic sea views of the Pacific coast.",
+    "body2": "Choose from exclusive condominiums with 2 or 3 bedrooms starting from $427,000 USD, or 4-bedroom luxury houses on oversized lots from $720,500 USD. Private balconies, walk-in closets, golf course access at Real del Mar, rooftop pool, and a full gym — every detail is designed for the lifestyle you deserve.",
+    "imageAlt": "Costa Baja site plan"
+  },
+  "ctaBanner": {
+    "text": "Resort living with sea views — certified, verified, ready for you."
+  }
+}

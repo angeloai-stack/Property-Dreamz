@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "Baja California Real Estate",
+    "description": "Explore 47+ certified developments across Tijuana, Rosarito, and Ensenada. Beachfront condos, gated homes, and lots — every title searched, every developer verified.",
+    "ogTitle": "Baja California Real Estate — Property Dreamz",
+    "ogDescription": "Certified developments across Tijuana, Rosarito, and Ensenada. Every listing title-searched and developer-verified."
+  },
+  "hero": {
+    "headingLine1": "Baja California ",
+    "headingLine2": "Real Estate",
+    "description": "Discover Baja California real estate: beachfront condos in Rosarito, oceanfront developments in Ensenada, and resort communities near Tijuana. Every listing certified."
+  },
+  "features": [
+    {
+      "title": "Title clean before you wire a dollar",
+      "body": "Trust starts with transparency. Our certification process includes a thorough review of judicial records to help clients identify developers who meet high standards of professionalism and integrity. This additional layer of verification helps build confidence and strengthen client-developer relationships."
+    },
+    {
+      "title": "Regulatory Compliance",
+      "body": "We verify that certified developers meet relevant legal, regulatory, and professional standards. This review helps ensure adherence to industry requirements and best practices, providing clients with greater confidence when selecting trusted professionals for their projects."
+    },
+    {
+      "title": "Property Security Assessment",
+      "body": "A secure operation reflects a reliable organization. Our certification includes an evaluation of property security measures to help confirm that developers maintain safe, well-managed facilities, reinforcing trust and confidence among clients and partners."
+    }
+  ],
+  "buyersGuideCarousel": {
+    "eyebrow": "Buyer's Guide",
+    "headingPrefix": "How to buy property in",
+    "headingHighlight": "Mexico",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "goToStep": "Go to step {number}",
+    "steps": [
+      {
+        "title": "Choose your location",
+        "body": "Select your location to view developers, services, and certification information relevant to your region. This helps us provide a more personalized experience and ensure you see the most accurate content based on local requirements and availability.",
+        "imageAlt": "Mexico city skyline"
+      },
+      {
+        "title": "Set up your Fideicomiso",
+        "body": "Whether you're purchasing property or securing long-term ownership rights in Mexico's restricted zones, our network of verified professionals can help you establish your fideicomiso efficiently and with peace of mind. Navigate the process with expert guidance and trusted support from start to finish.",
+        "imageAlt": "Business professionals shaking hands"
+      },
+      {
+        "title": "Decide and Purchase",
+        "body": "Compare properties, evaluate your options, and choose the investment that best fits your goals. With verified professionals and a streamlined process, you can complete your purchase with confidence and peace of mind.",
+        "imageAlt": "House keys and realtor"
+      }
+    ]
+  },
+  "relatedBlog": {
+    "eyebrow": "From the blog",
+    "heading": "Baja California real estate, explained",
+    "subheading": "Guides, market insights and neighborhood deep-dives for cross-border buyers.",
+    "viewAll": "View all articles"
+  }
+}

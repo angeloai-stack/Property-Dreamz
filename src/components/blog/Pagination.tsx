@@ -1,5 +1,6 @@
 "use client";
 // Numbered pagination — Figma: "Pagination — optimizada", circular pills with ellipsis for long runs.
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 type PaginationProps = {
@@ -24,16 +25,17 @@ function buildPageList(page: number, totalPages: number): (number | "ellipsis")[
 }
 
 export function Pagination({ page, totalPages, onChange }: PaginationProps) {
+  const t = useTranslations("blog.pagination");
   if (totalPages <= 1) return null;
   const pageList = buildPageList(page, totalPages);
 
   return (
-    <nav aria-label="Blog pagination" className="flex items-center gap-1.5">
+    <nav aria-label={t("ariaLabel")} className="flex items-center gap-1.5">
       <button
         type="button"
         onClick={() => onChange(Math.max(1, page - 1))}
         disabled={page === 1}
-        aria-label="Previous page"
+        aria-label={t("previousPage")}
         className="flex h-11 w-11 items-center justify-center rounded-[22px] border-[1.5px] border-white/22 text-[20px] text-white transition disabled:opacity-50 enabled:hover:border-white/40"
       >
         ‹
@@ -64,7 +66,7 @@ export function Pagination({ page, totalPages, onChange }: PaginationProps) {
         type="button"
         onClick={() => onChange(Math.min(totalPages, page + 1))}
         disabled={page === totalPages}
-        aria-label="Next page"
+        aria-label={t("nextPage")}
         className="flex h-11 w-11 items-center justify-center rounded-[22px] border-[1.5px] border-white/22 text-[20px] text-white transition disabled:opacity-50 enabled:hover:border-white/40"
       >
         ›

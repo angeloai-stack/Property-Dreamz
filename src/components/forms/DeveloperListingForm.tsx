@@ -1,6 +1,7 @@
 "use client";
 // Developer application form for listing a project — posts to /api/developer-listing.
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 const F =
@@ -35,6 +36,8 @@ const INIT: Fields = {
 };
 
 export function DeveloperListingForm() {
+  const t = useTranslations("forms.developerListing");
+  const tc = useTranslations("forms.common");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [fields, setFields] = useState<Fields>(INIT);
   const set =
@@ -61,10 +64,9 @@ export function DeveloperListingForm() {
     return (
       <div className="flex flex-col items-center gap-4 rounded-[42px] bg-brand-ink p-12 text-center shadow-[0_8px_48px_rgba(0,0,0,0.5)]">
         <CheckCircle2 className="h-14 w-14 text-brand-teal" aria-hidden="true" />
-        <p className="font-ewangi text-subtitle text-brand-paper">Application received!</p>
+        <p className="font-ewangi text-subtitle text-brand-paper">{t("successTitle")}</p>
         <p className="max-w-md font-body text-body text-brand-paper/60">
-          Our team will review your submission and contact you within 3 business days to discuss
-          next steps.
+          {t("successBody")}
         </p>
       </div>
     );
@@ -77,11 +79,11 @@ export function DeveloperListingForm() {
     >
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Contact name *</span>
+          <span className="font-semibold">{t("contactName")}</span>
           <input
             type="text"
             name="contactName"
-            placeholder="Your name"
+            placeholder={t("namePlaceholder")}
             required
             value={fields.contactName}
             onChange={set("contactName")}
@@ -89,11 +91,11 @@ export function DeveloperListingForm() {
           />
         </label>
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Development / company name *</span>
+          <span className="font-semibold">{t("companyName")}</span>
           <input
             type="text"
             name="companyName"
-            placeholder="e.g. Grupo Inmobiliario XYZ"
+            placeholder={t("companyPlaceholder")}
             required
             value={fields.companyName}
             onChange={set("companyName")}
@@ -104,11 +106,11 @@ export function DeveloperListingForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Email *</span>
+          <span className="font-semibold">{t("email")}</span>
           <input
             type="email"
             name="email"
-            placeholder="you@company.com"
+            placeholder={t("emailPlaceholder")}
             required
             value={fields.email}
             onChange={set("email")}
@@ -116,7 +118,7 @@ export function DeveloperListingForm() {
           />
         </label>
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Phone *</span>
+          <span className="font-semibold">{t("phone")}</span>
           <div className="grid gap-2 grid-cols-[90px_1fr]">
             <select
               name="phoneCode"
@@ -130,7 +132,7 @@ export function DeveloperListingForm() {
             <input
               type="tel"
               name="phone"
-              placeholder="55 1234 5678"
+              placeholder={t("phonePlaceholder")}
               required
               value={fields.phone}
               onChange={set("phone")}
@@ -142,7 +144,7 @@ export function DeveloperListingForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">State / region *</span>
+          <span className="font-semibold">{t("region")}</span>
           <select
             name="region"
             required
@@ -150,25 +152,25 @@ export function DeveloperListingForm() {
             onChange={set("region")}
             className={F}
           >
-            <option value="">Select state</option>
-            <option value="baja-california">Baja California</option>
-            <option value="baja-california-sur">Baja California Sur</option>
-            <option value="quintana-roo">Quintana Roo</option>
-            <option value="yucatan">Yucatán</option>
-            <option value="jalisco">Jalisco</option>
-            <option value="nayarit">Nayarit</option>
-            <option value="oaxaca">Oaxaca</option>
-            <option value="cdmx">Mexico City (CDMX)</option>
-            <option value="nuevo-leon">Nuevo León</option>
-            <option value="other">Other</option>
+            <option value="">{t("selectState")}</option>
+            <option value="baja-california">{t("regionOptions.bajaCalifornia")}</option>
+            <option value="baja-california-sur">{t("regionOptions.bajaCaliforniaSur")}</option>
+            <option value="quintana-roo">{t("regionOptions.quintanaRoo")}</option>
+            <option value="yucatan">{t("regionOptions.yucatan")}</option>
+            <option value="jalisco">{t("regionOptions.jalisco")}</option>
+            <option value="nayarit">{t("regionOptions.nayarit")}</option>
+            <option value="oaxaca">{t("regionOptions.oaxaca")}</option>
+            <option value="cdmx">{t("regionOptions.cdmx")}</option>
+            <option value="nuevo-leon">{t("regionOptions.nuevoLeon")}</option>
+            <option value="other">{t("regionOptions.other")}</option>
           </select>
         </label>
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Number of units *</span>
+          <span className="font-semibold">{t("units")}</span>
           <input
             type="number"
             name="units"
-            placeholder="e.g. 48"
+            placeholder={t("unitsPlaceholder")}
             required
             min="1"
             value={fields.units}
@@ -180,22 +182,22 @@ export function DeveloperListingForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Min price per unit (USD)</span>
+          <span className="font-semibold">{t("priceMin")}</span>
           <input
             type="text"
             name="priceMin"
-            placeholder="e.g. $150,000"
+            placeholder={t("priceMinPlaceholder")}
             value={fields.priceMin}
             onChange={set("priceMin")}
             className={F}
           />
         </label>
         <label className="space-y-2 text-sm text-brand-paper/70">
-          <span className="font-semibold">Max price per unit (USD)</span>
+          <span className="font-semibold">{t("priceMax")}</span>
           <input
             type="text"
             name="priceMax"
-            placeholder="e.g. $500,000"
+            placeholder={t("priceMaxPlaceholder")}
             value={fields.priceMax}
             onChange={set("priceMax")}
             className={F}
@@ -204,7 +206,7 @@ export function DeveloperListingForm() {
       </div>
 
       <label className="space-y-2 text-sm text-brand-paper/70">
-        <span className="font-semibold">Development status *</span>
+        <span className="font-semibold">{t("devStatus")}</span>
         <select
           name="devStatus"
           required
@@ -212,19 +214,19 @@ export function DeveloperListingForm() {
           onChange={set("devStatus")}
           className={F}
         >
-          <option value="">Select status</option>
-          <option value="presale">Pre-sale</option>
-          <option value="construction">Under construction</option>
-          <option value="ready">Ready to deliver</option>
+          <option value="">{t("selectStatus")}</option>
+          <option value="presale">{t("statusOptions.presale")}</option>
+          <option value="construction">{t("statusOptions.construction")}</option>
+          <option value="ready">{t("statusOptions.ready")}</option>
         </select>
       </label>
 
       <label className="space-y-2 text-sm text-brand-paper/70">
-        <span className="font-semibold">Tell us about your project (optional)</span>
+        <span className="font-semibold">{t("description")}</span>
         <textarea
           name="description"
           rows={4}
-          placeholder="Describe the development, amenities, certifications, or any relevant details..."
+          placeholder={t("descriptionPlaceholder")}
           value={fields.description}
           onChange={set("description")}
           className={`${F} resize-none`}
@@ -239,17 +241,17 @@ export function DeveloperListingForm() {
           className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
         />
         <span>
-          I agree to the{" "}
+          {tc("consentPrefix")}{" "}
           <a href="/privacy" className="font-semibold underline hover:text-brand-paper">
-            privacy policy
+            {tc("consentLink")}
           </a>{" "}
-          and authorize Property Dreamz to contact me regarding this application. *
+          {t("consentSuffix")}
         </span>
       </label>
 
       {status === "error" && (
         <p className="text-sm text-red-400">
-          Something went wrong. Please try again or email hello@propertydreamz.com
+          {tc("errorGeneric")}
         </p>
       )}
 
@@ -261,7 +263,7 @@ export function DeveloperListingForm() {
         {status === "submitting" && (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
         )}
-        Submit application
+        {t("submit")}
       </button>
     </form>
   );

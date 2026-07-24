@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Naos Baja – Modern Condominiums for Sale in Rosarito, Baja California",
+    "description": "Naos Baja offers sleek, modern condominiums along the Baja California coast in Rosarito. Contemporary design meets coastal living in this stylish new development."
+  },
+  "hero": {
+    "logoAlt": "NAOS",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "NAOS is more than",
+    "headlineLine2": "a place to live",
+    "subheadline": "A design-forward beachfront community shaped by Baja's coastline. A space to pause, feel and reconnect with what's essential."
+  },
+  "stats": [
+    { "value": "16", "label": "Condos" },
+    { "value": "4", "label": "Models" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "interiorExplorer": {
+    "heading": "Unrivaled coastal living with resort-inspired amenities",
+    "imageAlt": "NAOS interior living area",
+    "tabs": {
+      "livingRoom": "Living room",
+      "bedroom": "Bedroom",
+      "bathroom": "Bathroom",
+      "kitchen": "Kitchen",
+      "terrace": "Terrace"
+    },
+    "rooms": {
+      "livingRoom": {
+        "description": "Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.",
+        "sub": "Floor-to-ceiling windows, refined finishes, and seamless comfort designed for modern living."
+      },
+      "bedroom": {
+        "description": "Spacious bedrooms designed as personal sanctuaries with panoramic ocean views and premium finishes that redefine restful living.",
+        "sub": "Custom cabinetry, premium flooring, and thoughtful lighting for ultimate comfort."
+      },
+      "bathroom": {
+        "description": "Resort-style bathrooms featuring designer fixtures, natural stone finishes, and spa-inspired layouts for your daily ritual.",
+        "sub": "Rainfall showers, soaking tubs, and heated floors in a serene oceanfront setting."
+      },
+      "kitchen": {
+        "description": "Gourmet kitchens equipped with integrated appliances, bespoke cabinetry, and premium countertops — the perfect space to create and entertain.",
+        "sub": "High-end appliances and custom millwork blended with contemporary design."
+      },
+      "terrace": {
+        "description": "Private terraces with sweeping Pacific views — an extension of your living space where the inside flows seamlessly to the outdoors.",
+        "sub": "Expansive outdoor areas with unobstructed ocean and coastline panoramas."
+      }
+    }
+  },
+  "models": {
+    "heading": "Explore our 4 models",
+    "layoutLabel": "Layout A",
+    "layoutSize": "1,287 sq. ft.",
+    "imageAlt": "Layout A floor plan",
+    "features": [
+      "3 balconies",
+      "Living room with balcony",
+      "Dining room",
+      "Breakfast bar",
+      "Kitchen (Integral)",
+      "2 Bedrooms",
+      "2 Bathrooms",
+      "Patio with laundry room",
+      "1 covered parking space"
+    ]
+  },
+  "cta": {
+    "imageAlt": "NAOS building exterior",
+    "headingLine1": "A Limited Collection.",
+    "headingLine2": "An Extraordinary Lifestyle.",
+    "body": "Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined living spaces, breathtaking views, and a sense of community unlike any other.",
+    "button": "Talk to an expert"
+  }
+}

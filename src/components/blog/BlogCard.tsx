@@ -1,9 +1,13 @@
 // Blog listing card — Figma: "Blog Card", 405x~330 white card, r=20.
 import Image from "next/image";
-import Link from "next/link";
-import type { BlogPost } from "@/app/blog/data";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import type { BlogPost } from "@/app/[locale]/blog/data";
 
 export function BlogCard({ post }: { post: BlogPost }) {
+  const t = useTranslations("blog");
+  const title = t(`posts.${post.slug}.title`);
+
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -12,7 +16,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
       <div className="relative aspect-[27/14] w-full shrink-0 overflow-hidden">
         <Image
           src={post.image}
-          alt={post.title}
+          alt={title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition duration-500 group-hover:scale-105"
@@ -21,9 +25,9 @@ export function BlogCard({ post }: { post: BlogPost }) {
 
       <div className="flex flex-1 flex-col items-start gap-3 px-5.5 pb-6 pt-5.5">
         <span className="inline-flex items-center rounded-full bg-brand-teal px-3 py-1.5 font-ewangi text-[10px] font-bold uppercase tracking-[0.06em] text-brand-pine">
-          {post.category}
+          {t(`categories.${post.category}`)}
         </span>
-        <p className="font-ewangi text-[19px] font-bold leading-snug text-brand-pine">{post.title}</p>
+        <p className="font-ewangi text-[19px] font-bold leading-snug text-brand-pine">{title}</p>
         <p className="font-ewangi text-[13px] text-brand-ink/50">
           {post.date} · {post.readTime}
         </p>

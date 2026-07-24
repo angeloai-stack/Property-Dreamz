@@ -5,10 +5,22 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useRef } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { getPathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import type { Listing } from "@/app/explore-map/data";
-import { formatShortPrice, toSavedProperty } from "@/app/explore-map/utils";
+import type { Listing } from "@/app/[locale]/explore-map/data";
+import { formatShortPrice, toSavedProperty } from "@/app/[locale]/explore-map/utils";
 import { useSavedProperties } from "@/hooks/useSavedProperties";
+
+// Labels for the popup DOM built via buildPopupContent() below — this markup is assembled with
+// plain innerHTML (not JSX), so translated strings are threaded in as plain arguments.
+type PopupLabels = {
+  bd: string;
+  ba: string;
+  cta: string;
+  save: string;
+  removeSaved: string;
+};
 
 type MapPanelProps = {
   listings: Listing[];
@@ -36,7 +48,9 @@ function heartSvg(saved: boolean) {
 function buildPopupContent(
   listing: Listing,
   saved: boolean,
-  onToggleSave: (heartBtn: HTMLButtonElement) => void
+  onToggleSave: (heartBtn: HTMLButtonElement) => void,
+  labels: PopupLabels,
+  contactHref: string
 ) {
   const el = document.createElement("div");
   el.className = "w-56 overflow-hidden rounded-2xl bg-white";
@@ -47,7 +61,7 @@ function buildPopupContent(
   el.innerHTML = `
     <div class="relative h-28 w-full">
       <img src="${listing.image}" alt="${listing.title}" class="h-full w-full object-cover" />
-      <button type="button" class="js-save-btn absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md" aria-label="${saved ? "Remove from saved" : "Save property"}">
+      <button type="button" class="js-save-btn absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md" aria-label="${saved ? labels.removeSaved : labels.save}">
         ${heartSvg(saved)}
       </button>
     </div>
@@ -55,12 +69,12 @@ function buildPopupContent(
       <p class="truncate font-ewangi text-[14px] font-bold text-brand-pine">${listing.title}</p>
       <p class="mt-0.5 truncate font-ewangi text-[11px] text-brand-pine/60">${listing.zone}</p>
       <div class="mt-1.5 flex items-center gap-2.5 font-ewangi text-[11px] text-[#1e1e1e]">
-        <span>${listing.beds} bd</span>
-        <span>${listing.baths} ba</span>
+        <span>${listing.beds} ${labels.bd}</span>
+        <span>${listing.baths} ${labels.ba}</span>
         <span>${listing.sqft} m²</span>
       </div>
       <p class="mt-2 font-ewangi text-[15px] font-bold text-[#00c9a7]">${price}</p>
-      <a href="/contact" class="mt-2 block rounded-md bg-brand-teal py-1.5 text-center font-ewangi text-[12px] font-bold text-white transition hover:bg-brand-teal-dark">Talk to an advisor</a>
+      <a href="${contactHref}" class="mt-2 block rounded-md bg-brand-teal py-1.5 text-center font-ewangi text-[12px] font-bold text-white transition hover:bg-brand-teal-dark">${labels.cta}</a>
     </div>
   `;
 
@@ -74,11 +88,22 @@ function buildPopupContent(
 }
 
 export function MapPanel({ listings, activeId, onMarkerClick, className }: MapPanelProps) {
+  const t = useTranslations("exploreMap");
+  const locale = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const markerRefs = useRef<Map<number, mapboxgl.Marker>>(new Map());
   const popupRef = useRef<mapboxgl.Popup | null>(null);
   const { isSaved, toggleSaved } = useSavedProperties();
+
+  const popupLabels: PopupLabels = {
+    bd: t("mapPanel.bd"),
+    ba: t("mapPanel.ba"),
+    cta: t("mapPanel.cta"),
+    save: t("mapPanel.save"),
+    removeSaved: t("mapPanel.removeSaved"),
+  };
+  const contactHref = getPathname({ href: "/contact", locale });
 
   // Refs keep the DOM-based marker/popup click handlers (created once per rebuild) closing
   // over fresh callbacks and store state without needing to recreate markers on every render.
@@ -90,6 +115,10 @@ export function MapPanel({ listings, activeId, onMarkerClick, className }: MapPa
   toggleSavedRef.current = toggleSaved;
   const activeIdRef = useRef(activeId);
   activeIdRef.current = activeId;
+  const popupLabelsRef = useRef(popupLabels);
+  popupLabelsRef.current = popupLabels;
+  const contactHrefRef = useRef(contactHref);
+  contactHrefRef.current = contactHref;
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -175,11 +204,12 @@ export function MapPanel({ listings, activeId, onMarkerClick, className }: MapPa
       listings.forEach((listing) => {
         const el = document.createElement("button");
         el.type = "button";
-        el.setAttribute("aria-label", `View listing, ${formatShortPrice(listing.priceUSD)}`);
+        const shortPrice = formatShortPrice(listing.priceUSD, t("listingCard.from"));
+        el.setAttribute("aria-label", t("mapPanel.markerAriaLabel", { price: shortPrice }));
         el.className = "flex flex-col items-center gap-1 cursor-pointer border-0 bg-transparent p-0";
         el.innerHTML = `
           <span class="flex h-8.5 w-8.5 items-center justify-center rounded-full border-2 border-white shadow-md" style="background:${listing.id === activeIdRef.current ? "#024139" : "#026559"}"></span>
-          <span class="whitespace-nowrap rounded-[7px] border border-white bg-brand-emerald px-2.5 py-1 font-ewangi text-[11px] font-bold text-white shadow-md">${formatShortPrice(listing.priceUSD)}</span>
+          <span class="whitespace-nowrap rounded-[7px] border border-white bg-brand-emerald px-2.5 py-1 font-ewangi text-[11px] font-bold text-white shadow-md">${shortPrice}</span>
         `;
         el.addEventListener("click", (e) => {
           // Without this, the click bubbles to the map's own canvas listener, which fires
@@ -191,14 +221,23 @@ export function MapPanel({ listings, activeId, onMarkerClick, className }: MapPa
           const savedProperty = toSavedProperty(listing);
           popupRef.current?.remove();
 
-          const content = buildPopupContent(listing, isSavedRef.current(savedProperty.id), (heartBtn) => {
-            // Compute the next state before toggling — the store update is async, so reading
-            // isSaved() right after calling toggleSaved() would still return the stale value.
-            const willBeSaved = !isSavedRef.current(savedProperty.id);
-            toggleSavedRef.current(savedProperty);
-            heartBtn.innerHTML = heartSvg(willBeSaved);
-            heartBtn.setAttribute("aria-label", willBeSaved ? "Remove from saved" : "Save property");
-          });
+          const content = buildPopupContent(
+            listing,
+            isSavedRef.current(savedProperty.id),
+            (heartBtn) => {
+              // Compute the next state before toggling — the store update is async, so reading
+              // isSaved() right after calling toggleSaved() would still return the stale value.
+              const willBeSaved = !isSavedRef.current(savedProperty.id);
+              toggleSavedRef.current(savedProperty);
+              heartBtn.innerHTML = heartSvg(willBeSaved);
+              heartBtn.setAttribute(
+                "aria-label",
+                willBeSaved ? popupLabelsRef.current.removeSaved : popupLabelsRef.current.save
+              );
+            },
+            popupLabelsRef.current,
+            contactHrefRef.current
+          );
 
           popupRef.current = new mapboxgl.Popup({
             closeButton: true,

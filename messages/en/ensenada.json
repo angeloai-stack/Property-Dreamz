@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Ensenada Real Estate",
+    "description": "Homes for sale in Ensenada, Mexico — oceanfront condos, valley homes near Valle de Guadalupe, and lots to build, 80 miles from San Diego. Every listing title-searched and developer-verified.",
+    "ogTitle": "Ensenada Real Estate — Property Dreamz",
+    "ogDescription": "Certified developments in Ensenada. Every listing title-searched and developer-verified, 80 miles from San Diego."
+  },
+  "hero": {
+    "titlePart1": "Ensenada",
+    "titlePart2": "Real Estate",
+    "description": "Explore Ensenada real estate — oceanfront condos, valley homes & lots near Valle de Guadalupe. Verified developers, bilingual support, 80 mi from San Diego.",
+    "badgeAlt": "CMRE Certified Mexico Real Estate",
+    "imageAlt": "Modern luxury residence in Ensenada"
+  },
+  "features": [
+    {
+      "title": "Verified Developers, Clear Title",
+      "body": "Every Ensenada development on our platform has passed a rigorous due diligence review — judicial records, corporate filings, and project documentation included. We help you identify builders with a clean track record before you commit a single dollar."
+    },
+    {
+      "title": "Wine Country, Ocean Views, and Real Value",
+      "body": "Ensenada is the only place in Baja where you can own oceanfront property and be 20 minutes from one of Mexico's premier wine regions. Valle de Guadalupe adds a lifestyle dimension that sets Ensenada real estate apart — world-class restaurants, boutique wineries, and a culinary scene that rivals Napa, at a fraction of the cost."
+    },
+    {
+      "title": "Bilingual Support for American Buyers",
+      "body": "We specialize in guiding U.S. and Canadian buyers through Ensenada real estate transactions — from property selection and fideicomiso setup to notary coordination and closing. We speak your language, know the local market, and make the cross-border process straightforward."
+    }
+  ],
+  "seoBlock": {
+    "eyebrow": "Certified developments · Baja California, Mexico",
+    "heading": "Properties for sale in Ensenada",
+    "body": "Ensenada real estate offers something increasingly rare: a genuine Pacific coast city with culture, wine, and ocean access — at prices that make California buyers do a double take. Located 80 miles south of San Diego, Ensenada is Baja California's most cosmopolitan seaside destination, home to a thriving food and wine scene, world-class sportfishing, and a growing expat community drawn by the quality of life and the value. Whether you're searching for an oceanfront condo, a countryside home near the Valle de Guadalupe wine region, or a lot to build your dream retreat, Ensenada delivers a diversity of real estate that few Pacific coast cities can match. Each development featured here has been carefully vetted for legal transparency and developer integrity — so you can explore Ensenada real estate with confidence.",
+    "stats": [
+      { "value": "47+", "label": "Certified Developments" },
+      { "value": "3", "label": "Cities Covered" },
+      { "value": "100%", "label": "Title Verified" }
+    ],
+    "imageAlt": "Pacific coastline near Ensenada, Baja California",
+    "imageCaptionTitle": "Pacific Coastline",
+    "imageCaptionSubtitle": "Baja California, Mexico"
+  },
+  "properties": {
+    "eyebrow": "Browse properties and developments in Ensenada",
+    "badge": "Properties in Ensenada",
+    "countSuffix": "certified developments in Ensenada",
+    "fromPrefix": "From",
+    "viewDevelopment": "View Development",
+    "saveAria": "Save {title}",
+    "removeAria": "Remove {title} from saved"
+  },
+  "relatedBlog": {
+    "eyebrow": "From the blog",
+    "heading": "Ensenada real estate, explained",
+    "description": "Guides, market insights and neighborhood deep-dives for cross-border buyers.",
+    "viewAllArticles": "View all articles"
+  }
+}

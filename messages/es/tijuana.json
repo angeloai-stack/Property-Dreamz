@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "title": "Bienes Raíces en Tijuana",
+    "description": "Casas en venta en Tijuana, México — condominios modernos en Zona Río, comunidades cerradas y desarrollos estilo resort a minutos de San Diego. Cada propiedad con título investigado y desarrollador verificado.",
+    "ogTitle": "Bienes Raíces en Tijuana — Property Dreamz",
+    "ogDescription": "Desarrollos certificados en Tijuana. Cada propiedad con título investigado y desarrollador verificado, a 20 minutos de San Diego."
+  },
+  "hero": {
+    "titleCity": "Tijuana",
+    "titleReal": "Bienes Raíces",
+    "subtitle": "Descubre los bienes raíces de Tijuana: condominios modernos en Zona Río, comunidades cerradas cerca de la frontera y desarrollos estilo resort a minutos de San Diego. Cada propiedad certificada.",
+    "imageAlt": "Residencia moderna de lujo en Tijuana",
+    "cmreBadgeAlt": "CMRE Certified Mexico Real Estate"
+  },
+  "features": {
+    "items": [
+      {
+        "title": "Título limpio antes de transferir un solo dólar",
+        "body": "Todos los desarrollos de bienes raíces en Tijuana de nuestra plataforma han pasado una rigurosa revisión de debida diligencia — incluyendo antecedentes judiciales, actas corporativas y documentación del proyecto. Nosotros hacemos la verificación para que tú no tengas que adivinar a quién le estás comprando."
+      },
+      {
+        "title": "Experiencia transfronteriza en la que puedes confiar",
+        "body": "Nuestro equipo tiene amplia experiencia guiando a compradores de Estados Unidos y Canadá en transacciones de bienes raíces en Tijuana — desde entender la estructura del fideicomiso hasta gestionar los requisitos notariales y los costos de cierre. Hablamos tu idioma, literal y legalmente."
+      },
+      {
+        "title": "A 20 minutos de San Diego, un mundo aparte",
+        "body": "Tijuana se encuentra justo en la frontera con Estados Unidos — lo suficientemente cerca para visitarla en un fin de semana, y lo suficientemente atractiva para vivir ahí. Nuestros compradores obtienen lo mejor de ambos mundos: vida frente al Pacífico a precios mexicanos, con la conveniencia de estar a un corto trayecto del aeropuerto internacional, los hospitales y las tiendas de San Diego."
+      }
+    ]
+  },
+  "seoBlock": {
+    "eyebrow": "Desarrollos certificados · Tijuana, México",
+    "heading": "Casas en venta en Tijuana",
+    "body": "Los bienes raíces de Tijuana ofrecen a los compradores estadounidenses algo poco común: vistas al Océano Pacífico de clase mundial, desarrollos modernos estilo resort y precios que son una fracción de los de propiedades comparables en San Diego o Los Ángeles — a solo 20 minutos cruzando la frontera. Ya sea que busques un condominio de lujo frente al mar en una marina de servicio completo, una comunidad cerrada con campo de golf y planificación integral, o una casa costera a lo largo del pintoresco corredor Tijuana–Ensenada, el mercado de Tijuana lo tiene. Para compradores de Estados Unidos y Canadá, la cercanía es inigualable: puedes manejar desde el centro de San Diego hasta Tijuana en menos de 30 minutos y estar de vuelta en California el mismo día. Los desarrollos que se muestran a continuación representan las opciones más consolidadas y confiables de la zona costera de Tijuana — cada uno cuidadosamente evaluado por su claridad legal, la integridad del desarrollador y su valor a largo plazo.",
+    "stats": [
+      { "value": "47+", "label": "Desarrollos Certificados" },
+      { "value": "3", "label": "Ciudades Cubiertas" },
+      { "value": "100%", "label": "Título Verificado" }
+    ],
+    "imageAlt": "Desarrollo residencial moderno en Tijuana, México",
+    "imageCaptionTitle": "Litoral del Pacífico",
+    "imageCaptionSubtitle": "Tijuana, Baja California"
+  },
+  "properties": {
+    "eyebrow": "Explora propiedades y desarrollos en Tijuana",
+    "pill": "Propiedades en Tijuana",
+    "countLabel": "<b>{count}</b> desarrollos certificados en Tijuana",
+    "viewDevelopment": "Ver Desarrollo",
+    "priceFrom": "Desde ${amount}K",
+    "removeFromSaved": "Quitar {title} de guardados",
+    "save": "Guardar {title}"
+  },
+  "relatedBlog": {
+    "eyebrow": "Del blog",
+    "heading": "Bienes raíces en Tijuana, explicados",
+    "subtitle": "Guías, tendencias del mercado y análisis a fondo de cada zona para compradores transfronterizos.",
+    "viewAll": "Ver todos los artículos"
+  }
+}

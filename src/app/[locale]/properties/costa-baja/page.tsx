@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -23,53 +24,34 @@ const MODELS_IMG: Record<ModelKey, string> = {
   Monaco:    `${CLD}/costa-baja/model-monaco`,
 };
 
-const stats = [
-  { value: "4",    label: "Models" },
-  { value: "2",    label: "Types" },
-  { value: "4",    label: "Bedrooms" },
-  { value: "18",   label: "Golf holes" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = ["Title reviewed", "Regulatory compliance", "Infrastructure validated"];
-
-type UnitTab = "Condos" | "Houses" | "Models";
-
+type Stat = { value: string; label: string };
 interface Unit { id: string; area: string; bedrooms: number; bathrooms: number }
-
-const condos: Unit[] = [
-  { id: "Condo Ibiza",     area: "130 m²", bedrooms: 3, bathrooms: 2 },
-  { id: "Condo Mikonos",   area: "95 m²",  bedrooms: 2, bathrooms: 2 },
-  { id: "Condo Santorini", area: "95 m²",  bedrooms: 2, bathrooms: 2 },
-];
-const houses: Unit[] = [
-  { id: "Casa Mallorca", area: "280 m²", bedrooms: 4, bathrooms: 3 },
-  { id: "Casa Monaco",   area: "280 m²", bedrooms: 4, bathrooms: 3 },
-];
-const allUnits = [...condos, ...houses];
-
-interface UnitModel { key: ModelKey; label: string; type: string; area: string; bedrooms: number; bathrooms: number }
-
-const unitModels: UnitModel[] = [
-  { key: "Ibiza",     label: "Condominio B — Modelo Ibiza",     type: "Condo models", area: "130 m²", bedrooms: 3, bathrooms: 2 },
-  { key: "Mikonos",   label: "Condominio C — Modelo Mikonos",   type: "Condo models", area: "95 m²",  bedrooms: 2, bathrooms: 2 },
-  { key: "Santorini", label: "Condominio D — Modelo Santorini", type: "Condo models", area: "95 m²",  bedrooms: 2, bathrooms: 2 },
-  { key: "Mallorca",  label: "Casa Mallorca",                    type: "House models", area: "280 m²", bedrooms: 4, bathrooms: 3 },
-  { key: "Monaco",    label: "Casa Monaco",                      type: "House models", area: "280 m²", bedrooms: 4, bathrooms: 3 },
-];
+interface UnitModel { key: ModelKey; label: string; type: "condo" | "house"; area: string; bedrooms: number; bathrooms: number }
 
 export default function CostaBajaPage() {
+  const t = useTranslations("propertyCostaBaja");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const unitTabs = t.raw("unitExplorer.tabs") as string[];
+  const condos = t.raw("unitExplorer.condos") as Unit[];
+  const houses = t.raw("unitExplorer.houses") as Unit[];
+  const unitModels = t.raw("modelsCarousel.models") as UnitModel[];
+  const allUnits = [...condos, ...houses];
+  const typeLabels: Record<"condo" | "house", string> = {
+    condo: t("modelsCarousel.typeCondo"),
+    house: t("modelsCarousel.typeHouse"),
+  };
+
   const [videoOpen, setVideoOpen]   = useState(false);
-  const [unitTab, setUnitTab]       = useState<UnitTab>("Condos");
-  const [activeUnit, setActiveUnit] = useState("Condo Ibiza");
+  const [unitTab, setUnitTab]       = useState<string>(unitTabs[0]);
+  const [activeUnit, setActiveUnit] = useState(condos[0]?.id);
   const [modelIndex, setModelIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
-  const currentUnits  = unitTab === "Condos" ? condos : unitTab === "Houses" ? houses : allUnits;
+  const currentUnits  = unitTab === unitTabs[0] ? condos : unitTab === unitTabs[1] ? houses : allUnits;
   const activeUnitData = allUnits.find((u) => u.id === activeUnit);
   const currentModel   = unitModels[modelIndex];
 
@@ -92,14 +74,14 @@ export default function CostaBajaPage() {
               className="absolute inset-0 h-full w-full rounded-2xl border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              title="Costa Baja — Luxury Living By the Sea"
+              title={t("videoModal.videoTitle")}
               tabIndex={-1}
             />
           </div>
           <button
             onClick={() => setVideoOpen(false)}
             className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
-            aria-label="Close video"
+            aria-label={t("videoModal.closeAriaLabel")}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 18L18 6M6 6l12 12" />
@@ -133,14 +115,14 @@ export default function CostaBajaPage() {
           <div className="flex items-start justify-between">
             <Image
               src={IMG_LOGO}
-              alt="Costa Baja"
+              alt={t("hero.logoAlt")}
               width={180}
               height={100}
               className="w-28 lg:w-36 animate-[fade-left_0.8s_ease-out_both]"
             />
             <Image
               src={IMG_CMRE}
-              alt="CMRE Certified"
+              alt={t("hero.cmreAlt")}
               width={135}
               height={32}
               className="w-28 lg:w-32"
@@ -150,11 +132,11 @@ export default function CostaBajaPage() {
           {/* Headline + tagline + badges */}
           <div className="mt-auto max-w-3xl">
             <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.92] text-white animate-[fade-left_0.9s_ease-out_both]">
-              Luxury Living<br />By the Sea.
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p className="mt-5 font-ewangi text-[1.125rem] leading-relaxed text-white/75">
-                Condos &amp; houses with sea views<br />in Real del Mar, Tijuana.
+                {t("hero.taglineLine1")}<br />{t("hero.taglineLine2")}
               </p>
             </RevealOnScroll>
 
@@ -175,7 +157,7 @@ export default function CostaBajaPage() {
           {/* Play button — opens YouTube modal; iframe not in DOM until clicked */}
           <button
             onClick={() => setVideoOpen(true)}
-            aria-label="Watch Costa Baja video"
+            aria-label={t("hero.playButtonAriaLabel")}
             className="absolute right-10 bottom-44 hidden lg:flex lg:right-20 flex-col items-center gap-1 group"
           >
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-teal/90 shadow-xl transition group-hover:bg-brand-teal">
@@ -183,7 +165,7 @@ export default function CostaBajaPage() {
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
-            <span className="font-ewangi text-xs text-white/70">Watch video</span>
+            <span className="font-ewangi text-xs text-white/70">{t("hero.watchVideoLabel")}</span>
           </button>
 
           {/* Stats bar */}
@@ -214,32 +196,32 @@ export default function CostaBajaPage() {
                 style={{ borderRadius: "27px" }}
               >
                 <p className="font-ewangi text-[1.1rem] text-white mb-4">
-                  Explore the development
+                  {t("unitExplorer.sectionLabel")}
                 </p>
 
                 <div className="flex gap-1.5 mb-4">
-                  {(["Condos", "Houses", "Models"] as UnitTab[]).map((t) => (
+                  {unitTabs.map((tabLabel) => (
                     <button
-                      key={t}
+                      key={tabLabel}
                       onClick={() => {
-                        setUnitTab(t);
-                        setActiveUnit(t === "Houses" ? "Casa Mallorca" : "Condo Ibiza");
+                        setUnitTab(tabLabel);
+                        setActiveUnit(tabLabel === unitTabs[1] ? houses[0]?.id : condos[0]?.id);
                       }}
                       style={{ width: "72px", height: "28px", borderRadius: "4px" }}
                       className={cn(
                         "font-ewangi text-[13px] font-medium transition",
-                        unitTab === t
+                        unitTab === tabLabel
                           ? "bg-brand-teal text-brand-ink"
                           : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
                       )}
                     >
-                      {t}
+                      {tabLabel}
                     </button>
                   ))}
                 </div>
 
                 <p className="font-ewangi text-[13px] text-white/50 mb-3">
-                  Select a unit to see details
+                  {t("unitExplorer.selectPrompt")}
                 </p>
 
                 <div className="flex-1 overflow-y-auto">
@@ -270,7 +252,7 @@ export default function CostaBajaPage() {
                     style={{ width: "184px", height: "44px", borderRadius: "5px" }}
                     className="border border-white/40 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink"
                   >
-                    View all units
+                    {t("unitExplorer.viewAllButton")}
                   </button>
                 </div>
               </div>
@@ -282,7 +264,7 @@ export default function CostaBajaPage() {
               >
                 <Image
                   src={IMG_MAP}
-                  alt="Costa Baja development map"
+                  alt={t("unitExplorer.mapAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 60vw"
@@ -292,10 +274,10 @@ export default function CostaBajaPage() {
                   <div className="absolute left-3 top-3 w-44 rounded-[9px] bg-[#1E1E1E]/90 p-3 lg:left-auto lg:right-4 lg:top-4 lg:w-46.75">
                     <p className="font-ewangi text-[1rem] font-medium text-white mb-1">{activeUnitData.id}</p>
                     <p className="font-ewangi text-[12px] text-white/70">{activeUnitData.area}</p>
-                    <p className="font-ewangi text-[12px] text-white/70">{activeUnitData.bedrooms} Bedrooms</p>
+                    <p className="font-ewangi text-[12px] text-white/70">{activeUnitData.bedrooms} {t("unitExplorer.bedroomsLabel")}</p>
                     <div className="mt-1 flex items-center gap-1.5">
                       <div className="h-2 w-2 rounded-full bg-brand-teal" />
-                      <span className="font-ewangi text-[12px] text-brand-teal">Available</span>
+                      <span className="font-ewangi text-[12px] text-brand-teal">{t("unitExplorer.availableLabel")}</span>
                     </div>
                   </div>
                 )}
@@ -312,7 +294,7 @@ export default function CostaBajaPage() {
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
 
               <div className="lg:w-[42%]">
-                <p className="font-ewangi text-[1.5rem] text-white/70 mb-2">{currentModel.type}</p>
+                <p className="font-ewangi text-[1.5rem] text-white/70 mb-2">{typeLabels[currentModel.type]}</p>
 
                 <div className="flex items-center gap-3 mb-8">
                   <h3 className="font-ewangi text-[clamp(1.4rem,2.5vw,2rem)] text-white leading-tight flex-1">
@@ -345,11 +327,11 @@ export default function CostaBajaPage() {
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <BedDouble className="h-6 w-6 text-brand-teal" strokeWidth={1.5} />
-                    <span className="font-ewangi text-[1.25rem] text-white">{currentModel.bedrooms} Bedrooms</span>
+                    <span className="font-ewangi text-[1.25rem] text-white">{currentModel.bedrooms} {t("unitExplorer.bedroomsLabel")}</span>
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <Bath className="h-6 w-6 text-brand-teal" strokeWidth={1.5} />
-                    <span className="font-ewangi text-[1.25rem] text-white">{currentModel.bathrooms} Bathrooms</span>
+                    <span className="font-ewangi text-[1.25rem] text-white">{currentModel.bathrooms} {t("unitExplorer.bathroomsLabel")}</span>
                   </div>
                 </div>
               </div>
@@ -378,7 +360,7 @@ export default function CostaBajaPage() {
             <div className="relative overflow-hidden rounded-[26px]" style={{ aspectRatio: "1265/460" }}>
               <Image
                 src={IMG_TOUR}
-                alt="Costa Baja interior living room"
+                alt={t("tour.imageAlt")}
                 fill
                 className="object-cover"
                 sizes="100vw"
@@ -388,7 +370,7 @@ export default function CostaBajaPage() {
                 style={{ background: "linear-gradient(to left, rgba(0,0,0,0.85) 55%, transparent 100%)" }}
               >
                 <h2 className="font-ewangi text-[clamp(1.8rem,3.5vw,3rem)] leading-tight text-white text-right">
-                  Fall in love<br />with your home<br />by the sea.
+                  {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />{t("tour.headingLine3")}
                 </h2>
                 <a
                   href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
@@ -396,7 +378,7 @@ export default function CostaBajaPage() {
                   rel="noopener noreferrer"
                   className="mt-8 rounded-[8px] bg-[#1e1e1e] px-8 py-4 transition hover:bg-[#2a2a2a]"
                 >
-                  <span className="font-ewangi text-[2rem] text-brand-teal">360° tour</span>
+                  <span className="font-ewangi text-[2rem] text-brand-teal">{t("tour.button")}</span>
                 </a>
               </div>
             </div>
@@ -410,13 +392,13 @@ export default function CostaBajaPage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[45%]">
               <h2 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-tight text-brand-teal">
-                Sea View<br />Condos &amp;<br />Houses
+                {t("seaView.headingLine1")}<br />{t("seaView.headingLine2")}<br />{t("seaView.headingLine3")}
               </h2>
               <p className="mt-8 font-ewangi text-[1.125rem] leading-relaxed text-white/80">
-                Costa Baja Residential is the leading luxury development in Real del Mar, Tijuana — a private gated community with a Resort Living concept where every property enjoys panoramic sea views of the Pacific coast.
+                {t("seaView.body1")}
               </p>
               <p className="mt-4 font-ewangi text-[1.125rem] leading-relaxed text-white/80">
-                Choose from exclusive condominiums with 2 or 3 bedrooms starting from $427,000 USD, or 4-bedroom luxury houses on oversized lots from $720,500 USD. Private balconies, walk-in closets, golf course access at Real del Mar, rooftop pool, and a full gym — every detail is designed for the lifestyle you deserve.
+                {t("seaView.body2")}
               </p>
             </div>
           </RevealOnScroll>
@@ -426,7 +408,7 @@ export default function CostaBajaPage() {
               <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "927/563" }}>
                 <Image
                   src={IMG_PLAN}
-                  alt="Costa Baja site plan"
+                  alt={t("seaView.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 55vw"
@@ -443,7 +425,7 @@ export default function CostaBajaPage() {
           <div className="flex justify-center">
             <div className="rounded-[10px] bg-white px-10 py-6 text-center max-w-4xl">
               <p className="font-ewangi text-[clamp(1.1rem,2.5vw,2rem)] text-brand-ink">
-                Resort living with sea views — certified, verified, ready for you.
+                {t("ctaBanner.text")}
               </p>
             </div>
           </div>

@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "title": "Cíbola del Mar – Condominios y Casas Frente al Mar en Ensenada, Baja California",
+    "description": "Cíbola del Mar es un desarrollo frente al mar de primer nivel en la costa de Baja California, cerca de Ensenada. Disfruta de vistas panorámicas al Pacífico, amenidades modernas y un auténtico estilo de vida costero."
+  },
+  "hero": {
+    "heroImageAlt": "Vista aérea costera de Cíbola del Mar",
+    "logoAlt": "Cíbola del Mar",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Construye en el",
+    "headlineLine2": "Borde del Pacífico.",
+    "taglineLine1": "Residencias frente al mar en Ensenada,",
+    "taglineLine2": "Baja California.",
+    "tourButtonLabel": "360°",
+    "tourButtonSublabel": "vista"
+  },
+  "stats": [
+    { "value": "120", "label": "Lotes" },
+    { "value": "25", "label": "Condominios" },
+    { "value": "5", "label": "Modelos" },
+    { "value": "80", "label": "Casas" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "lotExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "tabs": ["Lotes", "Condominios", "Casas"],
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "viewAllButton": "Ver todos los lotes",
+    "mapAlt": "Mapa del desarrollo Cíbola del Mar",
+    "popoverOceanView": "Vista al mar",
+    "popoverAvailable": "Disponible",
+    "lots": [
+      { "id": "Lote A-1", "area": "320 m²" },
+      { "id": "Lote A-2", "area": "290 m²" },
+      { "id": "Lote A-3", "area": "350 m²" },
+      { "id": "Lote B-1", "area": "410 m²" },
+      { "id": "Lote B-2", "area": "285 m²" }
+    ]
+  },
+  "unitModels": {
+    "sectionLabel": "Modelos de unidad",
+    "bedroomsLabel": "Recámaras",
+    "bathroomsLabel": "Baños",
+    "imageAltTemplate": "Vista aérea de {name}",
+    "models": [
+      { "name": "Quintas II", "area": "78 m²", "bedrooms": 2, "bathrooms": 2 }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Entra a tu",
+    "headingLine2": "futuro hogar",
+    "headingLine3": "junto al mar.",
+    "button": "Tour 360°",
+    "imageAlt": "Vista de la comunidad Cíbola del Mar"
+  },
+  "oceanfrontLots": {
+    "headingLine1": "Lotes con",
+    "headingLine2": "Vista al Mar",
+    "body1": "Descubre lotes premium frente al mar en Cíbola del Mar, una de las comunidades costeras más exclusivas de Ensenada. Cada lote da directamente al océano Pacífico, con amplias vistas panorámicas a las Islas Coronado y a la espectacular costa de Baja California.",
+    "body2": "Con lotes que van de 280 a 450 m², cada terreno te da la libertad de diseñar y construir la casa costera que siempre has imaginado. Rodeado de belleza natural e infraestructura certificada, aquí es donde tu inversión y tu estilo de vida se encuentran.",
+    "imageAlt": "Plano de sitio de Cíbola del Mar"
+  },
+  "ctaBanner": {
+    "text": "Tierra certificada. Título verificado. Tu hogar frente al Pacífico comienza aquí."
+  }
+}

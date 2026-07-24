@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "title": "Del Mar Residencial – Coastal Homes & Condos Near Tijuana, Baja California",
+    "description": "Del Mar Residencial offers houses and condominiums along the scenic Tijuana–Ensenada coastal corridor. A refined community with easy access to both Tijuana and Ensenada."
+  },
+  "hero": {
+    "logoAlt": "Del Mar",
+    "headline": "Build with confidence.",
+    "subtitle": "A verified and secure development for your next project.",
+    "cmreAltMobile": "CMRE Certified",
+    "cmreAltDesktop": "CMRE Certified Mexico Real Estate",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "view"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "120", "label": "Lots" },
+    { "value": "25", "label": "Condos" },
+    { "value": "5", "label": "Models" },
+    { "value": "80", "label": "Houses" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explore the development",
+    "tabs": ["Lots", "Condos", "Houses"],
+    "tourTitle": "Del Mar 360° virtual tour",
+    "selectPrompt": "Select a lot to see details",
+    "lotLabelPrefix": "Lot",
+    "popoverType": "Residential",
+    "popoverStatus": "Available",
+    "viewAllButton": "View all lots",
+    "lots": [
+      { "id": "12", "area": "300 m²" },
+      { "id": "13", "area": "300 m²" },
+      { "id": "14", "area": "320 m²" },
+      { "id": "15", "area": "315 m²" },
+      { "id": "16", "area": "305 m²" }
+    ]
+  },
+  "models": {
+    "sectionLabel": "House models",
+    "prevAriaLabel": "Previous model",
+    "nextAriaLabel": "Next model",
+    "items": [
+      { "name": "PERLA", "type": "House", "sqm": "180 m²", "beds": "3 Bedrooms", "baths": "2 Bathrooms" },
+      { "name": "BAHÍA", "type": "House", "sqm": "210 m²", "beds": "3 Bedrooms", "baths": "3 Bathrooms" },
+      { "name": "VIENTO", "type": "Condo", "sqm": "55 m²", "beds": "1 Bedroom", "baths": "1 Bathroom" },
+      { "name": "CORONADO", "type": "House", "sqm": "240 m²", "beds": "4 Bedrooms", "baths": "3 Bathrooms" },
+      { "name": "MAREA", "type": "House", "sqm": "120 m²", "beds": "2 Bedrooms", "baths": "2 Bathrooms" }
+    ]
+  },
+  "tour": {
+    "imageAlt": "Del Mar interior",
+    "headingLine1": "Let's take a look",
+    "headingLine2": "from your",
+    "headingLine3": "next home.",
+    "button": "360 tour"
+  },
+  "oceanLots": {
+    "heading": "Ocean View Lots",
+    "body": "Explore premium ocean-view lots for sale, each offering a unique opportunity to build your dream home with stunning vistas of the Coronado Islands. Enjoy the tranquility of coastal living, where every sunrise and sunset transforms the horizon into a masterpiece.",
+    "bodyExtra": "Our selection includes expansive lots with various square footage options to suit your vision.",
+    "imageAltMobile": "Ocean view lots",
+    "imageAltDesktop": "Ocean view lots development"
+  },
+  "ctaBanner": {
+    "text": "We certify so you can build your future"
+  }
+}

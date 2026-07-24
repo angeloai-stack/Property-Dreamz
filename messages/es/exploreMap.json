@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "Explora el Mapa",
+    "description": "Explora de forma interactiva desarrollos inmobiliarios certificados en México. Filtra por ubicación, precio, habitaciones y estado de verificación.",
+    "ogTitle": "Explora el Mapa — Property Dreamz",
+    "ogDescription": "Encuentra desarrollos certificados en México en un mapa interactivo. Filtra por precio, ubicación y tipo."
+  },
+  "header": {
+    "title": "Explora el Mapa",
+    "subtitle": "Explora desarrollos verificados en México",
+    "description": "Mueve el mapa para descubrir propiedades en la ubicación que prefieras.",
+    "searchPlaceholder": "¿A dónde te gustaría ir?",
+    "filterButton": "Filtrar"
+  },
+  "quickFilters": {
+    "Oceanfront": "Frente al mar",
+    "Lots": "Terrenos",
+    "Homes": "Casas",
+    "Under $100k": "Menos de $100k"
+  },
+  "mobileToggle": {
+    "map": "Mapa",
+    "list": "Lista ({count})"
+  },
+  "legend": "Cada pin marca una propiedad verificada. El área sombreada es aproximada, no representa el límite oficial de la propiedad.",
+  "noResults": {
+    "heading": "Sin resultados",
+    "clear": "Limpiar filtros"
+  },
+  "cta": {
+    "headlinePrefix": "¿No encontraste la",
+    "headlineSuffix": "propiedad de tus sueños?",
+    "subheadline": "¡Hablemos!",
+    "button": "Habla con un asesor",
+    "houseAlt": "Ilustración de una casa moderna"
+  },
+  "filters": {
+    "searchPlaceholder": "Ciudad, zona o desarrollo...",
+    "searchAriaLabel": "Buscar proyectos",
+    "resultCount": "{count, plural, one {# proyecto} other {# proyectos}}",
+    "stateLabel": "Estado",
+    "typeCurrencyLabel": "Tipo y moneda",
+    "verifiedOnly": "Solo verificados",
+    "sortAriaLabel": "Ordenar proyectos",
+    "sort": {
+      "relevance": "Relevancia",
+      "priceAsc": "Precio: menor a mayor",
+      "priceDesc": "Precio: mayor a menor"
+    }
+  },
+  "types": {
+    "All": "Todos",
+    "House": "Casa",
+    "Condo": "Condominio",
+    "Land": "Terreno"
+  },
+  "listingCard": {
+    "financingAvailable": "Financiamiento disponible",
+    "sqm": "m²",
+    "rooms": "Habitaciones",
+    "baths": "Baños",
+    "from": "Desde",
+    "cta": "Habla con un asesor",
+    "save": "Guardar propiedad",
+    "removeSaved": "Quitar de guardados"
+  },
+  "mapFiltersCard": {
+    "showOnly": "Mostrar solo:",
+    "financingAvailable": "Financiamiento disponible",
+    "searchThisArea": "Buscar en esta área"
+  },
+  "mapPanel": {
+    "bd": "hab",
+    "ba": "ba",
+    "cta": "Habla con un asesor",
+    "save": "Guardar propiedad",
+    "removeSaved": "Quitar de guardados",
+    "markerAriaLabel": "Ver propiedad, {price}"
+  },
+  "constructionStatusLabels": {
+    "Pre-sale": "Preventa",
+    "Under construction": "En construcción",
+    "Ready to move in": "Listo para habitar"
+  },
+  "stateLabels": {
+    "All": "Todos los estados",
+    "Baja California": "Baja California",
+    "Baja California Sur": "Baja California Sur",
+    "Nayarit": "Nayarit",
+    "Quintana Roo": "Quintana Roo",
+    "Jalisco": "Jalisco",
+    "Yucatán": "Yucatán",
+    "Oaxaca": "Oaxaca",
+    "Sonora": "Sonora"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "title": "Alimar Residencial – Condominios Frente al Mar en Venta en Rosarito, Baja California",
+    "description": "Descubre Alimar Residencial: 16 condominios boutique a solo 3 cuadras de la playa en Rosarito. Amplias unidades de 2 recámaras y 2 baños desde 1,046 a 1,287 pies cuadrados. Vida moderna en la costa de Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Fachada del edificio Alimar",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Vida elevada.",
+    "headlineLine2": "Vistas excepcionales.",
+    "subtitle": "Una colección limitada de solo 16 residencias de lujo diseñadas para quienes esperan más.",
+    "logoAlt": "Alimar"
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "16", "label": "Condominios" },
+    { "value": "4", "label": "Modelos" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "explore": {
+    "heading": "Explora tu próximo hogar",
+    "desktopIntro": "Vive una colección de interiores creados para una vida elevada. De espacios de concepto abierto a acabados impresionantes, cada rincón está diseñado para inspirar.",
+    "amenities": [
+      { "id": "livingRoom", "label": "Sala", "description": "Ventanales de piso a techo, acabados refinados y una comodidad perfecta pensada para la vida moderna." },
+      { "id": "bedroom", "label": "Recámara", "description": "Recámaras amplias con acabados premium y abundante luz natural." },
+      { "id": "bathroom", "label": "Baño", "description": "Baños elegantes con accesorios de alta gama y detalles tipo spa." },
+      { "id": "kitchen", "label": "Cocina", "description": "Cocina integral con electrodomésticos premium y líneas modernas y limpias." },
+      { "id": "terrace", "label": "Terraza", "description": "Terrazas privadas con vistas panorámicas impresionantes de la ciudad." }
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explora nuestros {count} modelos",
+    "floorPlanAltTemplate": "Plano de planta {name}",
+    "layouts": [
+      {
+        "name": "Modelo A",
+        "area": "1287 pies²",
+        "features": [
+          "3 balcones",
+          "Sala con balcón",
+          "Comedor",
+          "Barra de desayuno",
+          "Cocina integral",
+          "2 recámaras",
+          "2 baños",
+          "Patio con cuarto de lavado",
+          "1 cajón de estacionamiento techado"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "imageAlt": "Residencias de lujo Alimar",
+    "headingLine1": "Una Colección Limitada.",
+    "headingLine2": "Un Estilo de Vida Extraordinario.",
+    "body": "Diseñados para quienes buscan más que una simple residencia, estos 16 condominios exclusivos ofrecen espacios refinados, vistas impresionantes y un sentido de comunidad como ningún otro. Cada hogar está creado para brindar comodidad, elegancia y valor duradero. Contáctanos hoy para conocer más y reservar tu lugar en este desarrollo excepcional.",
+    "button": "Habla con un experto"
+  }
+}

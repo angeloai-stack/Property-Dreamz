@@ -1,5 +1,5 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { Navbar, Main, Footer, WhatsAppButton, MobileBottomNav, SideNavRail } from "@/components/layout";
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {

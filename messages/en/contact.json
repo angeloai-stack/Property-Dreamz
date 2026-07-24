@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "Contact",
+    "description": "Get in touch with the Property Dreamz team. Reach verified buyers, request a callback, or start your property search in Mexico today.",
+    "ogTitle": "Contact Property Dreamz",
+    "ogDescription": "Talk to our bilingual team about buying or listing real estate in Mexico."
+  },
+  "hero": {
+    "eyebrow": "Contact us",
+    "heading": "We're here to help you make the <hl>right move.</hl>",
+    "subtitle": "Whether you're a buyer, developer, or real estate professional, our team is ready to provide the support and information you need.",
+    "badgeTitle": "Personalized. Fast. Reliable.",
+    "badgeBody": "Real people, real answers. Here for you every step of the way.",
+    "quickContacts": {
+      "liveChat": {
+        "title": "Live chat",
+        "detail": "Chat with Dreamzy or our team now."
+      },
+      "email": {
+        "title": "Email us",
+        "detail": "hello@propertydreamz.com"
+      },
+      "call": {
+        "title": "Call us",
+        "detail": "+1 (619) 123 4567"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "detail": "+1 (619) 123 4567"
+      }
+    }
+  },
+  "whyContactUs": {
+    "eyebrow": "Why contact us?",
+    "heading": "We're committed to your success in Mexico.",
+    "reasons": {
+      "expertGuidance": {
+        "title": "Expert guidance",
+        "body": "Our team knows the market and is here to answer your questions."
+      },
+      "trustedSupport": {
+        "title": "Trusted support",
+        "body": "Get clear, honest, and up-to-date information you can rely on."
+      },
+      "fastResponse": {
+        "title": "Fast response",
+        "body": "We respond quickly so you can keep moving forward."
+      },
+      "bilingualTeam": {
+        "title": "Bilingual team",
+        "body": "Fluent in English and Spanish to serve you better."
+      }
+    }
+  },
+  "quickForm": {
+    "eyebrow": "Send us a message",
+    "heading": "Tell us how we can help you.",
+    "fullNamePlaceholder": "Full name",
+    "emailPlaceholder": "Email",
+    "phonePlaceholder": "Phone number",
+    "interestPlaceholder": "I'm interested in...",
+    "messagePlaceholder": "How we can help you?",
+    "submit": "Send message",
+    "successTitle": "Message sent!",
+    "successBody": "Our team will get back to you shortly.",
+    "privacyNote": "Your information is secured and will never be shared"
+  },
+  "closingCta": {
+    "heading": "Let's turn your dream into a plan.",
+    "body": "Contact our team today and take the first step toward your future in Mexico.",
+    "ctaAdvisor": "Talk to an advisor",
+    "ctaWhatsapp": "Chat with Dreamzy®"
+  },
+  "leadForm": {
+    "heading": "Get in touch",
+    "fullName": "Full name *",
+    "namePlaceholder": "Your full name",
+    "phoneWhatsapp": "Phone / WhatsApp *",
+    "phonePlaceholder": "123 456 7890",
+    "email": "Email *",
+    "emailPlaceholder": "you@email.com",
+    "budget": "Investment budget",
+    "region": "Region of interest",
+    "regionPlaceholder": "Select a region",
+    "contactMethod": "Preferred contact method",
+    "methodWhatsapp": "WhatsApp",
+    "methodCall": "Phone call",
+    "methodEmail": "Email",
+    "message": "Message (optional)",
+    "messagePlaceholder": "Tell us more about what you're looking for...",
+    "successTitle": "Message sent!",
+    "successBody": "We'll be in touch within 24 hours.",
+    "sendAnother": "Send another message",
+    "submit": "Send message"
+  }
+}

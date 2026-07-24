@@ -1,9 +1,9 @@
 // Homepage — assembles the marketing sections in Figma-spec order and injects Organization/WebSite schema.
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { BuyersGuideSteps } from "@/components/home/BuyersGuideSteps";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
 import { FaqSection } from "@/components/home/FaqSection";
-import { faqs } from "@/components/home/faq-data";
 import { FeatureCards } from "@/components/home/FeatureCards";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TopDevelopers } from "@/components/home/TopDevelopers";
@@ -12,24 +12,31 @@ import { BajaSeoBlock } from "@/components/baja/BajaSeoBlock";
 import { PropertiesByCity } from "@/components/baja/PropertiesByCity";
 import { CampaignForm } from "@/components/forms";
 
-// Title/description from the SEO content document (source of truth as of Jul 2026).
-export const metadata: Metadata = {
-  // Home page uses an absolute title (no template wrapping needed).
-  title: {
-    absolute: "Mexico Real Estate | Verified Properties | Property Dreamz",
-  },
-  description:
-    "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited.",
-  openGraph: {
-    title: "Mexico Real Estate | Verified Properties | Property Dreamz",
-    description:
-      "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited.",
-    url: "https://propertydreamz.com",
-  },
-};
+type Props = { params: Promise<{ locale: string }> };
 
-// JSON-LD for Organization + WebSite + FAQPage — surfaces the sitelinks searchbox and FAQ rich results.
-const jsonLd = {
+// Title/description come from the "home.metadata" translation namespace.
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home.metadata" });
+  return {
+    // Home page uses an absolute title (no template wrapping needed).
+    title: { absolute: t("title") },
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: "https://propertydreamz.com",
+    },
+  };
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home.faq" });
+  const faqs = t.raw("items") as { q: string; a: string }[];
+
+  // JSON-LD for Organization + WebSite + FAQPage — surfaces the sitelinks searchbox and FAQ rich results.
+  const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -83,10 +90,8 @@ const jsonLd = {
       },
     },
   ],
-};
+  };
 
-
-export default function Home() {
   return (
     <>
       <script

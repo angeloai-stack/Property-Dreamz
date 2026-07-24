@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Pacifica Ensenada – Oceanfront Condos for Sale in Ensenada, Baja California",
+    "description": "Pacifica is a premier oceanfront condominium development in Ensenada, Baja California. Wake up to Pacific Ocean views and enjoy resort-style amenities steps from the sea."
+  },
+  "hero": {
+    "heroImageAlt": "Pacifica development aerial view",
+    "logoAlt": "Pacifica",
+    "cmreAlt": "CMRE Certified",
+    "headline": "Live the extraordinary",
+    "subheadline": "Invest in the tourist corridor of Baja California — the development with the highest appreciation, where every day is a space to enjoy with your family.",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "view"
+  },
+  "stats": [
+    { "value": "120", "label": "Lots" },
+    { "value": "25", "label": "Condos" },
+    { "value": "5", "label": "Models" },
+    { "value": "80", "label": "Houses" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "explore": {
+    "heading": "Explore the development",
+    "mapImageAlt": "Pacifica development map",
+    "tabs": { "lots": "Lots", "condos": "Condos", "houses": "Houses" },
+    "selectPrompt": "Select a lot to see details",
+    "viewAllButton": "View all lots"
+  },
+  "lots": [
+    { "id": "Lot 12", "size": "300 m²" },
+    { "id": "Lot 13", "size": "300 m²" },
+    { "id": "Lot 14", "size": "320 m²" },
+    { "id": "Lot 15", "size": "315 m²" },
+    { "id": "Lot 16", "size": "305 m²" }
+  ],
+  "tour": {
+    "imageAlt": "Pacifica interior living room",
+    "headingLine1": "Let's take a",
+    "headingLine2": "look from your",
+    "headingHighlight": "next home.",
+    "button": "360 tour"
+  },
+  "dreamsStart": {
+    "headingLine1": "Your dreams",
+    "headingLine2": "start here",
+    "body": "Acquire your lot and choose one of our ready-to-build models. Whether a condo or residential lots in Villas y Privadas — Pacífica is the place to live and grow with guaranteed appreciation.",
+    "imageAlt": "Pacifica aerial development view"
+  },
+  "ctaBanner": {
+    "text": "We certify so you can build your future"
+  }
+}

@@ -1,9 +1,11 @@
 // "Explore top destinations" grid + closing CTA — Figma nodes 1405:19140-1407:19364.
+"use client";
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
-import { properties } from "@/app/properties/data";
+import { properties } from "@/app/[locale]/properties/data";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Propery%20Dreamz/Property%20Pics/Mascot";
 
@@ -19,15 +21,17 @@ function formatPrice(n: number) {
 }
 
 export function TopDestinations() {
+  const t = useTranslations("buyersGuide.topDestinations");
+
   return (
     <section className="w-full bg-brand-ink py-14 md:py-20">
       <Container>
         <RevealOnScroll direction="left" className="mb-9">
           <span className="inline-flex items-center rounded-full bg-brand-teal/15 px-4 py-1.5 font-ewangi text-label font-semibold text-brand-teal">
-            Explore top destinations
+            {t("badge")}
           </span>
           <h2 className="mt-4 font-ewangi text-[clamp(1.7rem,3.2vw,2.25rem)] font-bold leading-tight text-white">
-            Find the perfect place to call your own.
+            {t("heading")}
           </h2>
         </RevealOnScroll>
 
@@ -44,7 +48,9 @@ export function TopDestinations() {
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
                   <div className="absolute bottom-3 left-3 rounded-[9px] bg-[#028e7f] px-2.5 py-1.5 shadow-md">
-                    <span className="font-ewangi text-[13px] leading-none text-white">From {formatPrice(property.priceUSD)}</span>
+                    <span className="font-ewangi text-[13px] leading-none text-white">
+                      {t("priceFrom", { price: formatPrice(property.priceUSD) })}
+                    </span>
                   </div>
                 </div>
                 <div className="p-4">
@@ -54,7 +60,7 @@ export function TopDestinations() {
                     {property.zone}
                   </p>
                   <span className="mt-3 inline-flex items-center gap-1.5 font-ewangi text-[13px] font-semibold text-brand-teal">
-                    View Development <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                    {t("viewDevelopment")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
                   </span>
                 </div>
               </Link>
@@ -65,10 +71,9 @@ export function TopDestinations() {
         <RevealOnScroll delay={150} className="mt-10 rounded-2xl bg-brand-teal px-6 py-8 md:px-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-md">
-              <h3 className="font-ewangi text-[1.4rem] font-bold leading-tight text-brand-ink">Ready to start the journey?</h3>
+              <h3 className="font-ewangi text-[1.4rem] font-bold leading-tight text-brand-ink">{t("cta.heading")}</h3>
               <p className="mt-2 font-ewangi text-[14px] leading-relaxed text-brand-ink/70">
-                Explore certified properties or speak with a bilingual advisor who will guide you every step of
-                the way.
+                {t("cta.body")}
               </p>
             </div>
 
@@ -78,13 +83,13 @@ export function TopDestinations() {
                   href="/properties"
                   className="inline-flex items-center gap-2 rounded-full bg-brand-ink px-6 py-3 font-ewangi text-[14px] font-semibold text-white transition hover:bg-black"
                 >
-                  Explore properties <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                  {t("cta.ctaExplore")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
                 </Link>
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-brand-ink/60 px-6 py-3 font-ewangi text-[14px] font-semibold text-brand-ink transition hover:bg-brand-ink hover:text-white"
                 >
-                  Talk to an advisor
+                  {t("cta.ctaAdvisor")}
                 </Link>
               </div>
 
@@ -94,7 +99,7 @@ export function TopDestinations() {
                   <Image src={`${CLD}/dreamzy-speech-bubble`} alt="" width={624} height={442} className="h-auto w-full" />
                 </div>
                 <div className="relative z-10 h-20 w-20 shrink-0 overflow-hidden rounded-full ring-4 ring-white/40">
-                  <Image src={`${CLD}/dreamzy-avatar`} alt="Dreamzy, the Property Dreamz AI advisor" fill className="object-cover" />
+                  <Image src={`${CLD}/dreamzy-avatar`} alt={t("cta.mascotAlt")} fill className="object-cover" />
                 </div>
               </div>
             </div>

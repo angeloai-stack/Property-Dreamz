@@ -2,6 +2,7 @@
 // Lead-capture form for marketing campaigns — posts to /api/contact with source:"campaign".
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
@@ -13,6 +14,8 @@ type Fields = { name: string; phone: string; email: string; budget: string; regi
 const INIT: Fields = { name: "", phone: "", email: "", budget: "", region: "" };
 
 export function CampaignForm() {
+  const t = useTranslations("forms.campaign");
+  const tc = useTranslations("forms.common");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [fields, setFields] = useState<Fields>(INIT);
   const set =
@@ -55,10 +58,10 @@ export function CampaignForm() {
               <div className="absolute inset-0 bg-brand-pine/80" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-8 text-center">
                 <p className="font-ewangi text-[2rem] leading-none text-brand-paper tracking-wide">
-                  Property<br />Dreamz
+                  {t("brandLine1")}<br />{t("brandLine2")}
                 </p>
                 <p className="font-ewangi text-label uppercase tracking-widest text-brand-paper/60">
-                  Certified Real Estate
+                  {t("certifiedRealEstate")}
                 </p>
               </div>
             </div>
@@ -67,33 +70,30 @@ export function CampaignForm() {
             <div className="flex-1 bg-brand-ink p-8 md:p-10">
               <div className="mb-6 space-y-1">
                 <p className="font-ewangi text-label font-semibold uppercase tracking-widest text-brand-teal">
-                  Free consultation
+                  {t("eyebrow")}
                 </p>
                 <h2 className="font-ewangi text-[clamp(1.5rem,3vw,2rem)] leading-tight text-brand-paper">
-                  Find your ideal development
+                  {t("heading")}
                 </h2>
               </div>
 
               {status === "success" ? (
                 <div className="flex flex-col items-center gap-4 py-10 text-center">
                   <CheckCircle2 className="h-14 w-14 text-brand-teal" aria-hidden="true" />
-                  <p className="font-ewangi text-subtitle text-brand-paper">You&apos;re all set!</p>
-                  <p className="font-body text-body text-brand-paper/60">
-                    Our team will reach out within 24 hours with verified listings matching your
-                    criteria.
-                  </p>
+                  <p className="font-ewangi text-subtitle text-brand-paper">{t("successTitle")}</p>
+                  <p className="font-body text-body text-brand-paper/60">{t("successBody")}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="space-y-1.5">
                       <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                        Full name *
+                        {t("fullName")}
                       </span>
                       <input
                         type="text"
                         name="name"
-                        placeholder="Your name"
+                        placeholder={t("namePlaceholder")}
                         required
                         value={fields.name}
                         onChange={set("name")}
@@ -102,12 +102,12 @@ export function CampaignForm() {
                     </label>
                     <label className="space-y-1.5">
                       <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                        Phone / WhatsApp *
+                        {t("phoneWhatsapp")}
                       </span>
                       <input
                         type="tel"
                         name="phone"
-                        placeholder="+1 555 000 0000"
+                        placeholder={t("phonePlaceholder")}
                         required
                         value={fields.phone}
                         onChange={set("phone")}
@@ -118,12 +118,12 @@ export function CampaignForm() {
 
                   <label className="block space-y-1.5">
                     <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                      Email *
+                      {t("email")}
                     </span>
                     <input
                       type="email"
                       name="email"
-                      placeholder="you@email.com"
+                      placeholder={t("emailPlaceholder")}
                       required
                       value={fields.email}
                       onChange={set("email")}
@@ -134,7 +134,7 @@ export function CampaignForm() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="space-y-1.5">
                       <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                        Budget (optional)
+                        {t("budgetOptional")}
                       </span>
                       <select
                         name="budget"
@@ -142,17 +142,17 @@ export function CampaignForm() {
                         onChange={set("budget")}
                         className={F}
                       >
-                        <option value="">Select a range</option>
-                        <option value="under150k">Under $150k USD</option>
-                        <option value="150k-300k">$150k – $300k USD</option>
-                        <option value="300k-500k">$300k – $500k USD</option>
-                        <option value="over500k">$500k+ USD</option>
-                        <option value="unsure">Not sure yet</option>
+                        <option value="">{tc("selectRange")}</option>
+                        <option value="under150k">{tc("budgetOptions.under150k")}</option>
+                        <option value="150k-300k">{tc("budgetOptions.150k-300k")}</option>
+                        <option value="300k-500k">{tc("budgetOptions.300k-500k")}</option>
+                        <option value="over500k">{tc("budgetOptions.over500k")}</option>
+                        <option value="unsure">{tc("budgetOptions.unsure")}</option>
                       </select>
                     </label>
                     <label className="space-y-1.5">
                       <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                        Region (optional)
+                        {t("regionOptional")}
                       </span>
                       <select
                         name="region"
@@ -160,13 +160,13 @@ export function CampaignForm() {
                         onChange={set("region")}
                         className={F}
                       >
-                        <option value="">Any region</option>
-                        <option value="baja">Baja California</option>
-                        <option value="riviera">Riviera Maya</option>
-                        <option value="nayarit">Nayarit</option>
-                        <option value="yucatan">Yucatán</option>
-                        <option value="cdmx">Mexico City</option>
-                        <option value="other">Other</option>
+                        <option value="">{tc("anyRegion")}</option>
+                        <option value="baja">{tc("regionOptions.baja")}</option>
+                        <option value="riviera">{tc("regionOptions.riviera")}</option>
+                        <option value="nayarit">{tc("regionOptions.nayarit")}</option>
+                        <option value="yucatan">{tc("regionOptions.yucatan")}</option>
+                        <option value="cdmx">{tc("regionOptions.cdmx")}</option>
+                        <option value="other">{tc("regionOptions.other")}</option>
                       </select>
                     </label>
                   </div>
@@ -179,18 +179,16 @@ export function CampaignForm() {
                       className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
                     />
                     <span>
-                      I agree to the{" "}
+                      {tc("consentPrefix")}{" "}
                       <a href="/privacy" className="underline hover:text-brand-paper">
-                        privacy policy
+                        {tc("consentLink")}
                       </a>
                       . *
                     </span>
                   </label>
 
                   {status === "error" && (
-                    <p className="text-sm text-red-400">
-                      Something went wrong. Please try again or email hello@propertydreamz.com
-                    </p>
+                    <p className="text-sm text-red-400">{tc("errorGeneric")}</p>
                   )}
 
                   <button
@@ -201,7 +199,7 @@ export function CampaignForm() {
                     {status === "submitting" && (
                       <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                     )}
-                    Get verified listings
+                    {t("submit")}
                   </button>
                 </form>
               )}

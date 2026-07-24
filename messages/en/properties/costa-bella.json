@@ -1,0 +1,130 @@
+{
+  "metadata": {
+    "title": "Costa Bella – Beachside Condominiums for Sale in Rosarito, Baja California",
+    "description": "Costa Bella offers coastal condominiums in the northern Baja corridor near Rosarito. Steps from the Pacific Ocean, ideal for vacation homes or permanent residence in Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Costa Bella luxury condominiums exterior",
+    "logoAlt": "Costa Bella",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Beachside living.",
+    "headlineLine2": "Steps from the Pacific.",
+    "subtitle": "A limited collection of only 16 luxury condominiums designed for those who seek coastal elegance."
+  },
+  "trustBadges": ["Title reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "16", "label": "Condos" },
+    { "value": "4", "label": "Models" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "explore": {
+    "heading": "Explore your next home",
+    "amenities": [
+      {
+        "id": "pool",
+        "label": "Pool",
+        "title": "Rooftop pool with panoramic Pacific views.",
+        "description": "Resort-style rooftop pool with sun deck and lounging areas, overlooking the Pacific Ocean. The perfect setting to unwind just steps from the beach in Rosarito."
+      },
+      {
+        "id": "terrace",
+        "label": "Terrace",
+        "title": "Private terraces with breathtaking ocean views.",
+        "description": "Expansive terraces designed for outdoor living — enjoy sunrises over the Pacific and Rosarito's coastline from the comfort of your own home."
+      },
+      {
+        "id": "gym",
+        "label": "Gym",
+        "title": "Fully equipped fitness center.",
+        "description": "State-of-the-art gym with premium equipment, natural light, and sweeping views of the Pacific. Stay active without leaving the comfort of your building."
+      },
+      {
+        "id": "kitchen",
+        "label": "Kitchen",
+        "title": "Designer kitchens with premium finishes.",
+        "description": "Integral kitchens with marble countertops, high-end appliances, and clean modern lines — designed to inspire every meal with a Pacific backdrop."
+      },
+      {
+        "id": "bedroom",
+        "label": "Bedroom",
+        "title": "Spacious bedrooms with walk-in closets.",
+        "description": "Thoughtfully designed bedrooms with direct terrace access, walk-in closets, and premium finishes that bring coastal elegance to every corner of your home."
+      }
+    ]
+  },
+  "models": {
+    "sectionHeadingTemplate": "Explore our {count} models",
+    "modelNameTemplate": "Model {id}",
+    "floorPlanAltTemplate": "Model {id} floor plan",
+    "list": [
+      {
+        "id": "A",
+        "area": "2,152.78 ft²",
+        "features": [
+          "Kitchen, living, and dining area",
+          "Primary bedroom with full bathroom and walk-in closet",
+          "Secondary bedroom with closet and shared full bathroom",
+          "Open-concept multipurpose room",
+          "Laundry room",
+          "Ocean-view terrace 40 m²"
+        ]
+      },
+      {
+        "id": "B",
+        "area": "2,152.78 ft²",
+        "features": [
+          "Kitchen, living, and dining area",
+          "Primary bedroom with full bathroom and walk-in closet",
+          "Secondary bedroom with shared full bathroom",
+          "Open-concept multipurpose room",
+          "Laundry room",
+          "Ocean-view terrace 40 m²",
+          "Bar cabinet / wine cellar",
+          "Appliances included"
+        ]
+      },
+      {
+        "id": "C",
+        "area": "2,152.78 ft²",
+        "features": [
+          "Living and dining area",
+          "Primary bedroom",
+          "Kitchen with pantry",
+          "Walk-in closet",
+          "Terraces",
+          "Primary bathroom",
+          "Laundry area and storage",
+          "Half bathroom",
+          "Bedroom 1 with full bathroom",
+          "Bedroom 2 with full bathroom",
+          "Staircase to rooftop"
+        ]
+      },
+      {
+        "id": "D",
+        "area": "4,305.56 ft²",
+        "features": [
+          "Living and dining area",
+          "Staircase to rooftop",
+          "Kitchen with pantry",
+          "Primary bedroom",
+          "Terraces",
+          "Walk-in closet",
+          "Laundry area and storage",
+          "Primary bathroom",
+          "Half bathroom",
+          "Bedroom 1 with full bathroom",
+          "Bedroom 2 with full bathroom"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "imageAlt": "Costa Bella — Rosarito beachfront",
+    "headingLine1": "A Limited Collection.",
+    "headingLine2": "An Exceptional Lifestyle.",
+    "body": "Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined coastal living, breathtaking Pacific views, and a private community unlike any other. Every home delivers comfort, elegance, and lasting value just steps from the beach. Contact us today to reserve your place in this exceptional development.",
+    "button": "Talk to an expert"
+  }
+}

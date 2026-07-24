@@ -22,9 +22,10 @@ export function formatFullPrice(mxn: number, usd: number, currency: Currency) {
   return `$${new Intl.NumberFormat("en-US").format(value)} ${currency}`;
 }
 
-// Compact price for map pin badges — Figma: "From $89k".
-export function formatShortPrice(usd: number) {
-  return `From $${Math.round(usd / 1000)}k`;
+// Compact price for map pin badges — Figma: "From $89k". `fromLabel` is the translated
+// "From"/"Desde" word, passed in by the caller since this is a plain util, not a component.
+export function formatShortPrice(usd: number, fromLabel: string) {
+  return `${fromLabel} $${Math.round(usd / 1000)}k`;
 }
 
 // Shared shape used to save a listing to the cross-page /saved store, from either the map

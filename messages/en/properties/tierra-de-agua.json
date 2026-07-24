@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Tierra de Agua – Waterfront Homes & Condos in Rosarito, Baja California",
+    "description": "Tierra de Agua Residencial features waterfront homes and condominiums in the Rosarito coastal corridor. Enjoy direct water access and a relaxed Baja California lifestyle on Mexico's Pacific coast."
+  },
+  "hero": {
+    "heroImageAlt": "Tierra de Agua aerial view",
+    "logoAlt": "Tierra de Agua",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Exclusive residential",
+    "headlineLine2": "lots in Rosarito",
+    "description": "A new residential development with first-class architecture and amenities for an exclusive lifestyle. Build the life you dreamed of. Pre-sale from $75,000 USD."
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "308", "label": "Lots" },
+    { "value": "10", "label": "Condos" },
+    { "value": "2", "label": "Models" },
+    { "value": "45", "label": "Houses" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "lotExplorer": {
+    "exploreLabel": "Explore the development",
+    "tabs": { "lots": "Lots", "condos": "Condos", "houses": "Houses" },
+    "selectLotHint": "Select a lot to see details",
+    "viewAllLots": "View all lots",
+    "residentialLabel": "Residential",
+    "availableLabel": "Available",
+    "lots": [
+      { "id": "Lot 12", "area": "300 m²" },
+      { "id": "Lot 13", "area": "300 m²" },
+      { "id": "Lot 14", "area": "320 m²" },
+      { "id": "Lot 15", "area": "315 m²" },
+      { "id": "Lot 16", "area": "305 m²" }
+    ],
+    "startTourLabel": "Start 360° Tour",
+    "iframeTitle": "Tierra de Agua 360° virtual tour"
+  },
+  "coastalSanctuary": {
+    "headingLine1": "Your Coastal Sanctuary",
+    "headingLine2": "Awaits",
+    "body": "Set along the beautiful coast of Playas de Rosarito, Tierra de Agua is a new residential development that blends first-class architecture with resort-style amenities. By thoughtfully designing every space for comfort and tranquility, the community offers residents a refined coastal lifestyle where each day feels like living exactly as you always imagined.",
+    "amenitiesImageAlt": "Tierra de Agua amenities and pool area"
+  },
+  "trustedSection": {
+    "trustedLabel": "Trusted by + 100 Families",
+    "residentsLinkLabel": "Hear From Our Residents"
+  },
+  "newHome": {
+    "planImageAlt": "Tierra de Agua master plan",
+    "headingLine1": "Your new home",
+    "headingLine2": "in Baja",
+    "body": "Tierra de Agua is living as you always dreamed. Get in touch to learn about availability and payment plans that fit your budget.",
+    "button": "Talk to an expert"
+  }
+}

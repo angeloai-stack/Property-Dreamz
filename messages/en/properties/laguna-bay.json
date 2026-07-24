@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Laguna Bay – Oceanfront & Lagoon-View Condos for Sale in Rosarito, Baja CA",
+    "description": "Laguna Bay features stunning condominiums with lagoon and ocean views in Rosarito, Baja California. Perfect for buyers seeking a unique waterfront lifestyle on Mexico's Pacific coast."
+  },
+  "hero": {
+    "logoAlt": "Laguna Bay",
+    "cmreAlt": "CMRE Certified",
+    "videoTitle": "Laguna Bay",
+    "headlineLine1": "Exclusive oceanfront",
+    "headlineLine2": "horizontal development",
+    "subtitle": "The most exclusive oceanfront horizontal development in Rosarito, offering the best quality of life in Baja with a wide range of amenities and two impressive lakes by the sea."
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "300", "label": "Lots" },
+    { "value": "10", "label": "Condos" },
+    { "value": "2", "label": "Models" },
+    { "value": "45", "label": "Houses" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explore the development",
+    "mapAlt": "Laguna Bay development map",
+    "tabs": ["Lots", "Club", "Houses"],
+    "selectPrompt": "Select a lot to see details",
+    "viewAllButton": "View all lots",
+    "lots": [
+      { "id": "Lot 12", "size": "180 m²" },
+      { "id": "Lot 13", "size": "120 m²" },
+      { "id": "Lot 14", "size": "140 m²" },
+      { "id": "Lot 15", "size": "115 m²" },
+      { "id": "Lot 16", "size": "105 m²" }
+    ]
+  },
+  "lake": {
+    "heading": "Impressive lake",
+    "body": "At Laguna Bay, you can enjoy various outdoor activities, including the opportunity to explore an impressive lake where you can fish, kayak, paddleboard, and more. It also features a pier and a beautiful viewpoint where you can relax.",
+    "imageAlt": "Laguna Bay lake and pier"
+  },
+  "testimonials": {
+    "trustedText": "Trusted by + 100 Families",
+    "button": "Hear From Our Residents"
+  },
+  "buildLiveGrow": {
+    "heading": "Build, Live, and Grow",
+    "body": "Whether you're looking for the perfect lot to build your dream home or a move-in-ready residence, we offer options tailored to your lifestyle and goals. Discover a community designed for growth, comfort, and long-term value. Contact us today to learn more, schedule a visit, and find the opportunity that's right for you.",
+    "imageAlt": "Laguna Bay masterplan"
+  },
+  "cta": {
+    "button": "Talk to an expert"
+  }
+}

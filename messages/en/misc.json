@@ -1,0 +1,81 @@
+{
+  "saved": {
+    "metadata": {
+      "title": "Saved Properties",
+      "description": "Your saved Mexico real estate developments in one place — compare, sort, and revisit certified listings you've hearted."
+    },
+    "heading": "Saved",
+    "searchPlaceholder": "Search by zone...",
+    "filter": "Filter",
+    "filtersComingSoon": "Filters coming soon.",
+    "sortOptions": {
+      "newest": "Newest first",
+      "priceLowHigh": "Price: low to high",
+      "priceHighLow": "Price: high to low"
+    },
+    "seeDetails": "See details",
+    "talkToExpert": "Talk to an expert",
+    "removeFromSaved": "Remove from saved",
+    "roomsLabel": "Rooms",
+    "bathsLabel": "Baths",
+    "sqmLabel": "sqm",
+    "noSaved": {
+      "heading": "No saved properties",
+      "body": "Browse the map and heart the properties you love.",
+      "exploreMap": "Explore Map"
+    }
+  },
+  "portalLogin": {
+    "metadata": {
+      "title": "Portal Login",
+      "description": "Sign in to your Property Dreamz buyer or developer portal."
+    },
+    "backToHome": "Back to home",
+    "toggle": {
+      "ariaLabel": "Select portal type",
+      "buyer": "Buyers & Clients",
+      "developer": "Developers"
+    },
+    "panels": {
+      "buyer": {
+        "tag": "Buyers & Investors",
+        "headline": "Your Mexico real estate journey, organized.",
+        "sub": "Track verified developments, message your advisor, and manage every document from one secure portal.",
+        "stat1Label": "Verified developments",
+        "stat2Label": "Title-searched listings"
+      },
+      "developer": {
+        "tag": "Developers & Builders",
+        "headline": "Reach certified buyers across North America.",
+        "sub": "Manage listings, review qualified leads, upload assets, and track performance — all in one dashboard.",
+        "stat1Label": "Monthly buyer visits",
+        "stat2Label": "Certified partner network"
+      }
+    },
+    "forms": {
+      "buyer": {
+        "eyebrow": "Client Portal",
+        "heading": "Welcome back",
+        "sub": "Access your saved properties, documents, and advisor messages.",
+        "cta": "Sign in to your account",
+        "footerText": "Don't have an account?",
+        "footerLabel": "Request buyer access"
+      },
+      "developer": {
+        "eyebrow": "Developer Portal",
+        "heading": "Welcome back",
+        "sub": "Manage your listings, review inquiries, and update project assets.",
+        "cta": "Sign in to your dashboard",
+        "footerText": "Want to list your development?",
+        "footerLabel": "Apply for partnership"
+      }
+    },
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@email.com",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot password?",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "errorMessage": "Incorrect email or password. Please try again."
+  }
+}

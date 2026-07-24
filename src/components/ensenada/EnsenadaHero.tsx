@@ -1,12 +1,15 @@
 // Ensenada Real Estate hero — Figma nodes 1313:17504-17522.
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function EnsenadaHero() {
+  const t = useTranslations("ensenada.hero");
+
   return (
     <section className="relative min-h-[min(60vh,485px)] w-full overflow-hidden bg-[#eaedf0]">
       <Image
         src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80"
-        alt="Modern luxury residence in Ensenada"
+        alt={t("imageAlt")}
         fill
         priority
         className="object-cover"
@@ -19,12 +22,11 @@ export function EnsenadaHero() {
             "Ensenada"/"Real Estate" glyphs visibly overlap at default tracking regardless of markup,
             line-height, or spacing — confirmed by swapping to a system font, which renders cleanly. */}
         <h1 className="font-ewangi text-[clamp(2rem,6vw,4.25rem)] leading-tight tracking-wider">
-          <span className="text-[#eaedf0]">Ensenada </span>
-          <span className="font-bold text-[#191919]">Real Estate</span>
+          <span className="text-[#eaedf0]">{t("titlePart1")} </span>
+          <span className="font-bold text-[#191919]">{t("titlePart2")}</span>
         </h1>
         <p className="mt-6 max-w-2xl font-ewangi text-[1.1rem] leading-relaxed text-white">
-          Explore Ensenada real estate — oceanfront condos, valley homes &amp; lots near Valle de
-          Guadalupe. Verified developers, bilingual support, 80 mi from San Diego.
+          {t("description")}
         </p>
       </div>
 
@@ -32,7 +34,7 @@ export function EnsenadaHero() {
       <div className="absolute bottom-6 right-6 z-10">
         <Image
           src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-02_p8szqi.png"
-          alt="CMRE Certified Mexico Real Estate"
+          alt={t("badgeAlt")}
           width={69}
           height={95}
           className="h-16 w-auto drop-shadow-md"

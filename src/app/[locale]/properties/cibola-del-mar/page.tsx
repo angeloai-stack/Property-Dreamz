@@ -1,7 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -15,38 +15,20 @@ const IMG_TOUR     = `${CLD}/cibola-del-mar/tour-bg`;
 const IMG_SITEPLAN = `${CLD}/cibola-del-mar/site-plan`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "120",  label: "Lots" },
-  { value: "25",   label: "Condos" },
-  { value: "5",    label: "Models" },
-  { value: "80",   label: "Houses" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Title reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type LotTab = "Lots" | "Condos" | "Houses";
-
-const lots = [
-  { id: "Lot A-1", area: "320 m²" },
-  { id: "Lot A-2", area: "290 m²" },
-  { id: "Lot A-3", area: "350 m²" },
-  { id: "Lot B-1", area: "410 m²" },
-  { id: "Lot B-2", area: "285 m²" },
-];
-
-const unitModels = [
-  { name: "Quintas II", area: "78 m²", bedrooms: 2, bathrooms: 2 },
-];
+type Stat = { value: string; label: string };
+type Lot = { id: string; area: string };
+type UnitModel = { name: string; area: string; bedrooms: number; bathrooms: number };
 
 export default function CibolaDelMarPage() {
-  const [lotTab, setLotTab] = useState<LotTab>("Lots");
-  const [activeLot, setActiveLot] = useState("Lot A-1");
+  const t = useTranslations("propertyCibolaDelMar");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const lotTabs = t.raw("lotExplorer.tabs") as string[];
+  const lots = t.raw("lotExplorer.lots") as Lot[];
+  const unitModels = t.raw("unitModels.models") as UnitModel[];
+
+  const [lotTab, setLotTab] = useState<string>(lotTabs[0]);
+  const [activeLot, setActiveLot] = useState(lots[0]?.id);
   const [modelIndex, setModelIndex] = useState(0);
 
   const currentModel = unitModels[modelIndex];
@@ -59,7 +41,7 @@ export default function CibolaDelMarPage() {
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Cíbola del Mar aerial coastal view"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -80,7 +62,7 @@ export default function CibolaDelMarPage() {
           <div>
             <Image
               src={IMG_LOGO}
-              alt="Cíbola del Mar"
+              alt={t("hero.logoAlt")}
               width={200}
               height={100}
               className="w-36 lg:w-44 animate-[fade-left_0.6s_ease-out_both]"
@@ -90,11 +72,11 @@ export default function CibolaDelMarPage() {
           {/* Title block — middle */}
           <div className="flex flex-col gap-5 lg:max-w-[55%]">
             <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
-              Build on the<br />Pacific Edge.
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p className="font-ewangi text-[1.1rem] leading-relaxed text-white/80">
-                Oceanfront residences in Ensenada,<br className="hidden sm:block" /> Baja California.
+                {t("hero.taglineLine1")}<br className="hidden sm:block" /> {t("hero.taglineLine2")}
               </p>
             </RevealOnScroll>
             <div className="mt-2 flex w-full gap-2">
@@ -116,14 +98,14 @@ export default function CibolaDelMarPage() {
             <div className="flex items-end justify-between">
               <Image
                 src={IMG_CMRE}
-                alt="CMRE Certified"
+                alt={t("hero.cmreAlt")}
                 width={204}
                 height={48}
                 className="w-44 animate-[fade-up_0.8s_ease-out_0.5s_both]"
               />
               <button className="hidden lg:flex h-20 w-20 flex-col items-center justify-center rounded-full bg-white/15 backdrop-blur-sm ring-1 ring-white/30 transition hover:bg-white/25">
-                <span className="font-ewangi text-[1.125rem] leading-none text-white">360°</span>
-                <span className="font-ewangi text-[0.8rem] text-white/70">view</span>
+                <span className="font-ewangi text-[1.125rem] leading-none text-white">{t("hero.tourButtonLabel")}</span>
+                <span className="font-ewangi text-[0.8rem] text-white/70">{t("hero.tourButtonSublabel")}</span>
               </button>
             </div>
 
@@ -154,30 +136,30 @@ export default function CibolaDelMarPage() {
             <div className="relative h-52 overflow-hidden rounded-3xl">
               <Image
                 src={IMG_MAP}
-                alt="Cíbola del Mar development map"
+                alt={t("lotExplorer.mapAlt")}
                 fill
                 className="object-cover object-center"
                 sizes="100vw"
               />
             </div>
-            <p className="font-ewangi text-[1.1rem] text-white">Explore the development</p>
+            <p className="font-ewangi text-[1.1rem] text-white">{t("lotExplorer.sectionLabel")}</p>
             <div className="flex gap-1.5">
-              {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+              {lotTabs.map((tabLabel) => (
                 <button
-                  key={t}
-                  onClick={() => setLotTab(t)}
+                  key={tabLabel}
+                  onClick={() => setLotTab(tabLabel)}
                   className={cn(
                     "rounded-sm px-4 py-1.5 font-ewangi text-[13px] font-medium transition",
-                    lotTab === t
+                    lotTab === tabLabel
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
                   )}
                 >
-                  {t}
+                  {tabLabel}
                 </button>
               ))}
             </div>
-            <p className="font-ewangi text-[13px] text-white/50">Select a lot to see details</p>
+            <p className="font-ewangi text-[13px] text-white/50">{t("lotExplorer.selectPrompt")}</p>
             <div className="flex flex-col overflow-hidden rounded-sm">
               {lots.map((lot, i) => (
                 <button
@@ -197,7 +179,7 @@ export default function CibolaDelMarPage() {
               ))}
             </div>
             <button className="w-full rounded-[5px] border border-white/40 py-3 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink">
-              View all lots
+              {t("lotExplorer.viewAllButton")}
             </button>
           </div>
 
@@ -207,7 +189,7 @@ export default function CibolaDelMarPage() {
               <div className="absolute inset-0">
                 <Image
                   src={IMG_MAP}
-                  alt="Cíbola del Mar development map"
+                  alt={t("lotExplorer.mapAlt")}
                   fill
                   className="object-cover object-center"
                   sizes="100vw"
@@ -217,24 +199,24 @@ export default function CibolaDelMarPage() {
                 className="relative z-10 flex w-[36%] shrink-0 flex-col p-7"
                 style={{ background: "rgba(23,23,23,0.9)", minHeight: "537px" }}
               >
-                <p className="font-ewangi text-[1.1rem] text-white mb-4">Explore the development</p>
+                <p className="font-ewangi text-[1.1rem] text-white mb-4">{t("lotExplorer.sectionLabel")}</p>
                 <div className="flex gap-1.5 mb-4">
-                  {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                  {lotTabs.map((tabLabel) => (
                     <button
-                      key={t}
-                      onClick={() => setLotTab(t)}
+                      key={tabLabel}
+                      onClick={() => setLotTab(tabLabel)}
                       className={cn(
                         "rounded-sm px-4 py-1.5 font-ewangi text-[13px] font-medium transition",
-                        lotTab === t
+                        lotTab === tabLabel
                           ? "bg-brand-teal text-brand-ink"
                           : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
                       )}
                     >
-                      {t}
+                      {tabLabel}
                     </button>
                   ))}
                 </div>
-                <p className="font-ewangi text-[13px] text-white/50 mb-3">Select a lot to see details</p>
+                <p className="font-ewangi text-[13px] text-white/50 mb-3">{t("lotExplorer.selectPrompt")}</p>
                 <div className="flex-1">
                   {lots.map((lot, i) => (
                     <button
@@ -254,7 +236,7 @@ export default function CibolaDelMarPage() {
                   ))}
                 </div>
                 <button className="mt-5 w-full rounded-[5px] border border-white/40 py-3 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink">
-                  View all lots
+                  {t("lotExplorer.viewAllButton")}
                 </button>
               </div>
               {selectedLot && (
@@ -262,10 +244,10 @@ export default function CibolaDelMarPage() {
                   <div className="min-w-[160px] rounded-[14px] bg-[#1e1e1e]/90 p-4 backdrop-blur-sm">
                     <p className="font-ewangi text-[1.1rem] text-white mb-1">{selectedLot.id}</p>
                     <p className="font-ewangi text-[12px] text-white/70">{selectedLot.area}</p>
-                    <p className="font-ewangi text-[12px] text-white/70">Ocean view</p>
+                    <p className="font-ewangi text-[12px] text-white/70">{t("lotExplorer.popoverOceanView")}</p>
                     <div className="mt-1.5 flex items-center gap-1.5">
                       <div className="h-2 w-2 rounded-full bg-brand-teal" />
-                      <span className="font-ewangi text-[12px] text-brand-teal">Available</span>
+                      <span className="font-ewangi text-[12px] text-brand-teal">{t("lotExplorer.popoverAvailable")}</span>
                     </div>
                   </div>
                 </div>
@@ -283,7 +265,7 @@ export default function CibolaDelMarPage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="flex flex-col gap-8 lg:w-[46%]">
               <div>
-                <p className="font-ewangi text-[1.125rem] text-white/50 mb-3">Unit models</p>
+                <p className="font-ewangi text-[1.125rem] text-white/50 mb-3">{t("unitModels.sectionLabel")}</p>
                 <div className="flex items-center gap-4">
                   <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3rem)] text-white">
                     {currentModel.name}
@@ -312,11 +294,11 @@ export default function CibolaDelMarPage() {
                 </div>
                 <div className="flex flex-col items-start gap-2">
                   <BedDouble className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[1.375rem] text-white">{currentModel.bedrooms} Bedrooms</span>
+                  <span className="font-ewangi text-[1.375rem] text-white">{currentModel.bedrooms} {t("unitModels.bedroomsLabel")}</span>
                 </div>
                 <div className="flex flex-col items-start gap-2">
                   <Bath className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[1.375rem] text-white">{currentModel.bathrooms} Bathrooms</span>
+                  <span className="font-ewangi text-[1.375rem] text-white">{currentModel.bathrooms} {t("unitModels.bathroomsLabel")}</span>
                 </div>
               </div>
             </div>
@@ -327,7 +309,7 @@ export default function CibolaDelMarPage() {
               <div className="relative overflow-hidden rounded-[20px]" style={{ aspectRatio: "980/646" }}>
                 <Image
                   src={IMG_MODELS}
-                  alt="Cíbola del Mar Quintas II aerial view"
+                  alt={t("unitModels.imageAltTemplate", { name: currentModel.name })}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 54vw"
@@ -345,7 +327,7 @@ export default function CibolaDelMarPage() {
           <div className="relative overflow-hidden rounded-[20px]" style={{ minHeight: "460px" }}>
             <Image
               src={IMG_TOUR}
-              alt="Cíbola del Mar community view"
+              alt={t("tour.imageAlt")}
               fill
               className="object-cover"
               sizes="100vw"
@@ -355,7 +337,7 @@ export default function CibolaDelMarPage() {
               style={{ background: "linear-gradient(to left, rgba(0,0,0,0.88) 55%, transparent 100%)" }}
             >
               <h2 className="font-ewangi text-[clamp(2rem,3vw,3rem)] leading-tight text-white text-right mb-8">
-                Step inside your<br />future home<br />by the sea.
+                {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />{t("tour.headingLine3")}
               </h2>
               <a
                 href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
@@ -363,7 +345,7 @@ export default function CibolaDelMarPage() {
                 rel="noopener noreferrer"
                 className="rounded-[8px] bg-[#1e1e1e] px-10 py-4 font-ewangi text-[2rem] text-brand-teal transition hover:bg-[#2a2a2a]"
               >
-                360° tour
+                {t("tour.button")}
               </a>
             </div>
           </div>
@@ -377,13 +359,13 @@ export default function CibolaDelMarPage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[46%]">
               <h2 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-tight text-brand-teal mb-8">
-                Oceanfront<br />View Lots
+                {t("oceanfrontLots.headingLine1")}<br />{t("oceanfrontLots.headingLine2")}
               </h2>
               <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80">
-                Discover premium oceanfront lots at Cíbola del Mar — one of Ensenada&apos;s most exclusive coastal communities. Every lot faces the Pacific Ocean directly, offering sweeping panoramic views of the Coronado Islands and Baja&apos;s dramatic coastline.
+                {t("oceanfrontLots.body1")}
               </p>
               <p className="mt-6 font-ewangi text-[1.375rem] leading-relaxed text-white/80">
-                With lot sizes ranging from 280 to 450 m², each parcel gives you the freedom to design and build the coastal home you&apos;ve always envisioned. Surrounded by natural beauty and certified infrastructure, this is where your investment and lifestyle meet.
+                {t("oceanfrontLots.body2")}
               </p>
             </div>
           </RevealOnScroll>
@@ -393,7 +375,7 @@ export default function CibolaDelMarPage() {
               <div className="relative overflow-hidden rounded-[20px]" style={{ aspectRatio: "980/646" }}>
                 <Image
                   src={IMG_SITEPLAN}
-                  alt="Cíbola del Mar site plan"
+                  alt={t("oceanfrontLots.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 54vw"
@@ -410,7 +392,7 @@ export default function CibolaDelMarPage() {
         <RevealOnScroll direction="center">
           <div className="mx-auto max-w-[945px] rounded-[10px] bg-white px-10 py-6 text-center">
             <p className="font-ewangi text-[clamp(1.25rem,2vw,2rem)] text-brand-ink">
-              Certified land. Verified title. Your Pacific home starts here.
+              {t("ctaBanner.text")}
             </p>
           </div>
         </RevealOnScroll>

@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "title": "Guía del Comprador",
+    "description": "Una guía completa para comprar una propiedad en México: fideicomiso, estudio de título, financiamiento, costos de cierre y desarrolladores certificados. Escrita para compradores internacionales.",
+    "ogTitle": "Guía del Comprador — Cómo Comprar una Propiedad en México",
+    "ogDescription": "Guía paso a paso para compradores internacionales de bienes raíces en México. Fideicomiso, estudio de título, costos de cierre y desarrolladores certificados, explicados con claridad."
+  },
+  "hero": {
+    "badge": "Guía del comprador",
+    "heading": "Tu camino hacia una propiedad en México, hecho simple.",
+    "subheading": "Ayudamos a compradores internacionales a explorar propiedades verificadas con confianza, claridad y acompañamiento completo en cada paso del proceso.",
+    "checklist": [
+      "100% de desarrollos verificados",
+      "Información transparente",
+      "Asesoría experta en tu idioma"
+    ],
+    "ctaExplore": "Explorar propiedades",
+    "ctaHowItWorks": "Cómo funciona",
+    "heroImageAlt": "Desarrollo residencial moderno en México",
+    "sidebar": {
+      "heading": "¿Por qué comprar en México?",
+      "benefits": [
+        { "title": "Estilo de vida inigualable", "body": "Disfruta de playas hermosas, clima excelente y una cultura vibrante." },
+        { "title": "Alto potencial de inversión", "body": "Gran demanda en los principales destinos costeros y urbanos." },
+        { "title": "Oportunidades accesibles", "body": "Opciones de lujo y de gran valor que se ajustan a tus metas." },
+        { "title": "Fácil acceso desde EE. UU.", "body": "Cercano, conveniente y pensado para el comprador." }
+      ]
+    }
+  },
+  "howWeHelp": {
+    "badge": "Cómo ayudamos a los compradores",
+    "heading": "Una mejor forma de comprar en México",
+    "subheading": "Creamos una plataforma y un proceso diseñados específicamente para compradores internacionales.",
+    "steps": [
+      { "title": "Descubre", "body": "Explora propiedades verificadas que se ajustan a tu estilo de vida y tus metas." },
+      { "title": "Compara", "body": "Compara fácilmente desarrollos, ubicaciones, precios y amenidades." },
+      { "title": "Resuelve tus dudas", "body": "Nuestro equipo y la asesora con IA (Dreamzy) te dan respuestas claras en tu idioma." },
+      { "title": "Conecta", "body": "Habla directamente con desarrolladores de confianza o agenda una llamada con nuestros asesores." },
+      { "title": "Compra con confianza", "body": "Te acompañamos desde la debida diligencia hasta el cierre y más allá." }
+    ]
+  },
+  "platformFeatures": {
+    "badge": "Dentro de la plataforma",
+    "heading": "Herramientas poderosas. Experiencia premium.",
+    "subheading": "Todo lo que necesitas para explorar, evaluar y conectar, en una sola plataforma integral.",
+    "features": [
+      { "title": "Solo desarrollos certificados", "body": "Todas las publicaciones están verificadas por legitimidad, situación legal y calidad." },
+      { "title": "Recorridos 360º inmersivos", "body": "Recorre cada espacio con una experiencia 360º fluida e interactiva." },
+      { "title": "Fotografía y video de alta calidad", "body": "Galerías y videos impactantes que muestran cada detalle." },
+      { "title": "Búsqueda interactiva por ubicación", "body": "Explora por mapa, colonia o estilo de vida con información de ubicación en tiempo real." },
+      { "title": "Detalles del desarrollo y amenidades", "body": "Consulta planos, precios, amenidades e información de la comunidad con claridad." },
+      { "title": "Contacto directo y asesoría", "body": "Conecta directamente con asesores o desarrolladores para una orientación rápida y personalizada." }
+    ],
+    "showcaseImageAlt": "Vista aérea de un desarrollo residencial certificado"
+  },
+  "topDestinations": {
+    "badge": "Explora los mejores destinos",
+    "heading": "Encuentra el lugar perfecto para hacerlo tuyo.",
+    "priceFrom": "Desde {price}",
+    "viewDevelopment": "Ver desarrollo",
+    "cta": {
+      "heading": "¿Listo para comenzar tu camino?",
+      "body": "Explora propiedades certificadas o habla con un asesor bilingüe que te guiará en cada paso del proceso.",
+      "ctaExplore": "Explorar propiedades",
+      "ctaAdvisor": "Habla con un asesor",
+      "mascotAlt": "Dreamzy, la asesora de IA de Property Dreamz"
+    }
+  }
+}

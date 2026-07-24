@@ -1,18 +1,26 @@
 // Thin layout wrapper whose sole purpose is exporting metadata for this "use client" route.
 // Title/description from the SEO content document (source of truth as of Jul 2026).
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: { absolute: "Encanto del Valle – Homes & Residential Lots in the Ensenada Valley, Baja CA" },
-  description:
-    "Encanto del Valle is a residential development in the scenic valley region of Ensenada. Explore single-family homes and lots in one of Baja California's most charming communities.",
-  openGraph: {
-    title: "Encanto del Valle – Homes & Residential Lots in the Ensenada Valley, Baja CA",
-    description:
-      "Encanto del Valle is a residential development in the scenic valley region of Ensenada. Explore single-family homes and lots in one of Baja California's most charming communities.",
-    url: "https://propertydreamz.com/properties/encanto-del-valle",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "propertyEncantoDelValle.metadata" });
+
+  return {
+    title: { absolute: t("title") },
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: "https://propertydreamz.com/properties/encanto-del-valle",
+    },
+  };
+}
 
 export default function EncantoDelValleLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

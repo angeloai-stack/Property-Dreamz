@@ -1,17 +1,22 @@
 // Thin layout wrapper whose sole purpose is exporting metadata for this "use client" route.
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Ensenada Real Estate",
-  description:
-    "Homes for sale in Ensenada, Mexico — oceanfront condos, valley homes near Valle de Guadalupe, and lots to build, 80 miles from San Diego. Every listing title-searched and developer-verified.",
-  openGraph: {
-    title: "Ensenada Real Estate — Property Dreamz",
-    description:
-      "Certified developments in Ensenada. Every listing title-searched and developer-verified, 80 miles from San Diego.",
-    url: "https://propertydreamz.com/ensenada-real-estate",
-  },
-};
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ensenada.metadata" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      url: "https://propertydreamz.com/ensenada-real-estate",
+    },
+  };
+}
 
 export default function EnsenadaRealEstateLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

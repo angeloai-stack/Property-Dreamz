@@ -1,8 +1,8 @@
 "use client";
 // Pacífica property page — tourist corridor lots in Rosarito with a stats banner strip and 360° interior tour.
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -15,34 +15,19 @@ const IMG_INTERIOR = `${CLD}/pacifica/360-interior`;
 const IMG_AERIAL   = `${CLD}/pacifica/aerial`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "120",  label: "Lots" },
-  { value: "25",   label: "Condos" },
-  { value: "5",    label: "Models" },
-  { value: "80",   label: "Houses" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type LotTab = "Lots" | "Condos" | "Houses";
-
-const lots = [
-  { id: "Lot 12", size: "300 m²" },
-  { id: "Lot 13", size: "300 m²" },
-  { id: "Lot 14", size: "320 m²" },
-  { id: "Lot 15", size: "315 m²" },
-  { id: "Lot 16", size: "305 m²" },
-];
+type Stat = { value: string; label: string };
+type Lot = { id: string; size: string };
 
 export default function PacificaPage() {
-  const [activeTab, setActiveTab] = useState<LotTab>("Lots");
-  const [selectedLot, setSelectedLot] = useState("Lot 12");
+  const t = useTranslations("propertyPacifica");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const lots = t.raw("lots") as Lot[];
+  const tabs = t.raw("explore.tabs") as { lots: string; condos: string; houses: string };
+  const tabOptions = [tabs.lots, tabs.condos, tabs.houses];
+
+  const [activeTab, setActiveTab] = useState<string>(tabs.lots);
+  const [selectedLot, setSelectedLot] = useState(lots[0]?.id);
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -51,7 +36,7 @@ export default function PacificaPage() {
       <section className="relative overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Pacifica development aerial view"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -69,7 +54,7 @@ export default function PacificaPage() {
             <div>
               <Image
                 src={IMG_LOGO}
-                alt="Pacifica"
+                alt={t("hero.logoAlt")}
                 width={447}
                 height={64}
                 className="h-12 w-auto lg:h-16"
@@ -83,14 +68,14 @@ export default function PacificaPage() {
               className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-white animate-[fade-left_0.9s_ease-out_both]"
               style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
             >
-              Live the extraordinary
+              {t("hero.headline")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p
                 className="font-ewangi text-[1.1rem] leading-relaxed text-white/80"
                 style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
               >
-                Invest in the tourist corridor of Baja California — the development with the highest appreciation, where every day is a space to enjoy with your family.
+                {t("hero.subheadline")}
               </p>
             </RevealOnScroll>
             <div className="mt-0 flex w-full gap-2">
@@ -108,7 +93,7 @@ export default function PacificaPage() {
           <div className="mt-6 flex items-center justify-between">
             <Image
               src={IMG_CMRE}
-              alt="CMRE Certified"
+              alt={t("hero.cmreAlt")}
               width={204}
               height={48}
               className="w-40 lg:w-48"
@@ -116,8 +101,8 @@ export default function PacificaPage() {
             <div className="hidden flex-col items-center justify-center rounded-full border-2 border-white/50 bg-white/10 backdrop-blur-sm lg:flex"
               style={{ width: "82px", height: "82px" }}
             >
-              <span className="font-ewangi text-[1.1rem] text-white">360°</span>
-              <span className="font-ewangi text-[0.75rem] text-white/70">view</span>
+              <span className="font-ewangi text-[1.1rem] text-white">{t("hero.tourBadgeValue")}</span>
+              <span className="font-ewangi text-[0.75rem] text-white/70">{t("hero.tourBadgeLabel")}</span>
             </div>
           </div>
           </RevealOnScroll>
@@ -142,7 +127,7 @@ export default function PacificaPage() {
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="left">
           <p className="mb-6 font-ewangi text-[1.25rem] text-white">
-            Explore the development
+            {t("explore.heading")}
           </p>
         </RevealOnScroll>
 
@@ -153,30 +138,30 @@ export default function PacificaPage() {
             <div className="relative h-52 overflow-hidden rounded-3xl">
               <Image
                 src={IMG_MAP}
-                alt="Pacifica development map"
+                alt={t("explore.mapImageAlt")}
                 fill
                 className="object-cover object-center"
                 sizes="100vw"
               />
             </div>
             <div className="flex gap-2">
-              {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+              {tabOptions.map((tab) => (
                 <button
-                  key={t}
+                  key={tab}
                   type="button"
-                  onClick={() => setActiveTab(t)}
+                  onClick={() => setActiveTab(tab)}
                   className={cn(
                     "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
-                    t === activeTab
+                    tab === activeTab
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
                   )}
                 >
-                  {t}
+                  {tab}
                 </button>
               ))}
             </div>
-            <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+            <p className="font-ewangi text-[0.875rem] text-white/60">{t("explore.selectPrompt")}</p>
             <div className="flex flex-col overflow-hidden rounded-1">
               {lots.map((lot) => (
                 <button
@@ -201,7 +186,7 @@ export default function PacificaPage() {
               type="button"
               className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
             >
-              View all lots
+              {t("explore.viewAllButton")}
             </button>
           </div>
 
@@ -209,7 +194,7 @@ export default function PacificaPage() {
           <div className="relative hidden overflow-hidden rounded-6.75 min-h-134.25 lg:block">
             <Image
               src={IMG_MAP}
-              alt="Pacifica development map"
+              alt={t("explore.mapImageAlt")}
               fill
               className="object-cover object-center"
               sizes="100vw"
@@ -219,23 +204,23 @@ export default function PacificaPage() {
               style={{ background: "rgba(30,30,30,0.85)", backdropFilter: "blur(2px)" }}
             >
               <div className="flex gap-2">
-                {(["Lots", "Condos", "Houses"] as LotTab[]).map((t) => (
+                {tabOptions.map((tab) => (
                   <button
-                    key={t}
+                    key={tab}
                     type="button"
-                    onClick={() => setActiveTab(t)}
+                    onClick={() => setActiveTab(tab)}
                     className={cn(
                       "rounded-1 px-4 py-1.5 font-ewangi text-[0.9rem] transition",
-                      t === activeTab
+                      tab === activeTab
                         ? "bg-brand-teal text-brand-ink"
                         : "bg-[#eaedf0] text-brand-ink hover:bg-brand-teal/70"
                     )}
                   >
-                    {t}
+                    {tab}
                   </button>
                 ))}
               </div>
-              <p className="font-ewangi text-[0.875rem] text-white/60">Select a lot to see details</p>
+              <p className="font-ewangi text-[0.875rem] text-white/60">{t("explore.selectPrompt")}</p>
               <div className="flex flex-col overflow-hidden rounded-1">
                 {lots.map((lot) => (
                   <button
@@ -261,7 +246,7 @@ export default function PacificaPage() {
                   type="button"
                   className="rounded-1.25 border border-white px-6 py-2.5 font-ewangi text-[1.1rem] text-white transition hover:bg-white/10"
                 >
-                  View all lots
+                  {t("explore.viewAllButton")}
                 </button>
               </div>
             </div>
@@ -276,7 +261,7 @@ export default function PacificaPage() {
         <div className="relative overflow-hidden rounded-6.5 aspect-1265/460">
           <Image
             src={IMG_INTERIOR}
-            alt="Pacifica interior living room"
+            alt={t("tour.imageAlt")}
             fill
             className="object-cover"
             sizes="100vw"
@@ -286,17 +271,17 @@ export default function PacificaPage() {
             style={{ background: "linear-gradient(to left, rgba(30,30,30,0.92) 55%, transparent 100%)" }}
           >
             <h2 className="text-right font-ewangi text-[clamp(1.5rem,3vw,3.25rem)] leading-tight text-white">
-              {"Let's take a "}<br />look from your<br />
-              <span className="text-[#1e1e1e]" style={{ WebkitTextStroke: "1.5px white" }}>next home.</span>
+              {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />
+              <span className="text-[#1e1e1e]" style={{ WebkitTextStroke: "1.5px white" }}>{t("tour.headingHighlight")}</span>
             </h2>
-            <Link
+            <a
               href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-2 bg-[#1e1e1e] px-10 py-4 font-ewangi text-[2rem] text-brand-teal transition hover:bg-[#2e2e2e]"
             >
-              360 tour
-            </Link>
+              {t("tour.button")}
+            </a>
           </div>
         </div>
         </RevealOnScroll>
@@ -309,10 +294,10 @@ export default function PacificaPage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1">
               <h2 className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-brand-teal">
-                Your dreams<br />start here
+                {t("dreamsStart.headingLine1")}<br />{t("dreamsStart.headingLine2")}
               </h2>
               <p className="font-ewangi text-[1.375rem] leading-relaxed text-brand-ink/80 lg:max-w-130">
-                Acquire your lot and choose one of our ready-to-build models. Whether a condo or residential lots in Villas y Privadas — Pacífica is the place to live and grow with guaranteed appreciation.
+                {t("dreamsStart.body")}
               </p>
             </div>
           </RevealOnScroll>
@@ -322,7 +307,7 @@ export default function PacificaPage() {
               <div className="relative overflow-hidden rounded-3.75 aspect-636/627">
                 <Image
                   src={IMG_AERIAL}
-                  alt="Pacifica aerial development view"
+                  alt={t("dreamsStart.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 43vw"
@@ -339,7 +324,7 @@ export default function PacificaPage() {
         <RevealOnScroll direction="center">
           <div className="mx-auto flex max-w-5xl items-center justify-center rounded-2.5 bg-white px-8 py-6 shadow-[0_2px_32px_rgba(0,0,0,0.1)] lg:py-8">
             <p className="text-center font-ewangi text-[clamp(1.5rem,3.5vw,3rem)] text-brand-ink">
-              We certify so you can build your future
+              {t("ctaBanner.text")}
             </p>
           </div>
         </RevealOnScroll>

@@ -1,8 +1,9 @@
 "use client";
 // Interactive map page — light theme per Figma: map + filter overlay (left), listing cards (right), teal CTA band.
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { ExploreListingCard } from "@/components/explore-map/ExploreListingCard";
 import { MapPanel } from "@/components/explore-map/MapPanel";
@@ -15,9 +16,12 @@ import { cn } from "@/lib/utils";
 
 type MobileView = "map" | "list";
 
+// Quick-filter VALUES stay the stable English literals compared against listing tags/price;
+// only the rendered LABEL is resolved via the exploreMap.quickFilters translation lookup.
 const QUICK_FILTERS = ["Oceanfront", "Lots", "Homes", "Under $100k"] as const;
 
 export default function ExploreMapPage() {
+  const t = useTranslations("exploreMap");
   const [activePin, setActivePin] = useState<number | null>(null);
   const [typeFilter, setTypeFilter] = useState("All");
   const [stateFilter, setStateFilter] = useState("All");
@@ -98,13 +102,13 @@ export default function ExploreMapPage() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xs space-y-2 sm:max-w-sm">
             <h1 className="font-ewangi text-[clamp(2rem,4vw,3rem)] leading-none text-brand-pine animate-[fade-left_0.8s_ease-out_both]">
-              Explore Map
+              {t("header.title")}
             </h1>
             <p className="font-ewangi text-[1.15rem] font-semibold leading-snug text-brand-ink">
-              Explore verified developments in Mexico
+              {t("header.subtitle")}
             </p>
             <p className="font-ewangi text-[0.95rem] font-light text-brand-ink/60">
-              Move the map to discover properties in your ideal location.
+              {t("header.description")}
             </p>
           </div>
 
@@ -115,7 +119,7 @@ export default function ExploreMapPage() {
                   type="text"
                   value={searchVal}
                   onChange={(e) => setSearchVal(e.target.value)}
-                  placeholder="Where would you like to go?"
+                  placeholder={t("header.searchPlaceholder")}
                   className="min-w-0 flex-1 bg-transparent font-ewangi text-[1rem] text-brand-ink outline-none placeholder:text-brand-ink/40"
                 />
                 <Search className="h-5 w-5 shrink-0 text-brand-teal" strokeWidth={2} />
@@ -127,7 +131,7 @@ export default function ExploreMapPage() {
                 aria-expanded={filtersOpen}
                 className="flex items-center gap-2 font-ewangi text-[1.3rem] text-brand-pine transition hover:text-brand-teal"
               >
-                <span>Filter</span>
+                <span>{t("header.filterButton")}</span>
                 {filtersOpen ? (
                   <X className="h-6 w-6" strokeWidth={1.5} />
                 ) : (
@@ -150,7 +154,7 @@ export default function ExploreMapPage() {
                       : "bg-brand-teal text-brand-ink hover:bg-brand-teal-dark"
                   )}
                 >
-                  {tag}
+                  {t(`quickFilters.${tag}`)}
                 </button>
               ))}
             </div>
@@ -198,7 +202,7 @@ export default function ExploreMapPage() {
                     : "border border-brand-ink/15 text-brand-ink/50 hover:text-brand-pine"
                 )}
               >
-                {view === "map" ? "Map" : `List (${filtered.length})`}
+                {view === "map" ? t("mobileToggle.map") : t("mobileToggle.list", { count: filtered.length })}
               </button>
             ))}
           </div>
@@ -233,8 +237,7 @@ export default function ExploreMapPage() {
             <div className="pointer-events-none absolute bottom-3 left-3 z-10 flex max-w-50 items-center gap-2 rounded-[10px] bg-white px-3 py-2 shadow-[0_1px_6px_rgba(0,0,0,0.22)] sm:left-4 sm:bottom-4">
               <span className="h-3.5 w-3.5 shrink-0 rounded-full bg-brand-emerald" />
               <span className="font-ewangi text-[9px] leading-tight text-brand-emerald">
-                Each pin marks a verified property. Shaded area is approximate — not the official
-                property boundary.
+                {t("legend")}
               </span>
             </div>
           </div>
@@ -258,7 +261,7 @@ export default function ExploreMapPage() {
               ))
             ) : (
               <div className="rounded-[22px] border border-brand-ink/10 bg-[#eaedf0]/50 px-6 py-16 text-center">
-                <p className="font-ewangi text-[2rem] text-brand-pine/60">No results</p>
+                <p className="font-ewangi text-[2rem] text-brand-pine/60">{t("noResults.heading")}</p>
                 <button
                   type="button"
                   className="mt-4 rounded-full border border-brand-pine/30 px-6 py-2 font-ewangi text-sm text-brand-pine/70 transition hover:bg-brand-pine/10"
@@ -273,7 +276,7 @@ export default function ExploreMapPage() {
                     setQuickFilters(new Set());
                   }}
                 >
-                  Clear filters
+                  {t("noResults.clear")}
                 </button>
               </div>
             )}
@@ -291,23 +294,23 @@ export default function ExploreMapPage() {
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:justify-between">
           <RevealOnScroll direction="left" className="max-w-lg space-y-5">
             <h2 className="font-ewangi text-[clamp(1.75rem,4vw,3rem)] leading-tight text-[#eaedf0]">
-              <span className="font-light italic">Didn&apos;t find your</span> dream&apos;s property?
+              <span className="font-light italic">{t("cta.headlinePrefix")}</span> {t("cta.headlineSuffix")}
             </h2>
             <p className="font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] font-bold text-[#eaedf0]">
-              Speak with us!
+              {t("cta.subheadline")}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-ewangi text-[1.05rem] font-bold text-brand-ink transition hover:bg-white/90"
             >
-              Talk to an advisor
+              {t("cta.button")}
             </Link>
           </RevealOnScroll>
 
           <RevealOnScroll direction="right" delay={150} className="relative h-56 w-56 shrink-0 sm:h-72 sm:w-72 lg:h-80 lg:w-80">
             <Image
               src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Modern_House_White.H03.2k_sjznmv.png"
-              alt="Modern house illustration"
+              alt={t("cta.houseAlt")}
               fill
               sizes="(max-width: 1024px) 288px, 320px"
               className="object-contain"

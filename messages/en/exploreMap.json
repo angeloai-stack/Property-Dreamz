@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "Explore the Map",
+    "description": "Interactively explore certified real estate developments across Mexico. Filter by location, price, bedrooms, and verification status.",
+    "ogTitle": "Explore the Map — Property Dreamz",
+    "ogDescription": "Find certified developments across Mexico on an interactive map. Filter by price, location, and type."
+  },
+  "header": {
+    "title": "Explore Map",
+    "subtitle": "Explore verified developments in Mexico",
+    "description": "Move the map to discover properties in your ideal location.",
+    "searchPlaceholder": "Where would you like to go?",
+    "filterButton": "Filter"
+  },
+  "quickFilters": {
+    "Oceanfront": "Oceanfront",
+    "Lots": "Lots",
+    "Homes": "Homes",
+    "Under $100k": "Under $100k"
+  },
+  "mobileToggle": {
+    "map": "Map",
+    "list": "List ({count})"
+  },
+  "legend": "Each pin marks a verified property. Shaded area is approximate — not the official property boundary.",
+  "noResults": {
+    "heading": "No results",
+    "clear": "Clear filters"
+  },
+  "cta": {
+    "headlinePrefix": "Didn't find your",
+    "headlineSuffix": "dream's property?",
+    "subheadline": "Speak with us!",
+    "button": "Talk to an advisor",
+    "houseAlt": "Modern house illustration"
+  },
+  "filters": {
+    "searchPlaceholder": "City, area, or development...",
+    "searchAriaLabel": "Search projects",
+    "resultCount": "{count, plural, one {# project} other {# projects}}",
+    "stateLabel": "State",
+    "typeCurrencyLabel": "Type & Currency",
+    "verifiedOnly": "Verified only",
+    "sortAriaLabel": "Sort projects",
+    "sort": {
+      "relevance": "Relevance",
+      "priceAsc": "Price: low → high",
+      "priceDesc": "Price: high → low"
+    }
+  },
+  "types": {
+    "All": "All",
+    "House": "House",
+    "Condo": "Condo",
+    "Land": "Land"
+  },
+  "listingCard": {
+    "financingAvailable": "Financing available",
+    "sqm": "sqm",
+    "rooms": "Rooms",
+    "baths": "Baths",
+    "from": "From",
+    "cta": "Talk to an advisor",
+    "save": "Save property",
+    "removeSaved": "Remove from saved"
+  },
+  "mapFiltersCard": {
+    "showOnly": "Show only:",
+    "financingAvailable": "Financing available",
+    "searchThisArea": "Search this area"
+  },
+  "mapPanel": {
+    "bd": "bd",
+    "ba": "ba",
+    "cta": "Talk to an advisor",
+    "save": "Save property",
+    "removeSaved": "Remove from saved",
+    "markerAriaLabel": "View listing, {price}"
+  },
+  "constructionStatusLabels": {
+    "Pre-sale": "Pre-sale",
+    "Under construction": "Under construction",
+    "Ready to move in": "Ready to move in"
+  },
+  "stateLabels": {
+    "All": "All states",
+    "Baja California": "Baja California",
+    "Baja California Sur": "Baja California Sur",
+    "Nayarit": "Nayarit",
+    "Quintana Roo": "Quintana Roo",
+    "Jalisco": "Jalisco",
+    "Yucatán": "Yucatán",
+    "Oaxaca": "Oaxaca",
+    "Sonora": "Sonora"
+  }
+}

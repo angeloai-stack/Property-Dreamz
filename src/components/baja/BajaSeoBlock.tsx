@@ -1,6 +1,7 @@
 // SEO text block with trust stats — Figma: "Section / Baja California SEO Text".
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { RevealOnScroll } from "@/components/ui";
 
 // Figma marks these phrases bold + underlined in teal — the design's convention for an inline link.
@@ -12,13 +13,14 @@ function SeoLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
-const stats = [
-  { value: "47+", label: "Certified Developments" },
-  { value: "3", label: "Cities Covered" },
-  { value: "100%", label: "Title Verified" },
-] as const;
+function Bold({ children }: { children: React.ReactNode }) {
+  return <span className="font-bold text-brand-pine">{children}</span>;
+}
 
 export function BajaSeoBlock() {
+  const t = useTranslations("home.bajaSeoBlock");
+  const stats = t.raw("stats") as { value: string; label: string }[];
+
   return (
     <section className="w-full bg-[#f4f8f6] py-14 md:py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 md:px-12 lg:grid-cols-[1fr_480px] lg:items-center lg:gap-16">
@@ -27,31 +29,24 @@ export function BajaSeoBlock() {
             <span className="mt-1.5 w-1.5 shrink-0 self-stretch rounded-[2px] bg-brand-teal" aria-hidden="true" />
             <div className="space-y-4">
               <p className="font-ewangi text-[11px] font-bold uppercase tracking-[0.14em] text-brand-teal">
-                Certified developments · Baja California, Mexico
+                {t("eyebrow")}
               </p>
               <h2 className="font-ewangi text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight text-brand-pine">
-                Baja California Real Estate
+                {t("heading")}
               </h2>
               <p className="max-w-xl font-ewangi text-[15px] leading-[1.75] text-[#3a4a44]">
-                Baja California is one of the most sought-after destinations for Americans and Canadians{" "}
-                <span className="font-bold text-brand-pine">buying property in Mexico</span>. With its
-                stunning Pacific coastline, thriving border economy, and proximity to San Diego, cities
-                like <SeoLink href="/tijuana-real-estate">Tijuana</SeoLink>,{" "}
-                <SeoLink href="/ensenada-real-estate">Ensenada</SeoLink>, and{" "}
-                <SeoLink href="/rosarito-real-estate">Rosarito</SeoLink> offer exceptional value for
-                buyers at every budget. Whether you are searching for a{" "}
-                <span className="font-bold text-brand-pine">beachfront condo</span>, a gated community
-                home, or a vacation retreat,{" "}
-                <SeoLink href="/baja-california-real-estate">Baja California real estate</SeoLink>{" "}
-                delivers world-class lifestyle options backed by a strong legal framework for foreign
-                ownership. All developments listed on{" "}
-                <span className="font-bold text-brand-pine">Property Dreamz</span> are{" "}
-                <SeoLink href="/about">certified</SeoLink> — every title has been searched, every
-                developer background-checked, and every{" "}
-                <span className="font-bold text-brand-pine">HOA reserve audited</span> before a single
-                property goes live on our platform. Investing in{" "}
-                <SeoLink href="/baja-california-real-estate">Baja California real estate</SeoLink> has
-                never been more transparent or secure.
+                {t.rich("body", {
+                  b1: (chunks) => <Bold>{chunks}</Bold>,
+                  b2: (chunks) => <Bold>{chunks}</Bold>,
+                  b3: (chunks) => <Bold>{chunks}</Bold>,
+                  b4: (chunks) => <Bold>{chunks}</Bold>,
+                  tijuana: (chunks) => <SeoLink href="/tijuana-real-estate">{chunks}</SeoLink>,
+                  ensenada: (chunks) => <SeoLink href="/ensenada-real-estate">{chunks}</SeoLink>,
+                  rosarito: (chunks) => <SeoLink href="/rosarito-real-estate">{chunks}</SeoLink>,
+                  baja: (chunks) => <SeoLink href="/baja-california-real-estate">{chunks}</SeoLink>,
+                  baja2: (chunks) => <SeoLink href="/baja-california-real-estate">{chunks}</SeoLink>,
+                  about: (chunks) => <SeoLink href="/about">{chunks}</SeoLink>,
+                })}
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">
@@ -76,8 +71,8 @@ export function BajaSeoBlock() {
               className="object-cover"
             />
             <div className="absolute bottom-4 left-4 rounded-2xl bg-white/95 px-5 py-3 shadow-subtle backdrop-blur-sm">
-              <p className="font-ewangi text-[14px] font-bold text-brand-pine">Pacific Coastline</p>
-              <p className="font-ewangi text-[12px] text-brand-ink/50">Baja California, Mexico</p>
+              <p className="font-ewangi text-[14px] font-bold text-brand-pine">{t("imageCaptionTitle")}</p>
+              <p className="font-ewangi text-[12px] text-brand-ink/50">{t("imageCaptionSubtitle")}</p>
             </div>
           </div>
         </RevealOnScroll>

@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Loma Serena – Casas y Lotes con Vista al Mar en las Colinas de Rosarito, Baja California",
+    "description": "Loma Serena es una comunidad residencial en las colinas de Rosarito con vistas impresionantes al Océano Pacífico. Descubre casas y lotes en uno de los entornos costeros más bellos de Baja California."
+  },
+  "hero": {
+    "logoAlt": "Loma Serena",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Disfruta la vida en Baja",
+    "headlineLine2": "junto al mar",
+    "subheadline": "Comunidad privada en Rosarito con casas modernas y vista al mar, además de un costo de vida más accesible que en Estados Unidos."
+  },
+  "stats": [
+    { "value": "98", "label": "Casas" },
+    { "value": "6", "label": "Modelos" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Revisión legal", "Cumplimiento normativo", "Infraestructura validada"],
+  "divider": {
+    "text": "Vive donde otros vacacionan"
+  },
+  "models": {
+    "heading": "Explora nuestros 4 modelos",
+    "modelName": "Cala",
+    "modelSize": "300 m²",
+    "modelImageAlt": "Render de la casa modelo Cala",
+    "features": [
+      "2 recámaras",
+      "2 baños",
+      "2 espacios de estacionamiento",
+      "Recámara principal con vestidor",
+      "Amplia sala de estar",
+      "Comedor formal",
+      "Cocina totalmente equipada con alacena amplia",
+      "Rooftop con vista al mar (569 pies²)",
+      "Escalera exterior hacia el rooftop",
+      "Estacionamiento para 2 vehículos",
+      "Patio trasero interior/exterior"
+    ]
+  },
+  "amenities": {
+    "heading": "Amenidades",
+    "imageAlt": "Amenidades de Loma Serena",
+    "items": ["Alberca infinity", "Restaurante gourmet", "Gimnasio totalmente equipado", "Mini mercado"]
+  },
+  "cta": {
+    "imageAlt": "Vista de calle en Loma Serena",
+    "headingLine1": "Una Colección Limitada.",
+    "headingLine2": "Un Estilo de Vida Extraordinario.",
+    "body": "Diseñada para quienes buscan más que una residencia, estas 98 casas exclusivas ofrecen espacios refinados, vistas impresionantes y un sentido de comunidad como ningún otro. Cada casa está construida para brindar comodidad, elegancia y valor duradero.",
+    "button": "Habla con un experto"
+  }
+}

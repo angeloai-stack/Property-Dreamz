@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Tierra de Agua – Casas y Condominios Frente al Agua en Rosarito, Baja California",
+    "description": "Tierra de Agua Residencial cuenta con casas y condominios frente al agua en el corredor costero de Rosarito. Disfruta de acceso directo al agua y un estilo de vida relajado en la costa del Pacífico mexicano en Baja California."
+  },
+  "hero": {
+    "heroImageAlt": "Vista aérea de Tierra de Agua",
+    "logoAlt": "Tierra de Agua",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Lotes residenciales",
+    "headlineLine2": "exclusivos en Rosarito",
+    "description": "Un nuevo desarrollo residencial con arquitectura y amenidades de primer nivel para un estilo de vida exclusivo. Construye la vida que siempre soñaste. Preventa desde $75,000 USD."
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "308", "label": "Lotes" },
+    { "value": "10", "label": "Condominios" },
+    { "value": "2", "label": "Modelos" },
+    { "value": "45", "label": "Casas" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "lotExplorer": {
+    "exploreLabel": "Explora el desarrollo",
+    "tabs": { "lots": "Lotes", "condos": "Condominios", "houses": "Casas" },
+    "selectLotHint": "Selecciona un lote para ver los detalles",
+    "viewAllLots": "Ver todos los lotes",
+    "residentialLabel": "Residencial",
+    "availableLabel": "Disponible",
+    "lots": [
+      { "id": "Lot 12", "area": "300 m²" },
+      { "id": "Lot 13", "area": "300 m²" },
+      { "id": "Lot 14", "area": "320 m²" },
+      { "id": "Lot 15", "area": "315 m²" },
+      { "id": "Lot 16", "area": "305 m²" }
+    ],
+    "startTourLabel": "Iniciar Tour 360°",
+    "iframeTitle": "Tour virtual 360° de Tierra de Agua"
+  },
+  "coastalSanctuary": {
+    "headingLine1": "Tu Santuario Costero",
+    "headingLine2": "Te Espera",
+    "body": "Ubicado en la hermosa costa de Playas de Rosarito, Tierra de Agua es un nuevo desarrollo residencial que combina arquitectura de primer nivel con amenidades estilo resort. Diseñando cuidadosamente cada espacio para la comodidad y la tranquilidad, la comunidad ofrece a sus residentes un estilo de vida costero refinado, donde cada día se siente como vivir exactamente como siempre lo imaginaste.",
+    "amenitiesImageAlt": "Amenidades y área de alberca de Tierra de Agua"
+  },
+  "trustedSection": {
+    "trustedLabel": "La Confianza de + 100 Familias",
+    "residentsLinkLabel": "Escucha a Nuestros Residentes"
+  },
+  "newHome": {
+    "planImageAlt": "Plan maestro de Tierra de Agua",
+    "headingLine1": "Tu nuevo hogar",
+    "headingLine2": "en Baja",
+    "body": "Tierra de Agua es vivir como siempre lo soñaste. Contáctanos para conocer la disponibilidad y los planes de pago que se ajustan a tu presupuesto.",
+    "button": "Habla con un experto"
+  }
+}

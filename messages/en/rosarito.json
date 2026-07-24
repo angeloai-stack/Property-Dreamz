@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Rosarito Real Estate",
+    "description": "Homes for sale in Rosarito, Mexico — beachfront condos, ocean-view homes, and surf-inspired developments 30 minutes from San Diego. Every listing title-searched and developer-verified.",
+    "ogTitle": "Rosarito Real Estate — Property Dreamz",
+    "ogDescription": "Certified developments in Rosarito. Every listing title-searched and developer-verified, 30 minutes from San Diego."
+  },
+  "hero": {
+    "titleLine1": "Rosarito ",
+    "titleLine2": "Real Estate",
+    "description": "Browse Rosarito real estate — beachfront condos, ocean-view homes & surf-inspired developments 30 min from San Diego. Verified builders, bilingual support.",
+    "imageAlt": "Modern luxury beach home in Rosarito",
+    "badgeAlt": "CMRE Certified Mexico Real Estate"
+  },
+  "features": [
+    {
+      "title": "Vetted Developers, Zero Guesswork",
+      "body": "Every Rosarito development listed here has passed our due diligence process — judicial records, corporate history, and project documentation reviewed. We help you identify developers with a proven track record of delivering on their promises."
+    },
+    {
+      "title": "30 Minutes from San Diego, Right on the Beach",
+      "body": "Rosarito is the closest beach town to San Diego — close enough for a weekend drive, compelling enough to own. Our buyers enjoy Pacific Ocean frontage at a fraction of California prices, with the convenience of San Diego's airport, hospitals, and shopping just across the border."
+    },
+    {
+      "title": "Bilingual Guidance from Search to Close",
+      "body": "We guide American buyers through every step of a Rosarito real estate purchase — from selecting the right development to setting up a fideicomiso and closing with confidence. Bilingual support in English and Spanish throughout the entire process."
+    }
+  ],
+  "seoBlock": {
+    "eyebrow": "Certified developments · Baja California, Mexico",
+    "heading": "Properties for sale in Rosarito",
+    "body": "Rosarito real estate is one of the best-kept secrets on the Pacific coast — and word is spreading fast among American buyers. Just 30 minutes south of San Diego, Rosarito Beach offers a thriving expat community, a booming vacation rental market, and some of the most affordable oceanfront properties in North America. From surf-inspired condos steps from the beach to luxury beachfront towers with resort amenities, there's a style of Rosarito real estate for every buyer. Whether you're looking for a weekend getaway, a retirement home, or a cash-flowing rental investment, Rosarito delivers Pacific coast living at a price that simply doesn't exist north of the border. Explore our curated selection of verified Rosarito developments below — each one vetted for legal clarity and developer integrity so you can buy with confidence.",
+    "stats": [
+      { "value": "47+", "label": "Certified Developments" },
+      { "value": "3", "label": "Cities Covered" },
+      { "value": "100%", "label": "Title Verified" }
+    ],
+    "imageAlt": "Pacific coastline in Rosarito, Baja California",
+    "imageCaptionTitle": "Pacific Coastline",
+    "imageCaptionSubtitle": "Baja California, Mexico"
+  },
+  "properties": {
+    "eyebrow": "Browse properties and developments in Rosarito",
+    "badge": "Properties in Rosarito",
+    "countSuffix": "certified developments in Rosarito",
+    "priceFrom": "From ${price}K",
+    "viewDevelopment": "View Development",
+    "saveAria": "Save {title}",
+    "removeAria": "Remove {title} from saved"
+  },
+  "relatedBlog": {
+    "eyebrow": "From the blog",
+    "heading": "Rosarito real estate, explained",
+    "description": "Guides, market insights and neighborhood deep-dives for cross-border buyers.",
+    "viewAll": "View all articles"
+  }
+}

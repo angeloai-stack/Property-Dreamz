@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Palacio del Mar – Condominios de Lujo Frente al Mar en Venta en Rosarito, Baja California",
+    "description": "Palacio del Mar es una exclusiva comunidad de condominios frente al mar en el corredor de Rosarito. Vive con lujo en la costa del Pacífico, con acabados premium, vistas espectaculares al mar y amenidades de clase mundial."
+  },
+  "hero": {
+    "logoAlt": "Palacio del Mar",
+    "cmreAlt": "Certificado por CMRE",
+    "headlineLine1": "Condominios de lujo,",
+    "headlineLine2": "villas de lujo",
+    "subheadline": "La comunidad frente al mar más exclusiva de Baja — condominios de lujo terminados, listos para habitar, y villas frente al mar en Rosarito, justo al sur de la frontera con San Diego."
+  },
+  "stats": [
+    { "value": "16", "label": "Condominios" },
+    { "value": "4", "label": "Modelos" },
+    { "value": "82%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "trustBadges": ["Revisión legal", "Cumplimiento normativo", "Infraestructura validada"],
+  "amenities": {
+    "heading": "Amenidades estilo resort pensadas para el día a día",
+    "imageAlt": "Amenidades de Palacio del Mar",
+    "body1": "Las amenidades definen los bienes raíces de lujo. Son las amenidades de Palacio del Mar las que definen lo que significa el lujo inmobiliario en Baja, en comparación con los desarrollos en general.",
+    "body2": "Palacio del Mar es la única comunidad en la costa que cuenta con una gran alberca techada y climatizada.",
+    "rooms": {
+      "livingRoom": "Sala",
+      "bedroom": "Recámara",
+      "bathroom": "Baño",
+      "kitchen": "Cocina",
+      "terrace": "Terraza"
+    }
+  },
+  "models": {
+    "heading": "Explora nuestros 4 modelos",
+    "layoutLabel": "Modelo A",
+    "layoutSize": "1,287 pies²",
+    "imageAlt": "Plano del Modelo A",
+    "features": [
+      "3 balcones",
+      "Sala con balcón",
+      "Comedor",
+      "Barra desayunadora",
+      "Cocina integral",
+      "2 recámaras",
+      "2 baños",
+      "Patio con área de lavado",
+      "1 espacio de estacionamiento techado"
+    ]
+  },
+  "finishedResidences": {
+    "imageAlt": "Exterior del edificio Palacio del Mar",
+    "headingLine1": "Residencias terminadas,",
+    "headingLine2": "listas para habitar",
+    "body": "Una comunidad consolidada frente al mar en la Bahía Descanso de Rosarito. La Torre II representa el último inventario disponible de condominios de lujo — totalmente construida y lista para habitar.",
+    "button": "Habla con un experto"
+  }
+}

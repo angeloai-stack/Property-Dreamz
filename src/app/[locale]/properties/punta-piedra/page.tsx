@@ -2,6 +2,7 @@
 // Punta Piedra Misión page — Ensenada coastal lots, Santo Tomás house model, 360° Matterport tour, and location map.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -15,34 +16,17 @@ const IMG_TOUR     = `${CLD}/punta-piedra/punta-piedra/tour-interior`;
 const IMG_LOCATION = `${CLD}/punta-piedra/punta-piedra/location-map`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "120",  label: "Lots" },
-  { value: "25",   label: "Condos" },
-  { value: "5",    label: "Models" },
-  { value: "80",   label: "Houses" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type Tab = "Lots" | "Condos" | "Houses";
-
-const lots = [
-  { id: "Lot 12", area: "300 m²" },
-  { id: "Lot 13", area: "300 m²" },
-  { id: "Lot 14", area: "320 m²" },
-  { id: "Lot 15", area: "315 m²" },
-  { id: "Lot 16", area: "305 m²" },
-];
+type Tab = "lots" | "condos" | "houses";
+const tabKeys: Tab[] = ["lots", "condos", "houses"];
 
 export default function PuntaPiedraPage() {
-  const [tab, setTab] = useState<Tab>("Lots");
-  const [activeLot, setActiveLot] = useState("Lot 12");
+  const t = useTranslations("propertyPuntaPiedra");
+  const stats = t.raw("stats") as { value: string; label: string }[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const lots = t.raw("lotExplorer.lots") as { id: string; area: string }[];
+
+  const [tab, setTab] = useState<Tab>("lots");
+  const [activeLot, setActiveLot] = useState(lots[0]?.id ?? "");
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -51,7 +35,7 @@ export default function PuntaPiedraPage() {
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Punta Piedra coastal view"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -70,14 +54,14 @@ export default function PuntaPiedraPage() {
         <div className="absolute left-1/2 top-[30%] z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 lg:hidden">
           <Image
             src={IMG_LOGO}
-            alt="Punta Piedra Misión"
+            alt={t("hero.logoAlt")}
             width={200}
             height={55}
             className="w-40"
           />
           <Image
             src={IMG_CMRE}
-            alt="CMRE Certified"
+            alt={t("hero.cmreAlt")}
             width={204}
             height={48}
             className="w-32"
@@ -101,14 +85,14 @@ export default function PuntaPiedraPage() {
               <div className="hidden flex-col gap-6 lg:flex">
                 <Image
                   src={IMG_LOGO}
-                  alt="Punta Piedra Misión"
+                  alt={t("hero.logoAlt")}
                   width={200}
                   height={55}
                   className="w-44 lg:w-56"
                 />
                 <Image
                   src={IMG_CMRE}
-                  alt="CMRE Certified"
+                  alt={t("hero.cmreAlt")}
                   width={204}
                   height={48}
                   className="w-44"
@@ -128,11 +112,11 @@ export default function PuntaPiedraPage() {
 
               <div className="lg:text-right">
                 <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_both]">
-                  Your dream home<br />by the sea
+                  {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
                 </h1>
                 <RevealOnScroll direction="up" delay={350}>
                   <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
-                    Punta Piedra Misión is a residential development on the northwest coast of Baja California, designed for those seeking an exclusive lifestyle.
+                    {t("hero.description")}
                   </p>
                 </RevealOnScroll>
               </div>
@@ -152,29 +136,29 @@ export default function PuntaPiedraPage() {
               style={{ borderRadius: "27px" }}
             >
               <p className="font-ewangi text-[1.1rem] text-white mb-4">
-                Explore the development
+                {t("lotExplorer.exploreLabel")}
               </p>
 
               <div className="flex gap-1.5 mb-4">
-                {(["Lots", "Condos", "Houses"] as Tab[]).map((t) => (
+                {tabKeys.map((k) => (
                   <button
-                    key={t}
-                    onClick={() => setTab(t)}
+                    key={k}
+                    onClick={() => setTab(k)}
                     style={{ width: "72px", height: "28px", borderRadius: "4px" }}
                     className={cn(
                       "font-ewangi text-[13px] font-medium transition",
-                      tab === t
+                      tab === k
                         ? "bg-brand-teal text-brand-ink"
                         : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
                     )}
                   >
-                    {t}
+                    {t(`lotExplorer.tabs.${k}`)}
                   </button>
                 ))}
               </div>
 
               <p className="font-ewangi text-[13px] text-white/50 mb-3">
-                Select a lot to see details
+                {t("lotExplorer.selectLotHint")}
               </p>
 
               <div className="flex-1 overflow-y-auto">
@@ -205,7 +189,7 @@ export default function PuntaPiedraPage() {
                   style={{ width: "184px", height: "44px", borderRadius: "5px" }}
                   className="border border-white/40 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink"
                 >
-                  View all lots
+                  {t("lotExplorer.viewAllLots")}
                 </button>
               </div>
             </div>
@@ -216,7 +200,7 @@ export default function PuntaPiedraPage() {
             >
               <Image
                 src={IMG_MAP}
-                alt="Punta Piedra development aerial view"
+                alt={t("lotExplorer.mapImageAlt")}
                 fill
                 className="object-cover"
                 sizes="836px"
@@ -227,10 +211,10 @@ export default function PuntaPiedraPage() {
                 <p className="font-ewangi text-[12px] text-white/70">
                   {lots.find((l) => l.id === activeLot)?.area}
                 </p>
-                <p className="font-ewangi text-[12px] text-white/70">Residential</p>
+                <p className="font-ewangi text-[12px] text-white/70">{t("lotExplorer.residentialLabel")}</p>
                 <div className="mt-1 flex items-center gap-1.5">
                   <div className="h-2 w-2 rounded-full bg-brand-teal" />
-                  <span className="font-ewangi text-[12px] text-brand-teal">Available</span>
+                  <span className="font-ewangi text-[12px] text-brand-teal">{t("lotExplorer.availableLabel")}</span>
                 </div>
               </div>
             </div>
@@ -246,22 +230,22 @@ export default function PuntaPiedraPage() {
 
           <RevealOnScroll direction="left" duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1">
-              <p className="font-ewangi text-[1.375rem] text-white/60">House models</p>
+              <p className="font-ewangi text-[1.375rem] text-white/60">{t("houseModels.label")}</p>
               <h2 className="font-ewangi text-[clamp(3rem,5vw,4rem)] leading-tight text-white">
-                Santo Tomás
+                {t("houseModels.name")}
               </h2>
               <div className="flex flex-wrap items-start gap-8 pt-2">
                 <div className="flex flex-col gap-2">
                   <Maximize2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[1.375rem] text-white">159.5 m²</span>
+                  <span className="font-ewangi text-[1.375rem] text-white">{t("houseModels.areaValue")}</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   <BedDouble className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[1.375rem] text-white">4 Bedroom</span>
+                  <span className="font-ewangi text-[1.375rem] text-white">{t("houseModels.bedroomLabel")}</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   <Bath className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
-                  <span className="font-ewangi text-[1.375rem] text-white">3 Bathroom</span>
+                  <span className="font-ewangi text-[1.375rem] text-white">{t("houseModels.bathroomLabel")}</span>
                 </div>
               </div>
             </div>
@@ -272,7 +256,7 @@ export default function PuntaPiedraPage() {
               <div className="relative mx-auto overflow-hidden rounded-[15px]" style={{ maxWidth: "340px", aspectRatio: "441/839" }}>
                 <Image
                   src={IMG_MODEL}
-                  alt="Santo Tomás house model floor plan"
+                  alt={t("houseModels.modelImageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 80vw, 38vw"
@@ -290,7 +274,7 @@ export default function PuntaPiedraPage() {
         <div className="relative overflow-hidden rounded-[26px]" style={{ minHeight: "460px" }}>
           <Image
             src={IMG_TOUR}
-            alt="Punta Piedra interior living area"
+            alt={t("tour.tourImageAlt")}
             fill
             className="object-cover"
             sizes="100vw"
@@ -300,7 +284,7 @@ export default function PuntaPiedraPage() {
             style={{ background: "linear-gradient(to left, rgba(0,0,0,0.82) 55%, transparent 100%)" }}
           >
             <h2 className="font-ewangi text-[clamp(2rem,3.5vw,3.4375rem)] leading-tight text-white text-right">
-              Let&apos;s take a look<br />from your<br />next home.
+              {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />{t("tour.headingLine3")}
             </h2>
             <a
               href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
@@ -308,7 +292,7 @@ export default function PuntaPiedraPage() {
               rel="noopener noreferrer"
               className="rounded-2 bg-[#1e1e1e] px-8 py-4 font-ewangi text-[2.25rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink"
             >
-              360 tour
+              {t("tour.cta")}
             </a>
           </div>
         </div>
@@ -322,10 +306,10 @@ export default function PuntaPiedraPage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="lg:w-[45%]">
               <h2 className="font-ewangi text-[clamp(3rem,6vw,6rem)] leading-tight text-brand-teal">
-                Your dream<br />home
+                {t("dreamHome.headingLine1")}<br />{t("dreamHome.headingLine2")}
               </h2>
               <p className="mt-8 font-ewangi text-[1.375rem] leading-relaxed text-white/80">
-                Live near the sea and end your day with the most beautiful sunsets. Punta Piedra Misión offers the best of Baja within reach — just 25 minutes from Valle de Guadalupe.
+                {t("dreamHome.body")}
               </p>
             </div>
           </RevealOnScroll>
@@ -335,7 +319,7 @@ export default function PuntaPiedraPage() {
               <div className="relative aspect-video overflow-hidden rounded-[15px]">
                 <Image
                   src={IMG_LOCATION}
-                  alt="Punta Piedra location distances map"
+                  alt={t("dreamHome.locationImageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 55vw"
@@ -352,7 +336,7 @@ export default function PuntaPiedraPage() {
         <RevealOnScroll direction="center">
           <div className="flex items-center justify-center rounded-[18px] bg-brand-teal px-8 py-8">
             <p className="font-ewangi text-center text-[clamp(1.5rem,3vw,2.5rem)] text-brand-ink">
-              We certify so you can build your future
+              {t("certifyBanner.text")}
             </p>
           </div>
         </RevealOnScroll>

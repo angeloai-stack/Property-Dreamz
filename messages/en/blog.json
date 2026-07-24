@@ -1,0 +1,321 @@
+{
+  "categories": {
+    "All": "All",
+    "Guides": "Guides",
+    "Neighborhoods": "Neighborhoods",
+    "Finance": "Finance",
+    "Market": "Market",
+    "Lifestyle": "Lifestyle",
+    "Trust": "Trust"
+  },
+  "listing": {
+    "eyebrow": "From the blog",
+    "heading": "All about real estate, explained",
+    "subheading": "Guides, market insights and neighborhood deep-dives for cross-border buyers.",
+    "noPostsInCategory": "No posts in this category yet.",
+    "featuredBadge": "Featured",
+    "byLine": "By {author} · {date} · {readTime}"
+  },
+  "related": {
+    "eyebrow": "More content from our blog",
+    "noOtherPosts": "No other posts in this category yet."
+  },
+  "article": {
+    "breadcrumbHome": "Home",
+    "breadcrumbBlog": "Blog",
+    "byline": "By {author} · {authorRole}",
+    "updated": "Updated {date} · {readTime}",
+    "shareLabel": "Share",
+    "shareSectionEyebrow": "Share",
+    "shareSectionHeading": "Found this useful? Share it with a buyer",
+    "readyToBuyEyebrow": "Ready to buy?",
+    "readyToBuyHeading": "Browse certified developments in Baja California",
+    "readyToBuySubheading": "Every listing is title-searched and developer-verified before it goes live.",
+    "browseProperties": "Browse properties"
+  },
+  "toc": {
+    "onThisPage": "ON THIS PAGE",
+    "ariaLabel": "Table of contents"
+  },
+  "share": {
+    "shareOn": "Share on {network}",
+    "copyLink": "Copy link",
+    "copied": "Copied!"
+  },
+  "pagination": {
+    "ariaLabel": "Blog pagination",
+    "previousPage": "Previous page",
+    "nextPage": "Next page"
+  },
+  "posts": {
+    "2026-baja-california-buyers-report": {
+      "title": "The 2026 Baja California Buyer's Report: prices, hotspots & what changed",
+      "excerpt": "Median prices, the fastest-moving corridors from Rosarito to Ensenada, and what the new certification rules mean for U.S. buyers this year.",
+      "dek": "Median prices, the fastest-moving corridors from Rosarito to Ensenada, and what the new certification rules mean for U.S. buyers this year.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "median-prices-by-corridor": "Median prices by corridor",
+        "the-fastest-moving-zones": "The fastest-moving zones",
+        "what-the-new-rules-change": "What the new rules change"
+      },
+      "body": [
+        "Baja California's certified-listing market grew faster in the first half of 2026 than in any comparable period since Property Dreamz began tracking it.",
+        "Median prices by corridor",
+        "Rosarito remains the most affordable oceanfront corridor, with median pre-sale pricing still under $2,600 per square meter. Ensenada and the Punta Banda coastline now command a meaningful premium over Rosarito, driven by tighter buildable coastline and fewer active projects.",
+        "The fastest-moving zones",
+        "**Zona Río in Tijuana** and the Rosarito beachfront absorbed inventory fastest this year, with several certified developments selling out their first release phase within 90 days of launch.",
+        "What the new rules change",
+        "New state-level certification requirements now mandate a third-party HOA reserve audit before a development can be marketed to foreign buyers — a rule Property Dreamz had already been applying to every [certified](/about) listing."
+      ]
+    },
+    "fideicomiso-explained": {
+      "title": "The fideicomiso, explained: buying in Mexico's restricted zone",
+      "excerpt": "How the bank-trust structure works, what it costs, and why it's the standard path for foreign buyers near the coast.",
+      "dek": "A plain-English guide to the bank trust that lets foreigners hold beachfront title in Baja California — how it works, what it costs, and how long it takes.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "what-is-a-fideicomiso": "What is a fideicomiso?",
+        "why-the-restricted-zone-exists": "Why the restricted zone exists",
+        "setting-it-up-step-by-step": "Setting it up, step by step",
+        "costs-and-timeline": "Costs and timeline",
+        "key-takeaways": "Key takeaways"
+      },
+      "body": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "What is a fideicomiso?",
+        "Baja California is one of the most sought-after destinations for Americans and Canadians **buying property in Mexico**. With its stunning Pacific coastline, thriving border economy, and proximity to San Diego, cities like [Tijuana](/explore-map?search=Tijuana), [Ensenada](/explore-map?search=Ensenada), and [Rosarito](/explore-map?search=Rosarito) offer exceptional value for buyers at every budget. Whether you are searching for a **beachfront condo**, a gated community home, or a vacation retreat, [Baja California real estate](/properties) delivers world-class lifestyle options backed by a strong legal framework for foreign ownership. All developments listed on **Property Dreamz** are [certified](/about) — every title has been searched, every developer background-checked, and every **HOA reserve audited** before a single property goes live on our platform. Investing in [Baja California real estate](/properties) has never been more transparent or secure.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Why the restricted zone exists",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Setting it up, step by step",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Beachfront developments in Rosarito, where fideicomiso title is standard for foreign buyers.",
+        "Costs and timeline",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Key takeaways",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      ]
+    },
+    "rosarito-vs-ensenada": {
+      "title": "Rosarito vs. Ensenada: where to buy your beachfront condo",
+      "excerpt": "Comparing the two corridors on price per meter, drive time to the border, and the pace of new development.",
+      "dek": "Comparing the two corridors on price per meter, drive time to the border, and the pace of new development.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "price-per-meter": "Price per square meter",
+        "commute-and-border-access": "Commute and border access",
+        "which-one-fits-you": "Which one fits you"
+      },
+      "body": [
+        "Rosarito and Ensenada sit less than an hour apart on the same coastline, but they attract very different kinds of buyers.",
+        "Price per square meter",
+        "Rosarito's beachfront towers still price below $2,500 per square meter in most pre-sale developments, while Ensenada's boutique condo market runs closer to $3,200 thanks to tighter supply and a smaller buildable coastline.",
+        "Commute and border access",
+        "Rosarito sits roughly 20 minutes from the San Ysidro border crossing, making it the default choice for weekend owners. Ensenada is a further 90 minutes south, which filters for buyers planning to relocate rather than commute.",
+        "Which one fits you",
+        "If you want a low-maintenance weekend property near the border, Rosarito wins on convenience. If you're after a quieter, more established town with a real local economy beyond tourism, Ensenada is the stronger long-term bet."
+      ]
+    },
+    "closing-costs-and-taxes": {
+      "title": "Closing costs and taxes for U.S. buyers in Baja California",
+      "excerpt": "A line-by-line breakdown of notary fees, acquisition tax, and the annual property tax you'll actually pay.",
+      "dek": "A line-by-line look at what actually shows up on a Baja California closing statement, from notary fees to the annual property tax bill.",
+      "authorRole": "Cross-Border Living Editor",
+      "toc": {
+        "one-time-closing-costs": "One-time closing costs",
+        "the-fideicomiso-fee": "The fideicomiso fee",
+        "ongoing-property-taxes": "Ongoing property taxes"
+      },
+      "body": [
+        "Most first-time buyers underestimate closing costs in Mexico because the categories don't map cleanly onto a U.S. settlement statement.",
+        "One-time closing costs",
+        "Expect to budget 5-7% of the purchase price for acquisition tax, notary fees, and registration — roughly double what a comparable U.S. closing would run.",
+        "The fideicomiso fee",
+        "If the property sits in the restricted zone, add a one-time bank-trust setup fee plus an annual trustee fee, typically $500-$700 USD per year. See our [fideicomiso guide](/blog/fideicomiso-explained) for the full structure.",
+        "Ongoing property taxes",
+        "Predial, Mexico's annual property tax, is calculated on assessed value rather than market value and is usually a fraction of what U.S. owners are used to paying."
+      ]
+    },
+    "oceanfront-developments-under-300k": {
+      "title": "Top oceanfront developments under $300k in 2026",
+      "excerpt": "Six certified developments with unit prices still under $300k USD — and how long that's likely to last.",
+      "dek": "Six certified developments where oceanfront or ocean-view units are still priced under $300,000 USD — for now.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "why-prices-are-still-low": "Why prices are still low",
+        "the-six-developments": "The six developments",
+        "how-long-this-will-last": "How long this will last"
+      },
+      "body": [
+        "Oceanfront pricing under $300k is disappearing fastest in Rosarito and holding on longest in a handful of pre-sale phases further south.",
+        "Why prices are still low",
+        "Early construction phases price below finished inventory, and several **certified developers** are still selling initial releases well below their projected completion value.",
+        "The six developments",
+        "The current list spans [Rosarito](/explore-map?search=Rosarito), Ensenada, and Puerto Nuevo, weighted toward one- and two-bedroom units in mid-rise buildings with completion dates in 2027 and 2028.",
+        "How long this will last",
+        "Based on absorption rates over the last three delivery cycles, sub-$300k oceanfront inventory in these corridors has historically sold out within 12-18 months of a project's public launch."
+      ]
+    },
+    "what-certified-development-means": {
+      "title": "What a 'certified development' really means on Property Dreamz",
+      "excerpt": "Every listing goes through legal, regulatory, and security review before it's certified. Here's the checklist.",
+      "dek": "Every listing on Property Dreamz goes through the same certification checklist before it's allowed to go live. Here's exactly what that means.",
+      "authorRole": "Legal & Compliance Editor",
+      "toc": {
+        "title-search": "Title search",
+        "developer-background-check": "Developer background check",
+        "hoa-reserve-audit": "HOA reserve audit"
+      },
+      "body": [
+        "'Certified' is not a marketing label on Property Dreamz — it's a specific, repeatable review process every development has to pass.",
+        "Title search",
+        "A local notario público confirms the title is clean, correctly registered, and free of liens before a listing is published.",
+        "Developer background check",
+        "We review a developer's delivery history, litigation record, and regulatory standing with state and federal authorities.",
+        "HOA reserve audit",
+        "For completed communities, we audit HOA reserve funding to flag developments likely to hit buyers with surprise special assessments."
+      ]
+    },
+    "30-minutes-from-san-diego": {
+      "title": "30 minutes from San Diego: the cross-border lifestyle",
+      "excerpt": "What daily life actually looks like for Americans who split time between San Diego and Baja California.",
+      "dek": "What daily life actually looks like for Americans splitting time between San Diego and Baja California.",
+      "authorRole": "Cross-Border Living Editor",
+      "toc": {
+        "the-daily-commute": "The daily commute",
+        "cost-of-living": "Cost of living",
+        "building-a-routine": "Building a routine"
+      },
+      "body": [
+        "The 30-minute pitch is real on a good day — but it depends entirely on when you cross.",
+        "The daily commute",
+        "SENTRI-enrolled owners crossing outside peak hours routinely clear the border in 15-20 minutes; peak afternoon crossings can run well over an hour.",
+        "Cost of living",
+        "Groceries, dining, and household help typically cost 40-60% less than San Diego equivalents, which is the single biggest lifestyle shift most new owners notice.",
+        "Building a routine",
+        "Owners who make the split work tend to anchor their week around fixed crossing days rather than commuting daily, treating the property more like a second home with a very short flight."
+      ]
+    },
+    "first-timers-guide-notary-process": {
+      "title": "A first-timer's guide to the Mexican notary process",
+      "excerpt": "The notario público plays a different role than a U.S. notary — here's what they actually verify before closing.",
+      "dek": "The notario público plays a different role than a U.S. notary — here's what they actually verify before you sign anything.",
+      "authorRole": "Legal & Compliance Editor",
+      "toc": {
+        "not-a-us-notary": "Not a U.S. notary",
+        "what-gets-verified": "What gets verified",
+        "what-to-bring-to-closing": "What to bring to closing"
+      },
+      "body": [
+        "In Mexico, a notario público is a licensed attorney appointed by the state, not a rubber-stamp witness.",
+        "Not a U.S. notary",
+        "The notario is legally responsible for the accuracy of the transaction, which is why their review carries far more weight than a typical U.S. closing agent's.",
+        "What gets verified",
+        "Expect the notario to confirm title history, outstanding liens, zoning compliance, and that all applicable taxes have been paid before authorizing the deed.",
+        "What to bring to closing",
+        "Bring a valid passport, proof of immigration status (FMM or residency card), and your fideicomiso paperwork if the property sits in the restricted zone."
+      ]
+    },
+    "valle-de-guadalupe-buyers-market": {
+      "title": "Valle de Guadalupe: Mexico's wine country is becoming a buyer's market",
+      "excerpt": "Vineyard-adjacent lots and boutique hospitality projects are drawing a new kind of cross-border buyer.",
+      "dek": "Vineyard-adjacent lots and boutique hospitality projects are drawing a new kind of cross-border buyer to Mexico's wine country.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "why-now": "Why now",
+        "what-is-selling": "What is selling",
+        "things-to-check-before-you-buy": "Things to check before you buy"
+      },
+      "body": [
+        "Valle de Guadalupe has spent a decade building a reputation as Mexico's wine country. It's only recently started building housing to match.",
+        "Why now",
+        "Land prices are still a fraction of comparable wine-region markets in California, even as tourism numbers climb every season.",
+        "What is selling",
+        "The strongest demand is for view lots near established wineries and small boutique-hotel developments aimed at weekend visitors rather than full-time residents.",
+        "Things to check before you buy",
+        "Water rights and well access are the two issues that most often complicate a purchase here — confirm both before you go under contract."
+      ]
+    },
+    "financing-options-for-us-citizens": {
+      "title": "Financing options for U.S. citizens buying property in Mexico",
+      "excerpt": "Cross-border mortgages, developer financing, and the cash-purchase math that still wins most of the time.",
+      "dek": "Cross-border mortgages, developer financing, and the cash-purchase math that still wins for most buyers.",
+      "authorRole": "Cross-Border Living Editor",
+      "toc": {
+        "cross-border-mortgages": "Cross-border mortgages",
+        "developer-financing": "Developer financing",
+        "the-cash-math": "The cash math"
+      },
+      "body": [
+        "Financing is the part of buying in Mexico that surprises U.S. buyers most — the options exist, but they don't look like a conventional mortgage.",
+        "Cross-border mortgages",
+        "A small number of lenders now offer USD-denominated mortgages secured by Mexican property, typically at higher rates and shorter terms than U.S. financing.",
+        "Developer financing",
+        "Most **certified developers** offer their own payment plans during pre-sale, spreading 30-50% of the price over the construction period with no interest.",
+        "The cash math",
+        "Given financing costs, a large share of buyers still pay cash — pre-sale pricing plus developer financing often works out cheaper than borrowing at current cross-border mortgage rates."
+      ]
+    },
+    "presale-condos-tijuana-outperforming": {
+      "title": "Why pre-sale condos in Tijuana are outperforming resale",
+      "excerpt": "Appreciation data from the last three delivery cycles, and how to evaluate a developer's track record.",
+      "dek": "Appreciation data from the last three delivery cycles shows why buying early in a Tijuana pre-sale still beats waiting for resale inventory.",
+      "authorRole": "Senior Market Analyst",
+      "toc": {
+        "the-appreciation-data": "The appreciation data",
+        "why-the-gap-exists": "Why the gap exists",
+        "evaluating-a-developers-track-record": "Evaluating a developer's track record"
+      },
+      "body": [
+        "Buyers who bought pre-sale in Tijuana's last three delivery cycles outperformed resale buyers by a wide margin — but the gap depends heavily on which developer they chose.",
+        "The appreciation data",
+        "Units purchased in the first release phase of a project have historically appreciated 15-25% by the time of delivery, before any resale market activity even begins.",
+        "Why the gap exists",
+        "Early-phase pricing reflects construction risk that resale buyers no longer have to take on, which is exactly the premium pre-sale buyers get paid to accept.",
+        "Evaluating a developer's track record",
+        "Track record matters more than price here — a developer's last two or three completed projects are the best predictor of whether a pre-sale discount is worth the wait."
+      ]
+    },
+    "remote-work-home-office-in-baja": {
+      "title": "Remote work, real estate: setting up your home office in Baja",
+      "excerpt": "Internet reliability by zone, coworking spaces, and what to check before you sign a lease or close on a unit.",
+      "dek": "Internet reliability by zone, coworking options, and what to check before you sign a lease or close on a unit for remote work.",
+      "authorRole": "Cross-Border Living Editor",
+      "toc": {
+        "internet-reliability-by-zone": "Internet reliability by zone",
+        "coworking-options": "Coworking options",
+        "before-you-commit": "Before you commit"
+      },
+      "body": [
+        "Remote work is one of the fastest-growing reasons Americans are buying in Baja California, and connectivity is the first thing to check.",
+        "Internet reliability by zone",
+        "Zona Río in Tijuana and central Rosarito have the most reliable fiber coverage; more remote coastal lots often depend on cellular hotspots as a backup.",
+        "Coworking options",
+        "A handful of coworking spaces have opened in Tijuana and Ensenada over the past two years, offering day passes for owners who want a change of scenery.",
+        "Before you commit",
+        "Ask any developer for actual upload-speed numbers from a unit in the building, not just the advertised plan — building materials and distance from the router closet both matter."
+      ]
+    },
+    "red-flags-developer-contract": {
+      "title": "5 red flags to check before signing any developer contract",
+      "excerpt": "Payment schedules, delivery penalties, and the clauses that separate a certified developer from a risky one.",
+      "dek": "Payment schedules, delivery penalties, and the clauses that separate a certified developer from a risky one.",
+      "authorRole": "Legal & Compliance Editor",
+      "toc": {
+        "payment-schedule-red-flags": "Payment schedule red flags",
+        "delivery-penalties": "Delivery penalties",
+        "clauses-to-avoid": "Clauses to avoid"
+      },
+      "body": [
+        "Most disputes with developers in Mexico trace back to a handful of contract clauses that buyers didn't push back on before signing.",
+        "Payment schedule red flags",
+        "Be cautious of any schedule that front-loads more than 30% of the price before groundbreaking, especially from a developer without completed projects.",
+        "Delivery penalties",
+        "A serious developer's contract includes a specific, enforceable penalty for missed delivery dates — vague language about 'reasonable delays' is a warning sign.",
+        "Clauses to avoid",
+        "Watch for unilateral price-escalation clauses and any language that lets the developer substitute materials or unit specifications without your written consent."
+      ]
+    }
+  }
+}

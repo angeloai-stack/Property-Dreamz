@@ -1,0 +1,21 @@
+{
+  "logoAlt": "Property Dreamz home",
+  "footerNav": "Footer navigation",
+  "topNav": {
+    "exploreMap": "Explore map",
+    "buyersGuide": "Buyer's guide",
+    "forDevelopers": "For developers",
+    "mission": "The Mission",
+    "saved": "Saved"
+  },
+  "columns": {
+    "forBuyers": { "title": "For buyers", "browse": "Browse", "guide": "Guide", "closing": "Closing" },
+    "developers": { "title": "Developers", "getListed": "Get listed", "pricing": "Pricing", "portal": "Portal" },
+    "company": { "title": "Company", "mission": "Mission", "contact": "Contact", "press": "Press" }
+  },
+  "blurb": "The verified portal for Americans buying in Mexico. English. USD. Every title checked.",
+  "copyright": "© {year} Property Dreamz LLC • All Rights Reserved | San Diego, CA • Serving all of Mexico",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "cmreLogoAlt": "CMRE Certified Mexico Real Estate"
+}

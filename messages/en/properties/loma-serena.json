@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Loma Serena – Hilltop Homes & Lots with Ocean Views in Rosarito, Baja CA",
+    "description": "Loma Serena is a hillside residential community in Rosarito offering breathtaking views of the Pacific Ocean. Discover homes and lots in one of Baja California's most scenic coastal settings."
+  },
+  "hero": {
+    "logoAlt": "Loma Serena",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Enjoy Baja life",
+    "headlineLine2": "by the sea",
+    "subheadline": "Gated community in Rosarito offering modern homes & ocean views, plus a more affordable cost of living than the U.S."
+  },
+  "stats": [
+    { "value": "98", "label": "Houses" },
+    { "value": "6", "label": "Models" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "divider": {
+    "text": "Live where others vacation"
+  },
+  "models": {
+    "heading": "Explore our 4 models",
+    "modelName": "Cala",
+    "modelSize": "300 m²",
+    "modelImageAlt": "Cala model house render",
+    "features": [
+      "2 Bedrooms",
+      "2 Bathrooms",
+      "2 Parking Spaces",
+      "Primary bedroom with walk-in closet",
+      "Spacious Living room",
+      "Formal dining area",
+      "Fully equipped kitchen with large pantry",
+      "Rooftop with ocean view (569 SqFt)",
+      "Exterior staircase to rooftop",
+      "Parking for 2 vehicles",
+      "Indoor/outdoor back yard"
+    ]
+  },
+  "amenities": {
+    "heading": "Amenities",
+    "imageAlt": "Loma Serena amenities",
+    "items": ["Infinity Pool", "High-end Restaurant", "Fully Equipped Gym", "Mini Market"]
+  },
+  "cta": {
+    "imageAlt": "Loma Serena street view",
+    "headingLine1": "A Limited Collection.",
+    "headingLine2": "An Extraordinary Lifestyle.",
+    "body": "Designed for those who seek more than just a residence, these 98 exclusive houses offer refined living spaces, breathtaking views, and a sense of community unlike any other. Every home is crafted to deliver comfort, elegance, and lasting value.",
+    "button": "Talk to an expert"
+  }
+}

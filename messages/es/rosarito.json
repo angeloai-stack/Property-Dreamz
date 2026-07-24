@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Bienes Raíces en Rosarito",
+    "description": "Casas en venta en Rosarito, México — condominios frente al mar, casas con vista al océano y desarrollos de inspiración surf a 30 minutos de San Diego. Cada propiedad con estudio de título y desarrollador verificado.",
+    "ogTitle": "Bienes Raíces en Rosarito — Property Dreamz",
+    "ogDescription": "Desarrollos certificados en Rosarito. Cada propiedad con estudio de título y desarrollador verificado, a 30 minutos de San Diego."
+  },
+  "hero": {
+    "titleLine1": "Rosarito ",
+    "titleLine2": "Bienes Raíces",
+    "description": "Explora bienes raíces en Rosarito — condominios frente al mar, casas con vista al océano y desarrollos de inspiración surf a 30 min de San Diego. Constructores verificados, soporte bilingüe.",
+    "imageAlt": "Casa de playa de lujo moderna en Rosarito",
+    "badgeAlt": "CMRE Certified Mexico Real Estate"
+  },
+  "features": [
+    {
+      "title": "Desarrolladores Verificados, Cero Incertidumbre",
+      "body": "Cada desarrollo de Rosarito listado aquí pasó nuestro proceso de debida diligencia — se revisan antecedentes judiciales, historial corporativo y documentación del proyecto. Te ayudamos a identificar desarrolladores con un historial comprobado de cumplir sus promesas."
+    },
+    {
+      "title": "A 30 Minutos de San Diego, Justo en la Playa",
+      "body": "Rosarito es el pueblo de playa más cercano a San Diego — lo suficientemente cerca para un fin de semana, lo suficientemente atractivo para invertir. Nuestros compradores disfrutan de frente de playa en el Pacífico a una fracción del precio de California, con la conveniencia del aeropuerto, hospitales y comercios de San Diego a solo cruzar la frontera."
+    },
+    {
+      "title": "Asesoría Bilingüe de la Búsqueda al Cierre",
+      "body": "Guiamos a compradores estadounidenses en cada paso de su compra de bienes raíces en Rosarito — desde elegir el desarrollo correcto hasta constituir un fideicomiso y cerrar con confianza. Soporte bilingüe en inglés y español durante todo el proceso."
+    }
+  ],
+  "seoBlock": {
+    "eyebrow": "Desarrollos certificados · Baja California, México",
+    "heading": "Propiedades en venta en Rosarito",
+    "body": "Los bienes raíces en Rosarito son uno de los secretos mejor guardados de la costa del Pacífico — y la noticia se está esparciendo rápido entre compradores estadounidenses. A solo 30 minutos al sur de San Diego, Rosarito Beach ofrece una próspera comunidad de expatriados, un mercado de renta vacacional en auge y algunas de las propiedades frente al mar más accesibles de Norteamérica. Desde condominios de inspiración surf a pasos de la playa hasta torres de lujo frente al mar con amenidades de resort, hay un estilo de bienes raíces en Rosarito para cada comprador. Ya sea que busques una escapada de fin de semana, un hogar para el retiro o una inversión de renta con flujo constante, Rosarito ofrece vida en la costa del Pacífico a un precio que simplemente no existe al norte de la frontera. Explora nuestra selección curada de desarrollos verificados en Rosarito a continuación — cada uno evaluado por claridad legal e integridad del desarrollador para que puedas comprar con confianza.",
+    "stats": [
+      { "value": "47+", "label": "Desarrollos Certificados" },
+      { "value": "3", "label": "Ciudades Cubiertas" },
+      { "value": "100%", "label": "Título Verificado" }
+    ],
+    "imageAlt": "Costa del Pacífico en Rosarito, Baja California",
+    "imageCaptionTitle": "Costa del Pacífico",
+    "imageCaptionSubtitle": "Baja California, México"
+  },
+  "properties": {
+    "eyebrow": "Explora propiedades y desarrollos en Rosarito",
+    "badge": "Propiedades en Rosarito",
+    "countSuffix": "desarrollos certificados en Rosarito",
+    "priceFrom": "Desde ${price}K",
+    "viewDevelopment": "Ver Desarrollo",
+    "saveAria": "Guardar {title}",
+    "removeAria": "Quitar {title} de guardados"
+  },
+  "relatedBlog": {
+    "eyebrow": "Del blog",
+    "heading": "Bienes raíces en Rosarito, explicados",
+    "description": "Guías, análisis de mercado y reseñas a fondo de cada zona para compradores transfronterizos.",
+    "viewAll": "Ver todos los artículos"
+  }
+}

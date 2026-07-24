@@ -1,12 +1,16 @@
+"use client";
 // Rosarito Real Estate hero — Figma nodes 1313:18159-18177.
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function RosaritoHero() {
+  const t = useTranslations("rosarito.hero");
+
   return (
     <section className="relative min-h-[min(60vh,485px)] w-full overflow-hidden bg-[#eaedf0]">
       <Image
         src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80"
-        alt="Modern luxury beach home in Rosarito"
+        alt={t("imageAlt")}
         fill
         priority
         className="object-cover"
@@ -19,12 +23,11 @@ export function RosaritoHero() {
             "Rosarito"/"Real Estate" glyphs visibly overlap at default tracking regardless of markup,
             line-height, or spacing — confirmed by swapping to a system font, which renders cleanly. */}
         <h1 className="font-ewangi text-[clamp(2rem,6vw,4.25rem)] leading-tight tracking-wider">
-          <span className="text-[#eaedf0]">Rosarito </span>
-          <span className="font-bold text-[#191919]">Real Estate</span>
+          <span className="text-[#eaedf0]">{t("titleLine1")}</span>
+          <span className="font-bold text-[#191919]">{t("titleLine2")}</span>
         </h1>
         <p className="mt-6 max-w-2xl font-ewangi text-[1.1rem] leading-relaxed text-white">
-          Browse Rosarito real estate — beachfront condos, ocean-view homes &amp; surf-inspired
-          developments 30 min from San Diego. Verified builders, bilingual support.
+          {t("description")}
         </p>
       </div>
 
@@ -32,7 +35,7 @@ export function RosaritoHero() {
       <div className="absolute bottom-6 right-6 z-10">
         <Image
           src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-02_p8szqi.png"
-          alt="CMRE Certified Mexico Real Estate"
+          alt={t("badgeAlt")}
           width={69}
           height={95}
           className="h-16 w-auto drop-shadow-md"

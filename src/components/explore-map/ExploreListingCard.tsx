@@ -1,11 +1,12 @@
 "use client";
 // Wide horizontal listing card for the explore-map results list — Figma: "Developments Map Section", 614x190 r=13.
 import Image from "next/image";
-import Link from "next/link";
 import type { KeyboardEvent } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Bath, Bed, Heart, Images, Maximize2, MapPin } from "lucide-react";
-import type { Currency, Listing } from "@/app/explore-map/data";
-import { formatFullPrice, toSavedProperty } from "@/app/explore-map/utils";
+import type { Currency, Listing } from "@/app/[locale]/explore-map/data";
+import { formatFullPrice, toSavedProperty } from "@/app/[locale]/explore-map/utils";
 import { useSavedProperties } from "@/hooks/useSavedProperties";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ type ExploreListingCardProps = {
 };
 
 export function ExploreListingCard({ listing, active, currency, onClick }: ExploreListingCardProps) {
+  const t = useTranslations("exploreMap");
   const { isSaved, toggleSaved } = useSavedProperties();
   const savedProperty = toSavedProperty(listing);
   const saved = isSaved(savedProperty.id);
@@ -64,7 +66,7 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
 
         {listing.financingAvailable && (
           <div className="absolute bottom-2 right-0 rounded-l-[4px] bg-brand-teal px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white sm:right-2 sm:rounded-[4px]">
-            Financing available
+            {t("listingCard.financingAvailable")}
           </div>
         )}
       </div>
@@ -77,7 +79,7 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
             e.stopPropagation();
             toggleSaved(savedProperty);
           }}
-          aria-label={saved ? "Remove from saved" : "Save property"}
+          aria-label={saved ? t("listingCard.removeSaved") : t("listingCard.save")}
           className="absolute right-2.5 top-2.5 text-brand-ink/25 transition hover:text-brand-teal"
         >
           <Heart className={cn("h-4 w-4", saved && "fill-brand-teal text-brand-teal")} strokeWidth={saved ? 0 : 2} />
@@ -86,7 +88,7 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
         <div className="min-w-0">
           <p className="flex items-center gap-1.5 font-ewangi text-[12px] text-brand-pine">
             <span className="h-2 w-2 shrink-0 rounded-full bg-brand-teal" />
-            {listing.constructionStatus}
+            {t(`constructionStatusLabels.${listing.constructionStatus}`)}
           </p>
           <p className="mt-1 truncate pr-5 font-ewangi text-[15px] font-bold text-brand-pine sm:text-[16px]">
             {listing.title}
@@ -99,22 +101,22 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-ewangi text-[11px] text-[#1e1e1e] sm:text-[12px]">
             <span className="flex items-center gap-1">
               <Maximize2 className="h-3 w-3 text-brand-teal" strokeWidth={2} />
-              <span className="font-bold text-brand-emerald">{listing.sqft}</span> sqm
+              <span className="font-bold text-brand-emerald">{listing.sqft}</span> {t("listingCard.sqm")}
             </span>
             <span className="flex items-center gap-1">
               <Bed className="h-3 w-3 text-brand-teal" strokeWidth={2} />
-              <span className="font-bold text-brand-emerald">{listing.beds}</span> Rooms
+              <span className="font-bold text-brand-emerald">{listing.beds}</span> {t("listingCard.rooms")}
             </span>
             <span className="flex items-center gap-1">
               <Bath className="h-3 w-3 text-brand-teal" strokeWidth={2} />
-              <span className="font-bold text-brand-emerald">{listing.baths}</span> Baths
+              <span className="font-bold text-brand-emerald">{listing.baths}</span> {t("listingCard.baths")}
             </span>
           </div>
         </div>
 
         <div className="mt-2 flex items-end justify-between gap-2">
           <div className="min-w-0">
-            <p className="font-ewangi text-[9px] uppercase tracking-wide text-brand-pine/60">From</p>
+            <p className="font-ewangi text-[9px] uppercase tracking-wide text-brand-pine/60">{t("listingCard.from")}</p>
             <p className="truncate font-ewangi text-[14px] font-bold text-[#00c9a7] sm:text-[15px]">
               {formatFullPrice(listing.priceMXN, listing.priceUSD, currency)}
             </p>
@@ -124,7 +126,7 @@ export function ExploreListingCard({ listing, active, currency, onClick }: Explo
             onClick={(e) => e.stopPropagation()}
             className="shrink-0 rounded-[4px] bg-brand-teal px-3 py-1.5 font-ewangi text-[11px] font-bold text-white transition hover:bg-brand-teal-dark"
           >
-            Talk to an advisor
+            {t("listingCard.cta")}
           </Link>
         </div>
       </div>

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { MessageCircle } from "lucide-react";
 import { Icon } from "@/components/ui/Icon";
 
 // Floating WhatsApp action button for direct chat support.
 // Keep this fixed to the bottom-right corner across pages.
 export function WhatsAppButton() {
+  const t = useTranslations("nav");
   const [animating, setAnimating] = useState(false);
 
   function trigger() {
@@ -22,7 +24,7 @@ export function WhatsAppButton() {
         href="https://wa.me/5210000000000"
         target="_blank"
         rel="noreferrer"
-        aria-label="Open WhatsApp chat"
+        aria-label={t("whatsapp")}
         onMouseEnter={trigger}
         onTouchStart={trigger}
         onAnimationEnd={() => setAnimating(false)}

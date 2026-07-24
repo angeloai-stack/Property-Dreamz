@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "title": "Mexico Real Estate | Verified Properties | Property Dreamz",
+    "description": "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited."
+  },
+  "hero": {
+    "slides": [
+      { "line1": "Mexico Real Estate:", "line2": "Find the Right Property" },
+      { "line1": "Find your", "line2": "Piece of Mexico" },
+      { "line1": "Own a slice", "line2": "of Paradise" },
+      { "line1": "Live the", "line2": "Mexican Dream" }
+    ],
+    "seoText": "Find certified properties across Mexico. Buy a house in Mexico with peace of mind — every listing title-searched, developer-vetted, and HOA-audited before you invest.",
+    "searchPlaceholder": "Tijuana, Rosarito, Pto. Nuevo…",
+    "searchLabel": "Search properties",
+    "slideAriaLabel": "Slide {number}"
+  },
+  "verify": {
+    "brand": "Property Dreamz's",
+    "verify": "Verify",
+    "tagline": "The only portal where every property is certified before it's listed.",
+    "certifiedBy": "Certified by"
+  },
+  "featureCards": {
+    "items": [
+      {
+        "title": "Clean Title Before You Wire a Dollar",
+        "body": "Trust starts with transparency. When you are buying property in Mexico, the last thing you want is a legal surprise after closing. Our certification process includes a thorough review of judicial records, title history, and ownership chain to help you identify developers who meet the highest standards of professionalism and integrity. Every listing on Property Dreamz has passed our title search protocol — so you can invest with confidence from day one."
+      },
+      {
+        "title": "Verified Regulatory Compliance",
+        "body": "Mexico real estate is governed by a unique set of federal, state, and municipal regulations — and not every developer plays by the rules. Property Dreamz verifies that every certified developer meets relevant legal, regulatory, and professional standards before they appear on our platform. This review covers permits, zoning, HOA structures, and adherence to industry best practices, ensuring that the property you buy in Mexico is fully compliant and protected by law."
+      },
+      {
+        "title": "Property Security Assessment",
+        "body": "A secure development reflects a reliable organization. When buying a house in Mexico, the quality of on-site security and property management directly impacts your investment value and peace of mind. Our certification includes a rigorous evaluation of each development's security infrastructure, access controls, and management practices — confirming that the properties we list are not only legally sound but physically safe and well-maintained for owners and residents."
+      }
+    ]
+  },
+  "topDevelopers": {
+    "label": "Our top's developers",
+    "socialProof": "+2,369 people purchasing properties right now",
+    "removeFromSaved": "Remove {name} from saved",
+    "save": "Save {name}"
+  },
+  "bajaSeoBlock": {
+    "eyebrow": "Certified developments · Baja California, Mexico",
+    "heading": "Baja California Real Estate",
+    "body": "Baja California is one of the most sought-after destinations for Americans and Canadians <b1>buying property in Mexico</b1>. With its stunning Pacific coastline, thriving border economy, and proximity to San Diego, cities like <tijuana>Tijuana</tijuana>, <ensenada>Ensenada</ensenada>, and <rosarito>Rosarito</rosarito> offer exceptional value for buyers at every budget. Whether you are searching for a <b2>beachfront condo</b2>, a gated community home, or a vacation retreat, <baja>Baja California real estate</baja> delivers world-class lifestyle options backed by a strong legal framework for foreign ownership. All developments listed on <b3>Property Dreamz</b3> are <about>certified</about> — every title has been searched, every developer background-checked, and every <b4>HOA reserve audited</b4> before a single property goes live on our platform. Investing in <baja2>Baja California real estate</baja2> has never been more transparent or secure.",
+    "stats": [
+      { "value": "47+", "label": "Certified Developments" },
+      { "value": "3", "label": "Cities Covered" },
+      { "value": "100%", "label": "Title Verified" }
+    ],
+    "imageCaptionTitle": "Pacific Coastline",
+    "imageCaptionSubtitle": "Baja California, Mexico"
+  },
+  "propertiesByCity": {
+    "eyebrow": "Browse properties by city",
+    "pill": "Properties by City",
+    "noListings": "No listings in {city} yet.",
+    "viewDevelopment": "View Development",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "priceFrom": "From ${amount}K",
+    "removeFromSaved": "Remove {title} from saved",
+    "save": "Save {title}"
+  },
+  "buyersGuideSteps": {
+    "eyebrow": "Buyer's Guide",
+    "headingPrefix": "How to buy property in",
+    "headingHighlight": "Mexico",
+    "steps": [
+      {
+        "title": "Choose your location",
+        "body": "Select your location to view developers, services, and certification information relevant to your region. This helps us provide a more personalized experience and ensure you see the most accurate content based on local requirements and availability.",
+        "imageAlt": "Mexico city skyline"
+      },
+      {
+        "title": "Set up your Fideicomiso",
+        "body": "Whether you're purchasing property or securing long-term ownership rights in Mexico's restricted zones, our network of verified professionals can help you establish your fideicomiso efficiently and with peace of mind.",
+        "imageAlt": "Business professionals shaking hands"
+      },
+      {
+        "title": "Decide and Purchase",
+        "body": "Compare properties, evaluate your options, and choose the investment that best fits your goals. With verified professionals and a streamlined process, you can complete your purchase with confidence and peace of mind.",
+        "imageAlt": "House keys and realtor"
+      }
+    ]
+  },
+  "certifiedBanner": {
+    "allCertifiedBy": "All certified by",
+    "cmreLogoAlt": "CMRE — Certified Mexico Real Estate",
+    "description": "Every property and development featured on our platform undergoes a thorough verification process, including legal documentation, ownership validation, regulatory compliance, and developer background checks. Our certification helps ensure transparency, security, and confidence throughout your real estate investment journey in Mexico.",
+    "headlineLine1": "Browse 47 certified",
+    "headlineLine2": "developments",
+    "subheadline": "HOA reserves audited — no surprise assessments after you close.",
+    "cta": "Browse developments"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "headingPrefix": "Have questions?",
+    "headingHighlight": "We have answers.",
+    "subheading": "Everything you need to know before buying property in Mexico — from legal ownership to closing day.",
+    "cta": "Full Buyer's Guide →",
+    "items": [
+      {
+        "q": "How to buy real estate in Mexico?",
+        "a": "Buying real estate in Mexico is straightforward when you follow the right process. Start by choosing your region — whether that is Baja California, the Riviera Maya, Nayarit, or Yucatan — and define your budget. Next, work with a certified platform like Property Dreamz to browse verified developments where titles have already been searched and developers reviewed. For properties in restricted zones (within 50 km of the coast or 100 km of an international border), foreign buyers must hold title through a bank trust called a fideicomiso, which grants all ownership rights for a renewable 50-year term. Once you select your property, a Mexican notary public will formalize the purchase, register the deed, and handle closing. Property Dreamz connects you with vetted legal and notary professionals throughout the process so you never navigate it alone."
+      },
+      {
+        "q": "Can Americans buy real estate in Mexico?",
+        "a": "Yes — Americans can and do buy property in Mexico every year, and the process is well-established. U.S. citizens enjoy full ownership rights on Mexican real estate. For properties located outside restricted zones, Americans can hold title directly in their name. For properties in coastal or border areas — the most desirable destinations for most buyers — ownership is held through a fideicomiso, a bank trust that functions identically to direct ownership and is fully protected under Mexican law. Americans can rent, sell, renovate, or pass the property to heirs just as they would in the United States. Property Dreamz was built specifically to serve American buyers with English-language support, USD pricing, and a certified inventory of vetted developments."
+      },
+      {
+        "q": "How to buy a house in Mexico?",
+        "a": "Buying a house in Mexico involves five key steps. First, define your goals — lifestyle, vacation home, rental investment, or retirement — and choose a location that fits. Second, establish your budget and financing options; most buyers use cash or developer financing, though some U.S. lenders offer Mexico mortgage products. Third, browse certified developments through a trusted portal like Property Dreamz, where every listing has been pre-screened for legal compliance. Fourth, select your property and engage a Mexican notary public to conduct due diligence, draft the purchase agreement, and formalize the transaction. Fifth, if buying in a restricted zone, set up your fideicomiso through one of Mexico's authorized banks. Property Dreamz guides you through every step with verified professionals and transparent documentation."
+      },
+      {
+        "q": "Can Canadians buy property in Mexico?",
+        "a": "Absolutely — Canadians are among the most active foreign buyers in the Mexican real estate market, particularly in Baja California, the Riviera Maya, and Puerto Vallarta. The rules for Canadian buyers are identical to those for Americans: direct ownership is available outside restricted zones, while a fideicomiso bank trust is required for coastal and border properties. Canadian buyers benefit from Mexico's stable property rights framework, no capital gains residency restrictions, and strong rental income potential in tourist destinations. Currency-wise, properties are typically priced in USD, which provides clarity for Canadian buyers managing exchange rates. Property Dreamz serves Canadian buyers with the same certified listings, English-language support, and verified developer network available to all international clients."
+      },
+      {
+        "q": "What exactly is a Fideicomiso?",
+        "a": "A Fideicomiso is a Mexican bank trust that holds title on your behalf. You retain all ownership rights — sell, lease, remodel, or pass to heirs — while the bank acts as trustee in name only. It renews every 50 years."
+      },
+      {
+        "q": "How does Property Dreamz verify each property?",
+        "a": "Every development passes a 4-point review: title search, developer background check, HOA financial audit, and on-site inspection. Only developments that pass all four gates earn the Certified badge."
+      },
+      {
+        "q": "What does CMRE certification mean?",
+        "a": "CMRE (Certified Mexican Real Estate) is the independent body that validates our review process. Their seal confirms Property Dreamz meets the highest professional standards for cross-border real estate brokerage."
+      },
+      {
+        "q": "How long does the buying process take?",
+        "a": "From signed offer to recorded deed, most buyers close in 60–90 days. Fideicomiso approval from the Mexican Ministry of Foreign Affairs takes 30–45 days and is typically the longest single step."
+      },
+      {
+        "q": "Are prices listed in USD?",
+        "a": "Yes. Every listing is priced in U.S. dollars and our closing coordinators work exclusively in USD. We also partner with U.S.-based lenders who offer financing for Mexico properties."
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@
 // Alimar luxury condos page — hero, room amenity viewer with tab switcher, floor plan carousel, and CTA.
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 
@@ -14,50 +15,22 @@ const IMG_CTA      = `${CLD}/alimar/cta.jpg`;
 const IMG_LOGO     = `${CLD}/alimar/logo.svg`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-// ── Data ─────────────────────────────────────────────────────────────────────
-const stats = [
-  { value: "16",   label: "Condos" },
-  { value: "4",    label: "Models" },
-  { value: "82%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"];
-
-const amenityTabs = ["Living room", "Bedroom", "Bathroom", "Kitchen", "Terrace"] as const;
-type AmenityTab = (typeof amenityTabs)[number];
-
-const amenityDescriptions: Record<AmenityTab, string> = {
-  "Living room": "Floor-to-ceiling windows, refined finishes, and seamless comfort designed for modern living.",
-  "Bedroom":     "Spacious bedrooms with premium finishes and ample natural light.",
-  "Bathroom":    "Elegant bathrooms with high-end fixtures and spa-like details.",
-  "Kitchen":     "Integral kitchen with premium appliances and clean modern lines.",
-  "Terrace":     "Private terraces with breathtaking panoramic views of the city.",
-};
-
-const layouts = [
-  {
-    name: "Layout A",
-    area: "1287 sq. ft.",
-    features: [
-      "3 balconies",
-      "Living room with balcony",
-      "Dining room",
-      "Breakfast bar",
-      "Kitchen (Integral)",
-      "2 Bedrooms",
-      "2 Bathrooms",
-      "Patio with laundry room",
-      "1 covered parking space",
-    ],
-  },
-];
+type Stat = { value: string; label: string };
+type Amenity = { id: string; label: string; description: string };
+type Layout = { name: string; area: string; features: string[] };
 
 export default function AlimarPage() {
-  const [activeTab, setActiveTab] = useState<AmenityTab>("Living room");
+  const t = useTranslations("propertyAlimar");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const amenities = t.raw("explore.amenities") as Amenity[];
+  const layouts = t.raw("models.layouts") as Layout[];
+
+  const [activeTab, setActiveTab] = useState<string>(amenities[0]?.id);
   const [modelIndex, setModelIndex] = useState(0);
 
   const currentLayout = layouts[modelIndex];
+  const currentAmenity = amenities.find((a) => a.id === activeTab) ?? amenities[0];
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -69,7 +42,7 @@ export default function AlimarPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={IMG_HERO}
-            alt="Alimar building exterior"
+            alt={t("hero.heroImageAlt")}
             className="absolute inset-0 h-full w-full object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
           />
         </div>
@@ -91,7 +64,7 @@ export default function AlimarPage() {
           <RevealOnScroll direction="right" className="flex justify-end">
             <Image
               src={IMG_CMRE}
-              alt="CMRE Certified"
+              alt={t("hero.cmreAlt")}
               width={135}
               height={32}
               className="w-32"
@@ -101,11 +74,11 @@ export default function AlimarPage() {
           {/* Middle — headline + subtitle + badges */}
           <div className="mt-auto max-w-2xl">
             <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
-              Elevated living.<br />Exceptional views.
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
-                A limited collection of only 16 luxury residences designed for those who expect more.
+                {t("hero.subtitle")}
               </p>
             </RevealOnScroll>
             {/* Trust badges — staggered */}
@@ -143,11 +116,11 @@ export default function AlimarPage() {
           {/* ALIMAR logo — top-left on mobile, bottom-right on desktop */}
           <div className="absolute left-6 top-8 lg:hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMG_LOGO} alt="Alimar" className="w-20 opacity-90" />
+            <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="w-20 opacity-90" />
           </div>
           <div className="absolute right-20 bottom-24 hidden lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMG_LOGO} alt="Alimar" className="w-28 opacity-90" />
+            <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="w-28 opacity-90" />
           </div>
         </div>
       </section>
@@ -155,7 +128,7 @@ export default function AlimarPage() {
       {/* ── EXPLORE YOUR NEXT HOME ────────────────────────────────────────── */}
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="center"><h2 className="font-ewangi text-[clamp(1.75rem,3vw,2.5rem)] text-white mb-10 text-center">
-          Explore your next home
+          {t("explore.heading")}
         </h2></RevealOnScroll>
 
         {/* Amenities viewer */}
@@ -165,29 +138,29 @@ export default function AlimarPage() {
           <div className="flex flex-col gap-5 lg:hidden">
             <div className="relative h-65 overflow-hidden rounded-3xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_INTERIOR} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <img src={IMG_INTERIOR} alt={currentAmenity.label} className="absolute inset-0 h-full w-full object-cover" />
               <div
                 className="absolute inset-0"
                 style={{ background: "linear-gradient(to top, rgba(23,23,23,0.85) 0%, transparent 60%)" }}
               />
-              <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">{activeTab}</p>
+              <p className="absolute bottom-4 left-5 font-ewangi text-[1.25rem] text-brand-teal">{currentAmenity.label}</p>
             </div>
             <p className="font-ewangi text-[1rem] leading-relaxed text-white/80">
-              {amenityDescriptions[activeTab]}
+              {currentAmenity.description}
             </p>
             <div className="flex flex-wrap gap-2">
-              {amenityTabs.map((tab) => (
+              {amenities.map((a) => (
                 <button
-                  key={tab}
+                  key={a.id}
                   type="button"
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => setActiveTab(a.id)}
                   className={`rounded-1.25 px-4 py-2 font-ewangi text-[0.9rem] transition ${
-                    activeTab === tab
+                    activeTab === a.id
                       ? "bg-brand-teal text-brand-ink"
                       : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
                   }`}
                 >
-                  {tab}
+                  {a.label}
                 </button>
               ))}
             </div>
@@ -197,7 +170,7 @@ export default function AlimarPage() {
           <div className="mx-auto max-w-329.25 relative hidden rounded-15 overflow-hidden h-134.5 lg:block">
             <div className="absolute inset-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_INTERIOR} alt={activeTab} className="absolute inset-0 h-full w-full object-cover" />
+              <img src={IMG_INTERIOR} alt={currentAmenity.label} className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div
               className="absolute inset-0"
@@ -205,24 +178,24 @@ export default function AlimarPage() {
             />
             <div className="absolute right-0 top-0 bottom-0 w-[38%] flex flex-col justify-center px-12">
               <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-4">
-                Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.
+                {t("explore.desktopIntro")}
               </p>
               <p className="font-ewangi text-[0.95rem] text-white/70 mb-8">
-                {amenityDescriptions[activeTab]}
+                {currentAmenity.description}
               </p>
               <div className="flex flex-col gap-3">
-                {amenityTabs.map((tab) => (
+                {amenities.map((a) => (
                   <button
-                    key={tab}
+                    key={a.id}
                     type="button"
-                    onClick={() => setActiveTab(tab)}
+                    onClick={() => setActiveTab(a.id)}
                     className={`rounded-1.25 px-5 py-2.5 text-right font-ewangi text-[1.125rem] font-bold transition ${
-                      activeTab === tab
+                      activeTab === a.id
                         ? "bg-brand-teal text-brand-ink"
                         : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
                     }`}
                   >
-                    {tab}
+                    {a.label}
                   </button>
                 ))}
               </div>
@@ -239,7 +212,9 @@ export default function AlimarPage() {
           {/* Header row */}
           <RevealOnScroll direction="left">
           <div className="flex items-center gap-6 mb-6">
-            <span className="font-ewangi text-[1.6rem] text-[#1e1e1e]">Explore our {layouts.length > 1 ? `${layouts.length} models` : "4 models"}</span>
+            <span className="font-ewangi text-[1.6rem] text-[#1e1e1e]">
+              {t("models.headingTemplate", { count: layouts.length > 1 ? layouts.length : 4 })}
+            </span>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -286,7 +261,7 @@ export default function AlimarPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG_PLAN}
-                  alt={`${currentLayout.name} floor plan`}
+                  alt={t("models.floorPlanAltTemplate", { name: currentLayout.name })}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -307,7 +282,7 @@ export default function AlimarPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={IMG_CTA}
-                alt="Alimar luxury residences"
+                alt={t("cta.imageAlt")}
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
@@ -318,17 +293,14 @@ export default function AlimarPage() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col gap-6 lg:flex-1">
             <h2 className="font-ewangi text-[clamp(2rem,4.5vw,4rem)] leading-tight text-white">
-              A Limited Collection.<br />An Extraordinary Lifestyle.
+              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
             </h2>
             <p className="font-ewangi text-[1.1rem] leading-relaxed text-white/70">
-              Designed for those who seek more than just a residence, these 16 exclusive condominiums
-              offer refined living spaces, breathtaking views, and a sense of community unlike any other.
-              Every home is crafted to deliver comfort, elegance, and lasting value. Contact us today
-              to learn more and reserve your place in this exceptional development.
+              {t("cta.body")}
             </p>
             <div className="mt-2">
               <button type="button" className="rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-brand-teal/90">
-                Talk to an expert
+                {t("cta.button")}
               </button>
             </div>
           </div>

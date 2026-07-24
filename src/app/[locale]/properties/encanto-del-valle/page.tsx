@@ -2,6 +2,7 @@
 // Encanto del Valle page — wine-country lots in Valle de Guadalupe with a developer-hosted 360° showroom iframe.
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 
@@ -11,22 +12,12 @@ const IMG_SAFETY       = `${CLD}/encanto-del-valle/safety`;
 const IMG_LOCATION_MAP = `${CLD}/encanto-del-valle/location-map`;
 const IMG_CMRE         = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "300",  label: "Lots" },
-  { value: "10",   label: "Condos" },
-  { value: "2",    label: "Models" },
-  { value: "45",   label: "Houses" },
-  { value: "82%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
+type Stat = { value: string; label: string };
 
 export default function EncantoDelVallePage() {
+  const t = useTranslations("propertyEncantoDelValle");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -50,14 +41,14 @@ export default function EncantoDelVallePage() {
         <div className="absolute left-1/2 top-[38%] z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 lg:hidden">
           <Image
             src={IMG_LOGO}
-            alt="Encanto del Valle"
+            alt={t("hero.logoAlt")}
             width={339}
             height={60}
             className="w-40"
           />
           <Image
             src={IMG_CMRE}
-            alt="CMRE Certified"
+            alt={t("hero.cmreAlt")}
             width={204}
             height={48}
             className="w-32"
@@ -90,14 +81,14 @@ export default function EncantoDelVallePage() {
               <div className="hidden flex-col gap-3 lg:flex">
                 <Image
                   src={IMG_LOGO}
-                  alt="Encanto del Valle"
+                  alt={t("hero.logoAlt")}
                   width={339}
                   height={60}
                   className="w-44 lg:w-56"
                 />
                 <Image
                   src={IMG_CMRE}
-                  alt="CMRE Certified"
+                  alt={t("hero.cmreAlt")}
                   width={204}
                   height={48}
                   className="w-40 lg:w-48"
@@ -121,7 +112,7 @@ export default function EncantoDelVallePage() {
                 className="font-ewangi text-[clamp(2.5rem,7vw,6rem)] leading-none text-white lg:text-right animate-[fade-right_0.9s_ease-out_0.1s_both]"
                 style={{ textShadow: "10px 4px 11px rgba(0,0,0,0.61)" }}
               >
-                The privilege of the<br />heart of the valle
+                {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
               </h1>
 
               <RevealOnScroll direction="up" delay={350}>
@@ -129,7 +120,7 @@ export default function EncantoDelVallePage() {
                   className="font-ewangi text-[1.1rem] leading-relaxed text-white/80 lg:text-right"
                   style={{ textShadow: "12px 4px 9px rgba(0,0,0,0.58)" }}
                 >
-                  An exclusive low-density development of residential lots in the mountains of Valle de Guadalupe, Baja California — surrounded by nature, vineyards and the Ruta del Vino.
+                  {t("hero.subtitle")}
                 </p>
               </RevealOnScroll>
 
@@ -143,7 +134,7 @@ export default function EncantoDelVallePage() {
       <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="left">
           <p className="mb-6 font-ewangi text-[1.25rem] text-white">
-            Explore the development
+            {t("explore.sectionLabel")}
           </p>
         </RevealOnScroll>
 
@@ -151,7 +142,7 @@ export default function EncantoDelVallePage() {
         <div className="overflow-hidden rounded-6.75 aspect-video">
           <iframe
             src="https://encantodelvalle.com.mx/showroom/?sct=Luis"
-            title="Encanto del Valle 360 Showroom"
+            title={t("explore.showroomTitle")}
             className="h-full w-full border-0"
             allow="fullscreen; accelerometer; gyroscope"
           />
@@ -166,10 +157,10 @@ export default function EncantoDelVallePage() {
           <RevealOnScroll direction="left" duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1">
               <h2 className="font-ewangi text-[clamp(2.5rem,4.5vw,3.875rem)] leading-tight text-white">
-                Safety For Your Family
+                {t("safety.heading")}
               </h2>
               <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-120">
-                Encanto del Valle prioritizes the safety and tranquility of its residents through rigorous measures that guarantee a secure community. The development features a highly efficient 24-hour access control system, strategically placed surveillance cameras for continuous monitoring of common areas, and proactive security policies.
+                {t("safety.body")}
               </p>
             </div>
           </RevealOnScroll>
@@ -179,7 +170,7 @@ export default function EncantoDelVallePage() {
               <div className="relative overflow-hidden rounded-3.75 aspect-650/470">
                 <Image
                   src={IMG_SAFETY}
-                  alt="Encanto del Valle valley landscape"
+                  alt={t("safety.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 50vw"
@@ -199,7 +190,7 @@ export default function EncantoDelVallePage() {
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={2} />
             <span className="font-ewangi text-[1.5rem] text-brand-teal lg:text-[2.1875rem]">
-              Trusted by + 100 Families
+              {t("testimonials.trustedText")}
             </span>
           </div>
 
@@ -211,7 +202,7 @@ export default function EncantoDelVallePage() {
             rel="noopener noreferrer"
             className="hidden shrink-0 items-center justify-center rounded-4.5 bg-white px-8 py-5 font-ewangi text-[1.5rem] text-brand-ink transition hover:bg-white/90 lg:flex"
           >
-            Hear From Our Residents
+            {t("testimonials.button")}
           </Link>
 
         </div>
@@ -227,7 +218,7 @@ export default function EncantoDelVallePage() {
               <div className="relative overflow-hidden rounded-11.25 aspect-452/499">
                 <Image
                   src={IMG_LOCATION_MAP}
-                  alt="Valle de Guadalupe location map"
+                  alt={t("amenities.imageAlt")}
                   fill
                   className="object-cover object-top"
                   sizes="(max-width:1024px) 100vw, 37vw"
@@ -239,10 +230,10 @@ export default function EncantoDelVallePage() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="flex flex-col gap-6 lg:flex-1 lg:items-end lg:text-right">
               <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.875rem)] leading-tight text-white">
-                More than amenities,<br />it&apos;s an experience
+                {t("amenities.headingLine1")}<br />{t("amenities.headingLine2")}
               </h2>
               <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-130">
-                Controlled access gate, artificial lake, green areas, golf course and recreational spaces in a private, secure community in the heart of Mexico&apos;s wine country.
+                {t("amenities.body")}
               </p>
             </div>
           </RevealOnScroll>
@@ -257,7 +248,7 @@ export default function EncantoDelVallePage() {
             type="button"
             className="rounded-2.5 bg-brand-teal px-14 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
           >
-            Talk to an expert
+            {t("cta.button")}
           </button>
         </RevealOnScroll>
       </section>

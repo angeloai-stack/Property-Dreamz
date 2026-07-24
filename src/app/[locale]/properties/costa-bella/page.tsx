@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -21,107 +22,18 @@ const MODELS_IMG: Record<ModelId, string> = {
   D: `${CLD}/costa-bella/model-d`,
 };
 
-const stats = [
-  { value: "16",   label: "Condos" },
-  { value: "4",    label: "Models" },
-  { value: "70%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = ["Title reviewed", "Regulatory compliance", "Infrastructure validated"];
-
-type AmenityTab = "Pool" | "Terrace" | "Gym" | "Kitchen" | "Bedroom";
-
-const amenities: Record<AmenityTab, { title: string; description: string }> = {
-  Pool:    {
-    title: "Rooftop pool with panoramic Pacific views.",
-    description: "Resort-style rooftop pool with sun deck and lounging areas, overlooking the Pacific Ocean. The perfect setting to unwind just steps from the beach in Rosarito.",
-  },
-  Terrace: {
-    title: "Private terraces with breathtaking ocean views.",
-    description: "Expansive terraces designed for outdoor living — enjoy sunrises over the Pacific and Rosarito's coastline from the comfort of your own home.",
-  },
-  Gym:     {
-    title: "Fully equipped fitness center.",
-    description: "State-of-the-art gym with premium equipment, natural light, and sweeping views of the Pacific. Stay active without leaving the comfort of your building.",
-  },
-  Kitchen: {
-    title: "Designer kitchens with premium finishes.",
-    description: "Integral kitchens with marble countertops, high-end appliances, and clean modern lines — designed to inspire every meal with a Pacific backdrop.",
-  },
-  Bedroom: {
-    title: "Spacious bedrooms with walk-in closets.",
-    description: "Thoughtfully designed bedrooms with direct terrace access, walk-in closets, and premium finishes that bring coastal elegance to every corner of your home.",
-  },
-};
-
-interface UnitModel { id: ModelId; area: string; features: string[] }
-
-const models: UnitModel[] = [
-  {
-    id: "A",
-    area: "2,152.78 ft²",
-    features: [
-      "Kitchen, living, and dining area",
-      "Primary bedroom with full bathroom and walk-in closet",
-      "Secondary bedroom with closet and shared full bathroom",
-      "Open-concept multipurpose room",
-      "Laundry room",
-      "Ocean-view terrace 40 m²",
-    ],
-  },
-  {
-    id: "B",
-    area: "2,152.78 ft²",
-    features: [
-      "Kitchen, living, and dining area",
-      "Primary bedroom with full bathroom and walk-in closet",
-      "Secondary bedroom with shared full bathroom",
-      "Open-concept multipurpose room",
-      "Laundry room",
-      "Ocean-view terrace 40 m²",
-      "Bar cabinet / wine cellar",
-      "Appliances included",
-    ],
-  },
-  {
-    id: "C",
-    area: "2,152.78 ft²",
-    features: [
-      "Living and dining area",
-      "Primary bedroom",
-      "Kitchen with pantry",
-      "Walk-in closet",
-      "Terraces",
-      "Primary bathroom",
-      "Laundry area and storage",
-      "Half bathroom",
-      "Bedroom 1 with full bathroom",
-      "Bedroom 2 with full bathroom",
-      "Staircase to rooftop",
-    ],
-  },
-  {
-    id: "D",
-    area: "4,305.56 ft²",
-    features: [
-      "Living and dining area",
-      "Staircase to rooftop",
-      "Kitchen with pantry",
-      "Primary bedroom",
-      "Terraces",
-      "Walk-in closet",
-      "Laundry area and storage",
-      "Primary bathroom",
-      "Half bathroom",
-      "Bedroom 1 with full bathroom",
-      "Bedroom 2 with full bathroom",
-    ],
-  },
-];
+type Stat = { value: string; label: string };
+type Amenity = { id: string; label: string; title: string; description: string };
+type UnitModel = { id: ModelId; area: string; features: string[] };
 
 export default function CostaBellaPage() {
-  const [activeTab, setActiveTab] = useState<AmenityTab>("Pool");
+  const t = useTranslations("propertyCostaBella");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const amenities = t.raw("explore.amenities") as Amenity[];
+  const models = t.raw("models.list") as UnitModel[];
+
+  const [activeTab, setActiveTab] = useState<string>(amenities[0]?.id);
   const [modelIndex, setModelIndex] = useState(0);
 
   useEffect(() => {
@@ -129,7 +41,7 @@ export default function CostaBellaPage() {
   }, []);
 
   const currentModel   = models[modelIndex];
-  const currentAmenity = amenities[activeTab];
+  const currentAmenity = amenities.find((a) => a.id === activeTab) ?? amenities[0];
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -138,7 +50,7 @@ export default function CostaBellaPage() {
       <section className="relative min-h-205 overflow-hidden bg-[#171717]">
         <Image
           src={IMG_HERO}
-          alt="Costa Bella luxury condominiums exterior"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -154,11 +66,11 @@ export default function CostaBellaPage() {
           {/* Left content */}
           <div className="mt-auto max-w-[800px] flex flex-col gap-6">
             <h1 className="font-ewangi text-[clamp(3rem,7vw,6rem)] leading-[0.92] text-white [text-shadow:10px_4px_11.2px_rgba(0,0,0,0.61)] animate-[fade-left_0.9s_ease-out_both]">
-              Beachside living.<br />Steps from the Pacific.
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
             </h1>
             <RevealOnScroll direction="up" delay={150}>
               <p className="font-ewangi text-[1.125rem] leading-relaxed text-white/80 [text-shadow:12px_4px_9.1px_rgba(0,0,0,0.58)]">
-                A limited collection of only 16 luxury condominiums designed for those who seek coastal elegance.
+                {t("hero.subtitle")}
               </p>
             </RevealOnScroll>
             <div className="grid grid-cols-3 gap-x-6 gap-y-3 mt-2">
@@ -179,14 +91,14 @@ export default function CostaBellaPage() {
           <div className="absolute left-1/2 top-16 z-20 -translate-x-1/2 flex flex-col items-center gap-4 lg:left-auto lg:translate-x-0 lg:right-20 lg:top-auto lg:bottom-44">
             <Image
               src={IMG_LOGO}
-              alt="Costa Bella"
+              alt={t("hero.logoAlt")}
               width={159}
               height={113}
               className="w-28 lg:w-36"
             />
             <Image
               src={IMG_CMRE}
-              alt="CMRE Certified"
+              alt={t("hero.cmreAlt")}
               width={135}
               height={32}
               className="w-28 lg:w-32"
@@ -216,7 +128,7 @@ export default function CostaBellaPage() {
           <div className="flex items-center gap-4 mb-12">
             <div className="h-px flex-1 bg-white/30" />
             <h2 className="font-ewangi text-[clamp(1.75rem,3vw,2.25rem)] text-white whitespace-nowrap">
-              Explore your next home
+              {t("explore.heading")}
             </h2>
             <div className="h-px flex-1 bg-white/30" />
           </div>
@@ -229,7 +141,7 @@ export default function CostaBellaPage() {
             <div className="relative overflow-hidden rounded-3xl" style={{ height: 260 }}>
               <Image
                 src={IMG_AMENITIES}
-                alt={activeTab}
+                alt={currentAmenity.label}
                 fill
                 className="object-cover"
                 sizes="100vw"
@@ -246,19 +158,19 @@ export default function CostaBellaPage() {
               {currentAmenity.description}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+              {amenities.map((a) => (
                 <button
-                  key={tab}
+                  key={a.id}
                   type="button"
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => setActiveTab(a.id)}
                   className={cn(
                     "rounded-[5px] px-4 py-2 font-ewangi text-[0.95rem] transition",
-                    activeTab === tab
+                    activeTab === a.id
                       ? "bg-[#1e1e1e] text-brand-teal border border-brand-teal/50"
                       : "bg-white/10 text-white hover:bg-white/20"
                   )}
                 >
-                  {tab}
+                  {a.label}
                 </button>
               ))}
             </div>
@@ -268,7 +180,7 @@ export default function CostaBellaPage() {
           <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-[60px] overflow-hidden" style={{ height: "524px" }}>
             <Image
               src={IMG_AMENITIES}
-              alt={activeTab}
+              alt={currentAmenity.label}
               fill
               className="object-cover"
               sizes="100vw"
@@ -289,19 +201,19 @@ export default function CostaBellaPage() {
                 {currentAmenity.title}
               </p>
               <div className="flex flex-col gap-2">
-                {(Object.keys(amenities) as AmenityTab[]).map((tab) => (
+                {amenities.map((a) => (
                   <button
-                    key={tab}
+                    key={a.id}
                     type="button"
-                    onClick={() => setActiveTab(tab)}
+                    onClick={() => setActiveTab(a.id)}
                     className={cn(
                       "rounded-[5px] px-4 py-2 text-right font-ewangi text-[1.3rem] font-bold transition w-[152px] self-end",
-                      activeTab === tab
+                      activeTab === a.id
                         ? "bg-[#1e1e1e] text-brand-teal"
                         : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
                     )}
                   >
-                    {tab}
+                    {a.label}
                   </button>
                 ))}
               </div>
@@ -317,7 +229,9 @@ export default function CostaBellaPage() {
 
           <RevealOnScroll direction="left">
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-ewangi text-[1.875rem] text-[#1e1e1e]">Explore our 4 models</span>
+              <span className="font-ewangi text-[1.875rem] text-[#1e1e1e]">
+                {t("models.sectionHeadingTemplate", { count: models.length })}
+              </span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -343,7 +257,7 @@ export default function CostaBellaPage() {
             <RevealOnScroll direction="left" delay={100} duration={1100}>
               <div className="lg:w-[480px] flex flex-col gap-3">
                 <h3 className="font-ewangi text-[clamp(2.5rem,5vw,3.25rem)] text-black leading-none">
-                  Model {currentModel.id}
+                  {t("models.modelNameTemplate", { id: currentModel.id })}
                 </h3>
                 <p className="font-ewangi text-[clamp(1.5rem,2.5vw,2.5rem)] text-brand-teal">
                   {currentModel.area}
@@ -362,7 +276,7 @@ export default function CostaBellaPage() {
                   <Image
                     key={currentModel.id}
                     src={MODELS_IMG[currentModel.id]}
-                    alt={`Model ${currentModel.id} floor plan`}
+                    alt={t("models.floorPlanAltTemplate", { id: currentModel.id })}
                     fill
                     className="object-contain"
                     sizes="(max-width:1024px) 100vw, 55vw"
@@ -382,7 +296,7 @@ export default function CostaBellaPage() {
                   "rounded-[4px] h-2 transition-all",
                   i === modelIndex ? "w-6 bg-brand-teal" : "w-2 bg-[#b3b3b3]"
                 )}
-                aria-label={`Model ${m.id}`}
+                aria-label={t("models.modelNameTemplate", { id: m.id })}
               />
             ))}
           </div>
@@ -398,7 +312,7 @@ export default function CostaBellaPage() {
               <div className="relative overflow-hidden rounded-[20px]" style={{ aspectRatio: "560/317" }}>
                 <Image
                   src={IMG_CTA}
-                  alt="Costa Bella — Rosarito beachfront"
+                  alt={t("cta.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 44vw"
@@ -410,17 +324,17 @@ export default function CostaBellaPage() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
             <div className="flex flex-col gap-5 lg:flex-1 lg:text-right">
               <h2 className="font-ewangi text-[clamp(2rem,5vw,3.75rem)] leading-tight text-black">
-                A Limited Collection.<br />An Exceptional Lifestyle.
+                {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
               </h2>
               <p className="font-ewangi text-[1.125rem] leading-relaxed text-black/70">
-                Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined coastal living, breathtaking Pacific views, and a private community unlike any other. Every home delivers comfort, elegance, and lasting value just steps from the beach. Contact us today to reserve your place in this exceptional development.
+                {t("cta.body")}
               </p>
               <div className="mt-2 flex lg:justify-end">
                 <button
                   type="button"
                   className="rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90"
                 >
-                  Talk to an expert
+                  {t("cta.button")}
                 </button>
               </div>
             </div>

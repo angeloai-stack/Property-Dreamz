@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "title": "Del Mar Residencial – Casas y Condominios Costeros Cerca de Tijuana, Baja California",
+    "description": "Del Mar Residencial ofrece casas y condominios a lo largo del pintoresco corredor costero Tijuana–Ensenada. Una comunidad refinada con fácil acceso tanto a Tijuana como a Ensenada."
+  },
+  "hero": {
+    "logoAlt": "Del Mar",
+    "headline": "Construye con confianza.",
+    "subtitle": "Un desarrollo verificado y seguro para tu próximo proyecto.",
+    "cmreAltMobile": "Certificado por CMRE",
+    "cmreAltDesktop": "Certificado por CMRE Mexico Real Estate",
+    "tourBadgeValue": "360°",
+    "tourBadgeLabel": "vista"
+  },
+  "trustBadges": ["Legalmente revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "120", "label": "Lotes" },
+    { "value": "25", "label": "Condominios" },
+    { "value": "5", "label": "Modelos" },
+    { "value": "80", "label": "Casas" },
+    { "value": "70%", "label": "Disponible" },
+    { "value": "100%", "label": "Verificado" }
+  ],
+  "lotExplorer": {
+    "sectionLabel": "Explora el desarrollo",
+    "tabs": ["Lotes", "Condominios", "Casas"],
+    "tourTitle": "Recorrido virtual 360° de Del Mar",
+    "selectPrompt": "Selecciona un lote para ver los detalles",
+    "lotLabelPrefix": "Lote",
+    "popoverType": "Residencial",
+    "popoverStatus": "Disponible",
+    "viewAllButton": "Ver todos los lotes",
+    "lots": [
+      { "id": "12", "area": "300 m²" },
+      { "id": "13", "area": "300 m²" },
+      { "id": "14", "area": "320 m²" },
+      { "id": "15", "area": "315 m²" },
+      { "id": "16", "area": "305 m²" }
+    ]
+  },
+  "models": {
+    "sectionLabel": "Modelos de casa",
+    "prevAriaLabel": "Modelo anterior",
+    "nextAriaLabel": "Siguiente modelo",
+    "items": [
+      { "name": "PERLA", "type": "Casa", "sqm": "180 m²", "beds": "3 Recámaras", "baths": "2 Baños" },
+      { "name": "BAHÍA", "type": "Casa", "sqm": "210 m²", "beds": "3 Recámaras", "baths": "3 Baños" },
+      { "name": "VIENTO", "type": "Condominio", "sqm": "55 m²", "beds": "1 Recámara", "baths": "1 Baño" },
+      { "name": "CORONADO", "type": "Casa", "sqm": "240 m²", "beds": "4 Recámaras", "baths": "3 Baños" },
+      { "name": "MAREA", "type": "Casa", "sqm": "120 m²", "beds": "2 Recámaras", "baths": "2 Baños" }
+    ]
+  },
+  "tour": {
+    "imageAlt": "Interior de Del Mar",
+    "headingLine1": "Vamos a echar un vistazo",
+    "headingLine2": "desde tu",
+    "headingLine3": "próximo hogar.",
+    "button": "Tour 360°"
+  },
+  "oceanLots": {
+    "heading": "Lotes con Vista al Mar",
+    "body": "Descubre lotes premium con vista al mar, cada uno con la oportunidad única de construir la casa de tus sueños con vistas impresionantes a las Islas Coronado. Disfruta la tranquilidad de la vida costera, donde cada amanecer y atardecer transforma el horizonte en una obra maestra.",
+    "bodyExtra": "Nuestra selección incluye lotes amplios con distintas opciones de superficie para adaptarse a tu visión.",
+    "imageAltMobile": "Lotes con vista al mar",
+    "imageAltDesktop": "Desarrollo de lotes con vista al mar"
+  },
+  "ctaBanner": {
+    "text": "Certificamos para que construyas tu futuro"
+  }
+}

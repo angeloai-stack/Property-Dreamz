@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "title": "Bienes Raíces en México | Propiedades Verificadas | Property Dreamz",
+    "description": "Explora propiedades certificadas en México. Compra tu casa en México con confianza — cada propiedad con título investigado, desarrollador revisado y HOA auditada."
+  },
+  "hero": {
+    "slides": [
+      { "line1": "Bienes raíces en México:", "line2": "Encuentra la propiedad ideal" },
+      { "line1": "Encuentra tu", "line2": "pedazo de México" },
+      { "line1": "Sé dueño de un rincón", "line2": "de paraíso" },
+      { "line1": "Vive el", "line2": "sueño mexicano" }
+    ],
+    "seoText": "Encuentra propiedades certificadas en todo México. Compra tu casa en México con tranquilidad — cada propiedad con título investigado, desarrollador verificado y HOA auditada antes de invertir.",
+    "searchPlaceholder": "Tijuana, Rosarito, Pto. Nuevo…",
+    "searchLabel": "Buscar propiedades",
+    "slideAriaLabel": "Diapositiva {number}"
+  },
+  "verify": {
+    "brand": "Property Dreamz",
+    "verify": "Verify",
+    "tagline": "El único portal donde cada propiedad es certificada antes de publicarse.",
+    "certifiedBy": "Certificado por"
+  },
+  "featureCards": {
+    "items": [
+      {
+        "title": "Título limpio antes de transferir un solo dólar",
+        "body": "La confianza empieza con la transparencia. Al comprar una propiedad en México, lo último que quieres es una sorpresa legal después del cierre. Nuestro proceso de certificación incluye una revisión exhaustiva de antecedentes judiciales, historial del título y cadena de propiedad para identificar desarrolladores que cumplen con los más altos estándares de profesionalismo e integridad. Cada propiedad en Property Dreamz ha pasado nuestro protocolo de investigación de título, para que puedas invertir con confianza desde el primer día."
+      },
+      {
+        "title": "Cumplimiento regulatorio verificado",
+        "body": "El sector inmobiliario en México se rige por un conjunto único de regulaciones federales, estatales y municipales, y no todos los desarrolladores juegan según las reglas. Property Dreamz verifica que cada desarrollador certificado cumpla con los estándares legales, regulatorios y profesionales correspondientes antes de aparecer en nuestra plataforma. Esta revisión abarca permisos, uso de suelo, estructuras de HOA y el cumplimiento de las mejores prácticas de la industria, asegurando que la propiedad que compres en México esté completamente en regla y protegida por la ley."
+      },
+      {
+        "title": "Evaluación de seguridad de la propiedad",
+        "body": "Un desarrollo seguro refleja una organización confiable. Al comprar una casa en México, la calidad de la seguridad y la administración del predio impactan directamente el valor de tu inversión y tu tranquilidad. Nuestra certificación incluye una evaluación rigurosa de la infraestructura de seguridad, los controles de acceso y las prácticas de administración de cada desarrollo, confirmando que las propiedades que listamos no solo son legalmente sólidas, sino también físicamente seguras y bien mantenidas para propietarios y residentes."
+      }
+    ]
+  },
+  "topDevelopers": {
+    "label": "Nuestros mejores desarrolladores",
+    "socialProof": "+2,369 personas están comprando propiedades en este momento",
+    "removeFromSaved": "Quitar {name} de guardados",
+    "save": "Guardar {name}"
+  },
+  "bajaSeoBlock": {
+    "eyebrow": "Desarrollos certificados · Baja California, México",
+    "heading": "Bienes Raíces en Baja California",
+    "body": "Baja California es uno de los destinos más buscados por estadounidenses y canadienses para <b1>comprar una propiedad en México</b1>. Con su impresionante costa del Pacífico, una economía fronteriza próspera y su cercanía a San Diego, ciudades como <tijuana>Tijuana</tijuana>, <ensenada>Ensenada</ensenada> y <rosarito>Rosarito</rosarito> ofrecen un valor excepcional para compradores de cualquier presupuesto. Ya sea que busques un <b2>condominio frente al mar</b2>, una casa en un fraccionamiento privado o un retiro vacacional, <baja>los bienes raíces de Baja California</baja> ofrecen opciones de estilo de vida de primer nivel respaldadas por un marco legal sólido para la propiedad extranjera. Todos los desarrollos listados en <b3>Property Dreamz</b3> están <about>certificados</about> — cada título ha sido investigado, cada desarrollador verificado y cada <b4>reserva de HOA auditada</b4> antes de que una sola propiedad se publique en nuestra plataforma. Invertir en <baja2>bienes raíces de Baja California</baja2> nunca ha sido más transparente ni seguro.",
+    "stats": [
+      { "value": "47+", "label": "Desarrollos Certificados" },
+      { "value": "3", "label": "Ciudades Cubiertas" },
+      { "value": "100%", "label": "Título Verificado" }
+    ],
+    "imageCaptionTitle": "Costa del Pacífico",
+    "imageCaptionSubtitle": "Baja California, México"
+  },
+  "propertiesByCity": {
+    "eyebrow": "Explora propiedades por ciudad",
+    "pill": "Propiedades por Ciudad",
+    "noListings": "Aún no hay propiedades en {city}.",
+    "viewDevelopment": "Ver Desarrollo",
+    "scrollLeft": "Desplazar a la izquierda",
+    "scrollRight": "Desplazar a la derecha",
+    "priceFrom": "Desde ${amount}K",
+    "removeFromSaved": "Quitar {title} de guardados",
+    "save": "Guardar {title}"
+  },
+  "buyersGuideSteps": {
+    "eyebrow": "Guía del Comprador",
+    "headingPrefix": "Cómo comprar una propiedad en",
+    "headingHighlight": "México",
+    "steps": [
+      {
+        "title": "Elige tu ubicación",
+        "body": "Selecciona tu ubicación para ver desarrolladores, servicios e información de certificación relevante para tu región. Esto nos ayuda a ofrecerte una experiencia más personalizada y garantizar que veas el contenido más preciso según los requisitos y la disponibilidad locales.",
+        "imageAlt": "Horizonte de una ciudad en México"
+      },
+      {
+        "title": "Establece tu Fideicomiso",
+        "body": "Ya sea que estés comprando una propiedad o asegurando derechos de propiedad a largo plazo en las zonas restringidas de México, nuestra red de profesionales verificados puede ayudarte a establecer tu fideicomiso de forma eficiente y con total tranquilidad.",
+        "imageAlt": "Profesionales de negocios estrechando la mano"
+      },
+      {
+        "title": "Decide y compra",
+        "body": "Compara propiedades, evalúa tus opciones y elige la inversión que mejor se ajuste a tus metas. Con profesionales verificados y un proceso simplificado, puedes completar tu compra con confianza y tranquilidad.",
+        "imageAlt": "Llaves de casa y agente inmobiliario"
+      }
+    ]
+  },
+  "certifiedBanner": {
+    "allCertifiedBy": "Todo certificado por",
+    "cmreLogoAlt": "CMRE — Certificación de Bienes Raíces en México",
+    "description": "Cada propiedad y desarrollo presentado en nuestra plataforma pasa por un riguroso proceso de verificación, que incluye documentación legal, validación de propiedad, cumplimiento regulatorio y verificación de antecedentes del desarrollador. Nuestra certificación ayuda a garantizar transparencia, seguridad y confianza a lo largo de tu proceso de inversión inmobiliaria en México.",
+    "headlineLine1": "Explora 47 desarrollos",
+    "headlineLine2": "certificados",
+    "subheadline": "Reservas de HOA auditadas — sin cuotas sorpresa después del cierre.",
+    "cta": "Explorar desarrollos"
+  },
+  "faq": {
+    "badge": "PREGUNTAS FRECUENTES",
+    "headingPrefix": "¿Tienes preguntas?",
+    "headingHighlight": "Tenemos respuestas.",
+    "subheading": "Todo lo que necesitas saber antes de comprar una propiedad en México — desde la propiedad legal hasta el día del cierre.",
+    "cta": "Guía completa del comprador →",
+    "items": [
+      {
+        "q": "¿Cómo comprar bienes raíces en México?",
+        "a": "Comprar bienes raíces en México es sencillo si sigues el proceso correcto. Comienza eligiendo tu región — ya sea Baja California, la Riviera Maya, Nayarit o Yucatán — y define tu presupuesto. Después, trabaja con una plataforma certificada como Property Dreamz para explorar desarrollos verificados donde los títulos ya han sido investigados y los desarrolladores revisados. Para propiedades en zonas restringidas (dentro de 50 km de la costa o 100 km de una frontera internacional), los compradores extranjeros deben tener el título a través de un fideicomiso bancario, que otorga todos los derechos de propiedad por un plazo renovable de 50 años. Una vez que selecciones tu propiedad, un notario público mexicano formalizará la compra, registrará la escritura y se encargará del cierre. Property Dreamz te conecta con profesionales legales y notariales verificados durante todo el proceso, para que nunca lo enfrentes solo."
+      },
+      {
+        "q": "¿Pueden los estadounidenses comprar bienes raíces en México?",
+        "a": "Sí — los estadounidenses pueden comprar, y de hecho compran, propiedades en México cada año, y el proceso está bien establecido. Los ciudadanos de EE. UU. gozan de plenos derechos de propiedad sobre bienes raíces mexicanos. Para propiedades fuera de zonas restringidas, los estadounidenses pueden tener el título directamente a su nombre. Para propiedades en zonas costeras o fronterizas — los destinos más buscados por la mayoría de los compradores — la propiedad se mantiene a través de un fideicomiso, un fideicomiso bancario que funciona de manera idéntica a la propiedad directa y está totalmente protegido por la ley mexicana. Los estadounidenses pueden rentar, vender, remodelar o heredar la propiedad tal como lo harían en Estados Unidos. Property Dreamz fue creado específicamente para atender a compradores estadounidenses con soporte en inglés, precios en USD y un inventario certificado de desarrollos verificados."
+      },
+      {
+        "q": "¿Cómo comprar una casa en México?",
+        "a": "Comprar una casa en México implica cinco pasos clave. Primero, define tus objetivos — estilo de vida, casa de vacaciones, inversión de renta o retiro — y elige una ubicación que se ajuste a ellos. Segundo, establece tu presupuesto y opciones de financiamiento; la mayoría de los compradores usan efectivo o financiamiento del desarrollador, aunque algunos prestamistas de EE. UU. ofrecen productos hipotecarios para México. Tercero, explora desarrollos certificados a través de un portal confiable como Property Dreamz, donde cada propiedad ha sido previamente revisada por cumplimiento legal. Cuarto, selecciona tu propiedad y contrata a un notario público mexicano para realizar la debida diligencia, redactar el contrato de compraventa y formalizar la transacción. Quinto, si compras en una zona restringida, establece tu fideicomiso a través de uno de los bancos autorizados de México. Property Dreamz te guía en cada paso con profesionales verificados y documentación transparente."
+      },
+      {
+        "q": "¿Pueden los canadienses comprar propiedades en México?",
+        "a": "Por supuesto — los canadienses están entre los compradores extranjeros más activos del mercado inmobiliario mexicano, especialmente en Baja California, la Riviera Maya y Puerto Vallarta. Las reglas para compradores canadienses son idénticas a las de los estadounidenses: la propiedad directa está disponible fuera de zonas restringidas, mientras que se requiere un fideicomiso bancario para propiedades costeras y fronterizas. Los compradores canadienses se benefician del marco estable de derechos de propiedad de México, sin restricciones de residencia por ganancias de capital, y un fuerte potencial de ingresos por renta en destinos turísticos. En cuanto a moneda, las propiedades suelen cotizarse en USD, lo que brinda claridad a los compradores canadienses al manejar el tipo de cambio. Property Dreamz atiende a compradores canadienses con las mismas propiedades certificadas, soporte en inglés y red de desarrolladores verificados disponible para todos los clientes internacionales."
+      },
+      {
+        "q": "¿Qué es exactamente un Fideicomiso?",
+        "a": "Un Fideicomiso es un fideicomiso bancario mexicano que retiene el título en tu nombre. Tú conservas todos los derechos de propiedad — vender, rentar, remodelar o heredar — mientras el banco actúa solo como fiduciario en nombre. Se renueva cada 50 años."
+      },
+      {
+        "q": "¿Cómo verifica Property Dreamz cada propiedad?",
+        "a": "Cada desarrollo pasa por una revisión de 4 puntos: investigación de título, verificación de antecedentes del desarrollador, auditoría financiera del HOA e inspección en sitio. Solo los desarrollos que superan las cuatro etapas obtienen el distintivo Certificado."
+      },
+      {
+        "q": "¿Qué significa la certificación CMRE?",
+        "a": "CMRE (Certified Mexican Real Estate) es el organismo independiente que valida nuestro proceso de revisión. Su sello confirma que Property Dreamz cumple con los más altos estándares profesionales para el corretaje inmobiliario transfronterizo."
+      },
+      {
+        "q": "¿Cuánto tiempo toma el proceso de compra?",
+        "a": "Desde la oferta firmada hasta la escritura registrada, la mayoría de los compradores cierran en 60 a 90 días. La aprobación del fideicomiso por parte de la Secretaría de Relaciones Exteriores de México toma de 30 a 45 días y suele ser el paso individual más largo."
+      },
+      {
+        "q": "¿Los precios están en USD?",
+        "a": "Sí. Cada propiedad tiene precio en dólares estadounidenses y nuestros coordinadores de cierre trabajan exclusivamente en USD. También colaboramos con prestamistas con sede en EE. UU. que ofrecen financiamiento para propiedades en México."
+      }
+    ]
+  }
+}

@@ -1,9 +1,12 @@
 "use client";
 // Controlled filter panel for the explore-map page — state lives in the parent page component.
+import { useTranslations } from "next-intl";
 import { Search } from "lucide-react";
-import { MEXICAN_STATES } from "@/app/explore-map/data";
+import { MEXICAN_STATES } from "@/app/[locale]/explore-map/data";
 import { cn } from "@/lib/utils";
 
+// Filter VALUES stay the stable English literals used for comparison; only the rendered
+// LABEL is resolved via translation lookups (exploreMap.types / exploreMap.stateLabels).
 const types = ["All", "House", "Condo", "Land"] as const;
 const currencies = ["USD", "MXN"] as const;
 
@@ -63,6 +66,8 @@ export function ExploreFilters({
   onSortChange,
   resultCount,
 }: ExploreFiltersProps) {
+  const t = useTranslations("exploreMap");
+
   return (
     <div className="space-y-4 rounded-[22px] border border-brand-ink/10 bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
       {/* Search + result count */}
@@ -74,27 +79,27 @@ export function ExploreFilters({
           />
           <input
             type="search"
-            placeholder="City, area, or development..."
+            placeholder={t("filters.searchPlaceholder")}
             value={searchVal}
             onChange={(e) => onSearchChange(e.target.value)}
-            aria-label="Search projects"
+            aria-label={t("filters.searchAriaLabel")}
             className="w-full rounded-(--radius-input) border border-brand-ink/15 bg-[#eaedf0]/50 py-2.5 pl-10 pr-4 font-ewangi text-sm text-brand-ink placeholder:text-brand-ink/35 outline-none transition focus:border-brand-teal/60 focus:ring-2 focus:ring-brand-teal/20"
           />
         </div>
         <span className="shrink-0 rounded-(--radius-btn) bg-brand-teal/15 px-3 py-1.5 font-ewangi text-sm text-brand-pine">
-          {resultCount} projects
+          {t("filters.resultCount", { count: resultCount })}
         </span>
       </div>
 
       {/* State filter — updates the map view */}
       <div>
         <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-brand-ink/40">
-          State
+          {t("filters.stateLabel")}
         </p>
         <div className="flex flex-wrap gap-2">
           {MEXICAN_STATES.map((state) => (
             <Pill key={state} active={stateFilter === state} onClick={() => onStateChange(state)}>
-              {state === "All" ? "All states" : state}
+              {t(`stateLabels.${state}`)}
             </Pill>
           ))}
         </div>
@@ -103,12 +108,12 @@ export function ExploreFilters({
       {/* Property type + currency pills */}
       <div>
         <p className="mb-2 font-ewangi text-[10px] uppercase tracking-[0.12em] text-brand-ink/40">
-          Type &amp; Currency
+          {t("filters.typeCurrencyLabel")}
         </p>
         <div className="flex flex-wrap gap-2">
           {types.map((type) => (
             <Pill key={type} active={typeFilter === type} onClick={() => onTypeChange(type)}>
-              {type}
+              {t(`types.${type}`)}
             </Pill>
           ))}
 
@@ -131,18 +136,18 @@ export function ExploreFilters({
             onChange={(e) => onVerifiedChange(e.target.checked)}
             className="h-4 w-4 cursor-pointer rounded border-brand-ink/25 accent-brand-teal"
           />
-          <span>Verified only</span>
+          <span>{t("filters.verifiedOnly")}</span>
         </label>
 
         <select
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value)}
-          aria-label="Sort projects"
+          aria-label={t("filters.sortAriaLabel")}
           className="w-full rounded-(--radius-input) border border-brand-ink/15 bg-[#eaedf0]/50 px-3 py-2 font-ewangi text-sm text-brand-ink outline-none transition focus:border-brand-teal/60 sm:w-auto"
         >
-          <option value="rec">Relevance</option>
-          <option value="price-asc">Price: low → high</option>
-          <option value="price-desc">Price: high → low</option>
+          <option value="rec">{t("filters.sort.relevance")}</option>
+          <option value="price-asc">{t("filters.sort.priceAsc")}</option>
+          <option value="price-desc">{t("filters.sort.priceDesc")}</option>
         </select>
       </div>
     </div>

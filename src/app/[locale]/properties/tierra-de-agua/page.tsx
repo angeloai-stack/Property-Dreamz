@@ -2,6 +2,7 @@
 // Tierra de Agua page — residential lots in Rosarito with a lazy-loaded YouVisit 360° tour.
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
@@ -13,34 +14,19 @@ const IMG_AMENITIES = `${CLD}/tierra-de-agua/tierra-de-agua/amenities`;
 const IMG_PLAN      = `${CLD}/tierra-de-agua/tierra-de-agua/site-plan-2`;
 const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
-const stats = [
-  { value: "308",  label: "Lots" },
-  { value: "10",   label: "Condos" },
-  { value: "2",    label: "Models" },
-  { value: "45",   label: "Houses" },
-  { value: "82%",  label: "Available" },
-  { value: "100%", label: "Verified" },
-];
-
-const trustBadges = [
-  "Legal reviewed",
-  "Regulatory compliance",
-  "Infrastructure validated",
-];
-
-type Tab = "Lots" | "Condos" | "Houses";
-
-const lots = [
-  { id: "Lot 12", area: "300 m²" },
-  { id: "Lot 13", area: "300 m²" },
-  { id: "Lot 14", area: "320 m²" },
-  { id: "Lot 15", area: "315 m²" },
-  { id: "Lot 16", area: "305 m²" },
-];
+type Stat = { value: string; label: string };
+type Lot = { id: string; area: string };
 
 export default function TierraDeAguaPage() {
-  const [tab, setTab] = useState<Tab>("Lots");
-  const [activeLot, setActiveLot] = useState("Lot 12");
+  const t = useTranslations("propertyTierraDeAgua");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const lots = t.raw("lotExplorer.lots") as Lot[];
+  const tabs = t.raw("lotExplorer.tabs") as { lots: string; condos: string; houses: string };
+  const tabOptions = [tabs.lots, tabs.condos, tabs.houses];
+
+  const [tab, setTab] = useState<string>(tabs.lots);
+  const [activeLot, setActiveLot] = useState(lots[0]?.id);
   const [tourStarted, setTourStarted] = useState(false);
 
   // Scroll to top on mount — prevents landing mid-page when navigating from the map.
@@ -55,7 +41,7 @@ export default function TierraDeAguaPage() {
       <section className="relative min-h-205 overflow-hidden bg-brand-ink">
         <Image
           src={IMG_HERO}
-          alt="Tierra de Agua aerial view"
+          alt={t("hero.heroImageAlt")}
           fill
           priority
           className="object-cover animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
@@ -74,14 +60,14 @@ export default function TierraDeAguaPage() {
         <div className="absolute left-1/2 top-[30%] z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 lg:hidden">
           <Image
             src={IMG_LOGO}
-            alt="Tierra de Agua"
+            alt={t("hero.logoAlt")}
             width={200}
             height={89}
             className="w-40"
           />
           <Image
             src={IMG_CMRE}
-            alt="CMRE Certified"
+            alt={t("hero.cmreAlt")}
             width={204}
             height={48}
             className="w-32"
@@ -105,14 +91,14 @@ export default function TierraDeAguaPage() {
             <div className="hidden flex-col gap-6 lg:flex">
               <Image
                 src={IMG_LOGO}
-                alt="Tierra de Agua"
+                alt={t("hero.logoAlt")}
                 width={200}
                 height={89}
                 className="w-40 lg:w-48"
               />
               <Image
                 src={IMG_CMRE}
-                alt="CMRE Certified"
+                alt={t("hero.cmreAlt")}
                 width={204}
                 height={48}
                 className="w-44"
@@ -132,11 +118,11 @@ export default function TierraDeAguaPage() {
 
               <div className="lg:text-right">
                 <h1 className="font-ewangi text-[clamp(2.5rem,6vw,6rem)] leading-[0.92] text-white animate-[fade-right_0.9s_ease-out_both]">
-                  Exclusive residential<br />lots in Rosarito
+                  {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
                 </h1>
                 <RevealOnScroll direction="up" delay={350}>
                 <p className="mt-4 font-ewangi text-[1.1rem] text-white/80 lg:max-w-140">
-                  A new residential development with first-class architecture and amenities for an exclusive lifestyle. Build the life you dreamed of. Pre-sale from $75,000 USD.
+                  {t("hero.description")}
                 </p>
                 </RevealOnScroll>
               </div>
@@ -156,29 +142,29 @@ export default function TierraDeAguaPage() {
               style={{ borderRadius: "27px" }}
             >
               <p className="font-ewangi text-[1.1rem] text-white mb-4">
-                Explore the development
+                {t("lotExplorer.exploreLabel")}
               </p>
 
               <div className="flex gap-1.5 mb-4">
-                {(["Lots", "Condos", "Houses"] as Tab[]).map((t) => (
+                {tabOptions.map((option) => (
                   <button
-                    key={t}
-                    onClick={() => setTab(t)}
+                    key={option}
+                    onClick={() => setTab(option)}
                     style={{ width: "72px", height: "28px", borderRadius: "4px" }}
                     className={cn(
                       "font-ewangi text-[13px] font-medium transition",
-                      tab === t
+                      tab === option
                         ? "bg-brand-teal text-brand-ink"
                         : "bg-[#EAEDF0] text-brand-ink hover:bg-brand-teal/80"
                     )}
                   >
-                    {t}
+                    {option}
                   </button>
                 ))}
               </div>
 
               <p className="font-ewangi text-[13px] text-white/50 mb-3">
-                Select a lot to see details
+                {t("lotExplorer.selectLotHint")}
               </p>
 
               <div className="flex-1 overflow-y-auto">
@@ -209,7 +195,7 @@ export default function TierraDeAguaPage() {
                   style={{ width: "184px", height: "44px", borderRadius: "5px" }}
                   className="border border-white/40 font-ewangi text-[13px] text-white transition hover:bg-white hover:text-brand-ink"
                 >
-                  View all lots
+                  {t("lotExplorer.viewAllLots")}
                 </button>
               </div>
             </div>
@@ -227,7 +213,7 @@ export default function TierraDeAguaPage() {
                   className="absolute inset-0 h-full w-full border-0"
                   allowFullScreen
                   allow="fullscreen; gyroscope; accelerometer"
-                  title="Tierra de Agua 360° virtual tour"
+                  title={t("lotExplorer.iframeTitle")}
                 />
               ) : (
                 <button
@@ -239,7 +225,7 @@ export default function TierraDeAguaPage() {
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
-                  <span className="font-ewangi text-[1.1rem] text-white/80">Start 360° Tour</span>
+                  <span className="font-ewangi text-[1.1rem] text-white/80">{t("lotExplorer.startTourLabel")}</span>
                 </button>
               )}
 
@@ -248,10 +234,10 @@ export default function TierraDeAguaPage() {
                 <p className="font-ewangi text-[12px] text-white/70">
                   {lots.find((l) => l.id === activeLot)?.area}
                 </p>
-                <p className="font-ewangi text-[12px] text-white/70">Residential</p>
+                <p className="font-ewangi text-[12px] text-white/70">{t("lotExplorer.residentialLabel")}</p>
                 <div className="mt-1 flex items-center gap-1.5">
                   <div className="h-2 w-2 rounded-full bg-brand-teal" />
-                  <span className="font-ewangi text-[12px] text-brand-teal">Available</span>
+                  <span className="font-ewangi text-[12px] text-brand-teal">{t("lotExplorer.availableLabel")}</span>
                 </div>
               </div>
             </div>
@@ -267,10 +253,10 @@ export default function TierraDeAguaPage() {
           <RevealOnScroll direction="left" duration={1100}>
           <div className="lg:w-[45%]">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
-              Your Coastal Sanctuary<br />Awaits
+              {t("coastalSanctuary.headingLine1")}<br />{t("coastalSanctuary.headingLine2")}
             </h2>
             <p className="mt-8 font-ewangi text-[1.375rem] leading-relaxed text-white/80">
-              Set along the beautiful coast of Playas de Rosarito, Tierra de Agua is a new residential development that blends first-class architecture with resort-style amenities. By thoughtfully designing every space for comfort and tranquility, the community offers residents a refined coastal lifestyle where each day feels like living exactly as you always imagined.
+              {t("coastalSanctuary.body")}
             </p>
           </div>
           </RevealOnScroll>
@@ -280,7 +266,7 @@ export default function TierraDeAguaPage() {
             <div className="relative aspect-video overflow-hidden rounded-[15px]">
               <Image
                 src={IMG_AMENITIES}
-                alt="Tierra de Agua amenities and pool area"
+                alt={t("coastalSanctuary.amenitiesImageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width:1024px) 100vw, 55vw"
@@ -299,7 +285,7 @@ export default function TierraDeAguaPage() {
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 shrink-0 text-brand-teal" strokeWidth={1.5} />
             <span className="font-ewangi text-[2.1875rem] text-brand-teal">
-              Trusted by + 100 Families
+              {t("trustedSection.trustedLabel")}
             </span>
           </div>
           <div className="hidden h-px flex-1 bg-white/30 lg:block" />
@@ -310,7 +296,7 @@ export default function TierraDeAguaPage() {
             className="rounded-[18px] bg-white px-8 py-5 transition hover:bg-white/90"
           >
             <span className="font-ewangi text-[2.25rem] text-brand-ink">
-              Hear From Our Residents
+              {t("trustedSection.residentsLinkLabel")}
             </span>
           </a>
         </div>
@@ -322,7 +308,7 @@ export default function TierraDeAguaPage() {
             <div className="relative overflow-hidden rounded-[15px]" style={{ aspectRatio: "1 / 1" }}>
               <Image
                 src={IMG_PLAN}
-                alt="Tierra de Agua master plan"
+                alt={t("newHome.planImageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width:1024px) 100vw, 45vw"
@@ -334,13 +320,13 @@ export default function TierraDeAguaPage() {
           <RevealOnScroll direction="right" delay={150} duration={1100}>
           <div className="flex flex-col gap-6 lg:items-end lg:text-right">
             <h2 className="font-ewangi text-[clamp(2.5rem,5vw,3.9375rem)] leading-tight text-white">
-              Your new home<br />in Baja
+              {t("newHome.headingLine1")}<br />{t("newHome.headingLine2")}
             </h2>
             <p className="font-ewangi text-[1.375rem] leading-relaxed text-white/80 lg:max-w-115">
-              Tierra de Agua is living as you always dreamed. Get in touch to learn about availability and payment plans that fit your budget.
+              {t("newHome.body")}
             </p>
             <button className="mt-2 rounded-[10px] bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
-              Talk to an expert
+              {t("newHome.button")}
             </button>
           </div>
           </RevealOnScroll>

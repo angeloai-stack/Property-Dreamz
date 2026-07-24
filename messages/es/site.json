@@ -1,0 +1,34 @@
+{
+  "titleTemplate": "%s — Property Dreamz",
+  "defaultTitle": "Bienes Raíces en México | Propiedades Verificadas | Property Dreamz",
+  "description": "Explora propiedades certificadas en México. Compra tu casa en México con confianza — cada propiedad con título investigado, desarrollador revisado y HOA auditada.",
+  "keywords": [
+    "bienes raíces méxico",
+    "comprar propiedad en méxico",
+    "desarrollos verificados méxico",
+    "fideicomiso",
+    "bienes raíces para extranjeros méxico",
+    "bienes raíces baja california",
+    "bienes raíces riviera maya",
+    "desarrollador certificado méxico"
+  ],
+  "ogImageAlt": "Property Dreamz — Bienes Raíces Verificados en México",
+  "twitterTitle": "Property Dreamz | Bienes Raíces Verificados en México",
+  "twitterDescription": "Explora 47 desarrollos certificados en México. Cada título investigado, cada desarrollador revisado.",
+  "trustChecklist": [
+    { "title": "Más visibilidad", "subtitle": "Llega a compradores serios" },
+    { "title": "Más confianza", "subtitle": "Con verificación" },
+    { "title": "Más ventas", "subtitle": "Cierra más rápido" }
+  ],
+  "cmreBadge": {
+    "ariaLabel": "CMRE Certificación de Bienes Raíces en México",
+    "line1": "Certificado",
+    "line2": "Bienes Raíces en México"
+  },
+  "verifyFeatures": [
+    { "title": "Desarrollos Verificados", "subtitle": "Solo Propiedades Certificadas" },
+    { "title": "Mejores Precios", "subtitle": "Directo del Desarrollador" },
+    { "title": "Compra Segura", "subtitle": "Transparencia en Cada Paso" },
+    { "title": "Asesoría Experta", "subtitle": "Estamos Aquí para Ayudarte" }
+  ]
+}

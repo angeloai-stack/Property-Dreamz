@@ -1,6 +1,7 @@
 "use client";
 // Email-gate form for the buyer's guide PDF — posts to /api/guide-download on submit.
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { BookOpen, CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "@/components/ui";
 
@@ -11,6 +12,8 @@ type Fields = { name: string; email: string; nationality: string };
 const INIT: Fields = { name: "", email: "", nationality: "" };
 
 export function GuideDownloadForm() {
+  const t = useTranslations("forms.guideDownload");
+  const tc = useTranslations("forms.common");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [fields, setFields] = useState<Fields>(INIT);
   const set =
@@ -43,20 +46,19 @@ export function GuideDownloadForm() {
                 <BookOpen className="h-6 w-6" aria-hidden="true" />
               </span>
               <h2 className="font-ewangi text-title leading-tight text-brand-paper">
-                Get the full buyer&apos;s guide
+                {t("heading")}
               </h2>
               <p className="font-body text-body text-brand-paper/70">
-                A concise PDF covering fideicomiso, due diligence, financing, and closing —
-                sent directly to your inbox.
+                {t("description")}
               </p>
             </div>
 
             {status === "success" ? (
               <div className="flex flex-1 flex-col items-center gap-3 py-8 text-center">
                 <CheckCircle2 className="h-12 w-12 text-brand-teal" aria-hidden="true" />
-                <p className="font-ewangi text-subtitle text-brand-paper">Check your inbox!</p>
+                <p className="font-ewangi text-subtitle text-brand-paper">{t("successTitle")}</p>
                 <p className="font-body text-body text-brand-paper/60">
-                  Your guide has been sent to{" "}
+                  {t("successBody")}{" "}
                   <span className="font-semibold text-brand-paper">{fields.email}</span>
                 </p>
               </div>
@@ -65,12 +67,12 @@ export function GuideDownloadForm() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-1.5">
                     <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                      Full name *
+                      {t("fullName")}
                     </span>
                     <input
                       type="text"
                       name="name"
-                      placeholder="Your name"
+                      placeholder={t("namePlaceholder")}
                       required
                       value={fields.name}
                       onChange={set("name")}
@@ -79,12 +81,12 @@ export function GuideDownloadForm() {
                   </label>
                   <label className="space-y-1.5">
                     <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                      Email *
+                      {t("email")}
                     </span>
                     <input
                       type="email"
                       name="email"
-                      placeholder="you@email.com"
+                      placeholder={t("emailPlaceholder")}
                       required
                       value={fields.email}
                       onChange={set("email")}
@@ -95,7 +97,7 @@ export function GuideDownloadForm() {
 
                 <label className="block space-y-1.5">
                   <span className="font-ewangi text-label font-semibold text-brand-paper/70">
-                    Nationality (optional)
+                    {t("nationality")}
                   </span>
                   <select
                     name="nationality"
@@ -103,11 +105,11 @@ export function GuideDownloadForm() {
                     onChange={set("nationality")}
                     className={F}
                   >
-                    <option value="">Select country</option>
-                    <option value="us">United States</option>
-                    <option value="ca">Canada</option>
-                    <option value="mx">Mexico</option>
-                    <option value="other">Other</option>
+                    <option value="">{t("selectCountry")}</option>
+                    <option value="us">{t("countryOptions.us")}</option>
+                    <option value="ca">{t("countryOptions.ca")}</option>
+                    <option value="mx">{t("countryOptions.mx")}</option>
+                    <option value="other">{t("countryOptions.other")}</option>
                   </select>
                 </label>
 
@@ -119,16 +121,16 @@ export function GuideDownloadForm() {
                     className="mt-1 h-4 w-4 cursor-pointer accent-brand-teal"
                   />
                   <span>
-                    I agree to the{" "}
+                    {tc("consentPrefix")}{" "}
                     <a href="/privacy" className="underline hover:text-brand-paper">
-                      privacy policy
+                      {tc("consentLink")}
                     </a>
                     . *
                   </span>
                 </label>
 
                 {status === "error" && (
-                  <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
+                  <p className="text-sm text-red-400">{t("errorMessage")}</p>
                 )}
 
                 <button
@@ -139,7 +141,7 @@ export function GuideDownloadForm() {
                   {status === "submitting" && (
                     <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                   )}
-                  Get my free guide
+                  {t("submit")}
                 </button>
               </form>
             )}

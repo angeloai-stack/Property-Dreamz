@@ -1,12 +1,15 @@
 // Closing CTA band — Figma nodes 1425:21086-21098. Reuses the Dreamzy mascot uploaded for Buyer's Guide.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Propery%20Dreamz/Property%20Pics/Mascot";
 
 export function ContactClosingCta() {
+  const t = useTranslations("contact.closingCta");
+
   return (
     <section className="w-full bg-white py-10 md:py-14">
       <Container>
@@ -14,10 +17,10 @@ export function ContactClosingCta() {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-md">
               <h2 className="font-ewangi text-[1.4rem] font-bold leading-tight text-brand-ink">
-                Let&apos;s turn your dream into a plan.
+                {t("heading")}
               </h2>
               <p className="mt-2 font-ewangi text-[14px] leading-relaxed text-brand-ink/70">
-                Contact our team today and take the first step toward your future in Mexico.
+                {t("body")}
               </p>
             </div>
 
@@ -27,7 +30,7 @@ export function ContactClosingCta() {
                   href="#message-form"
                   className="inline-flex items-center gap-2 rounded-full bg-brand-ink px-6 py-3 font-ewangi text-[14px] font-semibold text-white transition hover:bg-black"
                 >
-                  Talk to an advisor <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                  {t("ctaAdvisor")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
                 </Link>
                 <a
                   href="https://wa.me/16191234567"
@@ -35,7 +38,7 @@ export function ContactClosingCta() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-brand-ink/60 px-6 py-3 font-ewangi text-[14px] font-semibold text-brand-ink transition hover:bg-brand-ink hover:text-white"
                 >
-                  Chat with Dreamzy®
+                  {t("ctaWhatsapp")}
                 </a>
               </div>
 

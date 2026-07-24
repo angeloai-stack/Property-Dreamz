@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "Bienes Raíces en Baja California",
+    "description": "Explora más de 47 desarrollos certificados en Tijuana, Rosarito y Ensenada. Condominios frente al mar, residencias privadas y terrenos — con título investigado y desarrollador verificado.",
+    "ogTitle": "Bienes Raíces en Baja California — Property Dreamz",
+    "ogDescription": "Desarrollos certificados en Tijuana, Rosarito y Ensenada. Cada propiedad con título investigado y desarrollador verificado."
+  },
+  "hero": {
+    "headingLine1": "Baja California ",
+    "headingLine2": "Bienes Raíces",
+    "description": "Descubre bienes raíces en Baja California: condominios frente al mar en Rosarito, desarrollos frente al océano en Ensenada y comunidades residenciales cerca de Tijuana. Cada propiedad certificada."
+  },
+  "features": [
+    {
+      "title": "Título limpio antes de transferir un solo dólar",
+      "body": "La confianza comienza con la transparencia. Nuestro proceso de certificación incluye una revisión exhaustiva de antecedentes judiciales para ayudar a los clientes a identificar desarrolladores que cumplen con altos estándares de profesionalismo e integridad. Esta capa adicional de verificación ayuda a generar confianza y fortalecer la relación entre cliente y desarrollador."
+    },
+    {
+      "title": "Cumplimiento Regulatorio",
+      "body": "Verificamos que los desarrolladores certificados cumplan con los estándares legales, regulatorios y profesionales pertinentes. Esta revisión ayuda a garantizar el cumplimiento de los requisitos de la industria y las mejores prácticas, brindando a los clientes mayor confianza al elegir profesionales de confianza para sus proyectos."
+    },
+    {
+      "title": "Evaluación de Seguridad de la Propiedad",
+      "body": "Una operación segura refleja una organización confiable. Nuestra certificación incluye una evaluación de las medidas de seguridad de la propiedad para ayudar a confirmar que los desarrolladores mantienen instalaciones seguras y bien administradas, reforzando la confianza entre clientes y socios."
+    }
+  ],
+  "buyersGuideCarousel": {
+    "eyebrow": "Guía del Comprador",
+    "headingPrefix": "Cómo comprar una propiedad en",
+    "headingHighlight": "México",
+    "previousStep": "Paso anterior",
+    "nextStep": "Paso siguiente",
+    "goToStep": "Ir al paso {number}",
+    "steps": [
+      {
+        "title": "Elige tu ubicación",
+        "body": "Selecciona tu ubicación para ver desarrolladores, servicios e información de certificación relevante para tu región. Esto nos ayuda a ofrecerte una experiencia más personalizada y garantizar que veas el contenido más preciso según los requisitos y la disponibilidad locales.",
+        "imageAlt": "Horizonte de una ciudad en México"
+      },
+      {
+        "title": "Establece tu Fideicomiso",
+        "body": "Ya sea que estés comprando una propiedad o asegurando derechos de propiedad a largo plazo en las zonas restringidas de México, nuestra red de profesionales verificados puede ayudarte a establecer tu fideicomiso de forma eficiente y con total tranquilidad. Recorre el proceso con guía experta y apoyo confiable de principio a fin.",
+        "imageAlt": "Profesionales de negocios estrechando la mano"
+      },
+      {
+        "title": "Decide y compra",
+        "body": "Compara propiedades, evalúa tus opciones y elige la inversión que mejor se ajuste a tus metas. Con profesionales verificados y un proceso simplificado, puedes completar tu compra con confianza y tranquilidad.",
+        "imageAlt": "Llaves de casa y agente inmobiliario"
+      }
+    ]
+  },
+  "relatedBlog": {
+    "eyebrow": "Del blog",
+    "heading": "Bienes raíces en Baja California, explicados",
+    "subheading": "Guías, análisis de mercado y perfiles a fondo de zonas para compradores transfronterizos.",
+    "viewAll": "Ver todos los artículos"
+  }
+}

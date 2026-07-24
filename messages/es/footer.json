@@ -1,0 +1,21 @@
+{
+  "logoAlt": "Property Dreamz inicio",
+  "footerNav": "Navegación del pie de página",
+  "topNav": {
+    "exploreMap": "Explorar el mapa",
+    "buyersGuide": "Guía del comprador",
+    "forDevelopers": "Para desarrolladores",
+    "mission": "Nuestra misión",
+    "saved": "Guardados"
+  },
+  "columns": {
+    "forBuyers": { "title": "Para compradores", "browse": "Explorar", "guide": "Guía", "closing": "Cierre" },
+    "developers": { "title": "Desarrolladores", "getListed": "Publica tu proyecto", "pricing": "Precios", "portal": "Portal" },
+    "company": { "title": "Empresa", "mission": "Misión", "contact": "Contacto", "press": "Prensa" }
+  },
+  "blurb": "El portal verificado para estadounidenses que compran en México. Español. Dólares (USD). Cada título verificado.",
+  "copyright": "© {year} Property Dreamz LLC • Todos los derechos reservados | San Diego, CA • Servimos a todo México",
+  "privacyPolicy": "Aviso de Privacidad",
+  "termsOfService": "Términos de Servicio",
+  "cmreLogoAlt": "CMRE Certificación de Bienes Raíces en México"
+}

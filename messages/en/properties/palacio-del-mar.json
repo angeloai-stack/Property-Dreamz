@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Palacio del Mar – Luxury Beachfront Condos for Sale in Rosarito, Baja CA",
+    "description": "Palacio del Mar is an upscale beachfront condominium community in the Rosarito corridor. Live in luxury on the Pacific coast with premium finishes, spectacular ocean views, and world-class amenities."
+  },
+  "hero": {
+    "logoAlt": "Palacio del Mar",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Luxury condos,",
+    "headlineLine2": "luxury villas",
+    "subheadline": "The premiere oceanfront community in Baja — finished, move-in-ready luxury condos and oceanfront villas in Rosarito, just south of the San Diego border."
+  },
+  "stats": [
+    { "value": "16", "label": "Condos" },
+    { "value": "4", "label": "Models" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "amenities": {
+    "heading": "Resort-style amenities designed for everyday living",
+    "imageAlt": "Palacio del Mar amenities",
+    "body1": "Amenities Define Luxury Real Estate. It is the Amenities at Palacio del Mar that define what luxury real estate is in Baja compared to real estate developments in general.",
+    "body2": "Palacio del Mar is the only community on the coast that has a large indoor heated pool.",
+    "rooms": {
+      "livingRoom": "Living room",
+      "bedroom": "Bedroom",
+      "bathroom": "Bathroom",
+      "kitchen": "Kitchen",
+      "terrace": "Terrace"
+    }
+  },
+  "models": {
+    "heading": "Explore our 4 models",
+    "layoutLabel": "Layout A",
+    "layoutSize": "1,287 sq. ft.",
+    "imageAlt": "Layout A floor plan",
+    "features": [
+      "3 balconies",
+      "Living room with balcony",
+      "Dining room",
+      "Breakfast bar",
+      "Kitchen (Integral)",
+      "2 Bedrooms",
+      "2 Bathrooms",
+      "Patio with laundry room",
+      "1 covered parking space"
+    ]
+  },
+  "finishedResidences": {
+    "imageAlt": "Palacio del Mar building exterior",
+    "headingLine1": "Finished residences,",
+    "headingLine2": "ready to move in",
+    "body": "An established oceanfront community in Rosarito's Bahía Descanso. Tower II represents the final inventory of luxury condos currently available — fully built and move-in ready.",
+    "button": "Talk to an expert"
+  }
+}

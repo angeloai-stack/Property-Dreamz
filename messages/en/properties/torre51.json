@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Tower 51 – Urban Condo Tower for Sale in Rosarito, Baja California",
+    "description": "Tower 51 is a modern high-rise condominium tower in Rosarito's urban core. Developed by Vive Inversión y Desarrollos, it offers contemporary city living with easy access to Baja California's beaches."
+  },
+  "hero": {
+    "heroImageAlt": "Torre 51 Negativo oceanfront development",
+    "logoAlt": "Torre 51 Negativo",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Wake up every morning",
+    "headlineLine2": "to the sound of the waves",
+    "description": "A project inspired by luxury and the beach, creating a unique oceanfront atmosphere in Rosarito. Pre-sale from $396K USD."
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "90", "label": "Condos" },
+    { "value": "9", "label": "Amenities" },
+    { "value": "3", "label": "Pools" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "interiorExplorer": {
+    "heading": "Exclusivity and comfort in every corner, by the sea",
+    "interiorImageAlt": "Torre 51 interior living area",
+    "amenities": {
+      "pool": {
+        "tabLabel": "Pool",
+        "description": "Three pools including an oceanfront infinity pool, adult pool and children's pool — on a 16-meter cliff with 134 m of beach frontage and elevator to the beach.",
+        "sub": "Oceanfront infinity pool with direct Pacific views."
+      },
+      "spa": {
+        "tabLabel": "Spa",
+        "description": "A full-service spa with ocean views, designed for relaxation and rejuvenation after a day at the beach.",
+        "sub": "World-class spa treatments in a serene oceanfront setting."
+      },
+      "gym": {
+        "tabLabel": "Gym",
+        "description": "A fully equipped fitness center with panoramic Pacific views, open 24 hours exclusively for residents.",
+        "sub": "State-of-the-art equipment with oceanfront views."
+      }
+    }
+  },
+  "models": {
+    "headingTemplate": "Explore our 5 models",
+    "name": "Vista",
+    "area": "136.08 m²",
+    "bedroomsLabel": "2 Bedrooms",
+    "bathroomsLabel": "2 Bathrooms",
+    "modelImageAlt": "Vista model interior render"
+  },
+  "cta": {
+    "youtubeTitle": "Torre 51 Negativo",
+    "headingLine1": "Reserve your oceanfront",
+    "headingLine2": "paradise from $5,000 USD",
+    "body": "Two towers, 90 luxury condos on a privileged stretch of the Rosarito coast. The developer's experience is your guarantee; your property value is guaranteed.",
+    "button": "Schedule your appointment"
+  }
+}

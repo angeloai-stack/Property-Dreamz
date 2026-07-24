@@ -2,6 +2,7 @@
 // Baja California regional landing page — Figma: "Baja California Real Estate".
 // Reuses homepage sections where content matches (Verify, top developers, certified banner, FAQ, campaign
 // form) and adds Baja-specific sections (hero copy, properties-by-city carousel, SEO block, guide carousel).
+import { useTranslations } from "next-intl";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FeatureCards } from "@/components/home/FeatureCards";
@@ -16,23 +17,13 @@ import { BuyersGuideCarousel } from "@/components/baja/BuyersGuideCarousel";
 import { PropertiesByCity } from "@/components/baja/PropertiesByCity";
 
 // Figma's "Verify — Certification (versión alterna compacta)" cards carry slightly longer body copy
-// than the homepage's FeatureCards default — passed in via the `features` override prop.
-const bajaFeatures = [
-  {
-    title: "Title clean before you wire a dollar",
-    body: "Trust starts with transparency. Our certification process includes a thorough review of judicial records to help clients identify developers who meet high standards of professionalism and integrity. This additional layer of verification helps build confidence and strengthen client-developer relationships.",
-  },
-  {
-    title: "Regulatory Compliance",
-    body: "We verify that certified developers meet relevant legal, regulatory, and professional standards. This review helps ensure adherence to industry requirements and best practices, providing clients with greater confidence when selecting trusted professionals for their projects.",
-  },
-  {
-    title: "Property Security Assessment",
-    body: "A secure operation reflects a reliable organization. Our certification includes an evaluation of property security measures to help confirm that developers maintain safe, well-managed facilities, reinforcing trust and confidence among clients and partners.",
-  },
-] as const;
+// than the homepage's FeatureCards default — sourced from the "baja.features" translation key.
+type Feature = { title: string; body: string };
 
 export default function BajaCaliforniaRealEstatePage() {
+  const t = useTranslations("baja");
+  const bajaFeatures = t.raw("features") as Feature[];
+
   return (
     <main className="flex-1 overflow-x-hidden bg-white">
       <BajaHero />

@@ -1,0 +1,81 @@
+{
+  "saved": {
+    "metadata": {
+      "title": "Propiedades Guardadas",
+      "description": "Tus desarrollos inmobiliarios guardados en México, en un solo lugar — compara, ordena y revisa las propiedades certificadas que has marcado."
+    },
+    "heading": "Guardados",
+    "searchPlaceholder": "Buscar por zona...",
+    "filter": "Filtrar",
+    "filtersComingSoon": "Filtros próximamente.",
+    "sortOptions": {
+      "newest": "Más recientes",
+      "priceLowHigh": "Precio: menor a mayor",
+      "priceHighLow": "Precio: mayor a menor"
+    },
+    "seeDetails": "Ver detalles",
+    "talkToExpert": "Habla con un experto",
+    "removeFromSaved": "Quitar de guardados",
+    "roomsLabel": "Habitaciones",
+    "bathsLabel": "Baños",
+    "sqmLabel": "m²",
+    "noSaved": {
+      "heading": "No hay propiedades guardadas",
+      "body": "Explora el mapa y marca las propiedades que te gusten.",
+      "exploreMap": "Explorar Mapa"
+    }
+  },
+  "portalLogin": {
+    "metadata": {
+      "title": "Acceso al Portal",
+      "description": "Inicia sesión en tu portal de comprador o desarrollador de Property Dreamz."
+    },
+    "backToHome": "Volver al inicio",
+    "toggle": {
+      "ariaLabel": "Selecciona el tipo de portal",
+      "buyer": "Compradores y Clientes",
+      "developer": "Desarrolladores"
+    },
+    "panels": {
+      "buyer": {
+        "tag": "Compradores e Inversionistas",
+        "headline": "Tu camino inmobiliario en México, organizado.",
+        "sub": "Da seguimiento a desarrollos verificados, escribe a tu asesor y administra cada documento desde un portal seguro.",
+        "stat1Label": "Desarrollos verificados",
+        "stat2Label": "Propiedades con título investigado"
+      },
+      "developer": {
+        "tag": "Desarrolladores y Constructoras",
+        "headline": "Llega a compradores certificados en toda Norteamérica.",
+        "sub": "Administra publicaciones, revisa prospectos calificados, sube materiales y da seguimiento a tu desempeño — todo en un solo panel.",
+        "stat1Label": "Visitas mensuales de compradores",
+        "stat2Label": "Red de socios certificados"
+      }
+    },
+    "forms": {
+      "buyer": {
+        "eyebrow": "Portal de Clientes",
+        "heading": "Bienvenido de nuevo",
+        "sub": "Accede a tus propiedades guardadas, documentos y mensajes de tu asesor.",
+        "cta": "Iniciar sesión en tu cuenta",
+        "footerText": "¿No tienes una cuenta?",
+        "footerLabel": "Solicitar acceso de comprador"
+      },
+      "developer": {
+        "eyebrow": "Portal de Desarrolladores",
+        "heading": "Bienvenido de nuevo",
+        "sub": "Administra tus publicaciones, revisa solicitudes y actualiza los materiales de tu proyecto.",
+        "cta": "Iniciar sesión en tu panel",
+        "footerText": "¿Quieres publicar tu desarrollo?",
+        "footerLabel": "Solicitar afiliación"
+      }
+    },
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "passwordLabel": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "errorMessage": "Correo o contraseña incorrectos. Intenta de nuevo."
+  }
+}

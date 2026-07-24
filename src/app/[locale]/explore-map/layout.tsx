@@ -1,22 +1,23 @@
 // Thin layout wrapper whose sole purpose is exporting metadata for this "use client" route.
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Explore the Map",
-  description:
-    "Interactively explore certified real estate developments across Mexico. Filter by location, price, bedrooms, and verification status.",
-  openGraph: {
-    title: "Explore the Map — Property Dreamz",
-    description:
-      "Find certified developments across Mexico on an interactive map. Filter by price, location, and type.",
-    url: "https://propertydreamz.com/explore-map",
-  },
-};
+type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
-export default function ExploreMapLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "exploreMap.metadata" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      url: "https://propertydreamz.com/explore-map",
+    },
+  };
+}
+
+export default function ExploreMapLayout({ children }: Props) {
   return <>{children}</>;
 }

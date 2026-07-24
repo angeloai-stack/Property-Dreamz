@@ -1,30 +1,25 @@
 // "Showcase your development like never before." — Figma nodes 1424:20176-20177 + laptop mockup.
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { Container, RevealOnScroll } from "@/components/ui";
 
-const checklist = [
-  "Custom development microsite",
-  "Interactive map & location benefits",
-  "360° tours, photos, videos & floor plans",
-  "Pricing, availability & payment plans",
-  "Documents & legal information",
-  "Lead tracking & analytics dashboard",
-] as const;
-
 export function ShowcaseSection() {
+  const t = useTranslations("forDevelopers.showcase");
+  const checklist = t.raw("checklist") as string[];
+
   return (
     <section className="w-full bg-brand-ink py-14 md:py-20">
       <Container className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <RevealOnScroll direction="left">
           <span className="mb-4 inline-flex w-fit items-center rounded-full bg-white/10 px-4 py-1.5 font-ewangi text-label font-semibold text-white/80">
-            A platform designed for developers
+            {t("badge")}
           </span>
           <h2 className="font-ewangi text-[clamp(1.7rem,3.2vw,2.25rem)] font-bold leading-tight text-brand-teal">
-            Showcase your development like never before.
+            {t("heading")}
           </h2>
           <p className="mt-4 max-w-md font-ewangi text-[15px] leading-relaxed text-white/70">
-            Give buyers a complete and transparent experience that helps them say &quot;yes&quot; with confidence.
+            {t("description")}
           </p>
 
           <ul className="mt-6 space-y-3">
@@ -43,16 +38,16 @@ export function ShowcaseSection() {
             <div className="relative aspect-16/10 overflow-hidden rounded-t-[6px]">
               <Image
                 src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80"
-                alt="Sample development listing page"
+                alt={t("mockupAlt")}
                 fill
                 sizes="(max-width: 1024px) 90vw, 512px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <p className="absolute bottom-5 left-6 font-ewangi text-[1.3rem] font-bold leading-tight text-white sm:text-[1.6rem]">
-                Own your
+                {t("mockupCaptionLine1")}
                 <br />
-                next chapter.
+                {t("mockupCaptionLine2")}
               </p>
             </div>
           </div>

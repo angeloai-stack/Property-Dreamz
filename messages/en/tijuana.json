@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "title": "Tijuana Real Estate",
+    "description": "Homes for sale in Tijuana, Mexico — modern condos in Zona Río, gated communities, and resort-style developments minutes from San Diego. Every listing title-searched and developer-verified.",
+    "ogTitle": "Tijuana Real Estate — Property Dreamz",
+    "ogDescription": "Certified developments in Tijuana. Every listing title-searched and developer-verified, 20 minutes from San Diego."
+  },
+  "hero": {
+    "titleCity": "Tijuana",
+    "titleReal": "Real Estate",
+    "subtitle": "Discover Tijuana real estate: modern condos in Zona Río, gated communities near the border, and resort-style developments minutes from San Diego. Every listing certified.",
+    "imageAlt": "Modern luxury residence in Tijuana",
+    "cmreBadgeAlt": "CMRE Certified Mexico Real Estate"
+  },
+  "features": {
+    "items": [
+      {
+        "title": "Title clean before you wire a dollar",
+        "body": "Every Tijuana real estate development on our platform has cleared a rigorous due diligence review — judicial records, corporate filings, and project documentation included. We do the vetting so you don't have to guess who you're buying from."
+      },
+      {
+        "title": "Cross-Border Expertise You Can Count On",
+        "body": "Our team has deep experience guiding U.S. and Canadian buyers through Tijuana real estate transactions — from understanding the fideicomiso trust structure to navigating notary requirements and closing costs. We speak your language, literally and legally."
+      },
+      {
+        "title": "20 Minutes from San Diego, a World Apart",
+        "body": "Tijuana sits right at the U.S. border — close enough to visit on a weekend, compelling enough to own. Our buyers get the best of both worlds: Pacific coast living at Mexican prices, with the convenience of being a short drive from San Diego's international airport, hospitals, and retail."
+      }
+    ]
+  },
+  "seoBlock": {
+    "eyebrow": "Certified developments · Tijuana, Mexico",
+    "heading": "Homes for sale in Tijuana",
+    "body": "Tijuana real estate offers American buyers something rare: world-class Pacific Ocean views, modern resort-style developments, and prices that are a fraction of comparable properties in San Diego or Los Angeles — just 20 minutes across the border. Whether you're looking for a luxury oceanfront condo at a full-service marina, a master-planned gated community with golf, or a coastal home along the scenic Tijuana–Ensenada corridor, the Tijuana market delivers. For U.S. and Canadian buyers, the proximity is unbeatable: you can drive to Tijuana real estate from downtown San Diego in under 30 minutes, then be back in California the same day. The developments featured below represent the most established and trusted options in the greater Tijuana coastal zone — each one carefully vetted for legal clarity, developer integrity, and long-term value.",
+    "stats": [
+      { "value": "47+", "label": "Certified Developments" },
+      { "value": "3", "label": "Cities Covered" },
+      { "value": "100%", "label": "Title Verified" }
+    ],
+    "imageAlt": "Modern residential development in Tijuana, Mexico",
+    "imageCaptionTitle": "Pacific Coastline",
+    "imageCaptionSubtitle": "Tijuana, Baja California"
+  },
+  "properties": {
+    "eyebrow": "Browse properties and developments in Tijuana",
+    "pill": "Properties in Tijuana",
+    "countLabel": "<b>{count}</b> certified developments in Tijuana",
+    "viewDevelopment": "View Development",
+    "priceFrom": "From ${amount}K",
+    "removeFromSaved": "Remove {title} from saved",
+    "save": "Save {title}"
+  },
+  "relatedBlog": {
+    "eyebrow": "From the blog",
+    "heading": "Tijuana real estate, explained",
+    "subtitle": "Guides, market insights and neighborhood deep-dives for cross-border buyers.",
+    "viewAll": "View all articles"
+  }
+}

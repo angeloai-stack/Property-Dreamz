@@ -1,4 +1,6 @@
-// Next.js config — only images.remotePatterns is set; all other defaults are fine.
+import createNextIntlPlugin from "next-intl/plugin";
+
+// Next.js config — images.remotePatterns plus the next-intl plugin wiring in src/i18n/request.ts.
 const nextConfig = {
   images: {
     // Approved external image hosts; add new domains explicitly here.
@@ -15,4 +17,6 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+export default withNextIntl(nextConfig);

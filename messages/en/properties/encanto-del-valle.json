@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "title": "Encanto del Valle – Homes & Residential Lots in the Ensenada Valley, Baja CA",
+    "description": "Encanto del Valle is a residential development in the scenic valley region of Ensenada. Explore single-family homes and lots in one of Baja California's most charming communities."
+  },
+  "hero": {
+    "logoAlt": "Encanto del Valle",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "The privilege of the",
+    "headlineLine2": "heart of the valle",
+    "subtitle": "An exclusive low-density development of residential lots in the mountains of Valle de Guadalupe, Baja California — surrounded by nature, vineyards and the Ruta del Vino."
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "300", "label": "Lots" },
+    { "value": "10", "label": "Condos" },
+    { "value": "2", "label": "Models" },
+    { "value": "45", "label": "Houses" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "explore": {
+    "sectionLabel": "Explore the development",
+    "showroomTitle": "Encanto del Valle 360 Showroom"
+  },
+  "safety": {
+    "heading": "Safety For Your Family",
+    "body": "Encanto del Valle prioritizes the safety and tranquility of its residents through rigorous measures that guarantee a secure community. The development features a highly efficient 24-hour access control system, strategically placed surveillance cameras for continuous monitoring of common areas, and proactive security policies.",
+    "imageAlt": "Encanto del Valle valley landscape"
+  },
+  "testimonials": {
+    "trustedText": "Trusted by + 100 Families",
+    "button": "Hear From Our Residents"
+  },
+  "amenities": {
+    "imageAlt": "Valle de Guadalupe location map",
+    "headingLine1": "More than amenities,",
+    "headingLine2": "it's an experience",
+    "body": "Controlled access gate, artificial lake, green areas, golf course and recreational spaces in a private, secure community in the heart of Mexico's wine country."
+  },
+  "cta": {
+    "button": "Talk to an expert"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Properties",
+    "description": "Browse certified real estate developments across Baja California, Mexico. Filter by zone, price, and availability — every listing title-searched and developer-reviewed."
+  },
+  "heading": "Properties",
+  "developmentsFound": "{count, plural, one {# development} other {# developments}} found",
+  "searchPlaceholder": "Search...",
+  "filters": {
+    "zoneLabel": "Zone",
+    "priceLabel": "Price",
+    "availabilityLabel": "Availability",
+    "clear": "Clear",
+    "all": "All",
+    "allPrices": "All prices",
+    "under200k": "Under $200K",
+    "200k-500k": "$200K – $500K",
+    "over500k": "Over $500K"
+  },
+  "comingSoon": "Coming Soon",
+  "fromPrice": "From {price}",
+  "fromArea": "From {area} m²",
+  "removeFromSaved": "Remove from saved",
+  "save": "Save property",
+  "noResults": {
+    "heading": "No properties found",
+    "body": "Try adjusting your filters.",
+    "clear": "Clear filters"
+  },
+  "types": {
+    "Lots": "Lots",
+    "Condos": "Condos",
+    "Mixed": "Mixed"
+  },
+  "availability": {
+    "Available": "Available",
+    "Coming Soon": "Coming Soon"
+  }
+}

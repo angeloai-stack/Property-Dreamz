@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "title": "Andares Santa Fe – Lots, Condos & Houses for Sale in Tijuana, Baja California",
+    "description": "Andares Santa Fe offers 300 lots, 10 condos, and 45 houses in a secure, master-planned community in Tijuana. Build your dream home or move into a residence designed to last."
+  },
+  "hero": {
+    "heroImageAlt": "Andares development aerial view",
+    "logoAlt": "Andares Santa Fe logo",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Own your",
+    "headlineLine2": "next chapter.",
+    "tagline": "Land, Homes, and Opportunities That Last."
+  },
+  "stats": [
+    { "value": "300", "label": "Lots" },
+    { "value": "10", "label": "Condos" },
+    { "value": "2", "label": "Models" },
+    { "value": "45", "label": "Houses" },
+    { "value": "82%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "lotExplorer": {
+    "sectionLabel": "Explore the development",
+    "tabs": ["Lots", "Club", "Houses"],
+    "selectPrompt": "Select a lot to see details",
+    "viewAllButton": "View all lots",
+    "tourTitle": "Andares 360° virtual tour",
+    "lots": [
+      { "id": "Lot 12", "area": "180 m²" },
+      { "id": "Lot 13", "area": "120 m²" },
+      { "id": "Lot 14", "area": "140 m²" },
+      { "id": "Lot 15", "area": "115 m²" },
+      { "id": "Lot 16", "area": "105 m²" }
+    ]
+  },
+  "security": {
+    "headingLine1": "Designed with Your",
+    "headingLine2": "Safety in Mind",
+    "body": "Our security gatehouse is designed to provide controlled access and enhance the safety of the entire community. By helping regulate entry and maintain a secure environment, it offers residents the confidence and peace of mind that come from knowing their families are protected in a thoughtfully planned neighborhood.",
+    "imageAlt": "Security gatehouse"
+  },
+  "buildLiveGrow": {
+    "trustedBadge": "Trusted by + 100 Families",
+    "testimonialHeader": "Hear From Our Residents",
+    "headingLine1": "Build, Live,",
+    "headingLine2": "and Grow",
+    "body": "Whether you're looking for the perfect lot to build your dream home or a move-in-ready residence, Andares offers a community designed for those who value quality, security, and lasting value. Every detail has been carefully planned so you and your family can thrive.",
+    "imageAlt": "Build, Live, and Grow at Andares",
+    "button": "Talk to an expert"
+  }
+}

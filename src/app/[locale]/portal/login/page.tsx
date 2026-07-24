@@ -1,47 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Eye, EyeOff, Loader2, ArrowRight, ShieldCheck, ArrowLeft, Home } from "lucide-react";
 
 type Portal = "buyer" | "developer";
 
-const PANELS = {
-  buyer: {
-    tag: "Buyers & Investors",
-    headline: "Your Mexico real estate journey, organized.",
-    sub: "Track verified developments, message your advisor, and manage every document from one secure portal.",
-    s1n: "47+", s1l: "Verified developments",
-    s2n: "100%", s2l: "Title-searched listings",
-  },
-  developer: {
-    tag: "Developers & Builders",
-    headline: "Reach certified buyers across North America.",
-    sub: "Manage listings, review qualified leads, upload assets, and track performance — all in one dashboard.",
-    s1n: "5k+", s1l: "Monthly buyer visits",
-    s2n: "CMRE", s2l: "Certified partner network",
-  },
+// Non-translatable per-portal data (stats, URLs, hrefs) — copy comes from the "misc.portalLogin"
+// translation namespace and is merged in at render time.
+const PANEL_META = {
+  buyer: { s1n: "47+", s2n: "100%" },
+  developer: { s1n: "5k+", s2n: "CMRE" },
 };
 
-const FORMS = {
-  buyer: {
-    eyebrow: "Client Portal",
-    heading: "Welcome back",
-    sub: "Access your saved properties, documents, and advisor messages.",
-    cta: "Sign in to your account",
-    portalUrl: "https://app.propertydreamz.com/portal",
-    footerText: "Don't have an account?",
-    footerLabel: "Request buyer access",
-    footerHref: "/contact",
-  },
+const FORM_META = {
+  buyer: { portalUrl: "https://app.propertydreamz.com/portal", footerHref: "/contact" },
   developer: {
-    eyebrow: "Developer Portal",
-    heading: "Welcome back",
-    sub: "Manage your listings, review inquiries, and update project assets.",
-    cta: "Sign in to your dashboard",
     portalUrl: "https://app.propertydreamz.com/portal/developer/dashboard",
-    footerText: "Want to list your development?",
-    footerLabel: "Apply for partnership",
     footerHref: "/for-developers",
   },
 };
@@ -55,6 +31,7 @@ function fadeIn(mounted: boolean, delay = 0) {
 }
 
 export default function PortalLoginPage() {
+  const t = useTranslations("misc.portalLogin");
   const [portal, setPortal] = useState<Portal>("buyer");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,8 +40,8 @@ export default function PortalLoginPage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60);
-    return () => clearTimeout(t);
+    const id = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(id);
   }, []);
 
   function switchPortal(p: Portal) {
@@ -78,8 +55,8 @@ export default function PortalLoginPage() {
     window.location.href = form.portalUrl;
   }
 
-  const panel = PANELS[portal];
-  const form = FORMS[portal];
+  const panel = { ...PANEL_META[portal], ...t.raw(`panels.${portal}`) };
+  const form = { ...FORM_META[portal], ...t.raw(`forms.${portal}`) };
 
   const INPUT =
     "w-full rounded-lg border border-white/10 bg-white/[0.05] px-4 py-3 text-sm text-brand-paper placeholder:text-brand-paper/30 outline-none transition-all duration-200 focus:border-brand-teal/50 focus:ring-2 focus:ring-brand-teal/15";
@@ -90,7 +67,7 @@ export default function PortalLoginPage() {
       {/* Back to home */}
       <Link
         href="/"
-        aria-label="Back to home"
+        aria-label={t("backToHome")}
         className="group absolute left-3 top-3 z-20 flex items-center gap-2 sm:left-5 sm:top-5 lg:left-auto lg:right-5 lg:top-5"
       >
         <ArrowLeft
@@ -168,14 +145,14 @@ export default function PortalLoginPage() {
                 <div className="font-ewangi text-[2rem] font-bold leading-none text-[#B98A3E]">
                   {panel.s1n}
                 </div>
-                <div className="font-body text-label text-brand-paper/40 mt-1.5">{panel.s1l}</div>
+                <div className="font-body text-label text-brand-paper/40 mt-1.5">{panel.stat1Label}</div>
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div>
                 <div className="font-ewangi text-[2rem] font-bold leading-none text-[#B98A3E]">
                   {panel.s2n}
                 </div>
-                <div className="font-body text-label text-brand-paper/40 mt-1.5">{panel.s2l}</div>
+                <div className="font-body text-label text-brand-paper/40 mt-1.5">{panel.stat2Label}</div>
               </div>
             </div>
           </div>
@@ -204,7 +181,7 @@ export default function PortalLoginPage() {
             className="flex border border-white/10 rounded-xl p-1 mb-8"
             style={fadeIn(mounted, 60)}
             role="group"
-            aria-label="Select portal type"
+            aria-label={t("toggle.ariaLabel")}
           >
             {(["buyer", "developer"] as const).map((p) => (
               <button
@@ -218,7 +195,7 @@ export default function PortalLoginPage() {
                     : "text-brand-paper/38 hover:text-brand-paper/62",
                 ].join(" ")}
               >
-                {p === "buyer" ? "Buyers & Clients" : "Developers"}
+                {t(`toggle.${p}`)}
               </button>
             ))}
           </div>
@@ -245,14 +222,14 @@ export default function PortalLoginPage() {
 
               <label className="block space-y-1.5">
                 <span className="font-ewangi text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(244,241,234,0.42)" }}>
-                  Email address
+                  {t("emailLabel")}
                 </span>
                 <input
                   type="email"
                   name="email"
                   required
                   autoComplete="email"
-                  placeholder="you@email.com"
+                  placeholder={t("emailPlaceholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={INPUT}
@@ -262,14 +239,14 @@ export default function PortalLoginPage() {
               <label className="block space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="font-ewangi text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(244,241,234,0.42)" }}>
-                    Password
+                    {t("passwordLabel")}
                   </span>
                   <Link
                     href="/portal/forgot-password"
                     className="font-body text-xs transition-colors hover:text-brand-teal"
                     style={{ color: "rgba(58,211,193,0.58)" }}
                   >
-                    Forgot password?
+                    {t("forgotPassword")}
                   </Link>
                 </div>
                 <div className="relative">
@@ -288,7 +265,7 @@ export default function PortalLoginPage() {
                     onClick={() => setShowPw((v) => !v)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-brand-paper/60"
                     style={{ color: "rgba(244,241,234,0.32)" }}
-                    aria-label={showPw ? "Hide password" : "Show password"}
+                    aria-label={showPw ? t("hidePassword") : t("showPassword")}
                   >
                     {showPw
                       ? <EyeOff className="w-4 h-4" aria-hidden="true" />
@@ -300,7 +277,7 @@ export default function PortalLoginPage() {
 
               {status === "error" && (
                 <p role="alert" className="text-sm text-red-400 leading-snug">
-                  Incorrect email or password. Please try again.
+                  {t("errorMessage")}
                 </p>
               )}
 

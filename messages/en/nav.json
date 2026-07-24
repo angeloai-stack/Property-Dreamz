@@ -1,0 +1,22 @@
+{
+  "logoAlt": "Property Dreamz home",
+  "items": {
+    "home": "Home",
+    "aboutUs": "About us",
+    "properties": "Properties",
+    "map": "Map",
+    "buyers": "Buyers",
+    "developers": "Developers",
+    "contact": "Contact"
+  },
+  "currency": "Currency",
+  "login": "Login",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "togglePropertiesSubmenu": "Toggle properties submenu",
+  "sideNav": "Side navigation",
+  "mobileBottomNav": "Mobile bottom navigation",
+  "exploreTheMap": "Explore the map",
+  "saved": "Saved",
+  "whatsapp": "Open WhatsApp chat"
+}

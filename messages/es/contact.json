@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "title": "Contacto",
+    "description": "Ponte en contacto con el equipo de Property Dreamz. Conecta con compradores verificados, solicita una llamada o comienza hoy tu búsqueda de propiedades en México.",
+    "ogTitle": "Contacta a Property Dreamz",
+    "ogDescription": "Habla con nuestro equipo bilingüe sobre comprar o listar bienes raíces en México."
+  },
+  "hero": {
+    "eyebrow": "Contáctanos",
+    "heading": "Estamos aquí para ayudarte a dar el <hl>paso correcto.</hl>",
+    "subtitle": "Ya seas comprador, desarrollador o profesional inmobiliario, nuestro equipo está listo para brindarte el apoyo y la información que necesitas.",
+    "badgeTitle": "Personalizado. Rápido. Confiable.",
+    "badgeBody": "Personas reales, respuestas reales. Contigo en cada paso del camino.",
+    "quickContacts": {
+      "liveChat": {
+        "title": "Chat en vivo",
+        "detail": "Chatea con Dreamzy o con nuestro equipo ahora."
+      },
+      "email": {
+        "title": "Escríbenos",
+        "detail": "hello@propertydreamz.com"
+      },
+      "call": {
+        "title": "Llámanos",
+        "detail": "+1 (619) 123 4567"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "detail": "+1 (619) 123 4567"
+      }
+    }
+  },
+  "whyContactUs": {
+    "eyebrow": "¿Por qué contactarnos?",
+    "heading": "Estamos comprometidos con tu éxito en México.",
+    "reasons": {
+      "expertGuidance": {
+        "title": "Asesoría experta",
+        "body": "Nuestro equipo conoce el mercado y está aquí para responder tus preguntas."
+      },
+      "trustedSupport": {
+        "title": "Apoyo confiable",
+        "body": "Obtén información clara, honesta y actualizada en la que puedes confiar."
+      },
+      "fastResponse": {
+        "title": "Respuesta rápida",
+        "body": "Respondemos rápido para que puedas seguir avanzando."
+      },
+      "bilingualTeam": {
+        "title": "Equipo bilingüe",
+        "body": "Hablamos inglés y español con fluidez para atenderte mejor."
+      }
+    }
+  },
+  "quickForm": {
+    "eyebrow": "Envíanos un mensaje",
+    "heading": "Cuéntanos cómo podemos ayudarte.",
+    "fullNamePlaceholder": "Nombre completo",
+    "emailPlaceholder": "Correo electrónico",
+    "phonePlaceholder": "Número de teléfono",
+    "interestPlaceholder": "Estoy interesado en...",
+    "messagePlaceholder": "¿Cómo podemos ayudarte?",
+    "submit": "Enviar mensaje",
+    "successTitle": "¡Mensaje enviado!",
+    "successBody": "Nuestro equipo se pondrá en contacto contigo pronto.",
+    "privacyNote": "Tu información está protegida y nunca será compartida"
+  },
+  "closingCta": {
+    "heading": "Convirtamos tu sueño en un plan.",
+    "body": "Contacta a nuestro equipo hoy y da el primer paso hacia tu futuro en México.",
+    "ctaAdvisor": "Habla con un asesor",
+    "ctaWhatsapp": "Chatea con Dreamzy®"
+  },
+  "leadForm": {
+    "heading": "Ponte en contacto",
+    "fullName": "Nombre completo *",
+    "namePlaceholder": "Tu nombre completo",
+    "phoneWhatsapp": "Teléfono / WhatsApp *",
+    "phonePlaceholder": "123 456 7890",
+    "email": "Correo electrónico *",
+    "emailPlaceholder": "tu@correo.com",
+    "budget": "Presupuesto de inversión",
+    "region": "Región de interés",
+    "regionPlaceholder": "Selecciona una región",
+    "contactMethod": "Método de contacto preferido",
+    "methodWhatsapp": "WhatsApp",
+    "methodCall": "Llamada telefónica",
+    "methodEmail": "Correo electrónico",
+    "message": "Mensaje (opcional)",
+    "messagePlaceholder": "Cuéntanos más sobre lo que buscas...",
+    "successTitle": "¡Mensaje enviado!",
+    "successBody": "Nos pondremos en contacto contigo en menos de 24 horas.",
+    "sendAnother": "Enviar otro mensaje",
+    "submit": "Enviar mensaje"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "titleTemplate": "%s — Property Dreamz",
+  "defaultTitle": "Mexico Real Estate | Verified Properties | Property Dreamz",
+  "description": "Explore certified Mexico real estate listings. Buy a house in Mexico with confidence — every property title-searched, developer-reviewed, and HOA-audited.",
+  "keywords": [
+    "mexico real estate",
+    "buy property mexico",
+    "verified developments mexico",
+    "fideicomiso",
+    "expat real estate mexico",
+    "baja california real estate",
+    "riviera maya real estate",
+    "certified developer mexico"
+  ],
+  "ogImageAlt": "Property Dreamz — Verified Mexican Real Estate",
+  "twitterTitle": "Property Dreamz | Verified Mexican Real Estate",
+  "twitterDescription": "Browse 47 certified developments in Mexico. Every title searched, every developer reviewed.",
+  "trustChecklist": [
+    { "title": "More visibility", "subtitle": "Reach serious buyers" },
+    { "title": "More trust", "subtitle": "With verification" },
+    { "title": "More sales", "subtitle": "Close faster" }
+  ],
+  "cmreBadge": {
+    "ariaLabel": "CMRE Certified Mexico Real Estate",
+    "line1": "Certified",
+    "line2": "Mexico Real Estate"
+  },
+  "verifyFeatures": [
+    { "title": "Verify Developments", "subtitle": "Certified Listings Only" },
+    { "title": "Best Prices", "subtitle": "Direct from Developers" },
+    { "title": "Secure Purchase", "subtitle": "Transparency Every Step" },
+    { "title": "Expert Guidance", "subtitle": "We're Here to Help" }
+  ]
+}

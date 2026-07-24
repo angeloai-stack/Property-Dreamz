@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "title": "Cíbola del Mar – Oceanfront Condos & Homes in Ensenada, Baja California",
+    "description": "Cíbola del Mar is a premier oceanfront development on the Baja California coast near Ensenada. Enjoy panoramic Pacific views, modern amenities, and a true seaside lifestyle."
+  },
+  "hero": {
+    "heroImageAlt": "Cíbola del Mar aerial coastal view",
+    "logoAlt": "Cíbola del Mar",
+    "cmreAlt": "CMRE Certified",
+    "headlineLine1": "Build on the",
+    "headlineLine2": "Pacific Edge.",
+    "taglineLine1": "Oceanfront residences in Ensenada,",
+    "taglineLine2": "Baja California.",
+    "tourButtonLabel": "360°",
+    "tourButtonSublabel": "view"
+  },
+  "stats": [
+    { "value": "120", "label": "Lots" },
+    { "value": "25", "label": "Condos" },
+    { "value": "5", "label": "Models" },
+    { "value": "80", "label": "Houses" },
+    { "value": "70%", "label": "Available" },
+    { "value": "100%", "label": "Verified" }
+  ],
+  "trustBadges": ["Title reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "lotExplorer": {
+    "sectionLabel": "Explore the development",
+    "tabs": ["Lots", "Condos", "Houses"],
+    "selectPrompt": "Select a lot to see details",
+    "viewAllButton": "View all lots",
+    "mapAlt": "Cíbola del Mar development map",
+    "popoverOceanView": "Ocean view",
+    "popoverAvailable": "Available",
+    "lots": [
+      { "id": "Lot A-1", "area": "320 m²" },
+      { "id": "Lot A-2", "area": "290 m²" },
+      { "id": "Lot A-3", "area": "350 m²" },
+      { "id": "Lot B-1", "area": "410 m²" },
+      { "id": "Lot B-2", "area": "285 m²" }
+    ]
+  },
+  "unitModels": {
+    "sectionLabel": "Unit models",
+    "bedroomsLabel": "Bedrooms",
+    "bathroomsLabel": "Bathrooms",
+    "imageAltTemplate": "{name} aerial view",
+    "models": [
+      { "name": "Quintas II", "area": "78 m²", "bedrooms": 2, "bathrooms": 2 }
+    ]
+  },
+  "tour": {
+    "headingLine1": "Step inside your",
+    "headingLine2": "future home",
+    "headingLine3": "by the sea.",
+    "button": "360° tour",
+    "imageAlt": "Cíbola del Mar community view"
+  },
+  "oceanfrontLots": {
+    "headingLine1": "Oceanfront",
+    "headingLine2": "View Lots",
+    "body1": "Discover premium oceanfront lots at Cíbola del Mar — one of Ensenada's most exclusive coastal communities. Every lot faces the Pacific Ocean directly, offering sweeping panoramic views of the Coronado Islands and Baja's dramatic coastline.",
+    "body2": "With lot sizes ranging from 280 to 450 m², each parcel gives you the freedom to design and build the coastal home you've always envisioned. Surrounded by natural beauty and certified infrastructure, this is where your investment and lifestyle meet.",
+    "imageAlt": "Cíbola del Mar site plan"
+  },
+  "ctaBanner": {
+    "text": "Certified land. Verified title. Your Pacific home starts here."
+  }
+}

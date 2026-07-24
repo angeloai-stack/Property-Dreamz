@@ -2,7 +2,8 @@
 // Horizontal scroll row of portrait developer cards + social proof line — Figma: "Top Developers / Cards Group".
 // Extracted from TopDevelopers so regional landing pages (e.g. Baja California) can reuse just the cards.
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Bath, Bed, Heart, LayoutGrid } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 import { useSavedProperties, type SavedProperty } from "@/hooks/useSavedProperties";
@@ -101,9 +102,12 @@ function toSavedProperty(dev: TopDeveloper): SavedProperty {
 
 export function TopDevelopersCards({
   developers: items = developers,
-  label = "Our top's developers",
-  socialProof = "+2,369 people purchasing properties right now",
+  label,
+  socialProof,
 }: TopDevelopersCardsProps) {
+  const t = useTranslations("home.topDevelopers");
+  const resolvedLabel = label ?? t("label");
+  const resolvedSocialProof = socialProof ?? t("socialProof");
   const { isSaved, toggleSaved } = useSavedProperties();
 
   return (
@@ -112,7 +116,7 @@ export function TopDevelopersCards({
       <RevealOnScroll direction="right" duration={1100} delay={0}>
         <div className="mb-5 flex justify-center md:mb-10">
           <span className="rounded-[14px] bg-brand-teal px-4 py-2 font-ewangi text-[clamp(0.6rem,1.2vw,1.0625rem)] font-bold text-brand-pine shadow-subtle md:px-6 md:py-3">
-            {label}
+            {resolvedLabel}
           </span>
         </div>
       </RevealOnScroll>
@@ -144,7 +148,7 @@ export function TopDevelopersCards({
               {/* Save/heart button — top right */}
               <button
                 type="button"
-                aria-label={saved ? `Remove ${dev.name} from saved` : `Save ${dev.name}`}
+                aria-label={saved ? t("removeFromSaved", { name: dev.name }) : t("save", { name: dev.name })}
                 onClick={(e) => {
                   e.preventDefault();
                   toggleSaved(savedProperty);
@@ -184,7 +188,7 @@ export function TopDevelopersCards({
         {/* Social proof — matches Figma Group 25: filled heart + bold black headline */}
         <div className="mt-8 flex items-center justify-center gap-3">
           <Heart className="h-8 w-8 shrink-0 fill-brand-teal text-brand-teal" aria-hidden="true" />
-          <p className="font-ewangi text-[clamp(1.1rem,2.2vw,1.75rem)] font-bold text-brand-ink">{socialProof}</p>
+          <p className="font-ewangi text-[clamp(1.1rem,2.2vw,1.75rem)] font-bold text-brand-ink">{resolvedSocialProof}</p>
         </div>
       </RevealOnScroll>
     </>
