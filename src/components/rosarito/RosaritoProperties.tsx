@@ -36,7 +36,7 @@ export function RosaritoProperties() {
             const saved = isSaved(`catalog-${property.id}`);
             return (
             <RevealOnScroll key={property.id} delay={i * 100} direction="up">
-              <article className="overflow-hidden rounded-[24px] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
+              <article className="overflow-hidden rounded-6 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
                 <div className="relative h-75 w-full overflow-hidden">
                   <Image src={property.image} alt={property.title} fill sizes="(max-width: 1024px) 100vw, 380px" className="object-cover" />
 
@@ -64,7 +64,7 @@ export function RosaritoProperties() {
                     <Heart className={cn("h-4 w-4", saved && "fill-brand-teal text-brand-teal")} strokeWidth={saved ? 0 : 2} />
                   </button>
 
-                  <div className="absolute bottom-3 right-3 rounded-[10px] bg-[#024139] px-4 py-2">
+                  <div className="absolute bottom-3 right-3 rounded-2.5 bg-brand-pine px-4 py-2">
                     <span className="font-ewangi text-[15px] font-bold text-white">
                       {t("priceFrom", { price: Math.round(property.priceUSD / 1000) })}
                     </span>
@@ -80,7 +80,7 @@ export function RosaritoProperties() {
 
                   <Link
                     href={property.href}
-                    className="mt-1 flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#024139] py-2.5 font-ewangi text-[13px] font-semibold text-white transition hover:bg-black"
+                    className="mt-1 flex w-full items-center justify-center gap-2 rounded-2.5 bg-brand-pine py-2.5 font-ewangi text-[13px] font-semibold text-white transition hover:bg-black"
                   >
                     {t("viewDevelopment")} <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
                   </Link>
