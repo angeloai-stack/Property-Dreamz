@@ -48,6 +48,11 @@
       }
     }
   },
+  "virtualTour": {
+    "heading": "360° Virtual Tour",
+    "startTourLabel": "Start virtual tour",
+    "iframeTitle": "The Wavve 360° virtual tour"
+  },
   "models": {
     "headingTemplate": "Explore our {count} models",
     "modelImageAltTemplate": "{name} interior",

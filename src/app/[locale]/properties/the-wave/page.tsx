@@ -28,6 +28,7 @@ export default function TheWavePage() {
 
   const [activeTab, setActiveTab] = useState<AmenityKey>("pool");
   const [modelIndex, setModelIndex] = useState(0);
+  const [tourStarted, setTourStarted] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -203,6 +204,47 @@ export default function TheWavePage() {
             </div>
           </div>
 
+        </RevealOnScroll>
+      </section>
+
+      {/* ── VIRTUAL TOUR ─────────────────────────────────────────────────── */}
+      <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
+        <RevealOnScroll direction="center">
+          <div className="flex items-center gap-6 mb-10">
+            <div className="h-px flex-1 bg-white/30" />
+            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white whitespace-nowrap">{t("virtualTour.heading")}</h2>
+            <div className="h-px flex-1 bg-white/30" />
+          </div>
+        </RevealOnScroll>
+
+        {/* Tour is lazy-loaded behind a click to avoid an autoplay iframe blocking page load. */}
+        <RevealOnScroll direction="up" duration={1100}>
+          <div className="relative mx-auto h-160 max-w-320.75 overflow-hidden rounded-15">
+            {tourStarted ? (
+              <iframe
+                src="https://kuula.co/share/collection/7TDJ1?logo=1&info=1&fs=1&vr=0&thumbs=1"
+                width="100%"
+                height="100%"
+                className="absolute inset-0 h-full w-full border-0"
+                allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+                allowFullScreen
+                title={t("virtualTour.iframeTitle")}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setTourStarted(true)}
+                className="absolute inset-0 flex w-full flex-col items-center justify-center gap-4 bg-[#111] transition hover:bg-[#1a1a1a]"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-teal">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="translate-x-0.5 text-brand-ink">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <span className="font-ewangi text-[1.1rem] text-white/80">{t("virtualTour.startTourLabel")}</span>
+              </button>
+            )}
+          </div>
         </RevealOnScroll>
       </section>
 

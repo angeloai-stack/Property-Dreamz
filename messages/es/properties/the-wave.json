@@ -48,6 +48,11 @@
       }
     }
   },
+  "virtualTour": {
+    "heading": "Recorrido virtual 360°",
+    "startTourLabel": "Iniciar recorrido virtual",
+    "iframeTitle": "Recorrido virtual 360° de The Wavve"
+  },
   "models": {
     "headingTemplate": "Explora nuestros {count} modelos",
     "modelImageAltTemplate": "Interior {name}",
