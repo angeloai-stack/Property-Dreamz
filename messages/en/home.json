@@ -97,6 +97,28 @@
     "subheadline": "HOA reserves audited — no surprise assessments after you close.",
     "cta": "Browse developments"
   },
+  "popup": {
+    "eyebrow": "Before you go",
+    "heading": "Let's find your Mexico property",
+    "subheading": "Tell us a bit about what you're looking for and we'll send you verified listings that match.",
+    "fullName": "Full name *",
+    "namePlaceholder": "Your name",
+    "location": "Where do you want to invest in Mexico? *",
+    "selectLocation": "Select a region",
+    "investmentRange": "What's your investment range? *",
+    "selectInvestmentRange": "Select a range",
+    "rangeOptions": {
+      "r50to100": "$50k – $100k USD",
+      "r100to200": "$100k – $200k USD",
+      "r200to300": "$200k – $300k USD",
+      "r300plus": "$300k – $400k+ USD"
+    },
+    "submit": "Get verified listings",
+    "skip": "Skip, I'll browse on my own",
+    "close": "Close",
+    "successTitle": "You're all set!",
+    "successBody": "Our team will reach out shortly with verified listings matching your criteria."
+  },
   "faq": {
     "badge": "FAQ",
     "headingPrefix": "Have questions?",

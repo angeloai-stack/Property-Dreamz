@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "@/i18n/navigation";
 import { Navbar, Main, Footer, WhatsAppButton, MobileBottomNav, SideNavRail } from "@/components/layout";
+import { LeadPopupModal } from "@/components/home/LeadPopupModal";
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -9,6 +10,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      {pathname === "/" && <LeadPopupModal />}
       {!bare && <Navbar />}
       {!bare && <SideNavRail />}
       {bare ? children : <Main>{children}</Main>}
