@@ -4,87 +4,73 @@
     "description": "The Wavve es un desarrollo de condominios con estilo de vida surfista en Rosarito, Baja California. Diseño moderno, energía costera y acceso privilegiado al Océano Pacífico, ideal para amantes del surf y la playa."
   },
   "hero": {
-    "heroImageAlt": "Residencias frente al mar de The Wave, Rosarito Beach",
-    "logoAlt": "The Wave",
+    "heroImageAlt": "Residencias frente al mar de The Wavve, Rosarito Beach",
+    "logoAlt": "The Wavve — Ocean Residences",
     "cmreAlt": "Certificado por CMRE",
-    "headlineLine1": "Donde la ola",
-    "headlineLine2": "se encuentra con el lujo.",
-    "description": "Una colección exclusiva de residencias frente al mar en Rosarito Beach, diseñadas para quienes viven al límite de lo extraordinario."
+    "headline": "Más cerca del mar.",
+    "description": "Vive un nuevo estándar de vida costera, pensado para quienes valoran la belleza, la tranquilidad y la conexión con el mar.",
+    "bookTourButton": "Agenda un tour"
   },
   "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
   "stats": [
-    { "value": "40", "label": "Unidades" },
+    { "value": "60", "label": "Departamentos" },
     { "value": "4", "label": "Modelos" },
-    { "value": "65%", "label": "Disponible" },
+    { "value": "67%", "label": "Disponible" },
     { "value": "100%", "label": "Verificado" }
   ],
-  "stepInside": {
-    "heading": "Descubre el interior de The Wavve",
-    "amenities": {
-      "pool": {
-        "tabLabel": "Alberca",
-        "title": "Alberca infinita con vista directa al Océano Pacífico.",
-        "description": "Alberca de borde infinito con vista al Océano Pacífico, camastros, swim-up bar y una terraza de relajación dedicada. La pieza central de la vida estilo resort en The Wavve Baja."
-      },
-      "rooftop": {
-        "tabLabel": "Azotea",
-        "title": "Terraza panorámica en la azotea con vistas de 360°.",
-        "description": "Una terraza exclusiva en la azotea con vistas sin obstáculos del Pacífico y la costa de Rosarito — perfecta para atardeceres, reuniones sociales y eventos privados."
-      },
-      "gym": {
-        "tabLabel": "Gimnasio",
-        "title": "Gimnasio de última generación.",
-        "description": "Estudio de acondicionamiento físico totalmente equipado con máquinas premium, pesas libres y una zona dedicada a yoga y estiramiento — todo con luz natural y ventanas frente al mar."
-      },
-      "kitchen": {
-        "tabLabel": "Cocina",
-        "title": "Cocinas premium con acabados europeos.",
-        "description": "Cocinas de concepto abierto con gabinetes europeos, cubiertas de cuarzo, electrodomésticos de acero inoxidable y una barra de desayuno pensada tanto para el día a día como para recibir invitados."
-      },
-      "terrace": {
-        "tabLabel": "Terraza",
-        "title": "Terrazas privadas con vista al mar en cada unidad.",
-        "description": "Cada residencia cuenta con una terraza privada con amplias vistas al Océano Pacífico — ideal para el café de la mañana, cenar al aire libre o simplemente respirar el aire costero."
-      }
-    }
-  },
   "virtualTour": {
-    "heading": "Recorrido virtual 360°",
-    "startTourLabel": "Iniciar recorrido virtual",
+    "photoAlt": "Vista aérea de la obra de The Wavve",
+    "pinTeal": "Teal",
+    "pinAzure": "Azure",
+    "heading": "Descubre The Wavve antes de tu visita.",
+    "description": "Recorre ambos modelos de residencia disponibles, descubre las amenidades y vive cada detalle en 360° inmersivo.",
+    "startTourLabel": "Iniciar experiencia 360°",
     "iframeTitle": "Recorrido virtual 360° de The Wavve"
   },
+  "amenities": {
+    "heading": "Amenidades estilo resort",
+    "tennisAlt": "Cancha de tenis en The Wavve",
+    "poolAlt": "Alberca en la azotea al atardecer",
+    "terraceAlt": "Terraza privada con vista al mar"
+  },
   "models": {
-    "headingTemplate": "Explora nuestros {count} modelos",
-    "modelImageAltTemplate": "Interior {name}",
-    "list": [
-      {
-        "name": "El Estudio",
-        "area": "543 sq. ft.",
-        "features": ["Sala y cocina de concepto abierto", "Baño completo", "Terraza con vista al mar", "Conexión para lavadora", "1 cajón de estacionamiento", "Ventanales de piso a techo", "Acabados premium en cocina"]
-      },
-      {
-        "name": "El Costero",
-        "area": "756 sq. ft.",
-        "features": ["1 recámara", "1 baño", "Cocina y comedor abiertos", "Terraza con vista al mar", "Conexión para lavadora", "1 cajón de estacionamiento", "Ventanales de piso a techo"]
-      },
-      {
-        "name": "El Pacífico",
-        "area": "1,087 sq. ft.",
-        "features": ["2 recámaras", "2 baños", "Cocina y sala abiertas", "Terraza panorámica al mar", "Cuarto de lavado", "1 cajón de estacionamiento", "Acabados premium en todo el interior"]
-      },
-      {
-        "name": "El Penthouse",
-        "area": "1,458 sq. ft.",
-        "features": ["3 recámaras", "3 baños", "Cocina de chef", "Amplia sala y comedor", "Dos terrazas privadas con vista al mar", "Cuarto de lavado", "2 cajones de estacionamiento"]
-      }
-    ]
+    "heading": "Explora los modelos disponibles",
+    "name": "Teal",
+    "area": "56 m²",
+    "features": ["1 balcón", "Sala con balcón", "Comedor", "Cocina (integral)", "1 recámara", "1 baño"],
+    "startingAtLabel": "Desde",
+    "price": "$247,000",
+    "priceCurrency": "USD",
+    "exploreModelButton": "Explorar modelo",
+    "availableLabel": "Disponible",
+    "floorplanAlt": "Plano del modelo Teal"
+  },
+  "constructionProgress": {
+    "heading": "Avance de construcción",
+    "month": "Julio 2026",
+    "updatedLabel": "Actualizado semanalmente",
+    "percentage": "82%"
+  },
+  "location": {
+    "headingLine1": "Ubicación privilegiada en",
+    "headingLine2": "Playas de Rosarito",
+    "description": "A minutos de la playa, restaurantes, tiendas y la frontera con EE. UU., el equilibrio perfecto entre conveniencia y vida costera.",
+    "mapAlt": "Mapa de la ubicación de The Wavve en Playas de Rosarito"
+  },
+  "investment": {
+    "heading": "Calcula tu inversión",
+    "propertyPriceLabel": "Precio de la propiedad",
+    "downPaymentLabel": "Enganche",
+    "termLabel": "Plazo",
+    "termYearsTemplate": "{years} años",
+    "monthlyPaymentLabel": "Pago mensual estimado",
+    "annualRoiLabel": "ROI anual estimado",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calcular"
   },
   "cta": {
-    "imageAlt": "Costa del Pacífico en Rosarito Beach",
-    "headingLine1": "Vida Elevada.",
-    "headingLine2": "Mar Ininterrumpido.",
-    "bodyMain": "En The Wavve Baja, cada residencia es una invitación a vivir diferente — con el Océano Pacífico como tu patio trasero, acabados premium como estándar y una comunidad privada diseñada para quienes esperan más. Solo 40 unidades exclusivas, cada una certificada y lista para ofrecerte el estilo de vida costero que mereces.",
-    "bodySecondary": "Reserva tu residencia hoy y vive donde la ola se encuentra con el lujo.",
+    "headingLine1": "¿Listo para el siguiente paso?",
+    "headingLine2": "Agenda tu tour privado o habla con un asesor",
     "button": "Habla con un experto"
   }
 }

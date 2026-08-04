@@ -4,87 +4,73 @@
     "description": "The Wavve is a surf-lifestyle condominium development in Rosarito, Baja California. Modern design, coastal energy, and prime Pacific Ocean access make it ideal for surf enthusiasts and beach lovers."
   },
   "hero": {
-    "heroImageAlt": "The Wave oceanfront residences, Rosarito Beach",
-    "logoAlt": "The Wave",
+    "heroImageAlt": "The Wavve oceanfront residences, Rosarito Beach",
+    "logoAlt": "The Wavve — Ocean Residences",
     "cmreAlt": "CMRE Certified",
-    "headlineLine1": "Where the wave",
-    "headlineLine2": "meets luxury.",
-    "description": "A curated collection of oceanfront residences in Rosarito Beach, designed for those who live on the edge of extraordinary."
+    "headline": "Closer to the Ocean.",
+    "description": "Experience a new standard of coastal living, crafted for those who value beauty, tranquility, and connection to the sea.",
+    "bookTourButton": "Book a tour"
   },
-  "trustBadges": ["Title reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
   "stats": [
-    { "value": "40", "label": "Units" },
+    { "value": "60", "label": "Apartments" },
     { "value": "4", "label": "Models" },
-    { "value": "65%", "label": "Available" },
+    { "value": "67%", "label": "Available" },
     { "value": "100%", "label": "Verified" }
   ],
-  "stepInside": {
-    "heading": "Step inside The Wavve",
-    "amenities": {
-      "pool": {
-        "tabLabel": "Pool",
-        "title": "Infinity pool with direct Pacific Ocean views.",
-        "description": "Infinity-edge pool overlooking the Pacific Ocean, with sun loungers, swim-up bar, and a dedicated relaxation deck. The centerpiece of resort-style living at The Wavve Baja."
-      },
-      "rooftop": {
-        "tabLabel": "Rooftop",
-        "title": "Panoramic rooftop lounge with 360° views.",
-        "description": "An exclusive rooftop terrace offering unobstructed views of the Pacific and the Rosarito coastline — perfect for sunsets, social gatherings, and private events."
-      },
-      "gym": {
-        "tabLabel": "Gym",
-        "title": "State-of-the-art fitness center.",
-        "description": "Fully equipped fitness studio with premium machines, free weights, and a dedicated yoga and stretching zone — all with natural light and ocean-facing windows."
-      },
-      "kitchen": {
-        "tabLabel": "Kitchen",
-        "title": "Premium kitchens with European finishes.",
-        "description": "Open-concept kitchens featuring European cabinetry, quartz countertops, stainless steel appliances, and a breakfast bar designed for both everyday living and entertaining."
-      },
-      "terrace": {
-        "tabLabel": "Terrace",
-        "title": "Private ocean-view terraces in every unit.",
-        "description": "Every residence features a private terrace with sweeping Pacific Ocean views — ideal for morning coffee, evening dining, or simply breathing in the coastal air."
-      }
-    }
-  },
   "virtualTour": {
-    "heading": "360° Virtual Tour",
-    "startTourLabel": "Start virtual tour",
+    "photoAlt": "Aerial view of The Wavve construction site",
+    "pinTeal": "Teal",
+    "pinAzure": "Azure",
+    "heading": "Explore The Wavve before you visit.",
+    "description": "Walk through both available residence models, discover the amenities and experience every detail in immersive 360°.",
+    "startTourLabel": "Start 360° experience",
     "iframeTitle": "The Wavve 360° virtual tour"
   },
+  "amenities": {
+    "heading": "Resort-style amenities",
+    "tennisAlt": "Tennis court at The Wavve",
+    "poolAlt": "Rooftop pool at sunset",
+    "terraceAlt": "Private terrace with ocean view"
+  },
   "models": {
-    "headingTemplate": "Explore our {count} models",
-    "modelImageAltTemplate": "{name} interior",
-    "list": [
-      {
-        "name": "The Studio",
-        "area": "543 sq. ft.",
-        "features": ["Open-concept living & kitchen", "Full bathroom", "Ocean-view terrace", "Laundry hookup", "1 Parking space", "Floor-to-ceiling windows", "Premium kitchen finishes"]
-      },
-      {
-        "name": "The Coastal",
-        "area": "756 sq. ft.",
-        "features": ["1 Bedroom", "1 Bathroom", "Open kitchen & dining area", "Ocean-view terrace", "Laundry hookup", "1 Parking space", "Floor-to-ceiling windows"]
-      },
-      {
-        "name": "The Pacific",
-        "area": "1,087 sq. ft.",
-        "features": ["2 Bedrooms", "2 Bathrooms", "Open kitchen & living room", "Panoramic ocean terrace", "Laundry room", "1 Parking space", "Premium finishes throughout"]
-      },
-      {
-        "name": "The Penthouse",
-        "area": "1,458 sq. ft.",
-        "features": ["3 Bedrooms", "3 Bathrooms", "Chef's kitchen", "Expansive living & dining room", "Two private ocean terraces", "Laundry room", "2 Parking spaces"]
-      }
-    ]
+    "heading": "Explore available models",
+    "name": "Teal",
+    "area": "56 sq. ft.",
+    "features": ["1 Balcony", "Living room with balcony", "Dining room", "Kitchen (Integral)", "1 Bedroom", "1 Bathroom"],
+    "startingAtLabel": "Starting at",
+    "price": "$247,000",
+    "priceCurrency": "USD",
+    "exploreModelButton": "Explore model",
+    "availableLabel": "Available",
+    "floorplanAlt": "Teal model floor plan"
+  },
+  "constructionProgress": {
+    "heading": "Construction progress",
+    "month": "July 2026",
+    "updatedLabel": "Updated weekly",
+    "percentage": "82%"
+  },
+  "location": {
+    "headingLine1": "Prime location in",
+    "headingLine2": "Playas de Rosarito",
+    "description": "Just minutes from the beach, dining, shopping, and the U.S. border, offering the perfect balance of convenience and coastal living.",
+    "mapAlt": "Map showing The Wavve location in Playas de Rosarito"
+  },
+  "investment": {
+    "heading": "Estimate your investment",
+    "propertyPriceLabel": "Property price",
+    "downPaymentLabel": "Down payment",
+    "termLabel": "Term",
+    "termYearsTemplate": "{years} years",
+    "monthlyPaymentLabel": "Est. monthly payment",
+    "annualRoiLabel": "Est. annual ROI",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calculate"
   },
   "cta": {
-    "imageAlt": "Pacific coastline at Rosarito Beach",
-    "headingLine1": "Life Elevated.",
-    "headingLine2": "Ocean Uninterrupted.",
-    "bodyMain": "At The Wavve Baja, every residence is an invitation to live differently — with the Pacific Ocean as your backyard, premium finishes as your standard, and a private community designed for those who expect more. Only 40 exclusive units, each certified and ready to deliver the coastal lifestyle you deserve.",
-    "bodySecondary": "Reserve your residence today and live where the wave meets luxury.",
+    "headingLine1": "Ready to the next step?",
+    "headingLine2": "Book your private tour or speak with an advisor",
     "button": "Talk to an expert"
   }
 }

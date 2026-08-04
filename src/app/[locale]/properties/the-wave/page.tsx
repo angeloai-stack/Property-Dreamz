@@ -2,47 +2,54 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
-const IMG_HERO      = `${CLD}/the-wave/the-wave/hero`;
-const IMG_LOGO      = `${CLD}/the-wave/the-wave/logo`;
-const IMG_AMENITIES = `${CLD}/the-wave/the-wave/amenities`;
-const IMG_CTA       = `${CLD}/the-wave/the-wave/hero`; // TODO: replace with dedicated cta image once uploaded
-const IMG_CMRE      = `${CLD}/CMRE_Logo-04_yjsknz.png`;
+const IMG_HERO            = `${CLD}/the-wave/the-wave/hero`;
+const IMG_LOGO            = `${CLD}/the-wave/the-wave/logo`;
+const IMG_TOUR            = `${CLD}/the-wave/the-wave/virtual-tour-preview`;
+const IMG_AMENITY_TENNIS  = `${CLD}/the-wave/the-wave/amenity-tennis`;
+const IMG_AMENITY_POOL    = `${CLD}/the-wave/the-wave/amenity-pool`;
+const IMG_AMENITY_TERRACE = `${CLD}/the-wave/the-wave/amenity-terrace`;
+const IMG_FLOORPLAN       = `${CLD}/the-wave/the-wave/floorplan-teal`;
+const IMG_LOCATION_MAP    = `${CLD}/the-wave/the-wave/location-map`;
+const IMG_CMRE            = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
 type Stat = { value: string; label: string };
-type AmenityKey = "pool" | "rooftop" | "gym" | "kitchen" | "terrace";
-type Amenity = { tabLabel: string; title: string; description: string };
-type Model = { name: string; area: string; features: string[] };
 
 export default function TheWavePage() {
   const t = useTranslations("propertyTheWave");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];
-  const amenities = t.raw("stepInside.amenities") as Record<AmenityKey, Amenity>;
-  const amenityKeys = Object.keys(amenities) as AmenityKey[];
-  const models = t.raw("models.list") as Model[];
+  const modelFeatures = t.raw("models.features") as string[];
 
-  const [activeTab, setActiveTab] = useState<AmenityKey>("pool");
-  const [modelIndex, setModelIndex] = useState(0);
   const [tourStarted, setTourStarted] = useState(false);
+  const [propertyPrice, setPropertyPrice] = useState(247000);
+  const [downPaymentPct, setDownPaymentPct] = useState(30);
+  const [termYears, setTermYears] = useState(15);
+  const [monthlyPayment, setMonthlyPayment] = useState<number | null>(1590);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
-  const currentModel = models[modelIndex];
-  const modelImg = `${CLD}/the-wave/the-wave/model-studio`;
+  function calculateMonthlyPayment() {
+    const principal = propertyPrice * (1 - downPaymentPct / 100);
+    const monthlyRate = 0.10 / 12;
+    const months = termYears * 12;
+    const payment = months <= 0
+      ? 0
+      : (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+    setMonthlyPayment(Math.round(payment));
+  }
 
   return (
-    <div className="overflow-x-hidden bg-[#171717] text-white">
+    <div className="overflow-x-hidden bg-[#000f2c] text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-205 overflow-hidden bg-[#171717]">
-        {/* Background photo */}
+      <section className="relative min-h-205 overflow-hidden bg-[#000f2c]">
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -52,42 +59,66 @@ export default function TheWavePage() {
           />
         </div>
 
-        {/* Gradient overlays */}
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, #171717 42%, rgba(23,23,23,0.50) 65%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to right, #000f2c 42%, rgba(0,15,44,0.50) 65%, transparent 100%)" }}
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, #171717 8%, transparent 50%)" }}
+          style={{ background: "linear-gradient(to top, #000f2c 8%, transparent 50%)" }}
         />
 
-        {/* Content */}
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-12 lg:px-20">
 
-          {/* Top row — dev logo + CMRE */}
-          <div className="flex justify-start items-center gap-5 lg:justify-end">
-            <RevealOnScroll direction="right">
+          {/* Top row — logo + CMRE + book a tour */}
+          <div className="flex items-start justify-between">
+            <RevealOnScroll direction="left">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="h-10 w-auto object-contain" />
+              <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="h-16 w-auto object-contain lg:h-20" />
             </RevealOnScroll>
-            <RevealOnScroll direction="right" delay={100}>
-              <Image src={IMG_CMRE} alt={t("hero.cmreAlt")} width={135} height={32} className="w-32" />
-            </RevealOnScroll>
+            <div className="flex flex-col items-end gap-4 lg:flex-row lg:items-center lg:gap-6">
+              <RevealOnScroll direction="right">
+                <Image src={IMG_CMRE} alt={t("hero.cmreAlt")} width={135} height={32} className="w-28 lg:w-32" />
+              </RevealOnScroll>
+              <RevealOnScroll direction="right" delay={100}>
+                <button
+                  type="button"
+                  className="rounded-3.75 bg-brand-teal px-8 py-3.5 font-ewangi text-[1.1rem] font-bold text-[#000f2c] transition hover:bg-brand-teal/90"
+                >
+                  {t("hero.bookTourButton")}
+                </button>
+              </RevealOnScroll>
+            </div>
           </div>
 
-          {/* Headline + description + badges */}
+          {/* Headline + description */}
           <div className="mt-10 max-w-2xl lg:mt-auto">
-            <h1 className="font-ewangi text-[clamp(3rem,6.5vw,5.5rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
-              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
+            <h1 className="font-ewangi text-[clamp(3rem,6.5vw,6rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
+              {t("hero.headline")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
               <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
                 {t("hero.description")}
               </p>
             </RevealOnScroll>
+          </div>
 
-            <div className="mt-8 grid grid-cols-3 gap-x-6 gap-y-3">
+          {/* Stats bar + trust badges */}
+          <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+            <RevealOnScroll direction="up" delay={200} className="flex w-full max-w-lg rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className="flex flex-1 flex-col items-center animate-[fade-up_0.6s_ease-out_both]"
+                  style={{ animationDelay: `${300 + i * 80}ms` }}
+                >
+                  <span className="font-ewangi text-[clamp(2rem,3.5vw,3rem)] leading-none text-white">{s.value}</span>
+                  <span className="font-ewangi text-sm text-white/70 mt-1">{s.label}</span>
+                </div>
+              ))}
+            </RevealOnScroll>
+
+            <RevealOnScroll direction="up" delay={280} className="grid grid-cols-3 gap-x-6 gap-y-3">
               {trustBadges.map((badge, i) => (
                 <div
                   key={badge}
@@ -98,265 +129,312 @@ export default function TheWavePage() {
                   <span className="font-ewangi text-[13px] leading-tight text-white text-center">{badge}</span>
                 </div>
               ))}
-            </div>
+            </RevealOnScroll>
           </div>
-
-          {/* Separator */}
-          <div className="mt-8 h-px w-64 bg-white/40" />
-
-          {/* Stats bar */}
-          <RevealOnScroll direction="up" delay={200} className="mt-6 flex w-full max-w-lg rounded-2xl bg-white/10 backdrop-blur-sm px-6 py-4 gap-6">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="flex flex-1 flex-col items-center animate-[fade-up_0.6s_ease-out_both]"
-                style={{ animationDelay: `${300 + i * 80}ms` }}
-              >
-                <span className="font-ewangi text-[clamp(2rem,3.5vw,3rem)] leading-none text-white">{s.value}</span>
-                <span className="font-ewangi text-sm text-white/70 mt-1">{s.label}</span>
-              </div>
-            ))}
-          </RevealOnScroll>
         </div>
       </section>
 
-      {/* ── STEP INSIDE THE WAVVE ─────────────────────────────────────────── */}
-      <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
-        <RevealOnScroll direction="center">
-          <div className="flex items-center gap-6 mb-10">
-            <div className="h-px flex-1 bg-white/30" />
-            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white whitespace-nowrap">{t("stepInside.heading")}</h2>
-            <div className="h-px flex-1 bg-white/30" />
-          </div>
-        </RevealOnScroll>
-
-        <RevealOnScroll direction="up" duration={1100}>
-
-          {/* ── Mobile ── */}
-          <div className="lg:hidden">
-            <div className="relative overflow-hidden rounded-3xl" style={{ height: 260 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_AMENITIES} alt={amenities[activeTab].tabLabel} className="absolute inset-0 h-full w-full object-cover" />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 35%, transparent 100%)" }}
-              />
-              <p className="absolute bottom-4 left-5 right-5 font-ewangi text-[0.8rem] text-brand-teal leading-snug">
-                {amenities[activeTab].title}
-              </p>
-            </div>
-            <p className="mt-5 font-ewangi text-[0.95rem] leading-relaxed text-white/80">
-              {amenities[activeTab].description}
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {amenityKeys.map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  onClick={() => setActiveTab(tab)}
-                  className={cn(
-                    "rounded-1.25 px-4 py-2 font-ewangi text-[0.95rem] transition",
-                    activeTab === tab
-                      ? "bg-[#1e1e1e] text-brand-teal border border-brand-teal/50"
-                      : "bg-white/10 text-white hover:bg-white/20"
-                  )}
-                >
-                  {amenities[tab].tabLabel}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* ── Desktop ── */}
-          <div className="hidden lg:block mx-auto max-w-320.75 relative rounded-15 overflow-hidden h-131">
-            <div className="absolute inset-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_AMENITIES} alt={amenities[activeTab].tabLabel} className="absolute inset-0 h-full w-full object-cover" />
-            </div>
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to left, rgba(30,30,30,0.90) 36%, transparent 60%)" }}
-            />
-            <div className="absolute right-0 top-0 bottom-0 w-2/5 flex flex-col justify-center px-14">
-              <p className="font-ewangi text-[1.1rem] leading-relaxed text-white mb-3">
-                {amenities[activeTab].description}
-              </p>
-              <p className="font-ewangi text-[0.9rem] text-white/65 mb-8">
-                {amenities[activeTab].title}
-              </p>
-              <div className="flex flex-col gap-1.5 items-end">
-                {amenityKeys.map((tab) => (
-                  <button
-                    key={tab}
-                    type="button"
-                    onClick={() => setActiveTab(tab)}
-                    className={cn(
-                      "rounded-1.25 px-4 py-2 text-right font-ewangi text-[1.3rem] font-bold transition w-38",
-                      activeTab === tab
-                        ? "bg-[#1e1e1e] text-brand-teal"
-                        : "bg-white text-[#1e1e1e] hover:bg-brand-teal/20"
-                    )}
-                  >
-                    {amenities[tab].tabLabel}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </RevealOnScroll>
-      </section>
-
       {/* ── VIRTUAL TOUR ─────────────────────────────────────────────────── */}
-      <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
-        <RevealOnScroll direction="center">
-          <div className="flex items-center gap-6 mb-10">
-            <div className="h-px flex-1 bg-white/30" />
-            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white whitespace-nowrap">{t("virtualTour.heading")}</h2>
-            <div className="h-px flex-1 bg-white/30" />
-          </div>
-        </RevealOnScroll>
-
-        {/* Tour is lazy-loaded behind a click to avoid an autoplay iframe blocking page load. */}
+      <section className="px-6 py-16 lg:px-20 lg:py-20">
         <RevealOnScroll direction="up" duration={1100}>
-          <div className="relative mx-auto h-160 max-w-320.75 overflow-hidden rounded-15">
+
+          {/* ── Mobile: stacked photo + panel ── */}
+          <div className="mx-auto flex max-w-320.75 flex-col gap-4 lg:hidden">
+            <div className="relative h-64 overflow-hidden rounded-6">
+              {tourStarted ? (
+                <iframe
+                  src="https://kuula.co/share/collection/7TDJ1?logo=1&info=1&fs=1&vr=0&thumbs=1"
+                  className="absolute inset-0 h-full w-full border-0"
+                  allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+                  allowFullScreen
+                  title={t("virtualTour.iframeTitle")}
+                />
+              ) : (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={IMG_TOUR} alt={t("virtualTour.photoAlt")} className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute left-[38%] top-[57%] flex items-center gap-1 rounded-md bg-brand-teal px-2 py-1 font-ewangi text-[11px] font-bold text-[#000f2c] shadow-lg">
+                    <MapPin className="h-3 w-3" strokeWidth={2.5} /> {t("virtualTour.pinTeal")}
+                  </div>
+                  <div className="absolute left-[46%] top-[57%] flex items-center gap-1 rounded-md bg-[#00c9a7] px-2 py-1 font-ewangi text-[11px] font-bold text-[#000f2c] shadow-lg">
+                    <MapPin className="h-3 w-3" strokeWidth={2.5} /> {t("virtualTour.pinAzure")}
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="rounded-6 bg-white/10 px-6 py-8">
+              <p className="font-ewangi text-[1.4rem] font-bold leading-snug text-white">{t("virtualTour.heading")}</p>
+              <p className="mt-4 font-ewangi text-[0.95rem] leading-relaxed text-white/85">{t("virtualTour.description")}</p>
+              {!tourStarted && (
+                <button
+                  type="button"
+                  onClick={() => setTourStarted(true)}
+                  className="mt-6 w-fit rounded-3 bg-brand-teal px-8 py-3.5 font-ewangi text-lg font-bold text-[#000f2c] transition hover:bg-brand-teal/90"
+                >
+                  {t("virtualTour.startTourLabel")}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* ── Desktop: photo with overlaid glass panel ── */}
+          <div className="relative mx-auto hidden aspect-1312/540 max-w-320.75 overflow-hidden rounded-8.5 lg:block">
             {tourStarted ? (
               <iframe
                 src="https://kuula.co/share/collection/7TDJ1?logo=1&info=1&fs=1&vr=0&thumbs=1"
-                width="100%"
-                height="100%"
                 className="absolute inset-0 h-full w-full border-0"
                 allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
                 allowFullScreen
                 title={t("virtualTour.iframeTitle")}
               />
             ) : (
-              <button
-                type="button"
-                onClick={() => setTourStarted(true)}
-                className="absolute inset-0 flex w-full flex-col items-center justify-center gap-4 bg-[#111] transition hover:bg-[#1a1a1a]"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-teal">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="translate-x-0.5 text-brand-ink">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={IMG_TOUR} alt={t("virtualTour.photoAlt")} className="absolute inset-0 h-full w-full object-cover" />
+
+                <div className="absolute left-[38%] top-[57%] flex items-center gap-1 rounded-md bg-brand-teal px-2 py-1 font-ewangi text-[11px] font-bold text-[#000f2c] shadow-lg">
+                  <MapPin className="h-3 w-3" strokeWidth={2.5} /> {t("virtualTour.pinTeal")}
                 </div>
-                <span className="font-ewangi text-[1.1rem] text-white/80">{t("virtualTour.startTourLabel")}</span>
-              </button>
+                <div className="absolute left-[46%] top-[57%] flex items-center gap-1 rounded-md bg-[#00c9a7] px-2 py-1 font-ewangi text-[11px] font-bold text-[#000f2c] shadow-lg">
+                  <MapPin className="h-3 w-3" strokeWidth={2.5} /> {t("virtualTour.pinAzure")}
+                </div>
+
+                <div className="absolute inset-y-0 right-0 flex w-[43%] flex-col justify-center bg-white/10 px-14 py-10 backdrop-blur-xl">
+                  <p className="font-ewangi text-[1.6rem] font-bold leading-snug text-white">{t("virtualTour.heading")}</p>
+                  <p className="mt-4 font-ewangi text-[1.05rem] leading-relaxed text-white/85">{t("virtualTour.description")}</p>
+                  <button
+                    type="button"
+                    onClick={() => setTourStarted(true)}
+                    className="mt-8 w-fit rounded-3 bg-brand-teal px-8 py-3.5 font-ewangi text-lg font-bold text-[#000f2c] transition hover:bg-brand-teal/90"
+                  >
+                    {t("virtualTour.startTourLabel")}
+                  </button>
+                </div>
+              </>
             )}
           </div>
         </RevealOnScroll>
       </section>
 
-      {/* ── MODELS ────────────────────────────────────────────────────────── */}
-      <section className="bg-[#d9d9d9] rounded-tl-12.5 rounded-tr-12.5 px-8 py-12 lg:px-20 lg:py-16">
-        <div className="mx-auto max-w-7xl">
-
-          <RevealOnScroll direction="left">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="font-ewangi text-[1.75rem] text-[#1e1e1e]">{t("models.headingTemplate", { count: models.length })}</span>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setModelIndex((i) => Math.max(0, i - 1))}
-                  disabled={modelIndex === 0}
-                  className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
-                >
-                  <ChevronLeft className="h-5 w-5 text-black" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setModelIndex((i) => Math.min(models.length - 1, i + 1))}
-                  disabled={modelIndex === models.length - 1}
-                  className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:opacity-30 hover:bg-black/10"
-                >
-                  <ChevronRight className="h-5 w-5 text-black" />
-                </button>
+      {/* ── RESORT-STYLE AMENITIES ──────────────────────────────────────── */}
+      <section className="px-6 py-8 lg:px-20 lg:py-10">
+        <RevealOnScroll direction="left">
+          <h2 className="mb-8 font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white">{t("amenities.heading")}</h2>
+        </RevealOnScroll>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+          {[
+            { src: IMG_AMENITY_TENNIS, alt: t("amenities.tennisAlt") },
+            { src: IMG_AMENITY_POOL, alt: t("amenities.poolAlt") },
+            { src: IMG_AMENITY_TERRACE, alt: t("amenities.terraceAlt") },
+          ].map((amenity, i) => (
+            <RevealOnScroll key={amenity.alt} direction="up" delay={i * 100} duration={900}>
+              <div className="relative aspect-379/282 overflow-hidden rounded-7 border-2 border-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={amenity.src} alt={amenity.alt} className="absolute inset-0 h-full w-full object-cover" />
               </div>
-            </div>
-          </RevealOnScroll>
+            </RevealOnScroll>
+          ))}
+        </div>
+      </section>
 
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-            <RevealOnScroll direction="left" delay={100} duration={1100}>
-              <div className="lg:w-95 shrink-0">
-                <h3 className="font-ewangi text-[clamp(2.25rem,4vw,3.25rem)] font-bold text-black leading-tight mb-3">
-                  {currentModel.name}
+      {/* ── EXPLORE AVAILABLE MODELS ─────────────────────────────────────── */}
+      <section className="px-6 py-8 lg:px-20 lg:py-10">
+        <RevealOnScroll direction="left">
+          <h2 className="mb-8 font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white">{t("models.heading")}</h2>
+        </RevealOnScroll>
+
+        <RevealOnScroll direction="up" delay={100} duration={1100}>
+          <div className="mx-auto max-w-336.5 rounded-15 bg-[#7cd4b2] px-8 py-10 lg:px-16 lg:py-12">
+            <div className="mb-8 flex gap-2">
+              <button
+                type="button"
+                disabled
+                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black/40"
+              >
+                <ChevronLeft className="h-5 w-5 text-black/40" />
+              </button>
+              <button
+                type="button"
+                disabled
+                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black/40"
+              >
+                <ChevronRight className="h-5 w-5 text-black/40" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+              <div className="lg:w-80 shrink-0">
+                <h3 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] font-bold text-black leading-tight">
+                  {t("models.name")}
                 </h3>
-                <p className="font-ewangi text-[2rem] text-brand-teal mb-6">— {currentModel.area}</p>
-                <ul className="font-ewangi text-[1.2rem] text-black space-y-1.5">
-                  {currentModel.features.map((f) => (
+                <p className="font-ewangi text-[clamp(1.75rem,3vw,2.25rem)] text-[#00112e] mb-6">{t("models.area")}</p>
+                <ul className="font-ewangi text-[1.15rem] text-black space-y-1.5">
+                  {modelFeatures.map((f) => (
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
               </div>
-            </RevealOnScroll>
 
-            <RevealOnScroll direction="right" delay={100} duration={1100} className="flex-1 flex justify-end">
-              <div className="relative w-full max-w-204.5 aspect-818/460 rounded-2xl overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={modelImg}
-                  alt={t("models.modelImageAltTemplate", { name: currentModel.name })}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+              <div className="flex flex-col items-start gap-4 lg:w-56 shrink-0">
+                <div>
+                  <p className="font-ewangi text-[1.05rem] text-black">{t("models.startingAtLabel")}</p>
+                  <p className="font-ewangi text-[1.7rem] font-bold text-[#000f2c]">
+                    {t("models.price")}{" "}
+                    <span className="font-ewangi text-base font-normal text-[#000f2c]">{t("models.priceCurrency")}</span>
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="rounded-1.25 bg-[#000f2c] px-6 py-2.5 font-ewangi text-[0.95rem] text-white transition hover:bg-[#000f2c]/85"
+                >
+                  {t("models.exploreModelButton")}
+                </button>
               </div>
-            </RevealOnScroll>
+
+              <div className="relative mx-auto aspect-1792/2400 w-44 shrink-0 overflow-hidden rounded-3 lg:w-52">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={IMG_FLOORPLAN} alt={t("models.floorplanAlt")} className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+            </div>
           </div>
 
-          {/* Pagination dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {models.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setModelIndex(i)}
-                className={cn(
-                  "rounded-1 h-2 transition-all",
-                  i === modelIndex ? "bg-brand-teal w-6" : "bg-[#b3b3b3] w-2"
-                )}
-              />
-            ))}
+          <div className="mt-6 flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-brand-teal" />
+            <span className="font-ewangi text-[1.05rem] font-bold text-white">{t("models.availableLabel")}</span>
           </div>
+        </RevealOnScroll>
+      </section>
+
+      {/* ── CONSTRUCTION PROGRESS + PRIME LOCATION ──────────────────────── */}
+      <section className="px-6 py-8 lg:px-20 lg:py-10">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.4fr]">
+
+          <RevealOnScroll direction="left" duration={1000}>
+            <div className="h-full rounded-5.5 border border-white/30 p-8">
+              <h3 className="font-ewangi text-2xl font-bold text-white">{t("constructionProgress.heading")}</h3>
+              <div className="mt-8 flex items-end justify-between">
+                <div className="font-ewangi text-lg text-white/80 leading-snug">
+                  <p>{t("constructionProgress.month")}</p>
+                  <p>{t("constructionProgress.updatedLabel")}</p>
+                </div>
+                <p className="font-ewangi text-5xl font-bold text-white">{t("constructionProgress.percentage")}</p>
+              </div>
+              <div className="mt-6 h-[7px] w-full overflow-hidden rounded-full border border-white/40">
+                <div className="h-full rounded-full bg-brand-teal" style={{ width: t("constructionProgress.percentage") }} />
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={100} duration={1000}>
+            <div className="flex h-full flex-col gap-6 rounded-5.5 border border-white/30 p-8 sm:flex-row sm:items-center">
+              <div className="relative aspect-322/214 w-full shrink-0 overflow-hidden rounded-3 sm:w-72">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={IMG_LOCATION_MAP} alt={t("location.mapAlt")} className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+              <div>
+                <p className="font-ewangi text-lg font-light text-white/80">{t("location.headingLine1")}</p>
+                <p className="font-ewangi text-2xl font-bold text-white">{t("location.headingLine2")}</p>
+                <p className="mt-3 font-ewangi text-[0.95rem] leading-relaxed text-white/75">{t("location.description")}</p>
+              </div>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <section className="bg-[#d9d9d9] px-8 py-16 lg:px-20 lg:py-20">
-        <div className="mx-auto max-w-7xl flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+      {/* ── ESTIMATE YOUR INVESTMENT ─────────────────────────────────────── */}
+      <section className="px-6 py-8 lg:px-20 lg:py-10">
+        <RevealOnScroll direction="left">
+          <h2 className="mb-8 font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white">{t("investment.heading")}</h2>
+        </RevealOnScroll>
 
-          <RevealOnScroll direction="left" duration={1100}>
-            <div className="lg:w-[46%] shrink-0">
-              <div className="relative overflow-hidden rounded-2.5 aspect-531/354">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={IMG_CTA}
-                  alt={t("cta.imageAlt")}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+        <RevealOnScroll direction="up" delay={100} duration={1000}>
+          <div className="rounded-6 border border-white/25 p-8 lg:p-12">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+              <div>
+                <span className="inline-block rounded-md bg-[#000f2c] px-4 py-1.5 font-ewangi text-sm text-white">
+                  {t("investment.propertyPriceLabel")}
+                </span>
+                <div className="mt-3 rounded-4.5 border border-white/40 px-5 py-4">
+                  <input
+                    type="number"
+                    value={propertyPrice}
+                    onChange={(e) => setPropertyPrice(Number(e.target.value))}
+                    className="w-full bg-transparent font-ewangi text-2xl text-white outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="inline-block rounded-md bg-[#000f2c] px-4 py-1.5 font-ewangi text-sm text-white">
+                  {t("investment.downPaymentLabel")}
+                </span>
+                <div className="mt-3 rounded-4.5 border border-white/40 px-5 py-4">
+                  <input
+                    type="number"
+                    value={downPaymentPct}
+                    onChange={(e) => setDownPaymentPct(Number(e.target.value))}
+                    className="w-full bg-transparent font-ewangi text-2xl text-white outline-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="inline-block rounded-md bg-[#000f2c] px-4 py-1.5 font-ewangi text-sm text-white">
+                  {t("investment.termLabel")}
+                </span>
+                <div className="mt-3 rounded-4.5 border border-white/40 px-5 py-4">
+                  <input
+                    type="number"
+                    value={termYears}
+                    onChange={(e) => setTermYears(Number(e.target.value))}
+                    className="w-full bg-transparent font-ewangi text-2xl text-white outline-none"
+                  />
+                </div>
               </div>
             </div>
-          </RevealOnScroll>
 
-          <RevealOnScroll direction="right" delay={150} duration={1100} className="flex flex-col gap-5 lg:flex-1">
-            <h2 className="font-ewangi text-[clamp(2rem,4.5vw,3.75rem)] leading-tight text-black">
-              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
-            </h2>
-            <p className="font-ewangi text-[1.1rem] leading-relaxed text-black/70">
-              {t("cta.bodyMain")}
-            </p>
-            <p className="font-ewangi text-[1.05rem] leading-relaxed text-black/60">
-              {t("cta.bodySecondary")}
-            </p>
-            <div className="mt-2">
+            <div className="my-8 h-px w-full bg-white/25" />
+
+            <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="font-ewangi text-lg text-white/80">{t("investment.monthlyPaymentLabel")}</p>
+                <p className="font-ewangi text-3xl font-bold text-white">
+                  {monthlyPayment !== null ? `$ ${monthlyPayment.toLocaleString("en-US")} USD` : "—"}
+                </p>
+              </div>
+              <div>
+                <p className="font-ewangi text-lg text-white/80">{t("investment.annualRoiLabel")}</p>
+                <p className="font-ewangi text-3xl font-bold text-white">{t("investment.roiRange")}</p>
+              </div>
               <button
                 type="button"
-                className="rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-[1.5rem] font-bold text-brand-ink transition hover:bg-brand-teal/90"
+                onClick={calculateMonthlyPayment}
+                className="w-fit rounded-4.25 bg-brand-teal px-14 py-5 font-ewangi text-2xl font-bold text-[#000f2c] transition hover:bg-brand-teal/90"
               >
-                {t("cta.button")}
+                {t("investment.calculateButton")}
               </button>
             </div>
-          </RevealOnScroll>
-        </div>
+          </div>
+        </RevealOnScroll>
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────────────────────── */}
+      <section className="bg-white px-6 py-16 lg:px-20 lg:py-20">
+        <RevealOnScroll direction="up" duration={1000}>
+          <div className={cn(
+            "mx-auto flex max-w-7xl flex-col gap-6 rounded-3.75 bg-[#000f2c] px-8 py-10",
+            "sm:flex-row sm:items-center sm:justify-between lg:px-14"
+          )}>
+            <div>
+              <p className="font-ewangi text-2xl font-bold text-white">{t("cta.headingLine1")}</p>
+              <p className="font-ewangi text-lg font-light text-white/75">{t("cta.headingLine2")}</p>
+            </div>
+            <button
+              type="button"
+              className="w-fit rounded-2.5 bg-brand-teal px-10 py-4 font-ewangi text-xl font-bold text-black transition hover:bg-brand-teal/90"
+            >
+              {t("cta.button")}
+            </button>
+          </div>
+        </RevealOnScroll>
       </section>
 
     </div>
