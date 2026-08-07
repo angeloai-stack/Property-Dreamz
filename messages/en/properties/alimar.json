@@ -18,6 +18,12 @@
     { "value": "82%", "label": "Available" },
     { "value": "100%", "label": "Verified" }
   ],
+  "virtualTour": {
+    "heading": "Explore Alimar before you visit.",
+    "description": "Walk through the model unit and experience every room in immersive 360°.",
+    "startTourLabel": "Start 360° experience",
+    "sceneLabelTemplate": "Photo {n}"
+  },
   "explore": {
     "heading": "Explore your next home",
     "desktopIntro": "Experience a collection of interiors crafted for elevated living. From open-concept layouts to stunning finishes, every space is designed to inspire.",

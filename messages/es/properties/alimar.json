@@ -18,6 +18,12 @@
     { "value": "82%", "label": "Disponible" },
     { "value": "100%", "label": "Verificado" }
   ],
+  "virtualTour": {
+    "heading": "Explora Alimar antes de visitarnos.",
+    "description": "Recorre el departamento modelo y vive cada espacio en 360° inmersivo.",
+    "startTourLabel": "Iniciar experiencia 360°",
+    "sceneLabelTemplate": "Foto {n}"
+  },
   "explore": {
     "heading": "Explora tu próximo hogar",
     "desktopIntro": "Vive una colección de interiores creados para una vida elevada. De espacios de concepto abierto a acabados impresionantes, cada rincón está diseñado para inspirar.",

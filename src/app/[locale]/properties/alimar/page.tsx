@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
+import { PhotoSphereTour, type TourScene } from "@/components/shared/PhotoSphereTour";
 
 // All Alimar images are served from Cloudinary — paths are relative to the /alimar/ folder.
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
@@ -14,6 +15,19 @@ const IMG_PLAN     = `${CLD}/alimar/floor_plan.png`;
 const IMG_CTA      = `${CLD}/alimar/cta.jpg`;
 const IMG_LOGO     = `${CLD}/alimar/logo.svg`;
 const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
+
+// 360° model-unit walkthrough — panoramas uploaded to the "Casa Entrenubes" Cloudinary folder.
+// w_4000 keeps enough resolution for full-screen viewing while cutting the ~8MB originals down.
+const CLD_360        = "https://res.cloudinary.com/dserzvrwe/image/upload";
+const TOUR_PANO_BASE  = `${CLD_360}/f_auto,q_auto,w_4000`;
+const TOUR_POSTER     = `${CLD_360}/f_auto,q_auto,c_fill,g_auto,w_1400,h_800/foto_1_b66pa7.jpg`;
+const TOUR_PHOTO_IDS = [
+  "foto_1_b66pa7", "foto_2_emcjnv", "foto_3_ffotea", "foto_4_vp8cnn", "foto_5_o47ysb",
+  "foto_6_aclprr", "foto_7_fj6k0q", "foto_8_uvb9t9", "foto_9_kkhwrs", "foto_10_jbxamm",
+  "foto_11_qz24i4", "foto_12_dxqomk", "foto_13_zjal5w", "foto_14_gnqlie", "foto_15_xjhr16",
+  "foto_16_k0lnsj", "foto_17_fa8ctc", "foto_18_hrwvg7", "foto_19_uiamoi", "foto_20_hzosp7",
+  "foto_21_m5q7su",
+];
 
 type Stat = { value: string; label: string };
 type Amenity = { id: string; label: string; description: string };
@@ -28,9 +42,15 @@ export default function AlimarPage() {
 
   const [activeTab, setActiveTab] = useState<string>(amenities[0]?.id);
   const [modelIndex, setModelIndex] = useState(0);
+  const [tourStarted, setTourStarted] = useState(false);
 
   const currentLayout = layouts[modelIndex];
   const currentAmenity = amenities.find((a) => a.id === activeTab) ?? amenities[0];
+  const tourScenes: TourScene[] = TOUR_PHOTO_IDS.map((id, i) => ({
+    id,
+    label: t("virtualTour.sceneLabelTemplate", { n: i + 1 }),
+    url: `${TOUR_PANO_BASE}/${id}.jpg`,
+  }));
 
   return (
     <div className="overflow-x-hidden bg-[#171717] text-white">
@@ -123,6 +143,39 @@ export default function AlimarPage() {
             <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="w-28 opacity-90" />
           </div>
         </div>
+      </section>
+
+      {/* ── VIRTUAL TOUR 360° ────────────────────────────────────────────── */}
+      <section className="bg-[#171717] px-6 py-16 lg:px-20 lg:py-20">
+        <RevealOnScroll direction="up" duration={1100}>
+          <div className="mx-auto max-w-329.25">
+            <h2 className="font-ewangi text-[clamp(1.75rem,3vw,2.5rem)] text-white mb-3 text-center">
+              {t("virtualTour.heading")}
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl font-ewangi text-[1rem] leading-relaxed text-white/70 text-center">
+              {t("virtualTour.description")}
+            </p>
+
+            {tourStarted ? (
+              <PhotoSphereTour scenes={tourScenes} />
+            ) : (
+              <div className="relative h-72 overflow-hidden rounded-6 sm:h-100 lg:h-134.5 lg:rounded-8.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={TOUR_POSTER} alt={t("hero.heroImageAlt")} className="absolute inset-0 h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setTourStarted(true)}
+                    className="rounded-3 bg-brand-teal px-8 py-3.5 font-ewangi text-lg font-bold text-[#000f2c] transition hover:bg-brand-teal/90"
+                  >
+                    {t("virtualTour.startTourLabel")}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── EXPLORE YOUR NEXT HOME ────────────────────────────────────────── */}
