@@ -10,6 +10,7 @@
     "contact": "Contacto"
   },
   "currency": "Moneda",
+  "language": "Idioma",
   "login": "Iniciar sesión",
   "openMenu": "Abrir menú",
   "closeMenu": "Cerrar menú",

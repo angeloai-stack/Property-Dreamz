@@ -10,6 +10,7 @@
     "contact": "Contact"
   },
   "currency": "Currency",
+  "language": "Language",
   "login": "Login",
   "openMenu": "Open menu",
   "closeMenu": "Close menu",

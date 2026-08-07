@@ -68,10 +68,11 @@ const navItems: NavItem[] = [
   { key: "contact",    href: "/contact" },
 ];
 
-// The currency toggle doubles as the language switcher: USD ↔ English, MXN ↔ Spanish.
+// The language toggle doubles as the currency switcher: English ↔ USD, Spanish ↔ MXN.
 const currencies = ["USD", "MXN"] as const;
 type Currency = (typeof currencies)[number];
 const CURRENCY_LOCALE = { USD: "en", MXN: "es" } as const;
+const CURRENCY_LABEL = { USD: "ENG", MXN: "ESP" } as const;
 
 export function Navbar() {
   const t = useTranslations("nav");
@@ -203,12 +204,12 @@ export function Navbar() {
           )}
         </nav>
 
-        {/* Currency toggle (doubles as the language switcher) + login + mobile hamburger */}
+        {/* Language toggle (doubles as the currency switcher) + login + mobile hamburger */}
         <div className="ml-auto flex items-center gap-3 lg:ml-6">
           <div
             className={cn("hidden items-center rounded-(--radius-btn) border p-1 sm:flex", dark ? "border-white/15 bg-white/10" : "border-brand-ink/10 bg-brand-paper")}
             role="group"
-            aria-label={t("currency")}
+            aria-label={t("language")}
           >
             {currencies.map((c) => (
               <button
@@ -220,7 +221,7 @@ export function Navbar() {
                   currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                 )}
               >
-                {c}
+                {CURRENCY_LABEL[c]}
               </button>
             ))}
           </div>
@@ -350,7 +351,7 @@ export function Navbar() {
                   currency === c ? "bg-brand-teal text-[#1e1e1e]" : "bg-[#d9d9d9] text-[#1e1e1e]"
                 )}
               >
-                {c}
+                {CURRENCY_LABEL[c]}
               </button>
             ))}
           </div>
