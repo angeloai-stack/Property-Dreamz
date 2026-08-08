@@ -15,6 +15,13 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    // Silences a harmless webpack cache warning: next-intl ships a file with a dynamic
+    // import() whose specifier isn't statically analyzable, which webpack can't resolve
+    // for its persistent-cache dependency graph. Doesn't affect the build or runtime.
+    config.infrastructureLogging = { level: "error" };
+    return config;
+  },
 };
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");

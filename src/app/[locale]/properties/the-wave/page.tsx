@@ -10,26 +10,38 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO            = `${CLD}/the-wave/the-wave/hero`;
 const IMG_LOGO            = `${CLD}/the-wave/the-wave/logo`;
 const IMG_TOUR            = `${CLD}/the-wave/the-wave/virtual-tour-preview`;
-const IMG_AMENITY_TENNIS  = `${CLD}/the-wave/the-wave/amenity-tennis`;
+const IMG_AMENITY_PADDLE  = `${CLD}/the-wave/the-wave/amenity-tennis`;
 const IMG_AMENITY_POOL    = `${CLD}/the-wave/the-wave/amenity-pool`;
-const IMG_AMENITY_TERRACE = `${CLD}/the-wave/the-wave/amenity-terrace`;
+const IMG_AMENITY_COWORKING = `${CLD}/the-wave/the-wave/amenity-terrace`;
 const IMG_FLOORPLAN       = `${CLD}/the-wave/the-wave/floorplan-teal`;
 const IMG_LOCATION_MAP    = `${CLD}/the-wave/the-wave/location-map`;
 const IMG_CMRE            = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 
 type Stat = { value: string; label: string };
+type Layout = {
+  name: string;
+  area: string;
+  price: string;
+  priceCurrency: string;
+  priceSecondary: string;
+  features: string[];
+};
 
 export default function TheWavePage() {
   const t = useTranslations("propertyTheWave");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];
-  const modelFeatures = t.raw("models.features") as string[];
+  const amenitiesList = t.raw("amenities.list") as string[];
+  const layouts = t.raw("models.layouts") as Layout[];
 
   const [tourStarted, setTourStarted] = useState(false);
+  const [modelIndex, setModelIndex] = useState(0);
   const [propertyPrice, setPropertyPrice] = useState(247000);
   const [downPaymentPct, setDownPaymentPct] = useState(30);
   const [termYears, setTermYears] = useState(15);
   const [monthlyPayment, setMonthlyPayment] = useState<number | null>(1590);
+
+  const currentLayout = layouts[modelIndex];
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -223,9 +235,9 @@ export default function TheWavePage() {
         </RevealOnScroll>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {[
-            { src: IMG_AMENITY_TENNIS, alt: t("amenities.tennisAlt") },
+            { src: IMG_AMENITY_PADDLE, alt: t("amenities.tennisAlt") },
             { src: IMG_AMENITY_POOL, alt: t("amenities.poolAlt") },
-            { src: IMG_AMENITY_TERRACE, alt: t("amenities.terraceAlt") },
+            { src: IMG_AMENITY_COWORKING, alt: t("amenities.coworkingAlt") },
           ].map((amenity, i) => (
             <RevealOnScroll key={amenity.alt} direction="up" delay={i * 100} duration={900}>
               <div className="relative aspect-379/282 overflow-hidden rounded-7 border-2 border-white">
@@ -235,12 +247,25 @@ export default function TheWavePage() {
             </RevealOnScroll>
           ))}
         </div>
+
+        <RevealOnScroll direction="up" delay={200} duration={900} className="mt-6 flex flex-wrap gap-2.5">
+          {amenitiesList.map((amenity) => (
+            <span
+              key={amenity}
+              className="rounded-full border border-white/25 bg-white/5 px-4 py-2 font-ewangi text-[0.9rem] text-white/90"
+            >
+              {amenity}
+            </span>
+          ))}
+        </RevealOnScroll>
       </section>
 
       {/* ── EXPLORE AVAILABLE MODELS ─────────────────────────────────────── */}
       <section className="px-6 py-8 lg:px-20 lg:py-10">
         <RevealOnScroll direction="left">
-          <h2 className="mb-8 font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white">{t("models.heading")}</h2>
+          <h2 className="mb-8 font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white">
+            {t("models.headingTemplate", { count: layouts.length })}
+          </h2>
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" delay={100} duration={1100}>
@@ -248,28 +273,30 @@ export default function TheWavePage() {
             <div className="mb-8 flex gap-2">
               <button
                 type="button"
-                disabled
-                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black/40"
+                onClick={() => setModelIndex((i) => Math.max(0, i - 1))}
+                disabled={modelIndex === 0}
+                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:border-black/40 hover:enabled:bg-black/10"
               >
-                <ChevronLeft className="h-5 w-5 text-black/40" />
+                <ChevronLeft className={cn("h-5 w-5", modelIndex === 0 ? "text-black/40" : "text-black")} />
               </button>
               <button
                 type="button"
-                disabled
-                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black/40"
+                onClick={() => setModelIndex((i) => Math.min(layouts.length - 1, i + 1))}
+                disabled={modelIndex === layouts.length - 1}
+                className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-black transition disabled:border-black/40 hover:enabled:bg-black/10"
               >
-                <ChevronRight className="h-5 w-5 text-black/40" />
+                <ChevronRight className={cn("h-5 w-5", modelIndex === layouts.length - 1 ? "text-black/40" : "text-black")} />
               </button>
             </div>
 
             <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
               <div className="lg:w-80 shrink-0">
                 <h3 className="font-ewangi text-[clamp(2.25rem,4vw,3rem)] font-bold text-black leading-tight">
-                  {t("models.name")}
+                  {currentLayout.name}
                 </h3>
-                <p className="font-ewangi text-[clamp(1.75rem,3vw,2.25rem)] text-[#00112e] mb-6">{t("models.area")}</p>
+                <p className="font-ewangi text-[clamp(1.75rem,3vw,2.25rem)] text-[#00112e] mb-6">{currentLayout.area}</p>
                 <ul className="font-ewangi text-[1.15rem] text-black space-y-1.5">
-                  {modelFeatures.map((f) => (
+                  {currentLayout.features.map((f) => (
                     <li key={f}>{f}</li>
                   ))}
                 </ul>
@@ -279,9 +306,10 @@ export default function TheWavePage() {
                 <div>
                   <p className="font-ewangi text-[1.05rem] text-black">{t("models.startingAtLabel")}</p>
                   <p className="font-ewangi text-[1.7rem] font-bold text-[#000f2c]">
-                    {t("models.price")}{" "}
-                    <span className="font-ewangi text-base font-normal text-[#000f2c]">{t("models.priceCurrency")}</span>
+                    {currentLayout.price}{" "}
+                    <span className="font-ewangi text-base font-normal text-[#000f2c]">{currentLayout.priceCurrency}</span>
                   </p>
+                  <p className="font-ewangi text-[0.95rem] text-[#00112e]/70">{currentLayout.priceSecondary}</p>
                 </div>
                 <button
                   type="button"
@@ -339,6 +367,16 @@ export default function TheWavePage() {
             </div>
           </RevealOnScroll>
         </div>
+      </section>
+
+      {/* ── ABOUT THE DEVELOPER ──────────────────────────────────────────── */}
+      <section className="px-6 py-8 lg:px-20 lg:py-10">
+        <RevealOnScroll direction="up" duration={1000}>
+          <div className="rounded-5.5 border border-white/30 p-8 lg:p-12">
+            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white mb-4">{t("developer.heading")}</h2>
+            <p className="max-w-4xl font-ewangi text-[1.05rem] leading-relaxed text-white/80">{t("developer.description")}</p>
+          </div>
+        </RevealOnScroll>
       </section>
 
       {/* ── ESTIMATE YOUR INVESTMENT ─────────────────────────────────────── */}
@@ -413,6 +451,7 @@ export default function TheWavePage() {
               </button>
             </div>
           </div>
+          <p className="mt-4 font-ewangi text-[0.85rem] text-white/50">{t("investment.financingNote")}</p>
         </RevealOnScroll>
       </section>
 

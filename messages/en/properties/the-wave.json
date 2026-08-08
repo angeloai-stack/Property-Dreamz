@@ -13,49 +13,66 @@
   },
   "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
   "stats": [
-    { "value": "60", "label": "Apartments" },
-    { "value": "4", "label": "Models" },
-    { "value": "67%", "label": "Available" },
-    { "value": "100%", "label": "Verified" }
+    { "value": "9", "label": "Models" },
+    { "value": "50%", "label": "Built" },
+    { "value": "23", "label": "Ready now" },
+    { "value": "78", "label": "Pre-sale" }
   ],
   "virtualTour": {
     "photoAlt": "Aerial view of The Wavve construction site",
     "pinTeal": "Teal",
     "pinAzure": "Azure",
     "heading": "Explore The Wavve before you visit.",
-    "description": "Walk through both available residence models, discover the amenities and experience every detail in immersive 360°.",
+    "description": "Walk through available residence models, discover the amenities and experience every detail in immersive 360°.",
     "startTourLabel": "Start 360° experience",
     "iframeTitle": "The Wavve 360° virtual tour"
   },
   "amenities": {
     "heading": "Resort-style amenities",
-    "tennisAlt": "Tennis court at The Wavve",
+    "tennisAlt": "Paddle court at The Wavve",
     "poolAlt": "Rooftop pool at sunset",
-    "terraceAlt": "Private terrace with ocean view"
+    "coworkingAlt": "Pet-friendly coworking space at The Wavve",
+    "list": [
+      "Indoor pool", "Fitness center", "Kids club",
+      "Game zone", "Package room", "Coworking space",
+      "Pet grooming station", "Outdoor pool", "Jacuzzi",
+      "Grills", "Paddle court", "Sports bar",
+      "Pet park", "Kids playground", "Cinema"
+    ]
   },
   "models": {
-    "heading": "Explore available models",
-    "name": "Teal",
-    "area": "56 sq. ft.",
-    "features": ["1 Balcony", "Living room with balcony", "Dining room", "Kitchen (Integral)", "1 Bedroom", "1 Bathroom"],
+    "headingTemplate": "Explore our {count} models",
     "startingAtLabel": "Starting at",
-    "price": "$247,000",
-    "priceCurrency": "USD",
     "exploreModelButton": "Explore model",
     "availableLabel": "Available",
-    "floorplanAlt": "Teal model floor plan"
+    "floorplanAlt": "Representative floor plan",
+    "layouts": [
+      { "name": "1 bedroom", "area": "63 m²", "price": "$241,000", "priceCurrency": "USD", "priceSecondary": "$4.2M MXN", "features": ["1 Bedroom", "1 Bathroom"] },
+      { "name": "2 bedrooms", "area": "94 m²", "price": "$395,000", "priceCurrency": "USD", "priceSecondary": "$6.7M MXN", "features": ["2 Bedrooms"] },
+      { "name": "2 bedrooms corner", "area": "125 m²", "price": "$546,000", "priceCurrency": "USD", "priceSecondary": "$9.3M MXN", "features": ["2 Bedrooms", "Corner unit"] },
+      { "name": "2 bedrooms Lock Off", "area": "135 m²", "price": "$620,000", "priceCurrency": "USD", "priceSecondary": "$10.5M MXN", "features": ["2 Bedrooms", "Lock-off unit"] },
+      { "name": "2 bedrooms Garden House", "area": "120 m²", "price": "$454,000", "priceCurrency": "USD", "priceSecondary": "$7.7M MXN", "features": ["2 Bedrooms", "Garden House"] },
+      { "name": "2 bedrooms penthouse", "area": "190 m²", "price": "$860,000", "priceCurrency": "USD", "priceSecondary": "$14.6M MXN", "features": ["2 Bedrooms", "Penthouse"] },
+      { "name": "3 bedrooms", "area": "162 m²", "price": "$599,000", "priceCurrency": "USD", "priceSecondary": "$10.1M MXN", "features": ["3 Bedrooms"] },
+      { "name": "3 bedrooms lock off", "area": "166 m²", "price": "$784,000", "priceCurrency": "USD", "priceSecondary": "$13.3M MXN", "features": ["3 Bedrooms", "Lock-off unit"] },
+      { "name": "3 bedrooms penthouse", "area": "283 m²", "price": "$1.2M", "priceCurrency": "USD", "priceSecondary": "$20.4M MXN", "features": ["3 Bedrooms", "Penthouse"] }
+    ]
   },
   "constructionProgress": {
     "heading": "Construction progress",
-    "month": "July 2026",
+    "month": "August 2026",
     "updatedLabel": "Updated weekly",
-    "percentage": "82%"
+    "percentage": "50%"
   },
   "location": {
     "headingLine1": "Prime location in",
     "headingLine2": "Playas de Rosarito",
     "description": "Just minutes from the beach, dining, shopping, and the U.S. border, offering the perfect balance of convenience and coastal living.",
     "mapAlt": "Map showing The Wavve location in Playas de Rosarito"
+  },
+  "developer": {
+    "heading": "About the developer",
+    "description": "Estrategia Urbana is a developer with more than a decade of experience, recognized for creating high-quality real estate projects that combine architecture, innovation, and a long-term investment vision. Its portfolio spans more than 70 developments across Mexico and the United States, establishing it as a company that prioritizes property value appreciation, design, and execution excellence. In Baja California, it leads iconic projects such as The Wavve and NAOS, contributing to the growth of the region's premium real estate market."
   },
   "investment": {
     "heading": "Estimate your investment",
@@ -66,7 +83,8 @@
     "monthlyPaymentLabel": "Est. monthly payment",
     "annualRoiLabel": "Est. annual ROI",
     "roiRange": "8% - 12%",
-    "calculateButton": "Calculate"
+    "calculateButton": "Calculate",
+    "financingNote": "The Wavve does not offer direct financing from the developer. This tool estimates payments for buyers arranging their own financing."
   },
   "cta": {
     "headingLine1": "Ready to the next step?",

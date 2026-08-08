@@ -13,49 +13,66 @@
   },
   "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
   "stats": [
-    { "value": "60", "label": "Departamentos" },
-    { "value": "4", "label": "Modelos" },
-    { "value": "67%", "label": "Disponible" },
-    { "value": "100%", "label": "Verificado" }
+    { "value": "9", "label": "Modelos" },
+    { "value": "50%", "label": "Construido" },
+    { "value": "23", "label": "Entrega inmediata" },
+    { "value": "78", "label": "Preventa" }
   ],
   "virtualTour": {
     "photoAlt": "Vista aérea de la obra de The Wavve",
     "pinTeal": "Teal",
     "pinAzure": "Azure",
     "heading": "Descubre The Wavve antes de tu visita.",
-    "description": "Recorre ambos modelos de residencia disponibles, descubre las amenidades y vive cada detalle en 360° inmersivo.",
+    "description": "Recorre los modelos de residencia disponibles, descubre las amenidades y vive cada detalle en 360° inmersivo.",
     "startTourLabel": "Iniciar experiencia 360°",
     "iframeTitle": "Recorrido virtual 360° de The Wavve"
   },
   "amenities": {
     "heading": "Amenidades estilo resort",
-    "tennisAlt": "Cancha de tenis en The Wavve",
+    "tennisAlt": "Cancha de pádel en The Wavve",
     "poolAlt": "Alberca en la azotea al atardecer",
-    "terraceAlt": "Terraza privada con vista al mar"
+    "coworkingAlt": "Espacio de coworking pet-friendly en The Wavve",
+    "list": [
+      "Alberca techada", "Gimnasio", "Kids club",
+      "Zona de juegos", "Recepción de paquetería", "Espacio de coworking",
+      "Estación de aseo para mascotas", "Alberca exterior", "Jacuzzi",
+      "Asadores", "Cancha de pádel", "Sports bar",
+      "Área de mascotas", "Juegos infantiles", "Cine"
+    ]
   },
   "models": {
-    "heading": "Explora los modelos disponibles",
-    "name": "Teal",
-    "area": "56 m²",
-    "features": ["1 balcón", "Sala con balcón", "Comedor", "Cocina (integral)", "1 recámara", "1 baño"],
+    "headingTemplate": "Explora nuestros {count} modelos",
     "startingAtLabel": "Desde",
-    "price": "$247,000",
-    "priceCurrency": "USD",
     "exploreModelButton": "Explorar modelo",
     "availableLabel": "Disponible",
-    "floorplanAlt": "Plano del modelo Teal"
+    "floorplanAlt": "Plano representativo",
+    "layouts": [
+      { "name": "1 recámara", "area": "63 m²", "price": "$4.2M", "priceCurrency": "MXN", "priceSecondary": "$241,000 USD", "features": ["1 recámara", "1 baño"] },
+      { "name": "2 recámaras", "area": "94 m²", "price": "$6.7M", "priceCurrency": "MXN", "priceSecondary": "$395,000 USD", "features": ["2 recámaras"] },
+      { "name": "2 recámaras esquina", "area": "125 m²", "price": "$9.3M", "priceCurrency": "MXN", "priceSecondary": "$546,000 USD", "features": ["2 recámaras", "Unidad esquinera"] },
+      { "name": "2 recámaras Lock Off", "area": "135 m²", "price": "$10.5M", "priceCurrency": "MXN", "priceSecondary": "$620,000 USD", "features": ["2 recámaras", "Unidad Lock-off"] },
+      { "name": "2 recámaras Garden House", "area": "120 m²", "price": "$7.7M", "priceCurrency": "MXN", "priceSecondary": "$454,000 USD", "features": ["2 recámaras", "Garden House"] },
+      { "name": "2 recámaras penthouse", "area": "190 m²", "price": "$14.6M", "priceCurrency": "MXN", "priceSecondary": "$860,000 USD", "features": ["2 recámaras", "Penthouse"] },
+      { "name": "3 recámaras", "area": "162 m²", "price": "$10.1M", "priceCurrency": "MXN", "priceSecondary": "$599,000 USD", "features": ["3 recámaras"] },
+      { "name": "3 recámaras lock off", "area": "166 m²", "price": "$13.3M", "priceCurrency": "MXN", "priceSecondary": "$784,000 USD", "features": ["3 recámaras", "Unidad Lock-off"] },
+      { "name": "3 recámaras penthouse", "area": "283 m²", "price": "$20.4M", "priceCurrency": "MXN", "priceSecondary": "$1.2M USD", "features": ["3 recámaras", "Penthouse"] }
+    ]
   },
   "constructionProgress": {
     "heading": "Avance de construcción",
-    "month": "Julio 2026",
+    "month": "Agosto 2026",
     "updatedLabel": "Actualizado semanalmente",
-    "percentage": "82%"
+    "percentage": "50%"
   },
   "location": {
     "headingLine1": "Ubicación privilegiada en",
     "headingLine2": "Playas de Rosarito",
     "description": "A minutos de la playa, restaurantes, tiendas y la frontera con EE. UU., el equilibrio perfecto entre conveniencia y vida costera.",
     "mapAlt": "Mapa de la ubicación de The Wavve en Playas de Rosarito"
+  },
+  "developer": {
+    "heading": "Sobre la desarrolladora",
+    "description": "Estrategia Urbana es una desarrolladora con más de una década de experiencia, reconocida por crear proyectos inmobiliarios de alta calidad que combinan arquitectura, innovación y una visión de inversión a largo plazo. Su portafolio supera los 70 desarrollos en México y Estados Unidos, consolidándose como una empresa que prioriza la plusvalía, el diseño y la ejecución de excelencia. En Baja California, lidera proyectos icónicos como The Wavve y NAOS, contribuyendo al crecimiento del mercado inmobiliario premium de la región."
   },
   "investment": {
     "heading": "Calcula tu inversión",
@@ -66,7 +83,8 @@
     "monthlyPaymentLabel": "Pago mensual estimado",
     "annualRoiLabel": "ROI anual estimado",
     "roiRange": "8% - 12%",
-    "calculateButton": "Calcular"
+    "calculateButton": "Calcular",
+    "financingNote": "The Wavve no cuenta con financiamiento directo por parte de la constructora. Esta herramienta estima pagos para compradores que gestionen su propio financiamiento."
   },
   "cta": {
     "headingLine1": "¿Listo para el siguiente paso?",
