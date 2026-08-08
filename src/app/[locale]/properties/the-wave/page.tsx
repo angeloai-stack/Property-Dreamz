@@ -7,7 +7,7 @@ import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
-const IMG_HERO            = `${CLD}/the-wave/the-wave/hero`;
+const IMG_HERO            = `${CLD}/naos/hero`;
 const IMG_LOGO            = `${CLD}/the-wave/the-wave/logo`;
 const IMG_TOUR            = `${CLD}/the-wave/the-wave/virtual-tour-preview`;
 const IMG_AMENITY_PADDLE  = `${CLD}/the-wave/the-wave/amenity-tennis`;
