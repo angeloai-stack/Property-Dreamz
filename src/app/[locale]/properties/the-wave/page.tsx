@@ -73,7 +73,7 @@ export default function TheWavePage() {
           />
         </div>
 
-        <div className="absolute inset-0 bg-[#0a3d91]/20 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#0a3d91]/40 mix-blend-multiply" />
 
         <div
           className="absolute inset-0"
