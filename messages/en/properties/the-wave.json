@@ -7,8 +7,8 @@
     "heroImageAlt": "The Wavve oceanfront residences, Rosarito Beach",
     "logoAlt": "The Wavve — Ocean Residences",
     "cmreAlt": "CMRE Certified",
-    "headline": "Closer to the Ocean.",
-    "description": "Experience a new standard of coastal living, crafted for those who value beauty, tranquility, and connection to the sea.",
+    "headline": "The best-selling vertical development in Zona Costa",
+    "description": "The Wavve has become one of the most successful vertical developments in the history of Zona Costa. It combines ocean views and direct beach access, exclusive amenities, and high appreciation potential in a single development — ideal for rental investment or for enjoying the serenity of oceanfront living.",
     "bookTourButton": "Book a tour"
   },
   "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
@@ -66,12 +66,14 @@
   },
   "location": {
     "headingLine1": "Prime location in",
-    "headingLine2": "Playas de Rosarito",
-    "description": "Just minutes from the beach, dining, shopping, and the U.S. border, offering the perfect balance of convenience and coastal living.",
-    "mapAlt": "Map showing The Wavve location in Playas de Rosarito"
+    "headingLine2": "Playas de Tijuana",
+    "description": "Located in Playas de Tijuana, just minutes from the beach, dining, shopping, and the U.S. border, offering the perfect balance of convenience and coastal living.",
+    "mapAlt": "Map showing The Wavve location in Playas de Rosarito",
+    "viewOnMapLabel": "View exact location on Google Maps"
   },
   "developer": {
     "heading": "About the developer",
+    "logoAlt": "Estrategia Urbana logo",
     "description": "Estrategia Urbana is a developer with more than a decade of experience, recognized for creating high-quality real estate projects that combine architecture, innovation, and a long-term investment vision. Its portfolio spans more than 70 developments across Mexico and the United States, establishing it as a company that prioritizes property value appreciation, design, and execution excellence. In Baja California, it leads iconic projects such as The Wavve and NAOS, contributing to the growth of the region's premium real estate market."
   },
   "investment": {

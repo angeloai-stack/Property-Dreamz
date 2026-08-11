@@ -7,8 +7,8 @@
     "heroImageAlt": "Residencias frente al mar de The Wavve, Rosarito Beach",
     "logoAlt": "The Wavve — Ocean Residences",
     "cmreAlt": "Certificado por CMRE",
-    "headline": "Más cerca del mar.",
-    "description": "Vive un nuevo estándar de vida costera, pensado para quienes valoran la belleza, la tranquilidad y la conexión con el mar.",
+    "headline": "El desarrollo vertical más vendido de la zona costa",
+    "description": "The Wavve se ha convertido en uno de los desarrollos verticales más exitosos de la historia en Zona Costa. Combina vista y acceso directo al mar, amenidades exclusivas y alta plusvalía en un solo desarrollo, ideal para la inversión en rentas o para disfrutar de la serenidad de la vida frente al mar.",
     "bookTourButton": "Agenda un tour"
   },
   "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
@@ -66,12 +66,14 @@
   },
   "location": {
     "headingLine1": "Ubicación privilegiada en",
-    "headingLine2": "Playas de Rosarito",
-    "description": "A minutos de la playa, restaurantes, tiendas y la frontera con EE. UU., el equilibrio perfecto entre conveniencia y vida costera.",
-    "mapAlt": "Mapa de la ubicación de The Wavve en Playas de Rosarito"
+    "headingLine2": "Playas de Tijuana",
+    "description": "Ubicado en Playas de Tijuana, a minutos de la playa, restaurantes, tiendas y la frontera con EE. UU., el equilibrio perfecto entre conveniencia y vida costera.",
+    "mapAlt": "Mapa de la ubicación de The Wavve en Playas de Rosarito",
+    "viewOnMapLabel": "Ver ubicación exacta en Google Maps"
   },
   "developer": {
     "heading": "Sobre la desarrolladora",
+    "logoAlt": "Logo de Estrategia Urbana",
     "description": "Estrategia Urbana es una desarrolladora con más de una década de experiencia, reconocida por crear proyectos inmobiliarios de alta calidad que combinan arquitectura, innovación y una visión de inversión a largo plazo. Su portafolio supera los 70 desarrollos en México y Estados Unidos, consolidándose como una empresa que prioriza la plusvalía, el diseño y la ejecución de excelencia. En Baja California, lidera proyectos icónicos como The Wavve y NAOS, contribuyendo al crecimiento del mercado inmobiliario premium de la región."
   },
   "investment": {

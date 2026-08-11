@@ -14,8 +14,10 @@ const IMG_AMENITY_PADDLE  = `${CLD}/the-wave/the-wave/amenity-tennis`;
 const IMG_AMENITY_POOL    = `${CLD}/the-wave/the-wave/amenity-pool`;
 const IMG_AMENITY_COWORKING = `${CLD}/the-wave/the-wave/amenity-terrace`;
 const IMG_FLOORPLAN       = `${CLD}/the-wave/the-wave/floorplan-teal`;
-const IMG_LOCATION_MAP    = `${CLD}/the-wave/the-wave/location-map`;
 const IMG_CMRE            = `${CLD}/CMRE_Logo-04_yjsknz.png`;
+const IMG_DEVELOPER_LOGO  = `${CLD}/the-wave/the-wave/developer-logo`;
+const MAPS_EMBED_URL      = "https://www.google.com/maps?q=32.45056,-117.110086&z=13&output=embed";
+const MAPS_URL            = "https://www.google.com/maps/place/Wave+Tijuana/@32.45056,-117.110086,17z";
 
 type Stat = { value: string; label: string };
 type Layout = {
@@ -71,13 +73,11 @@ export default function TheWavePage() {
           />
         </div>
 
+        <div className="absolute inset-0 bg-[#0a3d91]/20 mix-blend-multiply" />
+
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, #000f2c 42%, rgba(0,15,44,0.50) 65%, transparent 100%)" }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, #000f2c 8%, transparent 50%)" }}
+          style={{ background: "linear-gradient(to top, #000f2c 8%, transparent 45%)" }}
         />
 
         <div className="relative z-10 flex min-h-205 flex-col px-6 pt-10 pb-12 lg:px-20">
@@ -86,7 +86,7 @@ export default function TheWavePage() {
           <div className="flex items-start justify-between">
             <RevealOnScroll direction="left">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="h-16 w-auto object-contain lg:h-20" />
+              <img src={IMG_LOGO} alt={t("hero.logoAlt")} className="h-16 w-auto object-contain brightness-0 invert lg:h-20" />
             </RevealOnScroll>
             <div className="flex flex-col items-end gap-4 lg:flex-row lg:items-center lg:gap-6">
               <RevealOnScroll direction="right">
@@ -105,11 +105,11 @@ export default function TheWavePage() {
 
           {/* Headline + description */}
           <div className="mt-10 max-w-2xl lg:mt-auto">
-            <h1 className="font-ewangi text-[clamp(3rem,6.5vw,6rem)] leading-[0.93] text-white animate-[fade-left_0.9s_ease-out_both]">
+            <h1 className="font-ewangi text-[clamp(2.25rem,5vw,4.5rem)] leading-[0.95] text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.5)] animate-[fade-left_0.9s_ease-out_both]">
               {t("hero.headline")}
             </h1>
             <RevealOnScroll direction="up" delay={200}>
-              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 max-w-140">
+              <p className="mt-6 font-ewangi text-[1.125rem] leading-relaxed text-white/75 [text-shadow:0_1px_10px_rgba(0,0,0,0.5)] max-w-140">
                 {t("hero.description")}
               </p>
             </RevealOnScroll>
@@ -355,14 +355,32 @@ export default function TheWavePage() {
 
           <RevealOnScroll direction="right" delay={100} duration={1000}>
             <div className="flex h-full flex-col gap-6 rounded-5.5 border border-white/30 p-8 sm:flex-row sm:items-center">
-              <div className="relative aspect-322/214 w-full shrink-0 overflow-hidden rounded-3 sm:w-72">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={IMG_LOCATION_MAP} alt={t("location.mapAlt")} className="absolute inset-0 h-full w-full object-cover" />
-              </div>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative aspect-322/214 w-full shrink-0 overflow-hidden rounded-3 sm:w-72"
+              >
+                <iframe
+                  src={MAPS_EMBED_URL}
+                  className="absolute inset-0 h-full w-full border-0 pointer-events-none"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={t("location.mapAlt")}
+                />
+              </a>
               <div>
                 <p className="font-ewangi text-lg font-light text-white/80">{t("location.headingLine1")}</p>
                 <p className="font-ewangi text-2xl font-bold text-white">{t("location.headingLine2")}</p>
                 <p className="mt-3 font-ewangi text-[0.95rem] leading-relaxed text-white/75">{t("location.description")}</p>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block font-ewangi text-sm font-bold text-brand-teal underline underline-offset-2 hover:text-brand-teal/80"
+                >
+                  {t("location.viewOnMapLabel")}
+                </a>
               </div>
             </div>
           </RevealOnScroll>
@@ -373,8 +391,14 @@ export default function TheWavePage() {
       <section className="px-6 py-8 lg:px-20 lg:py-10">
         <RevealOnScroll direction="up" duration={1000}>
           <div className="rounded-5.5 border border-white/30 p-8 lg:p-12">
-            <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white mb-4">{t("developer.heading")}</h2>
-            <p className="max-w-4xl font-ewangi text-[1.05rem] leading-relaxed text-white/80">{t("developer.description")}</p>
+            <div className="flex flex-col gap-6 lg:flex-row-reverse lg:items-start lg:gap-10">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMG_DEVELOPER_LOGO} alt={t("developer.logoAlt")} className="h-14 w-auto shrink-0 rounded-lg bg-white p-2.5 object-contain lg:h-16" />
+              <div>
+                <h2 className="font-ewangi text-[clamp(1.5rem,2.5vw,2.25rem)] text-white mb-4">{t("developer.heading")}</h2>
+                <p className="max-w-4xl font-ewangi text-[1.05rem] leading-relaxed text-white/80">{t("developer.description")}</p>
+              </div>
+            </div>
           </div>
         </RevealOnScroll>
       </section>
