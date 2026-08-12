@@ -15,6 +15,7 @@ const NAMESPACE_FILES: Record<string, string> = {
   contact: "contact",
   buyersGuide: "buyersGuide",
   forDevelopers: "forDevelopers",
+  developerLinks: "developerLinks",
   forms: "forms",
   baja: "baja",
   tijuana: "tijuana",

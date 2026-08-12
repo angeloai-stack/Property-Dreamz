@@ -6,7 +6,7 @@ import { LeadPopupModal } from "@/components/home/LeadPopupModal";
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const bare =
-    pathname.startsWith("/coming-soon") || pathname.startsWith("/portal");
+    pathname.startsWith("/coming-soon") || pathname.startsWith("/portal") || pathname.startsWith("/qr");
 
   return (
     <>
