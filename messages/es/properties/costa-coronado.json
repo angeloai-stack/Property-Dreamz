@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "Costa Coronado – Lotes Residenciales Frente al Mar en Venta en Playas de Tijuana",
+    "description": "Costa Coronado es un fraccionamiento de lotes frente al mar de UNOBRA en Playas de Tijuana, a minutos de la garita de San Ysidro. Construye tu propia casa con acceso directo a la playa, vistas panorámicas al Pacífico y amenidades estilo resort."
+  },
+  "hero": {
+    "heroImageAlt": "Lotes frente al mar de Costa Coronado, Playas de Tijuana",
+    "cmreAlt": "Certificado por CMRE",
+    "headline": "Vida costera a minutos de la frontera",
+    "description": "Costa Coronado ofrece lotes residenciales con vista al mar en Playas de Tijuana, listos para construir la casa que siempre soñaste, con acceso directo a la playa, vistas panorámicas al Pacífico y a las Islas Coronado, a minutos de la garita de San Ysidro.",
+    "bookTourButton": "Agenda un tour"
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "6", "label": "Tipos de lote" },
+    { "value": "0%", "label": "Urbanizado" },
+    { "value": "0", "label": "Entrega inmediata" },
+    { "value": "120", "label": "Preventa" }
+  ],
+  "amenities": {
+    "heading": "Amenidades estilo resort",
+    "poolAlt": "Alberca en la azotea de Costa Coronado",
+    "terraceAlt": "Terraza con vista al mar en Costa Coronado",
+    "coworkingAlt": "Lounge de coworking en Costa Coronado",
+    "list": [
+      "Alberca en la azotea", "Gimnasio", "Espacio de coworking",
+      "Terraza con vista al mar", "Zona de asadores", "Área de mascotas",
+      "Juegos infantiles", "Seguridad 24/7", "Acceso controlado",
+      "Bodegas", "Centro de negocios", "Sala de cine"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explora nuestros {count} tipos de lote",
+    "startingAtLabel": "Desde",
+    "exploreModelButton": "Ver lote",
+    "availableLabel": "Disponible en preventa",
+    "renderAlt": "Render representativo del lote",
+    "layouts": [
+      { "name": "Lote interior", "area": "200 m²", "price": "$1.6M", "priceCurrency": "MXN", "priceSecondary": "$95,000 USD", "features": ["Listo para construir", "Servicios incluidos"] },
+      { "name": "Lote esquina", "area": "240 m²", "price": "$2.0M", "priceCurrency": "MXN", "priceSecondary": "$118,000 USD", "features": ["Lote esquinero", "Servicios incluidos"] },
+      { "name": "Lote vista al mar", "area": "260 m²", "price": "$2.6M", "priceCurrency": "MXN", "priceSecondary": "$155,000 USD", "features": ["Vista al mar", "Servicios incluidos"] },
+      { "name": "Lote premium vista al mar", "area": "300 m²", "price": "$3.2M", "priceCurrency": "MXN", "priceSecondary": "$189,000 USD", "features": ["Vista panorámica al mar", "Lote esquinero"] },
+      { "name": "Lote estate", "area": "420 m²", "price": "$4.2M", "priceCurrency": "MXN", "priceSecondary": "$249,000 USD", "features": ["El lote más grande", "Vista al mar"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Avance de urbanización",
+    "month": "Preurbanización",
+    "updatedLabel": "Preventa abierta",
+    "percentage": "0%"
+  },
+  "location": {
+    "headingLine1": "Ubicación privilegiada en",
+    "headingLine2": "Playas de Tijuana",
+    "description": "A pasos de la playa con vista a las Islas Coronado, y a minutos de la garita de San Ysidro — la vida frente al mar más cercana a San Diego.",
+    "mapAlt": "Mapa de la ubicación de Costa Coronado en Playas de Tijuana",
+    "viewOnMapLabel": "Ver ubicación exacta en Google Maps"
+  },
+  "developer": {
+    "heading": "Sobre la desarrolladora",
+    "logoAlt": "Logo de UNOBRA",
+    "description": "Unobra es una desarrolladora inmobiliaria con más de tres décadas de experiencia, reconocida por crear comunidades que combinan diseño, innovación y alta calidad constructiva. Su trayectoria, respaldada por miles de viviendas entregadas y una sólida presencia en el norte de México, la posiciona como una empresa comprometida con el desarrollo de proyectos que generan plusvalía, bienestar y valor patrimonial. En Baja California, desarrollos como 360 Hipódromo y Costa Coronado reflejan su visión de ofrecer espacios modernos, funcionales y pensados para el crecimiento de las ciudades y de quienes invierten en ellas."
+  },
+  "investment": {
+    "heading": "Calcula tu inversión",
+    "propertyPriceLabel": "Precio de la propiedad",
+    "downPaymentLabel": "Enganche",
+    "termLabel": "Plazo",
+    "termYearsTemplate": "{years} años",
+    "monthlyPaymentLabel": "Pago mensual estimado",
+    "annualRoiLabel": "ROI anual estimado",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calcular",
+    "financingNote": "Costa Coronado no cuenta con financiamiento directo por parte de la constructora. Esta herramienta estima pagos para compradores que gestionen su propio financiamiento."
+  },
+  "cta": {
+    "headingLine1": "¿Listo para el siguiente paso?",
+    "headingLine2": "Agenda tu tour privado o habla con un asesor",
+    "button": "Habla con un experto"
+  }
+}

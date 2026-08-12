@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "360 Hipódromo Living – Urban Condos for Sale in Zona Hipódromo, Tijuana",
+    "description": "360 Hipódromo Living is a vertical urban development by UNOBRA in Zona Hipódromo, Tijuana, steps from Zona Río's restaurants, offices, and nightlife. Modern design and high rental demand in the heart of the city."
+  },
+  "hero": {
+    "heroImageAlt": "360 Hipódromo Living residences, Zona Hipódromo, Tijuana",
+    "cmreAlt": "CMRE Certified",
+    "headline": "Urban living at the center of it all",
+    "description": "360 Hipódromo Living puts you steps from Zona Río's restaurants, offices, and nightlife, in one of Tijuana's most walkable and in-demand neighborhoods — designed for city life and high rental returns.",
+    "bookTourButton": "Book a tour"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "5", "label": "Models" },
+    { "value": "0%", "label": "Built" },
+    { "value": "0", "label": "Ready now" },
+    { "value": "95", "label": "Pre-sale" }
+  ],
+  "amenities": {
+    "heading": "Resort-style amenities",
+    "poolAlt": "Rooftop pool at 360 Hipódromo Living",
+    "loungeAlt": "Sky lounge at 360 Hipódromo Living",
+    "gymAlt": "Fitness center at 360 Hipódromo Living",
+    "list": [
+      "Rooftop pool", "Sky lounge", "Fitness center",
+      "Coworking space", "BBQ terrace", "Pet park",
+      "24/7 security", "Underground parking", "Storage units",
+      "Business center", "Game room", "Bike storage"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explore our {count} models",
+    "startingAtLabel": "Starting at",
+    "exploreModelButton": "Explore model",
+    "availableLabel": "Available in pre-sale",
+    "renderAlt": "Representative unit render",
+    "layouts": [
+      { "name": "Studio", "area": "40 m²", "price": "$112,000", "priceCurrency": "USD", "priceSecondary": "$1.9M MXN", "features": ["Studio", "1 Bathroom"] },
+      { "name": "1 bedroom", "area": "55 m²", "price": "$142,000", "priceCurrency": "USD", "priceSecondary": "$2.4M MXN", "features": ["1 Bedroom", "1 Bathroom"] },
+      { "name": "1 bedroom Plus", "area": "65 m²", "price": "$168,000", "priceCurrency": "USD", "priceSecondary": "$2.8M MXN", "features": ["1 Bedroom", "Home office"] },
+      { "name": "2 bedrooms", "area": "82 m²", "price": "$215,000", "priceCurrency": "USD", "priceSecondary": "$3.6M MXN", "features": ["2 Bedrooms"] },
+      { "name": "2 bedrooms penthouse", "area": "128 m²", "price": "$340,000", "priceCurrency": "USD", "priceSecondary": "$5.8M MXN", "features": ["2 Bedrooms", "Penthouse"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Construction progress",
+    "month": "Pre-construction",
+    "updatedLabel": "Pre-sale now open",
+    "percentage": "0%"
+  },
+  "location": {
+    "headingLine1": "Prime location in",
+    "headingLine2": "Zona Hipódromo, Tijuana",
+    "description": "Walking distance to Zona Río's offices, restaurants, and nightlife, next to Agua Caliente and minutes from the Otay border crossing — one of Tijuana's most connected addresses.",
+    "mapAlt": "Map showing 360 Hipódromo Living location in Zona Hipódromo, Tijuana",
+    "viewOnMapLabel": "View exact location on Google Maps"
+  },
+  "developer": {
+    "heading": "About the developer",
+    "logoAlt": "UNOBRA logo",
+    "description": "UNOBRA is a real estate developer with more than three decades of experience, recognized for creating communities that combine design, innovation, and high construction quality. Its track record, backed by thousands of homes delivered and a strong presence across northern Mexico, positions it as a company committed to developing projects that generate appreciation, well-being, and long-term property value. In Baja California, developments such as 360 Hipódromo and Costa Coronado reflect its vision of offering modern, functional spaces designed for the growth of cities and of those who invest in them."
+  },
+  "investment": {
+    "heading": "Estimate your investment",
+    "propertyPriceLabel": "Property price",
+    "downPaymentLabel": "Down payment",
+    "termLabel": "Term",
+    "termYearsTemplate": "{years} years",
+    "monthlyPaymentLabel": "Est. monthly payment",
+    "annualRoiLabel": "Est. annual ROI",
+    "roiRange": "9% - 13%",
+    "calculateButton": "Calculate",
+    "financingNote": "360 Hipódromo Living does not offer direct financing from the developer. This tool estimates payments for buyers arranging their own financing."
+  },
+  "cta": {
+    "headingLine1": "Ready to the next step?",
+    "headingLine2": "Book your private tour or speak with an advisor",
+    "button": "Talk to an expert"
+  }
+}

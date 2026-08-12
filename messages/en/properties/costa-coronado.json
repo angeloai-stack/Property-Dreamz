@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "Costa Coronado – Oceanfront Residential Lots for Sale in Playas de Tijuana",
+    "description": "Costa Coronado is a gated oceanfront lot community by UNOBRA in Playas de Tijuana, minutes from the San Ysidro border crossing. Build your own home with direct beach access, panoramic Pacific views, and resort-style amenities."
+  },
+  "hero": {
+    "heroImageAlt": "Costa Coronado oceanfront lots, Playas de Tijuana",
+    "cmreAlt": "CMRE Certified",
+    "headline": "Coastal living minutes from the border",
+    "description": "Costa Coronado offers residential ocean-view lots in Playas de Tijuana, ready to build the home you've always wanted, with direct beach access, panoramic views of the Pacific and the Coronado Islands, just minutes from the San Ysidro border crossing.",
+    "bookTourButton": "Book a tour"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
+  "stats": [
+    { "value": "6", "label": "Lot types" },
+    { "value": "0%", "label": "Urbanized" },
+    { "value": "0", "label": "Ready now" },
+    { "value": "120", "label": "Pre-sale" }
+  ],
+  "amenities": {
+    "heading": "Resort-style amenities",
+    "poolAlt": "Rooftop pool at Costa Coronado",
+    "terraceAlt": "Ocean-view terrace at Costa Coronado",
+    "coworkingAlt": "Coworking lounge at Costa Coronado",
+    "list": [
+      "Rooftop pool", "Fitness center", "Coworking space",
+      "Ocean-view terrace", "BBQ area", "Pet park",
+      "Kids playground", "24/7 security", "Gated access",
+      "Storage units", "Business center", "Cinema room"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explore our {count} lot types",
+    "startingAtLabel": "Starting at",
+    "exploreModelButton": "View lot",
+    "availableLabel": "Available in pre-sale",
+    "renderAlt": "Representative lot rendering",
+    "layouts": [
+      { "name": "Interior Lot", "area": "200 m²", "price": "$95,000", "priceCurrency": "USD", "priceSecondary": "$1.6M MXN", "features": ["Ready for construction", "Utilities included"] },
+      { "name": "Corner Lot", "area": "240 m²", "price": "$118,000", "priceCurrency": "USD", "priceSecondary": "$2.0M MXN", "features": ["Corner lot", "Utilities included"] },
+      { "name": "Ocean View Lot", "area": "260 m²", "price": "$155,000", "priceCurrency": "USD", "priceSecondary": "$2.6M MXN", "features": ["Ocean view", "Utilities included"] },
+      { "name": "Premium Ocean View Lot", "area": "300 m²", "price": "$189,000", "priceCurrency": "USD", "priceSecondary": "$3.2M MXN", "features": ["Panoramic ocean view", "Corner lot"] },
+      { "name": "Estate Lot", "area": "420 m²", "price": "$249,000", "priceCurrency": "USD", "priceSecondary": "$4.2M MXN", "features": ["Largest lot size", "Ocean view"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Urbanization progress",
+    "month": "Pre-urbanization",
+    "updatedLabel": "Pre-sale now open",
+    "percentage": "0%"
+  },
+  "location": {
+    "headingLine1": "Prime location in",
+    "headingLine2": "Playas de Tijuana",
+    "description": "Steps from the beach with views of the Coronado Islands, and just minutes from the San Ysidro border crossing — the closest oceanfront living to San Diego.",
+    "mapAlt": "Map showing Costa Coronado location in Playas de Tijuana",
+    "viewOnMapLabel": "View exact location on Google Maps"
+  },
+  "developer": {
+    "heading": "About the developer",
+    "logoAlt": "UNOBRA logo",
+    "description": "UNOBRA is a real estate developer with more than three decades of experience, recognized for creating communities that combine design, innovation, and high construction quality. Its track record, backed by thousands of homes delivered and a strong presence across northern Mexico, positions it as a company committed to developing projects that generate appreciation, well-being, and long-term property value. In Baja California, developments such as 360 Hipódromo and Costa Coronado reflect its vision of offering modern, functional spaces designed for the growth of cities and of those who invest in them."
+  },
+  "investment": {
+    "heading": "Estimate your investment",
+    "propertyPriceLabel": "Property price",
+    "downPaymentLabel": "Down payment",
+    "termLabel": "Term",
+    "termYearsTemplate": "{years} years",
+    "monthlyPaymentLabel": "Est. monthly payment",
+    "annualRoiLabel": "Est. annual ROI",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calculate",
+    "financingNote": "Costa Coronado does not offer direct financing from the developer. This tool estimates payments for buyers arranging their own financing."
+  },
+  "cta": {
+    "headingLine1": "Ready to the next step?",
+    "headingLine2": "Book your private tour or speak with an advisor",
+    "button": "Talk to an expert"
+  }
+}

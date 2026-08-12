@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "360 Hipódromo Living – Condominios Urbanos en Venta en Zona Hipódromo, Tijuana",
+    "description": "360 Hipódromo Living es un desarrollo vertical urbano de UNOBRA en Zona Hipódromo, Tijuana, a pasos de los restaurantes, oficinas y vida nocturna de Zona Río. Diseño moderno y alta demanda de renta en el corazón de la ciudad."
+  },
+  "hero": {
+    "heroImageAlt": "Residencias de 360 Hipódromo Living, Zona Hipódromo, Tijuana",
+    "cmreAlt": "Certificado por CMRE",
+    "headline": "Vida urbana en el centro de todo",
+    "description": "360 Hipódromo Living te pone a pasos de los restaurantes, oficinas y vida nocturna de Zona Río, en uno de los barrios más caminables y demandados de Tijuana — diseñado para la vida en la ciudad y altos retornos por renta.",
+    "bookTourButton": "Agenda un tour"
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Infraestructura validada"],
+  "stats": [
+    { "value": "5", "label": "Modelos" },
+    { "value": "0%", "label": "Construido" },
+    { "value": "0", "label": "Entrega inmediata" },
+    { "value": "95", "label": "Preventa" }
+  ],
+  "amenities": {
+    "heading": "Amenidades estilo resort",
+    "poolAlt": "Alberca en la azotea de 360 Hipódromo Living",
+    "loungeAlt": "Sky lounge en 360 Hipódromo Living",
+    "gymAlt": "Gimnasio en 360 Hipódromo Living",
+    "list": [
+      "Alberca en la azotea", "Sky lounge", "Gimnasio",
+      "Espacio de coworking", "Terraza de asadores", "Área de mascotas",
+      "Seguridad 24/7", "Estacionamiento subterráneo", "Bodegas",
+      "Centro de negocios", "Sala de juegos", "Bicicletero"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explora nuestros {count} modelos",
+    "startingAtLabel": "Desde",
+    "exploreModelButton": "Explorar modelo",
+    "availableLabel": "Disponible en preventa",
+    "renderAlt": "Render representativo de la unidad",
+    "layouts": [
+      { "name": "Estudio", "area": "40 m²", "price": "$1.9M", "priceCurrency": "MXN", "priceSecondary": "$112,000 USD", "features": ["Estudio", "1 baño"] },
+      { "name": "1 recámara", "area": "55 m²", "price": "$2.4M", "priceCurrency": "MXN", "priceSecondary": "$142,000 USD", "features": ["1 recámara", "1 baño"] },
+      { "name": "1 recámara Plus", "area": "65 m²", "price": "$2.8M", "priceCurrency": "MXN", "priceSecondary": "$168,000 USD", "features": ["1 recámara", "Home office"] },
+      { "name": "2 recámaras", "area": "82 m²", "price": "$3.6M", "priceCurrency": "MXN", "priceSecondary": "$215,000 USD", "features": ["2 recámaras"] },
+      { "name": "2 recámaras penthouse", "area": "128 m²", "price": "$5.8M", "priceCurrency": "MXN", "priceSecondary": "$340,000 USD", "features": ["2 recámaras", "Penthouse"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Avance de construcción",
+    "month": "Preconstrucción",
+    "updatedLabel": "Preventa abierta",
+    "percentage": "0%"
+  },
+  "location": {
+    "headingLine1": "Ubicación privilegiada en",
+    "headingLine2": "Zona Hipódromo, Tijuana",
+    "description": "A pasos de las oficinas, restaurantes y vida nocturna de Zona Río, junto a Agua Caliente y a minutos de la garita de Otay — una de las direcciones mejor conectadas de Tijuana.",
+    "mapAlt": "Mapa de la ubicación de 360 Hipódromo Living en Zona Hipódromo, Tijuana",
+    "viewOnMapLabel": "Ver ubicación exacta en Google Maps"
+  },
+  "developer": {
+    "heading": "Sobre la desarrolladora",
+    "logoAlt": "Logo de UNOBRA",
+    "description": "Unobra es una desarrolladora inmobiliaria con más de tres décadas de experiencia, reconocida por crear comunidades que combinan diseño, innovación y alta calidad constructiva. Su trayectoria, respaldada por miles de viviendas entregadas y una sólida presencia en el norte de México, la posiciona como una empresa comprometida con el desarrollo de proyectos que generan plusvalía, bienestar y valor patrimonial. En Baja California, desarrollos como 360 Hipódromo y Costa Coronado reflejan su visión de ofrecer espacios modernos, funcionales y pensados para el crecimiento de las ciudades y de quienes invierten en ellas."
+  },
+  "investment": {
+    "heading": "Calcula tu inversión",
+    "propertyPriceLabel": "Precio de la propiedad",
+    "downPaymentLabel": "Enganche",
+    "termLabel": "Plazo",
+    "termYearsTemplate": "{years} años",
+    "monthlyPaymentLabel": "Pago mensual estimado",
+    "annualRoiLabel": "ROI anual estimado",
+    "roiRange": "9% - 13%",
+    "calculateButton": "Calcular",
+    "financingNote": "360 Hipódromo Living no cuenta con financiamiento directo por parte de la constructora. Esta herramienta estima pagos para compradores que gestionen su propio financiamiento."
+  },
+  "cta": {
+    "headingLine1": "¿Listo para el siguiente paso?",
+    "headingLine2": "Agenda tu tour privado o habla con un asesor",
+    "button": "Habla con un experto"
+  }
+}

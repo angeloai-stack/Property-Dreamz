@@ -23,10 +23,12 @@ const propertyZones: Zone[] = [
     zone: "Tijuana",
     href: "/tijuana-real-estate",
     items: [
-      { label: "Costa Baja",          href: "/properties/costa-baja" },
-      { label: "Costa Real",          href: "/properties/costa-real" },
-      { label: "Del Mar Residencial", href: "/properties/delmar" },
-      { label: "Andares",             href: "/properties/andares" },
+      { label: "Costa Baja",           href: "/properties/costa-baja" },
+      { label: "Costa Coronado",       href: "/properties/costa-coronado" },
+      { label: "Costa Real",           href: "/properties/costa-real" },
+      { label: "Del Mar Residencial",  href: "/properties/delmar" },
+      { label: "Andares",              href: "/properties/andares" },
+      { label: "360 Hipódromo Living",  href: "/properties/360-hipodromo-living" },
     ],
   },
   {
@@ -96,7 +98,9 @@ export function Navbar() {
     || pathname.startsWith("/properties/costa-real")
     || pathname.startsWith("/properties/costa-baja")
     || pathname.startsWith("/properties/costa-bella")
-    || pathname.startsWith("/properties/the-wave");
+    || pathname.startsWith("/properties/the-wave")
+    || pathname.startsWith("/properties/costa-coronado")
+    || pathname.startsWith("/properties/360-hipodromo-living");
 
   const [mobileOpen, setMobileOpen]         = useState(false);
   const [propertiesOpen, setPropertiesOpen] = useState(false);
