@@ -1,125 +1,98 @@
 "use client";
-// QR-only landing page — Linktree-style, reuses the Roll-Up-01 banner photo (cropped above its
-// baked-in headline) as the hero, then stacks the developer form and quick links below.
+// QR-only landing page for developers — reached exclusively via the developer flyer/booth QR
+// code. Mini sticky nav (logo + language toggle), split hero (banner photo + quick inquiry
+// form), and the full site footer.
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { FaFacebookF, FaInstagram } from "react-icons/fa6";
-import { FileText, Globe } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Container } from "@/components/ui";
+import { Footer } from "@/components/layout";
 import { DevQuickForm } from "@/components/for-developers/DevQuickForm";
+import { cn } from "@/lib/utils";
 
 const HERO_IMAGE =
-  "https://res.cloudinary.com/dserzvrwe/image/upload/c_fill,g_north,ar_16:9,w_1200,q_auto,f_auto/Roll-Up-01_qrfgyp.png";
+  "https://res.cloudinary.com/dserzvrwe/image/upload/c_fill,g_north,ar_16:9,w_1600,q_auto,f_auto/Roll-Up-01_qrfgyp.png";
 
-const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com/propertydreamz", icon: FaInstagram },
-  { label: "Facebook", href: "https://facebook.com/propertydreamz", icon: FaFacebookF },
-] as const;
+const locales = ["en", "es"] as const;
 
-function LinkButton({
-  href,
-  icon: IconComponent,
-  children,
-  external,
-}: {
-  href: string;
-  icon: React.ElementType;
-  children: React.ReactNode;
-  external?: boolean;
-}) {
-  const className =
-    "flex w-full items-center gap-3 rounded-xl bg-white px-5 py-4 font-ewangi text-[14px] font-semibold text-brand-ink shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)]";
-  const inner = (
-    <>
-      <IconComponent className="h-5 w-5 shrink-0 text-brand-teal-dark" aria-hidden="true" />
-      {children}
-    </>
-  );
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noreferrer" className={className}>
-        {inner}
-      </a>
-    );
-  }
+/** Logo + EN/ES switch — the only navigation this standalone QR page needs. */
+function QrNav() {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
   return (
-    <Link href={href} className={className}>
-      {inner}
-    </Link>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-pine">
+      <Container className="flex items-center justify-between py-3.5">
+        <Link href="/" aria-label="Property Dreamz">
+          <Image
+            src="https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/brand/property-dreamz-logo-horizontal"
+            alt="Property Dreamz"
+            width={180}
+            height={36}
+            className="h-7 w-auto brightness-0 invert"
+          />
+        </Link>
+
+        <div className="flex items-center rounded-full border border-white/15 bg-white/10 p-1" role="group" aria-label="Language">
+          {locales.map((l) => (
+            <button
+              key={l}
+              type="button"
+              onClick={() => router.replace(pathname, { locale: l })}
+              className={cn(
+                "rounded-full px-3.5 py-1.5 font-ewangi text-[12px] font-bold uppercase tracking-wide transition",
+                locale === l ? "bg-brand-teal text-brand-pine" : "text-white/60 hover:text-white/90"
+              )}
+            >
+              {l}
+            </button>
+          ))}
+        </div>
+      </Container>
+    </header>
   );
 }
 
 export function DeveloperQrLanding() {
-  const t = useTranslations("developerLinks");
-  const year = new Date().getFullYear();
+  const t = useTranslations("developerLinks.hero");
 
   return (
     <main className="min-h-screen bg-brand-paper">
-      <div className="relative h-[34vh] min-h-[220px] w-full overflow-hidden sm:h-[38vh]">
-        <Image
-          src={HERO_IMAGE}
-          alt=""
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-brand-paper via-transparent to-transparent" />
-      </div>
+      <QrNav />
 
-      <div className="relative mx-auto -mt-14 flex max-w-md flex-col items-center px-6 pb-16 text-center">
-        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-lg ring-4 ring-white">
+      <section className="grid lg:grid-cols-2">
+        {/* Banner photo with eyebrow/headline/subheading baked into the overlay */}
+        <div className="relative min-h-80 overflow-hidden lg:min-h-140">
           <Image
-            src="/brand/property-dreamz-logo-circle.png"
-            alt="Property Dreamz"
-            width={64}
-            height={64}
+            src={HERO_IMAGE}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="(min-width: 1024px) 50vw, 100vw"
           />
+          <div className="absolute inset-0 bg-linear-to-t from-brand-pine/95 via-brand-pine/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-8 sm:p-10">
+            <p className="font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal">
+              {t("eyebrow")}
+            </p>
+            <h1 className="mt-3 whitespace-pre-line font-ewangi text-[clamp(1.9rem,4.5vw,2.7rem)] font-bold leading-[1.05] text-white">
+              {t("headline")}
+            </h1>
+            <p className="mt-4 whitespace-pre-line font-ewangi text-[14px] leading-relaxed text-white/75">
+              {t("subheading")}
+            </p>
+          </div>
         </div>
 
-        <span className="mt-5 font-ewangi text-[13px] font-semibold uppercase tracking-wide text-brand-teal-dark">
-          {t("hero.eyebrow")}
-        </span>
-        <h1 className="mt-2 font-ewangi text-[clamp(1.6rem,6vw,2.1rem)] font-bold leading-tight text-brand-pine">
-          {t("hero.headline")}
-        </h1>
-        <p className="mt-3 font-ewangi text-[15px] leading-relaxed text-brand-ink/60">
-          {t("hero.subheading")}
-        </p>
-
-        <div className="mt-8 w-full">
+        {/* Quick inquiry form */}
+        <div className="flex items-center justify-center bg-brand-pine px-6 py-12 sm:px-10">
           <DevQuickForm />
         </div>
+      </section>
 
-        <div className="mt-6 flex w-full flex-col gap-3">
-          <LinkButton href="https://propertydreamz.com" icon={Globe} external>
-            {t("links.website")}
-          </LinkButton>
-          <LinkButton href="/for-developers" icon={FileText}>
-            {t("links.developerProgram")}
-          </LinkButton>
-        </div>
-
-        <div className="mt-7 flex items-center gap-4">
-          <span className="font-ewangi text-[13px] text-brand-ink/50">{t("links.followUs")}</span>
-          {socialLinks.map(({ label, href, icon: SocialIcon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={label}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-ink/70 shadow-[0_4px_12px_rgba(0,0,0,0.06)] transition hover:bg-brand-teal hover:text-brand-ink"
-            >
-              <SocialIcon className="h-4 w-4" aria-hidden="true" />
-            </a>
-          ))}
-        </div>
-
-        <p className="mt-10 font-ewangi text-[12px] text-brand-ink/40">
-          {t("footer", { year })}
-        </p>
-      </div>
+      <Footer />
     </main>
   );
 }

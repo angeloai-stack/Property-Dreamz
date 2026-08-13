@@ -6,20 +6,22 @@
     "ogDescription": "Explore verified real estate investment opportunities in Baja California with Property Dreamz."
   },
   "hero": {
-    "eyebrow": "Baja Real Estate",
-    "headline": "Why Invest In Baja?",
-    "subheading": "Your dream awaits — get verified listings curated to your investment goals."
+    "eyebrow": "Baja California, México",
+    "headline": "Your Dream\nAwaits.",
+    "subheading": "Verified developments.\nTransparent process.\nReal results."
   },
   "quickForm": {
-    "heading": "Find Your Ideal Investment",
-    "subheading": "Tell us what you're looking for and our team will reach out with verified listings.",
+    "eyebrow": "Free Consultation",
+    "heading": "Find your ideal\ndevelopment.",
+    "fullNamePlaceholder": "Full Name",
+    "phonePlaceholder": "Phone / WhatsApp",
+    "emailPlaceholder": "Email",
+    "businessPlaceholder": "Business sector",
+    "nationalityPlaceholder": "Nationality",
+    "regionPlaceholder": "Where to invest?",
+    "consentSuffix": "and consent to being contacted by a Property Dreamz advisor.",
+    "submit": "Get consultation today",
     "successTitle": "You're all set!",
     "successBody": "Our team will reach out within 24 hours with verified listings matching your criteria."
-  },
-  "links": {
-    "website": "Visit our website",
-    "buyersGuide": "Explore the buyer's guide",
-    "followUs": "Follow us"
-  },
-  "footer": "© {year} Property Dreamz. All rights reserved."
+  }
 }

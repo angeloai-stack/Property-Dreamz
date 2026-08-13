@@ -1,5 +1,5 @@
-// Compact hero consultation form — Figma "Questionary fro developers", posts to the same
-// webhook as the full DeveloperListingForm but with the reduced field set Figma specifies.
+// Compact hero consultation form — used on the /for-developers hero and the developer QR
+// landing page. Posts to the same webhook as the full DeveloperListingForm, reduced field set.
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
@@ -8,8 +8,8 @@ import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 const F =
   "w-full rounded-lg border-0 bg-brand-ink/5 px-4 py-2.5 font-ewangi text-[13px] text-brand-ink placeholder:text-brand-ink/40 outline-none transition focus:ring-2 focus:ring-brand-teal/50";
 
-type Fields = { fullName: string; email: string; company: string; message: string };
-const INIT: Fields = { fullName: "", email: "", company: "", message: "" };
+type Fields = { fullName: string; phone: string; email: string; business: string };
+const INIT: Fields = { fullName: "", phone: "", email: "", business: "" };
 
 export function DevQuickForm() {
   const t = useTranslations("forDevelopers.quickForm");
@@ -18,7 +18,7 @@ export function DevQuickForm() {
   const [fields, setFields] = useState<Fields>(INIT);
   const set =
     (k: keyof Fields) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement>) =>
       setFields((p) => ({ ...p, [k]: e.target.value }));
 
   async function handleSubmit(e: React.FormEvent) {
@@ -54,12 +54,12 @@ export function DevQuickForm() {
       onSubmit={handleSubmit}
       className="rounded-2xl bg-white/95 p-7 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-sm"
     >
-      <h2 className="font-ewangi text-[1.3rem] font-bold leading-tight text-brand-teal-dark">
+      <span className="font-ewangi text-[11px] font-semibold uppercase tracking-wide text-brand-teal-dark">
+        {t("eyebrow")}
+      </span>
+      <h2 className="mt-1 whitespace-pre-line font-ewangi text-[1.4rem] font-bold leading-[1.1] text-brand-ink">
         {t("heading")}
       </h2>
-      <p className="mt-2 font-ewangi text-[13px] leading-snug text-brand-ink/55">
-        {t("subheading")}
-      </p>
 
       <div className="mt-5 grid grid-cols-2 gap-3">
         <input
@@ -71,31 +71,43 @@ export function DevQuickForm() {
           className={F}
         />
         <input
-          type="email"
-          placeholder={t("emailPlaceholder")}
+          type="tel"
+          placeholder={t("phonePlaceholder")}
           required
-          value={fields.email}
-          onChange={set("email")}
+          value={fields.phone}
+          onChange={set("phone")}
           className={F}
         />
       </div>
 
       <input
-        type="text"
-        placeholder={t("companyPlaceholder")}
+        type="email"
+        placeholder={t("emailPlaceholder")}
         required
-        value={fields.company}
-        onChange={set("company")}
+        value={fields.email}
+        onChange={set("email")}
         className={`${F} mt-3`}
       />
 
-      <textarea
-        placeholder={t("messagePlaceholder")}
-        rows={3}
-        value={fields.message}
-        onChange={set("message")}
-        className={`${F} mt-3 resize-none`}
+      <input
+        type="text"
+        placeholder={t("businessPlaceholder")}
+        required
+        value={fields.business}
+        onChange={set("business")}
+        className={`${F} mt-3`}
       />
+
+      <label className="mt-4 flex items-start gap-2.5 font-ewangi text-[12px] leading-snug text-brand-ink/55">
+        <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brand-teal" />
+        <span>
+          {tc("consentPrefix")}{" "}
+          <a href="/privacy" className="font-semibold text-brand-teal-dark underline hover:text-brand-ink">
+            {tc("consentLink")}
+          </a>{" "}
+          {t("consentSuffix")}
+        </span>
+      </label>
 
       {status === "error" && (
         <p className="mt-3 font-ewangi text-[12px] text-red-600">

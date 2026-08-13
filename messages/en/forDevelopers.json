@@ -13,13 +13,14 @@
     "ctaHowItWorks": "How it works"
   },
   "quickForm": {
-    "heading": "Grow Your Development With Property Dreamz®",
-    "subheading": "Join a platform built to connect great developments with the right buyers.",
-    "fullNamePlaceholder": "Full name",
+    "eyebrow": "Partner With Us",
+    "heading": "List your\ndevelopment.",
+    "fullNamePlaceholder": "Full Name",
+    "phonePlaceholder": "Phone / WhatsApp",
     "emailPlaceholder": "Email",
-    "companyPlaceholder": "Development / Company",
-    "messagePlaceholder": "Tell us about your development",
-    "submit": "Request a free consultation",
+    "businessPlaceholder": "Business sector",
+    "consentSuffix": "and consent to being contacted by a Property Dreamz advisor.",
+    "submit": "Submit development inquiry",
     "successTitle": "Request received!",
     "successBody": "Our team will reach out within 3 business days to discuss next steps."
   },

@@ -13,13 +13,14 @@
     "ctaHowItWorks": "Cómo funciona"
   },
   "quickForm": {
-    "heading": "Impulsa Tu Desarrollo Con Property Dreamz®",
-    "subheading": "Súmate a una plataforma diseñada para conectar grandes desarrollos con los compradores correctos.",
+    "eyebrow": "Sé Nuestro Socio",
+    "heading": "Publica tu\ndesarrollo.",
     "fullNamePlaceholder": "Nombre completo",
+    "phonePlaceholder": "Teléfono / WhatsApp",
     "emailPlaceholder": "Correo electrónico",
-    "companyPlaceholder": "Desarrollo / Empresa",
-    "messagePlaceholder": "Cuéntanos sobre tu desarrollo",
-    "submit": "Solicitar una consulta gratuita",
+    "businessPlaceholder": "Giro del negocio",
+    "consentSuffix": "y autorizo que un asesor de Property Dreamz me contacte.",
+    "submit": "Enviar solicitud de desarrollo",
     "successTitle": "¡Solicitud recibida!",
     "successBody": "Nuestro equipo se pondrá en contacto contigo dentro de los próximos 3 días hábiles para revisar los siguientes pasos."
   },
