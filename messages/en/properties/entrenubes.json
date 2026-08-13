@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "title": "Entrenubes – Modern High-Rise Condos in Tijuana by Grupo INOVI",
+    "description": "Entrenubes is a contemporary residential tower in Tijuana by Grupo INOVI, offering panoramic city views, resort-style amenities, and sophisticated design in the heart of Hipódromo."
+  },
+  "hero": {
+    "heroImageAlt": "Entrenubes residential tower, Tijuana",
+    "cmreAlt": "CMRE Certified",
+    "headline": "Live above it all",
+    "description": "Entrenubes brings contemporary high-rise living to Tijuana, with panoramic city views, resort-style amenities, and sophisticated design in the heart of Hipódromo, minutes from Zona Río and the San Ysidro border crossing.",
+    "bookTourButton": "Book a tour"
+  },
+  "trustBadges": ["Legal reviewed", "Regulatory compliance", "Construction permits verified"],
+  "stats": [
+    { "value": "4", "label": "Unit types" },
+    { "value": "18", "label": "Floors" },
+    { "value": "35%", "label": "Built" },
+    { "value": "80", "label": "Units sold" }
+  ],
+  "amenities": {
+    "heading": "Resort-style amenities",
+    "poolAlt": "Rooftop pool at Entrenubes",
+    "terraceAlt": "Sky terrace at Entrenubes",
+    "coworkingAlt": "Coworking lounge at Entrenubes",
+    "list": [
+      "Rooftop pool", "Fitness center", "Coworking space",
+      "Sky lounge", "BBQ area", "Pet park",
+      "Kids playground", "24/7 security", "Controlled access",
+      "Storage units", "Business center", "Cinema room"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explore our {count} unit types",
+    "startingAtLabel": "Starting at",
+    "exploreModelButton": "View unit",
+    "availableLabel": "Available in pre-sale",
+    "renderAlt": "Representative unit rendering",
+    "layouts": [
+      { "name": "Studio Suite", "area": "45 m²", "price": "$135,000", "priceCurrency": "USD", "priceSecondary": "$2.3M MXN", "features": ["Open-concept layout", "City view"] },
+      { "name": "One Bedroom", "area": "68 m²", "price": "$165,000", "priceCurrency": "USD", "priceSecondary": "$2.8M MXN", "features": ["Private balcony", "City view"] },
+      { "name": "Two Bedroom", "area": "92 m²", "price": "$215,000", "priceCurrency": "USD", "priceSecondary": "$3.6M MXN", "features": ["Two full bathrooms", "Panoramic view"] },
+      { "name": "Penthouse", "area": "145 m²", "price": "$340,000", "priceCurrency": "USD", "priceSecondary": "$5.8M MXN", "features": ["Private terrace", "360° panoramic view"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Construction progress",
+    "month": "Under construction",
+    "updatedLabel": "Updated this month",
+    "percentage": "35%"
+  },
+  "location": {
+    "headingLine1": "Prime location in",
+    "headingLine2": "Hipódromo, Tijuana",
+    "description": "In the heart of Hipódromo, steps from Zona Río's restaurants and offices, with easy access to both the San Ysidro and Otay border crossings.",
+    "mapAlt": "Map showing Entrenubes location in Hipódromo, Tijuana",
+    "viewOnMapLabel": "View exact location on Google Maps"
+  },
+  "developer": {
+    "heading": "About the developer",
+    "logoAlt": "Grupo INOVI logo",
+    "description": "Grupo INOVI is a Tijuana-based developer with more than 18 years of experience, recognized for creating residential projects that combine contemporary design, construction quality, and innovation. Its portfolio includes landmark developments such as Entrenubes, Uptown, Vertical, Cardo Santo, and Madero Sur, establishing it as a company committed to creating spaces that generate well-being, appreciation, and long-term property value. Thanks to its deep knowledge of the Baja California market and its focus on excellence, Grupo INOVI has positioned itself as one of the most trusted and prominent developers in the region."
+  },
+  "investment": {
+    "heading": "Estimate your investment",
+    "propertyPriceLabel": "Property price",
+    "downPaymentLabel": "Down payment",
+    "termLabel": "Term",
+    "termYearsTemplate": "{years} years",
+    "monthlyPaymentLabel": "Est. monthly payment",
+    "annualRoiLabel": "Est. annual ROI",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calculate",
+    "financingNote": "Entrenubes does not offer direct financing from the developer. This tool estimates payments for buyers arranging their own financing."
+  },
+  "cta": {
+    "headingLine1": "Ready for the next step?",
+    "headingLine2": "Book your private tour or speak with an advisor",
+    "button": "Talk to an expert"
+  }
+}

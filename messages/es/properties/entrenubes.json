@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "title": "Entrenubes – Condominios Modernos en Torre en Tijuana por Grupo INOVI",
+    "description": "Entrenubes es una torre residencial contemporánea en Tijuana de Grupo INOVI, con vistas panorámicas a la ciudad, amenidades estilo resort y un diseño sofisticado en el corazón del Hipódromo."
+  },
+  "hero": {
+    "heroImageAlt": "Torre residencial Entrenubes, Tijuana",
+    "cmreAlt": "Certificado por CMRE",
+    "headline": "Vive por encima de todo",
+    "description": "Entrenubes trae la vida contemporánea en torre a Tijuana, con vistas panorámicas a la ciudad, amenidades estilo resort y un diseño sofisticado en el corazón del Hipódromo, a minutos de Zona Río y de la garita de San Ysidro.",
+    "bookTourButton": "Agenda un tour"
+  },
+  "trustBadges": ["Título revisado", "Cumplimiento normativo", "Permisos de construcción verificados"],
+  "stats": [
+    { "value": "4", "label": "Tipos de unidad" },
+    { "value": "18", "label": "Niveles" },
+    { "value": "35%", "label": "Construido" },
+    { "value": "80", "label": "Unidades vendidas" }
+  ],
+  "amenities": {
+    "heading": "Amenidades estilo resort",
+    "poolAlt": "Alberca en la azotea de Entrenubes",
+    "terraceAlt": "Terraza sky en Entrenubes",
+    "coworkingAlt": "Lounge de coworking en Entrenubes",
+    "list": [
+      "Alberca en la azotea", "Gimnasio", "Espacio de coworking",
+      "Sky lounge", "Zona de asadores", "Área de mascotas",
+      "Juegos infantiles", "Seguridad 24/7", "Acceso controlado",
+      "Bodegas", "Centro de negocios", "Sala de cine"
+    ]
+  },
+  "models": {
+    "headingTemplate": "Explora nuestros {count} tipos de unidad",
+    "startingAtLabel": "Desde",
+    "exploreModelButton": "Ver unidad",
+    "availableLabel": "Disponible en preventa",
+    "renderAlt": "Render representativo de la unidad",
+    "layouts": [
+      { "name": "Suite Estudio", "area": "45 m²", "price": "$2.3M", "priceCurrency": "MXN", "priceSecondary": "$135,000 USD", "features": ["Distribución de concepto abierto", "Vista a la ciudad"] },
+      { "name": "Una Recámara", "area": "68 m²", "price": "$2.8M", "priceCurrency": "MXN", "priceSecondary": "$165,000 USD", "features": ["Balcón privado", "Vista a la ciudad"] },
+      { "name": "Dos Recámaras", "area": "92 m²", "price": "$3.6M", "priceCurrency": "MXN", "priceSecondary": "$215,000 USD", "features": ["Dos baños completos", "Vista panorámica"] },
+      { "name": "Penthouse", "area": "145 m²", "price": "$5.8M", "priceCurrency": "MXN", "priceSecondary": "$340,000 USD", "features": ["Terraza privada", "Vista panorámica 360°"] }
+    ]
+  },
+  "constructionProgress": {
+    "heading": "Avance de construcción",
+    "month": "En construcción",
+    "updatedLabel": "Actualizado este mes",
+    "percentage": "35%"
+  },
+  "location": {
+    "headingLine1": "Ubicación privilegiada en",
+    "headingLine2": "Hipódromo, Tijuana",
+    "description": "En el corazón del Hipódromo, a pasos de los restaurantes y oficinas de Zona Río, con fácil acceso a las garitas de San Ysidro y Otay.",
+    "mapAlt": "Mapa de la ubicación de Entrenubes en el Hipódromo, Tijuana",
+    "viewOnMapLabel": "Ver ubicación exacta en Google Maps"
+  },
+  "developer": {
+    "heading": "Sobre la desarrolladora",
+    "logoAlt": "Logo de Grupo INOVI",
+    "description": "Grupo INOVI es una desarrolladora tijuanense con más de 18 años de experiencia, reconocida por crear proyectos residenciales que integran diseño contemporáneo, calidad constructiva e innovación. Su portafolio incluye desarrollos emblemáticos como Entrenubes, Uptown, Vertical, Cardo Santo y Madero Sur, consolidándose como una empresa comprometida con la creación de espacios que generan bienestar, plusvalía y valor patrimonial. Gracias a su conocimiento del mercado de Baja California y a su enfoque en la excelencia, Grupo INOVI se ha posicionado como uno de los desarrolladores de mayor presencia y confianza en la región."
+  },
+  "investment": {
+    "heading": "Calcula tu inversión",
+    "propertyPriceLabel": "Precio de la propiedad",
+    "downPaymentLabel": "Enganche",
+    "termLabel": "Plazo",
+    "termYearsTemplate": "{years} años",
+    "monthlyPaymentLabel": "Pago mensual estimado",
+    "annualRoiLabel": "ROI anual estimado",
+    "roiRange": "8% - 12%",
+    "calculateButton": "Calcular",
+    "financingNote": "Entrenubes no cuenta con financiamiento directo por parte de la desarrolladora. Esta herramienta estima pagos para compradores que gestionen su propio financiamiento."
+  },
+  "cta": {
+    "headingLine1": "¿Listo para el siguiente paso?",
+    "headingLine2": "Agenda tu tour privado o habla con un asesor",
+    "button": "Habla con un experto"
+  }
+}

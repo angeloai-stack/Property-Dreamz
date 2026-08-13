@@ -28,6 +28,7 @@ const propertyZones: Zone[] = [
       { label: "Costa Real",           href: "/properties/costa-real" },
       { label: "Del Mar Residencial",  href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
+      { label: "Entrenubes",           href: "/properties/entrenubes" },
       { label: "360 Hipódromo Living",  href: "/properties/360-hipodromo-living" },
     ],
   },
@@ -100,6 +101,7 @@ export function Navbar() {
     || pathname.startsWith("/properties/costa-bella")
     || pathname.startsWith("/properties/the-wave")
     || pathname.startsWith("/properties/costa-coronado")
+    || pathname.startsWith("/properties/entrenubes")
     || pathname.startsWith("/properties/360-hipodromo-living");
 
   const [mobileOpen, setMobileOpen]         = useState(false);

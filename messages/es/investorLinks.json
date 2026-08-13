@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "title": "Para Inversionistas — Property Dreamz",
+    "description": "Explora oportunidades de inversión inmobiliaria verificadas en Baja California con Property Dreamz.",
+    "ogTitle": "Para Inversionistas — Property Dreamz",
+    "ogDescription": "Explora oportunidades de inversión inmobiliaria verificadas en Baja California con Property Dreamz."
+  },
+  "hero": {
+    "eyebrow": "Baja Real Estate",
+    "headline": "¿Por Qué Invertir En Baja?",
+    "subheading": "Tu sueño te espera — recibe propiedades verificadas según tus metas de inversión."
+  },
+  "quickForm": {
+    "heading": "Encuentra Tu Inversión Ideal",
+    "subheading": "Cuéntanos qué buscas y nuestro equipo te contactará con propiedades verificadas.",
+    "successTitle": "¡Todo listo!",
+    "successBody": "Nuestro equipo se pondrá en contacto contigo en menos de 24 horas con propiedades verificadas que coincidan con tus criterios."
+  },
+  "links": {
+    "website": "Visita nuestro sitio web",
+    "buyersGuide": "Conoce la guía del comprador",
+    "followUs": "Síguenos"
+  },
+  "footer": "© {year} Property Dreamz. Todos los derechos reservados."
+}
