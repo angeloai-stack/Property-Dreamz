@@ -32,41 +32,41 @@ export const developers: TopDeveloper[] = [
     beds: 1,
     baths: 1,
     sqft: 50,
-    image: `${CLD}/the-wave/the-wave/hero`,
+    image: `${CLD}/naos/hero`,
     href: "/properties/the-wave",
   },
   {
     id: 2,
-    name: "Costa Bella",
+    name: "NAOS",
     location: "Rosarito",
-    price: "From $280K",
+    price: "From $155K",
     beds: 2,
     baths: 2,
     sqft: 200,
-    image: `${CLD}/costa-bella/hero`,
-    href: "/properties/costa-bella",
+    image: `${CLD}/top-developers/naos-cover.jpg`,
+    href: "/properties/naos",
   },
   {
     id: 3,
-    name: "Loma Serena",
-    location: "Ensenada",
-    price: "From $195K",
-    beds: 2,
-    baths: 2,
-    sqft: 300,
-    image: `${CLD}/loma-serena/cta`,
-    href: "/properties/loma-serena",
+    name: "Entrenubes",
+    location: "Tijuana",
+    price: "From $135K",
+    beds: 0,
+    baths: 1,
+    sqft: 45,
+    image: `${CLD}/top-developers/entrenubes-cover.jpg`,
+    href: "/properties/entrenubes",
   },
   {
     id: 4,
-    name: "Pacifica",
-    location: "San Felipe",
-    price: "From $89K",
-    beds: 2,
-    baths: 2,
-    sqft: 300,
-    image: `${CLD}/pacifica/hero`,
-    href: "/properties/pacifica",
+    name: "Costa Coronado",
+    location: "Tijuana",
+    price: "From $95K",
+    beds: 0,
+    baths: 0,
+    sqft: 200,
+    image: `${CLD}/top-developers/costa-coronado-cover.webp`,
+    href: "/properties/costa-coronado",
   },
 ];
 
@@ -164,19 +164,23 @@ export function TopDevelopersCards({
                   <LayoutGrid className="h-3 w-3 shrink-0" aria-hidden="true" />
                   {dev.sqft}
                 </span>
-                <span className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 text-[10px] font-bold text-brand-pine">
-                  <Bed className="h-3 w-3 shrink-0" aria-hidden="true" />
-                  {dev.beds}
-                </span>
-                <span className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 text-[10px] font-bold text-brand-pine">
-                  <Bath className="h-3 w-3 shrink-0" aria-hidden="true" />
-                  {dev.baths}
-                </span>
+                {dev.beds > 0 && (
+                  <span className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 text-[10px] font-bold text-brand-pine">
+                    <Bed className="h-3 w-3 shrink-0" aria-hidden="true" />
+                    {dev.beds}
+                  </span>
+                )}
+                {dev.baths > 0 && (
+                  <span className="flex items-center gap-1 rounded-[3px] bg-brand-teal px-2 py-1 text-[10px] font-bold text-brand-pine">
+                    <Bath className="h-3 w-3 shrink-0" aria-hidden="true" />
+                    {dev.baths}
+                  </span>
+                )}
               </div>
 
-              {/* Price badge — floating pill near the bottom, matches Figma's centered "Rectangle 39" */}
+              {/* Name badge — floating pill near the bottom, matches Figma's centered "Rectangle 39" */}
               <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-lg bg-[#028e7f] px-4 py-2.5 shadow-subtle">
-                <p className="whitespace-nowrap font-ewangi text-base text-white">{dev.price}</p>
+                <p className="whitespace-nowrap font-ewangi text-base text-white">{dev.name}</p>
               </div>
             </Link>
           </RevealOnScroll>

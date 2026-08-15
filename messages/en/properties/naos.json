@@ -11,9 +11,9 @@
     "subheadline": "A design-forward beachfront community shaped by Baja's coastline. A space to pause, feel and reconnect with what's essential."
   },
   "stats": [
-    { "value": "16", "label": "Condos" },
-    { "value": "4", "label": "Models" },
-    { "value": "82%", "label": "Available" },
+    { "value": "280", "label": "Condos" },
+    { "value": "7", "label": "Models" },
+    { "value": "50%", "label": "Available" },
     { "value": "100%", "label": "Verified" }
   ],
   "trustBadges": ["Legal reviewed", "Regulatory compliance", "Infrastructure validated"],
@@ -71,7 +71,7 @@
     "imageAlt": "NAOS building exterior",
     "headingLine1": "A Limited Collection.",
     "headingLine2": "An Extraordinary Lifestyle.",
-    "body": "Designed for those who seek more than just a residence, these 16 exclusive condominiums offer refined living spaces, breathtaking views, and a sense of community unlike any other.",
+    "body": "Designed for those who seek more than just a residence, these 280 exclusive condominiums offer refined living spaces, breathtaking views, and a sense of community unlike any other.",
     "button": "Talk to an expert"
   }
 }

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { RevealOnScroll } from "@/components/ui";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
-const IMG_HERO     = `${CLD}/naos/hero`;
+const IMG_HERO     = `${CLD}/top-developers/naos-cover.jpg`;
 const IMG_LOGO     = `${CLD}/naos/logo`;
 const IMG_INTERIOR = `${CLD}/naos/interior`;
 const IMG_FLOOR    = `${CLD}/naos/floor-plan`;

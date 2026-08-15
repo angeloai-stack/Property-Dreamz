@@ -11,7 +11,7 @@ import { InvestorQuickForm } from "@/components/qr/InvestorQuickForm";
 import { cn } from "@/lib/utils";
 
 const HERO_IMAGE =
-  "https://res.cloudinary.com/dserzvrwe/image/upload/c_fill,g_north,ar_16:9,w_1600,q_auto,f_auto/Roll-Up-01_qrfgyp.png";
+  "https://res.cloudinary.com/dserzvrwe/image/upload/c_fill,g_north,ar_16:9,w_1600,q_auto,f_auto/qr/qr-investors-cover.png";
 
 const locales = ["en", "es"] as const;
 
@@ -74,13 +74,13 @@ export function InvestorQrLanding() {
           />
           <div className="absolute inset-0 bg-linear-to-t from-brand-pine/95 via-brand-pine/40 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 sm:p-10">
-            <p className="font-ewangi text-[11px] font-semibold uppercase tracking-widest text-brand-teal">
+            <p className="font-ewangi text-[11px] font-semibold uppercase tracking-widest text-white">
               {t("eyebrow")}
             </p>
             <h1 className="mt-3 whitespace-pre-line font-ewangi text-[clamp(1.9rem,4.5vw,2.7rem)] font-bold leading-[1.05] text-white">
               {t("headline")}
             </h1>
-            <p className="mt-4 whitespace-pre-line font-ewangi text-[14px] leading-relaxed text-white/75">
+            <p className="mt-4 whitespace-pre-line font-ewangi text-[14px] leading-relaxed text-white">
               {t("subheading")}
             </p>
           </div>

@@ -2,6 +2,7 @@
 // Punta Piedra Misión page — Ensenada coastal lots, Santo Tomás house model, 360° Matterport tour, and location map.
 import Image from "next/image";
 import { useState } from "react";
+import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,9 @@ type Tab = "lots" | "condos" | "houses";
 const tabKeys: Tab[] = ["lots", "condos", "houses"];
 
 export default function PuntaPiedraPage() {
+  // Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
+  notFound();
+
   const t = useTranslations("propertyPuntaPiedra");
   const stats = t.raw("stats") as { value: string; label: string }[];
   const trustBadges = t.raw("trustBadges") as string[];

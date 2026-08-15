@@ -4,6 +4,7 @@
 // pattern of the other fraccionamiento pages (The Wavve, Costa Real) as a placeholder.
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui";
@@ -31,6 +32,9 @@ type Layout = {
 };
 
 export default function HipodromoLiving360Page() {
+  // Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
+  notFound();
+
   const t = useTranslations("property360Hipodromo");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];

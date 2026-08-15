@@ -13,7 +13,6 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO_BG      = `${CLD}/Render_Del_Mar_aynv6k.png`;
 const IMG_CMRE         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/CMRE_Logo-04_yjsknz.png";
 const IMG_LOTS_SHOT    = `${CLD}/Captura_de_pantalla_2026-06-11_a_las_2.26.09_p_fu9htp.png`;
-const IMG_TOUR         = `${CLD}/panoramic_1_qwo5jt`;
 const IMG_LOGO         = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/Propery%20Dreamz/Property%20Pics/Del%20Mar/del-mar-logo-img";
 
 /* Shield-checkmark — Figma: stroke #3AD3C1 sw=3 */
@@ -500,24 +499,24 @@ export default function FraccPage() {
           <span className="mt-1 font-ewangi text-[1.25rem] text-white/60">{model.type}</span>
         </div>
 
-        {/* Left arrow — Figma: x=417 y=129 43×43 r=13 border #EAEDF0 sw=3 */}
+        {/* Left arrow — moved below the model name/type so long names (e.g. "CORONADO") never collide with it */}
         <button
           type="button"
           onClick={prev}
           aria-label={t("models.prevAriaLabel")}
           className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
-          style={{ left: 417, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
+          style={{ left: 103, top: 225, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
         >
           <ChevronLeft style={{ width: 10, height: 15 }} strokeWidth={3} />
         </button>
 
-        {/* Right arrow — Figma: x=476 y=129 */}
+        {/* Right arrow */}
         <button
           type="button"
           onClick={next}
           aria-label={t("models.nextAriaLabel")}
           className="absolute flex items-center justify-center text-[#eaedf0] transition hover:bg-[#eaedf0]/10"
-          style={{ left: 476, top: 129, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
+          style={{ left: 154, top: 225, width: 43, height: 43, borderRadius: 13, border: "3px solid #EAEDF0" }}
         >
           <ChevronRight style={{ width: 10, height: 15 }} strokeWidth={3} />
         </button>
@@ -536,40 +535,6 @@ export default function FraccPage() {
           {model.baths}
         </span>
       </div>
-
-      {/* ══════════════════════════════════════════════════════
-          360 TOUR BANNER — Figma: y=2059-2519 (Group 70)
-          Wide rounded card: interior photo bg + right dark panel
-          ══════════════════════════════════════════════════════ */}
-      <section className="px-4 py-10 lg:px-15.5 lg:py-12">
-        <RevealOnScroll direction="up" duration={1100}>
-          <div className="relative overflow-hidden rounded-[26px]" style={{ minHeight: 300 }}>
-            <Image
-              src={IMG_TOUR}
-              alt={t("tour.imageAlt")}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div
-              className="absolute inset-y-0 right-0 flex w-full flex-col items-end justify-center gap-6 p-8 lg:w-[45%] lg:p-12"
-              style={{ background: "linear-gradient(to left, rgba(0,0,0,0.85) 55%, transparent 100%)" }}
-            >
-              <h2 className="font-ewangi text-[clamp(1.75rem,3.5vw,3.4375rem)] leading-tight text-right text-white">
-                {t("tour.headingLine1")}<br />{t("tour.headingLine2")}<br />{t("tour.headingLine3")}
-              </h2>
-              <a
-                href="https://my.matterport.com/show/?m=yD8wTRwFeSv"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg bg-[#1e1e1e] px-8 py-4 font-ewangi text-[1.5rem] text-brand-teal transition hover:bg-brand-teal hover:text-brand-ink lg:text-[2.25rem]"
-              >
-                {t("tour.button")}
-              </a>
-            </div>
-          </div>
-        </RevealOnScroll>
-      </section>
 
       {/* ══════════════════════════════════════════════════════
           OCEAN VIEW LOTS — Figma: y=2050-2747 (~57px after models)

@@ -2,6 +2,7 @@
 // Torre 51 Negativo page — oceanfront pre-sale condos, amenity viewer (Pool/Spa/Gym), model floor plans, and YouTube CTA.
 import Image from "next/image";
 import { useState } from "react";
+import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,9 @@ type AmenityKey = "pool" | "spa" | "gym";
 type Amenity = { tabLabel: string; description: string; sub: string };
 
 export default function Torre51Page() {
+  // Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
+  notFound();
+
   const t = useTranslations("propertyTorre51");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];

@@ -8,7 +8,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-type SubItem  = { label: string; href: string; tag?: string };
+type SubItem  = { label: string; href: string; tag?: string; disabled?: boolean };
 type Zone     = { zone: string; href: string; items: SubItem[] };
 type NavItem  =
   | { key: string; href: string; zones?: never }
@@ -24,22 +24,22 @@ const propertyZones: Zone[] = [
     href: "/tijuana-real-estate",
     items: [
       { label: "Costa Baja",           href: "/properties/costa-baja" },
-      { label: "Costa Coronado",       href: "/properties/costa-coronado" },
+      { label: "Costa Coronado",       href: "/properties/costa-coronado", disabled: true },
       { label: "Costa Real",           href: "/properties/costa-real" },
       { label: "Del Mar Residencial",  href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
-      { label: "Entrenubes",           href: "/properties/entrenubes" },
-      { label: "360 Hipódromo Living",  href: "/properties/360-hipodromo-living" },
+      { label: "Entrenubes",           href: "/properties/entrenubes", disabled: true },
+      { label: "360 Hipódromo Living",  href: "/properties/360-hipodromo-living", disabled: true },
     ],
   },
   {
     zone: "Ensenada",
     href: "/ensenada-real-estate",
     items: [
-      { label: "Cíbola del Mar",    href: "/properties/cibola-del-mar" },
+      { label: "Cíbola del Mar",    href: "/properties/cibola-del-mar", disabled: true },
       { label: "Encanto del Valle", href: "/properties/encanto-del-valle" },
-      { label: "Pacifica",          href: "/properties/pacifica" },
-      { label: "Punta Piedra",      href: "/properties/punta-piedra" },
+      { label: "Pacifica",          href: "/properties/pacifica", disabled: true },
+      { label: "Punta Piedra",      href: "/properties/punta-piedra", disabled: true },
     ],
   },
   {
@@ -53,7 +53,7 @@ const propertyZones: Zone[] = [
       { label: "Naos",            href: "/properties/naos" },
       { label: "Palacio del Mar", href: "/properties/palacio-del-mar" },
       { label: "Tierra de Agua",  href: "/properties/tierra-de-agua" },
-      { label: "Tower 51",        href: "/properties/torre51" },
+      { label: "Tower 51",        href: "/properties/torre51", disabled: true },
       { label: "The Wavve",       href: "/properties/the-wave" },
     ],
   },
@@ -177,20 +177,29 @@ export function Navbar() {
                           </Link>
                           {/* Properties in this zone */}
                           <div className="flex flex-col gap-0.5">
-                            {zoneGroup.items.map((sub) => (
-                              <Link
-                                key={sub.label}
-                                href={sub.href}
-                                className="flex items-center justify-between gap-2 rounded-lg px-2 py-2 transition hover:bg-[#eaedf0]"
-                              >
-                                <span className="whitespace-nowrap font-ewangi text-[13px] text-brand-ink">{sub.label}</span>
-                                {sub.tag && (
-                                  <span className="rounded-full bg-brand-teal/15 px-1.5 py-0.5 font-ewangi text-[9px] uppercase tracking-wide text-brand-teal">
-                                    {sub.tag}
-                                  </span>
-                                )}
-                              </Link>
-                            ))}
+                            {zoneGroup.items.map((sub) =>
+                              sub.disabled ? (
+                                <span
+                                  key={sub.label}
+                                  className="flex items-center justify-between gap-2 rounded-lg px-2 py-2 whitespace-nowrap font-ewangi text-[13px] text-brand-ink/40"
+                                >
+                                  {sub.label}
+                                </span>
+                              ) : (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  className="flex items-center justify-between gap-2 rounded-lg px-2 py-2 transition hover:bg-[#eaedf0]"
+                                >
+                                  <span className="whitespace-nowrap font-ewangi text-[13px] text-brand-ink">{sub.label}</span>
+                                  {sub.tag && (
+                                    <span className="rounded-full bg-brand-teal/15 px-1.5 py-0.5 font-ewangi text-[9px] uppercase tracking-wide text-brand-teal">
+                                      {sub.tag}
+                                    </span>
+                                  )}
+                                </Link>
+                              )
+                            )}
                           </div>
                         </div>
                       ))}
@@ -314,21 +323,30 @@ export function Navbar() {
                         >
                           {zoneGroup.zone}
                         </Link>
-                        {zoneGroup.items.map((sub) => (
-                          <Link
-                            key={sub.label}
-                            href={sub.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
-                          >
-                            <span>{sub.label}</span>
-                            {sub.tag && (
-                              <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
-                                {sub.tag}
-                              </span>
-                            )}
-                          </Link>
-                        ))}
+                        {zoneGroup.items.map((sub) =>
+                          sub.disabled ? (
+                            <span
+                              key={sub.label}
+                              className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] text-brand-paper/40"
+                            >
+                              {sub.label}
+                            </span>
+                          ) : (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center justify-between rounded px-3 py-2.5 font-ewangi text-[0.9rem] hover:bg-brand-paper/10"
+                            >
+                              <span>{sub.label}</span>
+                              {sub.tag && (
+                                <span className="ml-2 rounded-full bg-brand-teal/20 px-2 py-0.5 text-[10px] uppercase tracking-wide text-brand-teal">
+                                  {sub.tag}
+                                </span>
+                              )}
+                            </Link>
+                          )
+                        )}
                       </div>
                     ))}
                   </div>

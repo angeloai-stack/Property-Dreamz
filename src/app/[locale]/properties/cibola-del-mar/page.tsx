@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, ChevronLeft, ChevronRight, Maximize2, BedDouble, Bath } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,9 @@ type Lot = { id: string; area: string };
 type UnitModel = { name: string; area: string; bedrooms: number; bathrooms: number };
 
 export default function CibolaDelMarPage() {
+  // Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
+  notFound();
+
   const t = useTranslations("propertyCibolaDelMar");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];

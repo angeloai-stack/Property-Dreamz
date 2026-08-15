@@ -11,9 +11,9 @@
     "subheadline": "Una comunidad frente al mar con un diseño vanguardista, moldeada por la costa de Baja. Un espacio para hacer una pausa, sentir y reconectar con lo esencial."
   },
   "stats": [
-    { "value": "16", "label": "Condominios" },
-    { "value": "4", "label": "Modelos" },
-    { "value": "82%", "label": "Disponible" },
+    { "value": "280", "label": "Condominios" },
+    { "value": "7", "label": "Modelos" },
+    { "value": "50%", "label": "Disponible" },
     { "value": "100%", "label": "Verificado" }
   ],
   "trustBadges": ["Revisión legal", "Cumplimiento normativo", "Infraestructura validada"],
@@ -71,7 +71,7 @@
     "imageAlt": "Exterior del edificio NAOS",
     "headingLine1": "Una Colección Limitada.",
     "headingLine2": "Un Estilo de Vida Extraordinario.",
-    "body": "Diseñados para quienes buscan más que una residencia, estos 16 condominios exclusivos ofrecen espacios refinados, vistas impresionantes y un sentido de comunidad como ningún otro.",
+    "body": "Diseñados para quienes buscan más que una residencia, estos 280 condominios exclusivos ofrecen espacios refinados, vistas impresionantes y un sentido de comunidad como ningún otro.",
     "button": "Habla con un experto"
   }
 }

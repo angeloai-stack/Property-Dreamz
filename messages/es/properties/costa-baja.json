@@ -49,11 +49,7 @@
     "typeCondo": "Modelos de condominio",
     "typeHouse": "Modelos de casa",
     "models": [
-      { "key": "Ibiza", "label": "Condominio B — Modelo Ibiza", "type": "condo", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 },
-      { "key": "Mikonos", "label": "Condominio C — Modelo Mikonos", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
-      { "key": "Santorini", "label": "Condominio D — Modelo Santorini", "type": "condo", "area": "95 m²", "bedrooms": 2, "bathrooms": 2 },
-      { "key": "Mallorca", "label": "Casa Mallorca", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 },
-      { "key": "Monaco", "label": "Casa Monaco", "type": "house", "area": "280 m²", "bedrooms": 4, "bathrooms": 3 }
+      { "key": "Ibiza", "label": "Condominio B — Modelo Ibiza", "type": "condo", "area": "130 m²", "bedrooms": 3, "bathrooms": 2 }
     ]
   },
   "tour": {

@@ -2,6 +2,7 @@
 // Pacífica property page — tourist corridor lots in Rosarito with a stats banner strip and 360° interior tour.
 import Image from "next/image";
 import { useState } from "react";
+import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,9 @@ type Stat = { value: string; label: string };
 type Lot = { id: string; size: string };
 
 export default function PacificaPage() {
+  // Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
+  notFound();
+
   const t = useTranslations("propertyPacifica");
   const stats = t.raw("stats") as Stat[];
   const trustBadges = t.raw("trustBadges") as string[];
