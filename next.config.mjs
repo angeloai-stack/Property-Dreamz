@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
       },
     ],
+    // Cloudinary already optimizes every image we serve (f_auto,q_auto baked into the URLs),
+    // so skip Vercel's Image Optimization proxy entirely — it bills/limits per unique source
+    // image and was returning 402 for newly-uploaded photos. See src/lib/cloudinary-image-loader.js.
+    loader: "custom",
+    loaderFile: "./src/lib/cloudinary-image-loader.js",
   },
   webpack: (config) => {
     // Silences a harmless webpack cache warning: next-intl ships a file with a dynamic
