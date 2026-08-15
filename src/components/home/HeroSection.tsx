@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/hero-suburban";
+const heroImage = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto/home/hero";
 
 export function HeroSection() {
   const t = useTranslations("home.hero");
