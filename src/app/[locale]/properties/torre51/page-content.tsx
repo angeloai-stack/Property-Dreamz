@@ -1,0 +1,263 @@
+"use client";
+// Torre 51 Negativo page — oceanfront pre-sale condos, amenity viewer (Pool/Spa/Gym), model floor plans, and YouTube CTA.
+import Image from "next/image";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { RevealOnScroll } from "@/components/ui";
+
+const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
+const IMG_HERO     = `${CLD}/torre51/hero`;
+const IMG_LOGO     = `${CLD}/torre51/logo`;
+const IMG_INTERIOR = `${CLD}/torre51/interior`;
+const IMG_MODEL    = `${CLD}/torre51/model-floor-plan`;
+const IMG_CMRE     = `${CLD}/CMRE_Logo-04_yjsknz.png`;
+
+type Stat = { value: string; label: string };
+type AmenityKey = "pool" | "spa" | "gym";
+type Amenity = { tabLabel: string; description: string; sub: string };
+
+export default function Torre51PageContent() {
+  const t = useTranslations("propertyTorre51");
+  const stats = t.raw("stats") as Stat[];
+  const trustBadges = t.raw("trustBadges") as string[];
+  const amenities = t.raw("interiorExplorer.amenities") as Record<AmenityKey, Amenity>;
+  const amenityKeys = Object.keys(amenities) as AmenityKey[];
+
+  const [activeTab, setActiveTab] = useState<AmenityKey>("pool");
+
+  return (
+    <div className="overflow-x-hidden bg-[#171717] text-white">
+
+      {/* ── HERO ──────────────────────────────────────────────────────── */}
+      <section className="relative min-h-205 overflow-hidden bg-brand-ink">
+        <Image
+          src={IMG_HERO}
+          alt={t("hero.heroImageAlt")}
+          fill
+          priority
+          className="object-cover object-top animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, rgba(23,23,23,0.15) 3%, #171717 100%)" }}
+        />
+
+        {/* Logo + CMRE — absolute top-right */}
+        <div className="absolute right-6 top-8 z-20 flex flex-col items-end gap-2 lg:right-20 lg:top-12">
+          <Image
+            src={IMG_LOGO}
+            alt={t("hero.logoAlt")}
+            width={170}
+            height={51}
+            className="w-28 brightness-0 invert sm:w-36 lg:w-44"
+          />
+          <Image
+            src={IMG_CMRE}
+            alt={t("hero.cmreAlt")}
+            width={135}
+            height={32}
+            className="w-24 sm:w-28 lg:w-36"
+          />
+        </div>
+
+        <div className="relative z-10 flex min-h-205 flex-col px-6 pt-8 pb-10 lg:px-20 lg:pt-12 lg:pb-14">
+
+          {/* Title + description + badges — upper area */}
+          <div className="flex flex-col gap-7 mt-20 sm:mt-24 lg:mt-0 lg:max-w-[56%]">
+            <h1 className="font-ewangi text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] text-white animate-[fade-left_0.9s_ease-out_both]">
+              {t("hero.headlineLine1")}<br />{t("hero.headlineLine2")}
+            </h1>
+            <RevealOnScroll direction="up" delay={200}>
+            <p className="font-ewangi text-[1.1rem] leading-relaxed text-white/80">
+              {t("hero.description")}
+            </p>
+            </RevealOnScroll>
+            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
+              {trustBadges.map((b, i) => (
+                <div key={b} className="flex flex-col items-center gap-1.5 animate-[fade-up_0.8s_ease-out_both]" style={{ animationDelay: `${250 + i * 150}ms` }}>
+                  <CheckCircle2 className="h-7 w-7 text-brand-teal" strokeWidth={1.5} />
+                  <span className="text-center font-ewangi text-[14px] leading-tight text-white">{b}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom row: stats */}
+          <div className="mt-auto">
+            <div className="flex flex-wrap gap-x-10 gap-y-3 sm:gap-x-14">
+              {stats.map((s, i) => (
+                <div key={s.label} className="flex flex-col gap-1 animate-[fade-up_0.7s_ease-out_both]" style={{ animationDelay: `${i * 100}ms` }}>
+                  <span className="font-ewangi text-[2.25rem] leading-none text-white">{s.value}</span>
+                  <span className="font-ewangi text-[1.1rem] text-white/80">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── INTERIOR EXPLORER ─────────────────────────────────────────── */}
+      <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
+
+        <RevealOnScroll direction="center">
+        <div className="mb-10 flex items-center gap-6">
+          <div className="hidden h-px flex-1 bg-white/30 lg:block" />
+          <h2 className="text-center font-ewangi text-[clamp(1.25rem,2.5vw,2.25rem)] text-white">
+            {t("interiorExplorer.heading")}
+          </h2>
+          <div className="hidden h-px flex-1 bg-white/30 lg:block" />
+        </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll direction="up" duration={1100}>
+        <div
+          className="relative mx-auto max-w-320.75 min-h-131 overflow-hidden rounded-15"
+        >
+          <Image
+            src={IMG_INTERIOR}
+            alt={t("interiorExplorer.interiorImageAlt")}
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 rounded-15"
+            style={{ background: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(30,30,30,0.62) 100%)" }}
+          />
+
+          {/* Right panel */}
+          <div className="absolute inset-0 flex flex-col justify-center p-8 lg:left-[56.66%] lg:p-10">
+            <div className="rounded-5 bg-white/10 p-6 backdrop-blur-sm">
+              <p className="font-ewangi text-[1.1rem] leading-relaxed text-white lg:text-[1.375rem]">
+                {amenities[activeTab].description}
+              </p>
+              <p className="mt-4 font-ewangi text-[1rem] text-white/80">
+                {amenities[activeTab].sub}
+              </p>
+              <div className="mt-6 flex flex-col items-start gap-1.5">
+                {amenityKeys.map((tab) => (
+                  <button
+                    key={tab}
+                    type="button"
+                    onClick={() => setActiveTab(tab)}
+                    className={cn(
+                      "h-9 w-38 rounded-1.25 font-ewangi text-[1.1rem] text-center transition",
+                      tab === activeTab
+                        ? "bg-[#1e1e1e] text-brand-teal"
+                        : "border border-white/40 bg-white text-brand-ink hover:bg-white/90"
+                    )}
+                  >
+                    {amenities[tab].tabLabel}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        </RevealOnScroll>
+      </section>
+
+      {/* ── MODELS ────────────────────────────────────────────────────── */}
+      <section className="rounded-tl-6 rounded-tr-6 bg-[#d9d9d9] px-8 pt-8 pb-16 lg:px-20">
+
+        <RevealOnScroll direction="left">
+        <div className="mb-8 flex items-center gap-4">
+          <p className="font-ewangi text-[1.875rem] text-brand-ink">{t("models.headingTemplate")}</p>
+          <button
+            type="button"
+            className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+          >
+            <ChevronLeft className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
+          </button>
+          <button
+            type="button"
+            className="flex h-10.75 w-10.75 items-center justify-center rounded-3.25 border-[3px] border-brand-ink transition hover:bg-brand-ink/10"
+          >
+            <ChevronRight className="h-5 w-5 text-brand-ink" strokeWidth={2.5} />
+          </button>
+        </div>
+        </RevealOnScroll>
+
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
+
+          <RevealOnScroll direction="left" delay={100} duration={1100}>
+          <div className="flex flex-col gap-3 lg:w-[37%]">
+            <h2 className="font-ewangi text-[clamp(3rem,5vw,3.25rem)] leading-none text-brand-ink">
+              {t("models.name")}
+            </h2>
+            <p className="font-ewangi text-[2.5rem] leading-none text-[#00c9a7]">{t("models.area")}</p>
+            <div className="mt-2 space-y-1">
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.bedroomsLabel")}</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.bathroomsLabel")}</p>
+              <p className="font-ewangi text-[1.25rem] text-brand-ink">{t("models.area")}</p>
+            </div>
+          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={100} duration={1100}>
+          <div className="flex-1">
+            <div className="relative overflow-hidden rounded-3.75 aspect-1034/730">
+              <Image
+                src={IMG_MODEL}
+                alt={t("models.modelImageAlt")}
+                fill
+                className="object-cover"
+                sizes="(max-width:1024px) 100vw, 60vw"
+              />
+            </div>
+          </div>
+          </RevealOnScroll>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="h-2 w-6 rounded-full bg-brand-teal" />
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-2 w-2 rounded-full bg-[#b3b3b3]" />
+          ))}
+        </div>
+
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────────────────── */}
+      <section className="bg-[#171717] px-8 py-16 lg:px-20 lg:py-20">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
+
+          <RevealOnScroll direction="left" duration={1100}>
+          <div className="lg:w-[39%]">
+            <div className="overflow-hidden rounded-6.5 aspect-560/315">
+              <iframe
+                src="https://www.youtube.com/embed/ewrYgcNHV8Q?si=zVZA55AsGvDzGrQh"
+                title={t("cta.youtubeTitle")}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="h-full w-full border-0"
+              />
+            </div>
+          </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="right" delay={150} duration={1100}>
+          <div className="flex flex-col items-start gap-6 lg:flex-1 lg:items-end lg:text-right">
+            <h2 className="font-ewangi text-[clamp(2rem,3.5vw,2.5rem)] leading-tight text-white">
+              {t("cta.headingLine1")}<br />{t("cta.headingLine2")}
+            </h2>
+            <p className="font-ewangi text-[1.25rem] leading-relaxed text-white/65 lg:max-w-130">
+              {t("cta.body")}
+            </p>
+            <button type="button" className="rounded-2.5 bg-brand-teal px-10 py-5 font-ewangi text-[2.1875rem] text-brand-ink transition hover:bg-brand-teal/90">
+              {t("cta.button")}
+            </button>
+          </div>
+          </RevealOnScroll>
+
+        </div>
+      </section>
+
+    </div>
+  );
+}
