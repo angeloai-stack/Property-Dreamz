@@ -2,6 +2,7 @@
 // Horizontal scroll row of portrait developer cards + social proof line — Figma: "Top Developers / Cards Group".
 // Extracted from TopDevelopers so regional landing pages (e.g. Baja California) can reuse just the cards.
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Bath, Bed, Heart, LayoutGrid } from "lucide-react";
@@ -21,6 +22,7 @@ export type TopDeveloper = {
   sqft: number;
   image: string;
   href: string;
+  linkDisabled?: boolean;
 };
 
 export const developers: TopDeveloper[] = [
@@ -56,6 +58,7 @@ export const developers: TopDeveloper[] = [
     sqft: 45,
     image: `${CLD}/top-developers/entrenubes-cover.jpg`,
     href: "/properties/entrenubes",
+    linkDisabled: true,
   },
   {
     id: 4,
@@ -67,8 +70,38 @@ export const developers: TopDeveloper[] = [
     sqft: 200,
     image: `${CLD}/top-developers/costa-coronado-cover.webp`,
     href: "/properties/costa-coronado",
+    linkDisabled: true,
   },
 ];
+
+// Renders the card as a Link normally, or a plain non-navigating div when the destination
+// page is hidden — keeps the exact same look/hover behavior, just without the link.
+function CardWrapper({
+  disabled,
+  href,
+  className,
+  children,
+  ...rest
+}: {
+  disabled?: boolean;
+  href: string;
+  className: string;
+  children: ReactNode;
+  [key: string]: unknown;
+}) {
+  if (disabled) {
+    return (
+      <div className={className} {...rest}>
+        {children}
+      </div>
+    );
+  }
+  return (
+    <Link href={href} className={className} {...rest}>
+      {children}
+    </Link>
+  );
+}
 
 type TopDevelopersCardsProps = {
   developers?: TopDeveloper[];
@@ -128,7 +161,8 @@ export function TopDevelopersCards({
           const saved = isSaved(savedProperty.id);
           return (
           <RevealOnScroll key={dev.id} direction="left" duration={1100} delay={i * 180} className="shrink-0">
-            <Link
+            <CardWrapper
+              disabled={dev.linkDisabled}
               href={dev.href}
               aria-label={`${dev.name}, ${dev.location} — ${dev.price}`}
               className="relative shrink-0 w-52 overflow-hidden rounded-[32px] block h-75 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl md:w-65 md:rounded-[40px] md:h-105"
@@ -182,7 +216,7 @@ export function TopDevelopersCards({
               <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-lg bg-[#028e7f] px-4 py-2.5 shadow-subtle">
                 <p className="whitespace-nowrap font-ewangi text-base text-white">{dev.name}</p>
               </div>
-            </Link>
+            </CardWrapper>
           </RevealOnScroll>
           );
         })}
