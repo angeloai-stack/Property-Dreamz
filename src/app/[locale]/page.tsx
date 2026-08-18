@@ -1,6 +1,7 @@
 // Homepage — assembles the marketing sections in Figma-spec order and injects Organization/WebSite schema.
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { BrandVideoSection } from "@/components/shared/BrandVideoSection";
 import { BuyersGuideSteps } from "@/components/home/BuyersGuideSteps";
 import { CertifiedBanner } from "@/components/home/CertifiedBanner";
 import { FaqSection } from "@/components/home/FaqSection";
@@ -111,6 +112,7 @@ export default async function Home({ params }: Props) {
       */}
       <main className="flex-1 overflow-x-hidden bg-brand-ink">
         <HeroSection />
+        <BrandVideoSection />
         <VerifySection />
         <FeatureCards />
         <TopDevelopers />

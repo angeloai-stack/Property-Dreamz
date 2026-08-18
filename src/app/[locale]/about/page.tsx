@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { AboutHero } from "@/components/about/AboutHero";
+import { BrandVideoSection } from "@/components/shared/BrandVideoSection";
 import { AboutCta } from "@/components/about/AboutCta";
 import { CertificationSection } from "@/components/about/CertificationSection";
 import { DifferentiatorsGrid } from "@/components/about/DifferentiatorsGrid";
@@ -29,6 +30,7 @@ export default function AboutPage() {
   return (
     <main className="flex-1 overflow-x-hidden bg-white">
       <AboutHero />
+      <BrandVideoSection />
       <WhyDifferent />
       <DifferentiatorsGrid />
       <CertificationSection />

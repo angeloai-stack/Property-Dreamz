@@ -44,5 +44,6 @@ next-env.d.ts
 # claude mcp (contiene tokens, no commitear)
 .mcp.json
 
-.vercel
-.env*
+# large local video assets (use NEXT_PUBLIC_BRAND_VIDEO_URL in production)
+/public/videos/*.mp4
+
