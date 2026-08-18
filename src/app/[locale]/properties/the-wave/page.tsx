@@ -10,9 +10,9 @@ const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO            = `${CLD}/naos/hero`;
 const IMG_LOGO            = `${CLD}/the-wave/the-wave/logo`;
 const IMG_TOUR            = `${CLD}/the-wave/the-wave/virtual-tour-preview`;
-const IMG_AMENITY_PADDLE  = `${CLD}/the-wave/the-wave/amenity-tennis`;
-const IMG_AMENITY_POOL    = `${CLD}/the-wave/the-wave/amenity-pool`;
-const IMG_AMENITY_COWORKING = `${CLD}/the-wave/the-wave/amenity-terrace`;
+const IMG_AMENITY_POOL    = "/the-wave/amenity-pool.webp";
+const IMG_AMENITY_JACUZZI = "/the-wave/amenity-jacuzzi.webp";
+const IMG_AMENITY_PADEL   = "/the-wave/amenity-padel.webp";
 const IMG_FLOORPLAN       = `${CLD}/the-wave/the-wave/floorplan-teal`;
 const IMG_CMRE            = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 const IMG_DEVELOPER_LOGO  = `${CLD}/the-wave/the-wave/developer-logo`;
@@ -235,9 +235,9 @@ export default function TheWavePage() {
         </RevealOnScroll>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {[
-            { src: IMG_AMENITY_PADDLE, alt: t("amenities.tennisAlt") },
             { src: IMG_AMENITY_POOL, alt: t("amenities.poolAlt") },
-            { src: IMG_AMENITY_COWORKING, alt: t("amenities.coworkingAlt") },
+            { src: IMG_AMENITY_JACUZZI, alt: t("amenities.jacuzziAlt") },
+            { src: IMG_AMENITY_PADEL, alt: t("amenities.padelAlt") },
           ].map((amenity, i) => (
             <RevealOnScroll key={amenity.alt} direction="up" delay={i * 100} duration={900}>
               <div className="relative aspect-379/282 overflow-hidden rounded-7 border-2 border-white">

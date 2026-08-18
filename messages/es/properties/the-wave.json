@@ -29,9 +29,9 @@
   },
   "amenities": {
     "heading": "Amenidades estilo resort",
-    "tennisAlt": "Cancha de pádel en The Wavve",
-    "poolAlt": "Alberca en la azotea al atardecer",
-    "coworkingAlt": "Espacio de coworking pet-friendly en The Wavve",
+    "poolAlt": "Alberca exterior de The Wavve",
+    "jacuzziAlt": "Jacuzzi frente al mar en The Wavve",
+    "padelAlt": "Cancha de pádel en The Wavve",
     "list": [
       "Alberca techada", "Gimnasio", "Kids club",
       "Zona de juegos", "Recepción de paquetería", "Espacio de coworking",

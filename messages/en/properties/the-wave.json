@@ -29,9 +29,9 @@
   },
   "amenities": {
     "heading": "Resort-style amenities",
-    "tennisAlt": "Paddle court at The Wavve",
-    "poolAlt": "Rooftop pool at sunset",
-    "coworkingAlt": "Pet-friendly coworking space at The Wavve",
+    "poolAlt": "Outdoor pool at The Wavve",
+    "jacuzziAlt": "Oceanfront jacuzzi at The Wavve",
+    "padelAlt": "Padel court at The Wavve",
     "list": [
       "Indoor pool", "Fitness center", "Kids club",
       "Game zone", "Package room", "Coworking space",

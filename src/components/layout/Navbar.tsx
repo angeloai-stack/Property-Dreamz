@@ -24,11 +24,11 @@ const propertyZones: Zone[] = [
     href: "/tijuana-real-estate",
     items: [
       { label: "Costa Baja",           href: "/properties/costa-baja" },
-      { label: "Costa Coronado",       href: "/properties/costa-coronado", disabled: true },
+      { label: "Costa Coronado",       href: "/properties/costa-coronado" },
       { label: "Costa Real",           href: "/properties/costa-real" },
       { label: "Del Mar Residencial",  href: "/properties/delmar" },
       { label: "Andares",              href: "/properties/andares" },
-      { label: "Entrenubes",           href: "/properties/entrenubes", disabled: true },
+      { label: "Entrenubes",           href: "/properties/entrenubes" },
       { label: "360 Hipódromo Living",  href: "/properties/360-hipodromo-living", disabled: true },
     ],
   },

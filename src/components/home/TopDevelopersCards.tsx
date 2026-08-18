@@ -58,7 +58,6 @@ export const developers: TopDeveloper[] = [
     sqft: 45,
     image: `${CLD}/top-developers/entrenubes-cover.jpg`,
     href: "/properties/entrenubes",
-    linkDisabled: true,
   },
   {
     id: 4,
@@ -70,7 +69,6 @@ export const developers: TopDeveloper[] = [
     sqft: 200,
     image: `${CLD}/top-developers/costa-coronado-cover.webp`,
     href: "/properties/costa-coronado",
-    linkDisabled: true,
   },
 ];
 

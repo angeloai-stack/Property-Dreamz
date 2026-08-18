@@ -10,10 +10,12 @@ import { RevealOnScroll } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
-const IMG_HERO              = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80";
-const IMG_AMENITY_POOL      = "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&q=80";
-const IMG_AMENITY_TERRACE   = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80";
-const IMG_AMENITY_COWORKING = "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80";
+const IMG_HERO_DESKTOP      = "/entrenubes/hero-desktop.webp";
+const IMG_HERO_MOBILE       = "/entrenubes/hero-mobile.webp";
+const IMG_LOGO              = "/entrenubes/logo.png";
+const IMG_AMENITY_LIVING_ROOM = "/entrenubes/amenity-living-room.webp";
+const IMG_AMENITY_BEDROOM     = "/entrenubes/amenity-bedroom.webp";
+const IMG_AMENITY_KITCHEN     = "/entrenubes/amenity-kitchen.webp";
 const IMG_UNIT_RENDER       = "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80";
 const IMG_CMRE              = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 const MAPS_EMBED_URL        = "https://www.google.com/maps?q=32.5211,-117.0182&z=14&output=embed";
@@ -65,11 +67,14 @@ export default function EntrenubesPageContent() {
       <section className="relative min-h-205 overflow-hidden bg-[#000f2c]">
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={IMG_HERO}
-            alt={t("hero.heroImageAlt")}
-            className="absolute inset-0 h-full w-full object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet={IMG_HERO_MOBILE} />
+            <img
+              src={IMG_HERO_DESKTOP}
+              alt={t("hero.heroImageAlt")}
+              className="absolute inset-0 h-full w-full object-cover object-center animate-[ken-burns_14s_ease-in-out_infinite_alternate]"
+            />
+          </picture>
         </div>
 
         <div className="absolute inset-0 bg-[#0a3d91]/40 mix-blend-multiply" />
@@ -84,9 +89,13 @@ export default function EntrenubesPageContent() {
           {/* Top row — wordmark + CMRE + book a tour */}
           <div className="flex items-start justify-between">
             <RevealOnScroll direction="left">
-              <span className="font-ewangi text-[clamp(1.75rem,2.8vw,2.5rem)] tracking-wide text-white drop-shadow-md">
-                Entrenubes
-              </span>
+              <Image
+                src={IMG_LOGO}
+                alt="Entrenubes"
+                width={3205}
+                height={1565}
+                className="h-auto w-36 drop-shadow-md sm:w-44 lg:w-52"
+              />
             </RevealOnScroll>
             <div className="flex flex-col items-end gap-4 lg:flex-row lg:items-center lg:gap-6">
               <RevealOnScroll direction="right">
@@ -153,9 +162,9 @@ export default function EntrenubesPageContent() {
         </RevealOnScroll>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {[
-            { src: IMG_AMENITY_POOL, alt: t("amenities.poolAlt") },
-            { src: IMG_AMENITY_TERRACE, alt: t("amenities.terraceAlt") },
-            { src: IMG_AMENITY_COWORKING, alt: t("amenities.coworkingAlt") },
+            { src: IMG_AMENITY_LIVING_ROOM, alt: t("amenities.livingRoomAlt") },
+            { src: IMG_AMENITY_BEDROOM, alt: t("amenities.bedroomAlt") },
+            { src: IMG_AMENITY_KITCHEN, alt: t("amenities.kitchenAlt") },
           ].map((amenity, i) => (
             <RevealOnScroll key={amenity.alt} direction="up" delay={i * 100} duration={900}>
               <div className="relative aspect-379/282 overflow-hidden rounded-7 border-2 border-white">

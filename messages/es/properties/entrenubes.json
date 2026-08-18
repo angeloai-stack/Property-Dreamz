@@ -19,9 +19,9 @@
   ],
   "amenities": {
     "heading": "Amenidades estilo resort",
-    "poolAlt": "Alberca en la azotea de Entrenubes",
-    "terraceAlt": "Terraza sky en Entrenubes",
-    "coworkingAlt": "Lounge de coworking en Entrenubes",
+    "livingRoomAlt": "Sala de estar de un departamento en Entrenubes",
+    "bedroomAlt": "Recámara de un departamento en Entrenubes",
+    "kitchenAlt": "Cocina de un departamento en Entrenubes",
     "list": [
       "Alberca en la azotea", "Gimnasio", "Espacio de coworking",
       "Sky lounge", "Zona de asadores", "Área de mascotas",

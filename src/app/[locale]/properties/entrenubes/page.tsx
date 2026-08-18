@@ -1,7 +1,5 @@
-import { notFound } from "next/navigation";
+import EntrenubesPageContent from "./page-content";
 
-// Page temporarily hidden — kept name-only in the Properties nav submenu, no public listing yet.
-// Original content lives in page-content.tsx for when it's re-enabled.
-export default function EntrenubesPage(): never {
-  notFound();
+export default function EntrenubesPage() {
+  return <EntrenubesPageContent />;
 }

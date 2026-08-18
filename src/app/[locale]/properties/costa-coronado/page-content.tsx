@@ -15,6 +15,7 @@ const IMG_AMENITY_POOL      = "https://images.unsplash.com/photo-1416331108676-a
 const IMG_AMENITY_TERRACE   = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80";
 const IMG_AMENITY_COWORKING = "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80";
 const IMG_LOT_RENDER        = "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80";
+const IMG_LOGO              = "/costa-coronado/logo.png";
 const IMG_CMRE              = `${CLD}/CMRE_Logo-04_yjsknz.png`;
 const IMG_DEVELOPER_LOGO    = `${CLD}/unobra/developer-logo`;
 const MAPS_EMBED_URL        = "https://www.google.com/maps?q=32.5345,-117.1235&z=13&output=embed";
@@ -85,9 +86,13 @@ export default function CostaCoronadoPageContent() {
           {/* Top row — wordmark + CMRE + book a tour */}
           <div className="flex items-start justify-between">
             <RevealOnScroll direction="left">
-              <span className="font-ewangi text-[clamp(1.75rem,2.8vw,2.5rem)] tracking-wide text-white drop-shadow-md">
-                Costa Coronado
-              </span>
+              <Image
+                src={IMG_LOGO}
+                alt="Costa Coronado"
+                width={2900}
+                height={2480}
+                className="h-auto w-20 drop-shadow-md sm:w-24 lg:w-28"
+              />
             </RevealOnScroll>
             <div className="flex flex-col items-end gap-4 lg:flex-row lg:items-center lg:gap-6">
               <RevealOnScroll direction="right">

@@ -19,9 +19,9 @@
   ],
   "amenities": {
     "heading": "Resort-style amenities",
-    "poolAlt": "Rooftop pool at Entrenubes",
-    "terraceAlt": "Sky terrace at Entrenubes",
-    "coworkingAlt": "Coworking lounge at Entrenubes",
+    "livingRoomAlt": "Living room in an Entrenubes residence",
+    "bedroomAlt": "Bedroom in an Entrenubes residence",
+    "kitchenAlt": "Kitchen in an Entrenubes residence",
     "list": [
       "Rooftop pool", "Fitness center", "Coworking space",
       "Sky lounge", "BBQ area", "Pet park",
