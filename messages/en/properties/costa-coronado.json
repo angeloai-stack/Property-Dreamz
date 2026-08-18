@@ -19,9 +19,9 @@
   ],
   "amenities": {
     "heading": "Resort-style amenities",
-    "poolAlt": "Rooftop pool at Costa Coronado",
-    "terraceAlt": "Ocean-view terrace at Costa Coronado",
-    "coworkingAlt": "Coworking lounge at Costa Coronado",
+    "hillsideAlt": "Hillside view of Costa Coronado, Playas de Tijuana",
+    "coastalAlt": "Aerial view of Costa Coronado near the Pacific Ocean",
+    "cityAlt": "Panoramic view of Playas de Tijuana and the coast",
     "list": [
       "Rooftop pool", "Fitness center", "Coworking space",
       "Ocean-view terrace", "BBQ area", "Pet park",

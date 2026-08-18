@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 
 const CLD = "https://res.cloudinary.com/dserzvrwe/image/upload/f_auto,q_auto";
 const IMG_HERO              = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1600&q=80";
-const IMG_AMENITY_POOL      = "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&q=80";
-const IMG_AMENITY_TERRACE   = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80";
-const IMG_AMENITY_COWORKING = "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80";
+const IMG_AMENITY_CITY_VIEW     = "/costa-coronado/amenity-city-view.webp";
+const IMG_AMENITY_HILLSIDE_VIEW = "/costa-coronado/amenity-hillside-view.webp";
+const IMG_AMENITY_COASTAL_VIEW  = "/costa-coronado/amenity-coastal-view.webp";
 const IMG_LOT_RENDER        = "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80";
 const IMG_LOGO              = "/costa-coronado/logo.png";
 const IMG_CMRE              = `${CLD}/CMRE_Logo-04_yjsknz.png`;
@@ -159,9 +159,9 @@ export default function CostaCoronadoPageContent() {
         </RevealOnScroll>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {[
-            { src: IMG_AMENITY_POOL, alt: t("amenities.poolAlt") },
-            { src: IMG_AMENITY_TERRACE, alt: t("amenities.terraceAlt") },
-            { src: IMG_AMENITY_COWORKING, alt: t("amenities.coworkingAlt") },
+            { src: IMG_AMENITY_HILLSIDE_VIEW, alt: t("amenities.hillsideAlt") },
+            { src: IMG_AMENITY_COASTAL_VIEW, alt: t("amenities.coastalAlt") },
+            { src: IMG_AMENITY_CITY_VIEW, alt: t("amenities.cityAlt") },
           ].map((amenity, i) => (
             <RevealOnScroll key={amenity.alt} direction="up" delay={i * 100} duration={900}>
               <div className="relative aspect-379/282 overflow-hidden rounded-7 border-2 border-white">

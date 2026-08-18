@@ -19,9 +19,9 @@
   ],
   "amenities": {
     "heading": "Amenidades estilo resort",
-    "poolAlt": "Alberca en la azotea de Costa Coronado",
-    "terraceAlt": "Terraza con vista al mar en Costa Coronado",
-    "coworkingAlt": "Lounge de coworking en Costa Coronado",
+    "hillsideAlt": "Vista en ladera de Costa Coronado, Playas de Tijuana",
+    "coastalAlt": "Vista aérea de Costa Coronado frente al Pacífico",
+    "cityAlt": "Vista panorámica de Playas de Tijuana y la costa",
     "list": [
       "Alberca en la azotea", "Gimnasio", "Espacio de coworking",
       "Terraza con vista al mar", "Zona de asadores", "Área de mascotas",
